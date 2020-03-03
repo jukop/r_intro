@@ -244,7 +244,7 @@ text(x = 95, y = 145, labels = "ERO JOPA 30 M!!")
 
 ![](plotting_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
-Nyt kuvaajamme kelpaisi jo iltapäivälehteen ja herättäisi varmasti keskustelua niin tulosten luotettavuudesta kuin ajotaidon vaikutuksesta reaktioaikaan!
+Kuvaajamme on nyt valmis! Näitä komentoja käyttämällä ja pienellä googlailulla saa myös tehtyä tämän viikon tehtävän.
 
 Kuvaajien piirtäminen käytännössä
 ---------------------------------
