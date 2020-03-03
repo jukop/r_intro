@@ -1,5 +1,5 @@
 ---
-output: html_document
+output: github_document
 ---
 
 
@@ -9,9 +9,9 @@ output: html_document
 
 Ohjelmoinnin tavoitteena on kirjoittaa eli koodata ohjelma, joka suorittaa jonkun halutun tehtävän. Ohjelma koostuu useista komennoista, joista jokainen tekee jotain hyvin yksinkertaista.
 
-R on tehty ensisijaisesti tilastotiedettä ja data-analyysiä varten.  R:llä kirjoitetaan yleensä lyhyitä ohjelmia, joita kutsutaan skripteiksi. R:llä ei siis ole tarkoitus kehittää esimerkiksi pelejä, tai muita ohjelmia joissa on graafinen käyttöliittymä, kuten vaikkapa Photoshop. R ei myöskään ole web-ohjemointiin tarkoitettu kieli (vaikka oikeilla paketeilla R:lläkin pystyy tekemään web-sovelluksia). 
+R on tehty ensisijaisesti tilastotiedettä ja data-analyysiä varten.  R:llä kirjoitetaan yleensä lyhyitä ohjelmia, joita kutsutaan skripteiksi. R:llä ei siis ole tarkoitus kehittää esimerkiksi pelejä, tai muita ohjelmia joissa on graafinen käyttöliittymä, kuten vaikkapa Photoshop. R ei myöskään ole web-ohjelmointiin tarkoitettu kieli (vaikka oikeilla paketeilla R:lläkin pystyy tekemään web-sovelluksia). 
 
-R on korkean tason ohjelmointikieli. Tämä tarkoittaa sitä, että R:ssä on paljon valmiita komentoja, joiden "alta" löytyy paljon lisää koodia, johon R-ohjelmoijan ei kuitenkaan tarvitse itse koskea. Esimerkiki tilastollisen t-testin testin laskeminen vaatii useita matemaattisia välivaiheita, mutta R-ohjelmoija voi suorittaa testin yhdellä komennolla (```t.test```) joka antaa kaikki tarvittavat tiedot testistä.
+R on korkean tason ohjelmointikieli. Tämä tarkoittaa sitä, että R:ssä on paljon valmiita komentoja, joiden "alta" löytyy paljon lisää koodia, johon R-ohjelmoijan ei kuitenkaan tarvitse itse koskea. Esimerkiksi tilastollisen t-testin testin laskeminen vaatii useita matemaattisia välivaiheita, mutta R-ohjelmoija voi suorittaa testin yhdellä komennolla (```t.test```) joka antaa kaikki tarvittavat tiedot testistä.
 
 R:n käyttöä ja ohjelmointia muutenkin oppii parhaiten tekemällä. Otetaan siis ensimmäiseksi esimerkiksi klassinen ["Hello, world!"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program)-komento:
 
@@ -56,7 +56,7 @@ print(x + y)
 print(3 + 5)
 ```
 
-Muuttujiin voi sijoittaa muutakin kuin yksittäisä lukuja, kuten merkkijonoja (strings), vektoreita tai paljon monimutkaisempiakin rakenteita.
+Muuttujiin voi sijoittaa muutakin kuin yksittäisiä lukuja, kuten merkkijonoja (strings), vektoreita, tai paljon monimutkaisempiakin rakenteita.
 
 ```{r}
 x <- "Hello world"
@@ -65,7 +65,7 @@ x
 
 ### Kommentit
 
-Myöhemmin vastaan tulevassa koodissa käytetään kommentteja. Kommentit ovat koodin oheen kirjoitettua tekstiä, joka ei ole ohjelmointikieltä, ja joka ohitetaan koodia ajettaessa. Kommenttien tarkoitus on kuvailla koodin toimintaa. Oman koodin kommentointia on hyvä harjoitella alusta lähtien, vaikka ensimmäisten tehtävien koodi onkin hyvin yksinkertaista. hyvä nyrkkisääntö on muistaa, että koodia kirjoitetaan ihmisille, ei koneelle. R:ssä kommentit merkataan ```#```-symbolilla. Edellinen esimerkki kommentoituna voisi näytää jotakuinkin tältä:
+Myöhemmin vastaan tulevassa koodissa käytetään kommentteja. Kommentit ovat koodin oheen kirjoitettua tekstiä, joka ei ole ohjelmointikieltä, ja joka ohitetaan koodia ajettaessa. Kommenttien tarkoitus on kuvailla koodin toimintaa. Oman koodin kommentointia on hyvä harjoitella alusta lähtien, vaikka ensimmäisten tehtävien koodi onkin hyvin yksinkertaista. hyvä nyrkkisääntö on muistaa, että koodia kirjoitetaan ihmisille, ei koneelle. R:ssä kommentit merkataan ```#```-symbolilla. Edellinen esimerkki kommentoituna voisi näyttää jotakuinkin tältä:
 
 ```{r}
 # Assign arbitrary numbers to two variables
@@ -80,14 +80,14 @@ z
 
 ### Vektorit (Vectors)
 
-Nyt kun muuttujat ovat tuttuja, voimme siirtyä käsittelemään vektoreita. R:n vektorit ovat yksinkertaisia järjestettyjä tietorakenteita, jotka koostuvat alkioista (elements), esimerkiksi desimaaliluvuista. Alla oleva esimerkki sijoittaa muuttujaan x vekrotin, joka sisältää 5 lukua.
+Nyt kun muuttujat ovat tuttuja, voimme siirtyä käsittelemään vektoreita. R:n vektorit ovat yksinkertaisia järjestettyjä tietorakenteita, jotka koostuvat alkioista (elements), esimerkiksi desimaaliluvuista. Alla oleva esimerkki sijoittaa muuttujaan x vektorin, joka sisältää 5 lukua.
 
 ```{r}
 x <- c(1, 2, 7.4, 15, 0.2)
 x
 ```
 
-Yksinkertaisin tapa tehdä vektor R:ssä on käyttä ```c()```-funktiota, joka luo vektorin, jossa on sille annetut arvot annetussa järjestyksessä. Monet R-kielen komennot ja funktiot luovat vektoreita, alla muutama esimerkki:
+Yksinkertaisin tapa tehdä vektori R:ssä on käyttää ```c()```-funktiota, joka luo vektorin, jossa on sille annetut arvot annetussa järjestyksessä. Monet R-kielen komennot ja funktiot luovat vektoreita, alla muutama esimerkki:
 
 
 ```{r}
@@ -115,7 +115,7 @@ x / 2 + 1
 ```
 
 
-Entäs jos vektoreita lisää toisiinsa, tai kertoo keskenään? Jos vektorit ovat samanpituisia, operaatio toteutetaan alkio kerrallaan. Jos vektorit ovat eripituisia, R yrittää kierrättää (recycle) lyhyempää vektoria niin, että siitä tulee yhtä pitkä kuin pidempi vektori. Tämän jälkeen operaatio suoritetaan alkio kerrallaan (itse asiassa näin tapahtui myös aiemmissa esimerkeissä, kun vektori kerrottiin yksittäisellä luvulla. R:ssä yksittäiset luvut ovat vektoreita, joiden pituus on 1). Jos kierrätys ei onnistu, eli pidemmän vektorin pituus ei ole jaollinen lyhyemmän pituudella, R antaa virheilmoituksen. 
+Entä jos vektoreita lisää toisiinsa, tai kertoo keskenään? Jos vektorit ovat samanpituisia, operaatio toteutetaan alkio kerrallaan. Jos vektorit ovat eripituisia, R yrittää kierrättää (recycle) lyhyempää vektoria niin, että siitä tulee yhtä pitkä kuin pidempi vektori. Tämän jälkeen operaatio suoritetaan alkio kerrallaan (itse asiassa näin tapahtui myös aiemmissa esimerkeissä, kun vektori kerrottiin yksittäisellä luvulla. R:ssä yksittäiset luvut ovat vektoreita, joiden pituus on 1). Jos kierrätys ei onnistu, eli pidemmän vektorin pituus ei ole jaollinen lyhyemmän pituudella, R antaa virheilmoituksen. 
 
 ```{r}
 x <- c(1, 2, 3, 6, 10, 2)
@@ -152,7 +152,7 @@ x <- c("Hello, world!", "R is the best", "I", "like", "programming", "!")
 x
 ```
 
-Merkkijonovektoreiden muokkausta varten on omia funktiota, tärkeimpinä ```paste``` jas ```paste0```, jotka yhdistävät merkkijonoja toisiinsa. Myös numeerisia vektoreita voi antaa näille funktioille, ja ne muutetaan merkkijonoiksi.
+Merkkijonovektoreiden muokkausta varten on omia funktiota, tärkeimpinä ```paste``` ja ```paste0```, jotka yhdistävät merkkijonoja toisiinsa. Myös numeerisia vektoreita voi antaa näille funktioille, ja ne muutetaan merkkijonoiksi.
 
 ```{r}
 first_names <- c("Diana", "Peter", "Bruce")
@@ -215,7 +215,7 @@ characters[heights < 120]
 
 Monessa tutkimusprojektissa törmätään syystä tai toisesta jossain vaiheessa puuttuviin arvoihin. Hyvä esimerkki ovat seurantatutkimukset, jossa usein seurannan lopussa on jäljellä vähemmän koehenkilöitä kuin alussa. 
 
-Puuttuvia arvoja merkataan R:ssä merkinnällä ```NA``` (not available). Puuttuvar arvot noudattavat yksinkertaista logiikkaa: mikä tahansa operaatio ```NA```:lle antaa tulokseksi ```NA```. Funktiot, jotka operoivat koko vektoria, kuten ```sum``` tai ```mean``` voidaan erikseen asettaa poistamaan puuttuvat arvot ennen summan, keskiarvon tms. laskemista.
+Puuttuvia arvoja merkataan R:ssä merkinnällä ```NA``` (not available). Puuttuvat arvot noudattavat yksinkertaista logiikkaa: mikä tahansa operaatio ```NA```:lle antaa tulokseksi ```NA```. Funktiot, jotka operoivat koko vektoria, kuten ```sum``` tai ```mean``` voidaan erikseen asettaa poistamaan puuttuvat arvot ennen summan, keskiarvon tms. laskemista.
 
 ```{r}
 missing <- c(1, 2, NA, 4, NA, 6)
