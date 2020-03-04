@@ -1,20 +1,27 @@
 
-Taulukot ja matriisit (Arrays and matrices)
-===========================================
+Uusia tietotyyppejä
+===================
 
 Esittely
 --------
 
-Tässä osassa tutustutaan kahteen uuteen tietorakenteeseen: taulukkoon (array) ja matriisiin (matrix).
+Tässä osassa tutustutaan neljään uuteen tietorakenteeseen:
+
+-   [matrsiisi (matirx)](#matriisi)
+-   [taulukko (array)](#taulukko)
+-   [lista (list)](#lista)
+-   [data frame](#data-frame)
 
 Taulukko on juuri sitä miltä se kuulostaa: vektorintapainen tietorakenne, johon tallennetaan alkioita (elements), joilla on kaikilla sama luokka (class), eli esimerkiksi lukuja. Ero vektoriin on se, että taulukolla on useampi ulottuvuus. Matriisi on erikoistapaus taulukosta, sillä matriisi on kaksiulotteinen taulukko. Matriisi vastaa siis oikeastaan paremmin sitä mielikuvaa, joka monelle tulee mieleen suomen sanasta taulukko, ja matriisit ovatkin paljon yleisempiä kuin moniulotteiset taulukot.
 
 Matriisi voi olla joillekin sanana tuttu myös tilastotieteen tai matematiikan kursseilta, ja R:n matriisi vastaakin matemaattista matriisia. Tästä syystä matriisi on hyvin yleinen tietorakenne, johon ei voi olla törmäämättä jos käyttää R:ää tutkimuksessa.
 
-Aloitetaan siis matriiseista.
+Lista on kokoelma alkioita, joilla voi olla eri luokkia. Data frame on matriisin kaltainen kaksiulotteinen tietorakenne, jonka sarakkeilla voi olla eri luokkia.
 
-Matriisit
----------
+Aloitetaan matriiseista.
+
+Matriisi
+--------
 
 ### Matriisin luominen
 
@@ -317,10 +324,10 @@ X + Y
 
 Matriiseille on lisäksi määritelty paljon matriisien omia laskutoimituksia, niistä voi lukea lisää oppikirjasta. Matriisilaskentaa opiskelleille huomio: R:ssä oletuksena kertolasku tehdään alkioittain, matriisien kertolasku tapahtuu operaattorilla `%*%`.
 
-Taulukko (Array)
-----------------
+Taulukko
+--------
 
-Kuten alussa todettiin, taulukot ovat hyvin harvinaisia, joten niihin ei kannata tällä kurssilla keskittyä. Niitä kuitenkin tarvitaan joidenkin tehtävien tekemiseen, joten tässä on hyvin lyhyt oppimäärä taulukoista.
+Kuten alussa todettiin, taulukot (array) ovat hyvin harvinaisia, joten niihin ei kannata tällä kurssilla keskittyä. Niitä kuitenkin tarvitaan joidenkin tehtävien tekemiseen, joten tässä on hyvin lyhyt oppimäärä taulukoista.
 
 Taulukot ovat matriisien kaltaisia, mutta taulukossa voi olla yli kaksi ulottuvuutta. Oikeastaan matriisit ovat kaksiulotteisia taulukoita. Alla on esimerkki 3-ulotteisesta taulukosta, jota voi ajatella "peräkkäin" olevina matriiseina. Alla on kuva 1-ulotteisesta taulukosta eli vektorista, 2-ulotteisesta taulukosta eli matriisista ja 3-ulotteisesta taulukosta.
 
@@ -393,10 +400,10 @@ my_array[, 2, 2:3]
     ## [3,]   15   23
     ## [4,]   16   24
 
-Lista (list)
-------------
+Lista
+-----
 
-Lista on vektorinkaltainen tietorakenne, jossa on järjestyksessä alkioita, jotka on mahdollisesti nimetty. Tärkeä ero vektoriin verrattuna on, että listan alkiot voivat olla erityyppisiä. Listoja luodaan `list`-funktiolla:
+Lista (list) on vektorinkaltainen tietorakenne, jossa on järjestyksessä alkioita, jotka on mahdollisesti nimetty. Tärkeä ero vektoriin verrattuna on, että listan alkiot voivat olla erityyppisiä. Listoja luodaan `list`-funktiolla:
 
 ``` r
 example_list <- list(c(1, 2, 3),
