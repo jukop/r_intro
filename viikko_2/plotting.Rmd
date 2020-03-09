@@ -4,7 +4,7 @@
   
 # Kuvaajien piirtäminen
 
-Tällä viikolla tutustutaan kuvaajien piirtämiseen. Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä on silti lyhyet kirjalliset ohjeet suomeksi. **Tämän dokumentin lopussa on myös käytännön vinkkejä tämän viikon tehtävään.**
+Tällä viikolla tutustutaan kuvaajien piirtämiseen. Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä on silti lyhyet kirjalliset ohjeet suomeksi. **Tämän dokumentin lopussa on myös [käytännön vinkkejä tämän viikon tehtävään](#tämän-viikon-tehtävä).**
 
 R:n piirtokomennot voidaan jakaa kolmeen ryhmään:
 
@@ -226,5 +226,6 @@ R tarjoaa paljon valmiita työkaluja erilaisten kuvaajien piirtämiseen. Valitet
 
 Tämän viikon tehtävässä on muutama "haaste". Tässä siis pari suoraa vinkkiä:
 
+- Suosittelen hyvin vahvasti käyttämään RStudiota ja kirjoittamaan piirtokomennot R-skriptiin! Näin on helppoa muokata piirtoomentoja tehtävän edetessä.
 - Tehtävässä käsitellään listaa ```observations```. Voit lukea listoista lisää ensi viikon ohjeista!
 - Kohdassa 6. kannattaa ensin luoda vektori, jossa on eksponentiaalisen käyrän luvut ja lisätä se kuvaajaan funktiolla ```lines()```. Älä siis käytä funktiota ```curve()```, vaikka ohjeissa niin neuvotaan! ```curve()```-funktion käyttö vaatii oman funktion määrittelyä, joka opitaan vasta myöhemmin tällä kurssilla!
