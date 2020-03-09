@@ -4,13 +4,13 @@
   
 # Kuvaajien piirtäminen
 
-Tällä viikolla tutustutaan kuvaajien piirtämiseen. Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä on silti lyhyet kirjalliset ohjeet suomeksi.
+Tällä viikolla tutustutaan kuvaajien piirtämiseen. Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä on silti lyhyet kirjalliset ohjeet suomeksi. **Tämän dokumentin lopussa on myös käytännön vinkkejä tämän viikon tehtävään.**
 
 R:n piirtokomennot voidaan jakaa kolmeen ryhmään:
 
 - Korkean tason grafiikkatoiminnot piirtävät aina uuden kuvat
 - Alemman tason grafiikkatoiminnot lisäävät olemassa olevaan kuvaan uusia osia
-- Interaktiiviset grafiikkatoiminnot mahdollistavat vuorovaikutuksen kuvan kanssa
+- Interaktiiviset grafiikkatoiminnot mahdollistavat vuorovaikutuksen kuvan kanssa. (Näiden käyttö on helpompaa opettaa videolla, joten niitä ei käsitellä tässä)
 
 ## Korkean tason piirtofunktiot
 
@@ -221,3 +221,10 @@ Kuvaajamme on nyt valmis! Näitä komentoja käyttämällä ja pienellä googlai
 Jos äskeisen esimerkin aikana tuntui siltä, että näimme paljon työtä ja saimme lopputulokseksi kuvaajan, joka ei oikeastaan edes näytä kovin hyvältä, olet aivan oikeassa. Kuvaajien rakentaminen itse R:n peruskomennoilla on raskasta, ja usein perusgrafiikkatoimintoja käytetään lähinnä omaan käyttöön tulevien kuvaajien piirtämiseen nopeasti. Peruskomennot on kuitenkin hyvä hallita, sillä niitä saattaa tarvita valmiilla työkaluilla tehtyjen kuvaajien muokkaamiseen. Varsinkin tekstin lisääminen, sekä akselien nimeäminen ja otsikon muuttaminen ovat hyviä taitoja osata.
 
 R tarjoaa paljon valmiita työkaluja erilaisten kuvaajien piirtämiseen. Valitettavasti tällä kurssilla ei ole aikaa sukeltaa näiden työkalujen käyttöön, sillä ennen niiden käyttöä pitää ymmärtää enemmän R:n monimutkaisemmista tietorakenteista, joita käsitellään seuraavilla viikoilla. Inspiraatiota ja motivaatiota voi kuitenkin hakea esimerkiksi [R Graph Gallery](https://www.r-graph-gallery.com/index.html)-sivulta tai [ggpubr-paketin ohjeista](https://rpkgs.datanovia.com/ggpubr/index.html). 
+
+## Tämän viikon tehtävä
+
+Tämän viikon tehtävässä on muutama "haaste". Tässä siis pari suoraa vinkkiä:
+
+- Tehtävässä käsitellään listaa ```observations```. Voit lukea listoista lisää ensi viikon ohjeista!
+- Kohdassa 6. kannattaa ensin luoda vektori, jossa on eksponentiaalisen käyrän luvut ja lisätä se kuvaajaan funktiolla ```lines()```. Älä siis käytä funktiota ```curve()```, vaikka ohjeissa niin neuvotaan! ```curve()```-funktion käyttö vaatii oman funktion määrittelyä, joka opitaan vasta myöhemmin tällä kurssilla!
