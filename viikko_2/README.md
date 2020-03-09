@@ -258,6 +258,6 @@ Tämän viikon tehtävä
 
 Tämän viikon tehtävässä on muutama "haaste". Tässä siis pari suoraa vinkkiä:
 
--   Suosittelen hyvin vahvasti käyttämään RStudiota ja kirjoittamaan piirtokomennot R-skriptiin! Näin on helppoa muokata piirtoomentoja tehtävän edetessä.
+-   Suosittelen hyvin vahvasti käyttämään RStudiota ja kirjoittamaan piirtokomennot R-skriptiin! Näin on helppoa muokata piirtokomentoja tehtävän edetessä.
 -   Tehtävässä käsitellään listaa `observations`. Voit lukea listoista lisää ensi viikon ohjeista!
 -   Kohdassa 6. kannattaa ensin luoda vektori, jossa on eksponentiaalisen käyrän luvut ja lisätä se kuvaajaan funktiolla `lines()`. Älä siis käytä funktiota `curve()`, vaikka ohjeissa niin neuvotaan! `curve()`-funktion käyttö vaatii oman funktion määrittelyä, joka opitaan vasta myöhemmin tällä kurssilla!
