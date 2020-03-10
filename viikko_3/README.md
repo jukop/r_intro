@@ -2,6 +2,8 @@
 Uusia tietotyyppejä
 ===================
 
+HUOM: Ennen tämän osion tehtävien aloittamista, lue etusivulta vinkki tehtävien tallentamisesta R-skriptiin [(linkki)](https://github.com/antonvsdata/r_intro#kurssin-suoritus-rstudiolla).
+
 Esittely
 --------
 

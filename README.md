@@ -61,7 +61,7 @@ Tässä osassa on monta käytännöllistä välilehteä:
 - Help: Täällä voi selata R:n manuaalia, jossa on ohjeet jokaiselle R-komennolla. Voit kokeilla ajaa editorissa tai konsolissa komennon ```?print```, joka avaa ```print```-funktion ohjesivun.
 
 
-### Kurssin tehtävien tekeminen RStudiolla
+### Kurssin suoritus RStudiolla
 
 Suurin osa kurssin tehtävistä on melko lyhyitä, joten ne voi tarvittaessa tehdä suoraan konsoliin. Suosittelen kuitenkin kirjoittamaan varsinkin pidemmät ja monimutkaisemmat tehtävät muistiin editoriin. Valitettavasti kurssin tehtävien aktivointi aiheuttaa RStudion toiminnassa hieman outouksia, koska kurssin tehtäviä ei ole suunniteltu RStudiolla tehtäviksi. Joskus kun editorista ajaa komennon, editorin tilalle aukeaa "kysymys"-ikkuna. Tästä ei kuitenkaan tarvitse välittää, vaan ikkunan voi sulkea.
 
