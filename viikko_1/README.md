@@ -1,8 +1,9 @@
 
 R-ohjelmoinnin perusteet
-------------------------
+========================
 
-### Mikä R on ja mitä sillä tehdään?
+Mikä R on ja mitä sillä tehdään?
+--------------------------------
 
 Ohjelmoinnin tavoitteena on kirjoittaa eli koodata ohjelma, joka suorittaa jonkun halutun tehtävän. Ohjelma koostuu useista komennoista, joista jokainen tekee jotain hyvin yksinkertaista.
 
@@ -10,7 +11,7 @@ R on tehty ensisijaisesti tilastotiedettä ja data-analyysiä varten. R:llä kir
 
 R on korkean tason ohjelmointikieli. Tämä tarkoittaa sitä, että R:ssä on paljon valmiita komentoja, joiden "alta" löytyy paljon lisää koodia, johon R-ohjelmoijan ei kuitenkaan tarvitse itse koskea. Esimerkiksi tilastollisen t-testin testin laskeminen vaatii useita matemaattisia välivaiheita, mutta R-ohjelmoija voi suorittaa testin yhdellä komennolla (`t.test`) joka antaa kaikki tarvittavat tiedot testistä.
 
-R:n käyttöä ja ohjelmointia muutenkin oppii parhaiten tekemällä. Otetaan siis ensimmäiseksi esimerkiksi klassinen ["Hello, world!"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program)-komento:
+R:n käyttöä ja ohjelmointia muutenkin oppii parhaiten tekemällä. Tässä dokumentaatiossa on tekstin väliin upotettu R-koodia harmaissa laatikoissa, kuten alla olevassa esimerkissä. Kahdella ruudulla eli `##`-merkinnällä alkavat rivit eivät ole koodia vaan koodin ajamisen aiheuttamia tulosteita (output). Otetaan ensimmäiseksi esimerkiksi klassinen ["Hello, world!"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program)-komento:
 
 ``` r
 print("Hello, world!")
@@ -28,7 +29,8 @@ print("Hello, world!")
 
 Yksittäisten komentojen ajamisesta ei kuitenkaan ole yleensä hyötyä, ellei tuloksia voi tallentaa johonkin. Ohjelmointikielissä tietoja tallennetaan muuttujiin, joita käsitellään seuraavaksi.
 
-### Muuttujat (Variables)
+Muuttujat (Variables)
+---------------------
 
 **Muuttujat** (variables) ovat yksi tärkeimmistä ohjelmointikielien rakenteista. Muuttujien tehtävä on säilyttää tietoa ja tuloksia edellisistä laskutoimituksista. Alla on yksinkertainen esimerkki muuttujien käytöstä R:ssä
 
@@ -64,7 +66,8 @@ x
 
     ## [1] "Hello world"
 
-### Kommentit
+Kommentit
+---------
 
 Myöhemmin vastaan tulevassa koodissa käytetään kommentteja. Kommentit ovat koodin oheen kirjoitettua tekstiä, joka ei ole ohjelmointikieltä, ja joka ohitetaan koodia ajettaessa. Kommenttien tarkoitus on kuvailla koodin toimintaa. Oman koodin kommentointia on hyvä harjoitella alusta lähtien, vaikka ensimmäisten tehtävien koodi onkin hyvin yksinkertaista. hyvä nyrkkisääntö on muistaa, että koodia kirjoitetaan ihmisille, ei koneelle. R:ssä kommentit merkataan `#`-symbolilla. Edellinen esimerkki kommentoituna voisi näyttää jotakuinkin tältä:
 
@@ -80,7 +83,8 @@ z
 
     ## [1] 8
 
-### Vektorit (Vectors)
+Vektorit (Vectors)
+------------------
 
 Nyt kun muuttujat ovat tuttuja, voimme siirtyä käsittelemään vektoreita. R:n vektorit ovat yksinkertaisia järjestettyjä tietorakenteita, jotka koostuvat alkioista (elements), esimerkiksi desimaaliluvuista. Alla oleva esimerkki sijoittaa muuttujaan x vektorin, joka sisältää 5 lukua.
 
@@ -137,7 +141,7 @@ rep(c(1, 2, 3), 3) # Repeat all values in vector c(1, 2, 3) 3 times
 
     ## [1] 1 2 3 1 2 3 1 2 3
 
-#### Vektorilaskentaa
+### Vektorilaskentaa
 
 Vektoreilla laskeminen on usein hyvin intuitiivista (lisää vaaranpaikoista myöhemmin). Kun vektoriin kohdistetaan laskutoimintoja, sama operaatio tehdään kaikille vektorin alkioille (engl. vectorization).
 
@@ -202,9 +206,9 @@ sum(x)
 
     ## [1] 24
 
-#### Ei-numeeriset vektorit
+### Ei-numeeriset vektorit
 
-##### Merkkijonovektorit
+#### Merkkijonovektorit
 
 Vektorien ei ole pakko sisältää lukuja. Vektorit voivat sisältää esimerkiksi merkkijonoja, kuten alussa nähty "Hello, world!". Merkkijonotyypin nimi R:ssä on `character`.
 
@@ -230,7 +234,7 @@ paste(first_names, last_names)
 students <- paste0("Student_", 1:5)
 ```
 
-##### Loogiset vektorit
+#### Loogiset vektorit
 
 Kolmas yleinen vektorityyppi on looginen vektori, joka sisältää arvoja `TRUE` eli tosi tai `FALSE` eli epätosi. Loogisia vektoreita käytetään yleensä joko merkitsemään binäärisiä muuttuja (esimerkiksi paastosiko koehenkilö ennen näytteenottoa) tai vektorien ja matriisien indeksoinnissa (tästä lisää pian). Tällöin loogisia vektoreita syntyy erilaisten loogisten operaattorien avulla:
 
@@ -260,7 +264,7 @@ x != 2 # Not equal to 2?
 
     ## [1]  TRUE FALSE  TRUE  TRUE  TRUE FALSE
 
-##### Loogiset vektorit ja matematiikka
+#### Loogiset vektorit ja matematiikka
 
 Jos loogiselle vektorille tekee operaation, joka odottaa numeerista vektoria, R muuttaa automaattisesti arvot `TRUE` ykkösiksi ja arvot `FALSE` nolliksi. Tämä on erityisen hyödyllistä käytettäessä funktiota `sum`. Tällä tavalla saadaan helposti tietää esim. kuinka moni vektorin alkio täyttää tietyn ehdon:
 
@@ -281,7 +285,7 @@ sum(x < 10)
 
     ## [1] 4
 
-#### Vektorien indeksointi
+### Vektorien indeksointi ja leikkely
 
 Usein vektorista halutaan poimia vain tietyt arvot, esimerkiksi vain ensimmäiset 5 arvoa, tai vain arvot, jotka täyttävät tietyt ehdot. R:ssä vektorin indeksointiin käytetään hakasulkeita `[]`. Yleisimmät indeksointitavat ovat antaa hakasulkeiden sisään vektori kokonaislukuja, jotka vastaavat järjestyslukuja, jotka vektorista halutaan poimia (HUOM kokeneemmat koodarit, R:ssä indeksointi alkaa ykkösestä, ei nollasta!). Toinen vaihtoehto on käyttää loogista vektoria, jolloin vektorista poimitaan ne alkiot, joiden kohdalla loogisen vektorin arvo on TRUE. Tämä on yksinkertaisempaa kuin miltä se kuulostaa:
 
@@ -317,7 +321,7 @@ characters[heights < 120]
 
     ## [1] "Yoda"      "R2-D2"     "Baby Yoda"
 
-#### Puuttuvat arvot
+### Puuttuvat arvot
 
 Monessa tutkimusprojektissa törmätään syystä tai toisesta jossain vaiheessa puuttuviin arvoihin. Hyvä esimerkki ovat seurantatutkimukset, jossa usein seurannan lopussa on jäljellä vähemmän koehenkilöitä kuin alussa.
 
@@ -376,3 +380,8 @@ is.na(missing)
 ```
 
     ## [1] FALSE FALSE  TRUE FALSE  TRUE FALSE
+
+Tehtävien aloitus
+-----------------
+
+Tämän ohjeen ja R:n virallisen manuaalin tai pienen googlailun avulla selviät ensimmäisen viikon tehtävistä. Katso vielä etusivulta vinkki tehtävien tallentamisesta R-skriptiin [(linkki)](https://github.com/antonvsdata/r_intro#kurssin-suoritus-rstudiolla).
