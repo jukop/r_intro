@@ -63,11 +63,28 @@ Tässä osassa on monta käytännöllistä välilehteä:
 
 ### Kurssin tehtävien tekeminen RStudiolla
 
-Suurin osa kurssin tehtävistä on melko lyhyitä, joten ne voi tarvittaessa tehdä suoraan konsoliin. Suosittelen kuitenkin kirjoittamaan varsinkin pidemmät ja monimutkaisemmat tehtävät muistiin editoriin. Valitettavasti kurssin tehtävien aktivointi aiheuttaa RStudion toiminnassa hieman outouksia, koska kurssin tehtäviä ei ole suunniteltu RStudiolla tehtäviksi. Aina kun editorista ajaa komennon, editorin tilalle aukeaa "kysymys"-ikkuna. Tästä ei kuitenkaan tarvitse välittää, vaan ikkunan voi sulkea.
+Suurin osa kurssin tehtävistä on melko lyhyitä, joten ne voi tarvittaessa tehdä suoraan konsoliin. Suosittelen kuitenkin kirjoittamaan varsinkin pidemmät ja monimutkaisemmat tehtävät muistiin editoriin. Valitettavasti kurssin tehtävien aktivointi aiheuttaa RStudion toiminnassa hieman outouksia, koska kurssin tehtäviä ei ole suunniteltu RStudiolla tehtäviksi. Joskus kun editorista ajaa komennon, editorin tilalle aukeaa "kysymys"-ikkuna. Tästä ei kuitenkaan tarvitse välittää, vaan ikkunan voi sulkea.
 
 **HUOM:** kurssin osioiden tehtäviä ei voi tallentaa kesken osion, vaan jokainen osio on tehtävä kerralla kokonaan. Jos kuitenkin kirjoitat koodia editoriin ja tallennat tehtäviä .R-tiedostoon, voit tarvittaessa aloittaa osion toisena päivänä uudestaan ja ajaa edellisellä kerralla kirjoittamasi komennot helposti tiedostosta. Tehtäviä voi palauttaa vain UEFAD-verkon koneilla!
 
-Tehtävien tekemisen voi aloittaa komennolla ```Rkurssi::Rkurssi(123456)```, kun numeron 123456 korvaa omalla opiskelijanumerolla ja seuraamalla avautuvia ohjeita. Tätä varten tulee kuitenkin asentaa ```Rkurssi```-paketti. Tähän on ohjeet alla.
+Tehtävien tekemisen voi aloittaa komennolla ```Rkurssi::Rkurssi(123456)```, kun numeron 123456 korvaa omalla opiskelijanumerolla ja seuraamalla avautuvia ohjeita. Tätä varten tulee kuitenkin asentaa ```Rkurssi```-paketti. Tähän on ohjeet alla. Kurssin tehtävissä pitää usein tallentaa asioita muuttujaan ```vast``` ja palauttaa tehtävä komennolla ```c```. Suosittelenkin tekemään jokaista osiota varten erillisen R-skriptin, joka sisältää itse tehtävien tarvitseman koodin sekä palautuskomennot. Tällainen skripti näyttää jotakuinkin tältä:
+
+```
+# T 1
+vast <- 1
+c
+
+# T 2
+vast <- c(1, 2, 3)
+c
+
+
+# T 3
+vast <- "jotain"
+c
+```
+
+Kun tehtävät tallentaa tähän tyyliin, voi ensi kerralla vain yksinkertaisesti ajaa skriptin haluamaansa tehtävään asti. Samalla koneella ja samalla opiskelijanumerolla pitäisi tulla samat tehtävät.
 
 ## Kurssilla tarvittavien R-pakettien asennus
 
