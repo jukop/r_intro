@@ -8,7 +8,7 @@ output: github_document
 
 Tässä osassa tutustutaan neljään uuteen tietorakenteeseen:
 
-- [matrsiisi (matirx)](#matriisi)
+- [matrsiisi (matrix)](#matriisi)
 - [taulukko (array)](#taulukko)
 - [lista (list)](#lista)
 - [data frame](#data-frame)
@@ -263,7 +263,7 @@ class(study[2])
 study[[2]]
 class(study[[2]])
 # Dollar sign also returns the matrix
-class(study$measurements)
+class(study$Measurements)
 # Single brackets works as subscripting just like with vectors
 study[2:3]
 ```

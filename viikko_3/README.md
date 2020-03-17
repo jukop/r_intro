@@ -2,14 +2,12 @@
 Uusia tietotyyppejä
 ===================
 
-HUOM: Ennen tämän osion tehtävien aloittamista, lue etusivulta vinkki tehtävien tallentamisesta R-skriptiin [(linkki)](https://github.com/antonvsdata/r_intro#kurssin-suoritus-rstudiolla).
-
 Esittely
 --------
 
 Tässä osassa tutustutaan neljään uuteen tietorakenteeseen:
 
--   [matrsiisi (matirx)](#matriisi)
+-   [matrsiisi (matrix)](#matriisi)
 -   [taulukko (array)](#taulukko)
 -   [lista (list)](#lista)
 -   [data frame](#data-frame)
@@ -522,10 +520,10 @@ class(study[[2]])
 
 ``` r
 # Dollar sign also returns the matrix
-class(study$measurements)
+class(study$Measurements)
 ```
 
-    ## [1] "NULL"
+    ## [1] "matrix"
 
 ``` r
 # Single brackets works as subscripting just like with vectors
@@ -591,7 +589,8 @@ study
 names(study)
 ```
 
-    ## [1] "Subject_ID"   "Measurements" "Study_name"   ""             "professional"
+    ## [1] "Subject_ID"   "Measurements" "Study_name"   ""            
+    ## [5] "professional"
 
 Listoja voi yhdistää vektorien tapaan `c()`-funktiolla:
 
