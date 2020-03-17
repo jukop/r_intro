@@ -698,6 +698,20 @@ study_data[study_data$HDL < 4, ]
     ## ANKL       ANKL   1 3.5 2.3    168
     ## DIPR       DIPR   3 3.0 1.6    172
 
+Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla `rbind()`.
+
+``` r
+new_row <- data.frame(Subject_ID = "BRWA", CRP = 2, HDL = 4, LDL = 2, height = 182)
+rownames(new_row) <- "BRWA"
+rbind(study_data, new_row)
+```
+
+    ##      Subject_ID CRP HDL LDL height
+    ## ANKL       ANKL 1.0 3.5 2.3    168
+    ## PEPA       PEPA 2.5 5.0 3.0    185
+    ## DIPR       DIPR 3.0 3.0 1.6    172
+    ## BRWA       BRWA 2.0 4.0 2.0    182
+
 Data framet ovat erittäin käteviä, koska niihin voi helposti tallentaa sekä merkkijonoja, että numeerista dataa. Kannattaa kuitenkin muistaa, että matriisi on usein laskennan kannalta tehokkaampi tietorakenne, kuin data frame. Tästä ei tarvitse murehtia tällä kurssilla, mutta se on hyvä tietää jatkon kannalta, jos bioinformatiikkakursseilla tulee vastaan isompia datasettejä, joissa on osia, jotka voi tallentaa matriisina.
 
 View()
