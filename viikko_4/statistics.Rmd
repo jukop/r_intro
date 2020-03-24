@@ -58,7 +58,7 @@ Lineaarisessa mallissa eli lineaarisessa regressiossa tavoite on arvioida vastem
 
 ### Teoria
 
-Edellä esitelty yksinkertaisin mahdollinen lineaarinen regressiomalli näyttää tältä:
+Yksinkertaisin mahdollinen lineaarinen regressiomalli näyttää tältä:
 
 $$y = \beta_0 + \beta_1 x_1 + \epsilon$$
 
@@ -68,7 +68,7 @@ $$y = \beta_0 + \beta_1 x_1 + \epsilon$$
 - $x_1$ on selittävä muuttuja eli auton nopeus
 - $\epsilon$ on residuaalitermi (virhetermi)
 
-Mallissa siis oletetaan, että auton pysähtymismatka nopeudella 0 lm/h on $\beta_0$ ja kasvaa $\beta_1$ verran, kun nopeus kasvaa 1 km/h. Lisäksi mukana on virhetermi, joka selittää satunnaisen vaihtelun tuloksissa lineaarisen käyrän ympärillä.
+Mallissa siis oletetaan, että auton pysähtymismatka nopeudella 0 km/h on $\beta_0$ ja kasvaa $\beta_1$ verran, kun nopeus kasvaa 1 km/h. Lisäksi mukana on virhetermi, joka selittää satunnaisen vaihtelun tuloksissa lineaarisen käyrän ympärillä.
 
 Jos malliin halutaan lisätä selittäviä muuttujia, kuten auton jarrujen kunto ($x_2$) tai sääolosuhteet ($x_3$), malli näyttää tältä:
 
