@@ -284,5 +284,43 @@ hb_alert(hb = "120", sex = "female")
 hb_alert(hb = 120, sex = "FEMALE")
 ```
 
+## Alkioiden poimiminen vektorista tietyh ehdon perusteella
 
+Tämän viikon tehtävissä tuli ainakin allekirjoittaneelle vastaan tilanne, jossa piti käydä läpi useita arvoja vektorista, ja säilyttää niistä ne, jotka täyttivät tietyn ehdon. Tätä aihetta käsitellään enemmän ensi viikolla, mutta tässä lyhyt vinkki tällaisten tehtävien ratkaisuun:
+
+- Luo apufunktio, joka ottaa syötteeksi yhden arvon, ja tarkistaa täyttyykö ehto. Tämän funktion tulee palauttaa TRUE, jos ehto täyttyy ja FALSE, jos ehto ei täyty.
+- Käytä funktiota ```Vectorize```, jolla voit muuttaa funktiosi vektoroiduksi funktioksi. Kun vektoroidulle funktiolle annetaan vektori, jossa on monta alkiota, funktio ajetaan automaattisesti alkio kerrallaan, kuten monet R:n omat funktiot.
+- Käytä vektoroitua apufunktiota vektorin indeksointiin.
+
+Tässä on esimerkki, jossa käydään läpi vektori DNA:n emäksiä, joista poimitaan vain sytosiinit ja guaniinit.
+
+```{r}
+# Helper function
+is_cg <- function(base) {
+  if (base %in% c("C", "G")) {
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
+}
+
+# Vectorize
+is_cg_vector <- Vectorize(is_cg)
+
+# Main function
+pick_cg <- function(bases) {
+  only_cg <- bases[is_cg_vector(bases)]
+  return(only_cg)
+}
+
+# NOTE: this only checks the first value of the vector
+my_bases <- c("A", "C", "C", "T", "G", "T")
+is_cg(my_bases)
+
+# This works as expected
+is_cg_vector(my_bases)
+
+# Pick only C and G
+pick_cg(my_bases)
+```
 
