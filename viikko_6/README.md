@@ -85,7 +85,7 @@ Tässä on lyhyt lista loogisista operaattoreista:
 
 </tr>
 </table>
-Kaikki loogiset operaattorit palauttavat joko arvon TRUE tai FALSE. Vertailuoperaattorien käyttö on jo tullut tutuksi aikaisemmissa tehtävissä, mutta tutustutaan vähän tarkemmin viimeisten rivien operaattoreih:
+Kaikki loogiset operaattorit palauttavat joko arvon TRUE tai FALSE. Vertailuoperaattorien käyttö on jo tullut tutuksi aikaisemmissa tehtävissä, mutta tutustutaan vähän tarkemmin viimeisten rivien operaattoreihin:
 
 #### Negaatio
 
@@ -118,7 +118,7 @@ Looginen negaatio palauttaa loogisen lauseen vastakohdan, eli muuttaa arvon TRUE
 
 #### Looginen TAI (disjunktio)
 
-Loogiselle TAI operaattorille annetaan kaksi loogista lausetta, ja TAI operaattori palauttaa TRUE, jos kummatkin tai jompikumpi lauseista on TRUE. R:ssä TAI merkitään pystyviivalla "|" tai kahdella pystyviivalla "||". "|" käy läpi vektoreita alkioittain, "||" operoi yksittäisiä arvoja, ja toista lausetta ei edes ajeta, jos ensimmäinen on TRUE (koska "||" palauttaa TRUE riippumatta toisen lauseen arvosta). Jos tämä tuntui monimutkaiselta, niin riittää muistaa että ehtorakenteissa kannattaa käyttää muotoa "||".
+Loogiselle TAI operaattorille annetaan kaksi loogista lausetta, ja TAI operaattori palauttaa TRUE, jos kummatkin tai jompikumpi lauseista on TRUE. R:ssä TAI merkitään pystyviivalla "|" tai kahdella pystyviivalla "||". "|" käy läpi vektoreita alkioittain, "||" operoi yksittäisiä arvoja, ja toista lausetta ei edes ajeta, jos ensimmäinen on TRUE (koska "||" palauttaa TRUE riippumatta toisen lauseen arvosta). Jos tämä tuntui monimutkaiselta, niin riittää muistaa, että ehtorakenteissa kannattaa käyttää muotoa "||".
 
 ``` r
 10 > 12 || "a" < "b"
@@ -162,7 +162,7 @@ Loogiselle JA operaattorille annetaan kaksi lausetta. JA palauttaa TRUE, jos kum
 
 #### Osa kokonaisuutta
 
-%in%-operaattorilla voi tarkistaa, kuuluuko jokin arvo suurempaan joukkoon. Tämä voitaisiin totetuttaa myös usealla TAI-operaattorilla, mutta %in% on usein paljon kätevämpi.
+%in%-operaattorilla voi tarkistaa, kuuluuko jokin arvo suurempaan joukkoon. Tämä voitaisiin toteuttaa myös usealla TAI-operaattorilla, mutta %in% on usein paljon kätevämpi.
 
 ``` r
 dna_bases <- c("A", "C", "G", "T")
@@ -226,7 +226,7 @@ hb_alert(110)
 
     ## [1] "Hemoglobin is low!"
 
-Funktio siis toimii oletetusti, eli se hälyttää vain jos hemoglobiinitaso on alle 117. Käyttäjän kannalta olisi kuitenkin kätevää saada jonkinlainen palaute myös silloin, kun hemoglobiinitaso on tarpeeksi korkea. Tätä varten voidaan käyttää else-komentoa:
+Funktio siis toimii oletetusti, eli se hälyttää vain, jos hemoglobiinitaso on alle 117. Käyttäjän kannalta olisi kuitenkin kätevää saada jonkinlainen palaute myös silloin, kun hemoglobiinitaso on tarpeeksi korkea. Tätä varten voidaan käyttää else-komentoa:
 
 ``` r
 hb_alert <- function(hb) {
@@ -290,7 +290,7 @@ hb_alert(hb = 120, sex = "male")
 
     ## [1] "Hemoglobin is low for a male!"
 
-Nyt funktio tarkistaa ensin, onko potilas nainen ja onko hänen hemoglobiininsta alle 117. Jos ei, siirrytään eteenpäin ja tarkistetaan, onko potilas mies ja onko hänen hemoglobiininsa alle 130. Jos ei, siirrytään viimeiseen kohtaan, ja tulostetaan "Hemoglobin ok".
+Nyt funktio tarkistaa ensin, onko potilas nainen ja onko hänen hemoglobiininsa alle 117. Jos ei, siirrytään eteenpäin ja tarkistetaan, onko potilas mies ja onko hänen hemoglobiininsa alle 130. Jos ei, siirrytään viimeiseen kohtaan, ja tulostetaan "Hemoglobin ok".
 
 Else-if rakenteita voi olla rajoittamaton määrä ensimmäisen if-rakenteen jälkeen. Lisätään funktioon hälytys kriittisestä hemoglobiinin määrästä (hb &lt; 50) riippumatta sukupuolesta:
 
@@ -312,7 +312,7 @@ hb_alert(hb = 32, sex = "female")
 
     ## [1] "Hemoglobin is low for a female!"
 
-Kuten huomataan, yllä oleva koodi ei toimikaan, kuten piti. Näin alhaisella hemoglobiinilla pitäisi tulla varoitus kriittisestä tilasta. Koodi suoritus ei kuitenkaan ikinä etenä kriittisen tilan varoitukseen asti, sillä ensimmäinen ehto täyttyy. Korjataan tilanne siirtämällä kriittisen tilan ehto ensimmäiseksi:
+Kuten huomataan, yllä oleva koodi ei toimikaan, kuten piti. Näin alhaisella hemoglobiinilla pitäisi tulla varoitus kriittisestä tilasta. Koodi suoritus ei kuitenkaan ikinä etene kriittisen tilan varoitukseen asti, sillä ensimmäinen ehto täyttyy. Korjataan tilanne siirtämällä kriittisen tilan ehto ensimmäiseksi:
 
 ``` r
 hb_alert <- function(hb, sex) {
