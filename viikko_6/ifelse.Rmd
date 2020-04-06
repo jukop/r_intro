@@ -133,6 +133,18 @@ dog <- list(breed = "golden retriever",
 dog$breed == "golden retriever" && dog$weight < 25 || dog$height < 50
 ```
 
+#### a < x < b
+
+usein tulee vastaan tilanteita, joissa halutaan tarkistaa, onko jokin luku halutulla välillä. Tämä kirjoitetaan matemaatiisesti esim. näin: a < x < b, jossa tarkastetaan, onko x välillä ]a, b[. Tämä ei kuitenkaan valitettavasti toimi R:ssä, vaan tarkistus pitää jakaa kahteen osaan:
+
+```{r}
+# Are x and y between 0 and 1?
+x <- 3
+y <- 0.3
+0 <= x && x <= 1
+0 <= y && y <= 1
+```
+
 
 ## Ehtorakenteet
 

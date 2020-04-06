@@ -193,6 +193,25 @@ dog$breed == "golden retriever" && dog$weight < 25 || dog$height < 50
 
     ## [1] TRUE
 
+#### a &lt; x &lt; b
+
+usein tulee vastaan tilanteita, joissa halutaan tarkistaa, onko jokin luku halutulla välillä. Tämä kirjoitetaan matemaatiisesti esim. näin: a &lt; x &lt; b, jossa tarkastetaan, onko x välillä \]a, b\[. Tämä ei kuitenkaan valitettavasti toimi R:ssä, vaan tarkistus pitää jakaa kahteen osaan:
+
+``` r
+# Are x and y between 0 and 1?
+x <- 3
+y <- 0.3
+0 <= x && x <= 1
+```
+
+    ## [1] FALSE
+
+``` r
+0 <= y && y <= 1
+```
+
+    ## [1] TRUE
+
 Ehtorakenteet
 -------------
 
