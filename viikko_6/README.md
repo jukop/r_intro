@@ -153,7 +153,7 @@ Loogiselle JA operaattorille annetaan kaksi lausetta. JA palauttaa TRUE, jos kum
 
     ## [1] FALSE
 
-#### Osa kokonaisuutta
+#### Osajoukko
 
 %in%-operaattorilla voi tarkistaa, kuuluuko jokin arvo suurempaan joukkoon. Tämä voitaisiin toteuttaa myös usealla TAI-operaattorilla, mutta %in% on usein paljon kätevämpi.
 
