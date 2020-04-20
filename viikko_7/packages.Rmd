@@ -76,7 +76,7 @@ p_ideo
 
 Alla on monimutkaisempi esimerkki, jossa visualisoidaan somaattisia mutaatioita ihmisen genomissa (tarkemmat tiedot löytyvät ggbio-paketin dokumentaatiosta). Tässä esimerkissä koodia on jo aikalailla, mutta tämä esimerkki löytyy suoraan paketin dokumentaatiosta, jolloin samankaltaisten kuvaajien piirtäminen omalla datalla on melko suoraviivaista.
 
-```{r, fig.width=8}
+```{r, out.width="100%", eval = FALSE}
 data("CRC", package  = "biovizBase")
 gr.crc1 <- crc.gr[crc.gr$individual == "CRC-1"]
 
@@ -88,6 +88,8 @@ p <- ggbio() +
   circle(hg19sub, geom = "text", aes(label = seqnames), vjust = 0, size = 3)
 p
 ```
+
+![](packages_files/figure-markdown_github/circles.png)
 
 ## Pakettien käyttöön tarvittavat taidot
 

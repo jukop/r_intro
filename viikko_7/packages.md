@@ -113,7 +113,7 @@ p <- ggbio() +
 p
 ```
 
-![](packages_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](packages_files/figure-markdown_github/circles.png)
 
 Pakettien käyttöön tarvittavat taidot
 -------------------------------------
