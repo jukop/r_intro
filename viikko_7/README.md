@@ -221,7 +221,7 @@ Etsitään seuravaksi kaikki eliöparit, joiden geenien etäisyys on alle 4 ja l
 close_pairs <- data.frame()
 
 # Iterate over rows and columns
-for (i in seq(1:nrow(exons))) {
+for (i in seq(1, nrow(exons))) {
   for (j in seq(1, ncol(exons))) {
     # Check if dissimilarity is below 4
     if (exons[i, j] < 4) {
@@ -271,7 +271,7 @@ Koodimme toimii jo ihan hyvin, mutta tuloksessa on hieman turhaa tavaraa: exons 
 close_pairs <- data.frame()
 
 # Iterate over rows and columns
-for (i in seq(1:nrow(exons))) {
+for (i in seq(1, nrow(exons))) {
   # Only check upper diagonal
   for (j in seq(i, ncol(exons))) {
     # Check if dissimilarity is below 4
@@ -322,7 +322,7 @@ Lisätään edelliseen esimerkkiin toiminto, joka ohittaa diagonaalilla olevat r
 close_pairs <- data.frame()
 
 # Iterate over rows and columns
-for (i in seq(1:nrow(exons))) {
+for (i in seq(1, nrow(exons))) {
   # Only check upper diagonal
   for (j in seq(i, ncol(exons))) {
     if (i == j) {
@@ -361,7 +361,7 @@ Jos haluaisimme kaikkien parien sijaan etsiä vain ensimmäisen parin, jonka gee
 close_pair <- c()
 
 # Iterate over rows and columns
-for (i in seq(1:nrow(exons))) {
+for (i in seq(1, nrow(exons))) {
   # Only check upper diagonal
   for (j in seq(i, ncol(exons))) {
     if (i == j) {
@@ -389,7 +389,7 @@ HUOM: Tämä ei kuitenkaan ole oikea pari: Jos exons data framea käydään läp
 close_pair <- c()
 
 # Iterate over rows and columns
-for (i in seq(1:nrow(exons))) {
+for (i in seq(1, nrow(exons))) {
   # Only check upper diagonal
   for (j in seq(i, ncol(exons))) {
     # Monitor loop
@@ -453,7 +453,7 @@ Nyt huomataan, että iteraatio etenee rivillä yksi neljänteen sarakkeeseen ast
 close_pair <- c()
 
 # Iterate over rows and columns
-for (i in seq(1:nrow(exons))) {
+for (i in seq(1, nrow(exons))) {
   # Only check upper diagonal
   for (j in seq(i, ncol(exons))) {
     if (i == j) {
