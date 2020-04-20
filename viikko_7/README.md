@@ -4,6 +4,8 @@ Toistorakenteet (loops)
 
 Toistorakenne toistaa annettua koodia. Toistorakenteet ovat ehtorakenteiden ohella ohjelmoinnin perusrakennuspalikoita. Tässä osiossa tutustutaan kahteen yleisimpään tapaukseen eli for ja while -silmukoihin. Mukana on myös maininta silmukoiden korvaamisesta R:n apply-funktioilla. Lopusta löytyy lisäksi vinkkejä tämän viikon tehtäviin.
 
+Lisäksi tällä viikolla puhutaan [R-paketeista](https://github.com/antonvsdata/r_intro/blob/master/viikko_6/packages.md).
+
 For-silmukka
 ------------
 
