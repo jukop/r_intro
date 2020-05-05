@@ -9,6 +9,17 @@ Täältä löydät suomenkielisen materiaalin, joka tukee UEF:in R-kurssin suori
 
 Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. Mahdollisesti mukana on myös muita tiedostoja, mutta ellei toisin mainita, itse tiedostoista ei tarvitse välittää vaan voi keskittyä itse ohjeisiin.
 
+## Sisällysluettelo
+
+- [Muuttujat ja vektorit](https://github.com/antonvsdata/r_intro/tree/master/viikko_1)
+- [Kuvaajien piirtäminen](https://github.com/antonvsdata/r_intro/tree/master/viikko_2)
+- [Matriisi, taulukko, lista ja data frame](https://github.com/antonvsdata/r_intro/tree/master/viikko_3)
+- [Datan sisään lukeminen](https://github.com/antonvsdata/r_intro/blob/master/viikko_4/reading_data.md)
+- [Lineaariset mallit ja tilastolliset jakaumat](https://github.com/antonvsdata/r_intro/blob/master/viikko_4/statistics.md)
+- [Funktiot](https://github.com/antonvsdata/r_intro/tree/master/viikko_5)
+- [Ehtorakenteet](https://github.com/antonvsdata/r_intro/tree/master/viikko_6)
+- [Toistorakenteet](https://github.com/antonvsdata/r_intro/tree/master/viikko_7)
+
 # RStudio
 
 Erona Moodlessa löytyviin ohjeisiin, tuutoroinnissa käytetään R-ohjelmoinnin tukena RStudiota. ohjelmointiympäristö eli IDE (integrated development environment), joka tekee koodaamisesta huomattavasti mukavampaa.
