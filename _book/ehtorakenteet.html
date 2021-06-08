@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kappale 7 Ehtorakenteet | R-ohjelmoinnin perusteet</title>
+  <meta name="description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kappale 7 Ehtorakenteet | R-ohjelmoinnin perusteet" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kappale 7 Ehtorakenteet | R-ohjelmoinnin perusteet" />
+  
+  <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
+  
+
+<meta name="author" content="Anton Klåvus (2020), converted to bookdown by Juho Kopra (2021)" />
+
+
+<meta name="date" content="2021-06-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="funktiot.html"/>
+<link rel="next" href="toistorakenteet-loops.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R-ohjelmoinnin perusteet</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html"><i class="fa fa-check"></i>Alkuvalmistelut</a>
+<ul>
+<li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html#r-kurssi"><i class="fa fa-check"></i>R-kurssi</a></li>
+<li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html#sisällysluettelo"><i class="fa fa-check"></i>Sisällysluettelo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i>RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#rstudion-asennus"><i class="fa fa-check"></i>RStudion asennus</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#rstudion-käyttö"><i class="fa fa-check"></i>RStudion käyttö</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#kurssin-suoritus-rstudiolla"><i class="fa fa-check"></i>Kurssin suoritus RStudiolla</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#kurssilla-tarvittavien-r-pakettien-asennus"><i class="fa fa-check"></i>Kurssilla tarvittavien R-pakettien asennus</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Johdanto</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#mikä-r-on-ja-mitä-sillä-tehdään"><i class="fa fa-check"></i><b>1.1</b> Mikä R on ja mitä sillä tehdään?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#muuttujat-variables"><i class="fa fa-check"></i><b>1.2</b> Muuttujat (Variables)</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#kommentit"><i class="fa fa-check"></i><b>1.3</b> Kommentit</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#vektorit-vectors"><i class="fa fa-check"></i><b>1.4</b> Vektorit (Vectors)</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#vektorilaskentaa"><i class="fa fa-check"></i><b>1.4.1</b> Vektorilaskentaa</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#ei-numeeriset-vektorit"><i class="fa fa-check"></i><b>1.4.2</b> Ei-numeeriset vektorit</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#vektorien-indeksointi-ja-leikkely"><i class="fa fa-check"></i><b>1.4.3</b> Vektorien indeksointi ja leikkely</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#puuttuvat-arvot"><i class="fa fa-check"></i><b>1.4.4</b> Puuttuvat arvot</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#tehtävien-aloitus"><i class="fa fa-check"></i><b>1.5</b> Tehtävien aloitus</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tietotyypit.html"><a href="tietotyypit.html"><i class="fa fa-check"></i><b>2</b> Tietotyypit</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tietotyypit.html"><a href="tietotyypit.html#esittely"><i class="fa fa-check"></i><b>2.1</b> Esittely</a></li>
+<li class="chapter" data-level="2.2" data-path="tietotyypit.html"><a href="tietotyypit.html#matriisi"><i class="fa fa-check"></i><b>2.2</b> Matriisi</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="tietotyypit.html"><a href="tietotyypit.html#matriisin-luominen"><i class="fa fa-check"></i><b>2.2.1</b> Matriisin luominen</a></li>
+<li class="chapter" data-level="2.2.2" data-path="tietotyypit.html"><a href="tietotyypit.html#matriisin-koko"><i class="fa fa-check"></i><b>2.2.2</b> Matriisin koko</a></li>
+<li class="chapter" data-level="2.2.3" data-path="tietotyypit.html"><a href="tietotyypit.html#matriisin-indeksointi"><i class="fa fa-check"></i><b>2.2.3</b> Matriisin indeksointi</a></li>
+<li class="chapter" data-level="2.2.4" data-path="tietotyypit.html"><a href="tietotyypit.html#matriisien-rakentaminen-vektoreista"><i class="fa fa-check"></i><b>2.2.4</b> Matriisien rakentaminen vektoreista</a></li>
+<li class="chapter" data-level="2.2.5" data-path="tietotyypit.html"><a href="tietotyypit.html#rivien-ja-sarakkeiden-nimeäminen"><i class="fa fa-check"></i><b>2.2.5</b> Rivien ja sarakkeiden nimeäminen</a></li>
+<li class="chapter" data-level="2.2.6" data-path="tietotyypit.html"><a href="tietotyypit.html#matriiseilla-laskeminen"><i class="fa fa-check"></i><b>2.2.6</b> Matriiseilla laskeminen</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="tietotyypit.html"><a href="tietotyypit.html#taulukko"><i class="fa fa-check"></i><b>2.3</b> Taulukko</a></li>
+<li class="chapter" data-level="2.4" data-path="tietotyypit.html"><a href="tietotyypit.html#lista"><i class="fa fa-check"></i><b>2.4</b> Lista</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="tietotyypit.html"><a href="tietotyypit.html#listojen-alkioiden-käsittely"><i class="fa fa-check"></i><b>2.4.1</b> Listojen alkioiden käsittely</a></li>
+<li class="chapter" data-level="2.4.2" data-path="tietotyypit.html"><a href="tietotyypit.html#alkion-lisäys-listaan-ja-listojen-yhdistäminen"><i class="fa fa-check"></i><b>2.4.2</b> Alkion lisäys listaan ja listojen yhdistäminen</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="tietotyypit.html"><a href="tietotyypit.html#data-frame"><i class="fa fa-check"></i><b>2.5</b> Data frame</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="tietotyypit.html"><a href="tietotyypit.html#data-framen-käsittely"><i class="fa fa-check"></i><b>2.5.1</b> Data framen käsittely</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="tietotyypit.html"><a href="tietotyypit.html#view"><i class="fa fa-check"></i><b>2.6</b> View()</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html"><i class="fa fa-check"></i><b>3</b> Datan sisään lukeminen</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#tekstitiedostot"><i class="fa fa-check"></i><b>3.1</b> Tekstitiedostot</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#read.table"><i class="fa fa-check"></i><b>3.1.1</b> read.table()</a></li>
+<li class="chapter" data-level="3.1.2" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#read.csv"><i class="fa fa-check"></i><b>3.1.2</b> read.csv()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#data-framen-rakenteen-tutkiminen"><i class="fa fa-check"></i><b>3.2</b> Data framen rakenteen tutkiminen</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>3.2.1</b> R:n sisäänrakennetut datasetit</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#muut-tiedostot"><i class="fa fa-check"></i><b>3.3</b> Muut tiedostot</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#excel"><i class="fa fa-check"></i><b>3.3.1</b> Excel</a></li>
+<li class="chapter" data-level="3.3.2" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#spss"><i class="fa fa-check"></i><b>3.3.2</b> SPSS</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>3.4</b> Vinkkejä tehtäviin</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html"><i class="fa fa-check"></i><b>4</b> Kuvaajien piirtäminen</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#korkean-tason-piirtofunktiot"><i class="fa fa-check"></i><b>4.1</b> Korkean tason piirtofunktiot</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#plot"><i class="fa fa-check"></i><b>4.1.1</b> plot()</a></li>
+<li class="chapter" data-level="4.1.2" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#muut-korkean-tason-funktiot"><i class="fa fa-check"></i><b>4.1.2</b> Muut korkean tason funktiot</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#alemman-tason-grafiikkatoiminnot"><i class="fa fa-check"></i><b>4.2</b> Alemman tason grafiikkatoiminnot</a></li>
+<li class="chapter" data-level="4.3" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#kuvaajien-piirtäminen-käytännössä"><i class="fa fa-check"></i><b>4.3</b> Kuvaajien piirtäminen käytännössä</a></li>
+<li class="chapter" data-level="4.4" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#tämän-viikon-tehtävä"><i class="fa fa-check"></i><b>4.4</b> Tämän viikon tehtävä</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><i class="fa fa-check"></i><b>5</b> Lineaariset mallit ja tilastolliset jakaumat</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#factor-vektorit"><i class="fa fa-check"></i><b>5.1</b> Factor-vektorit</a></li>
+<li class="chapter" data-level="5.2" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#lineaariset-mallit"><i class="fa fa-check"></i><b>5.2</b> Lineaariset mallit</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#teoria"><i class="fa fa-check"></i><b>5.2.1</b> Teoria</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#esimerkki"><i class="fa fa-check"></i><b>5.2.2</b> Esimerkki</a></li>
+<li class="chapter" data-level="5.2.3" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>5.2.3</b> Tarkempia tietoja mallista</a></li>
+<li class="chapter" data-level="5.2.4" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#ennustaminen"><i class="fa fa-check"></i><b>5.2.4</b> Ennustaminen</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#korrelaatio"><i class="fa fa-check"></i><b>5.3</b> Korrelaatio</a></li>
+<li class="chapter" data-level="5.4" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#tilastolliset-jakaumat-rssä"><i class="fa fa-check"></i><b>5.4</b> Tilastolliset jakaumat R:ssä</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#esimerkki-normaalijakauma"><i class="fa fa-check"></i><b>5.4.1</b> Esimerkki: normaalijakauma</a></li>
+<li class="chapter" data-level="5.4.2" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#muita-jakaumia"><i class="fa fa-check"></i><b>5.4.2</b> Muita jakaumia</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="funktiot.html"><a href="funktiot.html"><i class="fa fa-check"></i><b>6</b> Funktiot</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="funktiot.html"><a href="funktiot.html#funktion-käsite"><i class="fa fa-check"></i><b>6.1</b> Funktion käsite</a></li>
+<li class="chapter" data-level="6.2" data-path="funktiot.html"><a href="funktiot.html#r-funktiot"><i class="fa fa-check"></i><b>6.2</b> R-funktiot</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="funktiot.html"><a href="funktiot.html#funktioiden-määrittely"><i class="fa fa-check"></i><b>6.2.1</b> Funktioiden määrittely</a></li>
+<li class="chapter" data-level="6.2.2" data-path="funktiot.html"><a href="funktiot.html#argumentit-ja-funktion-kutsuminen"><i class="fa fa-check"></i><b>6.2.2</b> Argumentit ja funktion kutsuminen</a></li>
+<li class="chapter" data-level="6.2.3" data-path="funktiot.html"><a href="funktiot.html#funktio-ilman-argumentteja"><i class="fa fa-check"></i><b>6.2.3</b> Funktio ilman argumentteja</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="funktiot.html"><a href="funktiot.html#arvojen-palautus"><i class="fa fa-check"></i><b>6.3</b> Arvojen palautus</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="funktiot.html"><a href="funktiot.html#usean-arvon-palautus"><i class="fa fa-check"></i><b>6.3.1</b> Usean arvon palautus</a></li>
+<li class="chapter" data-level="6.3.2" data-path="funktiot.html"><a href="funktiot.html#palautus-ilman-return-käskyä"><i class="fa fa-check"></i><b>6.3.2</b> Palautus ilman return-käskyä</a></li>
+<li class="chapter" data-level="6.3.3" data-path="funktiot.html"><a href="funktiot.html#funktio-ilman-tulosta"><i class="fa fa-check"></i><b>6.3.3</b> Funktio ilman tulosta</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ehtorakenteet.html"><a href="ehtorakenteet.html"><i class="fa fa-check"></i><b>7</b> Ehtorakenteet</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ehtorakenteet.html"><a href="ehtorakenteet.html#loogiset-operaattorit"><i class="fa fa-check"></i><b>7.1</b> Loogiset operaattorit</a></li>
+<li class="chapter" data-level="7.2" data-path="ehtorakenteet.html"><a href="ehtorakenteet.html#ehtorakenteet-1"><i class="fa fa-check"></i><b>7.2</b> Ehtorakenteet</a></li>
+<li class="chapter" data-level="7.3" data-path="ehtorakenteet.html"><a href="ehtorakenteet.html#alkioiden-poimiminen-vektorista-tietyh-ehdon-perusteella"><i class="fa fa-check"></i><b>7.3</b> Alkioiden poimiminen vektorista tietyh ehdon perusteella</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html"><i class="fa fa-check"></i><b>8</b> Toistorakenteet (loops)</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#for-silmukka"><i class="fa fa-check"></i><b>8.1</b> For-silmukka</a></li>
+<li class="chapter" data-level="8.2" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#while-slimukat"><i class="fa fa-check"></i><b>8.2</b> While-slimukat</a></li>
+<li class="chapter" data-level="8.3" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#sisäkkäiset-silmukat-nested-loops"><i class="fa fa-check"></i><b>8.3</b> Sisäkkäiset silmukat (nested loops)</a></li>
+<li class="chapter" data-level="8.4" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#iterointiin-puuttuminen-next-ja-break"><i class="fa fa-check"></i><b>8.4</b> Iterointiin puuttuminen: next ja break</a></li>
+<li class="chapter" data-level="8.5" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#apply-funktiot"><i class="fa fa-check"></i><b>8.5</b> Apply-funktiot</a></li>
+<li class="chapter" data-level="8.6" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#vinkkejä-tehtäviin-1"><i class="fa fa-check"></i><b>8.6</b> Vinkkejä tehtäviin</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Julkaistu bookdownilla.</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R-ohjelmoinnin perusteet</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ehtorakenteet" class="section level1" number="7">
+<h1><span class="header-section-number">Kappale 7</span> Ehtorakenteet</h1>
+<p>Viime kerralla tehdyt funktiot suorittavat aina samat komennot riippumatta syötteestä. Entä jos funktion toiminnassa pitäisi ottaa huomioon erilaisia tapauksia, eli suorittaa tiettyjä komentoja vain joissain tilanteissa? Tätä varten ohjelmointikielissä on ehtorakenteita, eli ns. if/else-rakenteita, jotka ohjaavat ohjelman toimintaa.</p>
+<p>Tutustutaan ensin tarkemmin loogisiin operaattoreihin.</p>
+<div id="loogiset-operaattorit" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Loogiset operaattorit</h2>
+<p>Tässä on lyhyt lista loogisista operaattoreista:</p>
+<table class="tg">
+<tr>
+<th class="tg-0pky">
+Operaattori
+</th>
+<th class="tg-0pky">
+Kuvaus
+</th>
+</tr>
+<tr>
+<td class="tg-0pky">
+&lt;
+</td>
+<td class="tg-0pky">
+pienempi kuin
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+&lt;=<br>
+</td>
+<td class="tg-0pky">
+pienempi tai yhtä suuri kuin<br>
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+&gt;<br>
+</td>
+<td class="tg-0pky">
+suurempi kuin
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+&gt;=
+</td>
+<td class="tg-0pky">
+suurempi tai yhtä suuri kuin
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+==
+</td>
+<td class="tg-0pky">
+yhtä kuin
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+!=
+</td>
+<td class="tg-0pky">
+ei yhtä kuin
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+!a
+</td>
+<td class="tg-0pky">
+ei a (negaation)
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+a | b<br>
+</td>
+<td class="tg-0pky">
+a TAI b alkioittain
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+a || b<br>
+</td>
+<td class="tg-0pky">
+a TAI b yksittäisille arvoille
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+a &amp; b
+</td>
+<td class="tg-0pky">
+a JA b alkioittain
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+a &amp;&amp; b
+</td>
+<td class="tg-0pky">
+a JA b yksittäisille arvoille
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+a %in% b
+</td>
+<td class="tg-0lax">
+a kuuluu b:hen
+</td>
+</tr>
+</table>
+<p>Kaikki loogiset operaattorit palauttavat joko arvon TRUE tai FALSE. Vertailuoperaattorien käyttö on jo tullut tutuksi aikaisemmissa tehtävissä, mutta tutustutaan vähän tarkemmin viimeisten rivien operaattoreihin:</p>
+<div id="negaatio" class="section level4" number="7.1.0.1">
+<h4><span class="header-section-number">7.1.0.1</span> Negaatio</h4>
+<p>Looginen negaatio palauttaa loogisen lauseen vastakohdan, eli muuttaa arvon TRUE arvoksi FALSE ja arvon FALSE arvoksi TRUE.</p>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="ehtorakenteet.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="ehtorakenteet.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(<span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="ehtorakenteet.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Also works without parentheses</span></span>
+<span id="cb294-2"><a href="ehtorakenteet.html#cb294-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="ehtorakenteet.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">is.na</span>(<span class="cn">NA</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="looginen-tai-disjunktio" class="section level4" number="7.1.0.2">
+<h4><span class="header-section-number">7.1.0.2</span> Looginen TAI (disjunktio)</h4>
+<p>Loogiselle TAI operaattorille annetaan kaksi loogista lausetta, ja TAI operaattori palauttaa TRUE, jos kummatkin tai jompikumpi lauseista on TRUE. R:ssä TAI merkitään pystyviivalla “|” tai kahdella pystyviivalla “||”. “|” käy läpi vektoreita alkioittain, “||” operoi yksittäisiä arvoja, ja toista lausetta ei edes ajeta, jos ensimmäinen on TRUE (koska “||” palauttaa TRUE riippumatta toisen lauseen arvosta). Jos tämä tuntui monimutkaiselta, niin riittää muistaa, että ehtorakenteissa kannattaa käyttää muotoa “||”.</p>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="ehtorakenteet.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">||</span> <span class="st">&quot;a&quot;</span> <span class="sc">&lt;</span> <span class="st">&quot;b&quot;</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="ehtorakenteet.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">||</span> <span class="dv">4</span> <span class="sc">&gt;</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="ehtorakenteet.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;a&quot;</span> <span class="sc">&gt;</span> <span class="st">&quot;c&quot;</span> <span class="sc">||</span> <span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="looginen-ja-konjunktio" class="section level4" number="7.1.0.3">
+<h4><span class="header-section-number">7.1.0.3</span> Looginen JA (konjunktio)</h4>
+<p>Loogiselle JA operaattorille annetaan kaksi lausetta. JA palauttaa TRUE, jos kummatkin lauseet ovat TRUE. R:ssä JA-operaattorit ovat “&amp;” ja “&amp;&amp;”, jotka käyttäytyvät kuten “|” ja “||”.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="ehtorakenteet.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">&amp;&amp;</span> <span class="st">&quot;a&quot;</span> <span class="sc">&lt;</span> <span class="st">&quot;b&quot;</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="ehtorakenteet.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> <span class="dv">4</span> <span class="sc">&gt;</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="ehtorakenteet.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;a&quot;</span> <span class="sc">&gt;</span> <span class="st">&quot;c&quot;</span> <span class="sc">&amp;&amp;</span> <span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">10</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="osajoukko" class="section level4" number="7.1.0.4">
+<h4><span class="header-section-number">7.1.0.4</span> Osajoukko</h4>
+<p>%in%-operaattorilla voi tarkistaa, kuuluuko jokin arvo suurempaan joukkoon. Tämä voitaisiin toteuttaa myös usealla TAI-operaattorilla, mutta %in% on usein paljon kätevämpi.</p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="ehtorakenteet.html#cb310-1" aria-hidden="true" tabindex="-1"></a>dna_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
+<span id="cb310-2"><a href="ehtorakenteet.html#cb310-2" aria-hidden="true" tabindex="-1"></a>rna_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;U&quot;</span>)</span>
+<span id="cb310-3"><a href="ehtorakenteet.html#cb310-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb310-4"><a href="ehtorakenteet.html#cb310-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;T&quot;</span> <span class="sc">%in%</span> dna_bases</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="ehtorakenteet.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;T&quot;</span> <span class="sc">%in%</span> rna_bases</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="ehtorakenteet.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With negation</span></span>
+<span id="cb314-2"><a href="ehtorakenteet.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="st">&quot;A&quot;</span> <span class="sc">%in%</span> dna_bases</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+</div>
+<div id="monimutkaisemmat-lauseet" class="section level4" number="7.1.0.5">
+<h4><span class="header-section-number">7.1.0.5</span> Monimutkaisemmat lauseet</h4>
+<p>Operaattoreita voidaan myös yhdistellä monimutkaisemmiksi lauseiksi. Tällöin lauseiden arviointijärjestys määritetään tarvittaessa suluilla.</p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="ehtorakenteet.html#cb316-1" aria-hidden="true" tabindex="-1"></a>dog <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">breed =</span> <span class="st">&quot;golden retriever&quot;</span>,</span>
+<span id="cb316-2"><a href="ehtorakenteet.html#cb316-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">height =</span> <span class="dv">45</span>,</span>
+<span id="cb316-3"><a href="ehtorakenteet.html#cb316-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">weight =</span> <span class="dv">27</span>)</span>
+<span id="cb316-4"><a href="ehtorakenteet.html#cb316-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb316-5"><a href="ehtorakenteet.html#cb316-5" aria-hidden="true" tabindex="-1"></a>dog<span class="sc">$</span>breed <span class="sc">==</span> <span class="st">&quot;golden retriever&quot;</span> <span class="sc">&amp;&amp;</span> dog<span class="sc">$</span>weight <span class="sc">&lt;</span> <span class="dv">25</span> <span class="sc">||</span> dog<span class="sc">$</span>height <span class="sc">&lt;</span> <span class="dv">50</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="a-x-b" class="section level4" number="7.1.0.6">
+<h4><span class="header-section-number">7.1.0.6</span> a &lt; x &lt; b</h4>
+<p>usein tulee vastaan tilanteita, joissa halutaan tarkistaa, onko jokin luku halutulla välillä. Tämä kirjoitetaan matemaatiisesti esim. näin: a &lt; x &lt; b, jossa tarkastetaan, onko x välillä ]a, b[. Tämä ei kuitenkaan valitettavasti toimi R:ssä, vaan tarkistus pitää jakaa kahteen osaan:</p>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="ehtorakenteet.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Are x and y between 0 and 1?</span></span>
+<span id="cb318-2"><a href="ehtorakenteet.html#cb318-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb318-3"><a href="ehtorakenteet.html#cb318-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb318-4"><a href="ehtorakenteet.html#cb318-4" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">&lt;=</span> x <span class="sc">&amp;&amp;</span> x <span class="sc">&lt;=</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="ehtorakenteet.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">&lt;=</span> y <span class="sc">&amp;&amp;</span> y <span class="sc">&lt;=</span> <span class="dv">1</span></span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+</div>
+<div id="ehtorakenteet-1" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Ehtorakenteet</h2>
+<p>Aloitetaan esimerkistä: tehtävänä on kirjoittaa funktio, jolle annetaan syötteenä potilaan hemoglobiiniarvo. Funktion on tarkoitus hälyttää, jos hemoglobiini laskee alle viitearvojen alarajan 117. Kyseinen funktio voisi näyttää vaikka tältä:</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="ehtorakenteet.html#cb322-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb) {</span>
+<span id="cb322-2"><a href="ehtorakenteet.html#cb322-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb322-3"><a href="ehtorakenteet.html#cb322-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low!&quot;</span>)</span>
+<span id="cb322-4"><a href="ehtorakenteet.html#cb322-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb322-5"><a href="ehtorakenteet.html#cb322-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Funktiolla on siis yksi argumentti, hb eli hemoglobiiniarvo. Funktion sisällä on if-rakenne. If-rakenteessa on kaksi osaa: ehto, ja rakenteen sisäinen koodi. Rakenteen sisäinen koodi ajetaan vain, jos ehto täyttyy. Ehto merkitään if-komennon jälkeen sulkeisiin, ja rakenteen sisäinen koodi kirjoitetaan sulkeiden jälkeen hakasulkeiden sisään. (Jos hakasulkeiden sisään tulisi vain yksi rivi koodia, hakasulkeet voi jättää pois, mutta näissä esimerkeissä käytetään aina hakasulkeita).</p>
+<p>Kokeillaan, miten funktio toimii eri hemoglobiiniarvoilla:</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="ehtorakenteet.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nothing happens</span></span>
+<span id="cb323-2"><a href="ehtorakenteet.html#cb323-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="dv">130</span>)</span>
+<span id="cb323-3"><a href="ehtorakenteet.html#cb323-3" aria-hidden="true" tabindex="-1"></a><span class="co"># returns alert</span></span>
+<span id="cb323-4"><a href="ehtorakenteet.html#cb323-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="dv">110</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hemoglobin is low!&quot;</code></pre>
+<p>Funktio siis toimii oletetusti, eli se hälyttää vain, jos hemoglobiinitaso on alle 117. Käyttäjän kannalta olisi kuitenkin kätevää saada jonkinlainen palaute myös silloin, kun hemoglobiinitaso on tarpeeksi korkea. Tätä varten voidaan käyttää else-komentoa:</p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="ehtorakenteet.html#cb325-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb) {</span>
+<span id="cb325-2"><a href="ehtorakenteet.html#cb325-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb325-3"><a href="ehtorakenteet.html#cb325-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low!&quot;</span>)</span>
+<span id="cb325-4"><a href="ehtorakenteet.html#cb325-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb325-5"><a href="ehtorakenteet.html#cb325-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb325-6"><a href="ehtorakenteet.html#cb325-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb325-7"><a href="ehtorakenteet.html#cb325-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb325-8"><a href="ehtorakenteet.html#cb325-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-9"><a href="ehtorakenteet.html#cb325-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="dv">130</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hemoglobin OK&quot;</code></pre>
+<p>Else-komennon jälkeinen koodi siis ajetaan, jos ehto hb &lt; 117 ei täyty.</p>
+<p>Tällä hetkellä funktiomme toimii vain naispotilaille, sillä miehillä hemoglobiiniarvojen alaraja on 134. Lisätään siis funktioomme argumentti sukupuolta varten ja muokataan sen toimintaa niin, että se osaa ottaa huomioon sukupuolen. Nyt if-rakenteen ehdosta tulee jo hieman monimutkaisempi:</p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="ehtorakenteet.html#cb327-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
+<span id="cb327-2"><a href="ehtorakenteet.html#cb327-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span> <span class="sc">||</span> sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
+<span id="cb327-3"><a href="ehtorakenteet.html#cb327-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low!&quot;</span>)</span>
+<span id="cb327-4"><a href="ehtorakenteet.html#cb327-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb327-5"><a href="ehtorakenteet.html#cb327-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb327-6"><a href="ehtorakenteet.html#cb327-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb327-7"><a href="ehtorakenteet.html#cb327-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb327-8"><a href="ehtorakenteet.html#cb327-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb327-9"><a href="ehtorakenteet.html#cb327-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hemoglobin OK&quot;</code></pre>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="ehtorakenteet.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;male&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hemoglobin is low!&quot;</code></pre>
+<p>Entä jos haluaisimme tulostaa eri varoituksen mies- ja naispotilaille? Tähän tarvitaan “else if”-rakennetta:</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="ehtorakenteet.html#cb331-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
+<span id="cb331-2"><a href="ehtorakenteet.html#cb331-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb331-3"><a href="ehtorakenteet.html#cb331-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
+<span id="cb331-4"><a href="ehtorakenteet.html#cb331-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
+<span id="cb331-5"><a href="ehtorakenteet.html#cb331-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
+<span id="cb331-6"><a href="ehtorakenteet.html#cb331-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb331-7"><a href="ehtorakenteet.html#cb331-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb331-8"><a href="ehtorakenteet.html#cb331-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb331-9"><a href="ehtorakenteet.html#cb331-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb331-10"><a href="ehtorakenteet.html#cb331-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb331-11"><a href="ehtorakenteet.html#cb331-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">110</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hemoglobin is low for a female!&quot;</code></pre>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="ehtorakenteet.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;male&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hemoglobin is low for a male!&quot;</code></pre>
+<p>Nyt funktio tarkistaa ensin, onko potilas nainen ja onko hänen hemoglobiininsa alle 117. Jos ei, siirrytään eteenpäin ja tarkistetaan, onko potilas mies ja onko hänen hemoglobiininsa alle 130. Jos ei, siirrytään viimeiseen kohtaan, ja tulostetaan “Hemoglobin ok”.</p>
+<p>Else-if rakenteita voi olla rajoittamaton määrä ensimmäisen if-rakenteen jälkeen. Lisätään funktioon hälytys kriittisestä hemoglobiinin määrästä (hb &lt; 50) riippumatta sukupuolesta:</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="ehtorakenteet.html#cb335-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
+<span id="cb335-2"><a href="ehtorakenteet.html#cb335-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb335-3"><a href="ehtorakenteet.html#cb335-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
+<span id="cb335-4"><a href="ehtorakenteet.html#cb335-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
+<span id="cb335-5"><a href="ehtorakenteet.html#cb335-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
+<span id="cb335-6"><a href="ehtorakenteet.html#cb335-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
+<span id="cb335-7"><a href="ehtorakenteet.html#cb335-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is critical&quot;</span>)</span>
+<span id="cb335-8"><a href="ehtorakenteet.html#cb335-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb335-9"><a href="ehtorakenteet.html#cb335-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb335-10"><a href="ehtorakenteet.html#cb335-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb335-11"><a href="ehtorakenteet.html#cb335-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb335-12"><a href="ehtorakenteet.html#cb335-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb335-13"><a href="ehtorakenteet.html#cb335-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">32</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hemoglobin is low for a female!&quot;</code></pre>
+<p>Kuten huomataan, yllä oleva koodi ei toimikaan, kuten piti. Näin alhaisella hemoglobiinilla pitäisi tulla varoitus kriittisestä tilasta. Koodi suoritus ei kuitenkaan ikinä etene kriittisen tilan varoitukseen asti, sillä ensimmäinen ehto täyttyy. Korjataan tilanne siirtämällä kriittisen tilan ehto ensimmäiseksi:</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="ehtorakenteet.html#cb337-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
+<span id="cb337-2"><a href="ehtorakenteet.html#cb337-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
+<span id="cb337-3"><a href="ehtorakenteet.html#cb337-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is critical&quot;</span>)</span>
+<span id="cb337-4"><a href="ehtorakenteet.html#cb337-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
+<span id="cb337-5"><a href="ehtorakenteet.html#cb337-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
+<span id="cb337-6"><a href="ehtorakenteet.html#cb337-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb337-7"><a href="ehtorakenteet.html#cb337-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
+<span id="cb337-8"><a href="ehtorakenteet.html#cb337-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb337-9"><a href="ehtorakenteet.html#cb337-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb337-10"><a href="ehtorakenteet.html#cb337-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb337-11"><a href="ehtorakenteet.html#cb337-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb337-12"><a href="ehtorakenteet.html#cb337-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb337-13"><a href="ehtorakenteet.html#cb337-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">32</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hemoglobin is critical&quot;</code></pre>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="ehtorakenteet.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hemoglobin OK&quot;</code></pre>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="ehtorakenteet.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;male&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hemoglobin is low for a male!&quot;</code></pre>
+<p>Nyt funktio toimii haluamallamme tavalla!</p>
+<p>Funktioissa voi myös olla useampi ehtorakenne. Ehtorakenteita käytetään usein tarkistamaan argumenttien arvoja. Lisätään ehtorakenteet argumenttien tarkistamiseksi:</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="ehtorakenteet.html#cb343-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
+<span id="cb343-2"><a href="ehtorakenteet.html#cb343-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Hemoglobin should be numeric and positive</span></span>
+<span id="cb343-3"><a href="ehtorakenteet.html#cb343-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(hb) <span class="sc">||</span> hb <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb343-4"><a href="ehtorakenteet.html#cb343-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin should be numeric and positive&quot;</span>)</span>
+<span id="cb343-5"><a href="ehtorakenteet.html#cb343-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb343-6"><a href="ehtorakenteet.html#cb343-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>)) {</span>
+<span id="cb343-7"><a href="ehtorakenteet.html#cb343-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;This function can only deal with binary sex: female or male&quot;</span>)</span>
+<span id="cb343-8"><a href="ehtorakenteet.html#cb343-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb343-9"><a href="ehtorakenteet.html#cb343-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb343-10"><a href="ehtorakenteet.html#cb343-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
+<span id="cb343-11"><a href="ehtorakenteet.html#cb343-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is critical&quot;</span>)</span>
+<span id="cb343-12"><a href="ehtorakenteet.html#cb343-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
+<span id="cb343-13"><a href="ehtorakenteet.html#cb343-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
+<span id="cb343-14"><a href="ehtorakenteet.html#cb343-14" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb343-15"><a href="ehtorakenteet.html#cb343-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
+<span id="cb343-16"><a href="ehtorakenteet.html#cb343-16" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb343-17"><a href="ehtorakenteet.html#cb343-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb343-18"><a href="ehtorakenteet.html#cb343-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb343-19"><a href="ehtorakenteet.html#cb343-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb343-20"><a href="ehtorakenteet.html#cb343-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb343-21"><a href="ehtorakenteet.html#cb343-21" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="st">&quot;120&quot;</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;Hemoglobin should be numeric and positive&quot;</code></pre>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="ehtorakenteet.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;FEMALE&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;This function can only deal with binary sex: female or male&quot;</code></pre>
+</div>
+<div id="alkioiden-poimiminen-vektorista-tietyh-ehdon-perusteella" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Alkioiden poimiminen vektorista tietyh ehdon perusteella</h2>
+<p>Tämän viikon tehtävissä tuli ainakin allekirjoittaneelle vastaan tilanne, jossa piti käydä läpi useita arvoja vektorista, ja säilyttää niistä ne, jotka täyttivät tietyn ehdon. Tätä aihetta käsitellään enemmän ensi viikolla, mutta tässä lyhyt vinkki tällaisten tehtävien ratkaisuun:</p>
+<ul>
+<li>Luo apufunktio, joka ottaa syötteeksi yhden arvon, ja tarkistaa täyttyykö ehto. Tämän funktion tulee palauttaa TRUE, jos ehto täyttyy ja FALSE, jos ehto ei täyty.</li>
+<li>Käytä funktiota <code>Vectorize</code>, jolla voit muuttaa funktiosi vektoroiduksi funktioksi. Kun vektoroidulle funktiolle annetaan vektori, jossa on monta alkiota, funktio ajetaan automaattisesti alkio kerrallaan, kuten monet R:n omat funktiot.</li>
+<li>Käytä vektoroitua apufunktiota vektorin indeksointiin.</li>
+</ul>
+<p>Tässä on esimerkki, jossa käydään läpi vektori DNA:n emäksiä, joista poimitaan vain sytosiinit ja guaniinit.</p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="ehtorakenteet.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function</span></span>
+<span id="cb347-2"><a href="ehtorakenteet.html#cb347-2" aria-hidden="true" tabindex="-1"></a>is_cg <span class="ot">&lt;-</span> <span class="cf">function</span>(base) {</span>
+<span id="cb347-3"><a href="ehtorakenteet.html#cb347-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (base <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>)) {</span>
+<span id="cb347-4"><a href="ehtorakenteet.html#cb347-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb347-5"><a href="ehtorakenteet.html#cb347-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb347-6"><a href="ehtorakenteet.html#cb347-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb347-7"><a href="ehtorakenteet.html#cb347-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb347-8"><a href="ehtorakenteet.html#cb347-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb347-9"><a href="ehtorakenteet.html#cb347-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-10"><a href="ehtorakenteet.html#cb347-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectorize</span></span>
+<span id="cb347-11"><a href="ehtorakenteet.html#cb347-11" aria-hidden="true" tabindex="-1"></a>is_cg_vector <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(is_cg)</span>
+<span id="cb347-12"><a href="ehtorakenteet.html#cb347-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-13"><a href="ehtorakenteet.html#cb347-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Main function</span></span>
+<span id="cb347-14"><a href="ehtorakenteet.html#cb347-14" aria-hidden="true" tabindex="-1"></a>pick_cg <span class="ot">&lt;-</span> <span class="cf">function</span>(bases) {</span>
+<span id="cb347-15"><a href="ehtorakenteet.html#cb347-15" aria-hidden="true" tabindex="-1"></a>  only_cg <span class="ot">&lt;-</span> bases[<span class="fu">is_cg_vector</span>(bases)]</span>
+<span id="cb347-16"><a href="ehtorakenteet.html#cb347-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(only_cg)</span>
+<span id="cb347-17"><a href="ehtorakenteet.html#cb347-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb347-18"><a href="ehtorakenteet.html#cb347-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-19"><a href="ehtorakenteet.html#cb347-19" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: this only checks the first value of the vector</span></span>
+<span id="cb347-20"><a href="ehtorakenteet.html#cb347-20" aria-hidden="true" tabindex="-1"></a>my_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
+<span id="cb347-21"><a href="ehtorakenteet.html#cb347-21" aria-hidden="true" tabindex="-1"></a><span class="fu">is_cg</span>(my_bases)</span></code></pre></div>
+<pre><code>## Warning in if (base %in% c(&quot;C&quot;, &quot;G&quot;)) {: the condition has length &gt; 1 and only
+## the first element will be used</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="ehtorakenteet.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This works as expected</span></span>
+<span id="cb350-2"><a href="ehtorakenteet.html#cb350-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is_cg_vector</span>(my_bases)</span></code></pre></div>
+<pre><code>##     A     C     C     T     G     T 
+## FALSE  TRUE  TRUE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="ehtorakenteet.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pick only C and G</span></span>
+<span id="cb352-2"><a href="ehtorakenteet.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pick_cg</span>(my_bases)</span></code></pre></div>
+<pre><code>## [1] &quot;C&quot; &quot;C&quot; &quot;G&quot;</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="funktiot.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="toistorakenteet-loops.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R-ohjelmoinnin perusteet.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

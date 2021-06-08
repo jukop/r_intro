@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>R-ohjelmoinnin perusteet</title>
+  <meta name="description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="R-ohjelmoinnin perusteet" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R-ohjelmoinnin perusteet" />
+  
+  <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
+  
+
+<meta name="author" content="Anton Klåvus (2020), converted to bookdown by Juho Kopra (2021)" />
+
+
+<meta name="date" content="2021-06-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="rstudio.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R-ohjelmoinnin perusteet</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html"><i class="fa fa-check"></i>Alkuvalmistelut</a>
+<ul>
+<li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html#r-kurssi"><i class="fa fa-check"></i>R-kurssi</a></li>
+<li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html#sisällysluettelo"><i class="fa fa-check"></i>Sisällysluettelo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i>RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#rstudion-asennus"><i class="fa fa-check"></i>RStudion asennus</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#rstudion-käyttö"><i class="fa fa-check"></i>RStudion käyttö</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#kurssin-suoritus-rstudiolla"><i class="fa fa-check"></i>Kurssin suoritus RStudiolla</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#kurssilla-tarvittavien-r-pakettien-asennus"><i class="fa fa-check"></i>Kurssilla tarvittavien R-pakettien asennus</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Johdanto</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#mikä-r-on-ja-mitä-sillä-tehdään"><i class="fa fa-check"></i><b>1.1</b> Mikä R on ja mitä sillä tehdään?</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#muuttujat-variables"><i class="fa fa-check"></i><b>1.2</b> Muuttujat (Variables)</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#kommentit"><i class="fa fa-check"></i><b>1.3</b> Kommentit</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#vektorit-vectors"><i class="fa fa-check"></i><b>1.4</b> Vektorit (Vectors)</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#vektorilaskentaa"><i class="fa fa-check"></i><b>1.4.1</b> Vektorilaskentaa</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#ei-numeeriset-vektorit"><i class="fa fa-check"></i><b>1.4.2</b> Ei-numeeriset vektorit</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#vektorien-indeksointi-ja-leikkely"><i class="fa fa-check"></i><b>1.4.3</b> Vektorien indeksointi ja leikkely</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#puuttuvat-arvot"><i class="fa fa-check"></i><b>1.4.4</b> Puuttuvat arvot</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#tehtävien-aloitus"><i class="fa fa-check"></i><b>1.5</b> Tehtävien aloitus</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tietotyypit.html"><a href="tietotyypit.html"><i class="fa fa-check"></i><b>2</b> Tietotyypit</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="tietotyypit.html"><a href="tietotyypit.html#esittely"><i class="fa fa-check"></i><b>2.1</b> Esittely</a></li>
+<li class="chapter" data-level="2.2" data-path="tietotyypit.html"><a href="tietotyypit.html#matriisi"><i class="fa fa-check"></i><b>2.2</b> Matriisi</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="tietotyypit.html"><a href="tietotyypit.html#matriisin-luominen"><i class="fa fa-check"></i><b>2.2.1</b> Matriisin luominen</a></li>
+<li class="chapter" data-level="2.2.2" data-path="tietotyypit.html"><a href="tietotyypit.html#matriisin-koko"><i class="fa fa-check"></i><b>2.2.2</b> Matriisin koko</a></li>
+<li class="chapter" data-level="2.2.3" data-path="tietotyypit.html"><a href="tietotyypit.html#matriisin-indeksointi"><i class="fa fa-check"></i><b>2.2.3</b> Matriisin indeksointi</a></li>
+<li class="chapter" data-level="2.2.4" data-path="tietotyypit.html"><a href="tietotyypit.html#matriisien-rakentaminen-vektoreista"><i class="fa fa-check"></i><b>2.2.4</b> Matriisien rakentaminen vektoreista</a></li>
+<li class="chapter" data-level="2.2.5" data-path="tietotyypit.html"><a href="tietotyypit.html#rivien-ja-sarakkeiden-nimeäminen"><i class="fa fa-check"></i><b>2.2.5</b> Rivien ja sarakkeiden nimeäminen</a></li>
+<li class="chapter" data-level="2.2.6" data-path="tietotyypit.html"><a href="tietotyypit.html#matriiseilla-laskeminen"><i class="fa fa-check"></i><b>2.2.6</b> Matriiseilla laskeminen</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="tietotyypit.html"><a href="tietotyypit.html#taulukko"><i class="fa fa-check"></i><b>2.3</b> Taulukko</a></li>
+<li class="chapter" data-level="2.4" data-path="tietotyypit.html"><a href="tietotyypit.html#lista"><i class="fa fa-check"></i><b>2.4</b> Lista</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="tietotyypit.html"><a href="tietotyypit.html#listojen-alkioiden-käsittely"><i class="fa fa-check"></i><b>2.4.1</b> Listojen alkioiden käsittely</a></li>
+<li class="chapter" data-level="2.4.2" data-path="tietotyypit.html"><a href="tietotyypit.html#alkion-lisäys-listaan-ja-listojen-yhdistäminen"><i class="fa fa-check"></i><b>2.4.2</b> Alkion lisäys listaan ja listojen yhdistäminen</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="tietotyypit.html"><a href="tietotyypit.html#data-frame"><i class="fa fa-check"></i><b>2.5</b> Data frame</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="tietotyypit.html"><a href="tietotyypit.html#data-framen-käsittely"><i class="fa fa-check"></i><b>2.5.1</b> Data framen käsittely</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="tietotyypit.html"><a href="tietotyypit.html#view"><i class="fa fa-check"></i><b>2.6</b> View()</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html"><i class="fa fa-check"></i><b>3</b> Datan sisään lukeminen</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#tekstitiedostot"><i class="fa fa-check"></i><b>3.1</b> Tekstitiedostot</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#read.table"><i class="fa fa-check"></i><b>3.1.1</b> read.table()</a></li>
+<li class="chapter" data-level="3.1.2" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#read.csv"><i class="fa fa-check"></i><b>3.1.2</b> read.csv()</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#data-framen-rakenteen-tutkiminen"><i class="fa fa-check"></i><b>3.2</b> Data framen rakenteen tutkiminen</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>3.2.1</b> R:n sisäänrakennetut datasetit</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#muut-tiedostot"><i class="fa fa-check"></i><b>3.3</b> Muut tiedostot</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#excel"><i class="fa fa-check"></i><b>3.3.1</b> Excel</a></li>
+<li class="chapter" data-level="3.3.2" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#spss"><i class="fa fa-check"></i><b>3.3.2</b> SPSS</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="datan-sisään-lukeminen.html"><a href="datan-sisään-lukeminen.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>3.4</b> Vinkkejä tehtäviin</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html"><i class="fa fa-check"></i><b>4</b> Kuvaajien piirtäminen</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#korkean-tason-piirtofunktiot"><i class="fa fa-check"></i><b>4.1</b> Korkean tason piirtofunktiot</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#plot"><i class="fa fa-check"></i><b>4.1.1</b> plot()</a></li>
+<li class="chapter" data-level="4.1.2" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#muut-korkean-tason-funktiot"><i class="fa fa-check"></i><b>4.1.2</b> Muut korkean tason funktiot</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#alemman-tason-grafiikkatoiminnot"><i class="fa fa-check"></i><b>4.2</b> Alemman tason grafiikkatoiminnot</a></li>
+<li class="chapter" data-level="4.3" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#kuvaajien-piirtäminen-käytännössä"><i class="fa fa-check"></i><b>4.3</b> Kuvaajien piirtäminen käytännössä</a></li>
+<li class="chapter" data-level="4.4" data-path="kuvaajien-piirtäminen.html"><a href="kuvaajien-piirtäminen.html#tämän-viikon-tehtävä"><i class="fa fa-check"></i><b>4.4</b> Tämän viikon tehtävä</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><i class="fa fa-check"></i><b>5</b> Lineaariset mallit ja tilastolliset jakaumat</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#factor-vektorit"><i class="fa fa-check"></i><b>5.1</b> Factor-vektorit</a></li>
+<li class="chapter" data-level="5.2" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#lineaariset-mallit"><i class="fa fa-check"></i><b>5.2</b> Lineaariset mallit</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#teoria"><i class="fa fa-check"></i><b>5.2.1</b> Teoria</a></li>
+<li class="chapter" data-level="5.2.2" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#esimerkki"><i class="fa fa-check"></i><b>5.2.2</b> Esimerkki</a></li>
+<li class="chapter" data-level="5.2.3" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>5.2.3</b> Tarkempia tietoja mallista</a></li>
+<li class="chapter" data-level="5.2.4" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#ennustaminen"><i class="fa fa-check"></i><b>5.2.4</b> Ennustaminen</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#korrelaatio"><i class="fa fa-check"></i><b>5.3</b> Korrelaatio</a></li>
+<li class="chapter" data-level="5.4" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#tilastolliset-jakaumat-rssä"><i class="fa fa-check"></i><b>5.4</b> Tilastolliset jakaumat R:ssä</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#esimerkki-normaalijakauma"><i class="fa fa-check"></i><b>5.4.1</b> Esimerkki: normaalijakauma</a></li>
+<li class="chapter" data-level="5.4.2" data-path="lineaariset-mallit-ja-tilastolliset-jakaumat.html"><a href="lineaariset-mallit-ja-tilastolliset-jakaumat.html#muita-jakaumia"><i class="fa fa-check"></i><b>5.4.2</b> Muita jakaumia</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="funktiot.html"><a href="funktiot.html"><i class="fa fa-check"></i><b>6</b> Funktiot</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="funktiot.html"><a href="funktiot.html#funktion-käsite"><i class="fa fa-check"></i><b>6.1</b> Funktion käsite</a></li>
+<li class="chapter" data-level="6.2" data-path="funktiot.html"><a href="funktiot.html#r-funktiot"><i class="fa fa-check"></i><b>6.2</b> R-funktiot</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="funktiot.html"><a href="funktiot.html#funktioiden-määrittely"><i class="fa fa-check"></i><b>6.2.1</b> Funktioiden määrittely</a></li>
+<li class="chapter" data-level="6.2.2" data-path="funktiot.html"><a href="funktiot.html#argumentit-ja-funktion-kutsuminen"><i class="fa fa-check"></i><b>6.2.2</b> Argumentit ja funktion kutsuminen</a></li>
+<li class="chapter" data-level="6.2.3" data-path="funktiot.html"><a href="funktiot.html#funktio-ilman-argumentteja"><i class="fa fa-check"></i><b>6.2.3</b> Funktio ilman argumentteja</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="funktiot.html"><a href="funktiot.html#arvojen-palautus"><i class="fa fa-check"></i><b>6.3</b> Arvojen palautus</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="funktiot.html"><a href="funktiot.html#usean-arvon-palautus"><i class="fa fa-check"></i><b>6.3.1</b> Usean arvon palautus</a></li>
+<li class="chapter" data-level="6.3.2" data-path="funktiot.html"><a href="funktiot.html#palautus-ilman-return-käskyä"><i class="fa fa-check"></i><b>6.3.2</b> Palautus ilman return-käskyä</a></li>
+<li class="chapter" data-level="6.3.3" data-path="funktiot.html"><a href="funktiot.html#funktio-ilman-tulosta"><i class="fa fa-check"></i><b>6.3.3</b> Funktio ilman tulosta</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="ehtorakenteet.html"><a href="ehtorakenteet.html"><i class="fa fa-check"></i><b>7</b> Ehtorakenteet</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="ehtorakenteet.html"><a href="ehtorakenteet.html#loogiset-operaattorit"><i class="fa fa-check"></i><b>7.1</b> Loogiset operaattorit</a></li>
+<li class="chapter" data-level="7.2" data-path="ehtorakenteet.html"><a href="ehtorakenteet.html#ehtorakenteet-1"><i class="fa fa-check"></i><b>7.2</b> Ehtorakenteet</a></li>
+<li class="chapter" data-level="7.3" data-path="ehtorakenteet.html"><a href="ehtorakenteet.html#alkioiden-poimiminen-vektorista-tietyh-ehdon-perusteella"><i class="fa fa-check"></i><b>7.3</b> Alkioiden poimiminen vektorista tietyh ehdon perusteella</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html"><i class="fa fa-check"></i><b>8</b> Toistorakenteet (loops)</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#for-silmukka"><i class="fa fa-check"></i><b>8.1</b> For-silmukka</a></li>
+<li class="chapter" data-level="8.2" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#while-slimukat"><i class="fa fa-check"></i><b>8.2</b> While-slimukat</a></li>
+<li class="chapter" data-level="8.3" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#sisäkkäiset-silmukat-nested-loops"><i class="fa fa-check"></i><b>8.3</b> Sisäkkäiset silmukat (nested loops)</a></li>
+<li class="chapter" data-level="8.4" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#iterointiin-puuttuminen-next-ja-break"><i class="fa fa-check"></i><b>8.4</b> Iterointiin puuttuminen: next ja break</a></li>
+<li class="chapter" data-level="8.5" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#apply-funktiot"><i class="fa fa-check"></i><b>8.5</b> Apply-funktiot</a></li>
+<li class="chapter" data-level="8.6" data-path="toistorakenteet-loops.html"><a href="toistorakenteet-loops.html#vinkkejä-tehtäviin-1"><i class="fa fa-check"></i><b>8.6</b> Vinkkejä tehtäviin</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Julkaistu bookdownilla.</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R-ohjelmoinnin perusteet</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">R-ohjelmoinnin perusteet</h1>
+<p class="author"><em>Anton Klåvus (2020), converted to bookdown by Juho Kopra (2021)</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>2021-06-08</em></p>
+</div>
+<div id="alkuvalmistelut" class="section level1 unnumbered">
+<h1>Alkuvalmistelut</h1>
+<div id="r-kurssi" class="section level2 unnumbered">
+<h2>R-kurssi</h2>
+<p>Täältä löydät suomenkielisen materiaalin, joka tukee UEF:in R-kurssin suorittamista (R-kieli 3622223, 2 op). Jokaisen viikon materiaalit päivitetään tänne. Alla on ohjeet tarvittavien asioiden asentamiseen UEF:in koneille.</p>
+<p>Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. Mahdollisesti mukana on myös muita tiedostoja, mutta ellei toisin mainita, itse tiedostoista ei tarvitse välittää vaan voi keskittyä itse ohjeisiin.</p>
+</div>
+<div id="sisällysluettelo" class="section level2 unnumbered">
+<h2>Sisällysluettelo</h2>
+<ul>
+<li>Muuttujat ja vektorit</li>
+<li>Kuvaajien piirtäminen</li>
+<li>Matriisi, taulukko, lista ja data frame</li>
+<li>Datan sisään lukeminen</li>
+<li>Lineaariset mallit ja tilastolliset jakaumat</li>
+<li>Funktiot</li>
+<li>Ehtorakenteet</li>
+<li>Toistorakenteet</li>
+</ul>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="rstudio.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R-ohjelmoinnin perusteet.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
