@@ -18,13 +18,25 @@ Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. M
 - [Tietotyypit: data frame, matriisi, taulukko ja lista](#data_types)
   * [data frame](#data-frame)
   * [matriisi (matrix)](#matriisi)
-  * [Tietotyyppien tarkastelu RStudiossa](tietotyyppien-tarkastelu-rstudiossa)
+  * [Tietotyyppien tarkastelu](tietotyyppien-tarkastelu)
   * [Extra: Taulukko ja lista](#taulukot-ja-listat)
     * [taulukko (array)](#taulukko)
     * [lista (list)](#lista)
-- [Datan sisään lukeminen](#reading_data)
+- [Datan lukeminen](#reading_data)
+- [Aineiston muokkaaminen](#data-wrangling)
+  * Osajoukkojen valinta
+  * Faktorit
+  * Uuden muuttujan tai rivin luonti datakehikkoon
+- Tunnusluvut
+  * summary()
+  * Keskiarvo, moodi ja mediaani
+  * Minimi ja maksimi
 - [Kuvaajien piirtäminen](#plotting)
-- [Tilastollinen testaaminen]{#tests}
+  * Kuvaajan tallentaminen
+- Tilastollinen testaaminen
+  * Varianssianalyysi
+  * Khi toiseen -testi
+  * Kahden otoksen t-testi
 - [Lineaariset mallit ja tilastolliset jakaumat](#statistics)
   * [Lineaariset mallit](#linear_models)
   * [Todennäköisyysjakaumat](#distributions)

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kappale 1 Johdanto | R-ohjelmoinnin perusteet</title>
+  <title>Kappale 5 Datan muokkaaminen | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kappale 1 Johdanto | R-ohjelmoinnin perusteet" />
+  <meta property="og:title" content="Kappale 5 Datan muokkaaminen | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kappale 1 Johdanto | R-ohjelmoinnin perusteet" />
+  <meta name="twitter:title" content="Kappale 5 Datan muokkaaminen | R-ohjelmoinnin perusteet" />
   
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alkuvalmistelut.html"/>
-<link rel="next" href="variables-and-vectors.html"/>
+<link rel="prev" href="reading-data.html"/>
+<link rel="next" href="khi-toiseen-testi.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -299,20 +299,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="intro" class="section level1" number="1">
-<h1><span class="header-section-number">Kappale 1</span> Johdanto</h1>
-<div id="what_R" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Mikä R on ja mitä sillä tehdään?</h2>
-<p>Ohjelmoinnin tavoitteena on kirjoittaa eli koodata ohjelma, joka suorittaa jonkun halutun tehtävän. Ohjelma koostuu useista komennoista, joista jokainen tekee jotain hyvin yksinkertaista.</p>
-<p>R on tehty ensisijaisesti tilastotiedettä ja data-analyysiä varten. R:llä kirjoitetaan yleensä lyhyitä ohjelmia, joita kutsutaan skripteiksi. R:llä ei siis ole tarkoitus kehittää esimerkiksi pelejä, tai muita ohjelmia joissa on graafinen käyttöliittymä, kuten vaikkapa Photoshop. R ei myöskään ole web-ohjelmointiin tarkoitettu kieli (vaikka oikeilla paketeilla R:lläkin pystyy tekemään web-sovelluksia).</p>
-<p>R on korkean tason ohjelmointikieli. Tämä tarkoittaa sitä, että R:ssä on paljon valmiita komentoja, joiden “alta” löytyy paljon lisää koodia, johon R-ohjelmoijan ei kuitenkaan tarvitse itse koskea. Esimerkiksi tilastollisen t-testin testin laskeminen vaatii useita matemaattisia välivaiheita, mutta R-ohjelmoija voi suorittaa testin yhdellä komennolla (<code>t.test</code>) joka antaa kaikki tarvittavat tiedot testistä.</p>
-<p>R:n käyttöä ja ohjelmointia muutenkin oppii parhaiten tekemällä. Tässä dokumentaatiossa on tekstin väliin upotettu R-koodia harmaissa laatikoissa, kuten alla olevassa esimerkissä. Kahdella ruudulla eli <code>##</code>-merkinnällä alkavat rivit eivät ole koodia vaan koodin ajamisen aiheuttamia tulosteita (output). Otetaan ensimmäiseksi esimerkiksi klassinen <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">“Hello, world!”</a>-komento:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Hello, world!&quot;</code></pre>
-<p><code>print</code>-funktio tulostaa sille annetun tekstin konsoliin. <code>print</code> on kätevä funktio mm. ohjelman toiminnan testaamiseen ja pidemmän ohjelman etenemisen seurantaan. R:ää voi käyttää myös laskimen sijaan. Alla olevassa esimerkissä lasketaan kuinka paljon jää hintaa 80 euron hintaiselle tuotteelle 35% alennuksen jälkeen.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">80</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.35</span>)</span></code></pre></div>
-<pre><code>## [1] 52</code></pre>
-<p>Yksittäisten komentojen ajamisesta ei kuitenkaan ole yleensä hyötyä, ellei tuloksia voi tallentaa johonkin. Ohjelmointikielissä tietoja tallennetaan muuttujiin, joita käsitellään seuraavaksi.</p>
+<div id="data-wrangling" class="section level1" number="5">
+<h1><span class="header-section-number">Kappale 5</span> Datan muokkaaminen</h1>
+<p>Aineisto ei tyypillisesti ole valmiiksi oikeassa muodossa. Voi olla että haluat käyttää vain jotain osajoukkoa aineistosta. Tällöin tarvitaan komentoja aineiston muokkaamiseksi.</p>
+<div id="osajoukkojen-valinta" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Osajoukkojen valinta</h2>
+</div>
+<div id="faktorit" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Faktorit</h2>
+</div>
+<div id="uuden-muuttujan-tai-rivin-luonti-datakehikkoon" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Uuden muuttujan tai rivin luonti datakehikkoon</h2>
+<div id="data-framen-käsittely" class="section level3" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Data framen käsittely</h3>
+<p>Vaikka data frame näyttää ulkoisesti matriisilta, data frame on itse asiassa lista, jonka kaikki alkiot ovat yhtä pitkiä vektoreita. Data framella on kuitenkin monta erityisominaisuutta, ja data frame käyttäytyy välillä kuin matriisi, välillä kuin lista. Tässä muutama esimerkki:</p>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="data-wrangling.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subscripting with variable names</span></span>
+<span id="cb248-2"><a href="data-wrangling.html#cb248-2" aria-hidden="true" tabindex="-1"></a>study_data[, <span class="fu">c</span>(<span class="st">&quot;height&quot;</span>, <span class="st">&quot;gender&quot;</span>)]</span></code></pre></div>
+<pre><code>##   height gender
+## 1  189.8   male
+## 2  184.0 female
+## 3  173.8   male
+## 4  175.9   male
+## 5  169.0 female
+## 6  183.7   male
+## 7  181.8   male
+## 8   16.9 female</code></pre>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="data-wrangling.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subscripting with brackets - as matrix (but I do not recommend this style!)</span></span>
+<span id="cb250-2"><a href="data-wrangling.html#cb250-2" aria-hidden="true" tabindex="-1"></a>study_data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##   ID height
+## 1  1  189.8
+## 2  2  184.0
+## 3  3  173.8
+## 4  4  175.9
+## 5  5  169.0
+## 6  6  183.7
+## 7  7  181.8
+## 8  8   16.9</code></pre>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="data-wrangling.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rownames and colnames</span></span>
+<span id="cb252-2"><a href="data-wrangling.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(study_data)</span></code></pre></div>
+<pre><code>## [1] &quot;ID&quot;     &quot;height&quot; &quot;gender&quot;</code></pre>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="data-wrangling.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(study_data)</span></code></pre></div>
+<pre><code>## [1] &quot;ID&quot;     &quot;height&quot; &quot;gender&quot;</code></pre>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="data-wrangling.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Individual columns can be accessed and added with dollar sign</span></span>
+<span id="cb256-2"><a href="data-wrangling.html#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s say that we find out that the ID number 8 was typed in incorrectly. We can fix the entire height variables as follows</span></span>
+<span id="cb256-3"><a href="data-wrangling.html#cb256-3" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">189.8</span>, <span class="fl">184.0</span>, <span class="fl">173.8</span>, <span class="fl">175.9</span>, <span class="fl">169.0</span>, <span class="fl">183.7</span>, <span class="fl">181.8</span>, <span class="fl">160.9</span>)</span>
+<span id="cb256-4"><a href="data-wrangling.html#cb256-4" aria-hidden="true" tabindex="-1"></a>study_data</span></code></pre></div>
+<pre><code>##   ID height gender
+## 1  1  189.8   male
+## 2  2  184.0 female
+## 3  3  173.8   male
+## 4  4  175.9   male
+## 5  5  169.0 female
+## 6  6  183.7   male
+## 7  7  181.8   male
+## 8  8  160.9 female</code></pre>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="data-wrangling.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># It would have been possible to change value of only one cell e.g. like this</span></span>
+<span id="cb258-2"><a href="data-wrangling.html#cb258-2" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>height[<span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="fl">161.9</span></span>
+<span id="cb258-3"><a href="data-wrangling.html#cb258-3" aria-hidden="true" tabindex="-1"></a>study_data</span></code></pre></div>
+<pre><code>##   ID height gender
+## 1  1  189.8   male
+## 2  2  184.0 female
+## 3  3  173.8   male
+## 4  4  175.9   male
+## 5  5  169.0 female
+## 6  6  183.7   male
+## 7  7  181.8   male
+## 8  8  161.9 female</code></pre>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="data-wrangling.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering based on a variable can be done like this</span></span>
+<span id="cb260-2"><a href="data-wrangling.html#cb260-2" aria-hidden="true" tabindex="-1"></a>study_data[study_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">&quot;female&quot;</span>, ]</span></code></pre></div>
+<pre><code>##   ID height gender
+## 2  2  184.0 female
+## 5  5  169.0 female
+## 8  8  161.9 female</code></pre>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="data-wrangling.html#cb262-1" aria-hidden="true" tabindex="-1"></a>study_data[study_data<span class="sc">$</span>height <span class="sc">&lt;=</span> <span class="dv">175</span>, ]</span></code></pre></div>
+<pre><code>##   ID height gender
+## 3  3  173.8   male
+## 5  5  169.0 female
+## 8  8  161.9 female</code></pre>
+<p>Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla <code>rbind()</code>. Käyttäjän tulee myös huolehtia siitä, että sarakkeet ovat samaa tyyppiä kuin alkuperäisessä data framessa.</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="data-wrangling.html#cb264-1" aria-hidden="true" tabindex="-1"></a>new_row <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ID =</span> <span class="dv">11</span>, <span class="at">height =</span> <span class="dv">182</span>, <span class="at">gender =</span> <span class="st">&quot;male&quot;</span>)</span>
+<span id="cb264-2"><a href="data-wrangling.html#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(study_data, new_row)</span></code></pre></div>
+<pre><code>##   ID height gender
+## 1  1  189.8   male
+## 2  2  184.0 female
+## 3  3  173.8   male
+## 4  4  175.9   male
+## 5  5  169.0 female
+## 6  6  183.7   male
+## 7  7  181.8   male
+## 8  8  161.9 female
+## 9 11  182.0   male</code></pre>
+<p>Data framet ovat erittäin käteviä, koska niihin voi helposti tallentaa sekä merkkijonoja, että numeerista dataa. Bioinformatiikkaa opiskelevien kannattaa kuitenkin muistaa, että matriisi on usein laskennan kannalta tehokkaampi tietorakenne, kuin data frame. Tästä ei tarvitse murehtia tällä kurssilla, mutta se on hyvä tietää jatkon kannalta, jos bioinformatiikkakursseilla tulee vastaan isompia datasettejä, joissa on osia, jotka voi tallentaa matriisina.</p>
+<p>#_______________</p>
+</div>
 </div>
 </div>
             </section>
@@ -320,8 +399,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="alkuvalmistelut.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="variables-and-vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="reading-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="khi-toiseen-testi.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

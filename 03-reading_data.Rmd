@@ -1,10 +1,10 @@
-# Datan sisään lukeminen {#reading_data}
+# Datan lukeminen {#reading_data}
 
 Tässä osiossa tutustutaan datan sisään lukemiseen ja sisäänluetun datan tarkistamiseen. Tähän mennessä kaikki kurssilla käsitelty data on luotu R:ssä. Useimmiten R:llä käsiteltävä data on kuitenkin tallennettu tiedostoon, joka on luotu automaattisesti jollain ohjelmalla tai kirjattu esim. Excelissä.
 
-Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttavat datan data frame-muodossa (voit kerrata data framen toimintaa [viime viikon materiaalista](https://github.com/antonvsdata/r_intro/tree/master/viikko_3#data-frame)). Data frame toimii tähän tarkoitukseen hyvin, sillä siihen voi tallentaa niin numeerisia kuin tekstimuotoisia muuttujia.
+Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttavat datan data frame-muodossa (voit kerrata data framen toimintaa [viime viikon materiaalista](#data-frame). Data frame toimii tähän tarkoitukseen hyvin, sillä siihen voi tallentaa niin numeerisia kuin tekstimuotoisia muuttujia.
 
-Lopussa käydään myös läpi tapoja lukea Excel ja SPSS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin tekstitiedostoiksi.
+Lopussa käydään myös läpi tapoja lukea taulukkolaskenta (Excel) ja SPSS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin tekstitiedostoiksi.
 
 ## Tekstitiedostot
 
@@ -125,8 +125,3 @@ HUOM: .xlsx-tiedostoja varten on olemassa myös xlsx-paketti, mutta se tarvitsee
 Eri tutkimusryhmissä dataa säilytetään usein SPSS-tiedostoissa (.sav). SPSS-tiedostojen käsittelyyn voi käyttää haven-paketin funktioita ```read_sav``` ja ```write_sav```. haven-paketissa on funktiot myös Stata:n ja SAS:n datatiedostoille. 
 
 SPSS-tiedostoja voi lukea myös foreign-paketin avulla, mutta ainakin minulla on parempia kokemuksia haven-paketista. haven on myös osa tidyverse-pakettikokoelmaa, joten oletan sen pysyvän hyvin ajan tasalla jatkossakin.
-
-
-## Vinkkejä tehtäviin
-
-Datan sisään lukemiseen liittyvät tehtävät ovat melko suorviivaisia yhtä poikkeusta lukuun ottamatta. Ainakin minulle Rkurssi-paketti generoi tiedoston, jonka tiedostopääte oli .csv, mutta alkiot oli erotettu sarkaimella, ei pilkulla. Jos siis saat outoja virheilmoituksia, tarkasta tiedoston rakenne joko R:n komennolla ```file.show()``` tai avaamalla tiedosto esim. Notepadilla.

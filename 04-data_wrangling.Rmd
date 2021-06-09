@@ -1,0 +1,114 @@
+# Datan muokkaaminen {#data-wrangling}
+
+Aineisto ei tyypillisesti ole valmiiksi oikeassa muodossa. Voi olla että haluat käyttää vain jotain osajoukkoa aineistosta. Tällöin tarvitaan komentoja aineiston muokkaamiseksi.
+
+**Yleinen käytännön vinkki**
+Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla todella työlästä. Tällöin saattaa joutua yhdistelemään aineistoja useista lähteistä, etsimään virheellisiä arvoja, muokkaamaan tekstimuotoisia (character) muuttujia eri muotoon jne. Mikäli aiot muokata tekstimuotoisia vektoreita eri muotoon, niin kannattaa muuttaa ne faktoriksi vasta lopuksi, sillä muuttujan ei ole yleensä tarpeellista olla faktorimuodossa aineistojan muokatessa. Faktorit ovat tyypillisesti tarpeen vasta kun aineistoa aletaan todella analysoimaan.
+
+## Uuden muuttujan tai rivin luonti datakehikkoon
+
+
+### Data framen käsittely
+
+```{r}
+# Subscripting with variable names
+study_data[, c("height", "gender")]
+
+# Subscripting with brackets - as matrix (but I do not recommend this style!)
+study_data[, 1:2]
+
+# Rownames and colnames
+colnames(study_data)
+names(study_data)
+
+# Individual columns can be accessed and added with dollar sign
+# Let's say that we find out that the ID number 8 was typed in incorrectly. We can fix the entire height variables as follows
+study_data$height <- c(189.8, 184.0, 173.8, 175.9, 169.0, 183.7, NA, 160.9)
+study_data
+
+# It would have been possible to change value of only one cell e.g. like this
+study_data$height[8] <- 161.9
+study_data
+
+
+
+```
+
+Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla ```rbind()```. Käyttäjän tulee myös huolehtia siitä, että sarakkeet ovat samaa tyyppiä kuin alkuperäisessä data framessa.
+
+```{r}
+new_row <- data.frame(ID = 11, height = 182, gender = "male")
+rbind(study_data, new_row)
+```
+
+
+## Osajoukkojen valinta
+
+Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita ja jos kriteerejä on useita niin myös loogisia operaattoreita.
+
+```{r}
+# Filter only females
+study_data[study_data$gender == "female", ]
+# Filter individuals whose height is less than or equal to 175
+study_data[study_data$height <= 175, ]
+# Use multiple filter criteria
+study_data[study_data$height <= 175 & study_data$gender == "female", ]
+```
+
+## Faktorit
+
+R:n numeeriset vektorit ovat lähtökohtaisesti jatkuva-asteikollisia. Olet ehkä ihmetellytkin, miten kategorinen muuttuja määritellään. Kategorista muuttujaa sanotaan R:ssä faktoriksi. Numeerisen tai tekstimuotoisen muuttujan tai vektorin voi muuttaa faktori-muotoiseksi muuttujaksi ```factor``` -funktiolla.
+
+```{r}
+# Let's change gender from character string to a factor and rename it as fgender
+study_data$fgender <- factor(study_data$gender)
+
+# Let's now compare the printing of gender and fgender
+study_data$gender
+study_data$fgender
+```
+Huomataan, että faktori tulostaa faktorin tasot eli kaikkien mahdollisten luokkien nimet faktorin perässä: ```Levels: female male```.
+
+Usein vastaan tulee myös tilanne, jossa faktorin eri tasoja vastaa kokonaislukuarvot, kuten tässä esimerkissä 1, 2 ja 3. Tällaisessa tilanteessa faktorin tasojen merkitys on usein annettu jossain dokumenttitiedostossa. Tällöin faktorin tasot ja niiden kuvaukset (labels) tulee määrittää käsin.
+
+```{r}
+# Create a data for this example
+wall_dat <- data.frame(building_ID = c(1,2,3,4,5,6), building_material = c(1,1,2,2,3,3))
+
+# Name is 'building_material' very long, I want to rename it
+names(wall_dat) <- c("building_ID","build_mat")
+
+# We know from some kind of documentation that 1 stands for "wood", 2 is "steel" and 3 is "brick".
+wall_dat$fbuild_mat <- factor(wall_dat$build_mat,levels = c(1,2,3), labels = c("wood", "steel", "brick"))
+
+str(wall_dat)
+```
+
+
+
+
+
+#_______________
+
+# Khi toiseen -testi
+
+Khi toiseen -testi voidaan toteuttaa seuraavasti.
+
+```{r}
+## From Agresti(2007) p.39
+M <- as.table(rbind(c(762, 327, 468), c(484, 239, 477)))
+dimnames(M) <- list(gender = c("F", "M"),
+                    party = c("Democrat","Independent", "Republican"))
+(Xsq <- chisq.test(M))  # Prints test summary
+Xsq$observed   # observed counts (same as M)
+Xsq$expected   # expected counts under the null
+Xsq$residuals  # Pearson residuals
+Xsq$stdres     # standardized residuals
+
+
+## Effect of simulating p-values
+x <- matrix(c(12, 5, 7, 7), ncol = 2)
+chisq.test(x)$p.value           # 0.4233
+chisq.test(x, simulate.p.value = TRUE, B = 10000)$p.value
+```
+

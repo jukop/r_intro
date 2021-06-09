@@ -1,6 +1,6 @@
 # Kuvaajien piirtäminen {#plotting}
 
-Tällä viikolla tutustutaan kuvaajien piirtämiseen. Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä on silti lyhyet kirjalliset ohjeet suomeksi. **Tämän dokumentin lopussa on myös [käytännön vinkkejä tämän viikon tehtävään](#tämän-viikon-tehtävä).**
+Tällä viikolla tutustutaan kuvaajien piirtämiseen. Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä on silti lyhyet kirjalliset ohjeet suomeksi.
 
 R:n piirtokomennot voidaan jakaa kolmeen ryhmään:
 
@@ -48,7 +48,7 @@ hist(heights, breaks = 20,
      xlab = "Pituus (cm)", ylab = "Frekvenssi")
 ```
 
-Toinen tapa kuvata jatkuvan muuttujan jakaumaa on laatikkokuvaaja, joita piirretään ```boxplot```-funktiolla:
+Toinen tapa kuvata jatkuvan muuttujan jakaumaa on viiksilaatikko (joskus myös laatikko-viikset -kuvaaja), joita piirretään ```boxplot```-funktiolla:
 
 ```{r}
 boxplot(heights, breaks = 20, 
@@ -207,7 +207,7 @@ legend(x = 40, y = 150,
 lines(speed, prediction_dry, lty = "dashed", col = "darkblue")
 lines(speed, prediction_wet, lty = "dashed", col = "darkred")
 
-text(x = 95, y = 145, labels = "ERO JOPA 30 M!!") 
+text(x = 95, y = 145, labels = "ERO JOPA 30 METRIÄ!") 
 ```
 
 Kuvaajamme on nyt valmis! Näitä komentoja käyttämällä ja pienellä googlailulla saa myös tehtyä tämän viikon tehtävän.
@@ -216,12 +216,4 @@ Kuvaajamme on nyt valmis! Näitä komentoja käyttämällä ja pienellä googlai
 
 Jos äskeisen esimerkin aikana tuntui siltä, että näimme paljon työtä ja saimme lopputulokseksi kuvaajan, joka ei oikeastaan edes näytä kovin hyvältä, olet aivan oikeassa. Kuvaajien rakentaminen itse R:n peruskomennoilla on raskasta, ja usein perusgrafiikkatoimintoja käytetään lähinnä omaan käyttöön tulevien kuvaajien piirtämiseen nopeasti. Peruskomennot on kuitenkin hyvä hallita, sillä niitä saattaa tarvita valmiilla työkaluilla tehtyjen kuvaajien muokkaamiseen. Varsinkin tekstin lisääminen, sekä akselien nimeäminen ja otsikon muuttaminen ovat hyviä taitoja osata.
 
-R tarjoaa paljon valmiita työkaluja erilaisten kuvaajien piirtämiseen. Valitettavasti tällä kurssilla ei ole aikaa sukeltaa näiden työkalujen käyttöön, sillä ennen niiden käyttöä pitää ymmärtää enemmän R:n monimutkaisemmista tietorakenteista, joita käsitellään seuraavilla viikoilla. Inspiraatiota ja motivaatiota voi kuitenkin hakea esimerkiksi [R Graph Gallery](https://www.r-graph-gallery.com/index.html)-sivulta tai [ggpubr-paketin ohjeista](https://rpkgs.datanovia.com/ggpubr/index.html). 
-
-## Tämän viikon tehtävä
-
-Tämän viikon tehtävässä on muutama "haaste". Tässä siis pari suoraa vinkkiä:
-
-- Suosittelen hyvin vahvasti käyttämään RStudiota ja kirjoittamaan piirtokomennot R-skriptiin! Näin on helppoa muokata piirtokomentoja tehtävän edetessä.
-- Tehtävässä käsitellään listaa ```observations```. Voit lukea listoista lisää [ensi viikon ohjeista](https://github.com/antonvsdata/r_intro/tree/master/viikko_3#lista)!
-- Kohdassa 6. kannattaa ensin luoda vektori, jossa on eksponentiaalisen käyrän luvut ja lisätä se kuvaajaan funktiolla ```lines()```. Älä siis käytä funktiota ```curve()```, vaikka ohjeissa niin neuvotaan! ```curve()```-funktion käyttö vaatii oman funktion määrittelyä, joka opitaan vasta myöhemmin tällä kurssilla!
+R tarjoaa paljon valmiita työkaluja erilaisten kuvaajien piirtämiseen. Valitettavasti tällä kurssilla ei ole aikaa sukeltaa näiden työkalujen käyttöön, sillä ennen niiden käyttöä pitää ymmärtää enemmän R:n monimutkaisemmista tietorakenteista, joita käsitellään seuraavilla viikoilla. Inspiraatiota ja motivaatiota voi kuitenkin hakea esimerkiksi [R Graph Gallery](https://www.r-graph-gallery.com/index.html)-sivulta tai [ggpubr-paketin ohjeista](https://rpkgs.datanovia.com/ggpubr/index.html).

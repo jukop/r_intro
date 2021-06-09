@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kappale 1 Johdanto | R-ohjelmoinnin perusteet</title>
+  <title>Kappale 6 Khi toiseen -testi | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kappale 1 Johdanto | R-ohjelmoinnin perusteet" />
+  <meta property="og:title" content="Kappale 6 Khi toiseen -testi | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kappale 1 Johdanto | R-ohjelmoinnin perusteet" />
+  <meta name="twitter:title" content="Kappale 6 Khi toiseen -testi | R-ohjelmoinnin perusteet" />
   
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alkuvalmistelut.html"/>
-<link rel="next" href="variables-and-vectors.html"/>
+<link rel="prev" href="data-wrangling.html"/>
+<link rel="next" href="plotting.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -299,29 +299,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="intro" class="section level1" number="1">
-<h1><span class="header-section-number">Kappale 1</span> Johdanto</h1>
-<div id="what_R" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Mikä R on ja mitä sillä tehdään?</h2>
-<p>Ohjelmoinnin tavoitteena on kirjoittaa eli koodata ohjelma, joka suorittaa jonkun halutun tehtävän. Ohjelma koostuu useista komennoista, joista jokainen tekee jotain hyvin yksinkertaista.</p>
-<p>R on tehty ensisijaisesti tilastotiedettä ja data-analyysiä varten. R:llä kirjoitetaan yleensä lyhyitä ohjelmia, joita kutsutaan skripteiksi. R:llä ei siis ole tarkoitus kehittää esimerkiksi pelejä, tai muita ohjelmia joissa on graafinen käyttöliittymä, kuten vaikkapa Photoshop. R ei myöskään ole web-ohjelmointiin tarkoitettu kieli (vaikka oikeilla paketeilla R:lläkin pystyy tekemään web-sovelluksia).</p>
-<p>R on korkean tason ohjelmointikieli. Tämä tarkoittaa sitä, että R:ssä on paljon valmiita komentoja, joiden “alta” löytyy paljon lisää koodia, johon R-ohjelmoijan ei kuitenkaan tarvitse itse koskea. Esimerkiksi tilastollisen t-testin testin laskeminen vaatii useita matemaattisia välivaiheita, mutta R-ohjelmoija voi suorittaa testin yhdellä komennolla (<code>t.test</code>) joka antaa kaikki tarvittavat tiedot testistä.</p>
-<p>R:n käyttöä ja ohjelmointia muutenkin oppii parhaiten tekemällä. Tässä dokumentaatiossa on tekstin väliin upotettu R-koodia harmaissa laatikoissa, kuten alla olevassa esimerkissä. Kahdella ruudulla eli <code>##</code>-merkinnällä alkavat rivit eivät ole koodia vaan koodin ajamisen aiheuttamia tulosteita (output). Otetaan ensimmäiseksi esimerkiksi klassinen <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">“Hello, world!”</a>-komento:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Hello, world!&quot;</code></pre>
-<p><code>print</code>-funktio tulostaa sille annetun tekstin konsoliin. <code>print</code> on kätevä funktio mm. ohjelman toiminnan testaamiseen ja pidemmän ohjelman etenemisen seurantaan. R:ää voi käyttää myös laskimen sijaan. Alla olevassa esimerkissä lasketaan kuinka paljon jää hintaa 80 euron hintaiselle tuotteelle 35% alennuksen jälkeen.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">80</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.35</span>)</span></code></pre></div>
-<pre><code>## [1] 52</code></pre>
-<p>Yksittäisten komentojen ajamisesta ei kuitenkaan ole yleensä hyötyä, ellei tuloksia voi tallentaa johonkin. Ohjelmointikielissä tietoja tallennetaan muuttujiin, joita käsitellään seuraavaksi.</p>
-</div>
+<div id="khi-toiseen--testi" class="section level1" number="6">
+<h1><span class="header-section-number">Kappale 6</span> Khi toiseen -testi</h1>
+<p>Khi toiseen -testi voidaan toteuttaa seuraavasti.</p>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="khi-toiseen-testi.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="do">## From Agresti(2007) p.39</span></span>
+<span id="cb266-2"><a href="khi-toiseen-testi.html#cb266-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">as.table</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">762</span>, <span class="dv">327</span>, <span class="dv">468</span>), <span class="fu">c</span>(<span class="dv">484</span>, <span class="dv">239</span>, <span class="dv">477</span>)))</span>
+<span id="cb266-3"><a href="khi-toiseen-testi.html#cb266-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(M) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>),</span>
+<span id="cb266-4"><a href="khi-toiseen-testi.html#cb266-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">party =</span> <span class="fu">c</span>(<span class="st">&quot;Democrat&quot;</span>,<span class="st">&quot;Independent&quot;</span>, <span class="st">&quot;Republican&quot;</span>))</span>
+<span id="cb266-5"><a href="khi-toiseen-testi.html#cb266-5" aria-hidden="true" tabindex="-1"></a>(Xsq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(M))  <span class="co"># Prints test summary</span></span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  M
+## X-squared = 30.07, df = 2, p-value = 2.954e-07</code></pre>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="khi-toiseen-testi.html#cb268-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>observed   <span class="co"># observed counts (same as M)</span></span></code></pre></div>
+<pre><code>##       party
+## gender Democrat Independent Republican
+##      F      762         327        468
+##      M      484         239        477</code></pre>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="khi-toiseen-testi.html#cb270-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>expected   <span class="co"># expected counts under the null</span></span></code></pre></div>
+<pre><code>##       party
+## gender Democrat Independent Republican
+##      F 703.6714    319.6453   533.6834
+##      M 542.3286    246.3547   411.3166</code></pre>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="khi-toiseen-testi.html#cb272-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>residuals  <span class="co"># Pearson residuals</span></span></code></pre></div>
+<pre><code>##       party
+## gender   Democrat Independent Republican
+##      F  2.1988558   0.4113702 -2.8432397
+##      M -2.5046695  -0.4685829  3.2386734</code></pre>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="khi-toiseen-testi.html#cb274-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>stdres     <span class="co"># standardized residuals</span></span></code></pre></div>
+<pre><code>##       party
+## gender   Democrat Independent Republican
+##      F  4.5020535   0.6994517 -5.3159455
+##      M -4.5020535  -0.6994517  5.3159455</code></pre>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="khi-toiseen-testi.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Effect of simulating p-values</span></span>
+<span id="cb276-2"><a href="khi-toiseen-testi.html#cb276-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb276-3"><a href="khi-toiseen-testi.html#cb276-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x)<span class="sc">$</span>p.value           <span class="co"># 0.4233</span></span></code></pre></div>
+<pre><code>## [1] 0.4233054</code></pre>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="khi-toiseen-testi.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x, <span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>, <span class="at">B =</span> <span class="dv">10000</span>)<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.2841716</code></pre>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alkuvalmistelut.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="variables-and-vectors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-wrangling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="plotting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
