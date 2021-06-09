@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R-ohjelmoinnin perusteet</title>
+  <title>Kappale 4 Datan sisään lukeminen | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R-ohjelmoinnin perusteet" />
+  <meta property="og:title" content="Kappale 4 Datan sisään lukeminen | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R-ohjelmoinnin perusteet" />
+  <meta name="twitter:title" content="Kappale 4 Datan sisään lukeminen | R-ohjelmoinnin perusteet" />
   
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="rstudio.html"/>
+<link rel="prev" href="data-types.html"/>
+<link rel="next" href="plotting.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -289,40 +289,139 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R-ohjelmoinnin perusteet</h1>
-<p class="author"><em>Anton Klåvus (2020), converted to bookdown by Juho Kopra (2021)</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>2021-06-09</em></p>
-</div>
-<div id="alkuvalmistelut" class="section level1 unnumbered">
-<h1>Alkuvalmistelut</h1>
-<div id="r-kurssi" class="section level2 unnumbered">
-<h2>R-kurssi</h2>
-<p>Täältä löydät suomenkielisen materiaalin, joka tukee UEF:in R-kurssin suorittamista (R-kieli 3622223, 2 op). Jokaisen viikon materiaalit päivitetään tänne. Alla on ohjeet tarvittavien asioiden asentamiseen UEF:in koneille.</p>
-<p>Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. Mahdollisesti mukana on myös muita tiedostoja, mutta ellei toisin mainita, itse tiedostoista ei tarvitse välittää vaan voi keskittyä itse ohjeisiin.</p>
-</div>
-<div id="sisällysluettelo" class="section level2 unnumbered">
-<h2>Sisällysluettelo</h2>
+<div id="reading_data" class="section level1" number="4">
+<h1><span class="header-section-number">Kappale 4</span> Datan sisään lukeminen</h1>
+<p>Tässä osiossa tutustutaan datan sisään lukemiseen ja sisäänluetun datan tarkistamiseen. Tähän mennessä kaikki kurssilla käsitelty data on luotu R:ssä. Useimmiten R:llä käsiteltävä data on kuitenkin tallennettu tiedostoon, joka on luotu automaattisesti jollain ohjelmalla tai kirjattu esim. Excelissä.</p>
+<p>Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttavat datan data frame-muodossa (voit kerrata data framen toimintaa <a href="https://github.com/antonvsdata/r_intro/tree/master/viikko_3#data-frame">viime viikon materiaalista</a>). Data frame toimii tähän tarkoitukseen hyvin, sillä siihen voi tallentaa niin numeerisia kuin tekstimuotoisia muuttujia.</p>
+<p>Lopussa käydään myös läpi tapoja lukea Excel ja SPSS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin tekstitiedostoiksi.</p>
+<div id="tekstitiedostot" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Tekstitiedostot</h2>
+<p>Tekstitiedosto tarkoittaa tässä tapauksessa tiedostoa, joka ei sisällä tekstin lisäksi mitään muuta, kuten erilaisia muotoilutietoja. Tekstitiedostojen yleisimmät tiedostopäätteet ovat .txt ja .csv (comma separated value, tästä lisää pian). Esim. Excelin .xlsx-tiedostot tai Wordin .docx-tiedostot eivät ole tekstitiedostoja, koska niissä on paljon muutakin tietoa tekstin lisäksi.</p>
+<div id="read.table" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> read.table()</h3>
+<p>Kun dataa tallennetaan tekstitiedostoon, tiedoston ensimmäisellä rivillä on usein sarakkeiden nimet, ja seuraavilla riveillä mahdollisesti rivin nimi, ja sitten sarakkeiden arvot. Jokaisen kentän tulee olla erotettu samalla merkillä (field separator character). Yleisiä erotinmerkkejä ovat sarkain eli tab, välilyönti ja pilkku. Alla olevassa esimerkissä on neljältä kuvitteelliselta koehenkilöltä mitattu puna-vihervärisokeuteen liitettyjen geenien OPN1LW ja OPN1MW ilmentymistasot (lukuarvot ovat allekirjoittaneen hihasta). Tässä eri arvot on erotettu sarkaimella.</p>
+<pre><code>Subject_ID  OPN1LW  OPN1MW
+ANKL    11264   12365
+DIPR    10636   12725
+PEPA    5630    13248
+BRWA    8294    13060</code></pre>
+<p>Tämä data löytyy myös oheisesta tiedostosta <code>gene_data.txt</code>. Tekstitiedostot voi lukea sisään funktiolla <code>read.table()</code>, jolla on tiedoston polun (file path) lisäksi monta muutakin argumenttia, joista tärkeimmät ovat:</p>
 <ul>
-<li><a href="variables-and-vectors.html#variables_and_vectors">Muuttujat ja vektorit</a></li>
-<li><a href="plotting.html#plotting">Kuvaajien piirtäminen</a></li>
-<li><a href="data-types.html#data_types">Tietotyypit: matriisi, taulukko, lista ja data frame</a>
-<ul>
-<li><a href="data-types.html#matriisi">matriisi (matrix)</a></li>
-<li><a href="data-types.html#taulukko">taulukko (array)</a></li>
-<li><a href="data-types.html#lista">lista (list)</a></li>
-<li><a href="data-types.html#data-frame">data frame</a></li>
-</ul></li>
-<li><a href="reading-data.html#reading_data">Datan sisään lukeminen</a></li>
-<li><a href="statistics.html#statistics">Lineaariset mallit ja tilastolliset jakaumat</a>
-<ul>
-<li><a href="statistics.html#linear_models">Lineaariset mallit</a></li>
-<li><a href="statistics.html#distributions">Todennäköisyysjakaumat</a></li>
-</ul></li>
-<li><a href="functions.html#functions">Funktiot</a></li>
-<li><a href="ifelse.html#ifelse">Ehtorakenteet</a></li>
-<li><a href="loops.html#loops">Toistorakenteet</a></li>
+<li><code>header</code>: looginen arvo (TRUE/FALSE), jolla kerrotaan funktiolle, onko ensimmäisellä rivillä sarakkeiden nimet vai ei</li>
+<li><code>sep</code>: erotinmerkki, jolla arvot on eroteltu</li>
+<li><code>dec</code>: desimaalierotin eli desimaalilukujen merkki, jolla desimaalit on eroteltu. Tämä on tärkeä lähinnä suomalaisille, koska Suomessa desimaalierotin on jostain syystä pilkku, eikä piste kuten useimmissa muissa maissa.</li>
 </ul>
+<p>Luetaan edellisen esimerkin data R:ään data frameksi:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="reading-data.html#cb187-1" aria-hidden="true" tabindex="-1"></a>gene_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;gene_data.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb187-2"><a href="reading-data.html#cb187-2" aria-hidden="true" tabindex="-1"></a>gene_data</span></code></pre></div>
+<pre><code>##   Subject_ID OPN1LW OPN1MW
+## 1       ANKL  11264  12365
+## 2       DIPR  10636  12725
+## 3       PEPA   5630  13248
+## 4       BRWA   8294  13060</code></pre>
+<p>Yllä olevassa esimerkissä ei määritelty erikseen erotinmerkkiä, jolloin erotinmerkiksi tulkitaan kaikki tyhjä tila (white space) eli välilyönnit, sarkaimet jne. Halutessaan erotinmerkin voi myös asettaa. Jos erotinmerkki on sarkain, tulee asettaa <code>sep = "\t"</code></p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="reading-data.html#cb189-1" aria-hidden="true" tabindex="-1"></a>gene_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;gene_data.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb189-2"><a href="reading-data.html#cb189-2" aria-hidden="true" tabindex="-1"></a>gene_data</span></code></pre></div>
+<pre><code>##   Subject_ID OPN1LW OPN1MW
+## 1       ANKL  11264  12365
+## 2       DIPR  10636  12725
+## 3       PEPA   5630  13248
+## 4       BRWA   8294  13060</code></pre>
+<p>Kuten yllä huomattiin, sarkain erotinmerkkinä merkataan <code>"\t"</code>, eikä hipsuilla, joiden sisään laitetaan tyhjää tilaa sarkainnäppäimellä. Tämä on yksi esimerkki koodinvaihtomerkin (escape character) <code>\</code> käytöstä. R:ssä ja ohjelmointikielissä ylipäätään kenoviiva toimii koodinvaihtomerkkinä, eli sitä ei käsitellä kuin muita merkkejä, vaan se muuttaa seuraavan merkin toimintaa. Usein tämä tarkoittaa sitä, että kenoviivan avulla merkataan sarkainta, rivinvaihtoa (newline, <code>\n</code>) ja muita erikoismerkkejä. Koodinvaihtomerkin käyttöä ei tarvitse osata tämän enempää, mutta se esitellään tässä, koska se aiheuttaa ongelmia Windowsin käyttäjille.</p>
+<p>Windowsin tiedostopoluissa kansioiden välissä on kenoviiva, kun taas Mac- ja Linux-järjestelmissä käytetään kauttaviivaa <code>/</code>. Koska R:ssä kenoviiva on koodinvaihtomerkki, tulee R:ssä käyttää tiedostopoluissa Macin ja Linuxien tyyliä. Eli kun haluaa lukea tiedoston R:ään Windowsissa, kenoviivat <code>\</code> pitää korvata kauttaviivoilla <code>/</code>, jotta R ei mene sekaisin.</p>
+<p>Luetaan seuraavaksi sisään data-kansiossa oleva tiedosto tooth_growth.csv, joka sisältää dataa tutkimuksesta, jossa tutkittiin c-vitamiinin vaikutusta hampaiden kasvuun marsuilla. .csv-tiedostopääte tulee sanoista comma separated value, eli arvot on eroteltu pilkulla. Annetaan siis sep-parametriksi “,”. Tämä tiedosto sisältää myös rivien nimet ensimmäisessä sarakkeessa. Tämä voidaan kertoa <code>read.table()</code>-funktiolle parametrilla row.names, jonka arvoksi voi asettaa sarakkeen numeron, josta rivien nimet napataan.</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="reading-data.html#cb191-1" aria-hidden="true" tabindex="-1"></a>tooth <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/tooth_growth.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb191-2"><a href="reading-data.html#cb191-2" aria-hidden="true" tabindex="-1"></a>tooth</span></code></pre></div>
+<pre><code>##     len supp dose
+## 34  9.7   OJ  0.5
+## 16 17.3   VC  1.0
+## 55 24.8   OJ  2.0
+## 44 26.4   OJ  1.0
+## 58 27.3   OJ  2.0
+## 26 32.5   VC  2.0
+## 14 17.3   VC  1.0
+## 60 23.0   OJ  2.0
+## 15 22.5   VC  1.0
+## 9   5.2   VC  0.5</code></pre>
+<p>Tässä tutkimuksessa marsuille annettiin C-vitamiinia eri annoksina (dose, mitattu milligrammoina), joka appelsiinimehussa (OJ) tai askorbiinihappona (VC) ja mitattiin odontoblastien (hammasluun emosolu) pituus (len).</p>
+</div>
+<div id="read.csv" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> read.csv()</h3>
+<p>.csv-tiedostot ovat niin yleisiä, että niiden lukemiseen on oma funktion: <code>read.csv</code>, joka on käytännössä sama funktio kuin <code>read.table</code>, mutta parametrien oletusarvot ovat erilaiset, nii että <code>read.csv(file)</code> ~ ```read.table(file, header = TRUE, sep = “,”)).</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="reading-data.html#cb193-1" aria-hidden="true" tabindex="-1"></a>tooth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tooth_growth.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb193-2"><a href="reading-data.html#cb193-2" aria-hidden="true" tabindex="-1"></a>tooth</span></code></pre></div>
+<pre><code>##     len supp dose
+## 34  9.7   OJ  0.5
+## 16 17.3   VC  1.0
+## 55 24.8   OJ  2.0
+## 44 26.4   OJ  1.0
+## 58 27.3   OJ  2.0
+## 26 32.5   VC  2.0
+## 14 17.3   VC  1.0
+## 60 23.0   OJ  2.0
+## 15 22.5   VC  1.0
+## 9   5.2   VC  0.5</code></pre>
+<div id="read.csv2" class="section level4" number="4.1.2.1">
+<h4><span class="header-section-number">4.1.2.1</span> read.csv2()</h4>
+<p>HUOM: Koska Suomessa pilkkua käytetään desimaalierottimena, kenttien rajaaminen pilkulla ei toimi. Käytännössä tämä näkyy siten, että suomenkielinen Excel tallentaa .csv-tiedosto oletuksena muodossa, jossa desimaalierottimena on pilkku ja kenttien välissä puolipilkku “;”. Jos siis olet tallentanut Excelistä taulukon .csv-muotoon ja sen lukeminen R:ään aiheuttaa outouksia, kyse on todennäköisesti tästä. Onneksi R:ssä on valmiina funktio <code>read.csv2()</code>, joka osaa lukea suomalaiset .csv-tiedostot oikein.</p>
+</div>
+</div>
+</div>
+<div id="data-framen-rakenteen-tutkiminen" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Data framen rakenteen tutkiminen</h2>
+<p>Kun data on luettu sisään R:ään, kannattaa aina tarkistaa, että kaikki data on luettu oikein. Tässä muutama vinkki data framen tutkimiseen, joista osaa käsiteltiin jo viime kerralla:</p>
+<p><code>dim()</code> antaa data framen dimensiot, eli rivien ja sarakkeiden määrän.<br />
+<code>View()</code> avaa data framen erilliseen ikkunaan, jossa sitä voi tarkastella. Suositellaan vain pienemmille data frameille
+<code>str()</code> kertoo rivien ja sarakkeiden määrät sekä kaikkien sarakkeiden luokat. Kätevä tapa tarkistaa mm. että lukuja sisältävät sarakkeet eivät ole vahingossa muuttuneet merkkijonoiksi.
+<code>table()</code> on kätevä kategoristen sarakkeiden tutkimiseen. Se kertoo, kuinka monta havaintoa muuttujan arvoilla on. <code>table()</code> voi ottaa vastaan myös kaksi kategorista muuttujaa, ja laskee jokaiselle muuttujien arvojen yhdistelmälle havaintojen lukumäärän.</p>
+<p>Katsotaan, mitä <code>str()</code> kertoo juuri lukemastamme tooth-datasta.</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="reading-data.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tooth)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    10 obs. of  3 variables:
+##  $ len : num  9.7 17.3 24.8 26.4 27.3 32.5 17.3 23 22.5 5.2
+##  $ supp: chr  &quot;OJ&quot; &quot;VC&quot; &quot;OJ&quot; &quot;OJ&quot; ...
+##  $ dose: num  0.5 1 2 1 2 2 1 2 1 0.5</code></pre>
+<p>Kuten näimme aiemmin, mukana on 10 havaintoa ja 3 muuttujaa. len ja dose ovat luokkaa numeric eli desimaalilukuja ja supp on luokkaa factor. Factor-vektoreita käsitellään enemmän lineaaristen mallien yhteydessä, mutta niillä merkitään usein kategorisia muuttujia.</p>
+<p>Lasketaan seuraavaksi, kuinka monelle marsulle annettiin appelsiinimehua ja kuinka monelle askorbiinihappoa.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="reading-data.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tooth<span class="sc">$</span>supp)</span></code></pre></div>
+<pre><code>## 
+## OJ VC 
+##  5  5</code></pre>
+<p>Kumpaakin annostelutapaa käytettiin siis viisi kertaa. Voimme myös selvittää, miten eri annokset jakautuvat annostelutavan suhteen:</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="reading-data.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tooth<span class="sc">$</span>supp, tooth<span class="sc">$</span>dose)</span></code></pre></div>
+<pre><code>##     
+##      0.5 1 2
+##   OJ   1 1 3
+##   VC   1 3 1</code></pre>
+<p>Appelsiinimehuna annettiin siis 0.5 mg ja 1 mg annoksia kumpaakin 1 kappale, ja 2 mg annoksia 3 kappaletta.</p>
+<div id="rn-sisäänrakennetut-datasetit" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> R:n sisäänrakennetut datasetit</h3>
+<p>R:ssä on monta sisäänrakennettua (built-in) datasettiä. Näitä on kätevää käyttää nopeaan testaamiseen, ja ne vilahtelevatkin usein R-oppaissa. Esimerkiksi aikaisempi odontoblastien pituuksia sisältävä datasettimme on oikeastaan pieni otos R:n sisäisestä datasetistä ToothGrowth.</p>
+<p>R:n sisäiset datasetit ovat koko ajan käytettävissä, vaikka ne eivät näy RStudion ympäristössä (Environment). Voimme esimerkiksi katsoa, millainen rakenne kokonaisella ToothGroth-datasetillä on:</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="reading-data.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ToothGrowth)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    60 obs. of  3 variables:
+##  $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
+##  $ supp: Factor w/ 2 levels &quot;OJ&quot;,&quot;VC&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ dose: num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...</code></pre>
+<p>R:n datasettejä voi käyttää moneen eri tarkoitukseen, kuten datan visualisoinnin tai tilastollisten toimenpiteiden testaamiseen. Listan kaikista R:n dataseteistä saa komennolla <code>data()</code>. Tarkempia tietoja datasetistä saa help-sivulta kuten funktioden tapauksessa, esimerkiksi <code>?ToothGrowth</code></p>
+</div>
+</div>
+<div id="muut-tiedostot" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Muut tiedostot</h2>
+<div id="excel" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Excel</h3>
+<p>Excelin käyttämiä .xlsx-tiedostoja voi lukea suoraan R:ään, vaikka jossain netissä olevissa ohjeissa suositellaan niiden muuntamista .csv-muotoon. Tätä varten pitää asentaa openxlsx-paketti. Tämän voi tehdä RStudion Packages-valikoksta tai suoraan komennolla <code>install.packages("openxlsx")</code>. Tästä paketista löytyvät funktiot <code>read.xlsx()</code> ja <code>write.xlsx()</code>, joilla voi lukea ja kirjoittaa .xlsx-tiedostoja.</p>
+<p>HUOM: .xlsx-tiedostoja varten on olemassa myös xlsx-paketti, mutta se tarvitsee Javaa ja erilaisten Java- ja R-versioiden kanssa voi tulla yhteensopivuusongelmia. Suosittelen siis openxlsx-pakettia, se on toiminut hyvin.</p>
+</div>
+<div id="spss" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> SPSS</h3>
+<p>Eri tutkimusryhmissä dataa säilytetään usein SPSS-tiedostoissa (.sav). SPSS-tiedostojen käsittelyyn voi käyttää haven-paketin funktioita <code>read_sav</code> ja <code>write_sav</code>. haven-paketissa on funktiot myös Stata:n ja SAS:n datatiedostoille.</p>
+<p>SPSS-tiedostoja voi lukea myös foreign-paketin avulla, mutta ainakin minulla on parempia kokemuksia haven-paketista. haven on myös osa tidyverse-pakettikokoelmaa, joten oletan sen pysyvän hyvin ajan tasalla jatkossakin.</p>
+</div>
+</div>
+<div id="vinkkejä-tehtäviin" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Vinkkejä tehtäviin</h2>
+<p>Datan sisään lukemiseen liittyvät tehtävät ovat melko suorviivaisia yhtä poikkeusta lukuun ottamatta. Ainakin minulle Rkurssi-paketti generoi tiedoston, jonka tiedostopääte oli .csv, mutta alkiot oli erotettu sarkaimella, ei pilkulla. Jos siis saat outoja virheilmoituksia, tarkasta tiedoston rakenne joko R:n komennolla <code>file.show()</code> tai avaamalla tiedosto esim. Notepadilla.</p>
+
 </div>
 </div>
             </section>
@@ -330,8 +429,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="rstudio.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-types.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="plotting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,4 +1,4 @@
-# Funktiot
+# Funktiot {#functions}
 
 Tällä viikolla opitaan kirjoittamaan itse funktioita ja pureudutaan sitä kautta syvemmälle R-funktioiden toimintaan. 
 

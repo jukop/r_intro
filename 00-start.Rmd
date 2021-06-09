@@ -8,14 +8,20 @@ Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. M
 
 ## Sisällysluettelo {-}
 
-- Muuttujat ja vektorit
-- Kuvaajien piirtäminen
-- Matriisi, taulukko, lista ja data frame
-- Datan sisään lukeminen
-- Lineaariset mallit ja tilastolliset jakaumat
-- Funktiot
-- Ehtorakenteet
-- Toistorakenteet
+- [Muuttujat ja vektorit](#variables_and_vectors)
+- [Kuvaajien piirtäminen](#plotting)
+- [Tietotyypit: matriisi, taulukko, lista ja data frame](#data_types)
+  * [matriisi (matrix)](#matriisi)
+  * [taulukko (array)](#taulukko)
+  * [lista (list)](#lista)
+  * [data frame](#data-frame)
+- [Datan sisään lukeminen](#reading_data)
+- [Lineaariset mallit ja tilastolliset jakaumat](#statistics)
+  * [Lineaariset mallit](#linear_models)
+  * [Todennäköisyysjakaumat](#distributions)
+- [Funktiot](#functions)
+- [Ehtorakenteet](#ifelse)
+- [Toistorakenteet](#loops)
 
 # RStudio {-}
 

@@ -1,4 +1,4 @@
-# Ehtorakenteet
+# Ehtorakenteet {#ifelse}
 
 Viime kerralla tehdyt funktiot suorittavat aina samat komennot riippumatta syötteestä. Entä jos funktion toiminnassa pitäisi ottaa huomioon erilaisia tapauksia, eli suorittaa tiettyjä komentoja vain joissain tilanteissa? Tätä varten ohjelmointikielissä on ehtorakenteita, eli ns. if/else-rakenteita, jotka ohjaavat ohjelman toimintaa.
 

@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Kappale 3 Tietotyypit | R-ohjelmoinnin perusteet</title>
+  <meta name="description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Kappale 3 Tietotyypit | R-ohjelmoinnin perusteet" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Kappale 3 Tietotyypit | R-ohjelmoinnin perusteet" />
+  
+  <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
+  
+
+<meta name="author" content="Anton Klåvus (2020), converted to bookdown by Juho Kopra (2021)" />
+
+
+<meta name="date" content="2021-06-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="variables-and-vectors.html"/>
+<link rel="next" href="reading-data.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R-ohjelmoinnin perusteet</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html"><i class="fa fa-check"></i>Alkuvalmistelut</a>
+<ul>
+<li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html#r-kurssi"><i class="fa fa-check"></i>R-kurssi</a></li>
+<li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html#sisällysluettelo"><i class="fa fa-check"></i>Sisällysluettelo</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i>RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#rstudion-asennus"><i class="fa fa-check"></i>RStudion asennus</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#rstudion-käyttö"><i class="fa fa-check"></i>RStudion käyttö</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#kurssin-suoritus-rstudiolla"><i class="fa fa-check"></i>Kurssin suoritus RStudiolla</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#kurssilla-tarvittavien-r-pakettien-asennus"><i class="fa fa-check"></i>Kurssilla tarvittavien R-pakettien asennus</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Johdanto</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#mikä-r-on-ja-mitä-sillä-tehdään"><i class="fa fa-check"></i><b>1.1</b> Mikä R on ja mitä sillä tehdään?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html"><i class="fa fa-check"></i><b>2</b> Muuttujat ja vektorit</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#muuttujat-variables"><i class="fa fa-check"></i><b>2.1</b> Muuttujat (Variables)</a></li>
+<li class="chapter" data-level="2.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#kommentit"><i class="fa fa-check"></i><b>2.2</b> Kommentit</a></li>
+<li class="chapter" data-level="2.3" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#vektorit-vectors"><i class="fa fa-check"></i><b>2.3</b> Vektorit (Vectors)</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#vektorilaskentaa"><i class="fa fa-check"></i><b>2.3.1</b> Vektorilaskentaa</a></li>
+<li class="chapter" data-level="2.3.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ei-numeeriset-vektorit"><i class="fa fa-check"></i><b>2.3.2</b> Ei-numeeriset vektorit</a></li>
+<li class="chapter" data-level="2.3.3" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#vektorien-indeksointi-ja-leikkely"><i class="fa fa-check"></i><b>2.3.3</b> Vektorien indeksointi ja leikkely</a></li>
+<li class="chapter" data-level="2.3.4" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#puuttuvat-arvot"><i class="fa fa-check"></i><b>2.3.4</b> Puuttuvat arvot</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#tehtävien-aloitus"><i class="fa fa-check"></i><b>2.4</b> Tehtävien aloitus</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Tietotyypit</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-types.html"><a href="data-types.html#esittely"><i class="fa fa-check"></i><b>3.1</b> Esittely</a></li>
+<li class="chapter" data-level="3.2" data-path="data-types.html"><a href="data-types.html#matriisi"><i class="fa fa-check"></i><b>3.2</b> Matriisi</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="data-types.html"><a href="data-types.html#matriisin-luominen"><i class="fa fa-check"></i><b>3.2.1</b> Matriisin luominen</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data-types.html"><a href="data-types.html#matriisin-koko"><i class="fa fa-check"></i><b>3.2.2</b> Matriisin koko</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data-types.html"><a href="data-types.html#matriisin-indeksointi"><i class="fa fa-check"></i><b>3.2.3</b> Matriisin indeksointi</a></li>
+<li class="chapter" data-level="3.2.4" data-path="data-types.html"><a href="data-types.html#matriisien-rakentaminen-vektoreista"><i class="fa fa-check"></i><b>3.2.4</b> Matriisien rakentaminen vektoreista</a></li>
+<li class="chapter" data-level="3.2.5" data-path="data-types.html"><a href="data-types.html#rivien-ja-sarakkeiden-nimeäminen"><i class="fa fa-check"></i><b>3.2.5</b> Rivien ja sarakkeiden nimeäminen</a></li>
+<li class="chapter" data-level="3.2.6" data-path="data-types.html"><a href="data-types.html#matriiseilla-laskeminen"><i class="fa fa-check"></i><b>3.2.6</b> Matriiseilla laskeminen</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="data-types.html"><a href="data-types.html#taulukko"><i class="fa fa-check"></i><b>3.3</b> Taulukko</a></li>
+<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html#lista"><i class="fa fa-check"></i><b>3.4</b> Lista</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="data-types.html"><a href="data-types.html#listojen-alkioiden-käsittely"><i class="fa fa-check"></i><b>3.4.1</b> Listojen alkioiden käsittely</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data-types.html"><a href="data-types.html#alkion-lisäys-listaan-ja-listojen-yhdistäminen"><i class="fa fa-check"></i><b>3.4.2</b> Alkion lisäys listaan ja listojen yhdistäminen</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="data-types.html"><a href="data-types.html#data-frame"><i class="fa fa-check"></i><b>3.5</b> Data frame</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="data-types.html"><a href="data-types.html#data-framen-käsittely"><i class="fa fa-check"></i><b>3.5.1</b> Data framen käsittely</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="data-types.html"><a href="data-types.html#view"><i class="fa fa-check"></i><b>3.6</b> View()</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="reading-data.html"><a href="reading-data.html"><i class="fa fa-check"></i><b>4</b> Datan sisään lukeminen</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="reading-data.html"><a href="reading-data.html#tekstitiedostot"><i class="fa fa-check"></i><b>4.1</b> Tekstitiedostot</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="reading-data.html"><a href="reading-data.html#read.table"><i class="fa fa-check"></i><b>4.1.1</b> read.table()</a></li>
+<li class="chapter" data-level="4.1.2" data-path="reading-data.html"><a href="reading-data.html#read.csv"><i class="fa fa-check"></i><b>4.1.2</b> read.csv()</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="reading-data.html"><a href="reading-data.html#data-framen-rakenteen-tutkiminen"><i class="fa fa-check"></i><b>4.2</b> Data framen rakenteen tutkiminen</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="reading-data.html"><a href="reading-data.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>4.2.1</b> R:n sisäänrakennetut datasetit</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="reading-data.html"><a href="reading-data.html#muut-tiedostot"><i class="fa fa-check"></i><b>4.3</b> Muut tiedostot</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="reading-data.html"><a href="reading-data.html#excel"><i class="fa fa-check"></i><b>4.3.1</b> Excel</a></li>
+<li class="chapter" data-level="4.3.2" data-path="reading-data.html"><a href="reading-data.html#spss"><i class="fa fa-check"></i><b>4.3.2</b> SPSS</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="reading-data.html"><a href="reading-data.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>4.4</b> Vinkkejä tehtäviin</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>5</b> Kuvaajien piirtäminen</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="plotting.html"><a href="plotting.html#korkean-tason-piirtofunktiot"><i class="fa fa-check"></i><b>5.1</b> Korkean tason piirtofunktiot</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="plotting.html"><a href="plotting.html#plot"><i class="fa fa-check"></i><b>5.1.1</b> plot()</a></li>
+<li class="chapter" data-level="5.1.2" data-path="plotting.html"><a href="plotting.html#muut-korkean-tason-funktiot"><i class="fa fa-check"></i><b>5.1.2</b> Muut korkean tason funktiot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="plotting.html"><a href="plotting.html#alemman-tason-grafiikkatoiminnot"><i class="fa fa-check"></i><b>5.2</b> Alemman tason grafiikkatoiminnot</a></li>
+<li class="chapter" data-level="5.3" data-path="plotting.html"><a href="plotting.html#kuvaajien-piirtäminen-käytännössä"><i class="fa fa-check"></i><b>5.3</b> Kuvaajien piirtäminen käytännössä</a></li>
+<li class="chapter" data-level="5.4" data-path="plotting.html"><a href="plotting.html#tämän-viikon-tehtävä"><i class="fa fa-check"></i><b>5.4</b> Tämän viikon tehtävä</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>6</b> Lineaariset mallit ja tilastolliset jakaumat</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistics.html"><a href="statistics.html#factor-vektorit"><i class="fa fa-check"></i><b>6.1</b> Factor-vektorit</a></li>
+<li class="chapter" data-level="6.2" data-path="statistics.html"><a href="statistics.html#linear_models"><i class="fa fa-check"></i><b>6.2</b> Lineaariset mallit</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="statistics.html"><a href="statistics.html#teoria"><i class="fa fa-check"></i><b>6.2.1</b> Teoria</a></li>
+<li class="chapter" data-level="6.2.2" data-path="statistics.html"><a href="statistics.html#esimerkki"><i class="fa fa-check"></i><b>6.2.2</b> Esimerkki</a></li>
+<li class="chapter" data-level="6.2.3" data-path="statistics.html"><a href="statistics.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>6.2.3</b> Tarkempia tietoja mallista</a></li>
+<li class="chapter" data-level="6.2.4" data-path="statistics.html"><a href="statistics.html#ennustaminen"><i class="fa fa-check"></i><b>6.2.4</b> Ennustaminen</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="statistics.html"><a href="statistics.html#korrelaatio"><i class="fa fa-check"></i><b>6.3</b> Korrelaatio</a></li>
+<li class="chapter" data-level="6.4" data-path="statistics.html"><a href="statistics.html#distributions"><i class="fa fa-check"></i><b>6.4</b> Todennäköisyysjakaumat R:ssä</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="statistics.html"><a href="statistics.html#esimerkki-normaalijakauma"><i class="fa fa-check"></i><b>6.4.1</b> Esimerkki: normaalijakauma</a></li>
+<li class="chapter" data-level="6.4.2" data-path="statistics.html"><a href="statistics.html#muita-jakaumia"><i class="fa fa-check"></i><b>6.4.2</b> Muita jakaumia</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>7</b> Funktiot</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="functions.html"><a href="functions.html#funktion-käsite"><i class="fa fa-check"></i><b>7.1</b> Funktion käsite</a></li>
+<li class="chapter" data-level="7.2" data-path="functions.html"><a href="functions.html#r-funktiot"><i class="fa fa-check"></i><b>7.2</b> R-funktiot</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="functions.html"><a href="functions.html#funktioiden-määrittely"><i class="fa fa-check"></i><b>7.2.1</b> Funktioiden määrittely</a></li>
+<li class="chapter" data-level="7.2.2" data-path="functions.html"><a href="functions.html#argumentit-ja-funktion-kutsuminen"><i class="fa fa-check"></i><b>7.2.2</b> Argumentit ja funktion kutsuminen</a></li>
+<li class="chapter" data-level="7.2.3" data-path="functions.html"><a href="functions.html#funktio-ilman-argumentteja"><i class="fa fa-check"></i><b>7.2.3</b> Funktio ilman argumentteja</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="functions.html"><a href="functions.html#arvojen-palautus"><i class="fa fa-check"></i><b>7.3</b> Arvojen palautus</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="functions.html"><a href="functions.html#usean-arvon-palautus"><i class="fa fa-check"></i><b>7.3.1</b> Usean arvon palautus</a></li>
+<li class="chapter" data-level="7.3.2" data-path="functions.html"><a href="functions.html#palautus-ilman-return-käskyä"><i class="fa fa-check"></i><b>7.3.2</b> Palautus ilman return-käskyä</a></li>
+<li class="chapter" data-level="7.3.3" data-path="functions.html"><a href="functions.html#funktio-ilman-tulosta"><i class="fa fa-check"></i><b>7.3.3</b> Funktio ilman tulosta</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>8</b> Ehtorakenteet</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="ifelse.html"><a href="ifelse.html#loogiset-operaattorit"><i class="fa fa-check"></i><b>8.1</b> Loogiset operaattorit</a></li>
+<li class="chapter" data-level="8.2" data-path="ifelse.html"><a href="ifelse.html#ehtorakenteet"><i class="fa fa-check"></i><b>8.2</b> Ehtorakenteet</a></li>
+<li class="chapter" data-level="8.3" data-path="ifelse.html"><a href="ifelse.html#alkioiden-poimiminen-vektorista-tietyh-ehdon-perusteella"><i class="fa fa-check"></i><b>8.3</b> Alkioiden poimiminen vektorista tietyh ehdon perusteella</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>9</b> Toistorakenteet (loops)</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="loops.html"><a href="loops.html#for-silmukka"><i class="fa fa-check"></i><b>9.1</b> For-silmukka</a></li>
+<li class="chapter" data-level="9.2" data-path="loops.html"><a href="loops.html#while-slimukat"><i class="fa fa-check"></i><b>9.2</b> While-slimukat</a></li>
+<li class="chapter" data-level="9.3" data-path="loops.html"><a href="loops.html#sisäkkäiset-silmukat-nested-loops"><i class="fa fa-check"></i><b>9.3</b> Sisäkkäiset silmukat (nested loops)</a></li>
+<li class="chapter" data-level="9.4" data-path="loops.html"><a href="loops.html#iterointiin-puuttuminen-next-ja-break"><i class="fa fa-check"></i><b>9.4</b> Iterointiin puuttuminen: next ja break</a></li>
+<li class="chapter" data-level="9.5" data-path="loops.html"><a href="loops.html#apply-funktiot"><i class="fa fa-check"></i><b>9.5</b> Apply-funktiot</a></li>
+<li class="chapter" data-level="9.6" data-path="loops.html"><a href="loops.html#vinkkejä-tehtäviin-1"><i class="fa fa-check"></i><b>9.6</b> Vinkkejä tehtäviin</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Julkaistu bookdownilla.</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R-ohjelmoinnin perusteet</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data_types" class="section level1" number="3">
+<h1><span class="header-section-number">Kappale 3</span> Tietotyypit</h1>
+<div id="esittely" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Esittely</h2>
+<p>Tässä osassa tutustutaan neljään uuteen tietorakenteeseen:</p>
+<ul>
+<li><a href="data-types.html#matriisi">matriisi (matrix)</a></li>
+<li><a href="data-types.html#taulukko">taulukko (array)</a></li>
+<li><a href="data-types.html#lista">lista (list)</a></li>
+<li><a href="data-types.html#data-frame">data frame</a></li>
+</ul>
+<p>Taulukko on juuri sitä miltä se kuulostaa: vektorintapainen tietorakenne, johon tallennetaan alkioita (elements), joilla on kaikilla sama luokka (class), eli esimerkiksi lukuja. Ero vektoriin on se, että taulukolla on useampi ulottuvuus. Matriisi on erikoistapaus taulukosta, sillä matriisi on kaksiulotteinen taulukko. Matriisi vastaa siis oikeastaan paremmin sitä mielikuvaa, joka monelle tulee mieleen suomen sanasta taulukko, ja matriisit ovatkin paljon yleisempiä kuin moniulotteiset taulukot.</p>
+<p>Matriisi voi olla joillekin sanana tuttu myös tilastotieteen tai matematiikan kursseilta, ja R:n matriisi vastaakin matemaattista matriisia. Tästä syystä matriisi on hyvin yleinen tietorakenne, johon ei voi olla törmäämättä jos käyttää R:ää tutkimuksessa.</p>
+<p>Lista on kokoelma alkioita, joilla voi olla eri luokkia. Data frame on matriisin kaltainen kaksiulotteinen tietorakenne, jonka sarakkeilla voi olla eri luokkia.</p>
+<p>Aloitetaan matriiseista.</p>
+</div>
+<div id="matriisi" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Matriisi</h2>
+<div id="matriisin-luominen" class="section level3" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Matriisin luominen</h3>
+<p>Matriisin luominen on yksinkertaista, ja tapahtuu funktiolla <code>matrix</code></p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="data-types.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<p>Funktiolle matrix annetaan siis matriisiin tallennettavat luvut vektorina, sekä matriisin rivien ja sarakkeiden määrä (<code>ncol</code> ja <code>nrow</code>). Matriisi voi koostua myös kokonaan tietystä arvosta:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="data-types.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    0    0    0    0    0
+## [2,]    0    0    0    0    0</code></pre>
+<p>Useimmiten matriisien data luetaan R:ään jostain tiedostosta, joka on tuotettu Excelillä tai jollain muulla ohjelmalla (tutkimustulosten kirjaus suoraan R:ään olisi raskasta). Matriisien luonti käsin on kuitenkin hyvä osata, sillä pienillä matriiseilla on kätevää testata omaa koodia. Myös yllä olevan kaltaisia, esim. nollalla täytettyjä matriiseja on joskus kätevää käyttää “alustana”, kun lasketaan omasta datasta tuloksia rivi tai sarake kerrallaan. Tämä johtuu siitä, että olemassa olevan matriisin rivin arvojen vaihtaminen on nopeampi operaatio kuin rivin lisääminen matriisiin.</p>
+</div>
+<div id="matriisin-koko" class="section level3" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Matriisin koko</h3>
+<p>Joskus voi törmätä matriiseihin, joiden koko ei tiedä, tai ei halua olettaa. Tällöin tarvitaan funktioita, jotka kertovat matriisin koosta. Esimerkiksi, kun luetaan dataa R:ään tiedostoista, on hyvä tarkistaa, että kaikki rivit ja sarakkeet ovat mukana. <code>nrow</code> ja <code>ncol</code> palauttavat rivien ja sarakkeiden määrän, <code>dim</code> palauttaa matriisin rivien ja sarakkeiden määrän, rivit ensin.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="data-types.html#cb88-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb88-2"><a href="data-types.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of rows</span></span>
+<span id="cb88-3"><a href="data-types.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(X)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="data-types.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of columns</span></span>
+<span id="cb90-2"><a href="data-types.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(X)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-types.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Dimensions</span></span>
+<span id="cb92-2"><a href="data-types.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(X)</span></code></pre></div>
+<pre><code>## [1] 3 4</code></pre>
+</div>
+<div id="matriisin-indeksointi" class="section level3" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Matriisin indeksointi</h3>
+<p>Matriisin indeksointi on hyvin samantapainen operaatio kuin vektorin indeksointi, eli matriisin perään laitetaan hakasulkeet ja niihin määritellään halutut arvot. Matriisin indeksoinnissa pitää kuitenkin antaa erikseen indeksit riveille ja sarakkeille, pilkulla erotettuna.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="data-types.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Only nrow is enough, since the number of columns must be 3</span></span>
+<span id="cb94-2"><a href="data-types.html#cb94-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb94-3"><a href="data-types.html#cb94-3" aria-hidden="true" tabindex="-1"></a>X</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="data-types.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element on second row, third column</span></span>
+<span id="cb96-2"><a href="data-types.html#cb96-2" aria-hidden="true" tabindex="-1"></a>X[<span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="data-types.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The complete first row</span></span>
+<span id="cb98-2"><a href="data-types.html#cb98-2" aria-hidden="true" tabindex="-1"></a>X[<span class="dv">1</span>, ]</span></code></pre></div>
+<pre><code>## [1] 1 4 7</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="data-types.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The second and third values of the second column</span></span>
+<span id="cb100-2"><a href="data-types.html#cb100-2" aria-hidden="true" tabindex="-1"></a>X[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 8 9</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="data-types.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get rows where the values of the first column is &gt; 1</span></span>
+<span id="cb102-2"><a href="data-types.html#cb102-2" aria-hidden="true" tabindex="-1"></a>X[X[, <span class="dv">1</span>] <span class="sc">&gt;</span> <span class="dv">1</span>, ]</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    5    8
+## [2,]    3    6    9</code></pre>
+<p>HUOM: jos matriisia indeksoidessa tuloksessa sarakkeiden tai rivien määrä on tasan yksi, kuten yllä olevissa esimerkeissä viimeistä lukuun ottamatta, tuloksena on vektori, ei matriisi. Jos haluaa tuloksen olevan matriisi, tulee hakasulkeisiin lisätä määre <code>drop = FALSE</code></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="data-types.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The complete first row</span></span>
+<span id="cb104-2"><a href="data-types.html#cb104-2" aria-hidden="true" tabindex="-1"></a>X[<span class="dv">1</span>, ,drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="data-types.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The second and third values of the second column</span></span>
+<span id="cb106-2"><a href="data-types.html#cb106-2" aria-hidden="true" tabindex="-1"></a>X[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">3</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code></pre></div>
+<pre><code>##      [,1]
+## [1,]    8
+## [2,]    9</code></pre>
+<p>Matriiseja voi myös muokata sijoittamalla haluttuihin paikkoihin uusia arvoja:</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="data-types.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy of X</span></span>
+<span id="cb108-2"><a href="data-types.html#cb108-2" aria-hidden="true" tabindex="-1"></a>X_new <span class="ot">&lt;-</span> X</span>
+<span id="cb108-3"><a href="data-types.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace first row with new values</span></span>
+<span id="cb108-4"><a href="data-types.html#cb108-4" aria-hidden="true" tabindex="-1"></a>X_new[<span class="dv">1</span>, ] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">13</span>, <span class="dv">15</span>)</span>
+<span id="cb108-5"><a href="data-types.html#cb108-5" aria-hidden="true" tabindex="-1"></a>X_new</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   10   13   15
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="data-types.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replacement can also be a single value, and will be recycled</span></span>
+<span id="cb110-2"><a href="data-types.html#cb110-2" aria-hidden="true" tabindex="-1"></a>X_new[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb110-3"><a href="data-types.html#cb110-3" aria-hidden="true" tabindex="-1"></a>X_new</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   10   13   15
+## [2,]    0    5    8
+## [3,]    0    6    9</code></pre>
+<p>Rivejä tai sarakkeita voi myös poistaa. Tämä tapahtuu antamalla indeksi miinusmerkkisenä:</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="data-types.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Without first row</span></span>
+<span id="cb112-2"><a href="data-types.html#cb112-2" aria-hidden="true" tabindex="-1"></a>X[<span class="sc">-</span><span class="dv">1</span>, ]</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    5    8
+## [2,]    3    6    9</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="data-types.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Without second column</span></span>
+<span id="cb114-2"><a href="data-types.html#cb114-2" aria-hidden="true" tabindex="-1"></a>X[, <span class="sc">-</span><span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    7
+## [2,]    2    8
+## [3,]    3    9</code></pre>
+<div id="indeksimatriisi-index-matrix" class="section level4" number="3.2.3.1">
+<h4><span class="header-section-number">3.2.3.1</span> Indeksimatriisi (index matrix)</h4>
+<p>Jos halutaan poimia useampi yksittäinen arvo matriisista, tulee käyttää indeksimatriisia (index matrix).</p>
+<p>Esimerkiksi, jos haluttaisiin poimia äskeisestä X-matriisista arvot [1, 2], [1, 3] ja [2,2], tämä ei toimi:</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="data-types.html#cb116-1" aria-hidden="true" tabindex="-1"></a>X[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)]</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    4    7    4
+## [2,]    4    7    4
+## [3,]    5    8    5</code></pre>
+<p>vaan tulee käyttää indeksimatriisia, jonka jokainen rivi antaa yhden halutun alkion indeksit, ensin rivi ja sitten sarake. Indeksimatriiseja tehdessä kannattaa asettaa lisämäärä <code>byrow = TRUE</code>, jolloin alkiot laitetaan matriisiin rivi kerrallaan, ei sarake kerrallaan niin kuin oletuksena.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="data-types.html#cb118-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb118-2"><a href="data-types.html#cb118-2" aria-hidden="true" tabindex="-1"></a>i</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    1    2
+## [2,]    1    3
+## [3,]    2    2</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="data-types.html#cb120-1" aria-hidden="true" tabindex="-1"></a>X[i]</span></code></pre></div>
+<pre><code>## [1] 4 7 5</code></pre>
+</div>
+</div>
+<div id="matriisien-rakentaminen-vektoreista" class="section level3" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Matriisien rakentaminen vektoreista</h3>
+<p>Matriisi koostuu usein useammasta muuttujasta ja havainnoista. Yleensä jokainen rivi vastaa yhtä havaintoa, ja sarake muuttujaa. Tämän takia on hyvä tietää, miten yksittäisistä vektoreista saa koottua matriiseja. Alla olevassa esimerkissä on koottu yhteen matriisiin Star Wars-hahmojen pituuksia ja painoja. Tämä tapahtuu <code>cbind</code> funktiolla (column bind), joka nimensä mukaan yhdistää vektorit matriisin sarakkeiksi. <code>cbind</code> voi yhdistää myös valmiita matriiseja yhteen, niin että matriisit ovat “vierekkäin” eli yhdistetyssä matriisissa on kummankin matriisin sarakkeet (rivien määrän tulee olla sama). Vastaavasti <code>rbind</code> (row bind) yhdistää matriiseja “allekkain”.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="data-types.html#cb122-1" aria-hidden="true" tabindex="-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">172</span>, <span class="dv">167</span>, <span class="dv">96</span>, <span class="dv">202</span>, <span class="dv">150</span>, <span class="dv">178</span>)</span>
+<span id="cb122-2"><a href="data-types.html#cb122-2" aria-hidden="true" tabindex="-1"></a>masses <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">77</span>, <span class="dv">75</span>, <span class="dv">32</span>, <span class="dv">136</span>, <span class="dv">49</span>, <span class="dv">120</span>)</span>
+<span id="cb122-3"><a href="data-types.html#cb122-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-4"><a href="data-types.html#cb122-4" aria-hidden="true" tabindex="-1"></a>starwars <span class="ot">&lt;-</span> <span class="fu">cbind</span>(heights, masses)</span>
+<span id="cb122-5"><a href="data-types.html#cb122-5" aria-hidden="true" tabindex="-1"></a>starwars</span></code></pre></div>
+<pre><code>##      heights masses
+## [1,]     172     77
+## [2,]     167     75
+## [3,]      96     32
+## [4,]     202    136
+## [5,]     150     49
+## [6,]     178    120</code></pre>
+</div>
+<div id="rivien-ja-sarakkeiden-nimeäminen" class="section level3" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Rivien ja sarakkeiden nimeäminen</h3>
+<p>Matriisien rivit ja sarakkeet voi nimetä, ja usein tässä onkin järkeä. Yllä olevassa esimerkissä <code>starwars</code>-matriisin sarakkeet on nimetty alkuperäisten vektorin mukaan. Alla olevassa esimerkissä on lisää tapoja nimetä rivejä ja sarakkeita</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="data-types.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set column names by naming arguments while building matrix from vectors</span></span>
+<span id="cb124-2"><a href="data-types.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(<span class="at">Height =</span> heights, <span class="at">Mass =</span> masses)</span></code></pre></div>
+<pre><code>##      Height Mass
+## [1,]    172   77
+## [2,]    167   75
+## [3,]     96   32
+## [4,]    202  136
+## [5,]    150   49
+## [6,]    178  120</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="data-types.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set column and row names explicitly</span></span>
+<span id="cb126-2"><a href="data-types.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(starwars) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Height&quot;</span>, <span class="st">&quot;Mass&quot;</span>)</span>
+<span id="cb126-3"><a href="data-types.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(starwars) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Luke Skywalker&quot;</span>, <span class="st">&quot;C-3PO&quot;</span>, <span class="st">&quot;R2-D2&quot;</span>, <span class="st">&quot;Darth Vader&quot;</span>, <span class="st">&quot;Leia Organa&quot;</span>, <span class="st">&quot;Owen Lars&quot;</span>)</span>
+<span id="cb126-4"><a href="data-types.html#cb126-4" aria-hidden="true" tabindex="-1"></a>starwars</span></code></pre></div>
+<pre><code>##                Height Mass
+## Luke Skywalker    172   77
+## C-3PO             167   75
+## R2-D2              96   32
+## Darth Vader       202  136
+## Leia Organa       150   49
+## Owen Lars         178  120</code></pre>
+<p>Nimettyjä matriiseja voi indeksoida myös nimien perusteella:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="data-types.html#cb128-1" aria-hidden="true" tabindex="-1"></a>starwars[<span class="fu">c</span>(<span class="st">&quot;Luke Skywalker&quot;</span>, <span class="st">&quot;R2-D2&quot;</span>), ]</span></code></pre></div>
+<pre><code>##                Height Mass
+## Luke Skywalker    172   77
+## R2-D2              96   32</code></pre>
+<p>Matriisiin voi myös lisätä uusia sarakkeita <code>cbind</code> funktiolla. Alla lisätään matriisiin starwars uusi sarake, jossa on hahmojen BMI:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="data-types.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a vector for BMI and add to matrix with cbind</span></span>
+<span id="cb130-2"><a href="data-types.html#cb130-2" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> starwars[, <span class="st">&quot;Mass&quot;</span>] <span class="sc">/</span> (starwars[, <span class="st">&quot;Height&quot;</span>] <span class="sc">/</span> <span class="dv">100</span>)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb130-3"><a href="data-types.html#cb130-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(starwars, <span class="st">&quot;BMI&quot;</span> <span class="ot">=</span> bmi)</span></code></pre></div>
+<pre><code>##                Height Mass      BMI
+## Luke Skywalker    172   77 26.02758
+## C-3PO             167   75 26.89232
+## R2-D2              96   32 34.72222
+## Darth Vader       202  136 33.33007
+## Leia Organa       150   49 21.77778
+## Owen Lars         178  120 37.87401</code></pre>
+</div>
+<div id="matriiseilla-laskeminen" class="section level3" number="3.2.6">
+<h3><span class="header-section-number">3.2.6</span> Matriiseilla laskeminen</h3>
+<p>Matriiseilla laskeminen on hyvin samankaltaista kuin vektoreilla laskeminen. Matriisin ja yksittäisen luvun välisessä operaatiossa matriisin alkiot käsitellään yksitellen. Samoin samankokoiset matriisit voi esim. lisätä yhteen, jolloin lisäys tapahtuu alkio kerrallaan.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-types.html#cb132-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb132-2"><a href="data-types.html#cb132-2" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">11</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb132-3"><a href="data-types.html#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication</span></span>
+<span id="cb132-4"><a href="data-types.html#cb132-4" aria-hidden="true" tabindex="-1"></a>X <span class="sc">*</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    8   14
+## [2,]    4   10   16
+## [3,]    6   12   18</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="data-types.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise sum</span></span>
+<span id="cb134-2"><a href="data-types.html#cb134-2" aria-hidden="true" tabindex="-1"></a>X <span class="sc">+</span> Y</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    4   10   16
+## [2,]    6   12   18
+## [3,]    8   14   20</code></pre>
+<p>Matriiseille on lisäksi määritelty paljon matriisien omia laskutoimituksia, niistä voi lukea lisää oppikirjasta. Matriisilaskentaa opiskelleille huomio: R:ssä oletuksena kertolasku tehdään alkioittain, matriisien kertolasku tapahtuu operaattorilla <code>%*%</code>.</p>
+</div>
+</div>
+<div id="taulukko" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Taulukko</h2>
+<p>Kuten alussa todettiin, taulukot (array) ovat hyvin harvinaisia, joten niihin ei kannata tällä kurssilla keskittyä. Niitä kuitenkin tarvitaan joidenkin tehtävien tekemiseen, joten tässä on hyvin lyhyt oppimäärä taulukoista.</p>
+<p>Taulukot ovat matriisien kaltaisia, mutta taulukossa voi olla yli kaksi ulottuvuutta. Oikeastaan matriisit ovat kaksiulotteisia taulukoita. Alla on esimerkki 3-ulotteisesta taulukosta, jota voi ajatella “peräkkäin” olevina matriiseina. Alla on kuva 1-ulotteisesta taulukosta eli vektorista, 2-ulotteisesta taulukosta eli matriisista ja 3-ulotteisesta taulukosta.</p>
+<p><img src="files/array.png" /></p>
+<p>Taulukkoja luodaan matriisien tapaan funktiolla <code>array</code>. Toisin kuin matriisien tapauksessa, <code>array</code>-funktiolle pitää kertoa rivien ja sarakkeiden määrän lisäksi ulottuvuuksien määrä. Alla oleva esimerkki luo 3-ulotteisen taulukon, jonka voi ajatella koostuvan kolmesta 4 x 2 matriisista.</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="data-types.html#cb136-1" aria-hidden="true" tabindex="-1"></a>my_array <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">24</span>, <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
+<span id="cb136-2"><a href="data-types.html#cb136-2" aria-hidden="true" tabindex="-1"></a>my_array</span></code></pre></div>
+<pre><code>## , , 1
+## 
+##      [,1] [,2]
+## [1,]    1    5
+## [2,]    2    6
+## [3,]    3    7
+## [4,]    4    8
+## 
+## , , 2
+## 
+##      [,1] [,2]
+## [1,]    9   13
+## [2,]   10   14
+## [3,]   11   15
+## [4,]   12   16
+## 
+## , , 3
+## 
+##      [,1] [,2]
+## [1,]   17   21
+## [2,]   18   22
+## [3,]   19   23
+## [4,]   20   24</code></pre>
+<p>Taulukoita indeksoidaan aivan kuten matriiseja, mutta jokaiselle ulottuvuudelle on annettava oma indeksi:</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="data-types.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The first 2 rows of each &quot;layer&quot;</span></span>
+<span id="cb138-2"><a href="data-types.html#cb138-2" aria-hidden="true" tabindex="-1"></a>my_array[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, , ]</span></code></pre></div>
+<pre><code>## , , 1
+## 
+##      [,1] [,2]
+## [1,]    1    5
+## [2,]    2    6
+## 
+## , , 2
+## 
+##      [,1] [,2]
+## [1,]    9   13
+## [2,]   10   14
+## 
+## , , 3
+## 
+##      [,1] [,2]
+## [1,]   17   21
+## [2,]   18   22</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="data-types.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Second column from last two layers</span></span>
+<span id="cb140-2"><a href="data-types.html#cb140-2" aria-hidden="true" tabindex="-1"></a>my_array[, <span class="dv">2</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]   13   21
+## [2,]   14   22
+## [3,]   15   23
+## [4,]   16   24</code></pre>
+</div>
+<div id="lista" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Lista</h2>
+<p>Lista (list) on vektorinkaltainen tietorakenne, jossa on järjestyksessä alkioita, jotka on mahdollisesti nimetty. Tärkeä ero vektoriin verrattuna on, että listan alkiot voivat olla erityyppisiä. Listoja luodaan <code>list</code>-funktiolla:</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="data-types.html#cb142-1" aria-hidden="true" tabindex="-1"></a>example_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb142-2"><a href="data-types.html#cb142-2" aria-hidden="true" tabindex="-1"></a>                     <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">4</span>),</span>
+<span id="cb142-3"><a href="data-types.html#cb142-3" aria-hidden="true" tabindex="-1"></a>                     <span class="st">&quot;list can include anything&quot;</span>)</span>
+<span id="cb142-4"><a href="data-types.html#cb142-4" aria-hidden="true" tabindex="-1"></a>example_list</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1 2 3
+## 
+## [[2]]
+##      [,1] [,2] [,3] [,4]
+## [1,]    0    0    0    0
+## [2,]    0    0    0    0
+## [3,]    0    0    0    0
+## 
+## [[3]]
+## [1] &quot;list can include anything&quot;</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="data-types.html#cb144-1" aria-hidden="true" tabindex="-1"></a>subject_ids <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ANKL&quot;</span>, <span class="st">&quot;PEPA&quot;</span>, <span class="st">&quot;DIPR&quot;</span>)</span>
+<span id="cb144-2"><a href="data-types.html#cb144-2" aria-hidden="true" tabindex="-1"></a>measurements <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">3</span>,</span>
+<span id="cb144-3"><a href="data-types.html#cb144-3" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">3.5</span>, <span class="dv">5</span>, <span class="dv">3</span>,</span>
+<span id="cb144-4"><a href="data-types.html#cb144-4" aria-hidden="true" tabindex="-1"></a>                         <span class="fl">2.3</span>, <span class="dv">3</span>, <span class="fl">1.6</span>),</span>
+<span id="cb144-5"><a href="data-types.html#cb144-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb144-6"><a href="data-types.html#cb144-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(measurements) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CRP&quot;</span>, <span class="st">&quot;HDL&quot;</span>, <span class="st">&quot;LDL&quot;</span>)</span>
+<span id="cb144-7"><a href="data-types.html#cb144-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(measurements) <span class="ot">&lt;-</span> subject_ids</span>
+<span id="cb144-8"><a href="data-types.html#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="co"># List names can be given with or without quotes</span></span>
+<span id="cb144-9"><a href="data-types.html#cb144-9" aria-hidden="true" tabindex="-1"></a>study <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">Subject_ID =</span> subject_ids,</span>
+<span id="cb144-10"><a href="data-types.html#cb144-10" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;Measurements&quot;</span> <span class="ot">=</span> measurements,</span>
+<span id="cb144-11"><a href="data-types.html#cb144-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">Study_name =</span> <span class="st">&quot;Blood tests&quot;</span>)</span>
+<span id="cb144-12"><a href="data-types.html#cb144-12" aria-hidden="true" tabindex="-1"></a>study</span></code></pre></div>
+<pre><code>## $Subject_ID
+## [1] &quot;ANKL&quot; &quot;PEPA&quot; &quot;DIPR&quot;
+## 
+## $Measurements
+##      CRP HDL LDL
+## ANKL 1.0 3.5 2.3
+## PEPA 2.5 5.0 3.0
+## DIPR 3.0 3.0 1.6
+## 
+## $Study_name
+## [1] &quot;Blood tests&quot;</code></pre>
+<p>Listoja ja niiden kaltaisia olioita käytetään R:ssä paljon. Listoihin on kätevä kerätä erilaista tietoa, jotka halutaan säilyttää samassa paketissa. Esimerkiksi yksinkertaisetkin tilastolliset mallit tuottavat paljon erilaista tietoa, jotka pakataan listaan (tarkemmin listan kaltaiseen olioon, tästä lisää myöhemmin).</p>
+<div id="listojen-alkioiden-käsittely" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Listojen alkioiden käsittely</h3>
+<p>Listan alkioihin pääsee käsiksi kahdella eri tavalla: kaksoishakasulkeilla <code>[[]]</code> tai, jos lista on nimetty, dollarimerkillä <code>$</code>:</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="data-types.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By position</span></span>
+<span id="cb146-2"><a href="data-types.html#cb146-2" aria-hidden="true" tabindex="-1"></a>study[[<span class="dv">2</span>]]</span></code></pre></div>
+<pre><code>##      CRP HDL LDL
+## ANKL 1.0 3.5 2.3
+## PEPA 2.5 5.0 3.0
+## DIPR 3.0 3.0 1.6</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="data-types.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># By name</span></span>
+<span id="cb148-2"><a href="data-types.html#cb148-2" aria-hidden="true" tabindex="-1"></a>study[[<span class="st">&quot;Subject_ID&quot;</span>]]</span></code></pre></div>
+<pre><code>## [1] &quot;ANKL&quot; &quot;PEPA&quot; &quot;DIPR&quot;</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="data-types.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Using dollar sign</span></span>
+<span id="cb150-2"><a href="data-types.html#cb150-2" aria-hidden="true" tabindex="-1"></a>study<span class="sc">$</span>Study_name</span></code></pre></div>
+<pre><code>## [1] &quot;Blood tests&quot;</code></pre>
+<p>Listaa voi indeksoida myös yksinkertaisilla hakasulkeilla. Tällöin palautetaan aina lista, eikä yksittäistä alkiota kuten aiemmin. Tämän demonstroiminen vaatii tutustumista uuteen funktioon <code>class</code>, joka palauttaa argumenttinsa luokan (class). Vektorin luokka vaihtelee vektorin sisällön mukaan: numeric = lukuja, character = merkkijonoja, logical = loogisia arvoja, jne. Listojen luokka on luonnollisesti list. Lisätietoa: R:ssä kaikki muuttujiin tallennettavat tiedot ovat olioita (object). Ohjelmointikielten olioilla on aina luokka, joka määrittää sen ominaisuudet. Esimerkiksi <code>print</code> ja <code>plot</code>-komennot toimivat eri tavalla riippuen niiden argumentin luokasta.</p>
+<p>Tarkastellaan alla, mikä ero yksinkertaisilla ja kaksinkertaisilla hakasulkeilla on listan indeksoinnissa:</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="data-types.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns a list of length one with the matrix as the only element</span></span>
+<span id="cb152-2"><a href="data-types.html#cb152-2" aria-hidden="true" tabindex="-1"></a>study[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## $Measurements
+##      CRP HDL LDL
+## ANKL 1.0 3.5 2.3
+## PEPA 2.5 5.0 3.0
+## DIPR 3.0 3.0 1.6</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="data-types.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(study[<span class="dv">2</span>])</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="data-types.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Returns the actual matrix</span></span>
+<span id="cb156-2"><a href="data-types.html#cb156-2" aria-hidden="true" tabindex="-1"></a>study[[<span class="dv">2</span>]]</span></code></pre></div>
+<pre><code>##      CRP HDL LDL
+## ANKL 1.0 3.5 2.3
+## PEPA 2.5 5.0 3.0
+## DIPR 3.0 3.0 1.6</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="data-types.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(study[[<span class="dv">2</span>]])</span></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="data-types.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dollar sign also returns the matrix</span></span>
+<span id="cb160-2"><a href="data-types.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(study<span class="sc">$</span>Measurements)</span></code></pre></div>
+<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="data-types.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Single brackets works as subscripting just like with vectors</span></span>
+<span id="cb162-2"><a href="data-types.html#cb162-2" aria-hidden="true" tabindex="-1"></a>study[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## $Measurements
+##      CRP HDL LDL
+## ANKL 1.0 3.5 2.3
+## PEPA 2.5 5.0 3.0
+## DIPR 3.0 3.0 1.6
+## 
+## $Study_name
+## [1] &quot;Blood tests&quot;</code></pre>
+</div>
+<div id="alkion-lisäys-listaan-ja-listojen-yhdistäminen" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Alkion lisäys listaan ja listojen yhdistäminen</h3>
+<p>Yksittäisen alkion voi lisätä listaan sijoittamalla listan johonkin indeksiin tai nimeen uusi arvo (indeksin pitää olla yhtä suurempi kuin listan pituus). HUOM! Listan alkio voi myös itse olla lista (sisäkkäinen lista = nested list).</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="data-types.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a character matrix as the fourth element of study</span></span>
+<span id="cb164-2"><a href="data-types.html#cb164-2" aria-hidden="true" tabindex="-1"></a>study[[<span class="dv">4</span>]] <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">&quot;CPR&quot;</span>, <span class="st">&quot;HDL&quot;</span>, <span class="st">&quot;LDL&quot;</span>,</span>
+<span id="cb164-3"><a href="data-types.html#cb164-3" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;C-reactive protein&quot;</span>, <span class="st">&quot;High-density lipoprotein&quot;</span>,</span>
+<span id="cb164-4"><a href="data-types.html#cb164-4" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;Low-density lipoprotein&quot;</span>),</span>
+<span id="cb164-5"><a href="data-types.html#cb164-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb164-6"><a href="data-types.html#cb164-6" aria-hidden="true" tabindex="-1"></a><span class="co"># An element of a list can also be a list</span></span>
+<span id="cb164-7"><a href="data-types.html#cb164-7" aria-hidden="true" tabindex="-1"></a>study[[<span class="st">&quot;professional&quot;</span>]] <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;John H. Watson&quot;</span>),</span>
+<span id="cb164-8"><a href="data-types.html#cb164-8" aria-hidden="true" tabindex="-1"></a>                                <span class="at">position =</span> <span class="st">&quot;Medical doctor&quot;</span>,</span>
+<span id="cb164-9"><a href="data-types.html#cb164-9" aria-hidden="true" tabindex="-1"></a>                                <span class="at">age =</span> <span class="dv">45</span>)</span>
+<span id="cb164-10"><a href="data-types.html#cb164-10" aria-hidden="true" tabindex="-1"></a>study</span></code></pre></div>
+<pre><code>## $Subject_ID
+## [1] &quot;ANKL&quot; &quot;PEPA&quot; &quot;DIPR&quot;
+## 
+## $Measurements
+##      CRP HDL LDL
+## ANKL 1.0 3.5 2.3
+## PEPA 2.5 5.0 3.0
+## DIPR 3.0 3.0 1.6
+## 
+## $Study_name
+## [1] &quot;Blood tests&quot;
+## 
+## [[4]]
+##      [,1]  [,2]                      
+## [1,] &quot;CPR&quot; &quot;C-reactive protein&quot;      
+## [2,] &quot;HDL&quot; &quot;High-density lipoprotein&quot;
+## [3,] &quot;LDL&quot; &quot;Low-density lipoprotein&quot; 
+## 
+## $professional
+## $professional$name
+## [1] &quot;John H. Watson&quot;
+## 
+## $professional$position
+## [1] &quot;Medical doctor&quot;
+## 
+## $professional$age
+## [1] 45</code></pre>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="data-types.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that the fourth element has no name</span></span>
+<span id="cb166-2"><a href="data-types.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(study)</span></code></pre></div>
+<pre><code>## [1] &quot;Subject_ID&quot;   &quot;Measurements&quot; &quot;Study_name&quot;   &quot;&quot;             &quot;professional&quot;</code></pre>
+<p>Listoja voi yhdistää vektorien tapaan <code>c()</code>-funktiolla:</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="data-types.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate two vectors</span></span>
+<span id="cb168-2"><a href="data-types.html#cb168-2" aria-hidden="true" tabindex="-1"></a>vector1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">5</span>)</span>
+<span id="cb168-3"><a href="data-types.html#cb168-3" aria-hidden="true" tabindex="-1"></a>vector2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb168-4"><a href="data-types.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(vector1, vector2)</span></code></pre></div>
+<pre><code>## [1] 3 6 5 1 2 3</code></pre>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="data-types.html#cb170-1" aria-hidden="true" tabindex="-1"></a>list1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">vector =</span> vector1,</span>
+<span id="cb170-2"><a href="data-types.html#cb170-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">name =</span> <span class="st">&quot;list1&quot;</span>)</span>
+<span id="cb170-3"><a href="data-types.html#cb170-3" aria-hidden="true" tabindex="-1"></a>list2 <span class="ot">&lt;-</span> study[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb170-4"><a href="data-types.html#cb170-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenate three lists, names stay the same</span></span>
+<span id="cb170-5"><a href="data-types.html#cb170-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(list1, list2, <span class="fu">list</span>(<span class="at">first_element =</span> <span class="st">&quot;A&quot;</span>, <span class="at">second =</span> <span class="st">&quot;B&quot;</span>))</span></code></pre></div>
+<pre><code>## $vector
+## [1] 3 6 5
+## 
+## $name
+## [1] &quot;list1&quot;
+## 
+## $Subject_ID
+## [1] &quot;ANKL&quot; &quot;PEPA&quot; &quot;DIPR&quot;
+## 
+## $Measurements
+##      CRP HDL LDL
+## ANKL 1.0 3.5 2.3
+## PEPA 2.5 5.0 3.0
+## DIPR 3.0 3.0 1.6
+## 
+## $first_element
+## [1] &quot;A&quot;
+## 
+## $second
+## [1] &quot;B&quot;</code></pre>
+</div>
+</div>
+<div id="data-frame" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Data frame</h2>
+<p>Data frame on erittäin yleinen tapa tallentaa tietoa R:ssä. Data frame on kaksiulotteinen tietorakenne, eli sillä on rivejä ja sarakkeita aivan kuten matriisilla. Data framen ja matriisin välillä on kuitenkin yksi tärkeä ero: data framen sarakkeet voivat olla eri luokan vektoreita.</p>
+<p>Muutetaan esimerkiksi edellä nähdyn <code>study</code>-listan ``Subject_ID<code>ja</code>Measurements```-osat yhdeksi data frameksi:</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="data-types.html#cb172-1" aria-hidden="true" tabindex="-1"></a>study_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Subject_ID =</span> study<span class="sc">$</span>Subject_ID,</span>
+<span id="cb172-2"><a href="data-types.html#cb172-2" aria-hidden="true" tabindex="-1"></a>                         study<span class="sc">$</span>Measurements)</span>
+<span id="cb172-3"><a href="data-types.html#cb172-3" aria-hidden="true" tabindex="-1"></a>study_data</span></code></pre></div>
+<pre><code>##      Subject_ID CRP HDL LDL
+## ANKL       ANKL 1.0 3.5 2.3
+## PEPA       PEPA 2.5 5.0 3.0
+## DIPR       DIPR 3.0 3.0 1.6</code></pre>
+<p><code>data.frame</code>-funktiolle voi antaa sekaisin yksittäisiä vektoreita, tai kokonaisia matriiseja tai valmiita data frameja, jotka kaikki yhdistetään yhdeksi data frameksi.</p>
+<div id="data-framen-käsittely" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Data framen käsittely</h3>
+<p>Vaikka data frame näyttää ulkoisesti matriisilta, data frame on itse asiassa lista, jonka kaikki alkiot ovat yhtä pitkiä vektoreita. Data framella on kuitenkin monta erityisominaisuutta, ja data frame käyttäytyy välillä kuin matriisi, välillä kuin lista. Tässä muutama esimerkki:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="data-types.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subscripting with brackets - as matrix</span></span>
+<span id="cb174-2"><a href="data-types.html#cb174-2" aria-hidden="true" tabindex="-1"></a>study_data[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>##      Subject_ID CRP HDL
+## PEPA       PEPA 2.5   5
+## DIPR       DIPR 3.0   3</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="data-types.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rownames and colnames - as matrix</span></span>
+<span id="cb176-2"><a href="data-types.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(study_data)</span></code></pre></div>
+<pre><code>## [1] &quot;Subject_ID&quot; &quot;CRP&quot;        &quot;HDL&quot;        &quot;LDL&quot;</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="data-types.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Individual columns can be accessed and added with dollar sign - as list</span></span>
+<span id="cb178-2"><a href="data-types.html#cb178-2" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>CRP</span></code></pre></div>
+<pre><code>## [1] 1.0 2.5 3.0</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="data-types.html#cb180-1" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">168</span>, <span class="dv">185</span>, <span class="dv">172</span>)</span>
+<span id="cb180-2"><a href="data-types.html#cb180-2" aria-hidden="true" tabindex="-1"></a>study_data</span></code></pre></div>
+<pre><code>##      Subject_ID CRP HDL LDL height
+## ANKL       ANKL 1.0 3.5 2.3    168
+## PEPA       PEPA 2.5 5.0 3.0    185
+## DIPR       DIPR 3.0 3.0 1.6    172</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="data-types.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering based on a variable can be done like this</span></span>
+<span id="cb182-2"><a href="data-types.html#cb182-2" aria-hidden="true" tabindex="-1"></a>study_data[study_data<span class="sc">$</span>HDL <span class="sc">&lt;</span> <span class="dv">4</span>, ]</span></code></pre></div>
+<pre><code>##      Subject_ID CRP HDL LDL height
+## ANKL       ANKL   1 3.5 2.3    168
+## DIPR       DIPR   3 3.0 1.6    172</code></pre>
+<p>Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla <code>rbind()</code>.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="data-types.html#cb184-1" aria-hidden="true" tabindex="-1"></a>new_row <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Subject_ID =</span> <span class="st">&quot;BRWA&quot;</span>, <span class="at">CRP =</span> <span class="dv">2</span>, <span class="at">HDL =</span> <span class="dv">4</span>, <span class="at">LDL =</span> <span class="dv">2</span>, <span class="at">height =</span> <span class="dv">182</span>)</span>
+<span id="cb184-2"><a href="data-types.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(new_row) <span class="ot">&lt;-</span> <span class="st">&quot;BRWA&quot;</span></span>
+<span id="cb184-3"><a href="data-types.html#cb184-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(study_data, new_row)</span></code></pre></div>
+<pre><code>##      Subject_ID CRP HDL LDL height
+## ANKL       ANKL 1.0 3.5 2.3    168
+## PEPA       PEPA 2.5 5.0 3.0    185
+## DIPR       DIPR 3.0 3.0 1.6    172
+## BRWA       BRWA 2.0 4.0 2.0    182</code></pre>
+<p>Data framet ovat erittäin käteviä, koska niihin voi helposti tallentaa sekä merkkijonoja, että numeerista dataa. Kannattaa kuitenkin muistaa, että matriisi on usein laskennan kannalta tehokkaampi tietorakenne, kuin data frame. Tästä ei tarvitse murehtia tällä kurssilla, mutta se on hyvä tietää jatkon kannalta, jos bioinformatiikkakursseilla tulee vastaan isompia datasettejä, joissa on osia, jotka voi tallentaa matriisina.</p>
+</div>
+</div>
+<div id="view" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> View()</h2>
+<p>Data frameja ja matriiseja tai niiden osia voi tulostaa R:n konsoliin kuten muitakin muuttujia. Tarkempaa tarkastelua varten kannattaa kuitenkin käyttää <code>View</code>-funktiota. <code>View</code> avaa ikkunan, jossa voi selata data framen tai matriisin rivejä ja sarakkeita, sekä järjestää arvoja halutun sarakkeen mukaan (tämä järjestys säilyy vain <code>View</code>-näkymässä, itse muuttujan rakenne ei muutu).</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="variables-and-vectors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reading-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R-ohjelmoinnin perusteet.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-# Kuvaajien piirtäminen
+# Kuvaajien piirtäminen {#plotting}
 
 Tällä viikolla tutustutaan kuvaajien piirtämiseen. Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä on silti lyhyet kirjalliset ohjeet suomeksi. **Tämän dokumentin lopussa on myös [käytännön vinkkejä tämän viikon tehtävään](#tämän-viikon-tehtävä).**
 

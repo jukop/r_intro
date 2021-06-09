@@ -1,4 +1,4 @@
-# Tietotyypit
+# Tietotyypit {#data_types}
 
 ## Esittely
 

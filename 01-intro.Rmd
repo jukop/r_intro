@@ -1,6 +1,7 @@
 # Johdanto {#intro}
 
 ## Mikä R on ja mitä sillä tehdään?
+
 Ohjelmoinnin tavoitteena on kirjoittaa eli koodata ohjelma, joka suorittaa jonkun halutun tehtävän. Ohjelma koostuu useista komennoista, joista jokainen tekee jotain hyvin yksinkertaista.
 
 R on tehty ensisijaisesti tilastotiedettä ja data-analyysiä varten.  R:llä kirjoitetaan yleensä lyhyitä ohjelmia, joita kutsutaan skripteiksi. R:llä ei siis ole tarkoitus kehittää esimerkiksi pelejä, tai muita ohjelmia joissa on graafinen käyttöliittymä, kuten vaikkapa Photoshop. R ei myöskään ole web-ohjelmointiin tarkoitettu kieli (vaikka oikeilla paketeilla R:lläkin pystyy tekemään web-sovelluksia). 
@@ -21,6 +22,7 @@ print("Hello, world!")
 
 Yksittäisten komentojen ajamisesta ei kuitenkaan ole yleensä hyötyä, ellei tuloksia voi tallentaa johonkin. Ohjelmointikielissä tietoja tallennetaan muuttujiin, joita käsitellään seuraavaksi. 
 
+# Muuttujat ja vektorit {#variables_and_vectors}
 
 ## Muuttujat (Variables)
 

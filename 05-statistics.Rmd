@@ -1,4 +1,4 @@
-# Lineaariset mallit ja tilastolliset jakaumat
+# Lineaariset mallit ja tilastolliset jakaumat {#statistics}
   
 Tässä osiossa tutustutaan lineaarisiin malleihin ja yleisimpien jakaumien käyttöön R:ssä. Jos konseptit eivät ole tilastotieteen kursseilta tuttuja, ei hätää: tämä dokumentti sisältää lyhyet selitykset tärkeimmistä konsepteista, ja loput selitetään varsinaisilla tilastotieteen kursseilla.
 
@@ -47,7 +47,7 @@ as.numeric(time_points)
 as.numeric(as.character(time_points))
 ```
 
-## Lineaariset mallit
+## Lineaariset mallit {#linear_models}
 
 Lineaarisessa mallissa eli lineaarisessa regressiossa tavoite on arvioida vastemuuttujan lineaarista riippuvuutta selittävistä muuttujista. Käytetään esimerkkinä R:n sisäistä datasettiä cars, jossa on kirjattu 50 auton nopeus ja pysähtymismatka. Tavoitteena on tutkia, miten auton pysähtymismatka riippuu auton nopeudesta.
 
@@ -167,9 +167,9 @@ mtext(subtitle)
 Tässä esimerkissä nähdään hyvin Pearsonin - ja Spearmanin korrelaatiokertoimien ero. Koska Indometasiinin konsentraatio laskee eksponentiaalisesti, ei lineaarisesti, Pearsonin korrelaatiokerroin on "vain" -0.7, kun taas Spearmanin korrelaatiokerroin -0.97 vastaa lähes täydellistä negatiivista korrelaatiota.
 
 
-## Tilastolliset jakaumat R:ssä
+## Todennäköisyysjakaumat R:ssä {#distributions}
 
-Monille yleisimmistä tilastollisista jakaumista on valmiita funktiota R:ssä. Funktiota on neljää eri tyyppiä, jotka merkataan funktion nimen ensimmäisellä kirjaimella.
+Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista on valmiita funktiota R:ssä. Funktiota on neljää eri tyyppiä, jotka merkataan funktion nimen ensimmäisellä kirjaimella.
 
 - d: Tiheysfunktio: mikä on tiheysfunktion arvo pisteessä x?
 - p: Kertymäfunktio: millä todennäköisyydellä jakaumasta poimittu arvo on pienempi/suurempi kuin q?
