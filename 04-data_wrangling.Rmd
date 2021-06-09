@@ -5,10 +5,11 @@ Aineisto ei tyypillisesti ole valmiiksi oikeassa muodossa. Voi olla että haluat
 **Yleinen käytännön vinkki**
 Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla todella työlästä. Tällöin saattaa joutua yhdistelemään aineistoja useista lähteistä, etsimään virheellisiä arvoja, muokkaamaan tekstimuotoisia (character) muuttujia eri muotoon jne. Mikäli aiot muokata tekstimuotoisia vektoreita eri muotoon, niin kannattaa muuttaa ne faktoriksi vasta lopuksi, sillä muuttujan ei ole yleensä tarpeellista olla faktorimuodossa aineistojan muokatessa. Faktorit ovat tyypillisesti tarpeen vasta kun aineistoa aletaan todella analysoimaan.
 
-## Uuden muuttujan tai rivin luonti datakehikkoon
+## Uuden muuttujan tai rivin luonti datakehikkoon {#data-frame-wrangling}
 
+TODO: Uuden muuttujan luonti puuttuu
 
-### Data framen käsittely
+### Data framen käsittely 
 
 ```{r}
 # Subscripting with variable names
@@ -44,7 +45,7 @@ rbind(study_data, new_row)
 
 ## Osajoukkojen valinta
 
-Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita ja jos kriteerejä on useita niin myös loogisia operaattoreita.
+Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita ja jos kriteerejä on useita niin myös loogisia operaattoreita. Tarkemmin operaattoreita käsitellään luvussa [Loogiset operaattorit](#loogiset-operaattorit)
 
 ```{r}
 # Filter only females
@@ -83,32 +84,45 @@ wall_dat$fbuild_mat <- factor(wall_dat$build_mat,levels = c(1,2,3), labels = c("
 
 str(wall_dat)
 ```
+## Factor-vektorit (vanha teksti)
 
-
-
-
-
-#_______________
-
-# Khi toiseen -testi
-
-Khi toiseen -testi voidaan toteuttaa seuraavasti.
-
+R:ssä on aiemmin nähtyjen numeric, character ja logical-vektorien lisäksi muitakin vektoriluokkia, tärkeimpänä näistä factor. Factor-vektoreihin tallennetaan kategorisia muuttujia, kuten tutkimuksessa määrättyjä ryhmiä, aikapisteitä tms. Luodaan esimerkiksi factor-vektori, jossa on kuvitteellisen lääketutkimuksen osallistujien ryhmätiedot:
+  
 ```{r}
-## From Agresti(2007) p.39
-M <- as.table(rbind(c(762, 327, 468), c(484, 239, 477)))
-dimnames(M) <- list(gender = c("F", "M"),
-                    party = c("Democrat","Independent", "Republican"))
-(Xsq <- chisq.test(M))  # Prints test summary
-Xsq$observed   # observed counts (same as M)
-Xsq$expected   # expected counts under the null
-Xsq$residuals  # Pearson residuals
-Xsq$stdres     # standardized residuals
-
-
-## Effect of simulating p-values
-x <- matrix(c(12, 5, 7, 7), ncol = 2)
-chisq.test(x)$p.value           # 0.4233
-chisq.test(x, simulate.p.value = TRUE, B = 10000)$p.value
+groups <- as.factor(c("drug1", "drug2", "control", "drug1", "control",
+                      "drug2", "drug2", "control", "control", "drug1"))
+groups
 ```
 
+Factoreita voi luoda muista vektoreista funktioilla ```factor``` tai ```as.factor()```. ```as.factor``` muuntaa vektorin automaattisesti ja nopeasti factoriksi, ja säilyttää myös jo valmiiksi factor-luokan vektorien tasojen järjestyksen (tästä lisää pian).
+
+Kuten tulosteesta nähdään, factor-vektorin tulostus tulostaa factorin alkiot (HUOM: ei hipsuja) sekä factorin tasot. Factorit ovat pinnan alla kokonaisluku- eli integer-vektoreita, joissa on päällä "kerros", joka määrittää factorin tasot. Edellä nähty vektori groups näyttää siis tältä:
+
+![](files/05-statistics/factor.png)
+
+Factorien tasoille annetaan siis lukuarvot ykkösestä eteenpäin. Oletuksena ensimmäinen taso eli taso 1 on aakkosissa ensimmäinen arvo, tai pienin lukuarvo jos factori tehdään numeerisista muuttujista. Lukuarvot saa näkyville muuntamalla factorin numeeriseksi vektoriksi:
+
+```{r}
+as.numeric(groups)
+```
+
+Tasojen järjestyksen voi myös päättää itse. Tämä on tärkeää, sillä kuten pian nähdään, factorin ensimmäinen taso on monissa tilastollisissa testeissä ns. referenssitaso, johon muita tasoja verrataan. Usein esiintyvä tapaus ovat tutkimukset, joissa on ryhmät nimeltä case ja control. Koska case on aakkosissa ennen controllia, R käyttää oletuksen case-ryhmää referenssitasona, ja testaa miten control-ryhmä poikkeaa tästä tasosta, vaikka haluaisimme päinvastaisen tuloksen. Tasot voi itse määrittää näin:
+
+```{r}
+study_groups <- factor(c("case", "control", "control", "case", "case"),
+                       levels = c("control", "case"))
+study_groups
+```
+
+Nyt tasot ovat oikeassa järjestyksessä!
+
+Kuten aiemmin mainittiin, factoreita voi tehdä myös numeerisista vektoreista. HUOM: muista, että ```as.numeric()``` palauttaa factorin kokonaislukuarvot, ei alkuperäisiä lukuja. Alkuperäiset luvut saa käyttämällä ensin ```as.character```-funktiota, joka muuttaa factorin tasot merkkijonovektoriksi.
+
+```{r}
+time_points <- as.factor(c(0, 0, 1, 1, 5, 5, 1, 0, 5))
+time_points
+# Probably not what you expect
+as.numeric(time_points)
+# First to character, then to numeric
+as.numeric(as.character(time_points))
+```

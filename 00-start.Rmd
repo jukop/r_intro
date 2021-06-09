@@ -24,25 +24,30 @@ Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. M
     * [lista (list)](#lista)
 - [Datan lukeminen](#reading_data)
 - [Aineiston muokkaaminen](#data-wrangling)
-  * Osajoukkojen valinta
-  * Faktorit
-  * Uuden muuttujan tai rivin luonti datakehikkoon
+  * [Uuden muuttujan tai rivin luonti datakehikkoon](#data-frame-wrangling)
+  * [Osajoukkojen valinta](#osajoukkojen-valinta)
+  * [Faktorit](#faktorit)
 - Tunnusluvut
   * summary()
   * Keskiarvo, moodi ja mediaani
+  * Varianssi ja keskihajonta ja kvantiilit
   * Minimi ja maksimi
+- [Todennäköisyysjakaumat](#distributions)
+  * Todennäköisyystiheysfunktio ja pistetodennäköisyysfunktio
+  * Kertymäfunktio
+  * Kvantiilifunktio
 - [Kuvaajien piirtäminen](#plotting)
   * Kuvaajan tallentaminen
-- Tilastollinen testaaminen
-  * Varianssianalyysi
-  * Khi toiseen -testi
+- [Tilastollinen testaaminen](#tests)
+  * [Khi toiseen -testi](#chi-squared-test)
   * Kahden otoksen t-testi
+  * Varianssianalyysi
 - [Lineaariset mallit ja tilastolliset jakaumat](#statistics)
   * [Lineaariset mallit](#linear_models)
-  * [Todennäköisyysjakaumat](#distributions)
 - [Funktiot](#functions)
 - [Ehtorakenteet](#ifelse)
 - [Toistorakenteet](#loops)
+
 
 # Alkuvalmistelut {-}
 

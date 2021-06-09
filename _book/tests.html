@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Alkuvalmistelut | R-ohjelmoinnin perusteet</title>
+  <title>Kappale 7 Tilastollinen testaaminen | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Alkuvalmistelut | R-ohjelmoinnin perusteet" />
+  <meta property="og:title" content="Kappale 7 Tilastollinen testaaminen | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Alkuvalmistelut | R-ohjelmoinnin perusteet" />
+  <meta name="twitter:title" content="Kappale 7 Tilastollinen testaaminen | R-ohjelmoinnin perusteet" />
   
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="r-kurssi.html"/>
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="plotting.html"/>
+<link rel="next" href="statistics.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -304,100 +304,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="alkuvalmistelut" class="section level1 unnumbered">
-<h1>Alkuvalmistelut</h1>
-<div id="rstudio" class="section level2 unnumbered">
-<h2>RStudio</h2>
-<p>Nykyisin R-kielen kurssilla käytetään ensisijaisesti RStudiota, mutta muutkin ohjelmointiympäristöt toimivat. RStudio on ohjelmointiympäristö eli IDE (Integrated Development Environment), joka tekee koodaamisesta huomattavasti mukavampaa. RStudio on saatavilla useille käyttöjärjestelmielle ja se on ilmainen ohjelma.</p>
+<div id="tests" class="section level1" number="7">
+<h1><span class="header-section-number">Kappale 7</span> Tilastollinen testaaminen</h1>
+<div id="chi-squared-test" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Khi toiseen -testi</h2>
+<p>Khi toiseen -testi voidaan toteuttaa seuraavasti.</p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="tests.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="do">## From Agresti(2007) p.39</span></span>
+<span id="cb312-2"><a href="tests.html#cb312-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">as.table</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">762</span>, <span class="dv">327</span>, <span class="dv">468</span>), <span class="fu">c</span>(<span class="dv">484</span>, <span class="dv">239</span>, <span class="dv">477</span>)))</span>
+<span id="cb312-3"><a href="tests.html#cb312-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(M) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>),</span>
+<span id="cb312-4"><a href="tests.html#cb312-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">party =</span> <span class="fu">c</span>(<span class="st">&quot;Democrat&quot;</span>,<span class="st">&quot;Independent&quot;</span>, <span class="st">&quot;Republican&quot;</span>))</span>
+<span id="cb312-5"><a href="tests.html#cb312-5" aria-hidden="true" tabindex="-1"></a>(Xsq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(M))  <span class="co"># Prints test summary</span></span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  M
+## X-squared = 30.07, df = 2, p-value = 2.954e-07</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="tests.html#cb314-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>observed   <span class="co"># observed counts (same as M)</span></span></code></pre></div>
+<pre><code>##       party
+## gender Democrat Independent Republican
+##      F      762         327        468
+##      M      484         239        477</code></pre>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="tests.html#cb316-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>expected   <span class="co"># expected counts under the null</span></span></code></pre></div>
+<pre><code>##       party
+## gender Democrat Independent Republican
+##      F 703.6714    319.6453   533.6834
+##      M 542.3286    246.3547   411.3166</code></pre>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="tests.html#cb318-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>residuals  <span class="co"># Pearson residuals</span></span></code></pre></div>
+<pre><code>##       party
+## gender   Democrat Independent Republican
+##      F  2.1988558   0.4113702 -2.8432397
+##      M -2.5046695  -0.4685829  3.2386734</code></pre>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="tests.html#cb320-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>stdres     <span class="co"># standardized residuals</span></span></code></pre></div>
+<pre><code>##       party
+## gender   Democrat Independent Republican
+##      F  4.5020535   0.6994517 -5.3159455
+##      M -4.5020535  -0.6994517  5.3159455</code></pre>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="tests.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Effect of simulating p-values</span></span>
+<span id="cb322-2"><a href="tests.html#cb322-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb322-3"><a href="tests.html#cb322-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x)<span class="sc">$</span>p.value           <span class="co"># 0.4233</span></span></code></pre></div>
+<pre><code>## [1] 0.4233054</code></pre>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="tests.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x, <span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>, <span class="at">B =</span> <span class="dv">10000</span>)<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.2923708</code></pre>
 </div>
-<div id="rn-ja-rstudion-asentaminen-omalle-tietokoneelle" class="section level2 unnumbered">
-<h2>R:n ja RStudion asentaminen omalle tietokoneelle</h2>
-<p>Mene seuraavalle sivulle, josta asennat ensin R:n (1. vaihe) ja sitten RStudio Desktop omalle käyttöjärjestelmällesi. Ellet tiedä käyttöjärjestelmääsi, on se luultavimmin Windows 10.</p>
-<p><a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a> (avautuu uuteen ikkunaan)</p>
+<div id="kahden-otoksen-t-testi" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Kahden otoksen t-testi</h2>
 </div>
-<div id="rstudion-asennus-yliopiston-koneelle" class="section level2 unnumbered">
-<h2>RStudion asennus yliopiston koneelle</h2>
-<p>Mikäli et halua käyttää omaa tietokonettasi kurssin suoritamiseen, niin RStudion saa asennettua UEF:in koneilla Sofware Centerin kautta. Software Center löytyy Windowsin omalla haulla.</p>
-<p><img src="files/00-start/software_center.jpg" /></p>
-<p>RStudio:n voi asentaa Software Centeristä, ja RStudion pitäisi sen jälkeen olla käytettävissä.</p>
-<p><img src="files/00-start/RStudio_sc.jpg" /></p>
-</div>
-<div id="rstudion-käyttö" class="section level2 unnumbered">
-<h2>RStudion käyttö</h2>
-<p>RStudion näkymässä on neljä osaa:</p>
-<p><img src="files/00-start/RStudio_tutorial_edited.jpg" /></p>
-<div id="editori." class="section level4 unnumbered">
-<h4>1. Editori.</h4>
-<p>Editorilla kirjoitetaan R-koodia sisältäviä tiedostoja, eli R-skriptejä. Uuden skriptin saa auki painamalla File -&gt; New File -&gt; R Script (tai Ctrl + Shift + N). Skripteihin tutustutaan myöhemmin kurssilla, mutta ne ovat yksinkertaisuudessaan kokoelma R-komentoja, jotka yhdessä tekevät jotain, esimerkiksi analysoivat jonkin tutkimusprojektin datan tai piirtävät valmiista tuloksista kuvaajia.</p>
-<p>Editoriin kirjoitettua koodia voi ajaa rivi kerrallaan painamalla rivin kohdalla Ctrl + Enter. Useamman rivin voi myös maalata ja suorittaa kerrallaan. Yläreunassa oleva “Source”-nappi ajaa kaiken nykyisen tiedoston koodin.</p>
-<p>R-skriptejä voi tallentaa ihan kuin muitakin tiedostoja. R-skpriptien tiedostopääte on .R</p>
-</div>
-<div id="konsoli." class="section level4 unnumbered">
-<h4>2. Konsoli.</h4>
-<p>Konsolissa “ajetaan” eli suoritetaan R-komentoja. Jos editoriin kirjoitettua koodia ajetaan, RStudio ajaa komennot automaattisesti konsolissa. Konsolissa pelkkä Enter riittää koodirivin suorittamiseen. Voit kokeilla kirjoittaa konsoliin jonkun laskutoimituksen, kuten <code>2 * 3</code> ja painaa Enter, jolloin tuloksen pitäisi tulostua konsoliin. Voit myös kokeilla kirjoittaa laskuja editoriin, ja painaa Ctrl + Enter, jolloin pitäisi tapahtua sama asia.</p>
-<p>Suurin ero konsolin ja editorin välillä on se, että <strong>konsoliin kirjoitetut komennot eivät tallennu mihinkään tiedostoon</strong>. Jos siis haluat säästää koodisi, se tulee kirjoittaa editoriin ja tallentaa .R-tiedostoon. Saman istunnon aikana tehtyjä komentoja voi konsolissa selata ylös- ja alas-nuolila.</p>
-<p>Moodlen ohjeissa ja videoissa käytetään R:ää puhtaasta R-konsolista. Voit siis kuvitella, että kurssin videoissa näkyy vain RStudion tämä osa, ja muut osat ovat vain helpottamassa työtäsi.</p>
-</div>
-<div id="työtila" class="section level4 unnumbered">
-<h4>3. Työtila</h4>
-<p>Työtilassa näkyvät R-istunnon aikana luodut muuttujat. Näistä lisää ensimmäisen viikon materiaalissa.</p>
-</div>
-<div id="kuvaajat-paketit-manuaali" class="section level4 unnumbered">
-<h4>4. Kuvaajat / Paketit / Manuaali</h4>
-<p>Tässä osassa on monta käytännöllistä välilehteä:</p>
-<ul>
-<li>Plots: tänne ilmestyvät R:llä piirretyt kuvaajat</li>
-<li>Packages: Täältä voi hallita asennettuja paketteja (alla ohjeet tällä kurssilla tarvittavien pakettien asennukseen)</li>
-<li>Help: Täällä voi selata R:n manuaalia, jossa on ohjeet jokaiselle R-komennolla. Voit kokeilla ajaa editorissa tai konsolissa komennon <code>?print</code>, joka avaa <code>print</code>-funktion ohjesivun.</li>
-</ul>
-<p>Kun tehtävät tallentaa tähän tyyliin, voi ensi kerralla vain yksinkertaisesti ajaa skriptin haluamaansa tehtävään asti. Samalla koneella ja samalla opiskelijanumerolla pitäisi tulla samat tehtävät.</p>
-</div>
-</div>
-<div id="rcourse-paketin-asentaminen" class="section level2 unnumbered">
-<h2>Rcourse-paketin asentaminen</h2>
-<div id="r-paketit" class="section level3 unnumbered">
-<h3>R-paketit</h3>
-<p>R-ohjelmoinnissa asennetaan usein R-paketteja. Paketit ovat kokonaisuuksia, jotka lisäävät R:ään ominaisuuksia. Esimerkiksi tälle kurssille tarvittava paketti arpoo opiskelijalle tehtäviä kurssin aihepiiristä ja lähettää tiedon osioiden suorituksesta opettajalle.</p>
-</div>
-<div id="asentaminen" class="section level3 unnumbered">
-<h3>Asentaminen</h3>
-<p>Rcourse-paketti asennetaan suorittamalla seuraava koodi R:ssä. Kopioi koodi joko R-skriptiin ja aja se tai kopioi se suoraan Console-ikkunaan ja paina Enter-näppäintä.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="alkuvalmistelut.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">url</span>(<span class="st">&quot;http://users.jyu.fi/~santikka/Rcourse/install.R&quot;</span>))</span></code></pre></div>
-<p>Tämän jälkeen paketti tulee ladata käyttöön</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="alkuvalmistelut.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rcourse)</span></code></pre></div>
-<p>Komento <code>info()</code> tulostaa ohjeet (ensimmäisellä käyttökerralla kieli on englanti). Voit vaihtaa kielen suomeksi näin:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="alkuvalmistelut.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select_language</span>(<span class="st">&quot;finnish&quot;</span>)</span></code></pre></div>
-<p>Tarkastele vielä suomenkielisiä komentoja:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="alkuvalmistelut.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">info</span>()</span></code></pre></div>
-<p><img src="files/00-start/Rcourse_package_info.png" /></p>
-<p>Aloita sitten osion 1 harjoitustehtävien suorittaminen komennolla</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="alkuvalmistelut.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">osio1</span>()</span></code></pre></div>
-<p>Kun olet suorittanut harjoitusosion 1, voit jatkaa seuraavaan osioon. Osiot 1-8 ovat pakollisia (tentit kysyvät näiden osioiden sisältöjä) ja osiot 9-11 ovat lisämateriaalia kiinnostuneille (ei kysytä tentissä).</p>
-</div>
-<div id="opiskelu-ja-tenttiminen-rcourse-paketin-avulla" class="section level3 unnumbered">
-<h3>Opiskelu ja tenttiminen Rcourse-paketin avulla</h3>
-<p>Kurssin harjoitustehtävät suoritetaan käyttäen Rcourse-pakettia, eli 1. osion voi aloittaa komennolla</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="alkuvalmistelut.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">osio1</span>()</span></code></pre></div>
-<p>Lisäksi tenttimien onnistuu vastaavasti funktiolla loppukoe(x), mutta tällöin merkin x tilalle on annettava oma syntymäaika muodossa dddmmyyyy. Esim. henkilö joka on syntynyt 1. tammikuuta 1990 antaisi</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="alkuvalmistelut.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">loppukoe</span>(<span class="dv">01011990</span>)</span></code></pre></div>
-</div>
-<div id="tehtävien-tallentaminen-skripteihin-rstudiolla" class="section level3 unnumbered">
-<h3>Tehtävien tallentaminen skripteihin RStudiolla</h3>
-<p>Suurin osa kurssin tehtävistä on melko lyhyitä, joten ne voi tarvittaessa tehdä suoraan konsoliin. Suosittelen kuitenkin kirjoittamaan varsinkin pidemmät ja monimutkaisemmat tehtävät muistiin editoriin. Suosittelenkin tekemään jokaista osiota varten erillisen R-skriptin, joka sisältää itse tehtävien tarvitseman koodin sekä palautuskomennot. Tällainen skripti näyttää jotakuinkin tältä:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="alkuvalmistelut.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teht 1</span></span>
-<span id="cb8-2"><a href="alkuvalmistelut.html#cb8-2" aria-hidden="true" tabindex="-1"></a>vast <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb8-3"><a href="alkuvalmistelut.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tarkista</span>(vast)</span>
-<span id="cb8-4"><a href="alkuvalmistelut.html#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="alkuvalmistelut.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Teht 2</span></span>
-<span id="cb8-6"><a href="alkuvalmistelut.html#cb8-6" aria-hidden="true" tabindex="-1"></a>vast <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb8-7"><a href="alkuvalmistelut.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tarkista</span>(vast)</span>
-<span id="cb8-8"><a href="alkuvalmistelut.html#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="alkuvalmistelut.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Teht 3</span></span>
-<span id="cb8-10"><a href="alkuvalmistelut.html#cb8-10" aria-hidden="true" tabindex="-1"></a>vast <span class="ot">&lt;-</span> <span class="st">&quot;jotain&quot;</span></span>
-<span id="cb8-11"><a href="alkuvalmistelut.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tarkista</span>(vast)</span></code></pre></div>
-<p>Mikäli käytät nimen <code>vast</code> sijasta jotain muuta nimeä, niin sinun on käytettävä samaa nimä myös tarkista-funktion argumenttina!</p>
+<div id="varianssianalyysi" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Varianssianalyysi</h2>
 
-</div>
 </div>
 </div>
             </section>
@@ -405,8 +359,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="r-kurssi.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="plotting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

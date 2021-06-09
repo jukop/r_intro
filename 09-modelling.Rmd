@@ -4,48 +4,6 @@ Tässä osiossa tutustutaan lineaarisiin malleihin ja yleisimpien jakaumien käy
 
 Ennen kuin puhutaan tilastollisten testien tekemisestä R:llä, on hyvä tutustua factor-luokan vektoreihin
 
-## Factor-vektorit
-
-R:ssä on aiemmin nähtyjen numeric, character ja logical-vektorien lisäksi muitakin vektoriluokkia, tärkeimpänä näistä factor. Factor-vektoreihin tallennetaan kategorisia muuttujia, kuten tutkimuksessa määrättyjä ryhmiä, aikapisteitä tms. Luodaan esimerkiksi factor-vektori, jossa on kuvitteellisen lääketutkimuksen osallistujien ryhmätiedot:
-  
-```{r}
-groups <- as.factor(c("drug1", "drug2", "control", "drug1", "control",
-                      "drug2", "drug2", "control", "control", "drug1"))
-groups
-```
-
-Factoreita voi luoda muista vektoreista funktioilla ```factor``` tai ```as.factor()```. ```as.factor``` muuntaa vektorin automaattisesti ja nopeasti factoriksi, ja säilyttää myös jo valmiiksi factor-luokan vektorien tasojen järjestyksen (tästä lisää pian).
-
-Kuten tulosteesta nähdään, factor-vektorin tulostus tulostaa factorin alkiot (HUOM: ei hipsuja) sekä factorin tasot. Factorit ovat pinnan alla kokonaisluku- eli integer-vektoreita, joissa on päällä "kerros", joka määrittää factorin tasot. Edellä nähty vektori groups näyttää siis tältä:
-
-![](files/05-statistics/factor.png)
-
-Factorien tasoille annetaan siis lukuarvot ykkösestä eteenpäin. Oletuksena ensimmäinen taso eli taso 1 on aakkosissa ensimmäinen arvo, tai pienin lukuarvo jos factori tehdään numeerisista muuttujista. Lukuarvot saa näkyville muuntamalla factorin numeeriseksi vektoriksi:
-
-```{r}
-as.numeric(groups)
-```
-
-Tasojen järjestyksen voi myös päättää itse. Tämä on tärkeää, sillä kuten pian nähdään, factorin ensimmäinen taso on monissa tilastollisissa testeissä ns. referenssitaso, johon muita tasoja verrataan. Usein esiintyvä tapaus ovat tutkimukset, joissa on ryhmät nimeltä case ja control. Koska case on aakkosissa ennen controllia, R käyttää oletuksen case-ryhmää referenssitasona, ja testaa miten control-ryhmä poikkeaa tästä tasosta, vaikka haluaisimme päinvastaisen tuloksen. Tasot voi itse määrittää näin:
-
-```{r}
-study_groups <- factor(c("case", "control", "control", "case", "case"),
-                       levels = c("control", "case"))
-study_groups
-```
-
-Nyt tasot ovat oikeassa järjestyksessä!
-
-Kuten aiemmin mainittiin, factoreita voi tehdä myös numeerisista vektoreista. HUOM: muista, että ```as.numeric()``` palauttaa factorin kokonaislukuarvot, ei alkuperäisiä lukuja. Alkuperäiset luvut saa käyttämällä ensin ```as.character```-funktiota, joka muuttaa factorin tasot merkkijonovektoriksi.
-
-```{r}
-time_points <- as.factor(c(0, 0, 1, 1, 5, 5, 1, 0, 5))
-time_points
-# Probably not what you expect
-as.numeric(time_points)
-# First to character, then to numeric
-as.numeric(as.character(time_points))
-```
 
 ## Lineaariset mallit {#linear_models}
 
@@ -165,80 +123,6 @@ mtext(subtitle)
 ```
 
 Tässä esimerkissä nähdään hyvin Pearsonin - ja Spearmanin korrelaatiokertoimien ero. Koska Indometasiinin konsentraatio laskee eksponentiaalisesti, ei lineaarisesti, Pearsonin korrelaatiokerroin on "vain" -0.7, kun taas Spearmanin korrelaatiokerroin -0.97 vastaa lähes täydellistä negatiivista korrelaatiota.
-
-
-## Todennäköisyysjakaumat R:ssä {#distributions}
-
-Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista on valmiita funktiota R:ssä. Funktiota on neljää eri tyyppiä, jotka merkataan funktion nimen ensimmäisellä kirjaimella.
-
-- d: Tiheysfunktio: mikä on tiheysfunktion arvo pisteessä x?
-- p: Kertymäfunktio: millä todennäköisyydellä jakaumasta poimittu arvo on pienempi/suurempi kuin q?
-- q: Käänteinen kertymäfunktio: mille arvolle kertymäfunktio palauttaa todennäköisyyden p?
-- r: satunnaislukugeneraattori: poimi satunnaisia havaintoja jakaumasta
-
-Alla on kuvaajat ensimmäisestä kolmesta funktiosta:
-
-```{r, echo = FALSE, fig.width=10, fig.height=4}
-x <- seq(-2.5, 2.5, by = 0.01)
-p <- seq(0, 1, by = 0.01)
-par(mfrow = c(1,3))
-plot(x, dnorm(x), type = "l", main = "d: Tiheysfunktio")
-plot(x, pnorm(x), type = "l", main = "p: Kertymäfunktio")
-plot(p, qnorm(p), type ="l", main = "q: Käänteinen kertymäfunktio")
-```
-
-### Esimerkki: normaalijakauma
-
-Otetaan muutama käytännön esimerkki. Oletetaan, että suomalaisten miesten suolan saanti on normaalijakautunut odotusarvolla 10 grammaa päivässä ja keskihajonta on 4 grammaa päivässä (odotusarvo on totta, keskihajonta allekirjoittaneen hihasta). Piirretään ensin kuva jakaumasta välillä [0, 20] grammaa päivässä. Jakauman muoto saadaan funktiolla ```dnorm()```. Eli yllä olevan ohjeen mukaan d-alkuinen funktio antaa tiheysfunktion, ja norm-pääte viittaa normaalijakaumaan. Normaalijakauman funktiolle tulee kertoa jakauman odotusarvo (mean) ja keskihajonta (sd = standard deviation).
-
-```{r}
-# Sequential vector  of salt consumption
-salt <- seq(0, 20, by = 0.1)
-# Density function
-density <- dnorm(salt, mean = 10, sd = 4)
-# Line plot
-plot(salt, density, type = "l",
-     xlab = "Suolan saanti", ylab = "Tiheysfunktio",
-     main = "Suomalaisten miesten suolan saanti")
-```
-
-Aikuisten saantisuositus on enintään 5 grammaa suolaa päivässä. Kuinka moni suomalainen mies syö tämän jakauman mukaan sopivasti suolaa? Vastaus saadaan kertymäfunktiosta (P(X < 5)) ```pnorm()``` funktion avulla.
-
-```{r}
-pnorm(5, mean = 10, sd = 4)
-```
-
-Tämän jakauman mukaan vain noin 11% suomalaisista miehistä syö suolaa sopivasti!
-
-Suomalaisten naiset syövät keskimäärin 7 grammaa suolaa päivässä. Kuinka moni mies syö tätä enemmän suolaa? ```pnorm()``` antaa oletuksena arvon P(X < 7). Nyt halutaan kuitenkin tietää P(X > 7), joka saadaan asettamalla ```lower.tail = FALSE```:
-
-```{r}
-pnorm(7, mean = 10, sd = 4, lower.tail = FALSE)
-```
-
-Noin 77% miehistä syö suolaa keskimääräistä naista enemmän.
-
-Entä jos halutaan tietää, kuinka paljon suolaa eniten syövä 10% saa? Tähän voidaan vastata funktiolla ```qnorm()```, joka on käänteinen versio funktiosta  ```pnorm()```. Samoin kuin ```pnorm()```, ```qnorm```-funktion oletus on, että todennäköisyydet lasketaan jakauman alapäästä alkaen. Vastaus tähän kysymykseen selviää siis näillä kahdella tavalla:
-
-```{r}
-qnorm(0.1, mean = 10, sd = 4, lower.tail = FALSE)
-# OR
-qnorm(0.9, mean = 10, sd = 4)
-```
-
-Eli tämän jakauman mukaan eniten suolaa saava 10% miehistä syö yli kolminkertaisen määrän suolaa suositukseen verrattuna.
-
-
-### Muita jakaumia
-
-Vastaavat funktiot löytyvät myös muille jakaumille, kuten:
-
-- Chi-toiseen: chisq
-- Eksponentiaalinen: exp
-- Studentin t: t
-- Tasajakauma: unif
-
-ja niin edelleen.
 
 
 
