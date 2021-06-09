@@ -82,7 +82,7 @@ Suurin osa kurssin tehtävistä on melko lyhyitä, joten ne voi tarvittaessa teh
 
 **HUOM:** kurssin osioiden tehtäviä ei voi tallentaa kesken osion, vaan jokainen osio on tehtävä kerralla kokonaan. Jos kuitenkin kirjoitat koodia editoriin ja tallennat tehtäviä .R-tiedostoon, voit tarvittaessa aloittaa osion toisena päivänä uudestaan ja ajaa edellisellä kerralla kirjoittamasi komennot helposti tiedostosta. Tehtäviä voi palauttaa vain UEFAD-verkon koneilla!
 
-Tehtävien tekemisen voi aloittaa komennolla ```Rkurssi::Rkurssi(123456)```, kun numeron 123456 korvaa omalla opiskelijanumerolla ja seuraamalla avautuvia ohjeita. Tätä varten tulee kuitenkin asentaa ```Rkurssi```-paketti. Tähän on ohjeet alla. Kurssin tehtävissä pitää usein tallentaa asioita muuttujaan ```vast``` ja palauttaa tehtävä komennolla ```c```. Suosittelenkin tekemään jokaista osiota varten erillisen R-skriptin, joka sisältää itse tehtävien tarvitseman koodin sekä palautuskomennot. Tällainen skripti näyttää jotakuinkin tältä:
+Tehtävien tekemisen voi aloittaa komennolla ```Rcourse::Rkurssi(123456)```, kun numeron 123456 korvaa omalla opiskelijanumerolla ja seuraamalla avautuvia ohjeita. Tätä varten tulee kuitenkin asentaa ```Rkurssi```-paketti. Tähän on ohjeet alla. Kurssin tehtävissä pitää usein tallentaa asioita muuttujaan ```vast``` ja palauttaa tehtävä komennolla ```c```. Suosittelenkin tekemään jokaista osiota varten erillisen R-skriptin, joka sisältää itse tehtävien tarvitseman koodin sekä palautuskomennot. Tällainen skripti näyttää jotakuinkin tältä:
 
 ```
 # T 1
