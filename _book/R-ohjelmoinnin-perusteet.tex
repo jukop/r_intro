@@ -37,7 +37,7 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={R-ohjelmoinnin perusteet},
-  pdfauthor={Anton Klåvus (2020), edited by Juho Kopra (2021)},
+  pdfauthor={Anton Klåvus (2020), converted to bookdown by Juho Kopra (2021)},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -113,11 +113,11 @@
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[]{natbib}
-\bibliographystyle{apalike}
+\bibliographystyle{plainnat}
 
 \title{R-ohjelmoinnin perusteet}
-\author{Anton Klåvus (2020), edited by Juho Kopra (2021)}
-\date{2021-06-08}
+\author{Anton Klåvus (2020), converted to bookdown by Juho Kopra (2021)}
+\date{9.6.2021}
 
 \begin{document}
 \maketitle
@@ -126,13 +126,9 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{alkuvalmistelut}{%
-\chapter*{Alkuvalmistelut}\label{alkuvalmistelut}}
-\addcontentsline{toc}{chapter}{Alkuvalmistelut}
-
 \hypertarget{r-kurssi}{%
-\section*{R-kurssi}\label{r-kurssi}}
-\addcontentsline{toc}{section}{R-kurssi}
+\chapter*{R-kurssi}\label{r-kurssi}}
+\addcontentsline{toc}{chapter}{R-kurssi}
 
 Täältä löydät suomenkielisen materiaalin, joka tukee UEF:in R-kurssin suorittamista (R-kieli 3622223, 2 op). Jokaisen viikon materiaalit päivitetään tänne. Alla on ohjeet tarvittavien asioiden asentamiseen UEF:in koneille.
 
@@ -145,46 +141,100 @@ Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. M
 \begin{itemize}
 \tightlist
 \item
-  Muuttujat ja vektorit
+  \protect\hyperlink{intro}{Johdanto}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{what_R}{Mikä on R ja mitä sillä tehdään?}
+  \item
+    \protect\hyperlink{variables_and_vectors}{Muuttujat ja vektorit}
+  \item
+    \protect\hyperlink{extra}{Extra: Alkeistietotyypit ja puuttuvat arvot}
+  \end{itemize}
 \item
-  Kuvaajien piirtäminen
+  \protect\hyperlink{data_types}{Tietotyypit: data frame, matriisi, taulukko ja lista}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{data-frame}{data frame}
+  \item
+    \protect\hyperlink{matriisi}{matriisi (matrix)}
+  \item
+    \href{tietotyyppien-tarkastelu-rstudiossa}{Tietotyyppien tarkastelu RStudiossa}
+  \item
+    \protect\hyperlink{taulukot-ja-listat}{Extra: Taulukko ja lista}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \protect\hyperlink{taulukko}{taulukko (array)}
+    \item
+      \protect\hyperlink{lista}{lista (list)}
+    \end{itemize}
+  \end{itemize}
 \item
-  Matriisi, taulukko, lista ja data frame
+  \protect\hyperlink{reading_data}{Datan sisään lukeminen}
 \item
-  Datan sisään lukeminen
+  \protect\hyperlink{plotting}{Kuvaajien piirtäminen}
 \item
-  Lineaariset mallit ja tilastolliset jakaumat
+  \protect\hypertarget{tests}{}{Tilastollinen testaaminen}
 \item
-  Funktiot
+  \protect\hyperlink{statistics}{Lineaariset mallit ja tilastolliset jakaumat}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{linear_models}{Lineaariset mallit}
+  \item
+    \protect\hyperlink{distributions}{Todennäköisyysjakaumat}
+  \end{itemize}
 \item
-  Ehtorakenteet
+  \protect\hyperlink{functions}{Funktiot}
 \item
-  Toistorakenteet
+  \protect\hyperlink{ifelse}{Ehtorakenteet}
+\item
+  \protect\hyperlink{loops}{Toistorakenteet}
 \end{itemize}
 
+\hypertarget{alkuvalmistelut}{%
+\chapter*{Alkuvalmistelut}\label{alkuvalmistelut}}
+\addcontentsline{toc}{chapter}{Alkuvalmistelut}
+
 \hypertarget{rstudio}{%
-\chapter*{RStudio}\label{rstudio}}
-\addcontentsline{toc}{chapter}{RStudio}
+\section*{RStudio}\label{rstudio}}
+\addcontentsline{toc}{section}{RStudio}
 
-Erona Moodlessa löytyviin ohjeisiin, tuutoroinnissa käytetään R-ohjelmoinnin tukena RStudiota. RStudio on ohjelmointiympäristö eli IDE (Integrated Development Environment), joka tekee koodaamisesta huomattavasti mukavampaa.
+Nykyisin R-kielen kurssilla käytetään ensisijaisesti RStudiota, mutta muutkin ohjelmointiympäristöt toimivat. RStudio on ohjelmointiympäristö eli IDE (Integrated Development Environment), joka tekee koodaamisesta huomattavasti mukavampaa. RStudio on saatavilla useille käyttöjärjestelmielle ja se on ilmainen ohjelma.
 
-\hypertarget{rstudion-asennus}{%
-\section*{RStudion asennus}\label{rstudion-asennus}}
-\addcontentsline{toc}{section}{RStudion asennus}
+\hypertarget{rn-ja-rstudion-asentaminen-omalle-tietokoneelle}{%
+\section*{R:n ja RStudion asentaminen omalle tietokoneelle}\label{rn-ja-rstudion-asentaminen-omalle-tietokoneelle}}
+\addcontentsline{toc}{section}{R:n ja RStudion asentaminen omalle tietokoneelle}
 
-Näiden ohjeiden avulla saat asennettua RStudion ja sen mukana R:n UEF:in koneille. Omalle koneelle asennettaessa täytyy ensin asentaa R, ja sitten RStudio. Ohjeet löytyvät helposti Googlesta, esim. \href{https://courses.edx.org/courses/UTAustinX/UT.7.01x/3T2014/56c5437b88fa43cf828bff5371c6a924/}{täältä}.
+Mene seuraavalle sivulle, josta asennat ensin R:n (1. vaihe) ja sitten RStudio Desktop omalle käyttöjärjestelmällesi. Ellet tiedä käyttöjärjestelmääsi, on se luultavimmin Windows 10.
 
-RStudion saa asennettua UEF:in koneilla Sofware Centerin kautta. Software Center löytyy Windowsin omalla haulla.
+\url{https://www.rstudio.com/products/rstudio/download/\#download} (avautuu uuteen ikkunaan)
+
+\hypertarget{rstudion-asennus-yliopiston-koneelle}{%
+\section*{RStudion asennus yliopiston koneelle}\label{rstudion-asennus-yliopiston-koneelle}}
+\addcontentsline{toc}{section}{RStudion asennus yliopiston koneelle}
+
+Mikäli et halua käyttää omaa tietokonettasi kurssin suoritamiseen, niin RStudion saa asennettua UEF:in koneilla Sofware Centerin kautta. Software Center löytyy Windowsin omalla haulla.
 
 \includegraphics{files/00-start/software_center.jpg}
 
 RStudio:n voi asentaa Software Centeristä, ja RStudion pitäisi sen jälkeen olla käytettävissä.
+
+\includegraphics{files/00-start/RStudio_sc.jpg}
 
 \hypertarget{rstudion-kuxe4yttuxf6}{%
 \section*{RStudion käyttö}\label{rstudion-kuxe4yttuxf6}}
 \addcontentsline{toc}{section}{RStudion käyttö}
 
 RStudion näkymässä on neljä osaa:
+
+\includegraphics{files/00-start/RStudio_tutorial_edited.jpg}
 
 \hypertarget{editori.}{%
 \subsubsection*{1. Editori.}\label{editori.}}
@@ -228,48 +278,115 @@ Tässä osassa on monta käytännöllistä välilehteä:
   Help: Täällä voi selata R:n manuaalia, jossa on ohjeet jokaiselle R-komennolla. Voit kokeilla ajaa editorissa tai konsolissa komennon \texttt{?print}, joka avaa \texttt{print}-funktion ohjesivun.
 \end{itemize}
 
-\hypertarget{kurssin-suoritus-rstudiolla}{%
-\subsection*{Kurssin suoritus RStudiolla}\label{kurssin-suoritus-rstudiolla}}
-\addcontentsline{toc}{subsection}{Kurssin suoritus RStudiolla}
-
-Suurin osa kurssin tehtävistä on melko lyhyitä, joten ne voi tarvittaessa tehdä suoraan konsoliin. Suosittelen kuitenkin kirjoittamaan varsinkin pidemmät ja monimutkaisemmat tehtävät muistiin editoriin. Valitettavasti kurssin tehtävien aktivointi aiheuttaa RStudion toiminnassa hieman outouksia, koska kurssin tehtäviä ei ole suunniteltu RStudiolla tehtäviksi. Joskus kun editorista ajaa komennon, editorin tilalle aukeaa ``kysymys''-ikkuna. Tästä ei kuitenkaan tarvitse välittää, vaan ikkunan voi sulkea.
-
-\textbf{HUOM:} kurssin osioiden tehtäviä ei voi tallentaa kesken osion, vaan jokainen osio on tehtävä kerralla kokonaan. Jos kuitenkin kirjoitat koodia editoriin ja tallennat tehtäviä .R-tiedostoon, voit tarvittaessa aloittaa osion toisena päivänä uudestaan ja ajaa edellisellä kerralla kirjoittamasi komennot helposti tiedostosta. Tehtäviä voi palauttaa vain UEFAD-verkon koneilla!
-
-Tehtävien tekemisen voi aloittaa komennolla \texttt{Rkurssi::Rkurssi(123456)}, kun numeron 123456 korvaa omalla opiskelijanumerolla ja seuraamalla avautuvia ohjeita. Tätä varten tulee kuitenkin asentaa \texttt{Rkurssi}-paketti. Tähän on ohjeet alla. Kurssin tehtävissä pitää usein tallentaa asioita muuttujaan \texttt{vast} ja palauttaa tehtävä komennolla \texttt{c}. Suosittelenkin tekemään jokaista osiota varten erillisen R-skriptin, joka sisältää itse tehtävien tarvitseman koodin sekä palautuskomennot. Tällainen skripti näyttää jotakuinkin tältä:
-
-\begin{verbatim}
-# T 1
-vast <- 1
-c
-
-# T 2
-vast <- c(1, 2, 3)
-c
-
-
-# T 3
-vast <- "jotain"
-c
-\end{verbatim}
-
 Kun tehtävät tallentaa tähän tyyliin, voi ensi kerralla vain yksinkertaisesti ajaa skriptin haluamaansa tehtävään asti. Samalla koneella ja samalla opiskelijanumerolla pitäisi tulla samat tehtävät.
 
-\hypertarget{kurssilla-tarvittavien-r-pakettien-asennus}{%
-\section*{Kurssilla tarvittavien R-pakettien asennus}\label{kurssilla-tarvittavien-r-pakettien-asennus}}
-\addcontentsline{toc}{section}{Kurssilla tarvittavien R-pakettien asennus}
+\hypertarget{rcourse-paketin-asentaminen}{%
+\section*{Rcourse-paketin asentaminen}\label{rcourse-paketin-asentaminen}}
+\addcontentsline{toc}{section}{Rcourse-paketin asentaminen}
 
-R-ohjelmoinnissa asennetaan usein R-paketteja. Paketit ovat kokonaisuuksia, jotka lisäävät R:ään ominaisuuksia. Esimerkiksi tälle kurssille tarvittavat paketit arpovat opiskelijalle tehtäviä kurssin aihepiiristä ja lähettävät tiedon osioiden suorituksesta opettajalle.
+\hypertarget{r-paketit}{%
+\subsection*{R-paketit}\label{r-paketit}}
+\addcontentsline{toc}{subsection}{R-paketit}
 
-Ensin asennetaan paketti \texttt{sendmailR}. Valitaan RStudion oikean alakulman osasta Packages -\textgreater{} Install. Avautuvaan ikkunaan kirjoitetaan paketin nimeksi ``sendmailR'' ja asennetaan paketti. CRAN (Comprehensive R Archive Network) on paikka, johon iso osa R-paketeista on tallennettu, jotta ne on helppo asentaa.
+R-ohjelmoinnissa asennetaan usein R-paketteja. Paketit ovat kokonaisuuksia, jotka lisäävät R:ään ominaisuuksia. Esimerkiksi tälle kurssille tarvittava paketti arpoo opiskelijalle tehtäviä kurssin aihepiiristä ja lähettää tiedon osioiden suorituksesta opettajalle.
 
-Itse tehtäviä arpova \texttt{Rkurssi}-paketti ei ole CRAN:issa, vaan se pitää ladata kurssin Moodle-sivulta \texttt{Rkurssi.zip}-tiedostona. Paketin asennusta varten valitaan Install-ikkunasta ``Install from''-vaihtoehdoksi ``Package Archive File'', ja valitaan aukeavasta ikkunasta juuri ladattu \texttt{Rkurssi.zip}
+\hypertarget{asentaminen}{%
+\subsection*{Asentaminen}\label{asentaminen}}
+\addcontentsline{toc}{subsection}{Asentaminen}
+
+Rcourse-paketti asennetaan suorittamalla seuraava koodi R:ssä. Kopioi koodi joko R-skriptiin ja aja se tai kopioi se suoraan Console-ikkunaan ja paina Enter-näppäintä.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{source}\NormalTok{(}\FunctionTok{url}\NormalTok{(}\StringTok{"http://users.jyu.fi/\textasciitilde{}santikka/Rcourse/install.R"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Tämän jälkeen paketti tulee ladata käyttöön
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(Rcourse)}
+\end{Highlighting}
+\end{Shaded}
+
+Komento \texttt{info()} tulostaa ohjeet (ensimmäisellä käyttökerralla kieli on englanti). Voit vaihtaa kielen suomeksi näin:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{select\_language}\NormalTok{(}\StringTok{"finnish"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Tarkastele vielä suomenkielisiä komentoja:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{info}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{files/00-start/Rcourse_package_info.png}
+
+Aloita sitten osion 1 harjoitustehtävien suorittaminen komennolla
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{osio1}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+Kun olet suorittanut harjoitusosion 1, voit jatkaa seuraavaan osioon. Osiot 1-8 ovat pakollisia (tentit kysyvät näiden osioiden sisältöjä) ja osiot 9-11 ovat lisämateriaalia kiinnostuneille (ei kysytä tentissä).
+
+\hypertarget{opiskelu-ja-tenttiminen-rcourse-paketin-avulla}{%
+\subsection*{Opiskelu ja tenttiminen Rcourse-paketin avulla}\label{opiskelu-ja-tenttiminen-rcourse-paketin-avulla}}
+\addcontentsline{toc}{subsection}{Opiskelu ja tenttiminen Rcourse-paketin avulla}
+
+Kurssin harjoitustehtävät suoritetaan käyttäen Rcourse-pakettia, eli 1. osion voi aloittaa komennolla
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{osio1}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+Lisäksi tenttimien onnistuu vastaavasti funktiolla loppukoe(x), mutta tällöin merkin x tilalle on annettava oma syntymäaika muodossa dddmmyyyy. Esim. henkilö joka on syntynyt 1. tammikuuta 1990 antaisi
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{loppukoe}\NormalTok{(}\DecValTok{01011990}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{tehtuxe4vien-tallentaminen-skripteihin-rstudiolla}{%
+\subsection*{Tehtävien tallentaminen skripteihin RStudiolla}\label{tehtuxe4vien-tallentaminen-skripteihin-rstudiolla}}
+\addcontentsline{toc}{subsection}{Tehtävien tallentaminen skripteihin RStudiolla}
+
+Suurin osa kurssin tehtävistä on melko lyhyitä, joten ne voi tarvittaessa tehdä suoraan konsoliin. Suosittelen kuitenkin kirjoittamaan varsinkin pidemmät ja monimutkaisemmat tehtävät muistiin editoriin. Suosittelenkin tekemään jokaista osiota varten erillisen R-skriptin, joka sisältää itse tehtävien tarvitseman koodin sekä palautuskomennot. Tällainen skripti näyttää jotakuinkin tältä:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Teht 1}
+\NormalTok{vast }\OtherTok{\textless{}{-}} \DecValTok{1}
+\FunctionTok{tarkista}\NormalTok{(vast)}
+
+\CommentTok{\# Teht 2}
+\NormalTok{vast }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\FunctionTok{tarkista}\NormalTok{(vast)}
+
+\CommentTok{\# Teht 3}
+\NormalTok{vast }\OtherTok{\textless{}{-}} \StringTok{"jotain"}
+\FunctionTok{tarkista}\NormalTok{(vast)}
+\end{Highlighting}
+\end{Shaded}
+
+Mikäli käytät nimen \texttt{vast} sijasta jotain muuta nimeä, niin sinun on käytettävä samaa nimä myös tarkista-funktion argumenttina!
 
 \hypertarget{intro}{%
 \chapter{Johdanto}\label{intro}}
 
-\hypertarget{mikuxe4-r-on-ja-mituxe4-silluxe4-tehduxe4uxe4n}{%
-\section{Mikä R on ja mitä sillä tehdään?}\label{mikuxe4-r-on-ja-mituxe4-silluxe4-tehduxe4uxe4n}}
+\hypertarget{what_R}{%
+\section{Mikä R on ja mitä sillä tehdään?}\label{what_R}}
 
 Ohjelmoinnin tavoitteena on kirjoittaa eli koodata ohjelma, joka suorittaa jonkun halutun tehtävän. Ohjelma koostuu useista komennoista, joista jokainen tekee jotain hyvin yksinkertaista.
 
@@ -302,6 +419,9 @@ R:n käyttöä ja ohjelmointia muutenkin oppii parhaiten tekemällä. Tässä do
 \end{verbatim}
 
 Yksittäisten komentojen ajamisesta ei kuitenkaan ole yleensä hyötyä, ellei tuloksia voi tallentaa johonkin. Ohjelmointikielissä tietoja tallennetaan muuttujiin, joita käsitellään seuraavaksi.
+
+\hypertarget{variables_and_vectors}{%
+\chapter{Muuttujat ja vektorit}\label{variables_and_vectors}}
 
 \hypertarget{muuttujat-variables}{%
 \section{Muuttujat (Variables)}\label{muuttujat-variables}}
@@ -464,7 +584,7 @@ Yksinkertaisin tapa tehdä vektori R:ssä on käyttää \texttt{c()}-funktiota, 
 \end{verbatim}
 
 \hypertarget{vektorilaskentaa}{%
-\subsection{Vektorilaskentaa}\label{vektorilaskentaa}}
+\subsubsection{Vektorilaskentaa}\label{vektorilaskentaa}}
 
 Vektoreilla laskeminen on usein hyvin intuitiivista (lisää vaaranpaikoista myöhemmin). Kun vektoriin kohdistetaan laskutoimintoja, sama operaatio tehdään kaikille vektorin alkioille (engl. vectorization).
 
@@ -774,7 +894,7 @@ Puuttuvia arvoja merkataan R:ssä merkinnällä \texttt{NA} (not available). Puu
 ## [1] 13
 \end{verbatim}
 
-HUOM! Funktio \texttt{is.na} tarkistaa, onko jokin arvo puuttuva. Perinteinen yhtäsuuruuden testaaminen ei siis toimi
+HUOM! Funktio \texttt{is.na} tarkistaa, onko jokin arvo puuttuva. Perinteinen yhtäsuuruuden testaaminen ei siis toimi.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -820,38 +940,484 @@ HUOM! Funktio \texttt{is.na} tarkistaa, onko jokin arvo puuttuva. Perinteinen yh
 ## [1] FALSE FALSE  TRUE FALSE  TRUE FALSE
 \end{verbatim}
 
-\hypertarget{tehtuxe4vien-aloitus}{%
-\section{Tehtävien aloitus}\label{tehtuxe4vien-aloitus}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# complete.cases gives the data elements which do not have missing data. It can be used with data frames also.}
+\FunctionTok{complete.cases}\NormalTok{(missing)}
+\end{Highlighting}
+\end{Shaded}
 
-Tämän ohjeen ja R:n virallisen manuaalin tai pienen googlailun avulla selviät ensimmäisen viikon tehtävistä. Katso vielä etusivulta vinkki tehtävien tallentamisesta R-skriptiin \href{https://github.com/antonvsdata/r_intro\#kurssin-suoritus-rstudiolla}{(linkki)}.\# Introduction \{\#intro\}
+\begin{verbatim}
+## [1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE
+\end{verbatim}
 
-\hypertarget{tietotyypit}{%
-\chapter{Tietotyypit}\label{tietotyypit}}
+\hypertarget{extra}{%
+\section{Extra: Alkeistietotyypit ja puuttuvat arvot}\label{extra}}
 
-\hypertarget{esittely}{%
-\section{Esittely}\label{esittely}}
+Tässä lisätieto-osiossa käsitellään asioita, joita et välttämättä tarvitse kurssista suoriutuaksesi. Mikäli käytät R:ää enemmän, niin vastaan tulee enemmin tai myöhemmin ongelmia, joissa tarvitsee näitä taitoja. Voit palata näihin myöhemmin koska tahansa, kun haluat syventää ymmärrystäsi R:stä.
+
+R on rakennettu sisäisesti siten, että vektorin kukin elementti on jotain alkeistietotyyppiä. Valmiina R:ssä on neljä alkeistietotyyppiä:
+- numeerinen (eli reaaliluku)
+- kokonaisluku (integer)
+- merkkijono (character)
+- kompleksiluku
+
+Näistä tarpeellisimpia ovat numeerinen ja merkkijono. Kompleksilukua tarvitsee vain joissain erityistapauksissa ja kokonaisluvut ovat nykyään lähes aina tallennettu numeerisina.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Integers are usually stored as reals}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\FunctionTok{class}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# You can make integers by adding capital L behind the number}
+\NormalTok{x\_int }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(1L,2L,3L)}
+\FunctionTok{class}\NormalTok{(x\_int)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Character strings (or just strings)}
+\NormalTok{x\_char }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"I"}\NormalTok{,}\StringTok{"have"}\NormalTok{,}\StringTok{"a"}\NormalTok{,}\StringTok{"cat."}\NormalTok{)}
+\FunctionTok{class}\NormalTok{(x\_char)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+Joskus vektorin tiedot ovat väärässä muodossa, esim. merkkijonoina, mutta haluaisit ne numeroarvoina. Näihin operaatioihin on omat funktionsa. Tällöin voi kuitenkin tulla ongelmia, jos muutettava vektori ei ole helposti muutettavissa haluttuun muotoon.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Chacter string to numeric}
+\FunctionTok{class}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(x\_char))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: NAs introduced by coercion
+\end{verbatim}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# If character contains only values it is easy}
+\NormalTok{x\_char2 }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{,}\StringTok{"5"}\NormalTok{,}\StringTok{"6.5"}\NormalTok{)}
+\FunctionTok{as.numeric}\NormalTok{(x\_char2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.0 5.0 6.5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Integer to numeric}
+\NormalTok{x\_int\_to\_num }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(x\_int)}
+\NormalTok{x\_int\_to\_num}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(x\_int\_to\_num)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Numeric to integer}
+\NormalTok{x\_num\_to\_int }\OtherTok{\textless{}{-}} \FunctionTok{as.integer}\NormalTok{(x)}
+\NormalTok{x\_num\_to\_int}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(x\_num\_to\_int)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+Vielä pari lisähuomiota puuttuvista arvoista (näitä ei tarvise usein) koskien niiden tietotyyppejä. Puuttuvalla arvolla on myös alkeistietotyyppi. Mikäli NA-arvon tietotyyppi tarvitsee määritellä, niin sen voi tehdä seuraavasti. Mikäli luo muuttujan tai vektorin, jossa on vain yksi arvo ja se arvo on NA, niin se oletusarvoisesti looginen.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Specify a numeric NA value}
+\ConstantTok{NA\_real\_}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Specify a complex number NA value}
+\ConstantTok{NA\_complex\_}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Specify a integer number NA value}
+\ConstantTok{NA\_integer\_}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Specify a character NA value}
+\ConstantTok{NA\_character\_}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# NA gives a logical type when evaluated alone}
+\FunctionTok{class}\NormalTok{(}\ConstantTok{NA}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# NA\_real\_ is numeric}
+\FunctionTok{class}\NormalTok{(}\ConstantTok{NA\_real\_}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\hypertarget{uxe4uxe4retuxf6n-ja-miinus-uxe4uxe4retuxf6n}{%
+\subsubsection{Ääretön ja miinus ääretön}\label{uxe4uxe4retuxf6n-ja-miinus-uxe4uxe4retuxf6n}}
+
+R:ssä on myös ääretön ja miinus ääretön. Ne on toteutettu samaan tapaan kuin puuttuva arvo on toteutettu, mutta niiden tarkasteluun on omat funktionsa. Ääretön ja miinus ääretön arvot syntyvät, jos aineistossa jaetaan nollalla.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# You can type in infinity or minus infinity if needed}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{, }\ConstantTok{Inf}\NormalTok{, }\DecValTok{5}\NormalTok{, }\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{)}
+\CommentTok{\# Use is.finite to show if numbers are finite or not}
+\FunctionTok{is.finite}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE  TRUE FALSE  TRUE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Division by zero makes Inf or {-}Inf}
+\NormalTok{x\_div\_zero }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{)}\SpecialCharTok{/}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\NormalTok{x\_div\_zero}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3333333       Inf      -Inf
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{is.finite}\NormalTok{(x\_div\_zero)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE FALSE
+\end{verbatim}
+
+\hypertarget{ei-numero}{%
+\subsubsection{Ei-numero}\label{ei-numero}}
+
+Mikäli R:ssä sattuu jakamaan nollan nollalla (joka siis ei ole matermatiikassa sallittua), niin tämä tuottaa R:ssä tietotyypin, joka on NaN (lyhenne sanoista Not a Number). Mikäli NaN-arvoa tutkii funktiolla is.finite tai is.na, niin huomaa että NaN ei ole äärellinen ja NaN tulkitaan NA:ksi.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x\_div\_zero\_by\_zero }\OtherTok{\textless{}{-}} \DecValTok{0}\SpecialCharTok{/}\DecValTok{0}
+
+\CommentTok{\# Tests for NaN}
+\FunctionTok{is.nan}\NormalTok{(x\_div\_zero\_by\_zero)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Tests if it is finite}
+\FunctionTok{is.finite}\NormalTok{(x\_div\_zero\_by\_zero)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Tests if it is NA (missing)}
+\FunctionTok{is.na}\NormalTok{(x\_div\_zero\_by\_zero)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{data_types}{%
+\chapter{Tietotyypit}\label{data_types}}
 
 Tässä osassa tutustutaan neljään uuteen tietorakenteeseen:
 
 \begin{itemize}
 \tightlist
 \item
+  \protect\hyperlink{data-frame}{data frame (data.fame)}
+\item
   \protect\hyperlink{matriisi}{matriisi (matrix)}
 \item
   \protect\hyperlink{taulukko}{taulukko (array)}
 \item
   \protect\hyperlink{lista}{lista (list)}
-\item
-  \protect\hyperlink{data-frame}{data frame}
 \end{itemize}
+
+Data frame on R:n objekti, jossa voidaan säilyttää aineistoa. Muuttujat ova sarakkeina ja muuttujilla tulee olla aina nimi.
+
+Matriisi voi olla joillekin sanana tuttu myös tilastotieteen tai matematiikan kursseilta, ja R:n matriisi vastaakin matemaattista matriisia. Tästä syystä matriisi on hyvin yleinen tietorakenne, johon ei voi olla törmäämättä jos käyttää R:ää tutkimuksessa. Matriisilla tehdään yleensä kuitenkin matemaattisia operaatioita, eikä se ensisijaisesti ole aineiston säilytyspaikka.
 
 Taulukko on juuri sitä miltä se kuulostaa: vektorintapainen tietorakenne, johon tallennetaan alkioita (elements), joilla on kaikilla sama luokka (class), eli esimerkiksi lukuja. Ero vektoriin on se, että taulukolla on useampi ulottuvuus. Matriisi on erikoistapaus taulukosta, sillä matriisi on kaksiulotteinen taulukko. Matriisi vastaa siis oikeastaan paremmin sitä mielikuvaa, joka monelle tulee mieleen suomen sanasta taulukko, ja matriisit ovatkin paljon yleisempiä kuin moniulotteiset taulukot.
 
-Matriisi voi olla joillekin sanana tuttu myös tilastotieteen tai matematiikan kursseilta, ja R:n matriisi vastaakin matemaattista matriisia. Tästä syystä matriisi on hyvin yleinen tietorakenne, johon ei voi olla törmäämättä jos käyttää R:ää tutkimuksessa.
+Lista on kokoelma alkioita, jonka alkioina voi olla hyvin eri tyyppisiä objekteja.
 
-Lista on kokoelma alkioita, joilla voi olla eri luokkia. Data frame on matriisin kaltainen kaksiulotteinen tietorakenne, jonka sarakkeilla voi olla eri luokkia.
+Koska data frame on kaikista tärkein ja eniten käytetty tietotyyppi, niin aloitetaan siitä.
 
-Aloitetaan matriiseista.
+\hypertarget{data-frame}{%
+\section{Data frame}\label{data-frame}}
+
+Data frame on erittäin yleinen tapa tallentaa tietoa R:ssä. Data frame on kaksiulotteinen tietorakenne, eli sillä on rivejä ja sarakkeita. Data framen sarakkeet muodostuvat aiemmin tutuista vektoreista. Nämä vektorit voivat olla eri luokan vektoreita, mutta data frame asettaa lisärajoitteen: vektoreiden on oltava yhtä pitkiä. Yhden rivin tiedot ajatellaan koskevan yhtä tutkittavaa.
+
+Luodaan data frame, josa on kaksi muuttujaa, height ja weight ja annetaan niihin kahdeksan mittauksen tiedot. Huomionarvoista on se, että komennon data.frame sulkujen sisällä on käytettävä yhtäsuuruusmerkkiä (=) eikä sijoitusoperaattoria (\textless-). Tämä johtuu siitä, että teknisesti ottaen komento data.frame on funktio (funktioista lisää myöhemmin).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{study\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{ID =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{,}
+                         \AttributeTok{height =} \FunctionTok{c}\NormalTok{(}\FloatTok{189.8}\NormalTok{, }\FloatTok{184.0}\NormalTok{, }\FloatTok{173.8}\NormalTok{, }\FloatTok{175.9}\NormalTok{, }\FloatTok{169.0}\NormalTok{, }\FloatTok{183.7}\NormalTok{, }\FloatTok{181.8}\NormalTok{, }\FloatTok{16.9}\NormalTok{),}
+                         \AttributeTok{gender =} \FunctionTok{c}\NormalTok{(}\StringTok{"male"}\NormalTok{,}\StringTok{"female"}\NormalTok{,}\StringTok{"male"}\NormalTok{,}\StringTok{"male"}\NormalTok{,}\StringTok{"female"}\NormalTok{,}\StringTok{"male"}\NormalTok{,}\StringTok{"male"}\NormalTok{,}\StringTok{"female"}\NormalTok{))}
+\NormalTok{study\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID height gender
+## 1  1  189.8   male
+## 2  2  184.0 female
+## 3  3  173.8   male
+## 4  4  175.9   male
+## 5  5  169.0 female
+## 6  6  183.7   male
+## 7  7  181.8   male
+## 8  8   16.9 female
+\end{verbatim}
+
+\hypertarget{data-framen-kuxe4sittely}{%
+\subsection{Data framen käsittely}\label{data-framen-kuxe4sittely}}
+
+Vaikka data frame näyttää ulkoisesti matriisilta, data frame on itse asiassa lista, jonka kaikki alkiot ovat yhtä pitkiä vektoreita. Data framella on kuitenkin monta erityisominaisuutta, ja data frame käyttäytyy välillä kuin matriisi, välillä kuin lista. Tässä muutama esimerkki:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Subscripting with variable names}
+\NormalTok{study\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"height"}\NormalTok{, }\StringTok{"gender"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   height gender
+## 1  189.8   male
+## 2  184.0 female
+## 3  173.8   male
+## 4  175.9   male
+## 5  169.0 female
+## 6  183.7   male
+## 7  181.8   male
+## 8   16.9 female
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Subscripting with brackets {-} as matrix (but I do not recommend this style!)}
+\NormalTok{study\_data[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID height
+## 1  1  189.8
+## 2  2  184.0
+## 3  3  173.8
+## 4  4  175.9
+## 5  5  169.0
+## 6  6  183.7
+## 7  7  181.8
+## 8  8   16.9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Rownames and colnames}
+\FunctionTok{colnames}\NormalTok{(study\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "ID"     "height" "gender"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(study\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "ID"     "height" "gender"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Individual columns can be accessed and added with dollar sign}
+\CommentTok{\# Let\textquotesingle{}s say that we find out that the ID number 8 was typed in incorrectly. We can fix the entire height variables as follows}
+\NormalTok{study\_data}\SpecialCharTok{$}\NormalTok{height }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{189.8}\NormalTok{, }\FloatTok{184.0}\NormalTok{, }\FloatTok{173.8}\NormalTok{, }\FloatTok{175.9}\NormalTok{, }\FloatTok{169.0}\NormalTok{, }\FloatTok{183.7}\NormalTok{, }\FloatTok{181.8}\NormalTok{, }\FloatTok{160.9}\NormalTok{)}
+\NormalTok{study\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID height gender
+## 1  1  189.8   male
+## 2  2  184.0 female
+## 3  3  173.8   male
+## 4  4  175.9   male
+## 5  5  169.0 female
+## 6  6  183.7   male
+## 7  7  181.8   male
+## 8  8  160.9 female
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# It would have been possible to change value of only one cell e.g. like this}
+\NormalTok{study\_data}\SpecialCharTok{$}\NormalTok{height[}\DecValTok{8}\NormalTok{] }\OtherTok{\textless{}{-}} \FloatTok{161.9}
+\NormalTok{study\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID height gender
+## 1  1  189.8   male
+## 2  2  184.0 female
+## 3  3  173.8   male
+## 4  4  175.9   male
+## 5  5  169.0 female
+## 6  6  183.7   male
+## 7  7  181.8   male
+## 8  8  161.9 female
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Filtering based on a variable can be done like this}
+\NormalTok{study\_data[study\_data}\SpecialCharTok{$}\NormalTok{gender }\SpecialCharTok{==} \StringTok{"female"}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID height gender
+## 2  2  184.0 female
+## 5  5  169.0 female
+## 8  8  161.9 female
+\end{verbatim}
+
+Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla \texttt{rbind()}. Käyttäjän tulee myös huolehtia siitä, että sarakkeet ovat samaa tyyppiä kuin alkuperäisessä data framessa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{new\_row }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{ID =} \DecValTok{11}\NormalTok{, }\AttributeTok{height =} \DecValTok{182}\NormalTok{, }\AttributeTok{gender =} \StringTok{"male"}\NormalTok{)}
+\FunctionTok{rbind}\NormalTok{(study\_data, new\_row)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ID height gender
+## 1  1  189.8   male
+## 2  2  184.0 female
+## 3  3  173.8   male
+## 4  4  175.9   male
+## 5  5  169.0 female
+## 6  6  183.7   male
+## 7  7  181.8   male
+## 8  8  161.9 female
+## 9 11  182.0   male
+\end{verbatim}
+
+Data framet ovat erittäin käteviä, koska niihin voi helposti tallentaa sekä merkkijonoja, että numeerista dataa. Bioinformatiikkaa opiskelevien kannattaa kuitenkin muistaa, että matriisi on usein laskennan kannalta tehokkaampi tietorakenne, kuin data frame. Tästä ei tarvitse murehtia tällä kurssilla, mutta se on hyvä tietää jatkon kannalta, jos bioinformatiikkakursseilla tulee vastaan isompia datasettejä, joissa on osia, jotka voi tallentaa matriisina.
 
 \hypertarget{matriisi}{%
 \section{Matriisi}\label{matriisi}}
@@ -1268,8 +1834,77 @@ Matriiseilla laskeminen on hyvin samankaltaista kuin vektoreilla laskeminen. Mat
 
 Matriiseille on lisäksi määritelty paljon matriisien omia laskutoimituksia, niistä voi lukea lisää oppikirjasta. Matriisilaskentaa opiskelleille huomio: R:ssä oletuksena kertolasku tehdään alkioittain, matriisien kertolasku tapahtuu operaattorilla \texttt{\%*\%}.
 
+\hypertarget{tietotyyppien-tarkastelu}{%
+\section{Tietotyyppien tarkastelu}\label{tietotyyppien-tarkastelu}}
+
+Kaikkia objekteja voi tulostaa Console-ikkunassa kutsumalla objektin nimen. Joskus tarvitaan kuitenkin apufunktioita.
+
+\hypertarget{view}{%
+\subsection{View()}\label{view}}
+
+Mikäli käytät RStudiota, niin tarkempaa tarkastelua varten kannattaa kuitenkin käyttää \texttt{View}-funktiota. \texttt{View} avaa ikkunan, jossa voi selata data framen tai matriisin rivejä ja sarakkeita, sekä järjestää arvoja halutun sarakkeen mukaan (tämä järjestys säilyy vain \texttt{View}-näkymässä, itse muuttujan rakenne ei muutu). Mikäli aineistossasi on satoja tuhansia tai miljoonia rivejä, niin \texttt{View} saattaa olla liian hidas.
+
+\hypertarget{str}{%
+\subsection{str()}\label{str}}
+
+Perineinen tapa tarkastella tietotyyppejä R:ssä on funktio nimeltä \texttt{str()} str toimii kaikissa R-ympäristöissä. str tulostaa sekä muuttujien nimet, niiden vektoreiden tyypit että ruudulle mahtuvan osan vektoreiden alkioista.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Examine the structure of data frame}
+\FunctionTok{str}\NormalTok{(study\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    8 obs. of  3 variables:
+##  $ ID    : int  1 2 3 4 5 6 7 8
+##  $ height: num  190 184 174 176 169 ...
+##  $ gender: chr  "male" "female" "male" "male" ...
+\end{verbatim}
+
+\hypertarget{head}{%
+\subsection{head()}\label{head}}
+
+Jos aineistossa on todella paljon rivejä, on sen tulostaminen Console-ikkunaan ikävää. Ladataan esimerkiksi iris-data, jossa on 150 havaintoa. Tulostettaessa rivejä on niin monta, että muuttujien nimet eivät näy, mikä on epämiellyttävää. Parempi tapa saada käsitys aineistosta on kutsua sitä head-funktion avulla.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load data for this example}
+\FunctionTok{data}\NormalTok{(iris)}
+
+\CommentTok{\# Try to print iris{-}data directly}
+\NormalTok{iris}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{files/02-data_types/iris_print_data.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print 6 first rows of iris data}
+\FunctionTok{head}\NormalTok{(iris)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{files/02-data_types/iris_print_head_data.png}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# You can also define the number of rows to print}
+\FunctionTok{head}\NormalTok{(iris,}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{files/02-data_types/iris_print_head2_data.png}
+
+\hypertarget{extra-taulukko-ja-lista}{%
+\section{Extra: Taulukko ja lista}\label{extra-taulukko-ja-lista}}
+
+Taulukoita ja listoija ei ihan perus data-analyysiä toteutettaessa tarvitse. Lue kuitenkin seuraava, jotta saat yleiskäsityksen mihin niitä tarvitaan. Voit myös palata perehtymään taulukoihin ja listoihin myöhemmin koska tahansa.
+
 \hypertarget{taulukko}{%
-\section{Taulukko}\label{taulukko}}
+\subsection{Taulukko}\label{taulukko}}
 
 Kuten alussa todettiin, taulukot (array) ovat hyvin harvinaisia, joten niihin ei kannata tällä kurssilla keskittyä. Niitä kuitenkin tarvitaan joidenkin tehtävien tekemiseen, joten tässä on hyvin lyhyt oppimäärä taulukoista.
 
@@ -1357,7 +1992,7 @@ Taulukoita indeksoidaan aivan kuten matriiseja, mutta jokaiselle ulottuvuudelle 
 \end{verbatim}
 
 \hypertarget{lista}{%
-\section{Lista}\label{lista}}
+\subsection{Lista}\label{lista}}
 
 Lista (list) on vektorinkaltainen tietorakenne, jossa on järjestyksessä alkioita, jotka on mahdollisesti nimetty. Tärkeä ero vektoriin verrattuna on, että listan alkiot voivat olla erityyppisiä. Listoja luodaan \texttt{list}-funktiolla:
 
@@ -1418,7 +2053,7 @@ Lista (list) on vektorinkaltainen tietorakenne, jossa on järjestyksessä alkioi
 Listoja ja niiden kaltaisia olioita käytetään R:ssä paljon. Listoihin on kätevä kerätä erilaista tietoa, jotka halutaan säilyttää samassa paketissa. Esimerkiksi yksinkertaisetkin tilastolliset mallit tuottavat paljon erilaista tietoa, jotka pakataan listaan (tarkemmin listan kaltaiseen olioon, tästä lisää myöhemmin).
 
 \hypertarget{listojen-alkioiden-kuxe4sittely}{%
-\subsection{Listojen alkioiden käsittely}\label{listojen-alkioiden-kuxe4sittely}}
+\subsubsection{Listojen alkioiden käsittely}\label{listojen-alkioiden-kuxe4sittely}}
 
 Listan alkioihin pääsee käsiksi kahdella eri tavalla: kaksoishakasulkeilla \texttt{{[}{[}{]}{]}} tai, jos lista on nimetty, dollarimerkillä \texttt{\$}:
 
@@ -1541,7 +2176,7 @@ Tarkastellaan alla, mikä ero yksinkertaisilla ja kaksinkertaisilla hakasulkeill
 \end{verbatim}
 
 \hypertarget{alkion-lisuxe4ys-listaan-ja-listojen-yhdistuxe4minen}{%
-\subsection{Alkion lisäys listaan ja listojen yhdistäminen}\label{alkion-lisuxe4ys-listaan-ja-listojen-yhdistuxe4minen}}
+\subsubsection{Alkion lisäys listaan ja listojen yhdistäminen}\label{alkion-lisuxe4ys-listaan-ja-listojen-yhdistuxe4minen}}
 
 Yksittäisen alkion voi lisätä listaan sijoittamalla listan johonkin indeksiin tai nimeen uusi arvo (indeksin pitää olla yhtä suurempi kuin listan pituus). HUOM! Listan alkio voi myös itse olla lista (sisäkkäinen lista = nested list).
 
@@ -1649,124 +2284,8 @@ Listoja voi yhdistää vektorien tapaan \texttt{c()}-funktiolla:
 ## [1] "B"
 \end{verbatim}
 
-\hypertarget{data-frame}{%
-\section{Data frame}\label{data-frame}}
-
-Data frame on erittäin yleinen tapa tallentaa tietoa R:ssä. Data frame on kaksiulotteinen tietorakenne, eli sillä on rivejä ja sarakkeita aivan kuten matriisilla. Data framen ja matriisin välillä on kuitenkin yksi tärkeä ero: data framen sarakkeet voivat olla eri luokan vektoreita.
-
-Muutetaan esimerkiksi edellä nähdyn \texttt{study}-listan ``Subject\_ID\texttt{ja}Measurements```-osat yhdeksi data frameksi:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{study\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Subject\_ID =}\NormalTok{ study}\SpecialCharTok{$}\NormalTok{Subject\_ID,}
-\NormalTok{                         study}\SpecialCharTok{$}\NormalTok{Measurements)}
-\NormalTok{study\_data}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      Subject_ID CRP HDL LDL
-## ANKL       ANKL 1.0 3.5 2.3
-## PEPA       PEPA 2.5 5.0 3.0
-## DIPR       DIPR 3.0 3.0 1.6
-\end{verbatim}
-
-\texttt{data.frame}-funktiolle voi antaa sekaisin yksittäisiä vektoreita, tai kokonaisia matriiseja tai valmiita data frameja, jotka kaikki yhdistetään yhdeksi data frameksi.
-
-\hypertarget{data-framen-kuxe4sittely}{%
-\subsection{Data framen käsittely}\label{data-framen-kuxe4sittely}}
-
-Vaikka data frame näyttää ulkoisesti matriisilta, data frame on itse asiassa lista, jonka kaikki alkiot ovat yhtä pitkiä vektoreita. Data framella on kuitenkin monta erityisominaisuutta, ja data frame käyttäytyy välillä kuin matriisi, välillä kuin lista. Tässä muutama esimerkki:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Subscripting with brackets {-} as matrix}
-\NormalTok{study\_data[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      Subject_ID CRP HDL
-## PEPA       PEPA 2.5   5
-## DIPR       DIPR 3.0   3
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Rownames and colnames {-} as matrix}
-\FunctionTok{colnames}\NormalTok{(study\_data)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "Subject_ID" "CRP"        "HDL"        "LDL"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Individual columns can be accessed and added with dollar sign {-} as list}
-\NormalTok{study\_data}\SpecialCharTok{$}\NormalTok{CRP}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 1.0 2.5 3.0
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{study\_data}\SpecialCharTok{$}\NormalTok{height }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{168}\NormalTok{, }\DecValTok{185}\NormalTok{, }\DecValTok{172}\NormalTok{)}
-\NormalTok{study\_data}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      Subject_ID CRP HDL LDL height
-## ANKL       ANKL 1.0 3.5 2.3    168
-## PEPA       PEPA 2.5 5.0 3.0    185
-## DIPR       DIPR 3.0 3.0 1.6    172
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Filtering based on a variable can be done like this}
-\NormalTok{study\_data[study\_data}\SpecialCharTok{$}\NormalTok{HDL }\SpecialCharTok{\textless{}} \DecValTok{4}\NormalTok{, ]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      Subject_ID CRP HDL LDL height
-## ANKL       ANKL   1 3.5 2.3    168
-## DIPR       DIPR   3 3.0 1.6    172
-\end{verbatim}
-
-Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla \texttt{rbind()}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{new\_row }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Subject\_ID =} \StringTok{"BRWA"}\NormalTok{, }\AttributeTok{CRP =} \DecValTok{2}\NormalTok{, }\AttributeTok{HDL =} \DecValTok{4}\NormalTok{, }\AttributeTok{LDL =} \DecValTok{2}\NormalTok{, }\AttributeTok{height =} \DecValTok{182}\NormalTok{)}
-\FunctionTok{rownames}\NormalTok{(new\_row) }\OtherTok{\textless{}{-}} \StringTok{"BRWA"}
-\FunctionTok{rbind}\NormalTok{(study\_data, new\_row)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      Subject_ID CRP HDL LDL height
-## ANKL       ANKL 1.0 3.5 2.3    168
-## PEPA       PEPA 2.5 5.0 3.0    185
-## DIPR       DIPR 3.0 3.0 1.6    172
-## BRWA       BRWA 2.0 4.0 2.0    182
-\end{verbatim}
-
-Data framet ovat erittäin käteviä, koska niihin voi helposti tallentaa sekä merkkijonoja, että numeerista dataa. Kannattaa kuitenkin muistaa, että matriisi on usein laskennan kannalta tehokkaampi tietorakenne, kuin data frame. Tästä ei tarvitse murehtia tällä kurssilla, mutta se on hyvä tietää jatkon kannalta, jos bioinformatiikkakursseilla tulee vastaan isompia datasettejä, joissa on osia, jotka voi tallentaa matriisina.
-
-\hypertarget{view}{%
-\section{View()}\label{view}}
-
-Data frameja ja matriiseja tai niiden osia voi tulostaa R:n konsoliin kuten muitakin muuttujia. Tarkempaa tarkastelua varten kannattaa kuitenkin käyttää \texttt{View}-funktiota. \texttt{View} avaa ikkunan, jossa voi selata data framen tai matriisin rivejä ja sarakkeita, sekä järjestää arvoja halutun sarakkeen mukaan (tämä järjestys säilyy vain \texttt{View}-näkymässä, itse muuttujan rakenne ei muutu).
-
-\hypertarget{datan-sisuxe4uxe4n-lukeminen}{%
-\chapter{Datan sisään lukeminen}\label{datan-sisuxe4uxe4n-lukeminen}}
+\hypertarget{reading_data}{%
+\chapter{Datan sisään lukeminen}\label{reading_data}}
 
 Tässä osiossa tutustutaan datan sisään lukemiseen ja sisäänluetun datan tarkistamiseen. Tähän mennessä kaikki kurssilla käsitelty data on luotu R:ssä. Useimmiten R:llä käsiteltävä data on kuitenkin tallennettu tiedostoon, joka on luotu automaattisesti jollain ohjelmalla tai kirjattu esim. Excelissä.
 
@@ -2000,8 +2519,8 @@ SPSS-tiedostoja voi lukea myös foreign-paketin avulla, mutta ainakin minulla on
 
 Datan sisään lukemiseen liittyvät tehtävät ovat melko suorviivaisia yhtä poikkeusta lukuun ottamatta. Ainakin minulle Rkurssi-paketti generoi tiedoston, jonka tiedostopääte oli .csv, mutta alkiot oli erotettu sarkaimella, ei pilkulla. Jos siis saat outoja virheilmoituksia, tarkasta tiedoston rakenne joko R:n komennolla \texttt{file.show()} tai avaamalla tiedosto esim. Notepadilla.
 
-\hypertarget{kuvaajien-piirtuxe4minen}{%
-\chapter{Kuvaajien piirtäminen}\label{kuvaajien-piirtuxe4minen}}
+\hypertarget{plotting}{%
+\chapter{Kuvaajien piirtäminen}\label{plotting}}
 
 Tällä viikolla tutustutaan kuvaajien piirtämiseen. Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä on silti lyhyet kirjalliset ohjeet suomeksi. \textbf{Tämän dokumentin lopussa on myös \protect\hyperlink{tuxe4muxe4n-viikon-tehtuxe4vuxe4}{käytännön vinkkejä tämän viikon tehtävään}.}
 
@@ -2036,7 +2555,7 @@ Korkean tason piirtofunktioista ylivoimaisesti yleisin on \texttt{plot}. \texttt
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-51-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-68-1.pdf}
 
 \texttt{plot}-funktiolle annetaan siis kaksi yhtä pitkää vektoria, joissa on pisteiden x- ja y-koordinaatit. Halutessaan kuvalle voi antaa otsikon (title) ja nimetä uudestaan kuvan akselit (axis labels). Tämä onkin usein hyvä idea, sillä R:n muuttujien nimissä ei saa olla välilyöntejä tai erikoismerkkejä, mutta usein näiden käyttö akselien nimissä on hyvin informatiivista.
 
@@ -2048,7 +2567,7 @@ Korkean tason piirtofunktioista ylivoimaisesti yleisin on \texttt{plot}. \texttt
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-52-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-69-1.pdf}
 
 \texttt{plot}-funktiolle voi antaa muitakin parametreja, jotka säätävät mm. pisteiden väriä, kokoa ja muotoa, akselien rajoja jne.
 
@@ -2069,7 +2588,7 @@ Tässä on esimerkkejä muutamista muista yleisistä korkean tason funktioista:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-53-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-70-1.pdf}
 
 Toinen tapa kuvata jatkuvan muuttujan jakaumaa on laatikkokuvaaja, joita piirretään \texttt{boxplot}-funktiolla:
 
@@ -2081,7 +2600,7 @@ Toinen tapa kuvata jatkuvan muuttujan jakaumaa on laatikkokuvaaja, joita piirret
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-54-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-71-1.pdf}
 
 Vastaavasti diskreetin muuttujan jakaumaa voi kuvata pylväsdiagrammilla käyttäen \texttt{barplot}-funktiota. Alla on esimerkki opiskelijoiden kotipaikkakuntien jakaumasta. Tässä tulee myös tutuksi uusi vektorien ominaisuus: nimeäminen. Nimettyjen vektorien (named vectors) alkioilla on järjestyslukujen lisäksi nimet. Nimet annetaan olla olevaan tyyliin \texttt{nimi\ =\ alkio}. Nimetyt vektori käyttäytyvät aivan kuin tavalliset vektorit, mutta niitä voi indeksoida myös nimien avulla, ja jotkut funktiot, kuten barplot, käyttävät hyödyksi alkioiden nimiä. Nimettyjen vektorien käyttö ei ole kurssin ydinasioita, mutta on joskus hyvin kätevä temppu osata.
 
@@ -2117,7 +2636,7 @@ Vastaavasti diskreetin muuttujan jakaumaa voi kuvata pylväsdiagrammilla käytt�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-55-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-72-1.pdf}
 
 \hypertarget{alemman-tason-grafiikkatoiminnot}{%
 \section{Alemman tason grafiikkatoiminnot}\label{alemman-tason-grafiikkatoiminnot}}
@@ -2134,7 +2653,7 @@ Otetaan esimerkiksi alussa nähty kuvaaja autojen pysähtymismatkoista ja lisät
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-56-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-73-1.pdf}
 
 Lisätään kuvaajan jarrutusmatkat liukkaalla kelillä. Uusia pisteitä voi piirtää \texttt{points}-funktiolla, jolle annetaan x- ja y-koordinaatit vektoreina ihan kuin \texttt{plot}-funktiollekin.
 
@@ -2148,7 +2667,7 @@ Lisätään kuvaajan jarrutusmatkat liukkaalla kelillä. Uusia pisteitä voi pii
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-57-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-74-1.pdf}
 
 Ylläolevassa kuvaajassa on kaksi ongelmaa: ylimmät pisteet eivät näy, koska kuvaajan y-akseli loppuu kesken. Y-akseli on piirretty alkuperäisten jarrutusmatkojen pohjalta, ja koska liukkaalla kelillä jarrutus kestää pidempään, uudet pisteet eivät mahdu kuvaajaan. Toinen ongelma on se, että pisteitä ei voi erottaa toisistaan.
 
@@ -2167,7 +2686,7 @@ Lisäksi piirretään selvyyden vuoksi pisteet eri värisinä ja eri kuvioilla. 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-58-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-75-1.pdf}
 
 Nyt kuvaaja alkaa jo näyttää paremmalta, mutta kuvaajasta ei vielä voi päätellä, mitä eri väriset pisteet tarkoittavat. Lisätään siis kuvaajaan selite \texttt{legend}-komennolla. Selitteelle määritetään paikka kuvaajassa \texttt{x} ja \texttt{y} argumenteilla (vasemman yläkulman koordinaatit). Sen jälkeen annetaan selitetekstit (\texttt{legend}), sekä selitteen muodot ja värit (\texttt{pch} ja \texttt{col}, kuten aiemmin). HUOM! Selitteen symbolit ja värit on itse osattava laittaa oikeaan järjestykseen. Selitteen tekstit annetaan järjestyksessä ylhäältä alas, ja piirtomerkit tulee antaa samassa järjestyksessä.
 
@@ -2187,7 +2706,7 @@ Nyt kuvaaja alkaa jo näyttää paremmalta, mutta kuvaajasta ei vielä voi pää
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-59-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-76-1.pdf}
 
 Tuunataan kuvaajaa vielä hiukan, ja lisätään siihen käyrä kuvaamaan jarrutusmatkan ennustetta \texttt{lines}-funktiolla.
 
@@ -2229,7 +2748,7 @@ Alla olevassa koodissa lasketaan ensin \texttt{lm}-funktion avulla sopivat param
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-61-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-78-1.pdf}
 
 Seuraavaksi voidaan värittää käyrät samoilla väreillä kuin pisteet, ja lisätä niille omat selitteet. Tässä vaiheessa selitteen tekemisestä tulee jo melko monimutkaista, sillä selitteessä on mukana pisteitä ja käyriä. Tästä syystä selitteen argumentteihin pitää laittaa puuttuvia arvoja \texttt{pch} ja \texttt{lty}-argumenteille, koska selitteen ensimmäiset rivit eivät viittaa mihinkään käyrään, vaan pelkästään pisteisiin ja vastaavasti kaksi alinta riviä viittaavat vain käyriin.
 
@@ -2256,7 +2775,7 @@ Seuraavaksi voidaan värittää käyrät samoilla väreillä kuin pisteet, ja li
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-62-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-79-1.pdf}
 
 Kuvaajamme on melkein valmis iltapäivälehteen muistuttamaan liukkaiden kelien vaaroista, mutta jotta siitä tulisi oikein säväyttävä, siinä pitää toki olla tekstiä! Lisätään siis vielä pieni tekstin pätkä, joka korostaa eroa liukkaan ja kuivan kelin välillä. Tekstiä voi lisätä \texttt{text}-funktiolla, jolle annetaan tuttuun tapaan \texttt{x} ja \texttt{y}-argumentit, joilla määritetään tekstin paikka ja \texttt{labels} määrittää itse tekstin (kaikki argumentit voivat olla myös pidempiä vektoreita, jolloin tulee useampi teksti eri paikkoihin). Lisäksi parametrillä \texttt{adj} (adjust) voi hienosäätää tekstin paikkaa. \texttt{adj} on vektori, jossa on hienosäätöarvot x- ja y-suunnassa.
 
@@ -2285,7 +2804,7 @@ Kuvaajamme on melkein valmis iltapäivälehteen muistuttamaan liukkaiden kelien 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-63-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-80-1.pdf}
 
 Kuvaajamme on nyt valmis! Näitä komentoja käyttämällä ja pienellä googlailulla saa myös tehtyä tämän viikon tehtävän.
 
@@ -2311,8 +2830,8 @@ Tämän viikon tehtävässä on muutama ``haaste''. Tässä siis pari suoraa vin
   Kohdassa 6. kannattaa ensin luoda vektori, jossa on eksponentiaalisen käyrän luvut ja lisätä se kuvaajaan funktiolla \texttt{lines()}. Älä siis käytä funktiota \texttt{curve()}, vaikka ohjeissa niin neuvotaan! \texttt{curve()}-funktion käyttö vaatii oman funktion määrittelyä, joka opitaan vasta myöhemmin tällä kurssilla!
 \end{itemize}
 
-\hypertarget{lineaariset-mallit-ja-tilastolliset-jakaumat}{%
-\chapter{Lineaariset mallit ja tilastolliset jakaumat}\label{lineaariset-mallit-ja-tilastolliset-jakaumat}}
+\hypertarget{statistics}{%
+\chapter{Lineaariset mallit ja tilastolliset jakaumat}\label{statistics}}
 
 Tässä osiossa tutustutaan lineaarisiin malleihin ja yleisimpien jakaumien käyttöön R:ssä. Jos konseptit eivät ole tilastotieteen kursseilta tuttuja, ei hätää: tämä dokumentti sisältää lyhyet selitykset tärkeimmistä konsepteista, ja loput selitetään varsinaisilla tilastotieteen kursseilla.
 
@@ -2408,8 +2927,8 @@ Kuten aiemmin mainittiin, factoreita voi tehdä myös numeerisista vektoreista. 
 ## [1] 0 0 1 1 5 5 1 0 5
 \end{verbatim}
 
-\hypertarget{lineaariset-mallit}{%
-\section{Lineaariset mallit}\label{lineaariset-mallit}}
+\hypertarget{linear_models}{%
+\section{Lineaariset mallit}\label{linear_models}}
 
 Lineaarisessa mallissa eli lineaarisessa regressiossa tavoite on arvioida vastemuuttujan lineaarista riippuvuutta selittävistä muuttujista. Käytetään esimerkkinä R:n sisäistä datasettiä cars, jossa on kirjattu 50 auton nopeus ja pysähtymismatka. Tavoitteena on tutkia, miten auton pysähtymismatka riippuu auton nopeudesta.
 
@@ -2459,7 +2978,7 @@ Muutetaan ensin cars-datasetin muuttujat meille tuttuihin yksikköihin, ja piirr
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-68-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-85-1.pdf}
 
 Autojen välillä on eroja, mutta kuten voi odottaa, suuremmilla nopeuksilla auton pysähtymismatka kasvaa. Käytetään seuraavaksi R:n funktiota \texttt{lm()}, jolla voidaan sovittaa dataan lineaarinen malli:
 
@@ -2488,7 +3007,7 @@ Lineaarisesta mallista saadaan irti paljon tietoa, tärkeimpinä mallin kertoime
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-70-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-87-1.pdf}
 
 \hypertarget{tarkempia-tietoja-mallista}{%
 \subsection{Tarkempia tietoja mallista}\label{tarkempia-tietoja-mallista}}
@@ -2558,7 +3077,7 @@ Kun lineaarinen malli on luotu, sen perusteella voidaan myös ennustaa arvoja uu
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-72-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-89-1.pdf}
 
 Kuten huomataan, ennustetut arvot ovat täsmälleen käyrän päällä.
 
@@ -2588,14 +3107,14 @@ Korrelaation kahden vektorin välillä voi R:ssä laskea komennolla \texttt{cor(
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-73-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-90-1.pdf}
 
 Tässä esimerkissä nähdään hyvin Pearsonin - ja Spearmanin korrelaatiokertoimien ero. Koska Indometasiinin konsentraatio laskee eksponentiaalisesti, ei lineaarisesti, Pearsonin korrelaatiokerroin on ``vain'' -0.7, kun taas Spearmanin korrelaatiokerroin -0.97 vastaa lähes täydellistä negatiivista korrelaatiota.
 
-\hypertarget{tilastolliset-jakaumat-rssuxe4}{%
-\section{Tilastolliset jakaumat R:ssä}\label{tilastolliset-jakaumat-rssuxe4}}
+\hypertarget{distributions}{%
+\section{Todennäköisyysjakaumat R:ssä}\label{distributions}}
 
-Monille yleisimmistä tilastollisista jakaumista on valmiita funktiota R:ssä. Funktiota on neljää eri tyyppiä, jotka merkataan funktion nimen ensimmäisellä kirjaimella.
+Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista on valmiita funktiota R:ssä. Funktiota on neljää eri tyyppiä, jotka merkataan funktion nimen ensimmäisellä kirjaimella.
 
 \begin{itemize}
 \tightlist
@@ -2611,7 +3130,7 @@ Monille yleisimmistä tilastollisista jakaumista on valmiita funktiota R:ssä. F
 
 Alla on kuvaajat ensimmäisestä kolmesta funktiosta:
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-74-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-91-1.pdf}
 
 \hypertarget{esimerkki-normaalijakauma}{%
 \subsection{Esimerkki: normaalijakauma}\label{esimerkki-normaalijakauma}}
@@ -2631,7 +3150,7 @@ Otetaan muutama käytännön esimerkki. Oletetaan, että suomalaisten miesten su
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-75-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-92-1.pdf}
 
 Aikuisten saantisuositus on enintään 5 grammaa suolaa päivässä. Kuinka moni suomalainen mies syö tämän jakauman mukaan sopivasti suolaa? Vastaus saadaan kertymäfunktiosta (P(X \textless{} 5)) \texttt{pnorm()} funktion avulla.
 
@@ -2705,8 +3224,8 @@ Vastaavat funktiot löytyvät myös muille jakaumille, kuten:
 
 ja niin edelleen.
 
-\hypertarget{funktiot}{%
-\chapter{Funktiot}\label{funktiot}}
+\hypertarget{functions}{%
+\chapter{Funktiot}\label{functions}}
 
 Tällä viikolla opitaan kirjoittamaan itse funktioita ja pureudutaan sitä kautta syvemmälle R-funktioiden toimintaan.
 
@@ -2928,7 +3447,7 @@ Joillain funktioilla ei ole ollenkaan argumentteja. Esimerkiksi R:n sisäiset fu
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-06-08 17:31:55 EEST"
+## [1] "2021-06-09 15:26:15 EEST"
 \end{verbatim}
 
 Itse tehdyt funktiot voivat myös toimia ilman argumentteja. Niitä käytetään usein R-istunnon tilan, koodia ajavan tietokoneen ominaisuuksien tai ajan selvittämiseen. Tämä melko hyödytön esimerkkifunktio palauttaa tämän dokumentin kirjoittajan nimen:
@@ -3051,7 +3570,7 @@ Itse tehty funktio palauttaa \texttt{NULL}, jos viimeinen komento palauttaa \tex
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-93-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-110-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3063,8 +3582,8 @@ Itse tehty funktio palauttaa \texttt{NULL}, jos viimeinen komento palauttaa \tex
 ## NULL
 \end{verbatim}
 
-\hypertarget{ehtorakenteet}{%
-\chapter{Ehtorakenteet}\label{ehtorakenteet}}
+\hypertarget{ifelse}{%
+\chapter{Ehtorakenteet}\label{ifelse}}
 
 Viime kerralla tehdyt funktiot suorittavat aina samat komennot riippumatta syötteestä. Entä jos funktion toiminnassa pitäisi ottaa huomioon erilaisia tapauksia, eli suorittaa tiettyjä komentoja vain joissain tilanteissa? Tätä varten ohjelmointikielissä on ehtorakenteita, eli ns. if/else-rakenteita, jotka ohjaavat ohjelman toimintaa.
 
@@ -3331,8 +3850,8 @@ usein tulee vastaan tilanteita, joissa halutaan tarkistaa, onko jokin luku halut
 ## [1] TRUE
 \end{verbatim}
 
-\hypertarget{ehtorakenteet-1}{%
-\section{Ehtorakenteet}\label{ehtorakenteet-1}}
+\hypertarget{ehtorakenteet}{%
+\section{Ehtorakenteet}\label{ehtorakenteet}}
 
 Aloitetaan esimerkistä: tehtävänä on kirjoittaa funktio, jolle annetaan syötteenä potilaan hemoglobiiniarvo. Funktion on tarkoitus hälyttää, jos hemoglobiini laskee alle viitearvojen alarajan 117. Kyseinen funktio voisi näyttää vaikka tältä:
 
@@ -3636,8 +4155,8 @@ Tässä on esimerkki, jossa käydään läpi vektori DNA:n emäksiä, joista poi
 ## [1] "C" "C" "G"
 \end{verbatim}
 
-\hypertarget{toistorakenteet-loops}{%
-\chapter{Toistorakenteet (loops)}\label{toistorakenteet-loops}}
+\hypertarget{loops}{%
+\chapter{Toistorakenteet (loops)}\label{loops}}
 
 Toistorakenne toistaa annettua koodia. Toistorakenteet ovat ehtorakenteiden ohella ohjelmoinnin perusrakennuspalikoita. Tässä osiossa tutustutaan kahteen yleisimpään tapaukseen eli for ja while -silmukoihin. Mukana on myös maininta silmukoiden korvaamisesta R:n apply-funktioilla. Lopusta löytyy lisäksi vinkkejä tämän viikon tehtäviin.
 
@@ -4046,7 +4565,5 @@ Huomaa, että sarakkeiden keskiarvot eivät ole tismalleen 0. Tämä johtuu R:n 
 \section{Vinkkejä tehtäviin}\label{vinkkejuxe4-tehtuxe4viin-1}}
 
 Tämän viikon tehtävissä pitää muokata funktioita, jotka ovat erillisissä tiedostoissa. Jotta tehtävän palautus onnistuu, funktio pitää muokata tässä tiedostossa. Funktio kannattaa kuitenkin kopioida talteen toiseen tiedostoon, sillä tehtävän palauttaminen pyyhkii tiedoston.
-
-  \bibliography{book.bib,packages.bib}
 
 \end{document}

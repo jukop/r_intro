@@ -1,6 +1,6 @@
 # Johdanto {#intro}
 
-## Mikä R on ja mitä sillä tehdään?
+## Mikä R on ja mitä sillä tehdään? {#what_R}
 
 Ohjelmoinnin tavoitteena on kirjoittaa eli koodata ohjelma, joka suorittaa jonkun halutun tehtävän. Ohjelma koostuu useista komennoista, joista jokainen tekee jotain hyvin yksinkertaista.
 
@@ -100,7 +100,7 @@ rep(c(1, 2, 3), 3) # Repeat all values in vector c(1, 2, 3) 3 times
 ```
 
 
-### Vektorilaskentaa
+#### Vektorilaskentaa
 
 Vektoreilla laskeminen on usein hyvin intuitiivista (lisää vaaranpaikoista myöhemmin). Kun vektoriin kohdistetaan laskutoimintoja, sama operaatio tehdään kaikille vektorin alkioille (engl. vectorization).
 
@@ -226,9 +226,7 @@ sum(missing, na.rm = TRUE)
 
 ```
 
-
-HUOM! Funktio ```is.na``` tarkistaa, onko jokin arvo puuttuva. Perinteinen yhtäsuuruuden testaaminen ei siis toimi
-
+HUOM! Funktio ```is.na``` tarkistaa, onko jokin arvo puuttuva. Perinteinen yhtäsuuruuden testaaminen ei siis toimi.
 
 ```{r}
 # Just returns NA
@@ -240,8 +238,103 @@ is.na(1)
 # is.na operates element-wise on a vector
 missing <- c(1, 2, NA, 4, NA, 6)
 is.na(missing)
+
+# complete.cases gives the data elements which do not have missing data. It can be used with data frames also.
+complete.cases(missing)
 ```
 
-## Tehtävien aloitus
+## Extra: Alkeistietotyypit ja puuttuvat arvot {#extra}
 
-Tämän ohjeen ja R:n virallisen manuaalin tai pienen googlailun avulla selviät ensimmäisen viikon tehtävistä. Katso vielä etusivulta vinkki tehtävien tallentamisesta R-skriptiin [(linkki)](https://github.com/antonvsdata/r_intro#kurssin-suoritus-rstudiolla).# Introduction {#intro}
+Tässä lisätieto-osiossa käsitellään asioita, joita et välttämättä tarvitse kurssista suoriutuaksesi. Mikäli käytät R:ää enemmän, niin vastaan tulee enemmin tai myöhemmin ongelmia, joissa tarvitsee näitä taitoja. Voit palata näihin myöhemmin koska tahansa, kun haluat syventää ymmärrystäsi R:stä.
+
+R on rakennettu sisäisesti siten, että vektorin kukin elementti on jotain alkeistietotyyppiä. Valmiina R:ssä on neljä alkeistietotyyppiä:
+ - numeerinen (eli reaaliluku)
+ - kokonaisluku (integer)
+ - merkkijono (character)
+ - kompleksiluku
+
+Näistä tarpeellisimpia ovat numeerinen ja merkkijono. Kompleksilukua tarvitsee vain joissain erityistapauksissa ja kokonaisluvut ovat nykyään lähes aina tallennettu numeerisina.
+
+```{r}
+# Integers are usually stored as reals
+x <- c(1,2,3)
+class(x)
+
+# You can make integers by adding capital L behind the number
+x_int <- c(1L,2L,3L)
+class(x_int)
+
+# Character strings (or just strings)
+x_char <- c("I","have","a","cat.")
+class(x_char)
+```
+Joskus vektorin tiedot ovat väärässä muodossa, esim. merkkijonoina, mutta haluaisit ne numeroarvoina. Näihin operaatioihin on omat funktionsa. Tällöin voi kuitenkin tulla ongelmia, jos muutettava vektori ei ole helposti muutettavissa haluttuun muotoon.
+
+```{r}
+# Chacter string to numeric
+class(as.numeric(x_char))
+
+# If character contains only values it is easy
+x_char2 <- c("0","5","6.5")
+as.numeric(x_char2)
+
+# Integer to numeric
+x_int_to_num <- as.numeric(x_int)
+x_int_to_num
+class(x_int_to_num)
+
+# Numeric to integer
+x_num_to_int <- as.integer(x)
+x_num_to_int
+class(x_num_to_int)
+```
+
+
+Vielä pari lisähuomiota puuttuvista arvoista (näitä ei tarvise usein) koskien niiden tietotyyppejä. Puuttuvalla arvolla on myös alkeistietotyyppi. Mikäli NA-arvon tietotyyppi tarvitsee määritellä, niin sen voi tehdä seuraavasti. Mikäli luo muuttujan tai vektorin, jossa on vain yksi arvo ja se arvo on NA, niin se oletusarvoisesti looginen.
+```{r}
+# Specify a numeric NA value
+NA_real_
+# Specify a complex number NA value
+NA_complex_
+# Specify a integer number NA value
+NA_integer_
+# Specify a character NA value
+NA_character_
+
+# NA gives a logical type when evaluated alone
+class(NA)
+# NA_real_ is numeric
+class(NA_real_)
+```
+
+#### Ääretön ja miinus ääretön
+
+R:ssä on myös ääretön ja miinus ääretön. Ne on toteutettu samaan tapaan kuin puuttuva arvo on toteutettu, mutta niiden tarkasteluun on omat funktionsa. Ääretön ja miinus ääretön arvot syntyvät, jos aineistossa jaetaan nollalla.
+
+```{r}
+# You can type in infinity or minus infinity if needed
+x <- c(1,2, Inf, 5, -Inf)
+# Use is.finite to show if numbers are finite or not
+is.finite(x)
+
+# Division by zero makes Inf or -Inf
+x_div_zero <- c(1,2,-3)/c(3,0,0)
+x_div_zero
+is.finite(x_div_zero)
+```
+#### Ei-numero
+
+Mikäli R:ssä sattuu jakamaan nollan nollalla (joka siis ei ole matermatiikassa sallittua), niin tämä tuottaa R:ssä tietotyypin, joka on NaN (lyhenne sanoista Not a Number). Mikäli NaN-arvoa tutkii funktiolla is.finite tai is.na, niin huomaa että NaN ei ole äärellinen ja NaN tulkitaan NA:ksi.
+
+```{r}
+x_div_zero_by_zero <- 0/0
+
+# Tests for NaN
+is.nan(x_div_zero_by_zero)
+
+# Tests if it is finite
+is.finite(x_div_zero_by_zero)
+
+# Tests if it is NA (missing)
+is.na(x_div_zero_by_zero)
+```

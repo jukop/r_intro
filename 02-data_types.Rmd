@@ -1,21 +1,74 @@
 # Tietotyypit {#data_types}
 
-## Esittely
-
 Tässä osassa tutustutaan neljään uuteen tietorakenteeseen:
 
+- [data frame (data.fame)](#data-frame)
 - [matriisi (matrix)](#matriisi)
 - [taulukko (array)](#taulukko)
 - [lista (list)](#lista)
-- [data frame](#data-frame)
+
+Data frame on R:n objekti, jossa voidaan säilyttää aineistoa. Muuttujat ova sarakkeina ja muuttujilla tulee olla aina nimi.
+
+Matriisi voi olla joillekin sanana tuttu myös tilastotieteen tai matematiikan kursseilta, ja R:n matriisi vastaakin matemaattista matriisia. Tästä syystä matriisi on hyvin yleinen tietorakenne, johon ei voi olla törmäämättä jos käyttää R:ää tutkimuksessa. Matriisilla tehdään yleensä kuitenkin matemaattisia operaatioita, eikä se ensisijaisesti ole aineiston säilytyspaikka.
 
 Taulukko on juuri sitä miltä se kuulostaa: vektorintapainen tietorakenne, johon tallennetaan alkioita (elements), joilla on kaikilla sama luokka (class), eli esimerkiksi lukuja. Ero vektoriin on se, että taulukolla on useampi ulottuvuus. Matriisi on erikoistapaus taulukosta, sillä matriisi on kaksiulotteinen taulukko. Matriisi vastaa siis oikeastaan paremmin sitä mielikuvaa, joka monelle tulee mieleen suomen sanasta taulukko, ja matriisit ovatkin paljon yleisempiä kuin moniulotteiset taulukot.
 
-Matriisi voi olla joillekin sanana tuttu myös tilastotieteen tai matematiikan kursseilta, ja R:n matriisi vastaakin matemaattista matriisia. Tästä syystä matriisi on hyvin yleinen tietorakenne, johon ei voi olla törmäämättä jos käyttää R:ää tutkimuksessa.
+Lista on kokoelma alkioita, jonka alkioina voi olla hyvin eri tyyppisiä objekteja.
 
-Lista on kokoelma alkioita, joilla voi olla eri luokkia. Data frame on matriisin kaltainen kaksiulotteinen tietorakenne, jonka sarakkeilla voi olla eri luokkia.
+Koska data frame on kaikista tärkein ja eniten käytetty tietotyyppi, niin aloitetaan siitä.
 
-Aloitetaan matriiseista.
+
+## Data frame
+
+Data frame on erittäin yleinen tapa tallentaa tietoa R:ssä. Data frame on kaksiulotteinen tietorakenne, eli sillä on rivejä ja sarakkeita. Data framen sarakkeet muodostuvat aiemmin tutuista vektoreista. Nämä vektorit voivat olla eri luokan vektoreita, mutta data frame asettaa lisärajoitteen: vektoreiden on oltava yhtä pitkiä. Yhden rivin tiedot ajatellaan koskevan yhtä tutkittavaa.
+
+Luodaan data frame, josa on kaksi muuttujaa, height ja weight ja annetaan niihin kahdeksan mittauksen tiedot. Huomionarvoista on se, että komennon data.frame sulkujen sisällä on käytettävä yhtäsuuruusmerkkiä (=) eikä sijoitusoperaattoria (<-). Tämä johtuu siitä, että teknisesti ottaen komento data.frame on funktio (funktioista lisää myöhemmin).
+
+```{r}
+study_data <- data.frame(ID = 1:8,
+                         height = c(189.8, 184.0, 173.8, 175.9, 169.0, 183.7, 181.8, 16.9),
+                         gender = c("male","female","male","male","female","male","male","female"))
+study_data
+```
+
+### Data framen käsittely
+
+Vaikka data frame näyttää ulkoisesti matriisilta, data frame on itse asiassa lista, jonka kaikki alkiot ovat yhtä pitkiä vektoreita. Data framella on kuitenkin monta erityisominaisuutta, ja data frame käyttäytyy välillä kuin matriisi, välillä kuin lista. Tässä muutama esimerkki:
+
+```{r}
+# Subscripting with variable names
+study_data[, c("height", "gender")]
+
+# Subscripting with brackets - as matrix (but I do not recommend this style!)
+study_data[, 1:2]
+
+# Rownames and colnames
+colnames(study_data)
+names(study_data)
+
+# Individual columns can be accessed and added with dollar sign
+# Let's say that we find out that the ID number 8 was typed in incorrectly. We can fix the entire height variables as follows
+study_data$height <- c(189.8, 184.0, 173.8, 175.9, 169.0, 183.7, 181.8, 160.9)
+study_data
+
+# It would have been possible to change value of only one cell e.g. like this
+study_data$height[8] <- 161.9
+study_data
+
+# Filtering based on a variable can be done like this
+study_data[study_data$gender == "female", ]
+```
+
+Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla ```rbind()```. Käyttäjän tulee myös huolehtia siitä, että sarakkeet ovat samaa tyyppiä kuin alkuperäisessä data framessa.
+
+```{r}
+new_row <- data.frame(ID = 11, height = 182, gender = "male")
+rbind(study_data, new_row)
+```
+
+
+Data framet ovat erittäin käteviä, koska niihin voi helposti tallentaa sekä merkkijonoja, että numeerista dataa. Bioinformatiikkaa opiskelevien kannattaa kuitenkin muistaa, että matriisi on usein laskennan kannalta tehokkaampi tietorakenne, kuin data frame. Tästä ei tarvitse murehtia tällä kurssilla, mutta se on hyvä tietää jatkon kannalta, jos bioinformatiikkakursseilla tulee vastaan isompia datasettejä, joissa on osia, jotka voi tallentaa matriisina.
+
 
 ## Matriisi
 
@@ -123,7 +176,6 @@ X[i]
 ```
 
 
-
 ### Matriisien rakentaminen vektoreista
 
 Matriisi koostuu usein useammasta muuttujasta ja havainnoista. Yleensä jokainen rivi vastaa yhtä havaintoa, ja sarake muuttujaa. Tämän takia on hyvä tietää, miten yksittäisistä vektoreista saa koottua matriiseja. Alla olevassa esimerkissä on koottu yhteen matriisiin Star Wars-hahmojen pituuksia ja painoja. Tämä tapahtuu ```cbind``` funktiolla (column bind), joka nimensä mukaan yhdistää vektorit matriisin sarakkeiksi. ```cbind``` voi yhdistää myös valmiita matriiseja yhteen, niin että matriisit ovat "vierekkäin" eli yhdistetyssä matriisissa on kummankin matriisin sarakkeet (rivien määrän tulee olla sama). Vastaavasti ```rbind``` (row bind) yhdistää matriiseja "allekkain".
@@ -181,7 +233,55 @@ X + Y
 
 Matriiseille on lisäksi määritelty paljon matriisien omia laskutoimituksia, niistä voi lukea lisää oppikirjasta. Matriisilaskentaa opiskelleille huomio: R:ssä oletuksena kertolasku tehdään alkioittain, matriisien kertolasku tapahtuu operaattorilla ```%*%```.
 
-## Taulukko
+
+## Tietotyyppien tarkastelu
+
+Kaikkia objekteja voi tulostaa Console-ikkunassa kutsumalla objektin nimen. Joskus tarvitaan kuitenkin apufunktioita.
+
+### View()
+
+Mikäli käytät RStudiota, niin tarkempaa tarkastelua varten kannattaa kuitenkin käyttää ```View```-funktiota. ```View``` avaa ikkunan, jossa voi selata data framen tai matriisin rivejä ja sarakkeita, sekä järjestää arvoja halutun sarakkeen mukaan (tämä järjestys säilyy vain ```View```-näkymässä, itse muuttujan rakenne ei muutu). Mikäli aineistossasi on satoja tuhansia tai miljoonia rivejä, niin ```View``` saattaa olla liian hidas.
+
+
+### str()
+
+Perineinen tapa tarkastella tietotyyppejä R:ssä on funktio nimeltä ```str()``` str toimii kaikissa R-ympäristöissä. str tulostaa sekä muuttujien nimet, niiden vektoreiden tyypit että ruudulle mahtuvan osan vektoreiden alkioista.
+
+```{r}
+# Examine the structure of data frame
+str(study_data)
+```
+### head()
+
+Jos aineistossa on todella paljon rivejä, on sen tulostaminen Console-ikkunaan ikävää. Ladataan esimerkiksi iris-data, jossa on 150 havaintoa. Tulostettaessa rivejä on niin monta, että muuttujien nimet eivät näy, mikä on epämiellyttävää. Parempi tapa saada käsitys aineistosta on kutsua sitä head-funktion avulla.
+
+```{r, eval=FALSE}
+# Load data for this example
+data(iris)
+
+# Try to print iris-data directly
+iris
+```
+![](files/02-data_types/iris_print_data.png)
+
+```{r, eval=FALSE}
+# Print 6 first rows of iris data
+head(iris)
+```
+![](files/02-data_types/iris_print_head_data.png)
+
+
+```{r, eval=FALSE}
+# You can also define the number of rows to print
+head(iris,2)
+```
+![](files/02-data_types/iris_print_head2_data.png)
+
+## Extra: Taulukko ja lista
+
+Taulukoita ja listoija ei ihan perus data-analyysiä toteutettaessa tarvitse. Lue kuitenkin seuraava, jotta saat yleiskäsityksen mihin niitä tarvitaan. Voit myös palata perehtymään taulukoihin ja listoihin myöhemmin koska tahansa.
+
+### Taulukko
 
 Kuten alussa todettiin, taulukot (array) ovat hyvin harvinaisia, joten niihin ei kannata tällä kurssilla keskittyä. Niitä kuitenkin tarvitaan joidenkin tehtävien tekemiseen, joten tässä on hyvin lyhyt oppimäärä taulukoista.
 
@@ -208,7 +308,7 @@ my_array[, 2, 2:3]
 ```
 
 
-## Lista
+### Lista
 
 Lista (list) on vektorinkaltainen tietorakenne, jossa on järjestyksessä alkioita, jotka on mahdollisesti nimetty. Tärkeä ero vektoriin verrattuna on, että listan alkiot voivat olla erityyppisiä. Listoja luodaan ```list```-funktiolla:
 
@@ -234,7 +334,7 @@ study
 
 Listoja ja niiden kaltaisia olioita käytetään R:ssä paljon. Listoihin on kätevä kerätä erilaista tietoa, jotka halutaan säilyttää samassa paketissa. Esimerkiksi yksinkertaisetkin tilastolliset mallit tuottavat paljon erilaista tietoa, jotka pakataan listaan (tarkemmin listan kaltaiseen olioon, tästä lisää myöhemmin).
 
-### Listojen alkioiden käsittely
+#### Listojen alkioiden käsittely
 
 Listan alkioihin pääsee käsiksi kahdella eri tavalla: kaksoishakasulkeilla ```[[]]``` tai, jos lista on nimetty, dollarimerkillä ```$```:
 
@@ -264,7 +364,7 @@ class(study$Measurements)
 study[2:3]
 ```
 
-### Alkion lisäys listaan ja listojen yhdistäminen
+#### Alkion lisäys listaan ja listojen yhdistäminen
 
 Yksittäisen alkion voi lisätä listaan sijoittamalla listan johonkin indeksiin tai nimeen uusi arvo (indeksin pitää olla yhtä suurempi kuin listan pituus). HUOM! Listan alkio voi myös itse olla lista (sisäkkäinen lista = nested list).
 
@@ -300,48 +400,3 @@ c(list1, list2, list(first_element = "A", second = "B"))
 ```
 
 
-## Data frame
-
-Data frame on erittäin yleinen tapa tallentaa tietoa R:ssä. Data frame on kaksiulotteinen tietorakenne, eli sillä on rivejä ja sarakkeita aivan kuten matriisilla. Data framen ja matriisin välillä on kuitenkin yksi tärkeä ero: data framen sarakkeet voivat olla eri luokan vektoreita.
-
-Muutetaan esimerkiksi edellä nähdyn ```study```-listan ``Subject_ID``` ja ```Measurements```-osat yhdeksi data frameksi:
-
-```{r}
-study_data <- data.frame(Subject_ID = study$Subject_ID,
-                         study$Measurements)
-study_data
-```
-
-```data.frame```-funktiolle voi antaa sekaisin yksittäisiä vektoreita, tai kokonaisia matriiseja tai valmiita data frameja, jotka kaikki yhdistetään yhdeksi data frameksi.
-
-### Data framen käsittely
-
-Vaikka data frame näyttää ulkoisesti matriisilta, data frame on itse asiassa lista, jonka kaikki alkiot ovat yhtä pitkiä vektoreita. Data framella on kuitenkin monta erityisominaisuutta, ja data frame käyttäytyy välillä kuin matriisi, välillä kuin lista. Tässä muutama esimerkki:
-
-```{r}
-# Subscripting with brackets - as matrix
-study_data[2:3, 1:3]
-# Rownames and colnames - as matrix
-colnames(study_data)
-# Individual columns can be accessed and added with dollar sign - as list
-study_data$CRP
-study_data$height <- c(168, 185, 172)
-study_data
-# Filtering based on a variable can be done like this
-study_data[study_data$HDL < 4, ]
-```
-
-Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla ```rbind()```.
-
-```{r}
-new_row <- data.frame(Subject_ID = "BRWA", CRP = 2, HDL = 4, LDL = 2, height = 182)
-rownames(new_row) <- "BRWA"
-rbind(study_data, new_row)
-```
-
-
-Data framet ovat erittäin käteviä, koska niihin voi helposti tallentaa sekä merkkijonoja, että numeerista dataa. Kannattaa kuitenkin muistaa, että matriisi on usein laskennan kannalta tehokkaampi tietorakenne, kuin data frame. Tästä ei tarvitse murehtia tällä kurssilla, mutta se on hyvä tietää jatkon kannalta, jos bioinformatiikkakursseilla tulee vastaan isompia datasettejä, joissa on osia, jotka voi tallentaa matriisina.
-
-## View()
-
-Data frameja ja matriiseja tai niiden osia voi tulostaa R:n konsoliin kuten muitakin muuttujia. Tarkempaa tarkastelua varten kannattaa kuitenkin käyttää ```View```-funktiota. ```View``` avaa ikkunan, jossa voi selata data framen tai matriisin rivejä ja sarakkeita, sekä järjestää arvoja halutun sarakkeen mukaan (tämä järjestys säilyy vain ```View```-näkymässä, itse muuttujan rakenne ei muutu).
