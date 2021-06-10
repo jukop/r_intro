@@ -1,11 +1,11 @@
-## Todennäköisyysjakaumat R:ssä {#distributions}
+# Todennäköisyysjakaumat R:ssä {#distributions}
 
 Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista on valmiita funktiota R:ssä. Funktiota on neljää eri tyyppiä, jotka merkataan funktion nimen ensimmäisellä kirjaimella.
 
 - d: Tiheysfunktio: mikä on tiheysfunktion arvo pisteessä x?
 - p: Kertymäfunktio: millä todennäköisyydellä jakaumasta poimittu arvo on pienempi/suurempi kuin q?
-- q: Käänteinen kertymäfunktio: mille arvolle kertymäfunktio palauttaa todennäköisyyden p?
-- r: satunnaislukugeneraattori: poimi satunnaisia havaintoja jakaumasta
+- q: Käänteinen kertymäfunktio (eli kvantiilifunktio): mille arvolle kertymäfunktio palauttaa todennäköisyyden p?
+- r: satunnaislukugeneraattori: arvo eli simuloi satunnaisia havaintoja jakaumasta
 
 Alla on kuvaajat ensimmäisestä kolmesta funktiosta:
 
@@ -18,7 +18,7 @@ plot(x, pnorm(x), type = "l", main = "p: Kertymäfunktio")
 plot(p, qnorm(p), type ="l", main = "q: Käänteinen kertymäfunktio")
 ```
 
-### Esimerkki: normaalijakauma
+## Esimerkki: normaalijakauma
 
 Otetaan muutama käytännön esimerkki. Oletetaan, että suomalaisten miesten suolan saanti on normaalijakautunut odotusarvolla 10 grammaa päivässä ja keskihajonta on 4 grammaa päivässä (odotusarvo on totta, keskihajonta allekirjoittaneen hihasta). Piirretään ensin kuva jakaumasta välillä [0, 20] grammaa päivässä. Jakauman muoto saadaan funktiolla ```dnorm()```. Eli yllä olevan ohjeen mukaan d-alkuinen funktio antaa tiheysfunktion, ja norm-pääte viittaa normaalijakaumaan. Normaalijakauman funktiolle tulee kertoa jakauman odotusarvo (mean) ja keskihajonta (sd = standard deviation).
 
@@ -60,7 +60,7 @@ qnorm(0.9, mean = 10, sd = 4)
 Eli tämän jakauman mukaan eniten suolaa saava 10% miehistä syö yli kolminkertaisen määrän suolaa suositukseen verrattuna.
 
 
-### Muita jakaumia
+## Muita jakaumia
 
 Vastaavat funktiot löytyvät myös muille jakaumille, kuten:
 

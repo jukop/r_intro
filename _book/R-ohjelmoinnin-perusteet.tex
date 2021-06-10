@@ -117,7 +117,7 @@
 
 \title{R-ohjelmoinnin perusteet}
 \author{Anton Klåvus (2020), converted to bookdown by Juho Kopra (2021)}
-\date{9.6.2021}
+\date{10.6.2021}
 
 \begin{document}
 \maketitle
@@ -132,7 +132,19 @@
 
 Täältä löydät suomenkielisen materiaalin, joka tukee UEF:in R-kurssin suorittamista (R-kieli 3622223, 2 op). Jokaisen viikon materiaalit päivitetään tänne. Alla on ohjeet tarvittavien asioiden asentamiseen UEF:in koneille.
 
-Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. Mahdollisesti mukana on myös muita tiedostoja, mutta ellei toisin mainita, itse tiedostoista ei tarvitse välittää vaan voi keskittyä itse ohjeisiin.
+Anton Klåvusin vuonna 2020 kirjoittamaa ansiokasta materiaalia on kehitetty lukukauden 2021-22 R-kielen kurssia ajatellen. Materiaalia on täydennetty tarvittavin osin. Samalla materiaali on konvertoitu bookdown-verkkokirjamuotoon.
+
+\hypertarget{ohjeita-verkkokirjan-kuxe4yttuxf6uxf6n}{%
+\section*{Ohjeita verkkokirjan käyttöön}\label{ohjeita-verkkokirjan-kuxe4yttuxf6uxf6n}}
+\addcontentsline{toc}{section}{Ohjeita verkkokirjan käyttöön}
+
+Tämä opiskelumateriaali on luotu bookdown-verkkokirjaohjelman avulla. Kirjaa voi lukea verkkoselaimella ja se toimii myös puhelimella. Sivun ylälaidasta löydät asetuksia, joilla voit tehdä ainakin seuraavia asioita: piilottaa ja näyttää vasemman sivuvalikon, etsiä dokumentista hakusanalla, muuttaa fonttia, muuttaa fontin kokoa ja sivun väritystä sekä ladata monisteen pdf-muodossa.
+
+\hypertarget{lunttilappu}{%
+\section*{Lunttilappu}\label{lunttilappu}}
+\addcontentsline{toc}{section}{Lunttilappu}
+
+Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli ``lunttilappua''. Lunttilapusta on helppo tarkastaa miten jokin jo oppimasi asia tehdään R:ssä, jos et vielä muista kunnolla kyseistä asiaa. Internetistä löytyy Cheat Sheetejä useisiin \href{https://www.rstudio.com/resources/cheatsheets/}{R-paketteihin} ja muihin kokonaisuuksiin, mutta tässä käytetään Base R Cheat Sheetiä. Lataa Base R Cheat Sheet itsellesi \href{files/base_R_cheat_sheet.pdf}{painamalla tästä}.
 
 \hypertarget{sisuxe4llysluettelo}{%
 \section*{Sisällysluettelo}\label{sisuxe4llysluettelo}}
@@ -162,7 +174,7 @@ Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. M
   \item
     \protect\hyperlink{matriisi}{matriisi (matrix)}
   \item
-    \href{tietotyyppien-tarkastelu-rstudiossa}{Tietotyyppien tarkastelu RStudiossa}
+    \href{tietotyyppien-tarkastelu}{Tietotyyppien tarkastelu}
   \item
     \protect\hyperlink{taulukot-ja-listat}{Extra: Taulukko ja lista}
 
@@ -175,21 +187,57 @@ Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. M
     \end{itemize}
   \end{itemize}
 \item
-  \protect\hyperlink{reading_data}{Datan sisään lukeminen}
+  \protect\hyperlink{reading_data}{Datan lukeminen}
 \item
-  \protect\hyperlink{plotting}{Kuvaajien piirtäminen}
-\item
-  \protect\hypertarget{tests}{}{Tilastollinen testaaminen}
-\item
-  \protect\hyperlink{statistics}{Lineaariset mallit ja tilastolliset jakaumat}
+  \protect\hyperlink{data-wrangling}{Aineiston muokkaaminen}
 
   \begin{itemize}
   \tightlist
   \item
-    \protect\hyperlink{linear_models}{Lineaariset mallit}
+    \protect\hyperlink{data-frame-wrangling}{Uuden muuttujan tai rivin luonti datakehikkoon}
   \item
-    \protect\hyperlink{distributions}{Todennäköisyysjakaumat}
+    \protect\hyperlink{osajoukkojen-valinta}{Osajoukkojen valinta}
+  \item
+    \protect\hyperlink{faktorit}{Faktorit}
   \end{itemize}
+\item
+  \protect\hyperlink{statistics}{Tunnusluvut}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    summary()
+  \item
+    Keskiarvo, moodi ja mediaani
+  \item
+    Varianssi ja keskihajonta ja kvantiilit
+  \item
+    Minimi ja maksimi
+  \end{itemize}
+\item
+  \protect\hyperlink{distributions}{Todennäköisyysjakaumat}
+\item
+  \protect\hyperlink{plotting}{Kuvaajien piirtäminen}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Kuvaajan tallentaminen
+  \end{itemize}
+\item
+  \protect\hyperlink{tests}{Tilastollinen testaaminen}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \protect\hyperlink{chi-squared-test}{Khi toiseen -testi}
+  \item
+    Kahden otoksen t-testi
+  \item
+    Varianssianalyysi
+  \end{itemize}
+\item
+  \protect\hyperlink{linear_models}{Lineaariset mallit}
 \item
   \protect\hyperlink{functions}{Funktiot}
 \item
@@ -952,15 +1000,23 @@ HUOM! Funktio \texttt{is.na} tarkistaa, onko jokin arvo puuttuva. Perinteinen yh
 \end{verbatim}
 
 \hypertarget{extra}{%
-\section{Extra: Alkeistietotyypit ja puuttuvat arvot}\label{extra}}
+\section{Extra: Alkeistietotyypit ja erikoisarvot}\label{extra}}
 
 Tässä lisätieto-osiossa käsitellään asioita, joita et välttämättä tarvitse kurssista suoriutuaksesi. Mikäli käytät R:ää enemmän, niin vastaan tulee enemmin tai myöhemmin ongelmia, joissa tarvitsee näitä taitoja. Voit palata näihin myöhemmin koska tahansa, kun haluat syventää ymmärrystäsi R:stä.
 
 R on rakennettu sisäisesti siten, että vektorin kukin elementti on jotain alkeistietotyyppiä. Valmiina R:ssä on neljä alkeistietotyyppiä:
-- numeerinen (eli reaaliluku)
-- kokonaisluku (integer)
-- merkkijono (character)
-- kompleksiluku
+
+\begin{itemize}
+\tightlist
+\item
+  numeerinen (eli reaaliluku)
+\item
+  kokonaisluku (integer)
+\item
+  merkkijono (character)
+\item
+  kompleksiluku
+\end{itemize}
 
 Näistä tarpeellisimpia ovat numeerinen ja merkkijono. Kompleksilukua tarvitsee vain joissain erityistapauksissa ja kokonaisluvut ovat nykyään lähes aina tallennettu numeerisina.
 
@@ -1142,7 +1198,7 @@ Vielä pari lisähuomiota puuttuvista arvoista (näitä ei tarvise usein) koskie
 \end{verbatim}
 
 \hypertarget{uxe4uxe4retuxf6n-ja-miinus-uxe4uxe4retuxf6n}{%
-\subsubsection{Ääretön ja miinus ääretön}\label{uxe4uxe4retuxf6n-ja-miinus-uxe4uxe4retuxf6n}}
+\subsection{Ääretön ja miinus ääretön}\label{uxe4uxe4retuxf6n-ja-miinus-uxe4uxe4retuxf6n}}
 
 R:ssä on myös ääretön ja miinus ääretön. Ne on toteutettu samaan tapaan kuin puuttuva arvo on toteutettu, mutta niiden tarkasteluun on omat funktionsa. Ääretön ja miinus ääretön arvot syntyvät, jos aineistossa jaetaan nollalla.
 
@@ -1182,9 +1238,9 @@ R:ssä on myös ääretön ja miinus ääretön. Ne on toteutettu samaan tapaan 
 \end{verbatim}
 
 \hypertarget{ei-numero}{%
-\subsubsection{Ei-numero}\label{ei-numero}}
+\subsection{Ei-numero}\label{ei-numero}}
 
-Mikäli R:ssä sattuu jakamaan nollan nollalla (joka siis ei ole matermatiikassa sallittua), niin tämä tuottaa R:ssä tietotyypin, joka on NaN (lyhenne sanoista Not a Number). Mikäli NaN-arvoa tutkii funktiolla is.finite tai is.na, niin huomaa että NaN ei ole äärellinen ja NaN tulkitaan NA:ksi.
+Mikäli R:ssä sattuu jakamaan nollan nollalla (joka siis ei ole matermatiikassa sallittua), niin tämä tuottaa R:ssä tietotyypin, joka on \texttt{NaN} (lyhenne sanoista Not a Number). Mikäli \texttt{NaN}-arvoa tutkii funktiolla \texttt{is.finite} tai \texttt{is.na}, niin huomaa että \texttt{NaN} ei ole äärellinen ja \texttt{NaN} tulkitaan \texttt{NA}:ksi.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1275,149 +1331,6 @@ Luodaan data frame, josa on kaksi muuttujaa, height ja weight ja annetaan niihin
 ## 7  7  181.8   male
 ## 8  8   16.9 female
 \end{verbatim}
-
-\hypertarget{data-framen-kuxe4sittely}{%
-\subsection{Data framen käsittely}\label{data-framen-kuxe4sittely}}
-
-Vaikka data frame näyttää ulkoisesti matriisilta, data frame on itse asiassa lista, jonka kaikki alkiot ovat yhtä pitkiä vektoreita. Data framella on kuitenkin monta erityisominaisuutta, ja data frame käyttäytyy välillä kuin matriisi, välillä kuin lista. Tässä muutama esimerkki:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Subscripting with variable names}
-\NormalTok{study\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"height"}\NormalTok{, }\StringTok{"gender"}\NormalTok{)]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   height gender
-## 1  189.8   male
-## 2  184.0 female
-## 3  173.8   male
-## 4  175.9   male
-## 5  169.0 female
-## 6  183.7   male
-## 7  181.8   male
-## 8   16.9 female
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Subscripting with brackets {-} as matrix (but I do not recommend this style!)}
-\NormalTok{study\_data[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   ID height
-## 1  1  189.8
-## 2  2  184.0
-## 3  3  173.8
-## 4  4  175.9
-## 5  5  169.0
-## 6  6  183.7
-## 7  7  181.8
-## 8  8   16.9
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Rownames and colnames}
-\FunctionTok{colnames}\NormalTok{(study\_data)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "ID"     "height" "gender"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{names}\NormalTok{(study\_data)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "ID"     "height" "gender"
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Individual columns can be accessed and added with dollar sign}
-\CommentTok{\# Let\textquotesingle{}s say that we find out that the ID number 8 was typed in incorrectly. We can fix the entire height variables as follows}
-\NormalTok{study\_data}\SpecialCharTok{$}\NormalTok{height }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{189.8}\NormalTok{, }\FloatTok{184.0}\NormalTok{, }\FloatTok{173.8}\NormalTok{, }\FloatTok{175.9}\NormalTok{, }\FloatTok{169.0}\NormalTok{, }\FloatTok{183.7}\NormalTok{, }\FloatTok{181.8}\NormalTok{, }\FloatTok{160.9}\NormalTok{)}
-\NormalTok{study\_data}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   ID height gender
-## 1  1  189.8   male
-## 2  2  184.0 female
-## 3  3  173.8   male
-## 4  4  175.9   male
-## 5  5  169.0 female
-## 6  6  183.7   male
-## 7  7  181.8   male
-## 8  8  160.9 female
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# It would have been possible to change value of only one cell e.g. like this}
-\NormalTok{study\_data}\SpecialCharTok{$}\NormalTok{height[}\DecValTok{8}\NormalTok{] }\OtherTok{\textless{}{-}} \FloatTok{161.9}
-\NormalTok{study\_data}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   ID height gender
-## 1  1  189.8   male
-## 2  2  184.0 female
-## 3  3  173.8   male
-## 4  4  175.9   male
-## 5  5  169.0 female
-## 6  6  183.7   male
-## 7  7  181.8   male
-## 8  8  161.9 female
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Filtering based on a variable can be done like this}
-\NormalTok{study\_data[study\_data}\SpecialCharTok{$}\NormalTok{gender }\SpecialCharTok{==} \StringTok{"female"}\NormalTok{, ]}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   ID height gender
-## 2  2  184.0 female
-## 5  5  169.0 female
-## 8  8  161.9 female
-\end{verbatim}
-
-Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla \texttt{rbind()}. Käyttäjän tulee myös huolehtia siitä, että sarakkeet ovat samaa tyyppiä kuin alkuperäisessä data framessa.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{new\_row }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{ID =} \DecValTok{11}\NormalTok{, }\AttributeTok{height =} \DecValTok{182}\NormalTok{, }\AttributeTok{gender =} \StringTok{"male"}\NormalTok{)}
-\FunctionTok{rbind}\NormalTok{(study\_data, new\_row)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##   ID height gender
-## 1  1  189.8   male
-## 2  2  184.0 female
-## 3  3  173.8   male
-## 4  4  175.9   male
-## 5  5  169.0 female
-## 6  6  183.7   male
-## 7  7  181.8   male
-## 8  8  161.9 female
-## 9 11  182.0   male
-\end{verbatim}
-
-Data framet ovat erittäin käteviä, koska niihin voi helposti tallentaa sekä merkkijonoja, että numeerista dataa. Bioinformatiikkaa opiskelevien kannattaa kuitenkin muistaa, että matriisi on usein laskennan kannalta tehokkaampi tietorakenne, kuin data frame. Tästä ei tarvitse murehtia tällä kurssilla, mutta se on hyvä tietää jatkon kannalta, jos bioinformatiikkakursseilla tulee vastaan isompia datasettejä, joissa on osia, jotka voi tallentaa matriisina.
 
 \hypertarget{matriisi}{%
 \section{Matriisi}\label{matriisi}}
@@ -1994,6 +1907,8 @@ Taulukoita indeksoidaan aivan kuten matriiseja, mutta jokaiselle ulottuvuudelle 
 \hypertarget{lista}{%
 \subsection{Lista}\label{lista}}
 
+Listat ovat tärkeitä erityisesti silloin, kun aletaan toteuttamaan uusia toimintoja R-kieleen omien funktioiden avulla. Niin kauan kun valmiit R-funktiot riittävät, ei listoilla ole juuri käyttöä.
+
 Lista (list) on vektorinkaltainen tietorakenne, jossa on järjestyksessä alkioita, jotka on mahdollisesti nimetty. Tärkeä ero vektoriin verrattuna on, että listan alkiot voivat olla erityyppisiä. Listoja luodaan \texttt{list}-funktiolla:
 
 \begin{Shaded}
@@ -2285,13 +2200,13 @@ Listoja voi yhdistää vektorien tapaan \texttt{c()}-funktiolla:
 \end{verbatim}
 
 \hypertarget{reading_data}{%
-\chapter{Datan sisään lukeminen}\label{reading_data}}
+\chapter{Datan lukeminen}\label{reading_data}}
 
 Tässä osiossa tutustutaan datan sisään lukemiseen ja sisäänluetun datan tarkistamiseen. Tähän mennessä kaikki kurssilla käsitelty data on luotu R:ssä. Useimmiten R:llä käsiteltävä data on kuitenkin tallennettu tiedostoon, joka on luotu automaattisesti jollain ohjelmalla tai kirjattu esim. Excelissä.
 
-Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttavat datan data frame-muodossa (voit kerrata data framen toimintaa \href{https://github.com/antonvsdata/r_intro/tree/master/viikko_3\#data-frame}{viime viikon materiaalista}). Data frame toimii tähän tarkoitukseen hyvin, sillä siihen voi tallentaa niin numeerisia kuin tekstimuotoisia muuttujia.
+Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttavat datan data frame-muodossa (voit kerrata data framen toimintaa \protect\hyperlink{data-frame}{viime viikon materiaalista}. Data frame toimii tähän tarkoitukseen hyvin, sillä siihen voi tallentaa niin numeerisia kuin tekstimuotoisia muuttujia.
 
-Lopussa käydään myös läpi tapoja lukea Excel ja SPSS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin tekstitiedostoiksi.
+Lopussa käydään myös läpi tapoja lukea taulukkolaskenta (Excel) ja SPSS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin tekstitiedostoiksi.
 
 \hypertarget{tekstitiedostot}{%
 \section{Tekstitiedostot}\label{tekstitiedostot}}
@@ -2514,331 +2429,263 @@ Eri tutkimusryhmissä dataa säilytetään usein SPSS-tiedostoissa (.sav). SPSS-
 
 SPSS-tiedostoja voi lukea myös foreign-paketin avulla, mutta ainakin minulla on parempia kokemuksia haven-paketista. haven on myös osa tidyverse-pakettikokoelmaa, joten oletan sen pysyvän hyvin ajan tasalla jatkossakin.
 
-\hypertarget{vinkkejuxe4-tehtuxe4viin}{%
-\section{Vinkkejä tehtäviin}\label{vinkkejuxe4-tehtuxe4viin}}
+\hypertarget{data-wrangling}{%
+\chapter{Datan muokkaaminen}\label{data-wrangling}}
 
-Datan sisään lukemiseen liittyvät tehtävät ovat melko suorviivaisia yhtä poikkeusta lukuun ottamatta. Ainakin minulle Rkurssi-paketti generoi tiedoston, jonka tiedostopääte oli .csv, mutta alkiot oli erotettu sarkaimella, ei pilkulla. Jos siis saat outoja virheilmoituksia, tarkasta tiedoston rakenne joko R:n komennolla \texttt{file.show()} tai avaamalla tiedosto esim. Notepadilla.
+Aineisto ei tyypillisesti ole valmiiksi oikeassa muodossa. Voi olla että haluat käyttää vain jotain osajoukkoa aineistosta. Tällöin tarvitaan komentoja aineiston muokkaamiseksi.
 
-\hypertarget{plotting}{%
-\chapter{Kuvaajien piirtäminen}\label{plotting}}
+\textbf{Yleinen käytännön vinkki}
+Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla todella työlästä. Tällöin saattaa joutua yhdistelemään aineistoja useista lähteistä, etsimään virheellisiä arvoja, muokkaamaan tekstimuotoisia (character) muuttujia eri muotoon jne. Mikäli aiot muokata tekstimuotoisia vektoreita eri muotoon, niin kannattaa muuttaa ne faktoriksi vasta lopuksi, sillä muuttujan ei ole yleensä tarpeellista olla faktorimuodossa aineistojan muokatessa. Faktorit ovat tyypillisesti tarpeen vasta kun aineistoa aletaan todella analysoimaan.
 
-Tällä viikolla tutustutaan kuvaajien piirtämiseen. Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä on silti lyhyet kirjalliset ohjeet suomeksi. \textbf{Tämän dokumentin lopussa on myös \protect\hyperlink{tuxe4muxe4n-viikon-tehtuxe4vuxe4}{käytännön vinkkejä tämän viikon tehtävään}.}
+\hypertarget{data-frame-wrangling}{%
+\section{Uuden muuttujan tai rivin luonti datakehikkoon}\label{data-frame-wrangling}}
 
-R:n piirtokomennot voidaan jakaa kolmeen ryhmään:
+TODO: Uuden muuttujan luonti puuttuu
 
-\begin{itemize}
-\tightlist
-\item
-  Korkean tason grafiikkatoiminnot piirtävät aina uuden kuvat
-\item
-  Alemman tason grafiikkatoiminnot lisäävät olemassa olevaan kuvaan uusia osia
-\item
-  Interaktiiviset grafiikkatoiminnot mahdollistavat vuorovaikutuksen kuvan kanssa. (Näiden käyttö on helpompaa opettaa videolla, joten niitä ei käsitellä tässä)
-\end{itemize}
-
-\hypertarget{korkean-tason-piirtofunktiot}{%
-\section{Korkean tason piirtofunktiot}\label{korkean-tason-piirtofunktiot}}
-
-\hypertarget{plot}{%
-\subsection{plot()}\label{plot}}
-
-Korkean tason piirtofunktioista ylivoimaisesti yleisin on \texttt{plot}. \texttt{plot}-funktio on hyvin monipuolinen, mutta yleisin käyttötapa on piirtää hajontakuvio (scatter plot) yhdestä tai kahdesta vektorista. Alla on hajontakuvio auton jarrutusmatkoista eri nopeuksilla:
+\hypertarget{data-framen-kuxe4sittely}{%
+\subsection{Data framen käsittely}\label{data-framen-kuxe4sittely}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Car speeds (km/h)}
-\NormalTok{speed }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{110}\NormalTok{, }\AttributeTok{by =} \DecValTok{10}\NormalTok{)}
-\CommentTok{\# Stopping distances (m)}
-\NormalTok{stop\_dist }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{26}\NormalTok{, }\DecValTok{35}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{56}\NormalTok{, }\DecValTok{69}\NormalTok{, }\DecValTok{83}\NormalTok{, }\DecValTok{98}\NormalTok{, }\DecValTok{113}\NormalTok{)}
-
-\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-68-1.pdf}
-
-\texttt{plot}-funktiolle annetaan siis kaksi yhtä pitkää vektoria, joissa on pisteiden x- ja y-koordinaatit. Halutessaan kuvalle voi antaa otsikon (title) ja nimetä uudestaan kuvan akselit (axis labels). Tämä onkin usein hyvä idea, sillä R:n muuttujien nimissä ei saa olla välilyöntejä tai erikoismerkkejä, mutta usein näiden käyttö akselien nimissä on hyvin informatiivista.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
-     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
-     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-69-1.pdf}
-
-\texttt{plot}-funktiolle voi antaa muitakin parametreja, jotka säätävät mm. pisteiden väriä, kokoa ja muotoa, akselien rajoja jne.
-
-\hypertarget{muut-korkean-tason-funktiot}{%
-\subsection{Muut korkean tason funktiot}\label{muut-korkean-tason-funktiot}}
-
-Tässä on esimerkkejä muutamista muista yleisistä korkean tason funktioista:
-
-\texttt{hist} piirtää histogrammeja. Histogrammit kuvaavat jatkuvan muuttujan jakaumaa.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# A vector of 1000 observations from a normal distribution of heights of Finnish women}
-\NormalTok{heights }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{1000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{168}\NormalTok{, }\AttributeTok{sd =} \FloatTok{5.4}\NormalTok{)}
-\FunctionTok{hist}\NormalTok{(heights, }\AttributeTok{breaks =} \DecValTok{20}\NormalTok{, }
-     \AttributeTok{main =} \StringTok{"Suomalaisten naisten pituuksien jakauma"}\NormalTok{,}
-     \AttributeTok{xlab =} \StringTok{"Pituus (cm)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Frekvenssi"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-70-1.pdf}
-
-Toinen tapa kuvata jatkuvan muuttujan jakaumaa on laatikkokuvaaja, joita piirretään \texttt{boxplot}-funktiolla:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{boxplot}\NormalTok{(heights, }\AttributeTok{breaks =} \DecValTok{20}\NormalTok{, }
-     \AttributeTok{main =} \StringTok{"Suomalaisten naisten pituuksien jakauma"}\NormalTok{,}
-     \AttributeTok{ylab =} \StringTok{"Pituus (cm)"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-71-1.pdf}
-
-Vastaavasti diskreetin muuttujan jakaumaa voi kuvata pylväsdiagrammilla käyttäen \texttt{barplot}-funktiota. Alla on esimerkki opiskelijoiden kotipaikkakuntien jakaumasta. Tässä tulee myös tutuksi uusi vektorien ominaisuus: nimeäminen. Nimettyjen vektorien (named vectors) alkioilla on järjestyslukujen lisäksi nimet. Nimet annetaan olla olevaan tyyliin \texttt{nimi\ =\ alkio}. Nimetyt vektori käyttäytyvät aivan kuin tavalliset vektorit, mutta niitä voi indeksoida myös nimien avulla, ja jotkut funktiot, kuten barplot, käyttävät hyödyksi alkioiden nimiä. Nimettyjen vektorien käyttö ei ole kurssin ydinasioita, mutta on joskus hyvin kätevä temppu osata.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{origin }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Pohjois{-}Savo"} \OtherTok{=} \DecValTok{15}\NormalTok{, }\StringTok{"Pk{-}seutu"} \OtherTok{=} \DecValTok{10}\NormalTok{, }\StringTok{"Turku"} \OtherTok{=} \DecValTok{3}\NormalTok{,}
-            \StringTok{"Pohjois{-}Suomi"} \OtherTok{=} \DecValTok{8}\NormalTok{)}
-\NormalTok{origin}
+\CommentTok{\# Subscripting with variable names}
+\NormalTok{study\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"height"}\NormalTok{, }\StringTok{"gender"}\NormalTok{)]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##  Pohjois-Savo      Pk-seutu         Turku Pohjois-Suomi 
-##            15            10             3             8
+##   height gender
+## 1  189.8   male
+## 2  184.0 female
+## 3  173.8   male
+## 4  175.9   male
+## 5  169.0 female
+## 6  183.7   male
+## 7  181.8   male
+## 8   16.9 female
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{origin[}\StringTok{"Turku"}\NormalTok{]}
+\CommentTok{\# Subscripting with brackets {-} as matrix (but I do not recommend this style!)}
+\NormalTok{study\_data[, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Turku 
-##     3
+##   ID height
+## 1  1  189.8
+## 2  2  184.0
+## 3  3  173.8
+## 4  4  175.9
+## 5  5  169.0
+## 6  6  183.7
+## 7  7  181.8
+## 8  8   16.9
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{barplot}\NormalTok{(origin, }
-        \AttributeTok{main =} \StringTok{"Opiskelijoiden kotipaikkakunta"}\NormalTok{,}
-        \AttributeTok{ylab =} \StringTok{"Opiskelijoiden lukumäärä"}\NormalTok{)}
+\CommentTok{\# Rownames and colnames}
+\FunctionTok{colnames}\NormalTok{(study\_data)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-72-1.pdf}
-
-\hypertarget{alemman-tason-grafiikkatoiminnot}{%
-\section{Alemman tason grafiikkatoiminnot}\label{alemman-tason-grafiikkatoiminnot}}
-
-Alemman tason grafiikkatoiminnoilla voi lisätä olemassa olevaan kuvaan lisää osia, kuten tekstiä, pisteitä tai selitteen (legend).
-
-Otetaan esimerkiksi alussa nähty kuvaaja autojen pysähtymismatkoista ja lisätään siihen uusia osia. Tässä vielä alkuperäinen kuva:
+\begin{verbatim}
+## [1] "ID"     "height" "gender"
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
-     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
-     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
+\FunctionTok{names}\NormalTok{(study\_data)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-73-1.pdf}
-
-Lisätään kuvaajan jarrutusmatkat liukkaalla kelillä. Uusia pisteitä voi piirtää \texttt{points}-funktiolla, jolle annetaan x- ja y-koordinaatit vektoreina ihan kuin \texttt{plot}-funktiollekin.
+\begin{verbatim}
+## [1] "ID"     "height" "gender"
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{stop\_dist\_wet }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{30}\NormalTok{, }\DecValTok{41}\NormalTok{, }\DecValTok{54}\NormalTok{, }\DecValTok{69}\NormalTok{, }\DecValTok{85}\NormalTok{, }\DecValTok{103}\NormalTok{, }\DecValTok{122}\NormalTok{, }\DecValTok{143}\NormalTok{)}
-\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
-     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
-     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
-\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet)}
+\CommentTok{\# Individual columns can be accessed and added with dollar sign}
+\CommentTok{\# Let\textquotesingle{}s say that we find out that the ID number 8 was typed in incorrectly. We can fix the entire height variables as follows}
+\NormalTok{study\_data}\SpecialCharTok{$}\NormalTok{height }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{189.8}\NormalTok{, }\FloatTok{184.0}\NormalTok{, }\FloatTok{173.8}\NormalTok{, }\FloatTok{175.9}\NormalTok{, }\FloatTok{169.0}\NormalTok{, }\FloatTok{183.7}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\FloatTok{160.9}\NormalTok{)}
+\NormalTok{study\_data}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-74-1.pdf}
-
-Ylläolevassa kuvaajassa on kaksi ongelmaa: ylimmät pisteet eivät näy, koska kuvaajan y-akseli loppuu kesken. Y-akseli on piirretty alkuperäisten jarrutusmatkojen pohjalta, ja koska liukkaalla kelillä jarrutus kestää pidempään, uudet pisteet eivät mahdu kuvaajaan. Toinen ongelma on se, että pisteitä ei voi erottaa toisistaan.
-
-Ensimmäinen ongelma ratkeaa säätämällä käsin y-akselin rajat. Tämä tapahtuu argumentilla \texttt{ylim}, jolle annetaan vektorissa ylä- ja alaraja (vastaavasti \texttt{xlim} säätää x-akselin rajat).
-
-Lisäksi piirretään selvyyden vuoksi pisteet eri värisinä ja eri kuvioilla. Argumentti \texttt{col} säätää pisteiden värin ja \texttt{pch} pisteiden muodon. Eri väri- ja muotovaihtoehdot löytää googlaamalla.
+\begin{verbatim}
+##   ID height gender
+## 1  1  189.8   male
+## 2  2  184.0 female
+## 3  3  173.8   male
+## 4  4  175.9   male
+## 5  5  169.0 female
+## 6  6  183.7   male
+## 7  7     NA   male
+## 8  8  160.9 female
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
-     \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{,}
-     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{150}\NormalTok{),}
-     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
-     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
-\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet, }\AttributeTok{pch =} \DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
+\CommentTok{\# It would have been possible to change value of only one cell e.g. like this}
+\NormalTok{study\_data}\SpecialCharTok{$}\NormalTok{height[}\DecValTok{8}\NormalTok{] }\OtherTok{\textless{}{-}} \FloatTok{161.9}
+\NormalTok{study\_data}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-75-1.pdf}
+\begin{verbatim}
+##   ID height gender
+## 1  1  189.8   male
+## 2  2  184.0 female
+## 3  3  173.8   male
+## 4  4  175.9   male
+## 5  5  169.0 female
+## 6  6  183.7   male
+## 7  7     NA   male
+## 8  8  161.9 female
+\end{verbatim}
 
-Nyt kuvaaja alkaa jo näyttää paremmalta, mutta kuvaajasta ei vielä voi päätellä, mitä eri väriset pisteet tarkoittavat. Lisätään siis kuvaajaan selite \texttt{legend}-komennolla. Selitteelle määritetään paikka kuvaajassa \texttt{x} ja \texttt{y} argumenteilla (vasemman yläkulman koordinaatit). Sen jälkeen annetaan selitetekstit (\texttt{legend}), sekä selitteen muodot ja värit (\texttt{pch} ja \texttt{col}, kuten aiemmin). HUOM! Selitteen symbolit ja värit on itse osattava laittaa oikeaan järjestykseen. Selitteen tekstit annetaan järjestyksessä ylhäältä alas, ja piirtomerkit tulee antaa samassa järjestyksessä.
+Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla \texttt{rbind()}. Käyttäjän tulee myös huolehtia siitä, että sarakkeet ovat samaa tyyppiä kuin alkuperäisessä data framessa.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
-     \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{,}
-     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{150}\NormalTok{),}
-     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
-     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
-
-\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet, }\AttributeTok{pch =} \DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
-
-\FunctionTok{legend}\NormalTok{(}\AttributeTok{x =} \DecValTok{40}\NormalTok{, }\AttributeTok{y =} \DecValTok{150}\NormalTok{,}
-       \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Märkä keli"}\NormalTok{, }\StringTok{"Kuiva keli"}\NormalTok{),}
-       \AttributeTok{pch =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{), }\AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{))}
+\NormalTok{new\_row }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{ID =} \DecValTok{11}\NormalTok{, }\AttributeTok{height =} \DecValTok{182}\NormalTok{, }\AttributeTok{gender =} \StringTok{"male"}\NormalTok{)}
+\FunctionTok{rbind}\NormalTok{(study\_data, new\_row)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-76-1.pdf}
+\begin{verbatim}
+##   ID height gender
+## 1  1  189.8   male
+## 2  2  184.0 female
+## 3  3  173.8   male
+## 4  4  175.9   male
+## 5  5  169.0 female
+## 6  6  183.7   male
+## 7  7     NA   male
+## 8  8  161.9 female
+## 9 11  182.0   male
+\end{verbatim}
 
-Tuunataan kuvaajaa vielä hiukan, ja lisätään siihen käyrä kuvaamaan jarrutusmatkan ennustetta \texttt{lines}-funktiolla.
+\hypertarget{osajoukkojen-valinta}{%
+\section{Osajoukkojen valinta}\label{osajoukkojen-valinta}}
 
-Alla olevassa koodissa lasketaan ensin \texttt{lm}-funktion avulla sopivat parametrit käyrälle. Lineaarisia malleja käsitellään seuraavien viikkojen aikana, joten tässä vaiheessa niistä ei tarvitse vielä ymmärtää muuta kuin se, että funktio sovittaa toisen asteen funktion (muotoa matka = a + b * nopeus + c * nopeus\^{}2), jonka perusteella voidaan ennustaa pysähtymismatkaa myös muille kuin mitatuille nopeuksille
+Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita ja jos kriteerejä on useita niin myös loogisia operaattoreita. Tarkemmin operaattoreita käsitellään luvussa \protect\hyperlink{loogiset-operaattorit}{Loogiset operaattorit}. Voit käyttää kyseisen osion taulukkoa apuna jo tässä osiossa.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Create vecotr of squared speeds to fit second order polynomial}
-\NormalTok{speed\_squared }\OtherTok{\textless{}{-}}\NormalTok{ speed}\SpecialCharTok{\^{}}\DecValTok{2}
-
-\CommentTok{\# Model for dry weather}
-\NormalTok{model\_dry }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(stop\_dist }\SpecialCharTok{\textasciitilde{}}\NormalTok{ speed }\SpecialCharTok{+}\NormalTok{ speed\_squared)}
-\NormalTok{prediction\_dry }\OtherTok{\textless{}{-}}\NormalTok{ model\_dry}\SpecialCharTok{$}\NormalTok{fitted.values}
-
-\CommentTok{\# Model for rainy weather}
-\NormalTok{model\_wet }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(stop\_dist\_wet }\SpecialCharTok{\textasciitilde{}}\NormalTok{ speed }\SpecialCharTok{+}\NormalTok{ speed\_squared)}
-\NormalTok{prediction\_wet }\OtherTok{\textless{}{-}}\NormalTok{ model\_wet}\SpecialCharTok{$}\NormalTok{fitted.values}
+\CommentTok{\# Filter only females}
+\NormalTok{study\_data[study\_data}\SpecialCharTok{$}\NormalTok{gender }\SpecialCharTok{==} \StringTok{"female"}\NormalTok{, ]}
 \end{Highlighting}
 \end{Shaded}
 
-\texttt{lines} tarvitsee \texttt{x} ja \texttt{y} argumentit kuten \texttt{points}, mutta piirtää viivan, ei pisteitä. Käytetään äsken laskettuja mallien antamia \texttt{prediction}-vektoreita y-koordinaatteina. Tehdään viivoista katkoviivoja argumentilla \texttt{lty\ =\ "dashed"} (lty = line type).
+\begin{verbatim}
+##   ID height gender
+## 2  2  184.0 female
+## 5  5  169.0 female
+## 8  8  161.9 female
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
-     \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{,}
-     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{150}\NormalTok{),}
-     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
-     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
-
-\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet, }\AttributeTok{pch =} \DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
-
-\FunctionTok{legend}\NormalTok{(}\AttributeTok{x =} \DecValTok{40}\NormalTok{, }\AttributeTok{y =} \DecValTok{150}\NormalTok{,}
-       \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Märkä keli"}\NormalTok{, }\StringTok{"Kuiva keli"}\NormalTok{),}
-       \AttributeTok{pch =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{), }\AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{))}
-
-\FunctionTok{lines}\NormalTok{(speed, prediction\_dry, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{)}
-\FunctionTok{lines}\NormalTok{(speed, prediction\_wet, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{)}
+\CommentTok{\# Filter individuals whose height is less than or equal to 175}
+\NormalTok{study\_data[study\_data}\SpecialCharTok{$}\NormalTok{height }\SpecialCharTok{\textless{}=} \DecValTok{175}\NormalTok{, ]}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-78-1.pdf}
-
-Seuraavaksi voidaan värittää käyrät samoilla väreillä kuin pisteet, ja lisätä niille omat selitteet. Tässä vaiheessa selitteen tekemisestä tulee jo melko monimutkaista, sillä selitteessä on mukana pisteitä ja käyriä. Tästä syystä selitteen argumentteihin pitää laittaa puuttuvia arvoja \texttt{pch} ja \texttt{lty}-argumenteille, koska selitteen ensimmäiset rivit eivät viittaa mihinkään käyrään, vaan pelkästään pisteisiin ja vastaavasti kaksi alinta riviä viittaavat vain käyriin.
+\begin{verbatim}
+##    ID height gender
+## 3   3  173.8   male
+## 5   5  169.0 female
+## NA NA     NA   <NA>
+## 8   8  161.9 female
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
-     \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{,}
-     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{150}\NormalTok{),}
-     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
-     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
-
-\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet, }\AttributeTok{pch =} \DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
-
-\FunctionTok{legend}\NormalTok{(}\AttributeTok{x =} \DecValTok{40}\NormalTok{, }\AttributeTok{y =} \DecValTok{150}\NormalTok{,}
-       \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Märkä keli"}\NormalTok{, }\StringTok{"Kuiva keli"}\NormalTok{,}
-                  \StringTok{"Ennuste märälle kelille"}\NormalTok{,}
-                  \StringTok{"Ennuste kuivalle kelille"}\NormalTok{),}
-       \AttributeTok{pch =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\ConstantTok{NA}\NormalTok{),}
-       \AttributeTok{lty =} \FunctionTok{c}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\StringTok{"dashed"}\NormalTok{, }\StringTok{"dashed"}\NormalTok{),}
-       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{, }\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{))}
-
-\FunctionTok{lines}\NormalTok{(speed, prediction\_dry, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{)}
-\FunctionTok{lines}\NormalTok{(speed, prediction\_wet, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
+\CommentTok{\# Filter individuals whose height is not missing and is less than or equal to 175}
+\NormalTok{study\_data[}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(study\_data}\SpecialCharTok{$}\NormalTok{height) }\SpecialCharTok{\&}\NormalTok{ study\_data}\SpecialCharTok{$}\NormalTok{height }\SpecialCharTok{\textless{}=} \DecValTok{175}\NormalTok{, ]}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-79-1.pdf}
-
-Kuvaajamme on melkein valmis iltapäivälehteen muistuttamaan liukkaiden kelien vaaroista, mutta jotta siitä tulisi oikein säväyttävä, siinä pitää toki olla tekstiä! Lisätään siis vielä pieni tekstin pätkä, joka korostaa eroa liukkaan ja kuivan kelin välillä. Tekstiä voi lisätä \texttt{text}-funktiolla, jolle annetaan tuttuun tapaan \texttt{x} ja \texttt{y}-argumentit, joilla määritetään tekstin paikka ja \texttt{labels} määrittää itse tekstin (kaikki argumentit voivat olla myös pidempiä vektoreita, jolloin tulee useampi teksti eri paikkoihin). Lisäksi parametrillä \texttt{adj} (adjust) voi hienosäätää tekstin paikkaa. \texttt{adj} on vektori, jossa on hienosäätöarvot x- ja y-suunnassa.
+\begin{verbatim}
+##   ID height gender
+## 3  3  173.8   male
+## 5  5  169.0 female
+## 8  8  161.9 female
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
-     \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{,}
-     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{150}\NormalTok{),}
-     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
-     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
-
-\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet, }\AttributeTok{pch =} \DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
-
-\FunctionTok{legend}\NormalTok{(}\AttributeTok{x =} \DecValTok{40}\NormalTok{, }\AttributeTok{y =} \DecValTok{150}\NormalTok{,}
-       \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Märkä keli"}\NormalTok{, }\StringTok{"Kuiva keli"}\NormalTok{,}
-                  \StringTok{"Ennuste märälle kelille"}\NormalTok{,}
-                  \StringTok{"Ennuste kuivalle kelille"}\NormalTok{),}
-       \AttributeTok{pch =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\ConstantTok{NA}\NormalTok{),}
-       \AttributeTok{lty =} \FunctionTok{c}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\StringTok{"dashed"}\NormalTok{, }\StringTok{"dashed"}\NormalTok{),}
-       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{, }\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{))}
-
-\FunctionTok{lines}\NormalTok{(speed, prediction\_dry, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{)}
-\FunctionTok{lines}\NormalTok{(speed, prediction\_wet, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
-
-\FunctionTok{text}\NormalTok{(}\AttributeTok{x =} \DecValTok{95}\NormalTok{, }\AttributeTok{y =} \DecValTok{145}\NormalTok{, }\AttributeTok{labels =} \StringTok{"ERO JOPA 30 M!!"}\NormalTok{) }
+\CommentTok{\# Use multiple filter criteria}
+\NormalTok{study\_data[study\_data}\SpecialCharTok{$}\NormalTok{height }\SpecialCharTok{\textless{}=} \DecValTok{175} \SpecialCharTok{\&}\NormalTok{ study\_data}\SpecialCharTok{$}\NormalTok{gender }\SpecialCharTok{==} \StringTok{"female"}\NormalTok{, ]}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-80-1.pdf}
+\begin{verbatim}
+##   ID height gender
+## 5  5  169.0 female
+## 8  8  161.9 female
+\end{verbatim}
 
-Kuvaajamme on nyt valmis! Näitä komentoja käyttämällä ja pienellä googlailulla saa myös tehtyä tämän viikon tehtävän.
+\hypertarget{faktorit}{%
+\section{Faktorit}\label{faktorit}}
 
-\hypertarget{kuvaajien-piirtuxe4minen-kuxe4ytuxe4nnuxf6ssuxe4}{%
-\section{Kuvaajien piirtäminen käytännössä}\label{kuvaajien-piirtuxe4minen-kuxe4ytuxe4nnuxf6ssuxe4}}
+R:n numeeriset vektorit ovat lähtökohtaisesti jatkuva-asteikollisia. Olet ehkä ihmetellytkin, miten kategorinen muuttuja määritellään. Kategorista muuttujaa sanotaan R:ssä faktoriksi. Numeerisen tai tekstimuotoisen muuttujan tai vektorin voi muuttaa faktori-muotoiseksi muuttujaksi \texttt{factor} -funktiolla.
 
-Jos äskeisen esimerkin aikana tuntui siltä, että näimme paljon työtä ja saimme lopputulokseksi kuvaajan, joka ei oikeastaan edes näytä kovin hyvältä, olet aivan oikeassa. Kuvaajien rakentaminen itse R:n peruskomennoilla on raskasta, ja usein perusgrafiikkatoimintoja käytetään lähinnä omaan käyttöön tulevien kuvaajien piirtämiseen nopeasti. Peruskomennot on kuitenkin hyvä hallita, sillä niitä saattaa tarvita valmiilla työkaluilla tehtyjen kuvaajien muokkaamiseen. Varsinkin tekstin lisääminen, sekä akselien nimeäminen ja otsikon muuttaminen ovat hyviä taitoja osata.
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Let\textquotesingle{}s change gender from character string to a factor and rename it as fgender}
+\NormalTok{study\_data}\SpecialCharTok{$}\NormalTok{fgender }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(study\_data}\SpecialCharTok{$}\NormalTok{gender)}
 
-R tarjoaa paljon valmiita työkaluja erilaisten kuvaajien piirtämiseen. Valitettavasti tällä kurssilla ei ole aikaa sukeltaa näiden työkalujen käyttöön, sillä ennen niiden käyttöä pitää ymmärtää enemmän R:n monimutkaisemmista tietorakenteista, joita käsitellään seuraavilla viikoilla. Inspiraatiota ja motivaatiota voi kuitenkin hakea esimerkiksi \href{https://www.r-graph-gallery.com/index.html}{R Graph Gallery}-sivulta tai \href{https://rpkgs.datanovia.com/ggpubr/index.html}{ggpubr-paketin ohjeista}.
+\CommentTok{\# Let\textquotesingle{}s now compare the printing of gender and fgender}
+\NormalTok{study\_data}\SpecialCharTok{$}\NormalTok{gender}
+\end{Highlighting}
+\end{Shaded}
 
-\hypertarget{tuxe4muxe4n-viikon-tehtuxe4vuxe4}{%
-\section{Tämän viikon tehtävä}\label{tuxe4muxe4n-viikon-tehtuxe4vuxe4}}
+\begin{verbatim}
+## [1] "male"   "female" "male"   "male"   "female" "male"   "male"   "female"
+\end{verbatim}
 
-Tämän viikon tehtävässä on muutama ``haaste''. Tässä siis pari suoraa vinkkiä:
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{study\_data}\SpecialCharTok{$}\NormalTok{fgender}
+\end{Highlighting}
+\end{Shaded}
 
-\begin{itemize}
-\tightlist
-\item
-  Suosittelen hyvin vahvasti käyttämään RStudiota ja kirjoittamaan piirtokomennot R-skriptiin! Näin on helppoa muokata piirtokomentoja tehtävän edetessä.
-\item
-  Tehtävässä käsitellään listaa \texttt{observations}. Voit lukea listoista lisää \href{https://github.com/antonvsdata/r_intro/tree/master/viikko_3\#lista}{ensi viikon ohjeista}!
-\item
-  Kohdassa 6. kannattaa ensin luoda vektori, jossa on eksponentiaalisen käyrän luvut ja lisätä se kuvaajaan funktiolla \texttt{lines()}. Älä siis käytä funktiota \texttt{curve()}, vaikka ohjeissa niin neuvotaan! \texttt{curve()}-funktion käyttö vaatii oman funktion määrittelyä, joka opitaan vasta myöhemmin tällä kurssilla!
-\end{itemize}
+\begin{verbatim}
+## [1] male   female male   male   female male   male   female
+## Levels: female male
+\end{verbatim}
 
-\hypertarget{statistics}{%
-\chapter{Lineaariset mallit ja tilastolliset jakaumat}\label{statistics}}
+Huomataan, että faktori tulostaa faktorin tasot eli kaikkien mahdollisten luokkien nimet faktorin perässä: \texttt{Levels:\ female\ male}.
 
-Tässä osiossa tutustutaan lineaarisiin malleihin ja yleisimpien jakaumien käyttöön R:ssä. Jos konseptit eivät ole tilastotieteen kursseilta tuttuja, ei hätää: tämä dokumentti sisältää lyhyet selitykset tärkeimmistä konsepteista, ja loput selitetään varsinaisilla tilastotieteen kursseilla.
+Usein vastaan tulee myös tilanne, jossa faktorin eri tasoja vastaa kokonaislukuarvot, kuten tässä esimerkissä 1, 2 ja 3. Tällaisessa tilanteessa faktorin tasojen merkitys on usein annettu jossain dokumenttitiedostossa. Tällöin faktorin tasot ja niiden kuvaukset (labels) tulee määrittää käsin.
 
-Ennen kuin puhutaan tilastollisten testien tekemisestä R:llä, on hyvä tutustua factor-luokan vektoreihin
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create a data for this example}
+\NormalTok{wall\_dat }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{building\_ID =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{), }\AttributeTok{building\_material =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{))}
 
-\hypertarget{factor-vektorit}{%
-\section{Factor-vektorit}\label{factor-vektorit}}
+\CommentTok{\# Name is \textquotesingle{}building\_material\textquotesingle{} very long, I want to rename it}
+\FunctionTok{names}\NormalTok{(wall\_dat) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"building\_ID"}\NormalTok{,}\StringTok{"build\_mat"}\NormalTok{)}
+
+\CommentTok{\# We know from some kind of documentation that 1 stands for "wood", 2 is "steel" and 3 is "brick".}
+\NormalTok{wall\_dat}\SpecialCharTok{$}\NormalTok{fbuild\_mat }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(wall\_dat}\SpecialCharTok{$}\NormalTok{build\_mat,}\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"wood"}\NormalTok{, }\StringTok{"steel"}\NormalTok{, }\StringTok{"brick"}\NormalTok{))}
+
+\FunctionTok{str}\NormalTok{(wall\_dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    6 obs. of  3 variables:
+##  $ building_ID: num  1 2 3 4 5 6
+##  $ build_mat  : num  1 1 2 2 3 3
+##  $ fbuild_mat : Factor w/ 3 levels "wood","steel",..: 1 1 2 2 3 3
+\end{verbatim}
+
+\hypertarget{factor-vektorit-vanha-teksti}{%
+\section{Factor-vektorit (vanha teksti)}\label{factor-vektorit-vanha-teksti}}
 
 R:ssä on aiemmin nähtyjen numeric, character ja logical-vektorien lisäksi muitakin vektoriluokkia, tärkeimpänä näistä factor. Factor-vektoreihin tallennetaan kategorisia muuttujia, kuten tutkimuksessa määrättyjä ryhmiä, aikapisteitä tms. Luodaan esimerkiksi factor-vektori, jossa on kuvitteellisen lääketutkimuksen osallistujien ryhmätiedot:
 
@@ -2927,192 +2774,277 @@ Kuten aiemmin mainittiin, factoreita voi tehdä myös numeerisista vektoreista. 
 ## [1] 0 0 1 1 5 5 1 0 5
 \end{verbatim}
 
-\hypertarget{linear_models}{%
-\section{Lineaariset mallit}\label{linear_models}}
+\hypertarget{statistics}{%
+\chapter{Tunnusluvut}\label{statistics}}
 
-Lineaarisessa mallissa eli lineaarisessa regressiossa tavoite on arvioida vastemuuttujan lineaarista riippuvuutta selittävistä muuttujista. Käytetään esimerkkinä R:n sisäistä datasettiä cars, jossa on kirjattu 50 auton nopeus ja pysähtymismatka. Tavoitteena on tutkia, miten auton pysähtymismatka riippuu auton nopeudesta.
+Tunnusluvut (engl. statistics) ovat keskeinen osa tilastotiedettä. Tunnuslukujen avulla voidaan tiivistää ja tarkastella aineistoa. Tässä harjoittelemme tyypillisimpien tunnuslukujen laskemista aineistosta. Näitä tunnuslukuja voi sanoa myös empiirisiksi, koska ne on laskettu aineistosta.
 
-\hypertarget{teoria}{%
-\subsection{Teoria}\label{teoria}}
+\hypertarget{sijaintia-kuvaavat-tunnusluvut}{%
+\section{Sijaintia kuvaavat tunnusluvut}\label{sijaintia-kuvaavat-tunnusluvut}}
 
-Yksinkertaisin mahdollinen lineaarinen regressiomalli näyttää tältä:
+\hypertarget{minimi-ja-maksimi}{%
+\subsection{Minimi ja maksimi}\label{minimi-ja-maksimi}}
 
-\[y = \beta_0 + \beta_1 x_1 + \epsilon\]
-
-\begin{itemize}
-\tightlist
-\item
-  \(y\) on vastemuuttuja, tässä auton pysähtymismatka
-\item
-  \(\beta_0\) on ns. vakiotermi eli käyrän y-akselin leikkauskohta
-\item
-  \(\beta_1\) on selittävän muuttujan eli auton nopeuden regressiokerroin
-\item
-  \(x_1\) on selittävä muuttuja eli auton nopeus
-\item
-  \(\epsilon\) on residuaalitermi (virhetermi)
-\end{itemize}
-
-Mallissa siis oletetaan, että auton pysähtymismatka nopeudella 0 km/h on \(\beta_0\) ja kasvaa \(\beta_1\) verran, kun nopeus kasvaa 1 km/h. Lisäksi mukana on virhetermi, joka selittää satunnaisen vaihtelun tuloksissa lineaarisen käyrän ympärillä.
-
-Jos malliin halutaan lisätä selittäviä muuttujia, kuten auton jarrujen kunto (\(x_2\)) tai sääolosuhteet (\(x_3\)), malli näyttää tältä:
-
-\[y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + ... + \epsilon\]
-
-Eli jokaiselle selittävälle muuttujalle annetaan oma regressiokerroin.
-
-\hypertarget{esimerkki}{%
-\subsection{Esimerkki}\label{esimerkki}}
-
-Muutetaan ensin cars-datasetin muuttujat meille tuttuihin yksikköihin, ja piirretään hajontakuvio havainnoista:
+Minimi tarkoittaa aineiston pienintä arvoa kyseiselle muuttujalle. Maksimi on vastaavasti suurin arvo. Minimi ja maksimi on periaatteessa helppoa laskea funktioiden \texttt{min} ja \texttt{max} avulla, mutta pari pientä sudenkuoppaa niihinkin liittyy. Funktiot \texttt{min} ja \texttt{max} hyväksyvät argumenteikseen vain numeeriset vektorit.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Change units}
-\NormalTok{cars}\SpecialCharTok{$}\NormalTok{speed }\OtherTok{\textless{}{-}}\NormalTok{ cars}\SpecialCharTok{$}\NormalTok{speed }\SpecialCharTok{*} \FloatTok{1.60934}
-\NormalTok{cars}\SpecialCharTok{$}\NormalTok{dist }\OtherTok{\textless{}{-}}\NormalTok{ cars}\SpecialCharTok{$}\NormalTok{dist }\SpecialCharTok{*} \FloatTok{0.0254}
-\CommentTok{\# Scatter plot}
-\FunctionTok{plot}\NormalTok{(cars}\SpecialCharTok{$}\NormalTok{speed, cars}\SpecialCharTok{$}\NormalTok{dist,}
-     \AttributeTok{xlab =} \StringTok{"Speed (km/h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Distance (m)"}\NormalTok{,}
-     \AttributeTok{main =} \StringTok{"Stopping distances of cars"}\NormalTok{) }
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-85-1.pdf}
-
-Autojen välillä on eroja, mutta kuten voi odottaa, suuremmilla nopeuksilla auton pysähtymismatka kasvaa. Käytetään seuraavaksi R:n funktiota \texttt{lm()}, jolla voidaan sovittaa dataan lineaarinen malli:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(dist }\SpecialCharTok{\textasciitilde{}}\NormalTok{ speed, }\AttributeTok{data =}\NormalTok{ cars)}
-\NormalTok{model}\SpecialCharTok{$}\NormalTok{coefficients}
+\NormalTok{dat\_for\_loc }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{1.25}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{4.1}\NormalTok{, }\FloatTok{1.16}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{3.05}\NormalTok{, }\FloatTok{4.17}\NormalTok{, }\FloatTok{0.73}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{3.14}\NormalTok{, }\FloatTok{3.39}\NormalTok{, }\SpecialCharTok{{-}}\FloatTok{2.55}\NormalTok{, }\FloatTok{0.4}\NormalTok{)}
+\FunctionTok{min}\NormalTok{(dat\_for\_loc)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## (Intercept)       speed 
-## -0.44650901  0.06206469
+## [1] -4.1
 \end{verbatim}
 
-\texttt{lm()}-funktiolle annetaan ensimmäiseksi argumentiksi lineaarisen mallin kaava, jossa \texttt{\textasciitilde{}} korvaa yllä nähdyn yhtäkuin-merkin. HUOM: vakiotermi on automaattisesti mukana, eli sitä ei tarvitse kirjata erikseen. Lisäksi täytyy antaa data frame, josta kaavassa näkyvät muuttujat löytyvät.
-
-Lineaarisesta mallista saadaan irti paljon tietoa, tärkeimpinä mallin kertoimet (coefficients). Yllä olevista kertoimista voidaan päätellä, että kun auton nopeus nousee 1 km/h, autojen pysähtymismatka kasvaa noin 0.06 m ja odotettu kasvukäyrä leikkaa y-akselin -0.4 m kohdalla. Voimme piirtää tämän käyrän kuvaajaan \texttt{abline()}-funktion avulla, antamalla sille mallin kertoimet:
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(cars}\SpecialCharTok{$}\NormalTok{speed, cars}\SpecialCharTok{$}\NormalTok{dist,}
-     \AttributeTok{xlab =} \StringTok{"Speed (km/h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Distance (m)"}\NormalTok{,}
-     \AttributeTok{main =} \StringTok{"Stopping distances of cars"}\NormalTok{)}
-\FunctionTok{abline}\NormalTok{(}\AttributeTok{a =}\NormalTok{ model}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\NormalTok{], }\AttributeTok{b =}\NormalTok{ model}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{2}\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-87-1.pdf}
-
-\hypertarget{tarkempia-tietoja-mallista}{%
-\subsection{Tarkempia tietoja mallista}\label{tarkempia-tietoja-mallista}}
-
-Muihin mallin tietoihin pääsee käsiksi \texttt{summary}-funktion avulla, joko tulostamalla tuloksen konsoliin, tai sijoittamalla sen muuttujaan, josta voi etsiä mallin tietoja.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Print summary information}
-\FunctionTok{summary}\NormalTok{(model)}
+\FunctionTok{max}\NormalTok{(dat\_for\_loc)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.73835 -0.24194 -0.05771  0.23405  1.09731 
-## 
-## Coefficients:
-##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -0.446509   0.171664  -2.601   0.0123 *  
-## speed        0.062065   0.006558   9.464 1.49e-12 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.3906 on 48 degrees of freedom
-## Multiple R-squared:  0.6511, Adjusted R-squared:  0.6438 
-## F-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12
+## [1] 4.17
 \end{verbatim}
+
+Joskus minimiä ja maksimia tarvitsee tilanteessa, jossa halutaan vaikkapa muuttaa kaikki negatiiviset arvot nolliksi (tai positiiviset, jos maksimi). Tämä onnistuu helpoiten funktioiden \texttt{pmin} ja \texttt{pmax} avulla. Samalla tapaa, jos halutaan kaikki lukua 1 pienemmät luvut muutettua luvuksi 1, niin tämä onnistuu vaihtamalla luku 0 lukuun 1.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Save summary and access specific information}
-\NormalTok{s }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(model)}
-\NormalTok{s}\SpecialCharTok{$}\NormalTok{r.squared}
+\CommentTok{\# We want to get rid of all values below 0 and make them 0}
+\FunctionTok{pmin}\NormalTok{(dat\_for\_loc,}\DecValTok{0}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.6510794
+##  [1] -1.25 -4.10  0.00 -3.05  0.00  0.00 -3.14  0.00 -2.55  0.00
 \end{verbatim}
 
-\texttt{summary()} kertoo mm. kertoimien arvojen lisäksi niiden saamat p-arvot kohdassa (Pr \textgreater{} \textbar t\textbar), sekä mallin selitysasteen (merkintätapa johtuu siitä, että p-arvot tulevat t-testeistä). Tässä tapauksessa muuttujan speed p-arvo on hyvin pieni, joten voimme todeta suurella varmuudella, että autojen pysähtymismatka riippuu (lineaarisesti) auton nopeudesta. R2 eli R-squared kertoo, kuinka suuren osuuden pysähtymismatkojen varianssista auton nopeus selittää.
-
-\hypertarget{ennustaminen}{%
-\subsection{Ennustaminen}\label{ennustaminen}}
-
-Kun lineaarinen malli on luotu, sen perusteella voidaan myös ennustaa arvoja uusille havainnoille. Tämä tapahtuu \texttt{predict()}-komennolla, jolle annetaan malli, sekä uuden datan sisältävä data frame. Ennustetaan edellisen mallin perusteella pysähtymismatka autolle neljällä uudella nopeudella ja lisätään ne edelliseen kuvaajaan punaisilla rukseilla:
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Create data frame with new speed values}
-\NormalTok{new\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{speed =} \FunctionTok{c}\NormalTok{(}\DecValTok{25}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{38}\NormalTok{))}
-\CommentTok{\# Create dist column by predicting from linear model}
-\NormalTok{new\_data}\SpecialCharTok{$}\NormalTok{dist }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(model, }\AttributeTok{newdata =}\NormalTok{ new\_data)}
-
-\CommentTok{\# Add points to previous plot}
-\FunctionTok{plot}\NormalTok{(cars}\SpecialCharTok{$}\NormalTok{speed, cars}\SpecialCharTok{$}\NormalTok{dist,}
-     \AttributeTok{xlab =} \StringTok{"Speed (km/h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Distance (m)"}\NormalTok{,}
-     \AttributeTok{main =} \StringTok{"Stopping distances of cars"}\NormalTok{)}
-\FunctionTok{abline}\NormalTok{(}\AttributeTok{a =}\NormalTok{ model}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\NormalTok{], }\AttributeTok{b =}\NormalTok{ model}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{2}\NormalTok{])}
-\FunctionTok{points}\NormalTok{(new\_data}\SpecialCharTok{$}\NormalTok{speed, new\_data}\SpecialCharTok{$}\NormalTok{dist, }\AttributeTok{pch =} \DecValTok{4}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\CommentTok{\# Similar, but get rid of all values over 0}
+\FunctionTok{pmax}\NormalTok{(dat\_for\_loc,}\DecValTok{0}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-89-1.pdf}
-
-Kuten huomataan, ennustetut arvot ovat täsmälleen käyrän päällä.
-
-\hypertarget{korrelaatio}{%
-\section{Korrelaatio}\label{korrelaatio}}
-
-Korrelaatio on lineaarisen regression ohella tapa mitata kahden muuttujan välistä riippuvuutta. Korrelaatiolle on monia erilaisia mittareita, joista yleisimmät ovat Pearsonin korrelaatiokerroin, joka mittaa kahden muuttujan välistä lineaarista riippuvuutta ja Spearmanin järjestyskorrelaatiokerroin, joka mittaa kahden muuttujan välistä riippuvuutta ilman lineaarisuusoletusta. HUOM: korrelaatio ei ota kantaa siihen, kuinka vahva riippuvuus on (käyrän jyrkkyys), vaan pelkästään siihen, kuinka systemaattinen riippuvuus on. Kummatkin korrelaatiokertoimet saavat arvoja väliltä {[}-1, 1{]}, jossa -1 on täydellinen negatiivinen korrelaatio (toisen muuttujan kasvaessa toinen pienenee) ja 1 on täydellinen positiivinen korrelaatio.
-
-Korrelaation kahden vektorin välillä voi R:ssä laskea komennolla \texttt{cor()}. Otetaan esimerkiksi R:n sisäinen datasetti Indometh, jossa on mitattu indometasiinin farmakokinetiikkaa, ja selvitetään ajan ja indometasiinin konsentraation väliselle riippuvuudelle Pearsonin ja Spearmanin korrelaatiokertoimet. Piirretään sen jälkeen hajontakuvio mittaustuloksista ja lisätään kuvaajaan alaotsikoksi korrelaatiokertoimet. Tutustumme samalla funktioon \texttt{round()}, jolla voi pyöristää lukuja halutulle desimaalitarkkuudelle.
+\begin{verbatim}
+##  [1] 0.00 0.00 1.16 0.00 4.17 0.73 0.00 3.39 0.00 0.40
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Pearson correlation}
-\NormalTok{pearson }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(Indometh}\SpecialCharTok{$}\NormalTok{time, Indometh}\SpecialCharTok{$}\NormalTok{conc, }\AttributeTok{method =} \StringTok{"pearson"}\NormalTok{)}
-\CommentTok{\# Spearman correlation}
-\NormalTok{spearman }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(Indometh}\SpecialCharTok{$}\NormalTok{time, Indometh}\SpecialCharTok{$}\NormalTok{conc, }\AttributeTok{method =} \StringTok{"spearman"}\NormalTok{)}
-\CommentTok{\# Scatter plot}
-\FunctionTok{plot}\NormalTok{(Indometh}\SpecialCharTok{$}\NormalTok{time, Indometh}\SpecialCharTok{$}\NormalTok{conc,}
-     \AttributeTok{xlab =} \StringTok{"Time"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Concetration"}\NormalTok{,}
-     \AttributeTok{main =} \StringTok{"Pharmacokinetics of indometacin"}\NormalTok{)}
-
-\CommentTok{\# Paste concatenates strings}
-\NormalTok{subtitle }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(}\StringTok{"Pearson correlation:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(pearson, }\AttributeTok{digits =} \DecValTok{2}\NormalTok{),}
-                  \StringTok{"Spearman correlation:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(spearman, }\AttributeTok{digits =} \DecValTok{2}\NormalTok{))}
-\CommentTok{\# Add subtitle to plot}
-\FunctionTok{mtext}\NormalTok{(subtitle)}
+\CommentTok{\# We can do similar things to any limit, e.g. 1}
+\FunctionTok{pmin}\NormalTok{(dat\_for\_loc,}\DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-90-1.pdf}
+\begin{verbatim}
+##  [1] -1.25 -4.10  1.00 -3.05  1.00  0.73 -3.14  1.00 -2.55  0.40
+\end{verbatim}
 
-Tässä esimerkissä nähdään hyvin Pearsonin - ja Spearmanin korrelaatiokertoimien ero. Koska Indometasiinin konsentraatio laskee eksponentiaalisesti, ei lineaarisesti, Pearsonin korrelaatiokerroin on ``vain'' -0.7, kun taas Spearmanin korrelaatiokerroin -0.97 vastaa lähes täydellistä negatiivista korrelaatiota.
+Funktiota \texttt{pmin} ja \texttt{pmax} voi käyttää vieläkin yleisemmässä muodossa antamalla yksittäisen lukuarvon sijasta vektorin. Näitä emme käsittele tässä, mutta kiinnostuneet voivat kokeilla lisää itse.
+
+\hypertarget{keskiarvo}{%
+\subsection{Keskiarvo}\label{keskiarvo}}
+
+Keskiarvo saadaan laskemalla muuttujan kaikki havainnot yhteen ja jakamalla summa havaintojen määrällä. Esimerkiksi aineiston 1,2,3,4 keskiarvo on (1+2+3+4)/4 = 2.5 Keskiarvoa satunnaismuuttujan \(X\) havainnoille voidaan merkitä matemaattisesti seuraavasti
+\[\overline{x} = \sum_{i=1}^n x_i = \frac{x_1+x_2+\dots+x_n}{n},\]
+missä merkintä \(\overline{x}\) tarkoittaa itse keskiarvoa, \(x_1,...,x_n\) ovat havaintoja ja \(n\) on laskettavien havaintojen määrä.
+
+R:ssä keskiarvo voidaan laskea helposti funktiolla \texttt{mean}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tooth\_length }\OtherTok{\textless{}{-}}\NormalTok{ ToothGrowth}\SpecialCharTok{$}\NormalTok{len}
+\FunctionTok{mean}\NormalTok{(tooth\_length)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 18.81333
+\end{verbatim}
+
+Mikäli muuttujassa on puuttuvia arvoja (NA) niin keskiarvoksi tulee oletusarvoisesti NA. NA-arvot voi jättää pois keskiarvon laskemisessa antamalla funktiolle lisäargumentiksi \texttt{na.rm=TRUE}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create some data}
+\NormalTok{dat\_for\_mean }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\CommentTok{\# Data with NA results mean with NA}
+\FunctionTok{mean}\NormalTok{(dat\_for\_mean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Leave NA{-}values out and calculate mean from the remaining ones}
+\FunctionTok{mean}\NormalTok{(dat\_for\_mean,}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.333333
+\end{verbatim}
+
+\hypertarget{mediaani}{%
+\subsection{Mediaani}\label{mediaani}}
+
+Mediaani ilmaisee aineiston keskimmäisen luvun. Toisin sanoen puolet havainnoista on mediaania suurempia ja puolet mediaania pienempiä. Esimerkiksi aineiston 1,1,2,3,5 mediaani on 2. Jos aineistossa on parillinen määrä lukuja otetaan kaksi keskimmäisä ja lasketaan ne yhteen ja jaetaan kahdella (keskiarvo). Aineiston 3,3,5,6,7,17 mediaani on (5+6)/2 = 5.5. Mediaani on helppoa laskea R:ssä funktiolla median.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Let\textquotesingle{}s think about median}
+\NormalTok{dat\_for\_median }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\NormalTok{dat\_for\_median}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 7 2 3 4 1 7 0 4 3 3 2 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sort}\NormalTok{(dat\_for\_median) }\CommentTok{\# Median would be the middle value in the arranged data, thus 3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 0 1 2 2 3 3 3 4 4 6 7 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Getting median in R}
+\FunctionTok{median}\NormalTok{(dat\_for\_median)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\hypertarget{moodi}{%
+\subsection{Moodi}\label{moodi}}
+
+Moodi ilmaisee muuttujan yleisimmän arvon. Valitettavasti R:ssä ei ole valmista funktiota moodin laskemiseen. Sen sijaan funktio nimeltään \texttt{mode} antaa objektin tyypin, eikä laske moodia. Jos moodin haluaa laskea R:ssä, on se tehtävä laskemalla ensin aineistosta taulukko ja sitten etsimällä siitä maksimiarvo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Find out the mode}
+\NormalTok{dat\_for\_mode }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{tab }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(dat\_for\_mode)}
+\CommentTok{\# Let\textquotesingle{}s see how is tab}
+\NormalTok{tab}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## dat_for_mode
+##  0  1  2  3  4  5  6  7 
+##  4 14 22 26 22  5  4  3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Let\textquotesingle{}s pick up the largest frequency using which.max function}
+\NormalTok{tab[}\FunctionTok{which.max}\NormalTok{(tab)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  3 
+## 26
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Mode is 3 and the frequency is 26}
+
+\CommentTok{\# Let\textquotesingle{}s pick up only the value 3}
+\FunctionTok{names}\NormalTok{(tab)[}\FunctionTok{which.max}\NormalTok{(tab)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "3"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# That is character so let\textquotesingle{}s convert it to numeric}
+\FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{names}\NormalTok{(tab)[}\FunctionTok{which.max}\NormalTok{(tab)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+Ylläoleva käy itse asiassa hyvästä esimerkistä tilanteesta, jossa seuraavaksi tekisin viimeisen rivin funktioksi ja jatkossa käyttäisin kyseistä funktiota työssäni. Funktiohin palataan osiossa \protect\hyperlink{functions}{Funktiot}. En malta olla tekemättä niin, joten olkoon alla esimerkki moodi-funktiosta ilman suurempia selityksiä.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Write a function for mode}
+\NormalTok{moodi }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  tab }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(x)}
+  \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{names}\NormalTok{(tab)[}\FunctionTok{which.max}\NormalTok{(tab)])}
+\NormalTok{\}}
+\CommentTok{\# Use that function}
+\FunctionTok{moodi}\NormalTok{(dat\_for\_mode)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\hypertarget{summary}{%
+\section{summary()}\label{summary}}
+
+Kätevä tapa saada nopea yhteenveto data framen kaikista muuttujista on käyttää \texttt{summary}-funktiota data frame -objektille.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate summary for ToothGrowth data}
+\FunctionTok{summary}\NormalTok{(ToothGrowth)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       len        supp         dose      
+##  Min.   : 4.20   OJ:30   Min.   :0.500  
+##  1st Qu.:13.07   VC:30   1st Qu.:0.500  
+##  Median :19.25           Median :1.000  
+##  Mean   :18.81           Mean   :1.167  
+##  3rd Qu.:25.27           3rd Qu.:2.000  
+##  Max.   :33.90           Max.   :2.000
+\end{verbatim}
+
+Summary huolii myös yksittäisen vektorin, jolloin yhteenveto tulostuu vaakasuuntaisena.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tooth\_length }\OtherTok{\textless{}{-}}\NormalTok{ ToothGrowth}\SpecialCharTok{$}\NormalTok{len}
+\FunctionTok{summary}\NormalTok{(tooth\_length)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    4.20   13.07   19.25   18.81   25.27   33.90
+\end{verbatim}
+
+\hypertarget{varianssi-ja-keskihajonta-ja-kvantiilit}{%
+\section{Varianssi ja keskihajonta ja kvantiilit}\label{varianssi-ja-keskihajonta-ja-kvantiilit}}
 
 \hypertarget{distributions}{%
-\section{Todennäköisyysjakaumat R:ssä}\label{distributions}}
+\chapter{Todennäköisyysjakaumat R:ssä}\label{distributions}}
 
 Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista on valmiita funktiota R:ssä. Funktiota on neljää eri tyyppiä, jotka merkataan funktion nimen ensimmäisellä kirjaimella.
 
@@ -3123,17 +3055,17 @@ Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista 
 \item
   p: Kertymäfunktio: millä todennäköisyydellä jakaumasta poimittu arvo on pienempi/suurempi kuin q?
 \item
-  q: Käänteinen kertymäfunktio: mille arvolle kertymäfunktio palauttaa todennäköisyyden p?
+  q: Käänteinen kertymäfunktio (eli kvantiilifunktio): mille arvolle kertymäfunktio palauttaa todennäköisyyden p?
 \item
-  r: satunnaislukugeneraattori: poimi satunnaisia havaintoja jakaumasta
+  r: satunnaislukugeneraattori: arvo eli simuloi satunnaisia havaintoja jakaumasta
 \end{itemize}
 
 Alla on kuvaajat ensimmäisestä kolmesta funktiosta:
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-91-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-84-1.pdf}
 
 \hypertarget{esimerkki-normaalijakauma}{%
-\subsection{Esimerkki: normaalijakauma}\label{esimerkki-normaalijakauma}}
+\section{Esimerkki: normaalijakauma}\label{esimerkki-normaalijakauma}}
 
 Otetaan muutama käytännön esimerkki. Oletetaan, että suomalaisten miesten suolan saanti on normaalijakautunut odotusarvolla 10 grammaa päivässä ja keskihajonta on 4 grammaa päivässä (odotusarvo on totta, keskihajonta allekirjoittaneen hihasta). Piirretään ensin kuva jakaumasta välillä {[}0, 20{]} grammaa päivässä. Jakauman muoto saadaan funktiolla \texttt{dnorm()}. Eli yllä olevan ohjeen mukaan d-alkuinen funktio antaa tiheysfunktion, ja norm-pääte viittaa normaalijakaumaan. Normaalijakauman funktiolle tulee kertoa jakauman odotusarvo (mean) ja keskihajonta (sd = standard deviation).
 
@@ -3150,7 +3082,7 @@ Otetaan muutama käytännön esimerkki. Oletetaan, että suomalaisten miesten su
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-92-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-85-1.pdf}
 
 Aikuisten saantisuositus on enintään 5 grammaa suolaa päivässä. Kuinka moni suomalainen mies syö tämän jakauman mukaan sopivasti suolaa? Vastaus saadaan kertymäfunktiosta (P(X \textless{} 5)) \texttt{pnorm()} funktion avulla.
 
@@ -3206,7 +3138,7 @@ Entä jos halutaan tietää, kuinka paljon suolaa eniten syövä 10\% saa? Täh�
 Eli tämän jakauman mukaan eniten suolaa saava 10\% miehistä syö yli kolminkertaisen määrän suolaa suositukseen verrattuna.
 
 \hypertarget{muita-jakaumia}{%
-\subsection{Muita jakaumia}\label{muita-jakaumia}}
+\section{Muita jakaumia}\label{muita-jakaumia}}
 
 Vastaavat funktiot löytyvät myös muille jakaumille, kuten:
 
@@ -3223,6 +3155,592 @@ Vastaavat funktiot löytyvät myös muille jakaumille, kuten:
 \end{itemize}
 
 ja niin edelleen.
+
+\hypertarget{plotting}{%
+\chapter{Kuvaajien piirtäminen}\label{plotting}}
+
+Tällä viikolla tutustutaan kuvaajien piirtämiseen. Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä on silti lyhyet kirjalliset ohjeet suomeksi.
+
+R:n piirtokomennot voidaan jakaa kolmeen ryhmään:
+
+\begin{itemize}
+\tightlist
+\item
+  Korkean tason grafiikkatoiminnot piirtävät aina uuden kuvat
+\item
+  Alemman tason grafiikkatoiminnot lisäävät olemassa olevaan kuvaan uusia osia
+\item
+  Interaktiiviset grafiikkatoiminnot mahdollistavat vuorovaikutuksen kuvan kanssa. (Näiden käyttö on helpompaa opettaa videolla, joten niitä ei käsitellä tässä)
+\end{itemize}
+
+\hypertarget{korkean-tason-piirtofunktiot}{%
+\section{Korkean tason piirtofunktiot}\label{korkean-tason-piirtofunktiot}}
+
+\hypertarget{plot}{%
+\subsection{plot()}\label{plot}}
+
+Korkean tason piirtofunktioista ylivoimaisesti yleisin on \texttt{plot}. \texttt{plot}-funktio on hyvin monipuolinen, mutta yleisin käyttötapa on piirtää hajontakuvio (scatter plot) yhdestä tai kahdesta vektorista. Alla on hajontakuvio auton jarrutusmatkoista eri nopeuksilla:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Car speeds (km/h)}
+\NormalTok{speed }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\DecValTok{40}\NormalTok{, }\DecValTok{110}\NormalTok{, }\AttributeTok{by =} \DecValTok{10}\NormalTok{)}
+\CommentTok{\# Stopping distances (m)}
+\NormalTok{stop\_dist }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{26}\NormalTok{, }\DecValTok{35}\NormalTok{, }\DecValTok{45}\NormalTok{, }\DecValTok{56}\NormalTok{, }\DecValTok{69}\NormalTok{, }\DecValTok{83}\NormalTok{, }\DecValTok{98}\NormalTok{, }\DecValTok{113}\NormalTok{)}
+
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-89-1.pdf}
+
+\texttt{plot}-funktiolle annetaan siis kaksi yhtä pitkää vektoria, joissa on pisteiden x- ja y-koordinaatit. Halutessaan kuvalle voi antaa otsikon (title) ja nimetä uudestaan kuvan akselit (axis labels). Tämä onkin usein hyvä idea, sillä R:n muuttujien nimissä ei saa olla välilyöntejä tai erikoismerkkejä, mutta usein näiden käyttö akselien nimissä on hyvin informatiivista.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
+     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-90-1.pdf}
+
+\texttt{plot}-funktiolle voi antaa muitakin parametreja, jotka säätävät mm. pisteiden väriä, kokoa ja muotoa, akselien rajoja jne.
+
+\hypertarget{muut-korkean-tason-funktiot}{%
+\subsection{Muut korkean tason funktiot}\label{muut-korkean-tason-funktiot}}
+
+Tässä on esimerkkejä muutamista muista yleisistä korkean tason funktioista:
+
+\texttt{hist} piirtää histogrammeja. Histogrammit kuvaavat jatkuvan muuttujan jakaumaa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# A vector of 1000 observations from a normal distribution of heights of Finnish women}
+\NormalTok{heights }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\AttributeTok{n =} \DecValTok{1000}\NormalTok{, }\AttributeTok{mean =} \DecValTok{168}\NormalTok{, }\AttributeTok{sd =} \FloatTok{5.4}\NormalTok{)}
+\FunctionTok{hist}\NormalTok{(heights, }\AttributeTok{breaks =} \DecValTok{20}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Suomalaisten naisten pituuksien jakauma"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Pituus (cm)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Frekvenssi"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-91-1.pdf}
+
+Toinen tapa kuvata jatkuvan muuttujan jakaumaa on viiksilaatikko (joskus myös laatikko-viikset -kuvaaja), joita piirretään \texttt{boxplot}-funktiolla:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(heights, }\AttributeTok{breaks =} \DecValTok{20}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Suomalaisten naisten pituuksien jakauma"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"Pituus (cm)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-92-1.pdf}
+
+Vastaavasti diskreetin muuttujan jakaumaa voi kuvata pylväsdiagrammilla käyttäen \texttt{barplot}-funktiota. Alla on esimerkki opiskelijoiden kotipaikkakuntien jakaumasta. Tässä tulee myös tutuksi uusi vektorien ominaisuus: nimeäminen. Nimettyjen vektorien (named vectors) alkioilla on järjestyslukujen lisäksi nimet. Nimet annetaan olla olevaan tyyliin \texttt{nimi\ =\ alkio}. Nimetyt vektori käyttäytyvät aivan kuin tavalliset vektorit, mutta niitä voi indeksoida myös nimien avulla, ja jotkut funktiot, kuten barplot, käyttävät hyödyksi alkioiden nimiä. Nimettyjen vektorien käyttö ei ole kurssin ydinasioita, mutta on joskus hyvin kätevä temppu osata.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{origin }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Pohjois{-}Savo"} \OtherTok{=} \DecValTok{15}\NormalTok{, }\StringTok{"Pk{-}seutu"} \OtherTok{=} \DecValTok{10}\NormalTok{, }\StringTok{"Turku"} \OtherTok{=} \DecValTok{3}\NormalTok{,}
+            \StringTok{"Pohjois{-}Suomi"} \OtherTok{=} \DecValTok{8}\NormalTok{)}
+\NormalTok{origin}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  Pohjois-Savo      Pk-seutu         Turku Pohjois-Suomi 
+##            15            10             3             8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{origin[}\StringTok{"Turku"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Turku 
+##     3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{barplot}\NormalTok{(origin, }
+        \AttributeTok{main =} \StringTok{"Opiskelijoiden kotipaikkakunta"}\NormalTok{,}
+        \AttributeTok{ylab =} \StringTok{"Opiskelijoiden lukumäärä"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-93-1.pdf}
+
+\hypertarget{alemman-tason-grafiikkatoiminnot}{%
+\section{Alemman tason grafiikkatoiminnot}\label{alemman-tason-grafiikkatoiminnot}}
+
+Alemman tason grafiikkatoiminnoilla voi lisätä olemassa olevaan kuvaan lisää osia, kuten tekstiä, pisteitä tai selitteen (legend).
+
+Otetaan esimerkiksi alussa nähty kuvaaja autojen pysähtymismatkoista ja lisätään siihen uusia osia. Tässä vielä alkuperäinen kuva:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
+     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-94-1.pdf}
+
+Lisätään kuvaajan jarrutusmatkat liukkaalla kelillä. Uusia pisteitä voi piirtää \texttt{points}-funktiolla, jolle annetaan x- ja y-koordinaatit vektoreina ihan kuin \texttt{plot}-funktiollekin.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{stop\_dist\_wet }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{30}\NormalTok{, }\DecValTok{41}\NormalTok{, }\DecValTok{54}\NormalTok{, }\DecValTok{69}\NormalTok{, }\DecValTok{85}\NormalTok{, }\DecValTok{103}\NormalTok{, }\DecValTok{122}\NormalTok{, }\DecValTok{143}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
+     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-95-1.pdf}
+
+Ylläolevassa kuvaajassa on kaksi ongelmaa: ylimmät pisteet eivät näy, koska kuvaajan y-akseli loppuu kesken. Y-akseli on piirretty alkuperäisten jarrutusmatkojen pohjalta, ja koska liukkaalla kelillä jarrutus kestää pidempään, uudet pisteet eivät mahdu kuvaajaan. Toinen ongelma on se, että pisteitä ei voi erottaa toisistaan.
+
+Ensimmäinen ongelma ratkeaa säätämällä käsin y-akselin rajat. Tämä tapahtuu argumentilla \texttt{ylim}, jolle annetaan vektorissa ylä- ja alaraja (vastaavasti \texttt{xlim} säätää x-akselin rajat).
+
+Lisäksi piirretään selvyyden vuoksi pisteet eri värisinä ja eri kuvioilla. Argumentti \texttt{col} säätää pisteiden värin ja \texttt{pch} pisteiden muodon. Eri väri- ja muotovaihtoehdot löytää googlaamalla.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
+     \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{,}
+     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{150}\NormalTok{),}
+     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet, }\AttributeTok{pch =} \DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-96-1.pdf}
+
+Nyt kuvaaja alkaa jo näyttää paremmalta, mutta kuvaajasta ei vielä voi päätellä, mitä eri väriset pisteet tarkoittavat. Lisätään siis kuvaajaan selite \texttt{legend}-komennolla. Selitteelle määritetään paikka kuvaajassa \texttt{x} ja \texttt{y} argumenteilla (vasemman yläkulman koordinaatit). Sen jälkeen annetaan selitetekstit (\texttt{legend}), sekä selitteen muodot ja värit (\texttt{pch} ja \texttt{col}, kuten aiemmin). HUOM! Selitteen symbolit ja värit on itse osattava laittaa oikeaan järjestykseen. Selitteen tekstit annetaan järjestyksessä ylhäältä alas, ja piirtomerkit tulee antaa samassa järjestyksessä.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
+     \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{,}
+     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{150}\NormalTok{),}
+     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
+
+\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet, }\AttributeTok{pch =} \DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\AttributeTok{x =} \DecValTok{40}\NormalTok{, }\AttributeTok{y =} \DecValTok{150}\NormalTok{,}
+       \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Märkä keli"}\NormalTok{, }\StringTok{"Kuiva keli"}\NormalTok{),}
+       \AttributeTok{pch =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{), }\AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-97-1.pdf}
+
+Tuunataan kuvaajaa vielä hiukan, ja lisätään siihen käyrä kuvaamaan jarrutusmatkan ennustetta \texttt{lines}-funktiolla.
+
+Alla olevassa koodissa lasketaan ensin \texttt{lm}-funktion avulla sopivat parametrit käyrälle. Lineaarisia malleja käsitellään seuraavien viikkojen aikana, joten tässä vaiheessa niistä ei tarvitse vielä ymmärtää muuta kuin se, että funktio sovittaa toisen asteen funktion (muotoa matka = a + b * nopeus + c * nopeus\^{}2), jonka perusteella voidaan ennustaa pysähtymismatkaa myös muille kuin mitatuille nopeuksille
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create vecotr of squared speeds to fit second order polynomial}
+\NormalTok{speed\_squared }\OtherTok{\textless{}{-}}\NormalTok{ speed}\SpecialCharTok{\^{}}\DecValTok{2}
+
+\CommentTok{\# Model for dry weather}
+\NormalTok{model\_dry }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(stop\_dist }\SpecialCharTok{\textasciitilde{}}\NormalTok{ speed }\SpecialCharTok{+}\NormalTok{ speed\_squared)}
+\NormalTok{prediction\_dry }\OtherTok{\textless{}{-}}\NormalTok{ model\_dry}\SpecialCharTok{$}\NormalTok{fitted.values}
+
+\CommentTok{\# Model for rainy weather}
+\NormalTok{model\_wet }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(stop\_dist\_wet }\SpecialCharTok{\textasciitilde{}}\NormalTok{ speed }\SpecialCharTok{+}\NormalTok{ speed\_squared)}
+\NormalTok{prediction\_wet }\OtherTok{\textless{}{-}}\NormalTok{ model\_wet}\SpecialCharTok{$}\NormalTok{fitted.values}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{lines} tarvitsee \texttt{x} ja \texttt{y} argumentit kuten \texttt{points}, mutta piirtää viivan, ei pisteitä. Käytetään äsken laskettuja mallien antamia \texttt{prediction}-vektoreita y-koordinaatteina. Tehdään viivoista katkoviivoja argumentilla \texttt{lty\ =\ "dashed"} (lty = line type).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
+     \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{,}
+     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{150}\NormalTok{),}
+     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
+
+\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet, }\AttributeTok{pch =} \DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\AttributeTok{x =} \DecValTok{40}\NormalTok{, }\AttributeTok{y =} \DecValTok{150}\NormalTok{,}
+       \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Märkä keli"}\NormalTok{, }\StringTok{"Kuiva keli"}\NormalTok{),}
+       \AttributeTok{pch =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{), }\AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{))}
+
+\FunctionTok{lines}\NormalTok{(speed, prediction\_dry, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(speed, prediction\_wet, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-99-1.pdf}
+
+Seuraavaksi voidaan värittää käyrät samoilla väreillä kuin pisteet, ja lisätä niille omat selitteet. Tässä vaiheessa selitteen tekemisestä tulee jo melko monimutkaista, sillä selitteessä on mukana pisteitä ja käyriä. Tästä syystä selitteen argumentteihin pitää laittaa puuttuvia arvoja \texttt{pch} ja \texttt{lty}-argumenteille, koska selitteen ensimmäiset rivit eivät viittaa mihinkään käyrään, vaan pelkästään pisteisiin ja vastaavasti kaksi alinta riviä viittaavat vain käyriin.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
+     \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{,}
+     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{150}\NormalTok{),}
+     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
+
+\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet, }\AttributeTok{pch =} \DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\AttributeTok{x =} \DecValTok{40}\NormalTok{, }\AttributeTok{y =} \DecValTok{150}\NormalTok{,}
+       \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Märkä keli"}\NormalTok{, }\StringTok{"Kuiva keli"}\NormalTok{,}
+                  \StringTok{"Ennuste märälle kelille"}\NormalTok{,}
+                  \StringTok{"Ennuste kuivalle kelille"}\NormalTok{),}
+       \AttributeTok{pch =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\ConstantTok{NA}\NormalTok{),}
+       \AttributeTok{lty =} \FunctionTok{c}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\StringTok{"dashed"}\NormalTok{, }\StringTok{"dashed"}\NormalTok{),}
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{, }\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{))}
+
+\FunctionTok{lines}\NormalTok{(speed, prediction\_dry, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(speed, prediction\_wet, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-100-1.pdf}
+
+Kuvaajamme on melkein valmis iltapäivälehteen muistuttamaan liukkaiden kelien vaaroista, mutta jotta siitä tulisi oikein säväyttävä, siinä pitää toki olla tekstiä! Lisätään siis vielä pieni tekstin pätkä, joka korostaa eroa liukkaan ja kuivan kelin välillä. Tekstiä voi lisätä \texttt{text}-funktiolla, jolle annetaan tuttuun tapaan \texttt{x} ja \texttt{y}-argumentit, joilla määritetään tekstin paikka ja \texttt{labels} määrittää itse tekstin (kaikki argumentit voivat olla myös pidempiä vektoreita, jolloin tulee useampi teksti eri paikkoihin). Lisäksi parametrillä \texttt{adj} (adjust) voi hienosäätää tekstin paikkaa. \texttt{adj} on vektori, jossa on hienosäätöarvot x- ja y-suunnassa.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
+     \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{,}
+     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{150}\NormalTok{),}
+     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
+
+\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet, }\AttributeTok{pch =} \DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\AttributeTok{x =} \DecValTok{40}\NormalTok{, }\AttributeTok{y =} \DecValTok{150}\NormalTok{,}
+       \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Märkä keli"}\NormalTok{, }\StringTok{"Kuiva keli"}\NormalTok{,}
+                  \StringTok{"Ennuste märälle kelille"}\NormalTok{,}
+                  \StringTok{"Ennuste kuivalle kelille"}\NormalTok{),}
+       \AttributeTok{pch =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\ConstantTok{NA}\NormalTok{),}
+       \AttributeTok{lty =} \FunctionTok{c}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\StringTok{"dashed"}\NormalTok{, }\StringTok{"dashed"}\NormalTok{),}
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{, }\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{))}
+
+\FunctionTok{lines}\NormalTok{(speed, prediction\_dry, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(speed, prediction\_wet, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
+
+\FunctionTok{text}\NormalTok{(}\AttributeTok{x =} \DecValTok{95}\NormalTok{, }\AttributeTok{y =} \DecValTok{145}\NormalTok{, }\AttributeTok{labels =} \StringTok{"ERO JOPA 30 METRIÄ!"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-101-1.pdf}
+
+Kuvaajamme on nyt valmis! Näitä komentoja käyttämällä ja pienellä googlailulla saa myös tehtyä tämän viikon tehtävän.
+
+\hypertarget{kuvaajien-piirtuxe4minen-kuxe4ytuxe4nnuxf6ssuxe4}{%
+\section{Kuvaajien piirtäminen käytännössä}\label{kuvaajien-piirtuxe4minen-kuxe4ytuxe4nnuxf6ssuxe4}}
+
+Jos äskeisen esimerkin aikana tuntui siltä, että näimme paljon työtä ja saimme lopputulokseksi kuvaajan, joka ei oikeastaan edes näytä kovin hyvältä, olet aivan oikeassa. Kuvaajien rakentaminen itse R:n peruskomennoilla on raskasta, ja usein perusgrafiikkatoimintoja käytetään lähinnä omaan käyttöön tulevien kuvaajien piirtämiseen nopeasti. Peruskomennot on kuitenkin hyvä hallita, sillä niitä saattaa tarvita valmiilla työkaluilla tehtyjen kuvaajien muokkaamiseen. Varsinkin tekstin lisääminen, sekä akselien nimeäminen ja otsikon muuttaminen ovat hyviä taitoja osata.
+
+R tarjoaa paljon valmiita työkaluja erilaisten kuvaajien piirtämiseen. Valitettavasti tällä kurssilla ei ole aikaa sukeltaa näiden työkalujen käyttöön, sillä ennen niiden käyttöä pitää ymmärtää enemmän R:n monimutkaisemmista tietorakenteista, joita käsitellään seuraavilla viikoilla. Inspiraatiota ja motivaatiota voi kuitenkin hakea esimerkiksi \href{https://www.r-graph-gallery.com/index.html}{R Graph Gallery}-sivulta tai \href{https://rpkgs.datanovia.com/ggpubr/index.html}{ggpubr-paketin ohjeista}.
+
+\hypertarget{tests}{%
+\chapter{Tilastollinen testaaminen}\label{tests}}
+
+\hypertarget{chi-squared-test}{%
+\section{Khi toiseen -testi}\label{chi-squared-test}}
+
+Khi toiseen -testi voidaan toteuttaa seuraavasti.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# From Agresti(2007) p.39}
+\NormalTok{M }\OtherTok{\textless{}{-}} \FunctionTok{as.table}\NormalTok{(}\FunctionTok{rbind}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{762}\NormalTok{, }\DecValTok{327}\NormalTok{, }\DecValTok{468}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\DecValTok{484}\NormalTok{, }\DecValTok{239}\NormalTok{, }\DecValTok{477}\NormalTok{)))}
+\FunctionTok{dimnames}\NormalTok{(M) }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{gender =} \FunctionTok{c}\NormalTok{(}\StringTok{"F"}\NormalTok{, }\StringTok{"M"}\NormalTok{),}
+                    \AttributeTok{party =} \FunctionTok{c}\NormalTok{(}\StringTok{"Democrat"}\NormalTok{,}\StringTok{"Independent"}\NormalTok{, }\StringTok{"Republican"}\NormalTok{))}
+\NormalTok{(Xsq }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(M))  }\CommentTok{\# Prints test summary}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's Chi-squared test
+## 
+## data:  M
+## X-squared = 30.07, df = 2, p-value = 2.954e-07
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Xsq}\SpecialCharTok{$}\NormalTok{observed   }\CommentTok{\# observed counts (same as M)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       party
+## gender Democrat Independent Republican
+##      F      762         327        468
+##      M      484         239        477
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Xsq}\SpecialCharTok{$}\NormalTok{expected   }\CommentTok{\# expected counts under the null}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       party
+## gender Democrat Independent Republican
+##      F 703.6714    319.6453   533.6834
+##      M 542.3286    246.3547   411.3166
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Xsq}\SpecialCharTok{$}\NormalTok{residuals  }\CommentTok{\# Pearson residuals}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       party
+## gender   Democrat Independent Republican
+##      F  2.1988558   0.4113702 -2.8432397
+##      M -2.5046695  -0.4685829  3.2386734
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Xsq}\SpecialCharTok{$}\NormalTok{stdres     }\CommentTok{\# standardized residuals}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       party
+## gender   Democrat Independent Republican
+##      F  4.5020535   0.6994517 -5.3159455
+##      M -4.5020535  -0.6994517  5.3159455
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Effect of simulating p{-}values}
+\NormalTok{x }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{7}\NormalTok{), }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{chisq.test}\NormalTok{(x)}\SpecialCharTok{$}\NormalTok{p.value           }\CommentTok{\# 0.4233}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4233054
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{chisq.test}\NormalTok{(x, }\AttributeTok{simulate.p.value =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{B =} \DecValTok{10000}\NormalTok{)}\SpecialCharTok{$}\NormalTok{p.value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.2885711
+\end{verbatim}
+
+\hypertarget{kahden-otoksen-t-testi}{%
+\section{Kahden otoksen t-testi}\label{kahden-otoksen-t-testi}}
+
+\hypertarget{varianssianalyysi}{%
+\section{Varianssianalyysi}\label{varianssianalyysi}}
+
+\hypertarget{linear_models}{%
+\chapter{Lineaariset mallit}\label{linear_models}}
+
+Lineaarisessa mallissa eli lineaarisessa regressiossa tavoite on arvioida vastemuuttujan lineaarista riippuvuutta selittävistä muuttujista. Käytetään esimerkkinä R:n sisäistä datasettiä cars, jossa on kirjattu 50 auton nopeus ja pysähtymismatka. Tavoitteena on tutkia, miten auton pysähtymismatka riippuu auton nopeudesta.
+
+\hypertarget{teoria}{%
+\section{Teoria}\label{teoria}}
+
+Yksinkertaisin mahdollinen lineaarinen regressiomalli näyttää tältä:
+
+\[y = \beta_0 + \beta_1 x_1 + \epsilon\]
+
+\begin{itemize}
+\tightlist
+\item
+  \(y\) on vastemuuttuja, tässä auton pysähtymismatka
+\item
+  \(\beta_0\) on ns. vakiotermi eli käyrän y-akselin leikkauskohta
+\item
+  \(\beta_1\) on selittävän muuttujan eli auton nopeuden regressiokerroin
+\item
+  \(x_1\) on selittävä muuttuja eli auton nopeus
+\item
+  \(\epsilon\) on residuaalitermi (virhetermi)
+\end{itemize}
+
+Mallissa siis oletetaan, että auton pysähtymismatka nopeudella 0 km/h on \(\beta_0\) ja kasvaa \(\beta_1\) verran, kun nopeus kasvaa 1 km/h. Lisäksi mukana on virhetermi, joka selittää satunnaisen vaihtelun tuloksissa lineaarisen käyrän ympärillä.
+
+Jos malliin halutaan lisätä selittäviä muuttujia, kuten auton jarrujen kunto (\(x_2\)) tai sääolosuhteet (\(x_3\)), malli näyttää tältä:
+
+\[y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + ... + \epsilon\]
+
+Eli jokaiselle selittävälle muuttujalle annetaan oma regressiokerroin.
+
+\hypertarget{esimerkki}{%
+\section{Esimerkki}\label{esimerkki}}
+
+Muutetaan ensin cars-datasetin muuttujat meille tuttuihin yksikköihin, ja piirretään hajontakuvio havainnoista:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Change units}
+\NormalTok{cars}\SpecialCharTok{$}\NormalTok{speed }\OtherTok{\textless{}{-}}\NormalTok{ cars}\SpecialCharTok{$}\NormalTok{speed }\SpecialCharTok{*} \FloatTok{1.60934}
+\NormalTok{cars}\SpecialCharTok{$}\NormalTok{dist }\OtherTok{\textless{}{-}}\NormalTok{ cars}\SpecialCharTok{$}\NormalTok{dist }\SpecialCharTok{*} \FloatTok{0.0254}
+\CommentTok{\# Scatter plot}
+\FunctionTok{plot}\NormalTok{(cars}\SpecialCharTok{$}\NormalTok{speed, cars}\SpecialCharTok{$}\NormalTok{dist,}
+     \AttributeTok{xlab =} \StringTok{"Speed (km/h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Distance (m)"}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Stopping distances of cars"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-103-1.pdf}
+
+Autojen välillä on eroja, mutta kuten voi odottaa, suuremmilla nopeuksilla auton pysähtymismatka kasvaa. Käytetään seuraavaksi R:n funktiota \texttt{lm()}, jolla voidaan sovittaa dataan lineaarinen malli:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(dist }\SpecialCharTok{\textasciitilde{}}\NormalTok{ speed, }\AttributeTok{data =}\NormalTok{ cars)}
+\NormalTok{model}\SpecialCharTok{$}\NormalTok{coefficients}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (Intercept)       speed 
+## -0.44650901  0.06206469
+\end{verbatim}
+
+\texttt{lm()}-funktiolle annetaan ensimmäiseksi argumentiksi lineaarisen mallin kaava, jossa \texttt{\textasciitilde{}} korvaa yllä nähdyn yhtäkuin-merkin. HUOM: vakiotermi on automaattisesti mukana, eli sitä ei tarvitse kirjata erikseen. Lisäksi täytyy antaa data frame, josta kaavassa näkyvät muuttujat löytyvät.
+
+Lineaarisesta mallista saadaan irti paljon tietoa, tärkeimpinä mallin kertoimet (coefficients). Yllä olevista kertoimista voidaan päätellä, että kun auton nopeus nousee 1 km/h, autojen pysähtymismatka kasvaa noin 0.06 m ja odotettu kasvukäyrä leikkaa y-akselin -0.4 m kohdalla. Voimme piirtää tämän käyrän kuvaajaan \texttt{abline()}-funktion avulla, antamalla sille mallin kertoimet:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(cars}\SpecialCharTok{$}\NormalTok{speed, cars}\SpecialCharTok{$}\NormalTok{dist,}
+     \AttributeTok{xlab =} \StringTok{"Speed (km/h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Distance (m)"}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Stopping distances of cars"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a =}\NormalTok{ model}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\NormalTok{], }\AttributeTok{b =}\NormalTok{ model}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-105-1.pdf}
+
+\hypertarget{tarkempia-tietoja-mallista}{%
+\section{Tarkempia tietoja mallista}\label{tarkempia-tietoja-mallista}}
+
+Muihin mallin tietoihin pääsee käsiksi \texttt{summary}-funktion avulla, joko tulostamalla tuloksen konsoliin, tai sijoittamalla sen muuttujaan, josta voi etsiä mallin tietoja.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print summary information}
+\FunctionTok{summary}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = dist ~ speed, data = cars)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.73835 -0.24194 -0.05771  0.23405  1.09731 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -0.446509   0.171664  -2.601   0.0123 *  
+## speed        0.062065   0.006558   9.464 1.49e-12 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.3906 on 48 degrees of freedom
+## Multiple R-squared:  0.6511, Adjusted R-squared:  0.6438 
+## F-statistic: 89.57 on 1 and 48 DF,  p-value: 1.49e-12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Save summary and access specific information}
+\NormalTok{s }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(model)}
+\NormalTok{s}\SpecialCharTok{$}\NormalTok{r.squared}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.6510794
+\end{verbatim}
+
+\texttt{summary()} kertoo mm. kertoimien arvojen lisäksi niiden saamat p-arvot kohdassa (Pr \textgreater{} \textbar t\textbar), sekä mallin selitysasteen (merkintätapa johtuu siitä, että p-arvot tulevat t-testeistä). Tässä tapauksessa muuttujan speed p-arvo on hyvin pieni, joten voimme todeta suurella varmuudella, että autojen pysähtymismatka riippuu (lineaarisesti) auton nopeudesta. R2 eli R-squared kertoo, kuinka suuren osuuden pysähtymismatkojen varianssista auton nopeus selittää.
+
+\hypertarget{ennustaminen}{%
+\section{Ennustaminen}\label{ennustaminen}}
+
+Kun lineaarinen malli on luotu, sen perusteella voidaan myös ennustaa arvoja uusille havainnoille. Tämä tapahtuu \texttt{predict()}-komennolla, jolle annetaan malli, sekä uuden datan sisältävä data frame. Ennustetaan edellisen mallin perusteella pysähtymismatka autolle neljällä uudella nopeudella ja lisätään ne edelliseen kuvaajaan punaisilla rukseilla:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create data frame with new speed values}
+\NormalTok{new\_data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{speed =} \FunctionTok{c}\NormalTok{(}\DecValTok{25}\NormalTok{, }\DecValTok{15}\NormalTok{, }\DecValTok{38}\NormalTok{))}
+\CommentTok{\# Create dist column by predicting from linear model}
+\NormalTok{new\_data}\SpecialCharTok{$}\NormalTok{dist }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(model, }\AttributeTok{newdata =}\NormalTok{ new\_data)}
+
+\CommentTok{\# Add points to previous plot}
+\FunctionTok{plot}\NormalTok{(cars}\SpecialCharTok{$}\NormalTok{speed, cars}\SpecialCharTok{$}\NormalTok{dist,}
+     \AttributeTok{xlab =} \StringTok{"Speed (km/h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Distance (m)"}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Stopping distances of cars"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a =}\NormalTok{ model}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{1}\NormalTok{], }\AttributeTok{b =}\NormalTok{ model}\SpecialCharTok{$}\NormalTok{coefficients[}\DecValTok{2}\NormalTok{])}
+\FunctionTok{points}\NormalTok{(new\_data}\SpecialCharTok{$}\NormalTok{speed, new\_data}\SpecialCharTok{$}\NormalTok{dist, }\AttributeTok{pch =} \DecValTok{4}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-107-1.pdf}
+
+Kuten huomataan, ennustetut arvot ovat täsmälleen käyrän päällä.
+
+\hypertarget{korrelaatio}{%
+\section{Korrelaatio}\label{korrelaatio}}
+
+Korrelaatio on lineaarisen regression ohella tapa mitata kahden muuttujan välistä riippuvuutta. Korrelaatiolle on monia erilaisia mittareita, joista yleisimmät ovat Pearsonin korrelaatiokerroin, joka mittaa kahden muuttujan välistä lineaarista riippuvuutta ja Spearmanin järjestyskorrelaatiokerroin, joka mittaa kahden muuttujan välistä riippuvuutta ilman lineaarisuusoletusta. HUOM: korrelaatio ei ota kantaa siihen, kuinka vahva riippuvuus on (käyrän jyrkkyys), vaan pelkästään siihen, kuinka systemaattinen riippuvuus on. Kummatkin korrelaatiokertoimet saavat arvoja väliltä {[}-1, 1{]}, jossa -1 on täydellinen negatiivinen korrelaatio (toisen muuttujan kasvaessa toinen pienenee) ja 1 on täydellinen positiivinen korrelaatio.
+
+Korrelaation kahden vektorin välillä voi R:ssä laskea komennolla \texttt{cor()}. Otetaan esimerkiksi R:n sisäinen datasetti Indometh, jossa on mitattu indometasiinin farmakokinetiikkaa, ja selvitetään ajan ja indometasiinin konsentraation väliselle riippuvuudelle Pearsonin ja Spearmanin korrelaatiokertoimet. Piirretään sen jälkeen hajontakuvio mittaustuloksista ja lisätään kuvaajaan alaotsikoksi korrelaatiokertoimet. Tutustumme samalla funktioon \texttt{round()}, jolla voi pyöristää lukuja halutulle desimaalitarkkuudelle.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pearson correlation}
+\NormalTok{pearson }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(Indometh}\SpecialCharTok{$}\NormalTok{time, Indometh}\SpecialCharTok{$}\NormalTok{conc, }\AttributeTok{method =} \StringTok{"pearson"}\NormalTok{)}
+\CommentTok{\# Spearman correlation}
+\NormalTok{spearman }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(Indometh}\SpecialCharTok{$}\NormalTok{time, Indometh}\SpecialCharTok{$}\NormalTok{conc, }\AttributeTok{method =} \StringTok{"spearman"}\NormalTok{)}
+\CommentTok{\# Scatter plot}
+\FunctionTok{plot}\NormalTok{(Indometh}\SpecialCharTok{$}\NormalTok{time, Indometh}\SpecialCharTok{$}\NormalTok{conc,}
+     \AttributeTok{xlab =} \StringTok{"Time"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Concetration"}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Pharmacokinetics of indometacin"}\NormalTok{)}
+
+\CommentTok{\# Paste concatenates strings}
+\NormalTok{subtitle }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(}\StringTok{"Pearson correlation:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(pearson, }\AttributeTok{digits =} \DecValTok{2}\NormalTok{),}
+                  \StringTok{"Spearman correlation:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(spearman, }\AttributeTok{digits =} \DecValTok{2}\NormalTok{))}
+\CommentTok{\# Add subtitle to plot}
+\FunctionTok{mtext}\NormalTok{(subtitle)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-108-1.pdf}
+
+Tässä esimerkissä nähdään hyvin Pearsonin - ja Spearmanin korrelaatiokertoimien ero. Koska Indometasiinin konsentraatio laskee eksponentiaalisesti, ei lineaarisesti, Pearsonin korrelaatiokerroin on ``vain'' -0.7, kun taas Spearmanin korrelaatiokerroin -0.97 vastaa lähes täydellistä negatiivista korrelaatiota.
 
 \hypertarget{functions}{%
 \chapter{Funktiot}\label{functions}}
@@ -3447,7 +3965,7 @@ Joillain funktioilla ei ole ollenkaan argumentteja. Esimerkiksi R:n sisäiset fu
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-06-09 15:26:15 EEST"
+## [1] "2021-06-10 12:09:13 EEST"
 \end{verbatim}
 
 Itse tehdyt funktiot voivat myös toimia ilman argumentteja. Niitä käytetään usein R-istunnon tilan, koodia ajavan tietokoneen ominaisuuksien tai ajan selvittämiseen. Tämä melko hyödytön esimerkkifunktio palauttaa tämän dokumentin kirjoittajan nimen:
@@ -3570,7 +4088,7 @@ Itse tehty funktio palauttaa \texttt{NULL}, jos viimeinen komento palauttaa \tex
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-110-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-123-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4080,8 +4598,8 @@ Funktioissa voi myös olla useampi ehtorakenne. Ehtorakenteita käytetään usei
 ## [1] "This function can only deal with binary sex: female or male"
 \end{verbatim}
 
-\hypertarget{alkioiden-poimiminen-vektorista-tietyh-ehdon-perusteella}{%
-\section{Alkioiden poimiminen vektorista tietyh ehdon perusteella}\label{alkioiden-poimiminen-vektorista-tietyh-ehdon-perusteella}}
+\hypertarget{alkioiden-poimiminen-vektorista-tietyn-ehdon-perusteella}{%
+\section{Alkioiden poimiminen vektorista tietyn ehdon perusteella}\label{alkioiden-poimiminen-vektorista-tietyn-ehdon-perusteella}}
 
 Tämän viikon tehtävissä tuli ainakin allekirjoittaneelle vastaan tilanne, jossa piti käydä läpi useita arvoja vektorista, ja säilyttää niistä ne, jotka täyttivät tietyn ehdon. Tätä aihetta käsitellään enemmän ensi viikolla, mutta tässä lyhyt vinkki tällaisten tehtävien ratkaisuun:
 
@@ -4561,8 +5079,8 @@ Tarkistetaan tulos laskemalla sarakkeiden keskiarvot ja varianssit. Tämä voida
 
 Huomaa, että sarakkeiden keskiarvot eivät ole tismalleen 0. Tämä johtuu R:n rajallisesta numeerisesta tarkkuudesta. Käytännössä itseisarvoltaan tätä luokkaa olevat arvot ovat nollia.
 
-\hypertarget{vinkkejuxe4-tehtuxe4viin-1}{%
-\section{Vinkkejä tehtäviin}\label{vinkkejuxe4-tehtuxe4viin-1}}
+\hypertarget{vinkkejuxe4-tehtuxe4viin}{%
+\section{Vinkkejä tehtäviin}\label{vinkkejuxe4-tehtuxe4viin}}
 
 Tämän viikon tehtävissä pitää muokata funktioita, jotka ovat erillisissä tiedostoissa. Jotta tehtävän palautus onnistuu, funktio pitää muokata tässä tiedostossa. Funktio kannattaa kuitenkin kopioida talteen toiseen tiedostoon, sillä tehtävän palauttaminen pyyhkii tiedoston.
 

@@ -45,13 +45,17 @@ rbind(study_data, new_row)
 
 ## Osajoukkojen valinta
 
-Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita ja jos kriteerejä on useita niin myös loogisia operaattoreita. Tarkemmin operaattoreita käsitellään luvussa [Loogiset operaattorit](#loogiset-operaattorit)
+Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita ja jos kriteerejä on useita niin myös loogisia operaattoreita. Tarkemmin operaattoreita käsitellään luvussa [Loogiset operaattorit](#loogiset-operaattorit). Voit käyttää kyseisen osion taulukkoa apuna jo tässä osiossa.
 
 ```{r}
 # Filter only females
 study_data[study_data$gender == "female", ]
 # Filter individuals whose height is less than or equal to 175
 study_data[study_data$height <= 175, ]
+
+# Filter individuals whose height is not missing and is less than or equal to 175
+study_data[!is.na(study_data$height) & study_data$height <= 175, ]
+
 # Use multiple filter criteria
 study_data[study_data$height <= 175 & study_data$gender == "female", ]
 ```

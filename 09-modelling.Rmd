@@ -1,15 +1,8 @@
-# Lineaariset mallit ja tilastolliset jakaumat {#statistics}
-  
-Tässä osiossa tutustutaan lineaarisiin malleihin ja yleisimpien jakaumien käyttöön R:ssä. Jos konseptit eivät ole tilastotieteen kursseilta tuttuja, ei hätää: tämä dokumentti sisältää lyhyet selitykset tärkeimmistä konsepteista, ja loput selitetään varsinaisilla tilastotieteen kursseilla.
-
-Ennen kuin puhutaan tilastollisten testien tekemisestä R:llä, on hyvä tutustua factor-luokan vektoreihin
-
-
-## Lineaariset mallit {#linear_models}
+# Lineaariset mallit {#linear_models}
 
 Lineaarisessa mallissa eli lineaarisessa regressiossa tavoite on arvioida vastemuuttujan lineaarista riippuvuutta selittävistä muuttujista. Käytetään esimerkkinä R:n sisäistä datasettiä cars, jossa on kirjattu 50 auton nopeus ja pysähtymismatka. Tavoitteena on tutkia, miten auton pysähtymismatka riippuu auton nopeudesta.
 
-### Teoria
+## Teoria
 
 Yksinkertaisin mahdollinen lineaarinen regressiomalli näyttää tältä:
 
@@ -29,7 +22,7 @@ $$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + ... + \epsilon$$
 
 Eli jokaiselle selittävälle muuttujalle annetaan oma regressiokerroin.
 
-### Esimerkki
+## Esimerkki
 
 Muutetaan ensin cars-datasetin muuttujat meille tuttuihin yksikköihin, ja piirretään hajontakuvio havainnoista:
 
@@ -62,7 +55,7 @@ plot(cars$speed, cars$dist,
 abline(a = model$coefficients[1], b = model$coefficients[2])
 ```
 
-### Tarkempia tietoja mallista
+## Tarkempia tietoja mallista
 
 Muihin mallin tietoihin pääsee käsiksi ```summary```-funktion avulla, joko tulostamalla tuloksen konsoliin, tai sijoittamalla sen muuttujaan, josta voi etsiä mallin tietoja.
 
@@ -77,7 +70,7 @@ s$r.squared
 ```summary()``` kertoo mm. kertoimien arvojen lisäksi niiden saamat p-arvot kohdassa (Pr > |t|), sekä mallin selitysasteen (merkintätapa johtuu siitä, että p-arvot tulevat t-testeistä). Tässä tapauksessa muuttujan speed p-arvo on hyvin pieni, joten voimme todeta suurella varmuudella, että autojen pysähtymismatka riippuu (lineaarisesti) auton nopeudesta. R<sup>2</sup> eli R-squared kertoo, kuinka suuren osuuden pysähtymismatkojen varianssista auton nopeus selittää.
 
 
-### Ennustaminen
+## Ennustaminen
 
 Kun lineaarinen malli on luotu, sen perusteella voidaan myös ennustaa arvoja uusille havainnoille. Tämä tapahtuu ```predict()```-komennolla, jolle annetaan malli, sekä uuden datan sisältävä data frame. Ennustetaan edellisen mallin perusteella pysähtymismatka autolle neljällä uudella nopeudella ja lisätään ne edelliseen kuvaajaan punaisilla rukseilla:
 

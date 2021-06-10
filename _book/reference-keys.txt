@@ -49,6 +49,14 @@ data-framen-käsittely
 osajoukkojen-valinta
 faktorit
 factor-vektorit-vanha-teksti
+statistics
+sijaintia-kuvaavat-tunnusluvut
+minimi-ja-maksimi
+keskiarvo
+mediaani
+moodi
+summary
+varianssi-ja-keskihajonta-ja-kvantiilit
 distributions
 esimerkki-normaalijakauma
 muita-jakaumia
@@ -62,7 +70,6 @@ tests
 chi-squared-test
 kahden-otoksen-t-testi
 varianssianalyysi
-statistics
 linear_models
 teoria
 esimerkki
@@ -89,7 +96,7 @@ osajoukko
 monimutkaisemmat-lauseet
 a-x-b
 ehtorakenteet
-alkioiden-poimiminen-vektorista-tietyh-ehdon-perusteella
+alkioiden-poimiminen-vektorista-tietyn-ehdon-perusteella
 loops
 for-silmukka
 while-slimukat

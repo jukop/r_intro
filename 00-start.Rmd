@@ -7,7 +7,15 @@ output:
 
 Täältä löydät suomenkielisen materiaalin, joka tukee UEF:in R-kurssin suorittamista (R-kieli 3622223, 2 op). Jokaisen viikon materiaalit päivitetään tänne. Alla on ohjeet tarvittavien asioiden asentamiseen UEF:in koneille.
 
-Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. Mahdollisesti mukana on myös muita tiedostoja, mutta ellei toisin mainita, itse tiedostoista ei tarvitse välittää vaan voi keskittyä itse ohjeisiin.
+Anton Klåvusin vuonna 2020 kirjoittamaa ansiokasta materiaalia on kehitetty lukukauden 2021-22 R-kielen kurssia ajatellen. Materiaalia on täydennetty tarvittavin osin. Samalla materiaali on konvertoitu bookdown-verkkokirjamuotoon.
+
+## Ohjeita verkkokirjan käyttöön {-}
+
+Tämä opiskelumateriaali on luotu bookdown-verkkokirjaohjelman avulla. Kirjaa voi lukea verkkoselaimella ja se toimii myös puhelimella. Sivun ylälaidasta löydät asetuksia, joilla voit tehdä ainakin seuraavia asioita: piilottaa ja näyttää vasemman sivuvalikon, etsiä dokumentista hakusanalla, muuttaa fonttia, muuttaa fontin kokoa ja sivun väritystä sekä ladata monisteen pdf-muodossa.
+
+## Lunttilappu {-}
+
+Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli "lunttilappua". Lunttilapusta on helppo tarkastaa miten jokin jo oppimasi asia tehdään R:ssä, jos et vielä muista kunnolla kyseistä asiaa. Internetistä löytyy Cheat Sheetejä useisiin [R-paketteihin](https://www.rstudio.com/resources/cheatsheets/) ja muihin kokonaisuuksiin, mutta tässä käytetään Base R Cheat Sheetiä. Lataa Base R Cheat Sheet itsellesi [painamalla tästä](files/base_R_cheat_sheet.pdf). Suosittelen tulostamaan lunttilapun värillisenä kaksipuoleisena. Mikäli mahdollista niin A3-kokoisena tulosteena teksti näkyy parhaiten.
 
 ## Sisällysluettelo {-}
 
@@ -27,23 +35,18 @@ Jokaiselle viikolle on oma kansio, jonka avaamalla aukeavat sen viikon ohjeet. M
   * [Uuden muuttujan tai rivin luonti datakehikkoon](#data-frame-wrangling)
   * [Osajoukkojen valinta](#osajoukkojen-valinta)
   * [Faktorit](#faktorit)
-- Tunnusluvut
-  * summary()
-  * Keskiarvo, moodi ja mediaani
-  * Varianssi ja keskihajonta ja kvantiilit
-  * Minimi ja maksimi
+- [Tunnusluvut](#statistics)
+  * [Sijaintia kuvaavat tunnusluvut](#sijaintia-kuvaavat-tunnusluvut)
+  * [summary()](#summary)
+  * Varianssi, keskihajonta ja kvantiilit
 - [Todennäköisyysjakaumat](#distributions)
-  * Todennäköisyystiheysfunktio ja pistetodennäköisyysfunktio
-  * Kertymäfunktio
-  * Kvantiilifunktio
 - [Kuvaajien piirtäminen](#plotting)
   * Kuvaajan tallentaminen
 - [Tilastollinen testaaminen](#tests)
   * [Khi toiseen -testi](#chi-squared-test)
   * Kahden otoksen t-testi
   * Varianssianalyysi
-- [Lineaariset mallit ja tilastolliset jakaumat](#statistics)
-  * [Lineaariset mallit](#linear_models)
+- [Lineaariset mallit](#linear_models)
 - [Funktiot](#functions)
 - [Ehtorakenteet](#ifelse)
 - [Toistorakenteet](#loops)
