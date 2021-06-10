@@ -144,7 +144,19 @@ Tämä opiskelumateriaali on luotu bookdown-verkkokirjaohjelman avulla. Kirjaa v
 \section*{Lunttilappu}\label{lunttilappu}}
 \addcontentsline{toc}{section}{Lunttilappu}
 
-Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli ``lunttilappua''. Lunttilapusta on helppo tarkastaa miten jokin jo oppimasi asia tehdään R:ssä, jos et vielä muista kunnolla kyseistä asiaa. Internetistä löytyy Cheat Sheetejä useisiin \href{https://www.rstudio.com/resources/cheatsheets/}{R-paketteihin} ja muihin kokonaisuuksiin, mutta tässä käytetään Base R Cheat Sheetiä. Lataa Base R Cheat Sheet itsellesi \href{files/base_R_cheat_sheet.pdf}{painamalla tästä}.
+Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli ``lunttilappua''. Lunttilapusta on helppo tarkastaa miten jokin jo oppimasi asia tehdään R:ssä, jos et vielä muista kunnolla kyseistä asiaa. Internetistä löytyy Cheat Sheetejä useisiin \href{https://www.rstudio.com/resources/cheatsheets/}{R-paketteihin} ja muihin kokonaisuuksiin, mutta tässä käytetään Base R Cheat Sheetiä. Lataa Base R Cheat Sheet itsellesi \href{files/base_R_cheat_sheet.pdf}{painamalla tästä}. Suosittelen tulostamaan lunttilapun värillisenä kaksipuoleisena. Mikäli mahdollista niin A3-kokoisena tulosteena teksti näkyy parhaiten.
+
+\hypertarget{verkkoluxe4hteituxe4}{%
+\section*{Verkkolähteitä}\label{verkkoluxe4hteituxe4}}
+\addcontentsline{toc}{section}{Verkkolähteitä}
+
+Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä kuitenkin joitakin verkosta löytyviä lähteitä, joista voi olla apua.
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.tutorialspoint.com/r/index.htm}{Tutorialspoint} Soveltuu R:n opiskeluun englannin kielellä, jos osaa entuudestaan jo vähän ohjelmoida.
+\end{itemize}
 
 \hypertarget{sisuxe4llysluettelo}{%
 \section*{Sisällysluettelo}\label{sisuxe4llysluettelo}}
@@ -199,6 +211,8 @@ Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli ``l
     \protect\hyperlink{osajoukkojen-valinta}{Osajoukkojen valinta}
   \item
     \protect\hyperlink{faktorit}{Faktorit}
+  \item
+    Faktor-vektorit (POISTA tai yhdistä!)
   \end{itemize}
 \item
   \protect\hyperlink{statistics}{Tunnusluvut}
@@ -206,13 +220,11 @@ Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli ``l
   \begin{itemize}
   \tightlist
   \item
-    summary()
+    \protect\hyperlink{sijaintia-kuvaavat-tunnusluvut}{Sijaintia kuvaavat tunnusluvut}
   \item
-    Keskiarvo, moodi ja mediaani
+    \protect\hyperlink{summary}{summary()}
   \item
-    Varianssi ja keskihajonta ja kvantiilit
-  \item
-    Minimi ja maksimi
+    Varianssi, keskihajonta ja kvantiilit
   \end{itemize}
 \item
   \protect\hyperlink{distributions}{Todennäköisyysjakaumat}
@@ -222,7 +234,7 @@ Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli ``l
   \begin{itemize}
   \tightlist
   \item
-    Kuvaajan tallentaminen
+    \protect\hyperlink{kuvaajan-tallentaminen}{Kuvaajan tallentaminen}
   \end{itemize}
 \item
   \protect\hyperlink{tests}{Tilastollinen testaaminen}
@@ -2208,6 +2220,43 @@ Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttava
 
 Lopussa käydään myös läpi tapoja lukea taulukkolaskenta (Excel) ja SPSS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin tekstitiedostoiksi.
 
+\hypertarget{hakemistopolut-ja-tiedostopuxe4uxe4tteet}{%
+\section{Hakemistopolut ja tiedostopäätteet}\label{hakemistopolut-ja-tiedostopuxe4uxe4tteet}}
+
+\hypertarget{hakemistopolut}{%
+\subsection{Hakemistopolut}\label{hakemistopolut}}
+
+Jotta aineiston lataus tiedostosta onnistuu, tulee käyttäjän olla tietoinen siitä, missä hakemistopolussa eli kansiossa R työskentelee lataushetkellä. R:llä on siis koko ajan jokin hakemistopolku, johon se viittaa. R:n käyttämän hakemistopolun saat selville komennolla \texttt{getwd()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "C:/Users/jukop/Documents"
+\end{verbatim}
+
+Minulla näyttäisi että R on oletuksena hakemistossa C:/Users/jukop/Documents. Jos olen purkanut kurssilla tarvittavan datasets.zip -tiedoston aineistot kansioon \texttt{C:/Users/jukop/Documents/datasets}, niin minun kannattaa vaihtaa R käyttämään kyseistä hakemistoa. Se tapahtuu näin:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"C:/Users/jukop/Documents/datasets"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{setwd} ei tulosta mitään, jos kansion vaihtaminen onnistuu. Voit vielä \texttt{getwd()}-komennolla uudelleen tarkastaa, että hakemisto todella vaihtui.
+
+\textbf{\emph{Vinkki!}} Ellet tiedä mikä on tarkka hakemistopolku, johon olet tiedostot purkanut, niin se onnistuu klikkaamalla Windowsissa tiedostoselaimen osoiteriviä. Voit kopioida hakemistopolun siitä, mutta vaihda kuitenkin kenoviivat (\texttt{\textbackslash{}}) vinoviivoiksi (\texttt{/}). Kenoviivoilla on R:ssä erityismerkitys merkkijonoissa, joten ne eivät kelpaa tässä. Kaksinkertainen kenoviiva (\texttt{\textbackslash{}\textbackslash{}}) toimisi myös.
+\includegraphics{files/03-reading_data/windows_show_file_path2.png}
+
+\hypertarget{tiedostopuxe4uxe4tteet}{%
+\subsection{Tiedostopäätteet}\label{tiedostopuxe4uxe4tteet}}
+
+Windows ei oletuksena nykyisin näytä tiedostopäätteitä. Ne kannattaakin asettaa näkymään tiedostoselaimen avulla. Kyseinen asetus löytyy tiedostoselaimen View-välilehdeltä kohdasta Show/Hide valinta File extensions. Merkitse kyseinen täppä valituksi, jolloin näet tiedostopäätteet, kuten kuvassa. Nyt on helppoa käsittää, kun opettaja puhuu CSV-tiedostoista, että niiden tiedostopääte on .csv.
+\includegraphics{files/03-reading_data/windows_show_file_extensions2.png}
+
 \hypertarget{tekstitiedostot}{%
 \section{Tekstitiedostot}\label{tekstitiedostot}}
 
@@ -2929,6 +2978,114 @@ Mediaani ilmaisee aineiston keskimmäisen luvun. Toisin sanoen puolet havainnois
 ## [1] 3
 \end{verbatim}
 
+\hypertarget{kvantiilit}{%
+\subsection{Kvantiilit}\label{kvantiilit}}
+
+Mediaani siis kertoi kohdan, jossa 50 \% aineistosta on pienenmpiä kuin kyseinen arvo. Entä, jos haluamme luvun, joka kertoo luvun, jota pienempiä ovat vaikkapa 10 \% aineistosta? Tai mikä tahansa muu osuus? Tällainen yleistys on nimeltään kvantiili. Joillakin kvantiileilla on erityisnimet. Ne ovat
+
+\begin{itemize}
+\tightlist
+\item
+  mediaani (50 \% aineistosta on tätä pienempiä)
+\item
+  alakvartiili (25 \%)
+\item
+  yläkvartiili (75 \%)
+\item
+  desiilit (10\% välein)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    10 \%:n desiili, 20 \%:n desiili jne.
+  \end{itemize}
+\end{itemize}
+
+Haluamansa kvantiilin voi laskea R:ssä funktiolla \texttt{quantile}. Jos haluat laskea 30 \%:n kvantiilin, niin arnna argumentille probs tätä vastaava suhteellinen osuus eli 0.30.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{quantile}\NormalTok{(dat\_for\_median,}\AttributeTok{probs=}\FloatTok{0.30}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 30% 
+## 2.3
+\end{verbatim}
+
+quantile-funktiolle voi antaa useita kvantiileita laskettavaksi kerralla. Tällöin argumentille probs on annettava vektori. Esimerkiksi voin laskea vaikkapa kvartiilit ja mediaanin kerralla näin:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{quantile}\NormalTok{(dat\_for\_median,}\AttributeTok{probs=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 25% 50% 75% 
+## 2.0 3.0 4.5
+\end{verbatim}
+
+Eräs jännä seikka on se, että pyytämällä R:ää laskemalla 0 \%:n ja 100 \%:n kvartiilit saa tulokseksi minimin ja maksimin. Samaan pääsee myös komennolla \texttt{range()}. Kokeillaan tätä
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 0 \% and 100 \% quantile gives a range of the data}
+\FunctionTok{quantile}\NormalTok{(dat\_for\_median, }\AttributeTok{probs=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.00}\NormalTok{,}\FloatTok{1.00}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   0% 100% 
+##    0    7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Let\textquotesingle{}s compare with min and max}
+\FunctionTok{min}\NormalTok{(dat\_for\_median)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{max}\NormalTok{(dat\_for\_median)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# There is also function called range}
+\FunctionTok{range}\NormalTok{(dat\_for\_median)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0 7
+\end{verbatim}
+
+Esimerkiksi viiksilaatikko-kuvaa vastaavat lukuarvot eli minimin, alakvartiilin, mediaanin, yläkvartiilin ja maksimin saa kätevästi quantile-funktiolla antamalla probs-argumentille vektorin \texttt{c(0,0.2,0.5,0.75,1)}. Tätä sanotaan joskus viiden numeron yhteenvedoksi.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{quantile}\NormalTok{(dat\_for\_median, }\AttributeTok{probs=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{0.2}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   0%  20%  50%  75% 100% 
+##  0.0  2.0  3.0  4.5  7.0
+\end{verbatim}
+
 \hypertarget{moodi}{%
 \subsection{Moodi}\label{moodi}}
 
@@ -2986,7 +3143,7 @@ Moodi ilmaisee muuttujan yleisimmän arvon. Valitettavasti R:ssä ei ole valmist
 ## [1] 3
 \end{verbatim}
 
-Ylläoleva käy itse asiassa hyvästä esimerkistä tilanteesta, jossa seuraavaksi tekisin viimeisen rivin funktioksi ja jatkossa käyttäisin kyseistä funktiota työssäni. Funktiohin palataan osiossa \protect\hyperlink{functions}{Funktiot}. En malta olla tekemättä niin, joten olkoon alla esimerkki moodi-funktiosta ilman suurempia selityksiä.
+Ylläoleva käy itse asiassa hyvästä esimerkistä tilanteesta, jossa seuraavaksi tekisin viimeisen rivin funktioksi ja jatkossa käyttäisin kyseistä funktiota työssäni. Funktioihin palataan osiossa \protect\hyperlink{functions}{Funktiot}. En malta olla tekemättä funktiota, joten olkoon alla esimerkki moodi-funktiosta ilman suurempia selityksiä.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3044,7 +3201,7 @@ Summary huolii myös yksittäisen vektorin, jolloin yhteenveto tulostuu vaakasuu
 \section{Varianssi ja keskihajonta ja kvantiilit}\label{varianssi-ja-keskihajonta-ja-kvantiilit}}
 
 \hypertarget{distributions}{%
-\chapter{Todennäköisyysjakaumat R:ssä}\label{distributions}}
+\chapter{Todennäköisyysjakaumat}\label{distributions}}
 
 Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista on valmiita funktiota R:ssä. Funktiota on neljää eri tyyppiä, jotka merkataan funktion nimen ensimmäisellä kirjaimella.
 
@@ -3062,7 +3219,7 @@ Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista 
 
 Alla on kuvaajat ensimmäisestä kolmesta funktiosta:
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-84-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-90-1.pdf}
 
 \hypertarget{esimerkki-normaalijakauma}{%
 \section{Esimerkki: normaalijakauma}\label{esimerkki-normaalijakauma}}
@@ -3082,7 +3239,7 @@ Otetaan muutama käytännön esimerkki. Oletetaan, että suomalaisten miesten su
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-85-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-91-1.pdf}
 
 Aikuisten saantisuositus on enintään 5 grammaa suolaa päivässä. Kuinka moni suomalainen mies syö tämän jakauman mukaan sopivasti suolaa? Vastaus saadaan kertymäfunktiosta (P(X \textless{} 5)) \texttt{pnorm()} funktion avulla.
 
@@ -3192,7 +3349,7 @@ Korkean tason piirtofunktioista ylivoimaisesti yleisin on \texttt{plot}. \texttt
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-89-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-95-1.pdf}
 
 \texttt{plot}-funktiolle annetaan siis kaksi yhtä pitkää vektoria, joissa on pisteiden x- ja y-koordinaatit. Halutessaan kuvalle voi antaa otsikon (title) ja nimetä uudestaan kuvan akselit (axis labels). Tämä onkin usein hyvä idea, sillä R:n muuttujien nimissä ei saa olla välilyöntejä tai erikoismerkkejä, mutta usein näiden käyttö akselien nimissä on hyvin informatiivista.
 
@@ -3204,7 +3361,7 @@ Korkean tason piirtofunktioista ylivoimaisesti yleisin on \texttt{plot}. \texttt
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-90-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-96-1.pdf}
 
 \texttt{plot}-funktiolle voi antaa muitakin parametreja, jotka säätävät mm. pisteiden väriä, kokoa ja muotoa, akselien rajoja jne.
 
@@ -3225,7 +3382,7 @@ Tässä on esimerkkejä muutamista muista yleisistä korkean tason funktioista:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-91-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-97-1.pdf}
 
 Toinen tapa kuvata jatkuvan muuttujan jakaumaa on viiksilaatikko (joskus myös laatikko-viikset -kuvaaja), joita piirretään \texttt{boxplot}-funktiolla:
 
@@ -3237,7 +3394,7 @@ Toinen tapa kuvata jatkuvan muuttujan jakaumaa on viiksilaatikko (joskus myös l
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-92-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-98-1.pdf}
 
 Vastaavasti diskreetin muuttujan jakaumaa voi kuvata pylväsdiagrammilla käyttäen \texttt{barplot}-funktiota. Alla on esimerkki opiskelijoiden kotipaikkakuntien jakaumasta. Tässä tulee myös tutuksi uusi vektorien ominaisuus: nimeäminen. Nimettyjen vektorien (named vectors) alkioilla on järjestyslukujen lisäksi nimet. Nimet annetaan olla olevaan tyyliin \texttt{nimi\ =\ alkio}. Nimetyt vektori käyttäytyvät aivan kuin tavalliset vektorit, mutta niitä voi indeksoida myös nimien avulla, ja jotkut funktiot, kuten barplot, käyttävät hyödyksi alkioiden nimiä. Nimettyjen vektorien käyttö ei ole kurssin ydinasioita, mutta on joskus hyvin kätevä temppu osata.
 
@@ -3273,7 +3430,7 @@ Vastaavasti diskreetin muuttujan jakaumaa voi kuvata pylväsdiagrammilla käytt�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-93-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-99-1.pdf}
 
 \hypertarget{alemman-tason-grafiikkatoiminnot}{%
 \section{Alemman tason grafiikkatoiminnot}\label{alemman-tason-grafiikkatoiminnot}}
@@ -3290,7 +3447,7 @@ Otetaan esimerkiksi alussa nähty kuvaaja autojen pysähtymismatkoista ja lisät
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-94-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-100-1.pdf}
 
 Lisätään kuvaajan jarrutusmatkat liukkaalla kelillä. Uusia pisteitä voi piirtää \texttt{points}-funktiolla, jolle annetaan x- ja y-koordinaatit vektoreina ihan kuin \texttt{plot}-funktiollekin.
 
@@ -3304,7 +3461,7 @@ Lisätään kuvaajan jarrutusmatkat liukkaalla kelillä. Uusia pisteitä voi pii
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-95-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-101-1.pdf}
 
 Ylläolevassa kuvaajassa on kaksi ongelmaa: ylimmät pisteet eivät näy, koska kuvaajan y-akseli loppuu kesken. Y-akseli on piirretty alkuperäisten jarrutusmatkojen pohjalta, ja koska liukkaalla kelillä jarrutus kestää pidempään, uudet pisteet eivät mahdu kuvaajaan. Toinen ongelma on se, että pisteitä ei voi erottaa toisistaan.
 
@@ -3323,7 +3480,7 @@ Lisäksi piirretään selvyyden vuoksi pisteet eri värisinä ja eri kuvioilla. 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-96-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-102-1.pdf}
 
 Nyt kuvaaja alkaa jo näyttää paremmalta, mutta kuvaajasta ei vielä voi päätellä, mitä eri väriset pisteet tarkoittavat. Lisätään siis kuvaajaan selite \texttt{legend}-komennolla. Selitteelle määritetään paikka kuvaajassa \texttt{x} ja \texttt{y} argumenteilla (vasemman yläkulman koordinaatit). Sen jälkeen annetaan selitetekstit (\texttt{legend}), sekä selitteen muodot ja värit (\texttt{pch} ja \texttt{col}, kuten aiemmin). HUOM! Selitteen symbolit ja värit on itse osattava laittaa oikeaan järjestykseen. Selitteen tekstit annetaan järjestyksessä ylhäältä alas, ja piirtomerkit tulee antaa samassa järjestyksessä.
 
@@ -3343,7 +3500,7 @@ Nyt kuvaaja alkaa jo näyttää paremmalta, mutta kuvaajasta ei vielä voi pää
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-97-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-103-1.pdf}
 
 Tuunataan kuvaajaa vielä hiukan, ja lisätään siihen käyrä kuvaamaan jarrutusmatkan ennustetta \texttt{lines}-funktiolla.
 
@@ -3385,7 +3542,7 @@ Alla olevassa koodissa lasketaan ensin \texttt{lm}-funktion avulla sopivat param
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-99-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-105-1.pdf}
 
 Seuraavaksi voidaan värittää käyrät samoilla väreillä kuin pisteet, ja lisätä niille omat selitteet. Tässä vaiheessa selitteen tekemisestä tulee jo melko monimutkaista, sillä selitteessä on mukana pisteitä ja käyriä. Tästä syystä selitteen argumentteihin pitää laittaa puuttuvia arvoja \texttt{pch} ja \texttt{lty}-argumenteille, koska selitteen ensimmäiset rivit eivät viittaa mihinkään käyrään, vaan pelkästään pisteisiin ja vastaavasti kaksi alinta riviä viittaavat vain käyriin.
 
@@ -3412,7 +3569,7 @@ Seuraavaksi voidaan värittää käyrät samoilla väreillä kuin pisteet, ja li
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-100-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-106-1.pdf}
 
 Kuvaajamme on melkein valmis iltapäivälehteen muistuttamaan liukkaiden kelien vaaroista, mutta jotta siitä tulisi oikein säväyttävä, siinä pitää toki olla tekstiä! Lisätään siis vielä pieni tekstin pätkä, joka korostaa eroa liukkaan ja kuivan kelin välillä. Tekstiä voi lisätä \texttt{text}-funktiolla, jolle annetaan tuttuun tapaan \texttt{x} ja \texttt{y}-argumentit, joilla määritetään tekstin paikka ja \texttt{labels} määrittää itse tekstin (kaikki argumentit voivat olla myös pidempiä vektoreita, jolloin tulee useampi teksti eri paikkoihin). Lisäksi parametrillä \texttt{adj} (adjust) voi hienosäätää tekstin paikkaa. \texttt{adj} on vektori, jossa on hienosäätöarvot x- ja y-suunnassa.
 
@@ -3441,9 +3598,49 @@ Kuvaajamme on melkein valmis iltapäivälehteen muistuttamaan liukkaiden kelien 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-101-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-107-1.pdf}
 
 Kuvaajamme on nyt valmis! Näitä komentoja käyttämällä ja pienellä googlailulla saa myös tehtyä tämän viikon tehtävän.
+
+\hypertarget{kuvaajan-tallentaminen}{%
+\section{Kuvaajan tallentaminen}\label{kuvaajan-tallentaminen}}
+
+Opinnäytteitä ja tutkimusjulkaisuja varten kuvasta tarvitaan yleensä tiedosto. Tiedostomuodoista pdf ja png-muotoiset tiedostot on helppoa toteuttaa R:ssä käyttämällä funktioista \texttt{pdf()} ja \texttt{png()}. Keskeisimmät argumentit molemmissa ovat file, width ja height. \texttt{pdf()}- tai \texttt{png()}-komennon jälkeen tulee laittaa kuvan piirtokomennot. Muista kuvan piirrettyäsi sulkea yhteys tiedostoon ajamalla funkio \texttt{dev.off()}
+
+\textbf{\emph{Vinkki!}} Mikäli haluat tallentaa kuvan R:n käyttämään hakemistoon, niin sinun ei tarvitse antaa ensimmäisenä argumenttina koko hakemistopolkua, vaan riittää antaa haluamasi tiedostonimi! Jos haluat tallentaa muualle, niin voit määritellä hakemistopolun kokonaan. Voit kerrata hakemistopoluista kohdasta \protect\hyperlink{hakemistopolut-ja-tiedostopuxe4uxe4tteet}{Hakemistopolut ja tiedostopäätteet}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Initiate plotting with pdf()}
+\FunctionTok{pdf}\NormalTok{(}\AttributeTok{file=}\StringTok{"cars\_stopping.pdf"}\NormalTok{, }\AttributeTok{width=}\DecValTok{10}\NormalTok{, }\AttributeTok{height =} \DecValTok{10}\NormalTok{)}
+
+\CommentTok{\# I copied the plotting commands from previous code section:}
+\FunctionTok{plot}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist,}
+     \AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{,}
+     \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{150}\NormalTok{),}
+     \AttributeTok{main =} \StringTok{"Auton pysähtymismatka eri nopeuksilla"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Auton nopeus (km / h)"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"Pysähtymismatka (m)"}\NormalTok{)}
+
+\FunctionTok{points}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ stop\_dist\_wet, }\AttributeTok{pch =} \DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\AttributeTok{x =} \DecValTok{40}\NormalTok{, }\AttributeTok{y =} \DecValTok{150}\NormalTok{,}
+       \AttributeTok{legend =} \FunctionTok{c}\NormalTok{(}\StringTok{"Märkä keli"}\NormalTok{, }\StringTok{"Kuiva keli"}\NormalTok{,}
+                  \StringTok{"Ennuste märälle kelille"}\NormalTok{,}
+                  \StringTok{"Ennuste kuivalle kelille"}\NormalTok{),}
+       \AttributeTok{pch =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{20}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\ConstantTok{NA}\NormalTok{),}
+       \AttributeTok{lty =} \FunctionTok{c}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\ConstantTok{NA}\NormalTok{, }\StringTok{"dashed"}\NormalTok{, }\StringTok{"dashed"}\NormalTok{),}
+       \AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{, }\StringTok{"darkred"}\NormalTok{, }\StringTok{"darkblue"}\NormalTok{))}
+
+\FunctionTok{lines}\NormalTok{(speed, prediction\_dry, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkblue"}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(speed, prediction\_wet, }\AttributeTok{lty =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{col =} \StringTok{"darkred"}\NormalTok{)}
+
+
+\CommentTok{\# Close plotting to pdf{-}file using dev.off()}
+\FunctionTok{dev.off}\NormalTok{()}
+\CommentTok{\# Show a file}
+\FunctionTok{file.show}\NormalTok{(}\StringTok{"cars\_stopping.pdf"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{kuvaajien-piirtuxe4minen-kuxe4ytuxe4nnuxf6ssuxe4}{%
 \section{Kuvaajien piirtäminen käytännössä}\label{kuvaajien-piirtuxe4minen-kuxe4ytuxe4nnuxf6ssuxe4}}
@@ -3458,7 +3655,7 @@ R tarjoaa paljon valmiita työkaluja erilaisten kuvaajien piirtämiseen. Valitet
 \hypertarget{chi-squared-test}{%
 \section{Khi toiseen -testi}\label{chi-squared-test}}
 
-Khi toiseen -testi voidaan toteuttaa seuraavasti.
+Khi toiseen -testi eli \(\chi^2\) voidaan toteuttaa seuraavasti.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3549,7 +3746,7 @@ Khi toiseen -testi voidaan toteuttaa seuraavasti.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.2885711
+## [1] 0.2845715
 \end{verbatim}
 
 \hypertarget{kahden-otoksen-t-testi}{%
@@ -3609,7 +3806,7 @@ Muutetaan ensin cars-datasetin muuttujat meille tuttuihin yksikköihin, ja piirr
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-103-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-110-1.pdf}
 
 Autojen välillä on eroja, mutta kuten voi odottaa, suuremmilla nopeuksilla auton pysähtymismatka kasvaa. Käytetään seuraavaksi R:n funktiota \texttt{lm()}, jolla voidaan sovittaa dataan lineaarinen malli:
 
@@ -3638,7 +3835,7 @@ Lineaarisesta mallista saadaan irti paljon tietoa, tärkeimpinä mallin kertoime
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-105-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-112-1.pdf}
 
 \hypertarget{tarkempia-tietoja-mallista}{%
 \section{Tarkempia tietoja mallista}\label{tarkempia-tietoja-mallista}}
@@ -3708,7 +3905,7 @@ Kun lineaarinen malli on luotu, sen perusteella voidaan myös ennustaa arvoja uu
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-107-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-114-1.pdf}
 
 Kuten huomataan, ennustetut arvot ovat täsmälleen käyrän päällä.
 
@@ -3738,7 +3935,7 @@ Korrelaation kahden vektorin välillä voi R:ssä laskea komennolla \texttt{cor(
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-108-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-115-1.pdf}
 
 Tässä esimerkissä nähdään hyvin Pearsonin - ja Spearmanin korrelaatiokertoimien ero. Koska Indometasiinin konsentraatio laskee eksponentiaalisesti, ei lineaarisesti, Pearsonin korrelaatiokerroin on ``vain'' -0.7, kun taas Spearmanin korrelaatiokerroin -0.97 vastaa lähes täydellistä negatiivista korrelaatiota.
 
@@ -3965,7 +4162,7 @@ Joillain funktioilla ei ole ollenkaan argumentteja. Esimerkiksi R:n sisäiset fu
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-06-10 12:09:13 EEST"
+## [1] "2021-06-10 16:36:08 EEST"
 \end{verbatim}
 
 Itse tehdyt funktiot voivat myös toimia ilman argumentteja. Niitä käytetään usein R-istunnon tilan, koodia ajavan tietokoneen ominaisuuksien tai ajan selvittämiseen. Tämä melko hyödytön esimerkkifunktio palauttaa tämän dokumentin kirjoittajan nimen:
@@ -4088,7 +4285,7 @@ Itse tehty funktio palauttaa \texttt{NULL}, jos viimeinen komento palauttaa \tex
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-123-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-130-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]

@@ -2,7 +2,7 @@
 
 ## Khi toiseen -testi {#chi-squared-test}
 
-Khi toiseen -testi voidaan toteuttaa seuraavasti.
+Khi toiseen -testi eli $\chi^2$ voidaan toteuttaa seuraavasti.
 
 ```{r}
 ## From Agresti(2007) p.39

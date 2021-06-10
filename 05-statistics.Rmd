@@ -63,6 +63,43 @@ sort(dat_for_median) # Median would be the middle value in the arranged data, th
 # Getting median in R
 median(dat_for_median)
 ```
+### Kvantiilit
+
+Mediaani siis kertoi kohdan, jossa 50 % aineistosta on pienenmpiä kuin kyseinen arvo. Entä, jos haluamme luvun, joka kertoo luvun, jota pienempiä ovat vaikkapa 10 % aineistosta? Tai mikä tahansa muu osuus? Tällainen yleistys on nimeltään kvantiili. Joillakin kvantiileilla on erityisnimet. Ne ovat
+
+ - mediaani (50 % aineistosta on tätä pienempiä)
+ - alakvartiili (25 %)
+ - yläkvartiili (75 %)
+ - desiilit (10% välein)
+    * 10 %:n desiili, 20 %:n desiili jne.
+
+Haluamansa kvantiilin voi laskea R:ssä funktiolla ```quantile```. Jos haluat laskea 30 %:n kvantiilin, niin arnna argumentille probs tätä vastaava suhteellinen osuus eli 0.30.
+
+```{r}
+quantile(dat_for_median,probs=0.30)
+```
+quantile-funktiolle voi antaa useita kvantiileita laskettavaksi kerralla. Tällöin argumentille probs on annettava vektori. Esimerkiksi voin laskea vaikkapa kvartiilit ja mediaanin kerralla näin:
+
+```{r}
+quantile(dat_for_median,probs=c(0.25,0.5,0.75))
+```
+Eräs jännä seikka on se, että pyytämällä R:ää laskemalla 0 %:n ja 100 %:n kvartiilit saa tulokseksi minimin ja maksimin. Samaan pääsee myös komennolla ```range()```. Kokeillaan tätä
+```{r}
+# 0 % and 100 % quantile gives a range of the data
+quantile(dat_for_median, probs=c(0.00,1.00))
+
+# Let's compare with min and max
+min(dat_for_median)
+max(dat_for_median)
+
+# There is also function called range
+range(dat_for_median)
+```
+Esimerkiksi viiksilaatikko-kuvaa vastaavat lukuarvot eli minimin, alakvartiilin, mediaanin, yläkvartiilin ja maksimin saa kätevästi quantile-funktiolla antamalla probs-argumentille vektorin ```c(0,0.2,0.5,0.75,1)```. Tätä sanotaan joskus viiden numeron yhteenvedoksi.
+
+```{r}
+quantile(dat_for_median, probs=c(0,0.2,0.5,0.75,1))
+```
 
 ### Moodi
 
@@ -83,7 +120,7 @@ names(tab)[which.max(tab)]
 as.numeric(names(tab)[which.max(tab)])
 ```
 
-Ylläoleva käy itse asiassa hyvästä esimerkistä tilanteesta, jossa seuraavaksi tekisin viimeisen rivin funktioksi ja jatkossa käyttäisin kyseistä funktiota työssäni. Funktiohin palataan osiossa [Funktiot](#functions). En malta olla tekemättä niin, joten olkoon alla esimerkki moodi-funktiosta ilman suurempia selityksiä.
+Ylläoleva käy itse asiassa hyvästä esimerkistä tilanteesta, jossa seuraavaksi tekisin viimeisen rivin funktioksi ja jatkossa käyttäisin kyseistä funktiota työssäni. Funktioihin palataan osiossa [Funktiot](#functions). En malta olla tekemättä funktiota, joten olkoon alla esimerkki moodi-funktiosta ilman suurempia selityksiä.
 
 ```{r}
 # Write a function for mode

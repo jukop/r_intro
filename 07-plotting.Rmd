@@ -212,6 +212,44 @@ text(x = 95, y = 145, labels = "ERO JOPA 30 METRIÄ!")
 
 Kuvaajamme on nyt valmis! Näitä komentoja käyttämällä ja pienellä googlailulla saa myös tehtyä tämän viikon tehtävän.
 
+## Kuvaajan tallentaminen
+
+Opinnäytteitä ja tutkimusjulkaisuja varten kuvasta tarvitaan yleensä tiedosto. Tiedostomuodoista pdf ja png-muotoiset tiedostot on helppoa toteuttaa R:ssä käyttämällä funktioista ```pdf()``` ja ```png()```. Keskeisimmät argumentit molemmissa ovat file, width ja height. ```pdf()```- tai ```png()```-komennon jälkeen tulee laittaa kuvan piirtokomennot. Muista kuvan piirrettyäsi sulkea yhteys tiedostoon ajamalla funkio ```dev.off()```
+
+***Vinkki!*** Mikäli haluat tallentaa kuvan R:n käyttämään hakemistoon, niin sinun ei tarvitse antaa ensimmäisenä argumenttina koko hakemistopolkua, vaan riittää antaa haluamasi tiedostonimi! Jos haluat tallentaa muualle, niin voit määritellä hakemistopolun kokonaan. Voit kerrata hakemistopoluista kohdasta [Hakemistopolut ja tiedostopäätteet](#hakemistopolut-ja-tiedostopäätteet).
+
+```{r, eval=FALSE}
+# Initiate plotting with pdf()
+pdf(file="cars_stopping.pdf", width=10, height = 10)
+
+# I copied the plotting commands from previous code section:
+plot(x = speed, y = stop_dist,
+     col = "darkblue", pch = 20,
+     ylim = c(20, 150),
+     main = "Auton pysähtymismatka eri nopeuksilla",
+     xlab = "Auton nopeus (km / h)", ylab = "Pysähtymismatka (m)")
+
+points(x = speed, y = stop_dist_wet, pch = 15, col = "darkred")
+
+legend(x = 40, y = 150,
+       legend = c("Märkä keli", "Kuiva keli",
+                  "Ennuste märälle kelille",
+                  "Ennuste kuivalle kelille"),
+       pch = c(15, 20, NA, NA),
+       lty = c(NA, NA, "dashed", "dashed"),
+       col = c("darkred", "darkblue", "darkred", "darkblue"))
+
+lines(speed, prediction_dry, lty = "dashed", col = "darkblue")
+lines(speed, prediction_wet, lty = "dashed", col = "darkred")
+
+
+# Close plotting to pdf-file using dev.off()
+dev.off()
+# Show a file
+file.show("cars_stopping.pdf")
+```
+
+
 ## Kuvaajien piirtäminen käytännössä
 
 Jos äskeisen esimerkin aikana tuntui siltä, että näimme paljon työtä ja saimme lopputulokseksi kuvaajan, joka ei oikeastaan edes näytä kovin hyvältä, olet aivan oikeassa. Kuvaajien rakentaminen itse R:n peruskomennoilla on raskasta, ja usein perusgrafiikkatoimintoja käytetään lähinnä omaan käyttöön tulevien kuvaajien piirtämiseen nopeasti. Peruskomennot on kuitenkin hyvä hallita, sillä niitä saattaa tarvita valmiilla työkaluilla tehtyjen kuvaajien muokkaamiseen. Varsinkin tekstin lisääminen, sekä akselien nimeäminen ja otsikon muuttaminen ovat hyviä taitoja osata.
