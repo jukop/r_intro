@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kappale 9 Funktiot | R-ohjelmoinnin perusteet</title>
+  <title>Kappale 11 Funktiot | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kappale 9 Funktiot | R-ohjelmoinnin perusteet" />
+  <meta property="og:title" content="Kappale 11 Funktiot | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kappale 9 Funktiot | R-ohjelmoinnin perusteet" />
+  <meta name="twitter:title" content="Kappale 11 Funktiot | R-ohjelmoinnin perusteet" />
   
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="statistics.html"/>
+<link rel="prev" href="linear-models.html"/>
 <link rel="next" href="ifelse.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -138,6 +138,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html"><i class="fa fa-check"></i>R-kurssi</a>
 <ul>
+<li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html#ohjeita-verkkokirjan-käyttöön"><i class="fa fa-check"></i>Ohjeita verkkokirjan käyttöön</a></li>
+<li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html#lunttilappu"><i class="fa fa-check"></i>Lunttilappu</a></li>
 <li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html#sisällysluettelo"><i class="fa fa-check"></i>Sisällysluettelo</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html"><i class="fa fa-check"></i>Alkuvalmistelut</a>
@@ -168,7 +170,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#vektorien-indeksointi-ja-leikkely"><i class="fa fa-check"></i><b>2.3.2</b> Vektorien indeksointi ja leikkely</a></li>
 <li class="chapter" data-level="2.3.3" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#puuttuvat-arvot"><i class="fa fa-check"></i><b>2.3.3</b> Puuttuvat arvot</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#extra"><i class="fa fa-check"></i><b>2.4</b> Extra: Alkeistietotyypit ja puuttuvat arvot</a></li>
+<li class="chapter" data-level="2.4" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#extra"><i class="fa fa-check"></i><b>2.4</b> Extra: Alkeistietotyypit ja erikoisarvot</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ääretön-ja-miinus-ääretön"><i class="fa fa-check"></i><b>2.4.1</b> Ääretön ja miinus ääretön</a></li>
+<li class="chapter" data-level="2.4.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ei-numero"><i class="fa fa-check"></i><b>2.4.2</b> Ei-numero</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Tietotyypit</a>
 <ul>
@@ -220,69 +226,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#osajoukkojen-valinta"><i class="fa fa-check"></i><b>5.2</b> Osajoukkojen valinta</a></li>
 <li class="chapter" data-level="5.3" data-path="data-wrangling.html"><a href="data-wrangling.html#faktorit"><i class="fa fa-check"></i><b>5.3</b> Faktorit</a></li>
 <li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#factor-vektorit-vanha-teksti"><i class="fa fa-check"></i><b>5.4</b> Factor-vektorit (vanha teksti)</a></li>
-<li class="chapter" data-level="5.5" data-path="data-wrangling.html"><a href="data-wrangling.html#distributions"><i class="fa fa-check"></i><b>5.5</b> Todennäköisyysjakaumat R:ssä</a>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>6</b> Tunnusluvut</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="data-wrangling.html"><a href="data-wrangling.html#esimerkki-normaalijakauma"><i class="fa fa-check"></i><b>5.5.1</b> Esimerkki: normaalijakauma</a></li>
-<li class="chapter" data-level="5.5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#muita-jakaumia"><i class="fa fa-check"></i><b>5.5.2</b> Muita jakaumia</a></li>
+<li class="chapter" data-level="6.1" data-path="statistics.html"><a href="statistics.html#sijaintia-kuvaavat-tunnusluvut"><i class="fa fa-check"></i><b>6.1</b> Sijaintia kuvaavat tunnusluvut</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="statistics.html"><a href="statistics.html#minimi-ja-maksimi"><i class="fa fa-check"></i><b>6.1.1</b> Minimi ja maksimi</a></li>
+<li class="chapter" data-level="6.1.2" data-path="statistics.html"><a href="statistics.html#keskiarvo"><i class="fa fa-check"></i><b>6.1.2</b> Keskiarvo</a></li>
+<li class="chapter" data-level="6.1.3" data-path="statistics.html"><a href="statistics.html#mediaani"><i class="fa fa-check"></i><b>6.1.3</b> Mediaani</a></li>
+<li class="chapter" data-level="6.1.4" data-path="statistics.html"><a href="statistics.html#moodi"><i class="fa fa-check"></i><b>6.1.4</b> Moodi</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="statistics.html"><a href="statistics.html#summary"><i class="fa fa-check"></i><b>6.2</b> summary()</a></li>
+<li class="chapter" data-level="6.3" data-path="statistics.html"><a href="statistics.html#varianssi-ja-keskihajonta-ja-kvantiilit"><i class="fa fa-check"></i><b>6.3</b> Varianssi ja keskihajonta ja kvantiilit</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>7</b> Todennäköisyysjakaumat R:ssä</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="distributions.html"><a href="distributions.html#esimerkki-normaalijakauma"><i class="fa fa-check"></i><b>7.1</b> Esimerkki: normaalijakauma</a></li>
+<li class="chapter" data-level="7.2" data-path="distributions.html"><a href="distributions.html#muita-jakaumia"><i class="fa fa-check"></i><b>7.2</b> Muita jakaumia</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>8</b> Kuvaajien piirtäminen</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="plotting.html"><a href="plotting.html#korkean-tason-piirtofunktiot"><i class="fa fa-check"></i><b>8.1</b> Korkean tason piirtofunktiot</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="plotting.html"><a href="plotting.html#plot"><i class="fa fa-check"></i><b>8.1.1</b> plot()</a></li>
+<li class="chapter" data-level="8.1.2" data-path="plotting.html"><a href="plotting.html#muut-korkean-tason-funktiot"><i class="fa fa-check"></i><b>8.1.2</b> Muut korkean tason funktiot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="plotting.html"><a href="plotting.html#alemman-tason-grafiikkatoiminnot"><i class="fa fa-check"></i><b>8.2</b> Alemman tason grafiikkatoiminnot</a></li>
+<li class="chapter" data-level="8.3" data-path="plotting.html"><a href="plotting.html#kuvaajien-piirtäminen-käytännössä"><i class="fa fa-check"></i><b>8.3</b> Kuvaajien piirtäminen käytännössä</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="tests.html"><a href="tests.html"><i class="fa fa-check"></i><b>9</b> Tilastollinen testaaminen</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="tests.html"><a href="tests.html#chi-squared-test"><i class="fa fa-check"></i><b>9.1</b> Khi toiseen -testi</a></li>
+<li class="chapter" data-level="9.2" data-path="tests.html"><a href="tests.html#kahden-otoksen-t-testi"><i class="fa fa-check"></i><b>9.2</b> Kahden otoksen t-testi</a></li>
+<li class="chapter" data-level="9.3" data-path="tests.html"><a href="tests.html#varianssianalyysi"><i class="fa fa-check"></i><b>9.3</b> Varianssianalyysi</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="linear-models.html"><a href="linear-models.html#teoria"><i class="fa fa-check"></i><b>10.1</b> Teoria</a></li>
+<li class="chapter" data-level="10.2" data-path="linear-models.html"><a href="linear-models.html#esimerkki"><i class="fa fa-check"></i><b>10.2</b> Esimerkki</a></li>
+<li class="chapter" data-level="10.3" data-path="linear-models.html"><a href="linear-models.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>10.3</b> Tarkempia tietoja mallista</a></li>
+<li class="chapter" data-level="10.4" data-path="linear-models.html"><a href="linear-models.html#ennustaminen"><i class="fa fa-check"></i><b>10.4</b> Ennustaminen</a></li>
+<li class="chapter" data-level="10.5" data-path="linear-models.html"><a href="linear-models.html#korrelaatio"><i class="fa fa-check"></i><b>10.5</b> Korrelaatio</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>11</b> Funktiot</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="functions.html"><a href="functions.html#funktion-käsite"><i class="fa fa-check"></i><b>11.1</b> Funktion käsite</a></li>
+<li class="chapter" data-level="11.2" data-path="functions.html"><a href="functions.html#r-funktiot"><i class="fa fa-check"></i><b>11.2</b> R-funktiot</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="functions.html"><a href="functions.html#funktioiden-määrittely"><i class="fa fa-check"></i><b>11.2.1</b> Funktioiden määrittely</a></li>
+<li class="chapter" data-level="11.2.2" data-path="functions.html"><a href="functions.html#argumentit-ja-funktion-kutsuminen"><i class="fa fa-check"></i><b>11.2.2</b> Argumentit ja funktion kutsuminen</a></li>
+<li class="chapter" data-level="11.2.3" data-path="functions.html"><a href="functions.html#funktio-ilman-argumentteja"><i class="fa fa-check"></i><b>11.2.3</b> Funktio ilman argumentteja</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="functions.html"><a href="functions.html#arvojen-palautus"><i class="fa fa-check"></i><b>11.3</b> Arvojen palautus</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="functions.html"><a href="functions.html#usean-arvon-palautus"><i class="fa fa-check"></i><b>11.3.1</b> Usean arvon palautus</a></li>
+<li class="chapter" data-level="11.3.2" data-path="functions.html"><a href="functions.html#palautus-ilman-return-käskyä"><i class="fa fa-check"></i><b>11.3.2</b> Palautus ilman return-käskyä</a></li>
+<li class="chapter" data-level="11.3.3" data-path="functions.html"><a href="functions.html#funktio-ilman-tulosta"><i class="fa fa-check"></i><b>11.3.3</b> Funktio ilman tulosta</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>6</b> Kuvaajien piirtäminen</a>
+<li class="chapter" data-level="12" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>12</b> Ehtorakenteet</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="plotting.html"><a href="plotting.html#korkean-tason-piirtofunktiot"><i class="fa fa-check"></i><b>6.1</b> Korkean tason piirtofunktiot</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="plotting.html"><a href="plotting.html#plot"><i class="fa fa-check"></i><b>6.1.1</b> plot()</a></li>
-<li class="chapter" data-level="6.1.2" data-path="plotting.html"><a href="plotting.html#muut-korkean-tason-funktiot"><i class="fa fa-check"></i><b>6.1.2</b> Muut korkean tason funktiot</a></li>
+<li class="chapter" data-level="12.1" data-path="ifelse.html"><a href="ifelse.html#loogiset-operaattorit"><i class="fa fa-check"></i><b>12.1</b> Loogiset operaattorit</a></li>
+<li class="chapter" data-level="12.2" data-path="ifelse.html"><a href="ifelse.html#ehtorakenteet"><i class="fa fa-check"></i><b>12.2</b> Ehtorakenteet</a></li>
+<li class="chapter" data-level="12.3" data-path="ifelse.html"><a href="ifelse.html#alkioiden-poimiminen-vektorista-tietyn-ehdon-perusteella"><i class="fa fa-check"></i><b>12.3</b> Alkioiden poimiminen vektorista tietyn ehdon perusteella</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="plotting.html"><a href="plotting.html#alemman-tason-grafiikkatoiminnot"><i class="fa fa-check"></i><b>6.2</b> Alemman tason grafiikkatoiminnot</a></li>
-<li class="chapter" data-level="6.3" data-path="plotting.html"><a href="plotting.html#kuvaajien-piirtäminen-käytännössä"><i class="fa fa-check"></i><b>6.3</b> Kuvaajien piirtäminen käytännössä</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="tests.html"><a href="tests.html"><i class="fa fa-check"></i><b>7</b> Tilastollinen testaaminen</a>
+<li class="chapter" data-level="13" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>13</b> Toistorakenteet (loops)</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="tests.html"><a href="tests.html#chi-squared-test"><i class="fa fa-check"></i><b>7.1</b> Khi toiseen -testi</a></li>
-<li class="chapter" data-level="7.2" data-path="tests.html"><a href="tests.html#kahden-otoksen-t-testi"><i class="fa fa-check"></i><b>7.2</b> Kahden otoksen t-testi</a></li>
-<li class="chapter" data-level="7.3" data-path="tests.html"><a href="tests.html#varianssianalyysi"><i class="fa fa-check"></i><b>7.3</b> Varianssianalyysi</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>8</b> Lineaariset mallit ja tilastolliset jakaumat</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="statistics.html"><a href="statistics.html#linear_models"><i class="fa fa-check"></i><b>8.1</b> Lineaariset mallit</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="statistics.html"><a href="statistics.html#teoria"><i class="fa fa-check"></i><b>8.1.1</b> Teoria</a></li>
-<li class="chapter" data-level="8.1.2" data-path="statistics.html"><a href="statistics.html#esimerkki"><i class="fa fa-check"></i><b>8.1.2</b> Esimerkki</a></li>
-<li class="chapter" data-level="8.1.3" data-path="statistics.html"><a href="statistics.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>8.1.3</b> Tarkempia tietoja mallista</a></li>
-<li class="chapter" data-level="8.1.4" data-path="statistics.html"><a href="statistics.html#ennustaminen"><i class="fa fa-check"></i><b>8.1.4</b> Ennustaminen</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="statistics.html"><a href="statistics.html#korrelaatio"><i class="fa fa-check"></i><b>8.2</b> Korrelaatio</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>9</b> Funktiot</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="functions.html"><a href="functions.html#funktion-käsite"><i class="fa fa-check"></i><b>9.1</b> Funktion käsite</a></li>
-<li class="chapter" data-level="9.2" data-path="functions.html"><a href="functions.html#r-funktiot"><i class="fa fa-check"></i><b>9.2</b> R-funktiot</a>
-<ul>
-<li class="chapter" data-level="9.2.1" data-path="functions.html"><a href="functions.html#funktioiden-määrittely"><i class="fa fa-check"></i><b>9.2.1</b> Funktioiden määrittely</a></li>
-<li class="chapter" data-level="9.2.2" data-path="functions.html"><a href="functions.html#argumentit-ja-funktion-kutsuminen"><i class="fa fa-check"></i><b>9.2.2</b> Argumentit ja funktion kutsuminen</a></li>
-<li class="chapter" data-level="9.2.3" data-path="functions.html"><a href="functions.html#funktio-ilman-argumentteja"><i class="fa fa-check"></i><b>9.2.3</b> Funktio ilman argumentteja</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="functions.html"><a href="functions.html#arvojen-palautus"><i class="fa fa-check"></i><b>9.3</b> Arvojen palautus</a>
-<ul>
-<li class="chapter" data-level="9.3.1" data-path="functions.html"><a href="functions.html#usean-arvon-palautus"><i class="fa fa-check"></i><b>9.3.1</b> Usean arvon palautus</a></li>
-<li class="chapter" data-level="9.3.2" data-path="functions.html"><a href="functions.html#palautus-ilman-return-käskyä"><i class="fa fa-check"></i><b>9.3.2</b> Palautus ilman return-käskyä</a></li>
-<li class="chapter" data-level="9.3.3" data-path="functions.html"><a href="functions.html#funktio-ilman-tulosta"><i class="fa fa-check"></i><b>9.3.3</b> Funktio ilman tulosta</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>10</b> Ehtorakenteet</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="ifelse.html"><a href="ifelse.html#loogiset-operaattorit"><i class="fa fa-check"></i><b>10.1</b> Loogiset operaattorit</a></li>
-<li class="chapter" data-level="10.2" data-path="ifelse.html"><a href="ifelse.html#ehtorakenteet"><i class="fa fa-check"></i><b>10.2</b> Ehtorakenteet</a></li>
-<li class="chapter" data-level="10.3" data-path="ifelse.html"><a href="ifelse.html#alkioiden-poimiminen-vektorista-tietyh-ehdon-perusteella"><i class="fa fa-check"></i><b>10.3</b> Alkioiden poimiminen vektorista tietyh ehdon perusteella</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>11</b> Toistorakenteet (loops)</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="loops.html"><a href="loops.html#for-silmukka"><i class="fa fa-check"></i><b>11.1</b> For-silmukka</a></li>
-<li class="chapter" data-level="11.2" data-path="loops.html"><a href="loops.html#while-slimukat"><i class="fa fa-check"></i><b>11.2</b> While-slimukat</a></li>
-<li class="chapter" data-level="11.3" data-path="loops.html"><a href="loops.html#sisäkkäiset-silmukat-nested-loops"><i class="fa fa-check"></i><b>11.3</b> Sisäkkäiset silmukat (nested loops)</a></li>
-<li class="chapter" data-level="11.4" data-path="loops.html"><a href="loops.html#iterointiin-puuttuminen-next-ja-break"><i class="fa fa-check"></i><b>11.4</b> Iterointiin puuttuminen: next ja break</a></li>
-<li class="chapter" data-level="11.5" data-path="loops.html"><a href="loops.html#apply-funktiot"><i class="fa fa-check"></i><b>11.5</b> Apply-funktiot</a></li>
-<li class="chapter" data-level="11.6" data-path="loops.html"><a href="loops.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>11.6</b> Vinkkejä tehtäviin</a></li>
+<li class="chapter" data-level="13.1" data-path="loops.html"><a href="loops.html#for-silmukka"><i class="fa fa-check"></i><b>13.1</b> For-silmukka</a></li>
+<li class="chapter" data-level="13.2" data-path="loops.html"><a href="loops.html#while-slimukat"><i class="fa fa-check"></i><b>13.2</b> While-slimukat</a></li>
+<li class="chapter" data-level="13.3" data-path="loops.html"><a href="loops.html#sisäkkäiset-silmukat-nested-loops"><i class="fa fa-check"></i><b>13.3</b> Sisäkkäiset silmukat (nested loops)</a></li>
+<li class="chapter" data-level="13.4" data-path="loops.html"><a href="loops.html#iterointiin-puuttuminen-next-ja-break"><i class="fa fa-check"></i><b>13.4</b> Iterointiin puuttuminen: next ja break</a></li>
+<li class="chapter" data-level="13.5" data-path="loops.html"><a href="loops.html#apply-funktiot"><i class="fa fa-check"></i><b>13.5</b> Apply-funktiot</a></li>
+<li class="chapter" data-level="13.6" data-path="loops.html"><a href="loops.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>13.6</b> Vinkkejä tehtäviin</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Julkaistu bookdownilla.</a></li>
@@ -304,21 +319,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functions" class="section level1" number="9">
-<h1><span class="header-section-number">Kappale 9</span> Funktiot</h1>
+<div id="functions" class="section level1" number="11">
+<h1><span class="header-section-number">Kappale 11</span> Funktiot</h1>
 <p>Tällä viikolla opitaan kirjoittamaan itse funktioita ja pureudutaan sitä kautta syvemmälle R-funktioiden toimintaan.</p>
-<div id="funktion-käsite" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Funktion käsite</h2>
+<div id="funktion-käsite" class="section level2" number="11.1">
+<h2><span class="header-section-number">11.1</span> Funktion käsite</h2>
 <p>Funktio on kokonaisuus järjesteltyä ja uudelleenkäytettävää koodia, jonka tarkoitus on suorittaa yksi tarkkaan määrätty tehtävä. Funktioilla on syöte (input) ja tulos (output). Funktion tehtävä on palauttaa (return) syötteen perusteella haluttu tulos. Alla olevassa kuvassa näkyvät funktion neljä osaa: nimi, syöte, toiminnallisuus ja tulos.</p>
 <p><img src="files/06-functions/funktio_k%C3%A4site.png" /></p>
 <p>Otetaan esimerkiksi kaksi funktiota: “Keskiarvo” ottaa syötteenä halutun määrän lukuja, ja laskee niiden keskiarvon. “Vastinjuoste” ottaa syötteenä DNA-juosteen ja palauttaa sen vastinjuosteen.</p>
 <p><img src="files/06-functions/funktio_esimerkit.png" /></p>
 <p>Funktioilla voi olla myös erityyppisiä syötteitä, voitaisiin esimerkiksi määritellä funktio, jolle annettaisiin syötteenä henkilön ikä, pituus, paino, sekä elintapatietoja, ja funktio laskisi näiden pohjalta eliniänodotteen.</p>
 </div>
-<div id="r-funktiot" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> R-funktiot</h2>
-<div id="funktioiden-määrittely" class="section level3" number="9.2.1">
-<h3><span class="header-section-number">9.2.1</span> Funktioiden määrittely</h3>
+<div id="r-funktiot" class="section level2" number="11.2">
+<h2><span class="header-section-number">11.2</span> R-funktiot</h2>
+<div id="funktioiden-määrittely" class="section level3" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> Funktioiden määrittely</h3>
 <p>Tähän mennessä olemme jo käyttäneet monia R-funktioita eikä meidän ole tarvinnut miettiä niiden toimintaa kovin syvällisesti. Virhetilanteet on kuitenkin paljon helpompi ratkaista, kun ymmärtää miten funktiot toimivat R:ssä.</p>
 <p>R-funktioita luodaan <code>function</code>-komennolla. Funktion rakennus näyttää tältä:</p>
 <p><img src="files/06-functions/funktio_koodi_v%C3%A4ri.png" /></p>
@@ -328,140 +343,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 - Funktion toiminnallisuus on R-koodia
 - Funktion tulos palautetaan komennolla <code>return()</code></p>
 <p>Tehdään esimerkiksi funktio BMI:n laskemiseen:</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="functions.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function name and arguments</span></span>
-<span id="cb336-2"><a href="functions.html#cb336-2" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> <span class="cf">function</span>(height, mass) {</span>
-<span id="cb336-3"><a href="functions.html#cb336-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute BMI</span></span>
-<span id="cb336-4"><a href="functions.html#cb336-4" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> mass <span class="sc">/</span> height<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb336-5"><a href="functions.html#cb336-5" aria-hidden="true" tabindex="-1"></a>  rounded <span class="ot">&lt;-</span> <span class="fu">round</span>(value, <span class="at">digits =</span> <span class="dv">1</span>)</span>
-<span id="cb336-6"><a href="functions.html#cb336-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return computed value</span></span>
-<span id="cb336-7"><a href="functions.html#cb336-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rounded)</span>
-<span id="cb336-8"><a href="functions.html#cb336-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="functions.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function name and arguments</span></span>
+<span id="cb374-2"><a href="functions.html#cb374-2" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> <span class="cf">function</span>(height, mass) {</span>
+<span id="cb374-3"><a href="functions.html#cb374-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute BMI</span></span>
+<span id="cb374-4"><a href="functions.html#cb374-4" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> mass <span class="sc">/</span> height<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb374-5"><a href="functions.html#cb374-5" aria-hidden="true" tabindex="-1"></a>  rounded <span class="ot">&lt;-</span> <span class="fu">round</span>(value, <span class="at">digits =</span> <span class="dv">1</span>)</span>
+<span id="cb374-6"><a href="functions.html#cb374-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return computed value</span></span>
+<span id="cb374-7"><a href="functions.html#cb374-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rounded)</span>
+<span id="cb374-8"><a href="functions.html#cb374-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Ensimmäisellä riville määritellään muuttuja, johon funktio tallennetaan, eli funktion nimi. Lisäksi määritetään funktion argumentit, tässä tapauksessa pituus ja paino. Itse funktion koodi tulee hakasulkeiden sisään seuraaville riveille. Ensimmäinen koodirivi laskee BMI:n ja toinen pyöristää tuloksen yhden desimaalin tarkkuuteen. Kolmas rivi palauttaa sen.</p>
 <p>Voimme nyt kutsua (call) funktiotamme aivan kuin muitakin R-funktioita:</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="functions.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
-<span id="cb337-2"><a href="functions.html#cb337-2" aria-hidden="true" tabindex="-1"></a>my_bmi <span class="ot">&lt;-</span> <span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.79</span>, <span class="at">mass =</span> <span class="dv">74</span>)</span>
-<span id="cb337-3"><a href="functions.html#cb337-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb337-4"><a href="functions.html#cb337-4" aria-hidden="true" tabindex="-1"></a>my_bmi</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="functions.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<span id="cb375-2"><a href="functions.html#cb375-2" aria-hidden="true" tabindex="-1"></a>my_bmi <span class="ot">&lt;-</span> <span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.79</span>, <span class="at">mass =</span> <span class="dv">74</span>)</span>
+<span id="cb375-3"><a href="functions.html#cb375-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb375-4"><a href="functions.html#cb375-4" aria-hidden="true" tabindex="-1"></a>my_bmi</span></code></pre></div>
 <pre><code>## [1] 23.1</code></pre>
 <p>HUOM: palautettava arvo on ainoa asia, joka välittyy funktion ulkopuolelle. Koska funktiomme palauttaa pyöristetyn arvon, alkuperäiseen arvoon ei pääse funktion ulkopuolelta käsiksi.</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="functions.html#cb339-1" aria-hidden="true" tabindex="-1"></a>my_bmi <span class="ot">&lt;-</span> <span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.90</span>, <span class="at">mass =</span> <span class="dv">95</span>)</span>
-<span id="cb339-2"><a href="functions.html#cb339-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Throws error</span></span>
-<span id="cb339-3"><a href="functions.html#cb339-3" aria-hidden="true" tabindex="-1"></a>value</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="functions.html#cb377-1" aria-hidden="true" tabindex="-1"></a>my_bmi <span class="ot">&lt;-</span> <span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.90</span>, <span class="at">mass =</span> <span class="dv">95</span>)</span>
+<span id="cb377-2"><a href="functions.html#cb377-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Throws error</span></span>
+<span id="cb377-3"><a href="functions.html#cb377-3" aria-hidden="true" tabindex="-1"></a>value</span></code></pre></div>
 <p>Funktioiden sisällä luodut muuttujat ovat siis olemassa vain sen sisällä ja lakkaavat olemasta, kun funktion suoritus lakkaa.</p>
 </div>
-<div id="argumentit-ja-funktion-kutsuminen" class="section level3" number="9.2.2">
-<h3><span class="header-section-number">9.2.2</span> Argumentit ja funktion kutsuminen</h3>
+<div id="argumentit-ja-funktion-kutsuminen" class="section level3" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> Argumentit ja funktion kutsuminen</h3>
 <p>R:ssä funktioiden argumentteja voi määritellä eri tavoilla, mutta yleisimmässä tapauksessa funktioilla on tietty määrä nimettyjä argumentteja. Edellisen esimerkin bmi-funktiolla on kaksi argumenttia, pituus ja paino. R-kunktioita voi kutsua monella eri tavalla, ja tutustutaan tähän lisää tämän yksinkertaisen funktion avulla.</p>
 <p>Yksi tapa on kutsua funktiota antamalla argumenttien arvot ilman niiden nimiä. HUOM: jos argumentteja ei nimeä, niiden tulee olla oikeassa järjestyksessä. Alla olevan esimerkin toisessa kohdassa argumentit menevät sekaisin.</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="functions.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call without argument names</span></span>
-<span id="cb340-2"><a href="functions.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="fl">1.65</span>, <span class="dv">62</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="functions.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call without argument names</span></span>
+<span id="cb378-2"><a href="functions.html#cb378-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="fl">1.65</span>, <span class="dv">62</span>)</span></code></pre></div>
 <pre><code>## [1] 22.8</code></pre>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="functions.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arguments in wrong order -&gt; weird results / error</span></span>
-<span id="cb342-2"><a href="functions.html#cb342-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="dv">62</span>, <span class="fl">1.65</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="functions.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arguments in wrong order -&gt; weird results / error</span></span>
+<span id="cb380-2"><a href="functions.html#cb380-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="dv">62</span>, <span class="fl">1.65</span>)</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>Argumentit voi myös nimetä, kuten edellisissä esimerkeissä tehtiin. Tällöin järjestyksellä ei ole väliä, koska funktiolle on selvää, mitä argumenttia tarkoitetaan.</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="functions.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.65</span>, <span class="at">mass =</span> <span class="dv">62</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="functions.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.65</span>, <span class="at">mass =</span> <span class="dv">62</span>)</span></code></pre></div>
 <pre><code>## [1] 22.8</code></pre>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="functions.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">mass =</span> <span class="dv">62</span>, <span class="at">height =</span> <span class="fl">1.65</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="functions.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">mass =</span> <span class="dv">62</span>, <span class="at">height =</span> <span class="fl">1.65</span>)</span></code></pre></div>
 <pre><code>## [1] 22.8</code></pre>
 <p>On myös mahdollista nimetä vain osa argumenteista. Tällöin nimeämättömät argumentit asetetaan argumenteiksi “tyhjiin kohtiin” vasemmalta oikealle.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="functions.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="fl">1.65</span>, <span class="at">mass =</span> <span class="dv">62</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="functions.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="fl">1.65</span>, <span class="at">mass =</span> <span class="dv">62</span>)</span></code></pre></div>
 <pre><code>## [1] 22.8</code></pre>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="functions.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="dv">62</span>, <span class="at">height =</span> <span class="fl">1.65</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="functions.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="dv">62</span>, <span class="at">height =</span> <span class="fl">1.65</span>)</span></code></pre></div>
 <pre><code>## [1] 22.8</code></pre>
 <p>Jos funktioille yritetään antaa argumentteja, joita ei ole määritelty, seuraa virhe:</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="functions.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Causes error</span></span>
-<span id="cb352-2"><a href="functions.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.65</span>, <span class="at">weight =</span> <span class="dv">62</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="functions.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Causes error</span></span>
+<span id="cb390-2"><a href="functions.html#cb390-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.65</span>, <span class="at">weight =</span> <span class="dv">62</span>)</span></code></pre></div>
 <p>Samoin jos jokin argumentti puuttuu, seuraa virhe:</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="functions.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Causes error</span></span>
-<span id="cb353-2"><a href="functions.html#cb353-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.65</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="functions.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Causes error</span></span>
+<span id="cb391-2"><a href="functions.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.65</span>)</span></code></pre></div>
 <p>HUOM: vaikka argumentit saa antaa haluamassaan järjestyksessä ja nimettynä tai nimeämättömänä, kannattaa kuitenkin olla johdonmukainen. Yleisohjeena argumentit kannattaa aina nimetä ja pyrkiä antamaan siinä järjestyksessä, kuin ne on funktiossa määritelty. Näin koodin lukeminen ja ylläpito on paljon helpompaa. Poikkeuksena sääntöön ovat funktiot, joiden toiminta on yksinkertaista, tai joiden ensimmäiset argumentit ovat niin tunnettuja, että niitä ei ole syytä nimetä.</p>
 <p>Otetaan esimerkiksi funktio <code>seq()</code>. Jos avaat funktion help-sivun komennolla <code>?seq</code>, näet, että ensimmäiset argumentit ovat nimeltään <code>from</code> ja <code>to</code>. Koska <code>seq</code> on hyvin yleinen ja tunnettu, ja <code>from</code> ja <code>to</code> on pakko määrittää, sitä kutsutaan yleensä niin, että <code>from</code> ja <code>to</code> jätetään nimeämättä. Muut argumentit, kuten <code>by</code> ja <code>length.out</code> yleensä nimetään, koska niitä ei aina käytetä, eikä voida olettaa koodin lukijan muistavan, mitä argumenttia tarkoitetaan, vaikka <code>seq</code> toimisi ilman nimiä, jos annettaisiin peräkkäin <code>from</code>, <code>to</code> ja <code>by</code>. Vastaavasti <code>plot</code>-komennon tapauksessa ei aina kirjoiteta nimiä <code>x</code> ja <code>y</code>-argumenteille, mutta väriä yms. ohjaavat argumentit nimetään.</p>
-<div id="oletusarvot-default-values" class="section level4" number="9.2.2.1">
-<h4><span class="header-section-number">9.2.2.1</span> Oletusarvot (default values)</h4>
+<div id="oletusarvot-default-values" class="section level4" number="11.2.2.1">
+<h4><span class="header-section-number">11.2.2.1</span> Oletusarvot (default values)</h4>
 <p>Monilla R-funktioilla on paljon argumentteja, joista kaikkia ei kuitenkaan tarvitse määrittää erikseen, vaan niillä on oletusarvoja (default values). Esimerkiksi <code>seq()</code> tekee oletuksena vektorin, jossa on kaikki kokonaisluvut <code>from</code>-argumentista <code>to</code>-argumenttiin. Tätä käyttäytymistä voi kuitenkin muuttaa <code>by</code> ja <code>length.out</code>-argumentteja säätämällä.</p>
 <p>Tehdään nyt omaan bmi-funktioomme uusi argumentti <code>height_multiplier</code>, joka on oletuksena 1. Jos kuitenkin halutaan antaa pituus senttimetreissä metrien sijaan, voidaan asettaa korkeuden kertoimeksi 0.01.</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="functions.html#cb354-1" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> <span class="cf">function</span>(height, mass, <span class="at">height_multiplier =</span> <span class="dv">1</span>) {</span>
-<span id="cb354-2"><a href="functions.html#cb354-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute BMI</span></span>
-<span id="cb354-3"><a href="functions.html#cb354-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> mass <span class="sc">/</span> (height <span class="sc">*</span> height_multiplier)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb354-4"><a href="functions.html#cb354-4" aria-hidden="true" tabindex="-1"></a>  rounded <span class="ot">&lt;-</span> <span class="fu">round</span>(value, <span class="at">digits =</span> <span class="dv">1</span>)</span>
-<span id="cb354-5"><a href="functions.html#cb354-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return computed value</span></span>
-<span id="cb354-6"><a href="functions.html#cb354-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rounded)</span>
-<span id="cb354-7"><a href="functions.html#cb354-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb354-8"><a href="functions.html#cb354-8" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.65</span>, <span class="at">mass =</span> <span class="dv">62</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="functions.html#cb392-1" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> <span class="cf">function</span>(height, mass, <span class="at">height_multiplier =</span> <span class="dv">1</span>) {</span>
+<span id="cb392-2"><a href="functions.html#cb392-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute BMI</span></span>
+<span id="cb392-3"><a href="functions.html#cb392-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> mass <span class="sc">/</span> (height <span class="sc">*</span> height_multiplier)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb392-4"><a href="functions.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  rounded <span class="ot">&lt;-</span> <span class="fu">round</span>(value, <span class="at">digits =</span> <span class="dv">1</span>)</span>
+<span id="cb392-5"><a href="functions.html#cb392-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return computed value</span></span>
+<span id="cb392-6"><a href="functions.html#cb392-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(rounded)</span>
+<span id="cb392-7"><a href="functions.html#cb392-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb392-8"><a href="functions.html#cb392-8" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">height =</span> <span class="fl">1.65</span>, <span class="at">mass =</span> <span class="dv">62</span>)</span></code></pre></div>
 <pre><code>## [1] 22.8</code></pre>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="functions.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">height =</span> <span class="dv">165</span>, <span class="at">mass =</span> <span class="dv">62</span>, <span class="at">height_multiplier =</span> <span class="fl">0.01</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="functions.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="at">height =</span> <span class="dv">165</span>, <span class="at">mass =</span> <span class="dv">62</span>, <span class="at">height_multiplier =</span> <span class="fl">0.01</span>)</span></code></pre></div>
 <pre><code>## [1] 22.8</code></pre>
 <p>Argumentin oletusarvo merkataan siis funktion määrittelyssä <code>=</code>-merkillä, kuten funktion argumenttien anto yleensä. Tämä on hyvä tietää omia funktioita tehdessä, mutta myös valmiiden funktioiden käytössä: jos argumentille ei ole funktion help-sivulla annettu vakioarvoa, se on pakko antaa, tai muuten seuraa virhe, kuten aikaisemmin kävi. Monilla valmiiden funktioiden argumenteilla on oletusarvona tyhjä arvo eli <code>NULL</code>. Tämä tarkoittaa usein, että argumentin voi jättää tyhjäksi, mutta oletusarvon valinta on niin monimutkainen prosessi, että sitä ei voi kirjoittaa funktion määrittelyssä yhdelle riville. Usein tämä tarkoittaa sitä, että oletusarvo riippuu muista argumenteista. HUOM: <code>NULL</code> on eri asia kuin <code>NA</code>, ja käyttäytyy eri tavoin. Aiheesta lisää <a href="https://www.r-bloggers.com/r-na-vs-null/">täällä</a>.</p>
 </div>
 </div>
-<div id="funktio-ilman-argumentteja" class="section level3" number="9.2.3">
-<h3><span class="header-section-number">9.2.3</span> Funktio ilman argumentteja</h3>
+<div id="funktio-ilman-argumentteja" class="section level3" number="11.2.3">
+<h3><span class="header-section-number">11.2.3</span> Funktio ilman argumentteja</h3>
 <p>Joillain funktioilla ei ole ollenkaan argumentteja. Esimerkiksi R:n sisäiset funktiot <code>Sys.time()</code> ja <code>Sys.Date()</code> palauttavat tämänhetkisen ajan ja päivän, eivätkä tarvitse argumentteja.</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="functions.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.time</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;2021-06-09 17:29:16 EEST&quot;</code></pre>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="functions.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.time</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;2021-06-10 12:16:49 EEST&quot;</code></pre>
 <p>Itse tehdyt funktiot voivat myös toimia ilman argumentteja. Niitä käytetään usein R-istunnon tilan, koodia ajavan tietokoneen ominaisuuksien tai ajan selvittämiseen. Tämä melko hyödytön esimerkkifunktio palauttaa tämän dokumentin kirjoittajan nimen:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="functions.html#cb360-1" aria-hidden="true" tabindex="-1"></a>author <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb360-2"><a href="functions.html#cb360-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="st">&quot;Anton Klåvus&quot;</span>)</span>
-<span id="cb360-3"><a href="functions.html#cb360-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb360-4"><a href="functions.html#cb360-4" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="functions.html#cb398-1" aria-hidden="true" tabindex="-1"></a>author <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb398-2"><a href="functions.html#cb398-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="st">&quot;Anton Klåvus&quot;</span>)</span>
+<span id="cb398-3"><a href="functions.html#cb398-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb398-4"><a href="functions.html#cb398-4" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Anton Klåvus&quot;</code></pre>
 </div>
 </div>
-<div id="arvojen-palautus" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Arvojen palautus</h2>
+<div id="arvojen-palautus" class="section level2" number="11.3">
+<h2><span class="header-section-number">11.3</span> Arvojen palautus</h2>
 <p>Tutkitaan arvojen palautusta R-funktiosta hieman enemmän.</p>
-<div id="usean-arvon-palautus" class="section level3" number="9.3.1">
-<h3><span class="header-section-number">9.3.1</span> Usean arvon palautus</h3>
+<div id="usean-arvon-palautus" class="section level3" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Usean arvon palautus</h3>
 <p>R-funktiot palauttavat aina yhden arvon. Palautukseen käytetään funktiota <code>return()</code>, kuten aiemmin nähtiin. R-funktio voi palauttaa vain yhden arvon, toisin kuin joissain muissa ohjelmointikielissä. Jos funktiosta halutaan ulos useampi arvo, ne on pakattava esim. listaan. Jos siis <code>bmi</code>-funktiosta haluttaisiin palauttaa sekä pyöristetty, että alkuperäinen BMI:n arvo, voidaan ne palauttaa listassa:</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="functions.html#cb362-1" aria-hidden="true" tabindex="-1"></a>bmi_list <span class="ot">&lt;-</span> <span class="cf">function</span>(height, mass, <span class="at">height_multiplier =</span> <span class="dv">1</span>) {</span>
-<span id="cb362-2"><a href="functions.html#cb362-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute BMI</span></span>
-<span id="cb362-3"><a href="functions.html#cb362-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> mass <span class="sc">/</span> (height <span class="sc">*</span> height_multiplier)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb362-4"><a href="functions.html#cb362-4" aria-hidden="true" tabindex="-1"></a>  rounded <span class="ot">&lt;-</span> <span class="fu">round</span>(value, <span class="at">digits =</span> <span class="dv">1</span>)</span>
-<span id="cb362-5"><a href="functions.html#cb362-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return computed value</span></span>
-<span id="cb362-6"><a href="functions.html#cb362-6" aria-hidden="true" tabindex="-1"></a>  values <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">original =</span> value,</span>
-<span id="cb362-7"><a href="functions.html#cb362-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">rounded =</span> rounded)</span>
-<span id="cb362-8"><a href="functions.html#cb362-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(values)</span>
-<span id="cb362-9"><a href="functions.html#cb362-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb362-10"><a href="functions.html#cb362-10" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">bmi_list</span>(<span class="fl">1.65</span>, <span class="dv">62</span>)</span>
-<span id="cb362-11"><a href="functions.html#cb362-11" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="functions.html#cb400-1" aria-hidden="true" tabindex="-1"></a>bmi_list <span class="ot">&lt;-</span> <span class="cf">function</span>(height, mass, <span class="at">height_multiplier =</span> <span class="dv">1</span>) {</span>
+<span id="cb400-2"><a href="functions.html#cb400-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute BMI</span></span>
+<span id="cb400-3"><a href="functions.html#cb400-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> mass <span class="sc">/</span> (height <span class="sc">*</span> height_multiplier)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb400-4"><a href="functions.html#cb400-4" aria-hidden="true" tabindex="-1"></a>  rounded <span class="ot">&lt;-</span> <span class="fu">round</span>(value, <span class="at">digits =</span> <span class="dv">1</span>)</span>
+<span id="cb400-5"><a href="functions.html#cb400-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return computed value</span></span>
+<span id="cb400-6"><a href="functions.html#cb400-6" aria-hidden="true" tabindex="-1"></a>  values <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">original =</span> value,</span>
+<span id="cb400-7"><a href="functions.html#cb400-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">rounded =</span> rounded)</span>
+<span id="cb400-8"><a href="functions.html#cb400-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(values)</span>
+<span id="cb400-9"><a href="functions.html#cb400-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb400-10"><a href="functions.html#cb400-10" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">bmi_list</span>(<span class="fl">1.65</span>, <span class="dv">62</span>)</span>
+<span id="cb400-11"><a href="functions.html#cb400-11" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
 <pre><code>## $original
 ## [1] 22.77319
 ## 
 ## $rounded
 ## [1] 22.8</code></pre>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="functions.html#cb364-1" aria-hidden="true" tabindex="-1"></a>result<span class="sc">$</span>rounded</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="functions.html#cb402-1" aria-hidden="true" tabindex="-1"></a>result<span class="sc">$</span>rounded</span></code></pre></div>
 <pre><code>## [1] 22.8</code></pre>
 </div>
-<div id="palautus-ilman-return-käskyä" class="section level3" number="9.3.2">
-<h3><span class="header-section-number">9.3.2</span> Palautus ilman return-käskyä</h3>
+<div id="palautus-ilman-return-käskyä" class="section level3" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> Palautus ilman return-käskyä</h3>
 <p>R on siitä erikoinen ohjelmointikieli, että R-funktiot voivat palauttaa arvoja myös ilman eksplisiittistä <code>return</code>-käskyä. Jos R-funktiossa ei ole <code>return</code>-käskyä, ja viimeinen rivi on vain muuttuja, tai sijoitus muuttujaan, tämän muuttujan arvo palautetaan automaattisesti. <code>bmi</code>-funktion voisi siis kirjoittaa myös näin:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="functions.html#cb366-1" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> <span class="cf">function</span>(height, mass, <span class="at">height_multiplier =</span> <span class="dv">1</span>) {</span>
-<span id="cb366-2"><a href="functions.html#cb366-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute BMI</span></span>
-<span id="cb366-3"><a href="functions.html#cb366-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> mass <span class="sc">/</span> (height <span class="sc">*</span> height_multiplier)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb366-4"><a href="functions.html#cb366-4" aria-hidden="true" tabindex="-1"></a>  rounded <span class="ot">&lt;-</span> <span class="fu">round</span>(value, <span class="at">digits =</span> <span class="dv">1</span>)</span>
-<span id="cb366-5"><a href="functions.html#cb366-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return computed value</span></span>
-<span id="cb366-6"><a href="functions.html#cb366-6" aria-hidden="true" tabindex="-1"></a>  rounded</span>
-<span id="cb366-7"><a href="functions.html#cb366-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb366-8"><a href="functions.html#cb366-8" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="fl">1.65</span>, <span class="dv">62</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="functions.html#cb404-1" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> <span class="cf">function</span>(height, mass, <span class="at">height_multiplier =</span> <span class="dv">1</span>) {</span>
+<span id="cb404-2"><a href="functions.html#cb404-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute BMI</span></span>
+<span id="cb404-3"><a href="functions.html#cb404-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> mass <span class="sc">/</span> (height <span class="sc">*</span> height_multiplier)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb404-4"><a href="functions.html#cb404-4" aria-hidden="true" tabindex="-1"></a>  rounded <span class="ot">&lt;-</span> <span class="fu">round</span>(value, <span class="at">digits =</span> <span class="dv">1</span>)</span>
+<span id="cb404-5"><a href="functions.html#cb404-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return computed value</span></span>
+<span id="cb404-6"><a href="functions.html#cb404-6" aria-hidden="true" tabindex="-1"></a>  rounded</span>
+<span id="cb404-7"><a href="functions.html#cb404-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb404-8"><a href="functions.html#cb404-8" aria-hidden="true" tabindex="-1"></a><span class="fu">bmi</span>(<span class="fl">1.65</span>, <span class="dv">62</span>)</span></code></pre></div>
 <pre><code>## [1] 22.8</code></pre>
 <p>Alussa on kuitenkin hyvä käyttää <code>return</code>-käskyä, niin pysyy paremmin perässä siitä, mitä koodi tekee, eikä sen kirjoittaminen ole kokeneellekaan ohjelmoijalle huono tapa.</p>
 </div>
-<div id="funktio-ilman-tulosta" class="section level3" number="9.3.3">
-<h3><span class="header-section-number">9.3.3</span> Funktio ilman tulosta</h3>
+<div id="funktio-ilman-tulosta" class="section level3" number="11.3.3">
+<h3><span class="header-section-number">11.3.3</span> Funktio ilman tulosta</h3>
 <p>Moni funktio ei palauta yhtään mitään. Yleisiä esimerkkejä ovat <code>cat()</code> ja <code>plot()</code>, jotka tulostavat ja piirtävät asioita, mutta eivät palauta mitään. Jos näiden funktion paluuarvon yrittää sijoittaa muuttujaan, on tuloksena <code>NULL</code>, eli tyhjä arvo.</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="functions.html#cb368-1" aria-hidden="true" tabindex="-1"></a>cat_return <span class="ot">&lt;-</span> <span class="fu">cat</span>(<span class="st">&quot;What does cat return?</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="functions.html#cb406-1" aria-hidden="true" tabindex="-1"></a>cat_return <span class="ot">&lt;-</span> <span class="fu">cat</span>(<span class="st">&quot;What does cat return?</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## What does cat return?</code></pre>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="functions.html#cb370-1" aria-hidden="true" tabindex="-1"></a>cat_return</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="functions.html#cb408-1" aria-hidden="true" tabindex="-1"></a>cat_return</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <p>Itse tehty funktio palauttaa <code>NULL</code>, jos viimeinen komento palauttaa <code>NULL</code>:</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="functions.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for plotting blue squares</span></span>
-<span id="cb372-2"><a href="functions.html#cb372-2" aria-hidden="true" tabindex="-1"></a>blue_squares <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
-<span id="cb372-3"><a href="functions.html#cb372-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb372-4"><a href="functions.html#cb372-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb372-5"><a href="functions.html#cb372-5" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">blue_squares</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">8</span>))</span></code></pre></div>
-<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="functions.html#cb373-1" aria-hidden="true" tabindex="-1"></a>value</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="functions.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for plotting blue squares</span></span>
+<span id="cb410-2"><a href="functions.html#cb410-2" aria-hidden="true" tabindex="-1"></a>blue_squares <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb410-3"><a href="functions.html#cb410-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(x, y, <span class="at">pch =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb410-4"><a href="functions.html#cb410-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb410-5"><a href="functions.html#cb410-5" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="fu">blue_squares</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">8</span>))</span></code></pre></div>
+<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="functions.html#cb411-1" aria-hidden="true" tabindex="-1"></a>value</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 
 </div>
@@ -472,7 +487,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="statistics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="linear-models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="ifelse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

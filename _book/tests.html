@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kappale 7 Tilastollinen testaaminen | R-ohjelmoinnin perusteet</title>
+  <title>Kappale 9 Tilastollinen testaaminen | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kappale 7 Tilastollinen testaaminen | R-ohjelmoinnin perusteet" />
+  <meta property="og:title" content="Kappale 9 Tilastollinen testaaminen | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kappale 7 Tilastollinen testaaminen | R-ohjelmoinnin perusteet" />
+  <meta name="twitter:title" content="Kappale 9 Tilastollinen testaaminen | R-ohjelmoinnin perusteet" />
   
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at university of Eastern Finland." />
   
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="plotting.html"/>
-<link rel="next" href="statistics.html"/>
+<link rel="next" href="linear-models.html"/>
 <script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -138,6 +138,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html"><i class="fa fa-check"></i>R-kurssi</a>
 <ul>
+<li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html#ohjeita-verkkokirjan-käyttöön"><i class="fa fa-check"></i>Ohjeita verkkokirjan käyttöön</a></li>
+<li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html#lunttilappu"><i class="fa fa-check"></i>Lunttilappu</a></li>
 <li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html#sisällysluettelo"><i class="fa fa-check"></i>Sisällysluettelo</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html"><i class="fa fa-check"></i>Alkuvalmistelut</a>
@@ -168,7 +170,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#vektorien-indeksointi-ja-leikkely"><i class="fa fa-check"></i><b>2.3.2</b> Vektorien indeksointi ja leikkely</a></li>
 <li class="chapter" data-level="2.3.3" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#puuttuvat-arvot"><i class="fa fa-check"></i><b>2.3.3</b> Puuttuvat arvot</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#extra"><i class="fa fa-check"></i><b>2.4</b> Extra: Alkeistietotyypit ja puuttuvat arvot</a></li>
+<li class="chapter" data-level="2.4" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#extra"><i class="fa fa-check"></i><b>2.4</b> Extra: Alkeistietotyypit ja erikoisarvot</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ääretön-ja-miinus-ääretön"><i class="fa fa-check"></i><b>2.4.1</b> Ääretön ja miinus ääretön</a></li>
+<li class="chapter" data-level="2.4.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ei-numero"><i class="fa fa-check"></i><b>2.4.2</b> Ei-numero</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Tietotyypit</a>
 <ul>
@@ -220,69 +226,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#osajoukkojen-valinta"><i class="fa fa-check"></i><b>5.2</b> Osajoukkojen valinta</a></li>
 <li class="chapter" data-level="5.3" data-path="data-wrangling.html"><a href="data-wrangling.html#faktorit"><i class="fa fa-check"></i><b>5.3</b> Faktorit</a></li>
 <li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#factor-vektorit-vanha-teksti"><i class="fa fa-check"></i><b>5.4</b> Factor-vektorit (vanha teksti)</a></li>
-<li class="chapter" data-level="5.5" data-path="data-wrangling.html"><a href="data-wrangling.html#distributions"><i class="fa fa-check"></i><b>5.5</b> Todennäköisyysjakaumat R:ssä</a>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>6</b> Tunnusluvut</a>
 <ul>
-<li class="chapter" data-level="5.5.1" data-path="data-wrangling.html"><a href="data-wrangling.html#esimerkki-normaalijakauma"><i class="fa fa-check"></i><b>5.5.1</b> Esimerkki: normaalijakauma</a></li>
-<li class="chapter" data-level="5.5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#muita-jakaumia"><i class="fa fa-check"></i><b>5.5.2</b> Muita jakaumia</a></li>
+<li class="chapter" data-level="6.1" data-path="statistics.html"><a href="statistics.html#sijaintia-kuvaavat-tunnusluvut"><i class="fa fa-check"></i><b>6.1</b> Sijaintia kuvaavat tunnusluvut</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="statistics.html"><a href="statistics.html#minimi-ja-maksimi"><i class="fa fa-check"></i><b>6.1.1</b> Minimi ja maksimi</a></li>
+<li class="chapter" data-level="6.1.2" data-path="statistics.html"><a href="statistics.html#keskiarvo"><i class="fa fa-check"></i><b>6.1.2</b> Keskiarvo</a></li>
+<li class="chapter" data-level="6.1.3" data-path="statistics.html"><a href="statistics.html#mediaani"><i class="fa fa-check"></i><b>6.1.3</b> Mediaani</a></li>
+<li class="chapter" data-level="6.1.4" data-path="statistics.html"><a href="statistics.html#moodi"><i class="fa fa-check"></i><b>6.1.4</b> Moodi</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="statistics.html"><a href="statistics.html#summary"><i class="fa fa-check"></i><b>6.2</b> summary()</a></li>
+<li class="chapter" data-level="6.3" data-path="statistics.html"><a href="statistics.html#varianssi-ja-keskihajonta-ja-kvantiilit"><i class="fa fa-check"></i><b>6.3</b> Varianssi ja keskihajonta ja kvantiilit</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>7</b> Todennäköisyysjakaumat R:ssä</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="distributions.html"><a href="distributions.html#esimerkki-normaalijakauma"><i class="fa fa-check"></i><b>7.1</b> Esimerkki: normaalijakauma</a></li>
+<li class="chapter" data-level="7.2" data-path="distributions.html"><a href="distributions.html#muita-jakaumia"><i class="fa fa-check"></i><b>7.2</b> Muita jakaumia</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>8</b> Kuvaajien piirtäminen</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="plotting.html"><a href="plotting.html#korkean-tason-piirtofunktiot"><i class="fa fa-check"></i><b>8.1</b> Korkean tason piirtofunktiot</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="plotting.html"><a href="plotting.html#plot"><i class="fa fa-check"></i><b>8.1.1</b> plot()</a></li>
+<li class="chapter" data-level="8.1.2" data-path="plotting.html"><a href="plotting.html#muut-korkean-tason-funktiot"><i class="fa fa-check"></i><b>8.1.2</b> Muut korkean tason funktiot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="plotting.html"><a href="plotting.html#alemman-tason-grafiikkatoiminnot"><i class="fa fa-check"></i><b>8.2</b> Alemman tason grafiikkatoiminnot</a></li>
+<li class="chapter" data-level="8.3" data-path="plotting.html"><a href="plotting.html#kuvaajien-piirtäminen-käytännössä"><i class="fa fa-check"></i><b>8.3</b> Kuvaajien piirtäminen käytännössä</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="tests.html"><a href="tests.html"><i class="fa fa-check"></i><b>9</b> Tilastollinen testaaminen</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="tests.html"><a href="tests.html#chi-squared-test"><i class="fa fa-check"></i><b>9.1</b> Khi toiseen -testi</a></li>
+<li class="chapter" data-level="9.2" data-path="tests.html"><a href="tests.html#kahden-otoksen-t-testi"><i class="fa fa-check"></i><b>9.2</b> Kahden otoksen t-testi</a></li>
+<li class="chapter" data-level="9.3" data-path="tests.html"><a href="tests.html#varianssianalyysi"><i class="fa fa-check"></i><b>9.3</b> Varianssianalyysi</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="linear-models.html"><a href="linear-models.html#teoria"><i class="fa fa-check"></i><b>10.1</b> Teoria</a></li>
+<li class="chapter" data-level="10.2" data-path="linear-models.html"><a href="linear-models.html#esimerkki"><i class="fa fa-check"></i><b>10.2</b> Esimerkki</a></li>
+<li class="chapter" data-level="10.3" data-path="linear-models.html"><a href="linear-models.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>10.3</b> Tarkempia tietoja mallista</a></li>
+<li class="chapter" data-level="10.4" data-path="linear-models.html"><a href="linear-models.html#ennustaminen"><i class="fa fa-check"></i><b>10.4</b> Ennustaminen</a></li>
+<li class="chapter" data-level="10.5" data-path="linear-models.html"><a href="linear-models.html#korrelaatio"><i class="fa fa-check"></i><b>10.5</b> Korrelaatio</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>11</b> Funktiot</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="functions.html"><a href="functions.html#funktion-käsite"><i class="fa fa-check"></i><b>11.1</b> Funktion käsite</a></li>
+<li class="chapter" data-level="11.2" data-path="functions.html"><a href="functions.html#r-funktiot"><i class="fa fa-check"></i><b>11.2</b> R-funktiot</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="functions.html"><a href="functions.html#funktioiden-määrittely"><i class="fa fa-check"></i><b>11.2.1</b> Funktioiden määrittely</a></li>
+<li class="chapter" data-level="11.2.2" data-path="functions.html"><a href="functions.html#argumentit-ja-funktion-kutsuminen"><i class="fa fa-check"></i><b>11.2.2</b> Argumentit ja funktion kutsuminen</a></li>
+<li class="chapter" data-level="11.2.3" data-path="functions.html"><a href="functions.html#funktio-ilman-argumentteja"><i class="fa fa-check"></i><b>11.2.3</b> Funktio ilman argumentteja</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="functions.html"><a href="functions.html#arvojen-palautus"><i class="fa fa-check"></i><b>11.3</b> Arvojen palautus</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="functions.html"><a href="functions.html#usean-arvon-palautus"><i class="fa fa-check"></i><b>11.3.1</b> Usean arvon palautus</a></li>
+<li class="chapter" data-level="11.3.2" data-path="functions.html"><a href="functions.html#palautus-ilman-return-käskyä"><i class="fa fa-check"></i><b>11.3.2</b> Palautus ilman return-käskyä</a></li>
+<li class="chapter" data-level="11.3.3" data-path="functions.html"><a href="functions.html#funktio-ilman-tulosta"><i class="fa fa-check"></i><b>11.3.3</b> Funktio ilman tulosta</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="plotting.html"><a href="plotting.html"><i class="fa fa-check"></i><b>6</b> Kuvaajien piirtäminen</a>
+<li class="chapter" data-level="12" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>12</b> Ehtorakenteet</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="plotting.html"><a href="plotting.html#korkean-tason-piirtofunktiot"><i class="fa fa-check"></i><b>6.1</b> Korkean tason piirtofunktiot</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="plotting.html"><a href="plotting.html#plot"><i class="fa fa-check"></i><b>6.1.1</b> plot()</a></li>
-<li class="chapter" data-level="6.1.2" data-path="plotting.html"><a href="plotting.html#muut-korkean-tason-funktiot"><i class="fa fa-check"></i><b>6.1.2</b> Muut korkean tason funktiot</a></li>
+<li class="chapter" data-level="12.1" data-path="ifelse.html"><a href="ifelse.html#loogiset-operaattorit"><i class="fa fa-check"></i><b>12.1</b> Loogiset operaattorit</a></li>
+<li class="chapter" data-level="12.2" data-path="ifelse.html"><a href="ifelse.html#ehtorakenteet"><i class="fa fa-check"></i><b>12.2</b> Ehtorakenteet</a></li>
+<li class="chapter" data-level="12.3" data-path="ifelse.html"><a href="ifelse.html#alkioiden-poimiminen-vektorista-tietyn-ehdon-perusteella"><i class="fa fa-check"></i><b>12.3</b> Alkioiden poimiminen vektorista tietyn ehdon perusteella</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="plotting.html"><a href="plotting.html#alemman-tason-grafiikkatoiminnot"><i class="fa fa-check"></i><b>6.2</b> Alemman tason grafiikkatoiminnot</a></li>
-<li class="chapter" data-level="6.3" data-path="plotting.html"><a href="plotting.html#kuvaajien-piirtäminen-käytännössä"><i class="fa fa-check"></i><b>6.3</b> Kuvaajien piirtäminen käytännössä</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="tests.html"><a href="tests.html"><i class="fa fa-check"></i><b>7</b> Tilastollinen testaaminen</a>
+<li class="chapter" data-level="13" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>13</b> Toistorakenteet (loops)</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="tests.html"><a href="tests.html#chi-squared-test"><i class="fa fa-check"></i><b>7.1</b> Khi toiseen -testi</a></li>
-<li class="chapter" data-level="7.2" data-path="tests.html"><a href="tests.html#kahden-otoksen-t-testi"><i class="fa fa-check"></i><b>7.2</b> Kahden otoksen t-testi</a></li>
-<li class="chapter" data-level="7.3" data-path="tests.html"><a href="tests.html#varianssianalyysi"><i class="fa fa-check"></i><b>7.3</b> Varianssianalyysi</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>8</b> Lineaariset mallit ja tilastolliset jakaumat</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="statistics.html"><a href="statistics.html#linear_models"><i class="fa fa-check"></i><b>8.1</b> Lineaariset mallit</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="statistics.html"><a href="statistics.html#teoria"><i class="fa fa-check"></i><b>8.1.1</b> Teoria</a></li>
-<li class="chapter" data-level="8.1.2" data-path="statistics.html"><a href="statistics.html#esimerkki"><i class="fa fa-check"></i><b>8.1.2</b> Esimerkki</a></li>
-<li class="chapter" data-level="8.1.3" data-path="statistics.html"><a href="statistics.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>8.1.3</b> Tarkempia tietoja mallista</a></li>
-<li class="chapter" data-level="8.1.4" data-path="statistics.html"><a href="statistics.html#ennustaminen"><i class="fa fa-check"></i><b>8.1.4</b> Ennustaminen</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="statistics.html"><a href="statistics.html#korrelaatio"><i class="fa fa-check"></i><b>8.2</b> Korrelaatio</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>9</b> Funktiot</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="functions.html"><a href="functions.html#funktion-käsite"><i class="fa fa-check"></i><b>9.1</b> Funktion käsite</a></li>
-<li class="chapter" data-level="9.2" data-path="functions.html"><a href="functions.html#r-funktiot"><i class="fa fa-check"></i><b>9.2</b> R-funktiot</a>
-<ul>
-<li class="chapter" data-level="9.2.1" data-path="functions.html"><a href="functions.html#funktioiden-määrittely"><i class="fa fa-check"></i><b>9.2.1</b> Funktioiden määrittely</a></li>
-<li class="chapter" data-level="9.2.2" data-path="functions.html"><a href="functions.html#argumentit-ja-funktion-kutsuminen"><i class="fa fa-check"></i><b>9.2.2</b> Argumentit ja funktion kutsuminen</a></li>
-<li class="chapter" data-level="9.2.3" data-path="functions.html"><a href="functions.html#funktio-ilman-argumentteja"><i class="fa fa-check"></i><b>9.2.3</b> Funktio ilman argumentteja</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="functions.html"><a href="functions.html#arvojen-palautus"><i class="fa fa-check"></i><b>9.3</b> Arvojen palautus</a>
-<ul>
-<li class="chapter" data-level="9.3.1" data-path="functions.html"><a href="functions.html#usean-arvon-palautus"><i class="fa fa-check"></i><b>9.3.1</b> Usean arvon palautus</a></li>
-<li class="chapter" data-level="9.3.2" data-path="functions.html"><a href="functions.html#palautus-ilman-return-käskyä"><i class="fa fa-check"></i><b>9.3.2</b> Palautus ilman return-käskyä</a></li>
-<li class="chapter" data-level="9.3.3" data-path="functions.html"><a href="functions.html#funktio-ilman-tulosta"><i class="fa fa-check"></i><b>9.3.3</b> Funktio ilman tulosta</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>10</b> Ehtorakenteet</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="ifelse.html"><a href="ifelse.html#loogiset-operaattorit"><i class="fa fa-check"></i><b>10.1</b> Loogiset operaattorit</a></li>
-<li class="chapter" data-level="10.2" data-path="ifelse.html"><a href="ifelse.html#ehtorakenteet"><i class="fa fa-check"></i><b>10.2</b> Ehtorakenteet</a></li>
-<li class="chapter" data-level="10.3" data-path="ifelse.html"><a href="ifelse.html#alkioiden-poimiminen-vektorista-tietyh-ehdon-perusteella"><i class="fa fa-check"></i><b>10.3</b> Alkioiden poimiminen vektorista tietyh ehdon perusteella</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>11</b> Toistorakenteet (loops)</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="loops.html"><a href="loops.html#for-silmukka"><i class="fa fa-check"></i><b>11.1</b> For-silmukka</a></li>
-<li class="chapter" data-level="11.2" data-path="loops.html"><a href="loops.html#while-slimukat"><i class="fa fa-check"></i><b>11.2</b> While-slimukat</a></li>
-<li class="chapter" data-level="11.3" data-path="loops.html"><a href="loops.html#sisäkkäiset-silmukat-nested-loops"><i class="fa fa-check"></i><b>11.3</b> Sisäkkäiset silmukat (nested loops)</a></li>
-<li class="chapter" data-level="11.4" data-path="loops.html"><a href="loops.html#iterointiin-puuttuminen-next-ja-break"><i class="fa fa-check"></i><b>11.4</b> Iterointiin puuttuminen: next ja break</a></li>
-<li class="chapter" data-level="11.5" data-path="loops.html"><a href="loops.html#apply-funktiot"><i class="fa fa-check"></i><b>11.5</b> Apply-funktiot</a></li>
-<li class="chapter" data-level="11.6" data-path="loops.html"><a href="loops.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>11.6</b> Vinkkejä tehtäviin</a></li>
+<li class="chapter" data-level="13.1" data-path="loops.html"><a href="loops.html#for-silmukka"><i class="fa fa-check"></i><b>13.1</b> For-silmukka</a></li>
+<li class="chapter" data-level="13.2" data-path="loops.html"><a href="loops.html#while-slimukat"><i class="fa fa-check"></i><b>13.2</b> While-slimukat</a></li>
+<li class="chapter" data-level="13.3" data-path="loops.html"><a href="loops.html#sisäkkäiset-silmukat-nested-loops"><i class="fa fa-check"></i><b>13.3</b> Sisäkkäiset silmukat (nested loops)</a></li>
+<li class="chapter" data-level="13.4" data-path="loops.html"><a href="loops.html#iterointiin-puuttuminen-next-ja-break"><i class="fa fa-check"></i><b>13.4</b> Iterointiin puuttuminen: next ja break</a></li>
+<li class="chapter" data-level="13.5" data-path="loops.html"><a href="loops.html#apply-funktiot"><i class="fa fa-check"></i><b>13.5</b> Apply-funktiot</a></li>
+<li class="chapter" data-level="13.6" data-path="loops.html"><a href="loops.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>13.6</b> Vinkkejä tehtäviin</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Julkaistu bookdownilla.</a></li>
@@ -304,53 +319,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tests" class="section level1" number="7">
-<h1><span class="header-section-number">Kappale 7</span> Tilastollinen testaaminen</h1>
-<div id="chi-squared-test" class="section level2" number="7.1">
-<h2><span class="header-section-number">7.1</span> Khi toiseen -testi</h2>
+<div id="tests" class="section level1" number="9">
+<h1><span class="header-section-number">Kappale 9</span> Tilastollinen testaaminen</h1>
+<div id="chi-squared-test" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Khi toiseen -testi</h2>
 <p>Khi toiseen -testi voidaan toteuttaa seuraavasti.</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="tests.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="do">## From Agresti(2007) p.39</span></span>
-<span id="cb312-2"><a href="tests.html#cb312-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">as.table</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">762</span>, <span class="dv">327</span>, <span class="dv">468</span>), <span class="fu">c</span>(<span class="dv">484</span>, <span class="dv">239</span>, <span class="dv">477</span>)))</span>
-<span id="cb312-3"><a href="tests.html#cb312-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(M) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>),</span>
-<span id="cb312-4"><a href="tests.html#cb312-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">party =</span> <span class="fu">c</span>(<span class="st">&quot;Democrat&quot;</span>,<span class="st">&quot;Independent&quot;</span>, <span class="st">&quot;Republican&quot;</span>))</span>
-<span id="cb312-5"><a href="tests.html#cb312-5" aria-hidden="true" tabindex="-1"></a>(Xsq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(M))  <span class="co"># Prints test summary</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="tests.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="do">## From Agresti(2007) p.39</span></span>
+<span id="cb350-2"><a href="tests.html#cb350-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">as.table</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">762</span>, <span class="dv">327</span>, <span class="dv">468</span>), <span class="fu">c</span>(<span class="dv">484</span>, <span class="dv">239</span>, <span class="dv">477</span>)))</span>
+<span id="cb350-3"><a href="tests.html#cb350-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(M) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>),</span>
+<span id="cb350-4"><a href="tests.html#cb350-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">party =</span> <span class="fu">c</span>(<span class="st">&quot;Democrat&quot;</span>,<span class="st">&quot;Independent&quot;</span>, <span class="st">&quot;Republican&quot;</span>))</span>
+<span id="cb350-5"><a href="tests.html#cb350-5" aria-hidden="true" tabindex="-1"></a>(Xsq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(M))  <span class="co"># Prints test summary</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  M
 ## X-squared = 30.07, df = 2, p-value = 2.954e-07</code></pre>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="tests.html#cb314-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>observed   <span class="co"># observed counts (same as M)</span></span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="tests.html#cb352-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>observed   <span class="co"># observed counts (same as M)</span></span></code></pre></div>
 <pre><code>##       party
 ## gender Democrat Independent Republican
 ##      F      762         327        468
 ##      M      484         239        477</code></pre>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="tests.html#cb316-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>expected   <span class="co"># expected counts under the null</span></span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="tests.html#cb354-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>expected   <span class="co"># expected counts under the null</span></span></code></pre></div>
 <pre><code>##       party
 ## gender Democrat Independent Republican
 ##      F 703.6714    319.6453   533.6834
 ##      M 542.3286    246.3547   411.3166</code></pre>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="tests.html#cb318-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>residuals  <span class="co"># Pearson residuals</span></span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="tests.html#cb356-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>residuals  <span class="co"># Pearson residuals</span></span></code></pre></div>
 <pre><code>##       party
 ## gender   Democrat Independent Republican
 ##      F  2.1988558   0.4113702 -2.8432397
 ##      M -2.5046695  -0.4685829  3.2386734</code></pre>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="tests.html#cb320-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>stdres     <span class="co"># standardized residuals</span></span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="tests.html#cb358-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>stdres     <span class="co"># standardized residuals</span></span></code></pre></div>
 <pre><code>##       party
 ## gender   Democrat Independent Republican
 ##      F  4.5020535   0.6994517 -5.3159455
 ##      M -4.5020535  -0.6994517  5.3159455</code></pre>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="tests.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Effect of simulating p-values</span></span>
-<span id="cb322-2"><a href="tests.html#cb322-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb322-3"><a href="tests.html#cb322-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x)<span class="sc">$</span>p.value           <span class="co"># 0.4233</span></span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="tests.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Effect of simulating p-values</span></span>
+<span id="cb360-2"><a href="tests.html#cb360-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb360-3"><a href="tests.html#cb360-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x)<span class="sc">$</span>p.value           <span class="co"># 0.4233</span></span></code></pre></div>
 <pre><code>## [1] 0.4233054</code></pre>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="tests.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x, <span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>, <span class="at">B =</span> <span class="dv">10000</span>)<span class="sc">$</span>p.value</span></code></pre></div>
-<pre><code>## [1] 0.2923708</code></pre>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="tests.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x, <span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>, <span class="at">B =</span> <span class="dv">10000</span>)<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.289671</code></pre>
 </div>
-<div id="kahden-otoksen-t-testi" class="section level2" number="7.2">
-<h2><span class="header-section-number">7.2</span> Kahden otoksen t-testi</h2>
+<div id="kahden-otoksen-t-testi" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Kahden otoksen t-testi</h2>
 </div>
-<div id="varianssianalyysi" class="section level2" number="7.3">
-<h2><span class="header-section-number">7.3</span> Varianssianalyysi</h2>
+<div id="varianssianalyysi" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Varianssianalyysi</h2>
 
 </div>
 </div>
@@ -360,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="plotting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="linear-models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

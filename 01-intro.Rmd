@@ -243,11 +243,12 @@ is.na(missing)
 complete.cases(missing)
 ```
 
-## Extra: Alkeistietotyypit ja puuttuvat arvot {#extra}
+## Extra: Alkeistietotyypit ja erikoisarvot {#extra}
 
 Tässä lisätieto-osiossa käsitellään asioita, joita et välttämättä tarvitse kurssista suoriutuaksesi. Mikäli käytät R:ää enemmän, niin vastaan tulee enemmin tai myöhemmin ongelmia, joissa tarvitsee näitä taitoja. Voit palata näihin myöhemmin koska tahansa, kun haluat syventää ymmärrystäsi R:stä.
 
 R on rakennettu sisäisesti siten, että vektorin kukin elementti on jotain alkeistietotyyppiä. Valmiina R:ssä on neljä alkeistietotyyppiä:
+
  - numeerinen (eli reaaliluku)
  - kokonaisluku (integer)
  - merkkijono (character)
@@ -307,7 +308,7 @@ class(NA)
 class(NA_real_)
 ```
 
-#### Ääretön ja miinus ääretön
+### Ääretön ja miinus ääretön
 
 R:ssä on myös ääretön ja miinus ääretön. Ne on toteutettu samaan tapaan kuin puuttuva arvo on toteutettu, mutta niiden tarkasteluun on omat funktionsa. Ääretön ja miinus ääretön arvot syntyvät, jos aineistossa jaetaan nollalla.
 
@@ -322,9 +323,9 @@ x_div_zero <- c(1,2,-3)/c(3,0,0)
 x_div_zero
 is.finite(x_div_zero)
 ```
-#### Ei-numero
+### Ei-numero
 
-Mikäli R:ssä sattuu jakamaan nollan nollalla (joka siis ei ole matermatiikassa sallittua), niin tämä tuottaa R:ssä tietotyypin, joka on NaN (lyhenne sanoista Not a Number). Mikäli NaN-arvoa tutkii funktiolla is.finite tai is.na, niin huomaa että NaN ei ole äärellinen ja NaN tulkitaan NA:ksi.
+Mikäli R:ssä sattuu jakamaan nollan nollalla (joka siis ei ole matermatiikassa sallittua), niin tämä tuottaa R:ssä tietotyypin, joka on ```NaN``` (lyhenne sanoista Not a Number). Mikäli ```NaN```-arvoa tutkii funktiolla ```is.finite``` tai ```is.na```, niin huomaa että ```NaN``` ei ole äärellinen ja ```NaN``` tulkitaan ```NA```:ksi.
 
 ```{r}
 x_div_zero_by_zero <- 0/0
