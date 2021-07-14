@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Todennäköisyysjakaumat {#distributions}
+=======
+# Todennäköisyysjakaumat R:ssä {#distributions}
+>>>>>>> 2addb63fb17a5ba14a96f219e1a448ce0ad905ba
 
 Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista on valmiita funktiota R:ssä. Funktiota on neljää eri tyyppiä, jotka merkataan funktion nimen ensimmäisellä kirjaimella.
 

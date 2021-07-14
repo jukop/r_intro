@@ -16,12 +16,15 @@ Tämä opiskelumateriaali on luotu bookdown-verkkokirjaohjelman avulla. Kirjaa v
 ## Lunttilappu {-}
 
 Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli "lunttilappua". Lunttilapusta on helppo tarkastaa miten jokin jo oppimasi asia tehdään R:ssä, jos et vielä muista kunnolla kyseistä asiaa. Internetistä löytyy Cheat Sheetejä useisiin [R-paketteihin](https://www.rstudio.com/resources/cheatsheets/) ja muihin kokonaisuuksiin, mutta tässä käytetään Base R Cheat Sheetiä. Lataa Base R Cheat Sheet itsellesi [painamalla tästä](files/base_R_cheat_sheet.pdf). Suosittelen tulostamaan lunttilapun värillisenä kaksipuoleisena. Mikäli mahdollista niin A3-kokoisena tulosteena teksti näkyy parhaiten.
+<<<<<<< HEAD
 
 ## Verkkolähteitä {-}
 
 Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä kuitenkin joitakin verkosta löytyviä lähteitä, joista voi olla apua.
 
  - [Tutorialspoint](https://www.tutorialspoint.com/r/index.htm) Soveltuu R:n opiskeluun englannin kielellä, jos osaa entuudestaan jo vähän ohjelmoida.
+=======
+>>>>>>> 2addb63fb17a5ba14a96f219e1a448ce0ad905ba
 
 ## Sisällysluettelo {-}
 
@@ -41,7 +44,10 @@ Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä 
   * [Uuden muuttujan tai rivin luonti datakehikkoon](#data-frame-wrangling)
   * [Osajoukkojen valinta](#osajoukkojen-valinta)
   * [Faktorit](#faktorit)
+<<<<<<< HEAD
   * Faktor-vektorit (POISTA tai yhdistä!)
+=======
+>>>>>>> 2addb63fb17a5ba14a96f219e1a448ce0ad905ba
 - [Tunnusluvut](#statistics)
   * [Sijaintia kuvaavat tunnusluvut](#sijaintia-kuvaavat-tunnusluvut)
   * [summary()](#summary)
