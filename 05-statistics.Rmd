@@ -63,7 +63,6 @@ sort(dat_for_median) # Median would be the middle value in the arranged data, th
 # Getting median in R
 median(dat_for_median)
 ```
-<<<<<<< HEAD
 ### Kvantiilit
 
 Mediaani siis kertoi kohdan, jossa 50 % aineistosta on pienenmpiä kuin kyseinen arvo. Entä, jos haluamme luvun, joka kertoo luvun, jota pienempiä ovat vaikkapa 10 % aineistosta? Tai mikä tahansa muu osuus? Tällainen yleistys on nimeltään kvantiili. Joillakin kvantiileilla on erityisnimet. Ne ovat
@@ -123,11 +122,8 @@ names(tab)[which.max(tab)]
 as.numeric(names(tab)[which.max(tab)])
 ```
 
-<<<<<<< HEAD
+
 Ylläoleva käy itse asiassa hyvästä esimerkistä tilanteesta, jossa seuraavaksi tekisin viimeisen rivin funktioksi ja jatkossa käyttäisin kyseistä funktiota työssäni. Funktioihin palataan osiossa [Funktiot](#functions). En malta olla tekemättä funktiota, joten olkoon alla esimerkki moodi-funktiosta ilman suurempia selityksiä.
-=======
-Ylläoleva käy itse asiassa hyvästä esimerkistä tilanteesta, jossa seuraavaksi tekisin viimeisen rivin funktioksi ja jatkossa käyttäisin kyseistä funktiota työssäni. Funktiohin palataan osiossa [Funktiot](#functions). En malta olla tekemättä niin, joten olkoon alla esimerkki moodi-funktiosta ilman suurempia selityksiä.
->>>>>>> 2addb63fb17a5ba14a96f219e1a448ce0ad905ba
 
 ```{r}
 # Write a function for mode
