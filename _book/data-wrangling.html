@@ -32,7 +32,7 @@
   
 <link rel="prev" href="reading-data.html"/>
 <link rel="next" href="statistics.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -231,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#osajoukkojen-valinta"><i class="fa fa-check"></i><b>5.2</b> Osajoukkojen valinta</a></li>
 <li class="chapter" data-level="5.3" data-path="data-wrangling.html"><a href="data-wrangling.html#faktorit"><i class="fa fa-check"></i><b>5.3</b> Faktorit</a></li>
-<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#factor-vektorit-vanha-teksti"><i class="fa fa-check"></i><b>5.4</b> Factor-vektorit (vanha teksti)</a></li>
+<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#extra-lääketutkimusesimerkki"><i class="fa fa-check"></i><b>5.4</b> Extra: Lääketutkimusesimerkki</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>6</b> Tunnusluvut</a>
 <ul>
@@ -246,7 +246,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2" data-path="statistics.html"><a href="statistics.html#summary"><i class="fa fa-check"></i><b>6.2</b> summary()</a></li>
 <li class="chapter" data-level="6.3" data-path="statistics.html"><a href="statistics.html#varianssi-ja-keskihajonta-ja-kvantiilit"><i class="fa fa-check"></i><b>6.3</b> Varianssi ja keskihajonta ja kvantiilit</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>7</b> Todennäköisyysjakaumat</a>
+<li class="chapter" data-level="7" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>7</b> Todennäköisyysjakaumat R:ssä</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="distributions.html"><a href="distributions.html#esimerkki-normaalijakauma"><i class="fa fa-check"></i><b>7.1</b> Esimerkki: normaalijakauma</a></li>
 <li class="chapter" data-level="7.2" data-path="distributions.html"><a href="distributions.html#muita-jakaumia"><i class="fa fa-check"></i><b>7.2</b> Muita jakaumia</a></li>
@@ -334,11 +334,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla todella työlästä. Tällöin saattaa joutua yhdistelemään aineistoja useista lähteistä, etsimään virheellisiä arvoja, muokkaamaan tekstimuotoisia (character) muuttujia eri muotoon jne. Mikäli aiot muokata tekstimuotoisia vektoreita eri muotoon, niin kannattaa muuttaa ne faktoriksi vasta lopuksi, sillä muuttujan ei ole yleensä tarpeellista olla faktorimuodossa aineistojan muokatessa. Faktorit ovat tyypillisesti tarpeen vasta kun aineistoa aletaan todella analysoimaan.</p>
 <div id="data-frame-wrangling" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Uuden muuttujan tai rivin luonti datakehikkoon</h2>
-<p>TODO: Uuden muuttujan luonti puuttuu</p>
+<p>Uusi muuttuja voidaan luoda R:ssä joko perustuen aineiston muihin muuttujiin, tai muuttujan arvot voidaan syöttää vektorina aineistoon. Mikäli uusi muuttuja syötetään lukuina R-koodiin, tulee varmistua siitä, että havaintoja on sama määrä kuin aineistossa on rivejä. Muutoin aineisto tulee syötettyä virheellisesti ja tulokset eivät pidä paikkaansa.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="data-wrangling.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># evaluate the number of rows and columns</span></span>
+<span id="cb251-2"><a href="data-wrangling.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(study_data)</span></code></pre></div>
+<pre><code>## [1] 8 3</code></pre>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="data-wrangling.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># there are 8 rows</span></span>
+<span id="cb253-2"><a href="data-wrangling.html#cb253-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb253-3"><a href="data-wrangling.html#cb253-3" aria-hidden="true" tabindex="-1"></a><span class="co"># initiate a new variable called weight (imput data) with correct number of rows</span></span>
+<span id="cb253-4"><a href="data-wrangling.html#cb253-4" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">78.2</span>, <span class="fl">65.8</span>, <span class="fl">49.2</span>, <span class="fl">71.2</span>, <span class="fl">58.3</span>, <span class="fl">54.1</span>, <span class="fl">74.2</span>, <span class="fl">62.8</span>)</span>
+<span id="cb253-5"><a href="data-wrangling.html#cb253-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb253-6"><a href="data-wrangling.html#cb253-6" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate a new variable based on existing variables</span></span>
+<span id="cb253-7"><a href="data-wrangling.html#cb253-7" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>height_m <span class="ot">&lt;-</span> study_data<span class="sc">$</span>height <span class="sc">/</span> <span class="dv">100</span> <span class="co"># height as metres</span></span>
+<span id="cb253-8"><a href="data-wrangling.html#cb253-8" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>BMI <span class="ot">&lt;-</span> study_data<span class="sc">$</span>weight <span class="sc">/</span> (study_data<span class="sc">$</span>height_m<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb253-9"><a href="data-wrangling.html#cb253-9" aria-hidden="true" tabindex="-1"></a>study_data</span></code></pre></div>
+<pre><code>##   ID height gender weight height_m        BMI
+## 1  1  189.8   male   78.2    1.898   21.70773
+## 2  2  184.0 female   65.8    1.840   19.43526
+## 3  3  173.8   male   49.2    1.738   16.28792
+## 4  4  175.9   male   71.2    1.759   23.01168
+## 5  5  169.0 female   58.3    1.690   20.41245
+## 6  6  183.7   male   54.1    1.837   16.03168
+## 7  7  181.8   male   74.2    1.818   22.44999
+## 8  8   16.9 female   62.8    0.169 2198.80256</code></pre>
 <div id="data-framen-käsittely" class="section level3" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Data framen käsittely</h3>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="data-wrangling.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subscripting with variable names</span></span>
-<span id="cb251-2"><a href="data-wrangling.html#cb251-2" aria-hidden="true" tabindex="-1"></a>study_data[, <span class="fu">c</span>(<span class="st">&quot;height&quot;</span>, <span class="st">&quot;gender&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="data-wrangling.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subscripting with variable names</span></span>
+<span id="cb255-2"><a href="data-wrangling.html#cb255-2" aria-hidden="true" tabindex="-1"></a>study_data[, <span class="fu">c</span>(<span class="st">&quot;height&quot;</span>, <span class="st">&quot;gender&quot;</span>)]</span></code></pre></div>
 <pre><code>##   height gender
 ## 1  189.8   male
 ## 2  184.0 female
@@ -348,8 +369,8 @@ Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla t
 ## 6  183.7   male
 ## 7  181.8   male
 ## 8   16.9 female</code></pre>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="data-wrangling.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subscripting with brackets - as matrix (but I do not recommend this style!)</span></span>
-<span id="cb253-2"><a href="data-wrangling.html#cb253-2" aria-hidden="true" tabindex="-1"></a>study_data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="data-wrangling.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subscripting with brackets - as matrix (but I do not recommend this style!)</span></span>
+<span id="cb257-2"><a href="data-wrangling.html#cb257-2" aria-hidden="true" tabindex="-1"></a>study_data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##   ID height
 ## 1  1  189.8
 ## 2  2  184.0
@@ -359,114 +380,114 @@ Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla t
 ## 6  6  183.7
 ## 7  7  181.8
 ## 8  8   16.9</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="data-wrangling.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rownames and colnames</span></span>
-<span id="cb255-2"><a href="data-wrangling.html#cb255-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(study_data)</span></code></pre></div>
-<pre><code>## [1] &quot;ID&quot;     &quot;height&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="data-wrangling.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(study_data)</span></code></pre></div>
-<pre><code>## [1] &quot;ID&quot;     &quot;height&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="data-wrangling.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Individual columns can be accessed and added with dollar sign</span></span>
-<span id="cb259-2"><a href="data-wrangling.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s say that we find out that the ID number 8 was typed in incorrectly. We can fix the entire height variables as follows</span></span>
-<span id="cb259-3"><a href="data-wrangling.html#cb259-3" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">189.8</span>, <span class="fl">184.0</span>, <span class="fl">173.8</span>, <span class="fl">175.9</span>, <span class="fl">169.0</span>, <span class="fl">183.7</span>, <span class="cn">NA</span>, <span class="fl">160.9</span>)</span>
-<span id="cb259-4"><a href="data-wrangling.html#cb259-4" aria-hidden="true" tabindex="-1"></a>study_data</span></code></pre></div>
-<pre><code>##   ID height gender
-## 1  1  189.8   male
-## 2  2  184.0 female
-## 3  3  173.8   male
-## 4  4  175.9   male
-## 5  5  169.0 female
-## 6  6  183.7   male
-## 7  7     NA   male
-## 8  8  160.9 female</code></pre>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="data-wrangling.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="co"># It would have been possible to change value of only one cell e.g. like this</span></span>
-<span id="cb261-2"><a href="data-wrangling.html#cb261-2" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>height[<span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="fl">161.9</span></span>
-<span id="cb261-3"><a href="data-wrangling.html#cb261-3" aria-hidden="true" tabindex="-1"></a>study_data</span></code></pre></div>
-<pre><code>##   ID height gender
-## 1  1  189.8   male
-## 2  2  184.0 female
-## 3  3  173.8   male
-## 4  4  175.9   male
-## 5  5  169.0 female
-## 6  6  183.7   male
-## 7  7     NA   male
-## 8  8  161.9 female</code></pre>
-<p>Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla <code>rbind()</code>. Käyttäjän tulee myös huolehtia siitä, että sarakkeet ovat samaa tyyppiä kuin alkuperäisessä data framessa.</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="data-wrangling.html#cb263-1" aria-hidden="true" tabindex="-1"></a>new_row <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ID =</span> <span class="dv">11</span>, <span class="at">height =</span> <span class="dv">182</span>, <span class="at">gender =</span> <span class="st">&quot;male&quot;</span>)</span>
-<span id="cb263-2"><a href="data-wrangling.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(study_data, new_row)</span></code></pre></div>
-<pre><code>##   ID height gender
-## 1  1  189.8   male
-## 2  2  184.0 female
-## 3  3  173.8   male
-## 4  4  175.9   male
-## 5  5  169.0 female
-## 6  6  183.7   male
-## 7  7     NA   male
-## 8  8  161.9 female
-## 9 11  182.0   male</code></pre>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="data-wrangling.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rownames and colnames</span></span>
+<span id="cb259-2"><a href="data-wrangling.html#cb259-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(study_data)</span></code></pre></div>
+<pre><code>## [1] &quot;ID&quot;       &quot;height&quot;   &quot;gender&quot;   &quot;weight&quot;   &quot;height_m&quot; &quot;BMI&quot;</code></pre>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="data-wrangling.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(study_data)</span></code></pre></div>
+<pre><code>## [1] &quot;ID&quot;       &quot;height&quot;   &quot;gender&quot;   &quot;weight&quot;   &quot;height_m&quot; &quot;BMI&quot;</code></pre>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="data-wrangling.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Individual columns can be accessed and added with dollar sign</span></span>
+<span id="cb263-2"><a href="data-wrangling.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s say that we find out that the ID number 8 was typed in incorrectly. We can fix the entire height variables as follows</span></span>
+<span id="cb263-3"><a href="data-wrangling.html#cb263-3" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">189.8</span>, <span class="fl">184.0</span>, <span class="fl">173.8</span>, <span class="fl">175.9</span>, <span class="fl">169.0</span>, <span class="fl">183.7</span>, <span class="cn">NA</span>, <span class="fl">160.9</span>)</span>
+<span id="cb263-4"><a href="data-wrangling.html#cb263-4" aria-hidden="true" tabindex="-1"></a>study_data</span></code></pre></div>
+<pre><code>##   ID height gender weight height_m        BMI
+## 1  1  189.8   male   78.2    1.898   21.70773
+## 2  2  184.0 female   65.8    1.840   19.43526
+## 3  3  173.8   male   49.2    1.738   16.28792
+## 4  4  175.9   male   71.2    1.759   23.01168
+## 5  5  169.0 female   58.3    1.690   20.41245
+## 6  6  183.7   male   54.1    1.837   16.03168
+## 7  7     NA   male   74.2    1.818   22.44999
+## 8  8  160.9 female   62.8    0.169 2198.80256</code></pre>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="data-wrangling.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="co"># It would have been possible to change value of only one cell e.g. like this</span></span>
+<span id="cb265-2"><a href="data-wrangling.html#cb265-2" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>height[<span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="fl">161.9</span></span>
+<span id="cb265-3"><a href="data-wrangling.html#cb265-3" aria-hidden="true" tabindex="-1"></a>study_data</span></code></pre></div>
+<pre><code>##   ID height gender weight height_m        BMI
+## 1  1  189.8   male   78.2    1.898   21.70773
+## 2  2  184.0 female   65.8    1.840   19.43526
+## 3  3  173.8   male   49.2    1.738   16.28792
+## 4  4  175.9   male   71.2    1.759   23.01168
+## 5  5  169.0 female   58.3    1.690   20.41245
+## 6  6  183.7   male   54.1    1.837   16.03168
+## 7  7     NA   male   74.2    1.818   22.44999
+## 8  8  161.9 female   62.8    0.169 2198.80256</code></pre>
+<p>Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä (samassa järjestyksessä), ja vasta sitten liittää se komennolla <code>rbind()</code>. Käyttäjän tulee myös huolehtia siitä, että sarakkeet ovat samaa tyyppiä kuin alkuperäisessä data framessa.</p>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="data-wrangling.html#cb267-1" aria-hidden="true" tabindex="-1"></a>new_row <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ID =</span> <span class="dv">11</span>, <span class="at">height =</span> <span class="dv">182</span>, <span class="at">gender =</span> <span class="st">&quot;male&quot;</span>, <span class="at">weight =</span> <span class="fl">81.2</span>, <span class="at">height_m =</span> <span class="fl">1.82</span>, <span class="at">BMI =</span> <span class="fl">81.2</span> <span class="sc">/</span> <span class="fl">1.82</span><span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb267-2"><a href="data-wrangling.html#cb267-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(study_data, new_row)</span></code></pre></div>
+<pre><code>##   ID height gender weight height_m        BMI
+## 1  1  189.8   male   78.2    1.898   21.70773
+## 2  2  184.0 female   65.8    1.840   19.43526
+## 3  3  173.8   male   49.2    1.738   16.28792
+## 4  4  175.9   male   71.2    1.759   23.01168
+## 5  5  169.0 female   58.3    1.690   20.41245
+## 6  6  183.7   male   54.1    1.837   16.03168
+## 7  7     NA   male   74.2    1.818   22.44999
+## 8  8  161.9 female   62.8    0.169 2198.80256
+## 9 11  182.0   male   81.2    1.820   24.51395</code></pre>
 </div>
 </div>
 <div id="osajoukkojen-valinta" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Osajoukkojen valinta</h2>
 <p>Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita ja jos kriteerejä on useita niin myös loogisia operaattoreita. Tarkemmin operaattoreita käsitellään luvussa <a href="ifelse.html#loogiset-operaattorit">Loogiset operaattorit</a>. Voit käyttää kyseisen osion taulukkoa apuna jo tässä osiossa.</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="data-wrangling.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter only females</span></span>
-<span id="cb265-2"><a href="data-wrangling.html#cb265-2" aria-hidden="true" tabindex="-1"></a>study_data[study_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">&quot;female&quot;</span>, ]</span></code></pre></div>
-<pre><code>##   ID height gender
-## 2  2  184.0 female
-## 5  5  169.0 female
-## 8  8  161.9 female</code></pre>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="data-wrangling.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter individuals whose height is less than or equal to 175</span></span>
-<span id="cb267-2"><a href="data-wrangling.html#cb267-2" aria-hidden="true" tabindex="-1"></a>study_data[study_data<span class="sc">$</span>height <span class="sc">&lt;=</span> <span class="dv">175</span>, ]</span></code></pre></div>
-<pre><code>##    ID height gender
-## 3   3  173.8   male
-## 5   5  169.0 female
-## NA NA     NA   &lt;NA&gt;
-## 8   8  161.9 female</code></pre>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="data-wrangling.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter individuals whose height is not missing and is less than or equal to 175</span></span>
-<span id="cb269-2"><a href="data-wrangling.html#cb269-2" aria-hidden="true" tabindex="-1"></a>study_data[<span class="sc">!</span><span class="fu">is.na</span>(study_data<span class="sc">$</span>height) <span class="sc">&amp;</span> study_data<span class="sc">$</span>height <span class="sc">&lt;=</span> <span class="dv">175</span>, ]</span></code></pre></div>
-<pre><code>##   ID height gender
-## 3  3  173.8   male
-## 5  5  169.0 female
-## 8  8  161.9 female</code></pre>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="data-wrangling.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use multiple filter criteria</span></span>
-<span id="cb271-2"><a href="data-wrangling.html#cb271-2" aria-hidden="true" tabindex="-1"></a>study_data[study_data<span class="sc">$</span>height <span class="sc">&lt;=</span> <span class="dv">175</span> <span class="sc">&amp;</span> study_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">&quot;female&quot;</span>, ]</span></code></pre></div>
-<pre><code>##   ID height gender
-## 5  5  169.0 female
-## 8  8  161.9 female</code></pre>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="data-wrangling.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter only females</span></span>
+<span id="cb269-2"><a href="data-wrangling.html#cb269-2" aria-hidden="true" tabindex="-1"></a>study_data[study_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">&quot;female&quot;</span>, ]</span></code></pre></div>
+<pre><code>##   ID height gender weight height_m        BMI
+## 2  2  184.0 female   65.8    1.840   19.43526
+## 5  5  169.0 female   58.3    1.690   20.41245
+## 8  8  161.9 female   62.8    0.169 2198.80256</code></pre>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="data-wrangling.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter individuals whose height is less than or equal to 175</span></span>
+<span id="cb271-2"><a href="data-wrangling.html#cb271-2" aria-hidden="true" tabindex="-1"></a>study_data[study_data<span class="sc">$</span>height <span class="sc">&lt;=</span> <span class="dv">175</span>, ]</span></code></pre></div>
+<pre><code>##    ID height gender weight height_m        BMI
+## 3   3  173.8   male   49.2    1.738   16.28792
+## 5   5  169.0 female   58.3    1.690   20.41245
+## NA NA     NA   &lt;NA&gt;     NA       NA         NA
+## 8   8  161.9 female   62.8    0.169 2198.80256</code></pre>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="data-wrangling.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter individuals whose height is not missing and is less than or equal to 175</span></span>
+<span id="cb273-2"><a href="data-wrangling.html#cb273-2" aria-hidden="true" tabindex="-1"></a>study_data[<span class="sc">!</span><span class="fu">is.na</span>(study_data<span class="sc">$</span>height) <span class="sc">&amp;</span> study_data<span class="sc">$</span>height <span class="sc">&lt;=</span> <span class="dv">175</span>, ]</span></code></pre></div>
+<pre><code>##   ID height gender weight height_m        BMI
+## 3  3  173.8   male   49.2    1.738   16.28792
+## 5  5  169.0 female   58.3    1.690   20.41245
+## 8  8  161.9 female   62.8    0.169 2198.80256</code></pre>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="data-wrangling.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use multiple filter criteria</span></span>
+<span id="cb275-2"><a href="data-wrangling.html#cb275-2" aria-hidden="true" tabindex="-1"></a>study_data[study_data<span class="sc">$</span>height <span class="sc">&lt;=</span> <span class="dv">175</span> <span class="sc">&amp;</span> study_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">&quot;female&quot;</span>, ]</span></code></pre></div>
+<pre><code>##   ID height gender weight height_m        BMI
+## 5  5  169.0 female   58.3    1.690   20.41245
+## 8  8  161.9 female   62.8    0.169 2198.80256</code></pre>
 </div>
 <div id="faktorit" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Faktorit</h2>
 <p>R:n numeeriset vektorit ovat lähtökohtaisesti jatkuva-asteikollisia. Olet ehkä ihmetellytkin, miten kategorinen muuttuja määritellään. Kategorista muuttujaa sanotaan R:ssä faktoriksi. Numeerisen tai tekstimuotoisen muuttujan tai vektorin voi muuttaa faktori-muotoiseksi muuttujaksi <code>factor</code> -funktiolla.</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="data-wrangling.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s change gender from character string to a factor and rename it as fgender</span></span>
-<span id="cb273-2"><a href="data-wrangling.html#cb273-2" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>fgender <span class="ot">&lt;-</span> <span class="fu">factor</span>(study_data<span class="sc">$</span>gender)</span>
-<span id="cb273-3"><a href="data-wrangling.html#cb273-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb273-4"><a href="data-wrangling.html#cb273-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s now compare the printing of gender and fgender</span></span>
-<span id="cb273-5"><a href="data-wrangling.html#cb273-5" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>gender</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="data-wrangling.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s change gender from character string to a factor and rename it as fgender</span></span>
+<span id="cb277-2"><a href="data-wrangling.html#cb277-2" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>fgender <span class="ot">&lt;-</span> <span class="fu">factor</span>(study_data<span class="sc">$</span>gender)</span>
+<span id="cb277-3"><a href="data-wrangling.html#cb277-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb277-4"><a href="data-wrangling.html#cb277-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s now compare the printing of gender and fgender</span></span>
+<span id="cb277-5"><a href="data-wrangling.html#cb277-5" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>gender</span></code></pre></div>
 <pre><code>## [1] &quot;male&quot;   &quot;female&quot; &quot;male&quot;   &quot;male&quot;   &quot;female&quot; &quot;male&quot;   &quot;male&quot;   &quot;female&quot;</code></pre>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="data-wrangling.html#cb275-1" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>fgender</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="data-wrangling.html#cb279-1" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>fgender</span></code></pre></div>
 <pre><code>## [1] male   female male   male   female male   male   female
 ## Levels: female male</code></pre>
 <p>Huomataan, että faktori tulostaa faktorin tasot eli kaikkien mahdollisten luokkien nimet faktorin perässä: <code>Levels: female male</code>.</p>
 <p>Usein vastaan tulee myös tilanne, jossa faktorin eri tasoja vastaa kokonaislukuarvot, kuten tässä esimerkissä 1, 2 ja 3. Tällaisessa tilanteessa faktorin tasojen merkitys on usein annettu jossain dokumenttitiedostossa. Tällöin faktorin tasot ja niiden kuvaukset (labels) tulee määrittää käsin.</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="data-wrangling.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data for this example</span></span>
-<span id="cb277-2"><a href="data-wrangling.html#cb277-2" aria-hidden="true" tabindex="-1"></a>wall_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">building_ID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), <span class="at">building_material =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb277-3"><a href="data-wrangling.html#cb277-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb277-4"><a href="data-wrangling.html#cb277-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Name is &#39;building_material&#39; very long, I want to rename it</span></span>
-<span id="cb277-5"><a href="data-wrangling.html#cb277-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(wall_dat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;building_ID&quot;</span>,<span class="st">&quot;build_mat&quot;</span>)</span>
-<span id="cb277-6"><a href="data-wrangling.html#cb277-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb277-7"><a href="data-wrangling.html#cb277-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We know from some kind of documentation that 1 stands for &quot;wood&quot;, 2 is &quot;steel&quot; and 3 is &quot;brick&quot;.</span></span>
-<span id="cb277-8"><a href="data-wrangling.html#cb277-8" aria-hidden="true" tabindex="-1"></a>wall_dat<span class="sc">$</span>fbuild_mat <span class="ot">&lt;-</span> <span class="fu">factor</span>(wall_dat<span class="sc">$</span>build_mat,<span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;wood&quot;</span>, <span class="st">&quot;steel&quot;</span>, <span class="st">&quot;brick&quot;</span>))</span>
-<span id="cb277-9"><a href="data-wrangling.html#cb277-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb277-10"><a href="data-wrangling.html#cb277-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wall_dat)</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="data-wrangling.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data for this example</span></span>
+<span id="cb281-2"><a href="data-wrangling.html#cb281-2" aria-hidden="true" tabindex="-1"></a>wall_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">building_ID =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), <span class="at">building_material =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb281-3"><a href="data-wrangling.html#cb281-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb281-4"><a href="data-wrangling.html#cb281-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Name is &#39;building_material&#39; very long, I want to rename it</span></span>
+<span id="cb281-5"><a href="data-wrangling.html#cb281-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(wall_dat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;building_ID&quot;</span>,<span class="st">&quot;build_mat&quot;</span>)</span>
+<span id="cb281-6"><a href="data-wrangling.html#cb281-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb281-7"><a href="data-wrangling.html#cb281-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We know from some kind of documentation that 1 stands for &quot;wood&quot;, 2 is &quot;steel&quot; and 3 is &quot;brick&quot;.</span></span>
+<span id="cb281-8"><a href="data-wrangling.html#cb281-8" aria-hidden="true" tabindex="-1"></a>wall_dat<span class="sc">$</span>fbuild_mat <span class="ot">&lt;-</span> <span class="fu">factor</span>(wall_dat<span class="sc">$</span>build_mat,<span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;wood&quot;</span>, <span class="st">&quot;steel&quot;</span>, <span class="st">&quot;brick&quot;</span>))</span>
+<span id="cb281-9"><a href="data-wrangling.html#cb281-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb281-10"><a href="data-wrangling.html#cb281-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wall_dat)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    6 obs. of  3 variables:
 ##  $ building_ID: num  1 2 3 4 5 6
 ##  $ build_mat  : num  1 1 2 2 3 3
 ##  $ fbuild_mat : Factor w/ 3 levels &quot;wood&quot;,&quot;steel&quot;,..: 1 1 2 2 3 3</code></pre>
 </div>
-<div id="factor-vektorit-vanha-teksti" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Factor-vektorit (vanha teksti)</h2>
+<div id="extra-lääketutkimusesimerkki" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Extra: Lääketutkimusesimerkki</h2>
 <p>R:ssä on aiemmin nähtyjen numeric, character ja logical-vektorien lisäksi muitakin vektoriluokkia, tärkeimpänä näistä factor. Factor-vektoreihin tallennetaan kategorisia muuttujia, kuten tutkimuksessa määrättyjä ryhmiä, aikapisteitä tms. Luodaan esimerkiksi factor-vektori, jossa on kuvitteellisen lääketutkimuksen osallistujien ryhmätiedot:</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="data-wrangling.html#cb279-1" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">&quot;drug1&quot;</span>, <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;drug1&quot;</span>, <span class="st">&quot;control&quot;</span>,</span>
-<span id="cb279-2"><a href="data-wrangling.html#cb279-2" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;drug1&quot;</span>))</span>
-<span id="cb279-3"><a href="data-wrangling.html#cb279-3" aria-hidden="true" tabindex="-1"></a>groups</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="data-wrangling.html#cb283-1" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">&quot;drug1&quot;</span>, <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;drug1&quot;</span>, <span class="st">&quot;control&quot;</span>,</span>
+<span id="cb283-2"><a href="data-wrangling.html#cb283-2" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;drug1&quot;</span>))</span>
+<span id="cb283-3"><a href="data-wrangling.html#cb283-3" aria-hidden="true" tabindex="-1"></a>groups</span></code></pre></div>
 <pre><code>##  [1] drug1   drug2   control drug1   control drug2   drug2   control control
 ## [10] drug1  
 ## Levels: control drug1 drug2</code></pre>
@@ -474,25 +495,25 @@ Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla t
 <p>Kuten tulosteesta nähdään, factor-vektorin tulostus tulostaa factorin alkiot (HUOM: ei hipsuja) sekä factorin tasot. Factorit ovat pinnan alla kokonaisluku- eli integer-vektoreita, joissa on päällä “kerros”, joka määrittää factorin tasot. Edellä nähty vektori groups näyttää siis tältä:</p>
 <p><img src="files/05-statistics/factor.png" /></p>
 <p>Factorien tasoille annetaan siis lukuarvot ykkösestä eteenpäin. Oletuksena ensimmäinen taso eli taso 1 on aakkosissa ensimmäinen arvo, tai pienin lukuarvo jos factori tehdään numeerisista muuttujista. Lukuarvot saa näkyville muuntamalla factorin numeeriseksi vektoriksi:</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="data-wrangling.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(groups)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="data-wrangling.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(groups)</span></code></pre></div>
 <pre><code>##  [1] 2 3 1 2 1 3 3 1 1 2</code></pre>
 <p>Tasojen järjestyksen voi myös päättää itse. Tämä on tärkeää, sillä kuten pian nähdään, factorin ensimmäinen taso on monissa tilastollisissa testeissä ns. referenssitaso, johon muita tasoja verrataan. Usein esiintyvä tapaus ovat tutkimukset, joissa on ryhmät nimeltä case ja control. Koska case on aakkosissa ennen controllia, R käyttää oletuksen case-ryhmää referenssitasona, ja testaa miten control-ryhmä poikkeaa tästä tasosta, vaikka haluaisimme päinvastaisen tuloksen. Tasot voi itse määrittää näin:</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="data-wrangling.html#cb283-1" aria-hidden="true" tabindex="-1"></a>study_groups <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>, <span class="st">&quot;case&quot;</span>),</span>
-<span id="cb283-2"><a href="data-wrangling.html#cb283-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>))</span>
-<span id="cb283-3"><a href="data-wrangling.html#cb283-3" aria-hidden="true" tabindex="-1"></a>study_groups</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="data-wrangling.html#cb287-1" aria-hidden="true" tabindex="-1"></a>study_groups <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>, <span class="st">&quot;case&quot;</span>),</span>
+<span id="cb287-2"><a href="data-wrangling.html#cb287-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>))</span>
+<span id="cb287-3"><a href="data-wrangling.html#cb287-3" aria-hidden="true" tabindex="-1"></a>study_groups</span></code></pre></div>
 <pre><code>## [1] case    control control case    case   
 ## Levels: control case</code></pre>
 <p>Nyt tasot ovat oikeassa järjestyksessä!</p>
 <p>Kuten aiemmin mainittiin, factoreita voi tehdä myös numeerisista vektoreista. HUOM: muista, että <code>as.numeric()</code> palauttaa factorin kokonaislukuarvot, ei alkuperäisiä lukuja. Alkuperäiset luvut saa käyttämällä ensin <code>as.character</code>-funktiota, joka muuttaa factorin tasot merkkijonovektoriksi.</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="data-wrangling.html#cb285-1" aria-hidden="true" tabindex="-1"></a>time_points <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>))</span>
-<span id="cb285-2"><a href="data-wrangling.html#cb285-2" aria-hidden="true" tabindex="-1"></a>time_points</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="data-wrangling.html#cb289-1" aria-hidden="true" tabindex="-1"></a>time_points <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>))</span>
+<span id="cb289-2"><a href="data-wrangling.html#cb289-2" aria-hidden="true" tabindex="-1"></a>time_points</span></code></pre></div>
 <pre><code>## [1] 0 0 1 1 5 5 1 0 5
 ## Levels: 0 1 5</code></pre>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="data-wrangling.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probably not what you expect</span></span>
-<span id="cb287-2"><a href="data-wrangling.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(time_points)</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="data-wrangling.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probably not what you expect</span></span>
+<span id="cb291-2"><a href="data-wrangling.html#cb291-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(time_points)</span></code></pre></div>
 <pre><code>## [1] 1 1 2 2 3 3 2 1 3</code></pre>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="data-wrangling.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First to character, then to numeric</span></span>
-<span id="cb289-2"><a href="data-wrangling.html#cb289-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(time_points))</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="data-wrangling.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First to character, then to numeric</span></span>
+<span id="cb293-2"><a href="data-wrangling.html#cb293-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(time_points))</span></code></pre></div>
 <pre><code>## [1] 0 0 1 1 5 5 1 0 5</code></pre>
 
 </div>
