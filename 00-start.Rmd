@@ -47,7 +47,7 @@ Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä 
 - [Tunnusluvut](#statistics)
   * [Sijaintia kuvaavat tunnusluvut](#sijaintia-kuvaavat-tunnusluvut)
   * [summary()](#summary)
-  * Varianssi, keskihajonta ja kvantiilit
+  * [Varianssi ja keskihajonta](#varianssi-ja-keskihajonta)
 - [Todennäköisyysjakaumat](#distributions)
 - [Kuvaajien piirtäminen](#plotting)
   * [Kuvaajan tallentaminen](#kuvaajan-tallentaminen)

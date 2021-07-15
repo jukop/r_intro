@@ -60,7 +60,7 @@ mediaani
 kvantiilit
 moodi
 summary
-varianssi-ja-keskihajonta-ja-kvantiilit
+varianssi-ja-keskihajonta
 distributions
 esimerkki-normaalijakauma
 muita-jakaumia

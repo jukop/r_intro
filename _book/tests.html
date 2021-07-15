@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.5" data-path="statistics.html"><a href="statistics.html#moodi"><i class="fa fa-check"></i><b>6.1.5</b> Moodi</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="statistics.html"><a href="statistics.html#summary"><i class="fa fa-check"></i><b>6.2</b> summary()</a></li>
-<li class="chapter" data-level="6.3" data-path="statistics.html"><a href="statistics.html#varianssi-ja-keskihajonta-ja-kvantiilit"><i class="fa fa-check"></i><b>6.3</b> Varianssi ja keskihajonta ja kvantiilit</a></li>
+<li class="chapter" data-level="6.3" data-path="statistics.html"><a href="statistics.html#varianssi-ja-keskihajonta"><i class="fa fa-check"></i><b>6.3</b> Varianssi ja keskihajonta</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>7</b> Todennäköisyysjakaumat R:ssä</a>
 <ul>
@@ -331,46 +331,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Kappale 9</span> Tilastollinen testaaminen</h1>
 <div id="chi-squared-test" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> Khi toiseen -testi</h2>
-<p>Khi toiseen -testi eli <span class="math inline">\(\chi^2\)</span> voidaan toteuttaa seuraavasti.</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="tests.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="do">## From Agresti(2007) p.39</span></span>
-<span id="cb372-2"><a href="tests.html#cb372-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">as.table</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">762</span>, <span class="dv">327</span>, <span class="dv">468</span>), <span class="fu">c</span>(<span class="dv">484</span>, <span class="dv">239</span>, <span class="dv">477</span>)))</span>
-<span id="cb372-3"><a href="tests.html#cb372-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(M) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>),</span>
-<span id="cb372-4"><a href="tests.html#cb372-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">party =</span> <span class="fu">c</span>(<span class="st">&quot;Democrat&quot;</span>,<span class="st">&quot;Independent&quot;</span>, <span class="st">&quot;Republican&quot;</span>))</span>
-<span id="cb372-5"><a href="tests.html#cb372-5" aria-hidden="true" tabindex="-1"></a>(Xsq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(M))  <span class="co"># Prints test summary</span></span></code></pre></div>
+<p>Khi toiseen testiä voidaan käyttää selvittämään kategoristen muuttujien välistä riippuvuutta.
+Khi toiseen -testi eli <span class="math inline">\(\chi^2\)</span> voidaan toteuttaa seuraavasti.</p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="tests.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="do">## From Agresti(2007) p.39</span></span>
+<span id="cb379-2"><a href="tests.html#cb379-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">as.table</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">762</span>, <span class="dv">327</span>, <span class="dv">468</span>), <span class="fu">c</span>(<span class="dv">484</span>, <span class="dv">239</span>, <span class="dv">477</span>)))</span>
+<span id="cb379-3"><a href="tests.html#cb379-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(M) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>),</span>
+<span id="cb379-4"><a href="tests.html#cb379-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">party =</span> <span class="fu">c</span>(<span class="st">&quot;Democrat&quot;</span>,<span class="st">&quot;Independent&quot;</span>, <span class="st">&quot;Republican&quot;</span>))</span>
+<span id="cb379-5"><a href="tests.html#cb379-5" aria-hidden="true" tabindex="-1"></a>(Xsq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(M))  <span class="co"># Prints test summary</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  M
 ## X-squared = 30.07, df = 2, p-value = 2.954e-07</code></pre>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="tests.html#cb374-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>observed   <span class="co"># observed counts (same as M)</span></span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="tests.html#cb381-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>observed   <span class="co"># observed counts (same as M)</span></span></code></pre></div>
 <pre><code>##       party
 ## gender Democrat Independent Republican
 ##      F      762         327        468
 ##      M      484         239        477</code></pre>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="tests.html#cb376-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>expected   <span class="co"># expected counts under the null</span></span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="tests.html#cb383-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>expected   <span class="co"># expected counts under the null</span></span></code></pre></div>
 <pre><code>##       party
 ## gender Democrat Independent Republican
 ##      F 703.6714    319.6453   533.6834
 ##      M 542.3286    246.3547   411.3166</code></pre>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="tests.html#cb378-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>residuals  <span class="co"># Pearson residuals</span></span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="tests.html#cb385-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>residuals  <span class="co"># Pearson residuals</span></span></code></pre></div>
 <pre><code>##       party
 ## gender   Democrat Independent Republican
 ##      F  2.1988558   0.4113702 -2.8432397
 ##      M -2.5046695  -0.4685829  3.2386734</code></pre>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="tests.html#cb380-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>stdres     <span class="co"># standardized residuals</span></span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="tests.html#cb387-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>stdres     <span class="co"># standardized residuals</span></span></code></pre></div>
 <pre><code>##       party
 ## gender   Democrat Independent Republican
 ##      F  4.5020535   0.6994517 -5.3159455
 ##      M -4.5020535  -0.6994517  5.3159455</code></pre>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="tests.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Effect of simulating p-values</span></span>
-<span id="cb382-2"><a href="tests.html#cb382-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb382-3"><a href="tests.html#cb382-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x)<span class="sc">$</span>p.value           <span class="co"># 0.4233</span></span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="tests.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Effect of simulating p-values</span></span>
+<span id="cb389-2"><a href="tests.html#cb389-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">7</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb389-3"><a href="tests.html#cb389-3" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x)<span class="sc">$</span>p.value           <span class="co"># 0.4233</span></span></code></pre></div>
 <pre><code>## [1] 0.4233054</code></pre>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="tests.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x, <span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>, <span class="at">B =</span> <span class="dv">10000</span>)<span class="sc">$</span>p.value</span></code></pre></div>
-<pre><code>## [1] 0.2843716</code></pre>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="tests.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(x, <span class="at">simulate.p.value =</span> <span class="cn">TRUE</span>, <span class="at">B =</span> <span class="dv">10000</span>)<span class="sc">$</span>p.value</span></code></pre></div>
+<pre><code>## [1] 0.2922708</code></pre>
 </div>
 <div id="kahden-otoksen-t-testi" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> Kahden otoksen t-testi</h2>
+<p>Kahden otoksen t-testi soveltuu tilanteeseen, jossa kahden erillisen joukon keskiarvoja halutaan verrata ja selvittää voiko kyseinen ero johtua sattumasta. Mikäli samasta joukosta on tehty kaksi mittausta, on kyseessä riippuvat otokset ja tulee käyttää riippuvien otosten t-testiä.</p>
 </div>
 <div id="varianssianalyysi" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> Varianssianalyysi</h2>

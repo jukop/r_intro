@@ -150,5 +150,20 @@ summary(tooth_length)
 ```
 
 
-## Varianssi ja keskihajonta ja kvantiilit
+## Varianssi ja keskihajonta
 
+Yksittäiselle numeeriselle muuttujalle voidaan laskea varianssi funktiolla ```var```. Varianssia tulkittaessa kannattaa muistaa, että varianssin mittayksikkö ei ole sama kuin alkuperäisen aineiston, vaan mittayksikkö tulee korottaa toiseen potenssiin. Esim. jos pituuden yksikkö on cm, niin pituuden varianssin yksikkö on \[cm^2\]. Käytännössä tulkintaa kannattaa yrittää keskihajonnan avulla.
+```{r}
+# pull the variable from data frame and use it directly in function var
+var(ToothGrowth$len)
+
+# calculate the variance-covariance matrix for entire data frame (gives NA to any pairs with categorical variables)
+# variances are obtained from the diagonal (58.51, NA, 0.3954)
+var(ToothGrowth)
+```
+
+Keskihajonta (engl. standard deviation) saadaan vastaavasti funktiolla ```sd```. Keskihajonta on varianssin neliöjuuri.
+```{r}
+# standard deviation
+sd(ToothGrowth$len)
+```

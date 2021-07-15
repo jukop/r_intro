@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1.5" data-path="statistics.html"><a href="statistics.html#moodi"><i class="fa fa-check"></i><b>6.1.5</b> Moodi</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="statistics.html"><a href="statistics.html#summary"><i class="fa fa-check"></i><b>6.2</b> summary()</a></li>
-<li class="chapter" data-level="6.3" data-path="statistics.html"><a href="statistics.html#varianssi-ja-keskihajonta-ja-kvantiilit"><i class="fa fa-check"></i><b>6.3</b> Varianssi ja keskihajonta ja kvantiilit</a></li>
+<li class="chapter" data-level="6.3" data-path="statistics.html"><a href="statistics.html#varianssi-ja-keskihajonta"><i class="fa fa-check"></i><b>6.3</b> Varianssi ja keskihajonta</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="distributions.html"><a href="distributions.html"><i class="fa fa-check"></i><b>7</b> Todennäköisyysjakaumat R:ssä</a>
 <ul>
@@ -421,8 +421,6 @@ missä merkintä <span class="math inline">\(\overline{x}\)</span> tarkoittaa it
 <div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="statistics.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dat_for_median, <span class="at">probs=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.2</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="dv">1</span>))</span></code></pre></div>
 <pre><code>##   0%  20%  50%  75% 100% 
 ##  0.0  2.0  3.0  4.5  7.0</code></pre>
-<p>=======
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2addb63fb17a5ba14a96f219e1a448ce0ad905ba</p>
 </div>
 <div id="moodi" class="section level3" number="6.1.5">
 <h3><span class="header-section-number">6.1.5</span> Moodi</h3>
@@ -476,8 +474,24 @@ missä merkintä <span class="math inline">\(\overline{x}\)</span> tarkoittaa it
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    4.20   13.07   19.25   18.81   25.27   33.90</code></pre>
 </div>
-<div id="varianssi-ja-keskihajonta-ja-kvantiilit" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Varianssi ja keskihajonta ja kvantiilit</h2>
+<div id="varianssi-ja-keskihajonta" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Varianssi ja keskihajonta</h2>
+<p>Yksittäiselle numeeriselle muuttujalle voidaan laskea varianssi funktiolla <code>var</code>. Varianssia tulkittaessa kannattaa muistaa, että varianssin mittayksikkö ei ole sama kuin alkuperäisen aineiston, vaan mittayksikkö tulee korottaa toiseen potenssiin. Esim. jos pituuden yksikkö on cm, niin pituuden varianssin yksikkö on <span class="math display">\[cm^2\]</span>. Käytännössä tulkintaa kannattaa yrittää keskihajonnan avulla.</p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="statistics.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull the variable from data frame and use it directly in function var</span></span>
+<span id="cb345-2"><a href="statistics.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ToothGrowth<span class="sc">$</span>len)</span></code></pre></div>
+<pre><code>## [1] 58.51202</code></pre>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="statistics.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the variance-covariance matrix for entire data frame (gives NA to any pairs with categorical variables)</span></span>
+<span id="cb347-2"><a href="statistics.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="co"># variances are obtained from the diagonal (58.51, NA, 0.3954)</span></span>
+<span id="cb347-3"><a href="statistics.html#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ToothGrowth)</span></code></pre></div>
+<pre><code>## Warning in var(ToothGrowth): NAs introduced by coercion</code></pre>
+<pre><code>##            len supp      dose
+## len  58.512023   NA 3.8612994
+## supp        NA   NA        NA
+## dose  3.861299   NA 0.3954802</code></pre>
+<p>Keskihajonta (engl. standard deviation) saadaan vastaavasti funktiolla <code>sd</code>. Keskihajonta on varianssin neliöjuuri.</p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="statistics.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="co"># standard deviation</span></span>
+<span id="cb350-2"><a href="statistics.html#cb350-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ToothGrowth<span class="sc">$</span>len)</span></code></pre></div>
+<pre><code>## [1] 7.649315</code></pre>
 
 </div>
 </div>

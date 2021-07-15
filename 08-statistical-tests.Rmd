@@ -2,6 +2,7 @@
 
 ## Khi toiseen -testi {#chi-squared-test}
 
+Khi toiseen testiä voidaan käyttää selvittämään kategoristen muuttujien välistä riippuvuutta. 
 Khi toiseen -testi eli $\chi^2$ voidaan toteuttaa seuraavasti.
 
 ```{r}
@@ -24,6 +25,12 @@ chisq.test(x, simulate.p.value = TRUE, B = 10000)$p.value
 
 
 ## Kahden otoksen t-testi
+
+Kahden otoksen t-testi soveltuu tilanteeseen, jossa kahden erillisen joukon keskiarvoja halutaan verrata ja selvittää voiko kyseinen ero johtua sattumasta. Mikäli samasta joukosta on tehty kaksi mittausta, on kyseessä riippuvat otokset ja tulee käyttää riippuvien otosten t-testiä.
+
+```{r}
+
+```
 
 
 ## Varianssianalyysi
