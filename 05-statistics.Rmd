@@ -28,7 +28,7 @@ Funktiota ```pmin``` ja ```pmax``` voi käyttää vieläkin yleisemmässä muodo
 ### Keskiarvo
 
 Keskiarvo saadaan laskemalla muuttujan kaikki havainnot yhteen ja jakamalla summa havaintojen määrällä. Esimerkiksi aineiston 1,2,3,4 keskiarvo on (1+2+3+4)/4 = 2.5 Keskiarvoa satunnaismuuttujan $X$ havainnoille voidaan merkitä matemaattisesti seuraavasti
-$$\overline{x} = \sum_{i=1}^n x_i = \frac{x_1+x_2+\dots+x_n}{n},$$
+$$\overline{x} = \frac{1}{n}\sum_{i=1}^n x_i = \frac{x_1+x_2+\dots+x_n}{n},$$
 missä merkintä $\overline{x}$ tarkoittaa itse keskiarvoa, $x_1,...,x_n$ ovat havaintoja ja $n$ on laskettavien havaintojen määrä.
 
 R:ssä keskiarvo voidaan laskea helposti funktiolla ```mean```.
