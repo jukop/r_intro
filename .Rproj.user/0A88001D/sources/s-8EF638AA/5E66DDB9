@@ -3,7 +3,7 @@
     "path": "~/Opetus/R/r_intro/05-statistics.Rmd",
     "project_path": "05-statistics.Rmd",
     "type": "r_markdown",
-    "hash": "471607190",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1626337541975.0,
@@ -11,7 +11,9 @@
     "relative_order": 6,
     "properties": {
         "source_window_id": "",
-        "Source": "Source"
+        "Source": "Source",
+        "cursorPosition": "29,238",
+        "scrollLine": "22"
     },
     "folds": "",
     "lastKnownWriteTime": 1626336094,
