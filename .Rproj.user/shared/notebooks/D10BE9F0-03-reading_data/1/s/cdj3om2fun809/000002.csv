@@ -1,2 +1,0 @@
-"0","gene_data <- read.table(""gene_data.txt"", sep = ""\t"", header = TRUE)"
-"0","gene_data"

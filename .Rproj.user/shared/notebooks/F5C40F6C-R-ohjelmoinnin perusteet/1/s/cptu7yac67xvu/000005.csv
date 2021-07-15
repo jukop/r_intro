@@ -1,4 +1,0 @@
-"0","rbind(study_data, new_row)
-"
-"2","Error in rbind(study_data, new_row) : object 'study_data' not found
-"

@@ -1,4 +1,0 @@
-"0","study_data <- data.frame(ID = 1:8,"
-"0","                         height = c(189.8, 184.0, 173.8, 175.9, 169.0, 183.7, 181.8, 16.9),"
-"0","                         gender = c(""male"",""female"",""male"",""male"",""female"",""male"",""male"",""female""))"
-"0","study_data"
