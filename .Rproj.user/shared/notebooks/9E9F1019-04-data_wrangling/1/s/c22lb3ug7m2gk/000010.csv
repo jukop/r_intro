@@ -1,0 +1,4 @@
+"0",""
+"0","# It would have been possible to change value of only one cell e.g. like this"
+"0","study_data$height[8] <- 161.9"
+"0","study_data"

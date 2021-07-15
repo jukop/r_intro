@@ -1,0 +1,2791 @@
+--- 
+title: "R-ohjelmoinnin perusteet"
+author: "Anton Klåvus (2020), converted to bookdown by Juho Kopra (2021)"
+date: "`r format(Sys.Date(),'%-d.%-m.%Y')`"
+site: bookdown::bookdown_site
+documentclass: book
+#bibliography: [book.bib, packages.bib]
+#biblio-style: apalike
+#link-citations: yes
+description: "This repository contains materials used in an introductory level R course at university of Eastern Finland."
+---
+
+<!--chapter:end:index.Rmd-->
+
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# R-kurssi {-}
+
+Täältä löydät suomenkielisen materiaalin, joka tukee UEF:in R-kurssin suorittamista (R-kieli 3622223, 2 op). Jokaisen viikon materiaalit päivitetään tänne. Alla on ohjeet tarvittavien asioiden asentamiseen UEF:in koneille.
+
+Anton Klåvusin vuonna 2020 kirjoittamaa ansiokasta materiaalia on kehitetty lukukauden 2021-22 R-kielen kurssia ajatellen. Materiaalia on täydennetty tarvittavin osin. Samalla materiaali on konvertoitu bookdown-verkkokirjamuotoon.
+
+## Ohjeita verkkokirjan käyttöön {-}
+
+Tämä opiskelumateriaali on luotu bookdown-verkkokirjaohjelman avulla. Kirjaa voi lukea verkkoselaimella ja se toimii myös puhelimella. Sivun ylälaidasta löydät asetuksia, joilla voit tehdä ainakin seuraavia asioita: piilottaa ja näyttää vasemman sivuvalikon, etsiä dokumentista hakusanalla, muuttaa fonttia, muuttaa fontin kokoa ja sivun väritystä sekä ladata monisteen pdf-muodossa.
+
+## Lunttilappu {-}
+
+Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli "lunttilappua". Lunttilapusta on helppo tarkastaa miten jokin jo oppimasi asia tehdään R:ssä, jos et vielä muista kunnolla kyseistä asiaa. Internetistä löytyy Cheat Sheetejä useisiin [R-paketteihin](https://www.rstudio.com/resources/cheatsheets/) ja muihin kokonaisuuksiin, mutta tässä käytetään Base R Cheat Sheetiä. Lataa Base R Cheat Sheet itsellesi [painamalla tästä](files/base_R_cheat_sheet.pdf). Suosittelen tulostamaan lunttilapun värillisenä kaksipuoleisena. Mikäli mahdollista niin A3-kokoisena tulosteena teksti näkyy parhaiten.
+
+
+## Verkkolähteitä {-}
+
+Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä kuitenkin joitakin verkosta löytyviä lähteitä, joista voi olla apua.
+
+ - [Tutorialspoint](https://www.tutorialspoint.com/r/index.htm) Soveltuu R:n opiskeluun englannin kielellä, jos osaa entuudestaan jo vähän ohjelmoida.
+
+
+## Sisällysluettelo {-}
+
+- [Johdanto](#intro)
+  * [Mikä on R ja mitä sillä tehdään?](#what_R)
+  * [Muuttujat ja vektorit](#variables_and_vectors)
+  * [Extra: Alkeistietotyypit ja puuttuvat arvot](#extra)
+- [Tietotyypit: data frame, matriisi, taulukko ja lista](#data_types)
+  * [data frame](#data-frame)
+  * [matriisi (matrix)](#matriisi)
+  * [Tietotyyppien tarkastelu](tietotyyppien-tarkastelu)
+  * [Extra: Taulukko ja lista](#taulukot-ja-listat)
+    * [taulukko (array)](#taulukko)
+    * [lista (list)](#lista)
+- [Datan lukeminen](#reading_data)
+- [Aineiston muokkaaminen](#data-wrangling)
+  * [Uuden muuttujan tai rivin luonti datakehikkoon](#data-frame-wrangling)
+  * [Osajoukkojen valinta](#osajoukkojen-valinta)
+  * [Faktorit](#faktorit)
+  * Faktor-vektorit (POISTA tai yhdistä!)
+- [Tunnusluvut](#statistics)
+  * [Sijaintia kuvaavat tunnusluvut](#sijaintia-kuvaavat-tunnusluvut)
+  * [summary()](#summary)
+  * Varianssi, keskihajonta ja kvantiilit
+- [Todennäköisyysjakaumat](#distributions)
+- [Kuvaajien piirtäminen](#plotting)
+  * [Kuvaajan tallentaminen](#kuvaajan-tallentaminen)
+- [Tilastollinen testaaminen](#tests)
+  * [Khi toiseen -testi](#chi-squared-test)
+  * Kahden otoksen t-testi
+  * Varianssianalyysi
+- [Lineaariset mallit](#linear_models)
+- [Funktiot](#functions)
+- [Ehtorakenteet](#ifelse)
+- [Toistorakenteet](#loops)
+
+
+# Alkuvalmistelut {-}
+
+## RStudio {-}
+
+Nykyisin R-kielen kurssilla käytetään ensisijaisesti RStudiota, mutta muutkin ohjelmointiympäristöt toimivat. RStudio on ohjelmointiympäristö eli IDE (Integrated Development Environment), joka tekee koodaamisesta huomattavasti mukavampaa. RStudio on saatavilla useille käyttöjärjestelmielle ja se on ilmainen ohjelma.
+
+## R:n ja RStudion asentaminen omalle tietokoneelle {-}
+
+Mene seuraavalle sivulle, josta asennat ensin R:n (1. vaihe) ja sitten RStudio Desktop omalle käyttöjärjestelmällesi. Ellet tiedä käyttöjärjestelmääsi, on se luultavimmin Windows 10.
+
+https://www.rstudio.com/products/rstudio/download/#download (avautuu uuteen ikkunaan)
+
+## RStudion asennus yliopiston koneelle {-}
+
+Mikäli et halua käyttää omaa tietokonettasi kurssin suoritamiseen, niin RStudion saa asennettua UEF:in koneilla Sofware Centerin kautta. Software Center löytyy Windowsin omalla haulla.
+
+![](files/00-start/software_center.jpg)
+
+RStudio:n voi asentaa Software Centeristä, ja RStudion pitäisi sen jälkeen olla käytettävissä.
+
+![](files/00-start/RStudio_sc.jpg)
+
+## RStudion käyttö {-}
+
+RStudion näkymässä on neljä osaa:
+
+![](files/00-start/RStudio_tutorial_edited.jpg)
+
+#### 1. Editori. {-}
+
+Editorilla kirjoitetaan R-koodia sisältäviä tiedostoja, eli R-skriptejä. Uuden skriptin saa auki painamalla File -> New File -> R Script (tai Ctrl + Shift + N). Skripteihin tutustutaan myöhemmin kurssilla, mutta ne ovat yksinkertaisuudessaan kokoelma R-komentoja, jotka yhdessä tekevät jotain, esimerkiksi analysoivat jonkin tutkimusprojektin datan tai piirtävät valmiista tuloksista kuvaajia.
+
+Editoriin kirjoitettua koodia voi ajaa rivi kerrallaan painamalla rivin kohdalla Ctrl + Enter. Useamman rivin voi myös maalata ja suorittaa kerrallaan. Yläreunassa oleva "Source"-nappi ajaa kaiken nykyisen tiedoston koodin.
+
+R-skriptejä voi tallentaa ihan kuin muitakin tiedostoja. R-skpriptien  tiedostopääte on .R
+
+#### 2. Konsoli. {-}
+
+Konsolissa "ajetaan" eli suoritetaan R-komentoja. Jos editoriin kirjoitettua koodia ajetaan, RStudio ajaa komennot automaattisesti konsolissa. Konsolissa pelkkä Enter riittää koodirivin suorittamiseen. Voit kokeilla kirjoittaa konsoliin jonkun laskutoimituksen, kuten ```2 * 3``` ja painaa Enter, jolloin tuloksen pitäisi tulostua konsoliin. Voit myös kokeilla kirjoittaa laskuja editoriin, ja painaa Ctrl + Enter, jolloin pitäisi tapahtua sama asia.
+
+Suurin ero konsolin ja editorin välillä on se, että **konsoliin kirjoitetut komennot eivät tallennu mihinkään tiedostoon**. Jos siis haluat säästää koodisi, se tulee kirjoittaa editoriin ja tallentaa .R-tiedostoon. Saman istunnon aikana tehtyjä komentoja voi konsolissa selata ylös- ja alas-nuolila.
+
+Moodlen ohjeissa ja videoissa käytetään R:ää puhtaasta R-konsolista. Voit siis kuvitella, että kurssin videoissa näkyy vain RStudion tämä osa, ja muut osat ovat vain helpottamassa työtäsi.
+
+#### 3. Työtila {-}
+
+Työtilassa näkyvät R-istunnon aikana luodut muuttujat. Näistä lisää ensimmäisen viikon materiaalissa.
+
+#### 4. Kuvaajat / Paketit / Manuaali {-}
+
+Tässä osassa on monta käytännöllistä välilehteä:
+
+- Plots: tänne ilmestyvät R:llä piirretyt kuvaajat
+- Packages: Täältä voi hallita asennettuja paketteja (alla ohjeet tällä kurssilla tarvittavien pakettien asennukseen)
+- Help: Täällä voi selata R:n manuaalia, jossa on ohjeet jokaiselle R-komennolla. Voit kokeilla ajaa editorissa tai konsolissa komennon ```?print```, joka avaa ```print```-funktion ohjesivun.
+
+
+
+Kun tehtävät tallentaa tähän tyyliin, voi ensi kerralla vain yksinkertaisesti ajaa skriptin haluamaansa tehtävään asti. Samalla koneella ja samalla opiskelijanumerolla pitäisi tulla samat tehtävät.
+
+
+## Rcourse-paketin asentaminen {-}
+
+### R-paketit {-}
+
+R-ohjelmoinnissa asennetaan usein R-paketteja. Paketit ovat kokonaisuuksia, jotka lisäävät R:ään ominaisuuksia. Esimerkiksi tälle kurssille tarvittava paketti arpoo opiskelijalle tehtäviä kurssin aihepiiristä ja lähettää tiedon osioiden suorituksesta opettajalle.
+
+### Asentaminen {-}
+
+Rcourse-paketti asennetaan suorittamalla seuraava koodi R:ssä. Kopioi koodi joko R-skriptiin ja aja se tai kopioi se suoraan Console-ikkunaan ja paina Enter-näppäintä.
+```{r, eval=FALSE}
+source(url("http://users.jyu.fi/~santikka/Rcourse/install.R"))
+```
+Tämän jälkeen paketti tulee ladata käyttöön
+```{r, eval=FALSE}
+library(Rcourse)
+```
+Komento ```info()``` tulostaa ohjeet (ensimmäisellä käyttökerralla kieli on englanti). Voit vaihtaa kielen suomeksi näin:
+```{r, eval=FALSE}
+select_language("finnish")
+```
+Tarkastele vielä suomenkielisiä komentoja:
+```{r, eval=FALSE}
+info()
+```
+![](files/00-start/Rcourse_package_info.png)
+
+Aloita sitten osion 1 harjoitustehtävien suorittaminen komennolla
+```{r, eval=FALSE}
+osio1()
+```
+Kun olet suorittanut harjoitusosion 1, voit jatkaa seuraavaan osioon. Osiot 1-8 ovat pakollisia (tentit kysyvät näiden osioiden sisältöjä) ja osiot 9-11 ovat lisämateriaalia kiinnostuneille (ei kysytä tentissä).
+
+
+### Opiskelu ja tenttiminen Rcourse-paketin avulla {-}
+
+Kurssin harjoitustehtävät suoritetaan käyttäen Rcourse-pakettia, eli 1. osion voi aloittaa komennolla
+```{r, eval=FALSE}
+osio1()
+```
+Lisäksi tenttimien onnistuu vastaavasti funktiolla loppukoe(x), mutta tällöin merkin x tilalle on annettava oma syntymäaika muodossa dddmmyyyy. Esim. henkilö joka on syntynyt 1. tammikuuta 1990 antaisi
+```{r, eval=FALSE}
+loppukoe(01011990)
+```
+
+### Tehtävien tallentaminen skripteihin RStudiolla {-}
+
+Suurin osa kurssin tehtävistä on melko lyhyitä, joten ne voi tarvittaessa tehdä suoraan konsoliin. Suosittelen kuitenkin kirjoittamaan varsinkin pidemmät ja monimutkaisemmat tehtävät muistiin editoriin. Suosittelenkin tekemään jokaista osiota varten erillisen R-skriptin, joka sisältää itse tehtävien tarvitseman koodin sekä palautuskomennot. Tällainen skripti näyttää jotakuinkin tältä:
+
+```{r, eval=FALSE}
+# Teht 1
+vast <- 1
+tarkista(vast)
+
+# Teht 2
+vast <- c(1, 2, 3)
+tarkista(vast)
+
+# Teht 3
+vast <- "jotain"
+tarkista(vast)
+```
+
+Mikäli käytät nimen ```vast``` sijasta jotain muuta nimeä, niin sinun on käytettävä samaa nimä myös tarkista-funktion argumenttina!
+
+<!--chapter:end:00-start.Rmd-->
+
+# Johdanto {#intro}
+
+## Mikä R on ja mitä sillä tehdään? {#what_R}
+
+Ohjelmoinnin tavoitteena on kirjoittaa eli koodata ohjelma, joka suorittaa jonkun halutun tehtävän. Ohjelma koostuu useista komennoista, joista jokainen tekee jotain hyvin yksinkertaista.
+
+R on tehty ensisijaisesti tilastotiedettä ja data-analyysiä varten.  R:llä kirjoitetaan yleensä lyhyitä ohjelmia, joita kutsutaan skripteiksi. R:llä ei siis ole tarkoitus kehittää esimerkiksi pelejä, tai muita ohjelmia joissa on graafinen käyttöliittymä, kuten vaikkapa Photoshop. R ei myöskään ole web-ohjelmointiin tarkoitettu kieli (vaikka oikeilla paketeilla R:lläkin pystyy tekemään web-sovelluksia). 
+
+R on korkean tason ohjelmointikieli. Tämä tarkoittaa sitä, että R:ssä on paljon valmiita komentoja, joiden "alta" löytyy paljon lisää koodia, johon R-ohjelmoijan ei kuitenkaan tarvitse itse koskea. Esimerkiksi tilastollisen t-testin testin laskeminen vaatii useita matemaattisia välivaiheita, mutta R-ohjelmoija voi suorittaa testin yhdellä komennolla (```t.test```) joka antaa kaikki tarvittavat tiedot testistä.
+
+R:n käyttöä ja ohjelmointia muutenkin oppii parhaiten tekemällä. Tässä dokumentaatiossa on tekstin väliin upotettu R-koodia harmaissa laatikoissa, kuten alla olevassa esimerkissä. Kahdella ruudulla eli ```##```-merkinnällä alkavat rivit eivät ole koodia vaan koodin ajamisen aiheuttamia tulosteita (output). Otetaan ensimmäiseksi esimerkiksi klassinen ["Hello, world!"](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program)-komento:
+
+```{r}
+print("Hello, world!")
+```
+
+```print```-funktio tulostaa sille annetun tekstin konsoliin. ```print``` on kätevä funktio mm. ohjelman toiminnan testaamiseen ja pidemmän ohjelman etenemisen seurantaan. R:ää voi käyttää myös laskimen sijaan. Alla olevassa esimerkissä lasketaan kuinka paljon jää hintaa 80 euron hintaiselle tuotteelle 35% alennuksen jälkeen.
+
+```{r}
+80 * (1 - 0.35)
+```
+
+Yksittäisten komentojen ajamisesta ei kuitenkaan ole yleensä hyötyä, ellei tuloksia voi tallentaa johonkin. Ohjelmointikielissä tietoja tallennetaan muuttujiin, joita käsitellään seuraavaksi. 
+
+# Muuttujat ja vektorit {#variables_and_vectors}
+
+## Muuttujat (Variables)
+
+**Muuttujat** (variables) ovat yksi tärkeimmistä ohjelmointikielien rakenteista. Muuttujien tehtävä on säilyttää tietoa ja tuloksia edellisistä laskutoimituksista. Alla on yksinkertainen esimerkki muuttujien käytöstä R:ssä
+
+```{r}
+x <- 3
+y <- 5
+z <- x + y
+
+z
+```
+
+
+Edellisessä esimerkissä **sijoitetaan (assign)** eli tallennetaan muuttujaan x arvo 3 ja muuttujaan y arvo 4. Sen jälkeen muuttujien x ja y summa sijoitetaan muuttujaan z, jonka jälkeen tulostetaan muuttujan z arvo.
+ ```<-``` on R:n **sijoitusoperaattori** (Myös yhtä kuin-merkki ```=``` toimii melkein aina, mutta ```<-``` on suositellumpi).
+Mutta miten muuttujan z arvo tulostui konsoliin, vaikka koodissa ei käytetty funktiota ```print```? R:n erikoisominaisuus moneen muuhun ohjelmointikieleen verrattuna on se, että print-käskyä ei tarvitse aina kirjoittaa, vaan pelkästään muuttujan (tai laskutoimituksen) kirjoittaminen tulostaa arvon konsoliin. Alla olevassa koodissa kaikki rivit tulostavat saman tuloksen:
+
+```{r, eval = FALSE}
+z
+print(z)
+
+x + y
+print(x + y)
+
+3 + 5
+print(3 + 5)
+```
+
+Muuttujiin voi sijoittaa muutakin kuin yksittäisiä lukuja, kuten merkkijonoja (strings), vektoreita, tai paljon monimutkaisempiakin rakenteita.
+
+```{r}
+x <- "Hello world"
+x
+```
+
+## Kommentit
+
+Myöhemmin vastaan tulevassa koodissa käytetään kommentteja. Kommentit ovat koodin oheen kirjoitettua tekstiä, joka ei ole ohjelmointikieltä, ja joka ohitetaan koodia ajettaessa. Kommenttien tarkoitus on kuvailla koodin toimintaa. Oman koodin kommentointia on hyvä harjoitella alusta lähtien, vaikka ensimmäisten tehtävien koodi onkin hyvin yksinkertaista. hyvä nyrkkisääntö on muistaa, että koodia kirjoitetaan ihmisille, ei koneelle. R:ssä kommentit merkataan ```#```-symbolilla. Edellinen esimerkki kommentoituna voisi näyttää jotakuinkin tältä:
+
+```{r}
+# Assign arbitrary numbers to two variables
+x <- 3
+y <- 5
+# Sum of two variables
+z <- x + y
+# Print the results
+z
+```
+
+
+## Vektorit (Vectors)
+
+Nyt kun muuttujat ovat tuttuja, voimme siirtyä käsittelemään vektoreita. R:n vektorit ovat yksinkertaisia järjestettyjä tietorakenteita, jotka koostuvat alkioista (elements), esimerkiksi desimaaliluvuista. Alla oleva esimerkki sijoittaa muuttujaan x vektorin, joka sisältää 5 lukua.
+
+```{r}
+x <- c(1, 2, 7.4, 15, 0.2)
+x
+```
+
+Yksinkertaisin tapa tehdä vektori R:ssä on käyttää ```c()```-funktiota, joka luo vektorin, jossa on sille annetut arvot annetussa järjestyksessä. Monet R-kielen komennot ja funktiot luovat vektoreita, alla muutama esimerkki:
+
+
+```{r}
+# Regular sequences
+seq(1, 10)
+seq(0, 1, by = 0.2)
+seq_len(6)
+3:9
+
+# Repeat values
+rep(1, 5)
+rep(c(1, 2), 3) # Repeat vector c(1,2) 3 times
+rep(c(1, 2, 3), 3) # Repeat all values in vector c(1, 2, 3) 3 times
+```
+
+
+#### Vektorilaskentaa
+
+Vektoreilla laskeminen on usein hyvin intuitiivista (lisää vaaranpaikoista myöhemmin). Kun vektoriin kohdistetaan laskutoimintoja, sama operaatio tehdään kaikille vektorin alkioille (engl. vectorization).
+
+```{r}
+x <- c(1, 2, 3, 6, 10)
+x * 2
+x / 2 + 1
+```
+
+
+Entä jos vektoreita lisää toisiinsa, tai kertoo keskenään? Jos vektorit ovat samanpituisia, operaatio toteutetaan alkio kerrallaan. Jos vektorit ovat eripituisia, R yrittää kierrättää (recycle) lyhyempää vektoria niin, että siitä tulee yhtä pitkä kuin pidempi vektori. Tämän jälkeen operaatio suoritetaan alkio kerrallaan (itse asiassa näin tapahtui myös aiemmissa esimerkeissä, kun vektori kerrottiin yksittäisellä luvulla. R:ssä yksittäiset luvut ovat vektoreita, joiden pituus on 1). Jos kierrätys ei onnistu, eli pidemmän vektorin pituus ei ole jaollinen lyhyemmän pituudella, R antaa virheilmoituksen. 
+
+```{r}
+x <- c(1, 2, 3, 6, 10, 2)
+y <- c(1, 1, 1, 3, 3, 3) # or rep(c(1, 3), each = 3)
+z <- c(2, 4)
+
+x + y # Element-wise sum
+x * y # Element-wise multipliocation
+
+x + z
+
+```
+
+R:ssä on myös paljon funktioita, joilla voi laskea vektoreista erilaisia tunnuslukuja, kuten keskiarvon, mediaanin, keskihajonnan jne. 
+
+```{r}
+x <- c(1, 2, 3, 6, 10, 2)
+# Sample mean (average)
+mean(x)
+# Standard deviation
+sd(x)
+# Sum
+sum(x)
+```
+
+### Ei-numeeriset vektorit
+
+#### Merkkijonovektorit
+
+Vektorien ei ole pakko sisältää lukuja. Vektorit voivat sisältää esimerkiksi merkkijonoja, kuten alussa nähty "Hello, world!". Merkkijonotyypin nimi R:ssä on ```character```.
+
+```{r}
+x <- c("Hello, world!", "R is the best", "I", "like", "programming", "!")
+x
+```
+
+Merkkijonovektoreiden muokkausta varten on omia funktiota, tärkeimpinä ```paste``` ja ```paste0```, jotka yhdistävät merkkijonoja toisiinsa. Myös numeerisia vektoreita voi antaa näille funktioille, ja ne muutetaan merkkijonoiksi.
+
+```{r}
+first_names <- c("Diana", "Peter", "Bruce")
+last_names <- c("Prince", "Parker", "Wayne")
+paste(first_names, last_names)
+
+students <- paste0("Student_", 1:5)
+```
+
+#### Loogiset vektorit
+
+Kolmas yleinen vektorityyppi on looginen vektori, joka sisältää arvoja ```TRUE``` eli tosi tai ```FALSE``` eli epätosi. Loogisia vektoreita käytetään yleensä joko merkitsemään binäärisiä muuttuja (esimerkiksi paastosiko koehenkilö ennen näytteenottoa) tai vektorien ja matriisien indeksoinnissa (tästä lisää pian). Tällöin loogisia vektoreita syntyy erilaisten loogisten operaattorien avulla:
+
+```{r}
+x <- c(1, 2, 3, 6, 10, 2)
+
+x > 3 # Is the element of x greater than 3?
+x >= 3 # Greater or equal to three=
+x == 6 # Equal to 6?
+x != 2 # Not equal to 2?
+```
+
+#### Loogiset vektorit ja matematiikka
+
+Jos loogiselle vektorille tekee operaation, joka odottaa numeerista vektoria, R muuttaa automaattisesti arvot ```TRUE``` ykkösiksi ja arvot ```FALSE``` nolliksi. Tämä on erityisen hyödyllistä käytettäessä funktiota ```sum```. Tällä tavalla saadaan helposti tietää esim. kuinka moni vektorin alkio täyttää tietyn ehdon:
+
+```{r}
+x <- c(1, 3, 5, 2, 19)
+above_3 <- x > 3
+
+# Logical vector automatically converted to numeric
+x + 1
+
+# how many elements of x are smaller than 10?
+sum(x < 10)
+```
+
+### Vektorien indeksointi ja leikkely
+
+Usein vektorista halutaan poimia vain tietyt arvot, esimerkiksi vain ensimmäiset 5 arvoa, tai vain arvot, jotka täyttävät tietyt ehdot. R:ssä vektorin indeksointiin käytetään hakasulkeita ```[]```. Yleisimmät indeksointitavat ovat antaa hakasulkeiden sisään vektori kokonaislukuja, jotka vastaavat järjestyslukuja, jotka vektorista halutaan poimia (HUOM kokeneemmat koodarit, R:ssä indeksointi alkaa ykkösestä, ei nollasta!). Toinen vaihtoehto on käyttää loogista vektoria, jolloin vektorista poimitaan ne alkiot, joiden kohdalla loogisen vektorin arvo on TRUE. Tämä on yksinkertaisempaa kuin miltä se kuulostaa:
+
+```{r}
+x <- c(1, 2, 3, 6, 10, 2)
+
+# Picking exact elements
+x[2:3] # Second and third values
+x[c(4, 5, 1)] # Note that the order does not have to be increasing
+
+# Using logical vector as condition
+x[x > 3]
+
+# The condition can be based on another vector
+characters <- c("Yoda", "C-3PO", "Rey", "R2-D2", "Anakin", "Baby Yoda")
+heights <- c(66, 175, 170, 109, 183, 40.5)
+# Only characters shorter than 120 cm
+characters[heights < 120]
+```
+
+### Puuttuvat arvot
+
+Monessa tutkimusprojektissa törmätään syystä tai toisesta jossain vaiheessa puuttuviin arvoihin. Hyvä esimerkki ovat seurantatutkimukset, jossa usein seurannan lopussa on jäljellä vähemmän koehenkilöitä kuin alussa. 
+
+Puuttuvia arvoja merkataan R:ssä merkinnällä ```NA``` (not available). Puuttuvat arvot noudattavat yksinkertaista logiikkaa: mikä tahansa operaatio ```NA```:lle antaa tulokseksi ```NA```. Funktiot, jotka operoivat koko vektoria, kuten ```sum``` tai ```mean``` voidaan erikseen asettaa poistamaan puuttuvat arvot ennen summan, keskiarvon tms. laskemista.
+
+```{r}
+missing <- c(1, 2, NA, 4, NA, 6)
+full <- seq(1, 6)
+
+# Addition with NA returns NA
+missing + full
+# Sum of vector with NAs returns NA
+sum(missing)
+# Removing NAs before summation
+sum(missing, na.rm = TRUE)
+
+```
+
+HUOM! Funktio ```is.na``` tarkistaa, onko jokin arvo puuttuva. Perinteinen yhtäsuuruuden testaaminen ei siis toimi.
+
+```{r}
+# Just returns NA
+NA == NA
+# Returns a logical value as expected
+is.na(NA)
+is.na(1)
+
+# is.na operates element-wise on a vector
+missing <- c(1, 2, NA, 4, NA, 6)
+is.na(missing)
+
+# complete.cases gives the data elements which do not have missing data. It can be used with data frames also.
+complete.cases(missing)
+```
+
+## Extra: Alkeistietotyypit ja erikoisarvot {#extra}
+
+Tässä lisätieto-osiossa käsitellään asioita, joita et välttämättä tarvitse kurssista suoriutuaksesi. Mikäli käytät R:ää enemmän, niin vastaan tulee enemmin tai myöhemmin ongelmia, joissa tarvitsee näitä taitoja. Voit palata näihin myöhemmin koska tahansa, kun haluat syventää ymmärrystäsi R:stä.
+
+R on rakennettu sisäisesti siten, että vektorin kukin elementti on jotain alkeistietotyyppiä. Valmiina R:ssä on neljä alkeistietotyyppiä:
+
+ - numeerinen (eli reaaliluku)
+ - kokonaisluku (integer)
+ - merkkijono (character)
+ - kompleksiluku
+
+Näistä tarpeellisimpia ovat numeerinen ja merkkijono. Kompleksilukua tarvitsee vain joissain erityistapauksissa ja kokonaisluvut ovat nykyään lähes aina tallennettu numeerisina.
+
+```{r}
+# Integers are usually stored as reals
+x <- c(1,2,3)
+class(x)
+
+# You can make integers by adding capital L behind the number
+x_int <- c(1L,2L,3L)
+class(x_int)
+
+# Character strings (or just strings)
+x_char <- c("I","have","a","cat.")
+class(x_char)
+```
+Joskus vektorin tiedot ovat väärässä muodossa, esim. merkkijonoina, mutta haluaisit ne numeroarvoina. Näihin operaatioihin on omat funktionsa. Tällöin voi kuitenkin tulla ongelmia, jos muutettava vektori ei ole helposti muutettavissa haluttuun muotoon.
+
+```{r}
+# Chacter string to numeric
+class(as.numeric(x_char))
+
+# If character contains only values it is easy
+x_char2 <- c("0","5","6.5")
+as.numeric(x_char2)
+
+# Integer to numeric
+x_int_to_num <- as.numeric(x_int)
+x_int_to_num
+class(x_int_to_num)
+
+# Numeric to integer
+x_num_to_int <- as.integer(x)
+x_num_to_int
+class(x_num_to_int)
+```
+
+
+Vielä pari lisähuomiota puuttuvista arvoista (näitä ei tarvise usein) koskien niiden tietotyyppejä. Puuttuvalla arvolla on myös alkeistietotyyppi. Mikäli NA-arvon tietotyyppi tarvitsee määritellä, niin sen voi tehdä seuraavasti. Mikäli luo muuttujan tai vektorin, jossa on vain yksi arvo ja se arvo on NA, niin se oletusarvoisesti looginen.
+```{r}
+# Specify a numeric NA value
+NA_real_
+# Specify a complex number NA value
+NA_complex_
+# Specify a integer number NA value
+NA_integer_
+# Specify a character NA value
+NA_character_
+
+# NA gives a logical type when evaluated alone
+class(NA)
+# NA_real_ is numeric
+class(NA_real_)
+```
+
+### Ääretön ja miinus ääretön
+
+R:ssä on myös ääretön ja miinus ääretön. Ne on toteutettu samaan tapaan kuin puuttuva arvo on toteutettu, mutta niiden tarkasteluun on omat funktionsa. Ääretön ja miinus ääretön arvot syntyvät, jos aineistossa jaetaan nollalla.
+
+```{r}
+# You can type in infinity or minus infinity if needed
+x <- c(1,2, Inf, 5, -Inf)
+# Use is.finite to show if numbers are finite or not
+is.finite(x)
+
+# Division by zero makes Inf or -Inf
+x_div_zero <- c(1,2,-3)/c(3,0,0)
+x_div_zero
+is.finite(x_div_zero)
+```
+### Ei-numero
+
+Mikäli R:ssä sattuu jakamaan nollan nollalla (joka siis ei ole matermatiikassa sallittua), niin tämä tuottaa R:ssä tietotyypin, joka on ```NaN``` (lyhenne sanoista Not a Number). Mikäli ```NaN```-arvoa tutkii funktiolla ```is.finite``` tai ```is.na```, niin huomaa että ```NaN``` ei ole äärellinen ja ```NaN``` tulkitaan ```NA```:ksi.
+
+```{r}
+x_div_zero_by_zero <- 0/0
+
+# Tests for NaN
+is.nan(x_div_zero_by_zero)
+
+# Tests if it is finite
+is.finite(x_div_zero_by_zero)
+
+# Tests if it is NA (missing)
+is.na(x_div_zero_by_zero)
+```
+
+<!--chapter:end:01-intro.Rmd-->
+
+# Tietotyypit {#data_types}
+
+Tässä osassa tutustutaan neljään uuteen tietorakenteeseen:
+
+- [data frame (data.fame)](#data-frame)
+- [matriisi (matrix)](#matriisi)
+- [taulukko (array)](#taulukko)
+- [lista (list)](#lista)
+
+Data frame on R:n objekti, jossa voidaan säilyttää aineistoa. Muuttujat ova sarakkeina ja muuttujilla tulee olla aina nimi.
+
+Matriisi voi olla joillekin sanana tuttu myös tilastotieteen tai matematiikan kursseilta, ja R:n matriisi vastaakin matemaattista matriisia. Tästä syystä matriisi on hyvin yleinen tietorakenne, johon ei voi olla törmäämättä jos käyttää R:ää tutkimuksessa. Matriisilla tehdään yleensä kuitenkin matemaattisia operaatioita, eikä se ensisijaisesti ole aineiston säilytyspaikka.
+
+Taulukko on juuri sitä miltä se kuulostaa: vektorintapainen tietorakenne, johon tallennetaan alkioita (elements), joilla on kaikilla sama luokka (class), eli esimerkiksi lukuja. Ero vektoriin on se, että taulukolla on useampi ulottuvuus. Matriisi on erikoistapaus taulukosta, sillä matriisi on kaksiulotteinen taulukko. Matriisi vastaa siis oikeastaan paremmin sitä mielikuvaa, joka monelle tulee mieleen suomen sanasta taulukko, ja matriisit ovatkin paljon yleisempiä kuin moniulotteiset taulukot.
+
+Lista on kokoelma alkioita, jonka alkioina voi olla hyvin eri tyyppisiä objekteja.
+
+Koska data frame on kaikista tärkein ja eniten käytetty tietotyyppi, niin aloitetaan siitä.
+
+
+## Data frame
+
+Data frame on erittäin yleinen tapa tallentaa tietoa R:ssä. Data frame on kaksiulotteinen tietorakenne, eli sillä on rivejä ja sarakkeita. Data framen sarakkeet muodostuvat aiemmin tutuista vektoreista. Nämä vektorit voivat olla eri luokan vektoreita, mutta data frame asettaa lisärajoitteen: vektoreiden on oltava yhtä pitkiä. Yhden rivin tiedot ajatellaan koskevan yhtä tutkittavaa.
+
+Luodaan data frame, josa on kaksi muuttujaa, height ja weight ja annetaan niihin kahdeksan mittauksen tiedot. Huomionarvoista on se, että komennon data.frame sulkujen sisällä on käytettävä yhtäsuuruusmerkkiä (=) eikä sijoitusoperaattoria (<-). Tämä johtuu siitä, että teknisesti ottaen komento data.frame on funktio (funktioista lisää myöhemmin).
+
+```{r}
+study_data <- data.frame(ID = 1:8,
+                         height = c(189.8, 184.0, 173.8, 175.9, 169.0, 183.7, 181.8, 16.9),
+                         gender = c("male","female","male","male","female","male","male","female"))
+study_data
+```
+
+## Matriisi
+
+### Matriisin luominen
+
+Matriisin luominen on yksinkertaista, ja tapahtuu funktiolla ```matrix```
+
+```{r}
+matrix(1:9, nrow = 3, ncol = 3)
+```
+
+Funktiolle matrix annetaan siis matriisiin tallennettavat luvut vektorina, sekä matriisin rivien ja sarakkeiden määrä (```ncol``` ja ```nrow```). Matriisi voi koostua myös kokonaan tietystä arvosta:
+
+```{r}
+matrix(0, nrow = 2, ncol = 5)
+```
+
+Useimmiten matriisien data luetaan R:ään jostain tiedostosta, joka on tuotettu Excelillä tai jollain muulla ohjelmalla (tutkimustulosten kirjaus suoraan R:ään olisi raskasta). Matriisien luonti käsin on kuitenkin hyvä osata, sillä pienillä matriiseilla on kätevää testata omaa koodia. Myös yllä olevan kaltaisia, esim. nollalla täytettyjä matriiseja on joskus kätevää käyttää "alustana", kun lasketaan omasta datasta tuloksia rivi tai sarake kerrallaan. Tämä johtuu siitä, että olemassa olevan matriisin rivin arvojen vaihtaminen on nopeampi operaatio kuin rivin lisääminen matriisiin.
+
+### Matriisin koko
+
+Joskus voi törmätä matriiseihin, joiden koko ei tiedä, tai ei halua olettaa. Tällöin tarvitaan funktioita, jotka kertovat matriisin koosta. Esimerkiksi, kun luetaan dataa R:ään tiedostoista, on hyvä tarkistaa, että kaikki rivit ja sarakkeet ovat mukana. ```nrow``` ja ```ncol``` palauttavat rivien ja sarakkeiden määrän, ```dim``` palauttaa matriisin rivien ja sarakkeiden määrän, rivit ensin.
+
+```{r}
+X <- matrix(1:12, ncol = 4)
+# Number of rows
+nrow(X)
+# Number of columns
+ncol(X)
+#Dimensions
+dim(X)
+```
+
+
+### Matriisin indeksointi
+
+Matriisin indeksointi on hyvin samantapainen operaatio kuin vektorin indeksointi, eli matriisin perään laitetaan hakasulkeet ja niihin määritellään halutut arvot. Matriisin indeksoinnissa pitää kuitenkin antaa erikseen indeksit riveille ja sarakkeille, pilkulla erotettuna. 
+
+```{r}
+# Only nrow is enough, since the number of columns must be 3
+X <- matrix(1:9, nrow = 3)
+X
+# Element on second row, third column
+X[2, 3]
+
+# The complete first row
+X[1, ]
+
+# The second and third values of the second column
+X[2:3, 3]
+
+# Get rows where the values of the first column is > 1
+X[X[, 1] > 1, ]
+```
+
+HUOM: jos matriisia indeksoidessa tuloksessa sarakkeiden tai rivien määrä on tasan yksi, kuten yllä olevissa esimerkeissä viimeistä lukuun ottamatta, tuloksena on vektori, ei matriisi. Jos haluaa tuloksen olevan matriisi, tulee hakasulkeisiin lisätä määre ```drop = FALSE```
+
+```{r}
+# The complete first row
+X[1, ,drop = FALSE]
+# The second and third values of the second column
+X[2:3, 3, drop = FALSE]
+```
+
+Matriiseja voi myös muokata sijoittamalla haluttuihin paikkoihin uusia arvoja:
+
+```{r}
+# Copy of X
+X_new <- X
+# Replace first row with new values
+X_new[1, ] <- c(10, 13, 15)
+X_new
+# Replacement can also be a single value, and will be recycled
+X_new[2:3, 1] <- 0
+X_new
+```
+
+
+Rivejä tai sarakkeita voi myös poistaa. Tämä tapahtuu antamalla indeksi miinusmerkkisenä:
+
+```{r}
+# Without first row
+X[-1, ]
+# Without second column
+X[, -2]
+```
+
+
+#### Indeksimatriisi (index matrix)
+
+Jos halutaan poimia useampi yksittäinen arvo matriisista, tulee käyttää indeksimatriisia (index matrix).
+
+Esimerkiksi, jos haluttaisiin poimia äskeisestä X-matriisista arvot [1, 2], [1, 3] ja [2,2], tämä ei toimi:
+
+```{r}
+X[c(1, 1, 2), c(2, 3, 2)]
+```
+
+vaan tulee käyttää indeksimatriisia, jonka jokainen rivi antaa yhden halutun alkion indeksit, ensin rivi ja sitten sarake. Indeksimatriiseja tehdessä kannattaa asettaa lisämäärä ```byrow = TRUE```, jolloin alkiot laitetaan matriisiin rivi kerrallaan, ei sarake kerrallaan niin kuin oletuksena.
+
+```{r}
+i <- matrix(c(1, 2, 1, 3, 2, 2), nrow = 3, byrow = TRUE)
+i
+X[i]
+```
+
+
+### Matriisien rakentaminen vektoreista
+
+Matriisi koostuu usein useammasta muuttujasta ja havainnoista. Yleensä jokainen rivi vastaa yhtä havaintoa, ja sarake muuttujaa. Tämän takia on hyvä tietää, miten yksittäisistä vektoreista saa koottua matriiseja. Alla olevassa esimerkissä on koottu yhteen matriisiin Star Wars-hahmojen pituuksia ja painoja. Tämä tapahtuu ```cbind``` funktiolla (column bind), joka nimensä mukaan yhdistää vektorit matriisin sarakkeiksi. ```cbind``` voi yhdistää myös valmiita matriiseja yhteen, niin että matriisit ovat "vierekkäin" eli yhdistetyssä matriisissa on kummankin matriisin sarakkeet (rivien määrän tulee olla sama). Vastaavasti ```rbind``` (row bind) yhdistää matriiseja "allekkain".
+
+```{r}
+heights <- c(172, 167, 96, 202, 150, 178)
+masses <- c(77, 75, 32, 136, 49, 120)
+
+starwars <- cbind(heights, masses)
+starwars
+```
+
+
+### Rivien ja sarakkeiden nimeäminen
+
+Matriisien rivit ja sarakkeet voi nimetä, ja usein tässä onkin järkeä. Yllä olevassa esimerkissä ```starwars```-matriisin sarakkeet on nimetty alkuperäisten vektorin mukaan. Alla olevassa esimerkissä on lisää tapoja nimetä rivejä ja sarakkeita
+
+```{r}
+# Set column names by naming arguments while building matrix from vectors
+cbind(Height = heights, Mass = masses)
+
+# Set column and row names explicitly
+colnames(starwars) <- c("Height", "Mass")
+rownames(starwars) <- c("Luke Skywalker", "C-3PO", "R2-D2", "Darth Vader", "Leia Organa", "Owen Lars")
+starwars
+```
+
+Nimettyjä matriiseja voi indeksoida myös nimien perusteella:
+
+```{r}
+starwars[c("Luke Skywalker", "R2-D2"), ]
+```
+
+Matriisiin voi myös lisätä uusia sarakkeita ```cbind``` funktiolla. Alla lisätään matriisiin starwars uusi sarake, jossa on hahmojen BMI:
+
+```{r}
+# Create a vector for BMI and add to matrix with cbind
+bmi <- starwars[, "Mass"] / (starwars[, "Height"] / 100)^2
+cbind(starwars, "BMI" = bmi)
+```
+
+
+### Matriiseilla laskeminen
+
+Matriiseilla laskeminen on hyvin samankaltaista kuin vektoreilla laskeminen. Matriisin ja yksittäisen luvun välisessä operaatiossa matriisin alkiot käsitellään yksitellen. Samoin samankokoiset matriisit voi esim. lisätä yhteen, jolloin lisäys tapahtuu alkio kerrallaan.
+
+```{r}
+X <- matrix(1:9, nrow = 3)
+Y <- matrix(3:11, nrow = 3, ncol = 3)
+# Element-wise multiplication
+X * 2
+# Element-wise sum
+X + Y
+```
+
+Matriiseille on lisäksi määritelty paljon matriisien omia laskutoimituksia, niistä voi lukea lisää oppikirjasta. Matriisilaskentaa opiskelleille huomio: R:ssä oletuksena kertolasku tehdään alkioittain, matriisien kertolasku tapahtuu operaattorilla ```%*%```.
+
+
+## Tietotyyppien tarkastelu
+
+Kaikkia objekteja voi tulostaa Console-ikkunassa kutsumalla objektin nimen. Joskus tarvitaan kuitenkin apufunktioita.
+
+### View()
+
+Mikäli käytät RStudiota, niin tarkempaa tarkastelua varten kannattaa kuitenkin käyttää ```View```-funktiota. ```View``` avaa ikkunan, jossa voi selata data framen tai matriisin rivejä ja sarakkeita, sekä järjestää arvoja halutun sarakkeen mukaan (tämä järjestys säilyy vain ```View```-näkymässä, itse muuttujan rakenne ei muutu). Mikäli aineistossasi on satoja tuhansia tai miljoonia rivejä, niin ```View``` saattaa olla liian hidas.
+
+
+### str()
+
+Perineinen tapa tarkastella tietotyyppejä R:ssä on funktio nimeltä ```str()``` str toimii kaikissa R-ympäristöissä. str tulostaa sekä muuttujien nimet, niiden vektoreiden tyypit että ruudulle mahtuvan osan vektoreiden alkioista.
+
+```{r}
+# Examine the structure of data frame
+str(study_data)
+```
+### head()
+
+Jos aineistossa on todella paljon rivejä, on sen tulostaminen Console-ikkunaan ikävää. Ladataan esimerkiksi iris-data, jossa on 150 havaintoa. Tulostettaessa rivejä on niin monta, että muuttujien nimet eivät näy, mikä on epämiellyttävää. Parempi tapa saada käsitys aineistosta on kutsua sitä head-funktion avulla.
+
+```{r, eval=FALSE}
+# Load data for this example
+data(iris)
+
+# Try to print iris-data directly
+iris
+```
+![](files/02-data_types/iris_print_data.png)
+
+```{r, eval=FALSE}
+# Print 6 first rows of iris data
+head(iris)
+```
+![](files/02-data_types/iris_print_head_data.png)
+
+
+```{r, eval=FALSE}
+# You can also define the number of rows to print
+head(iris,2)
+```
+![](files/02-data_types/iris_print_head2_data.png)
+
+## Extra: Taulukko ja lista
+
+Taulukoita ja listoija ei ihan perus data-analyysiä toteutettaessa tarvitse. Lue kuitenkin seuraava, jotta saat yleiskäsityksen mihin niitä tarvitaan. Voit myös palata perehtymään taulukoihin ja listoihin myöhemmin koska tahansa.
+
+### Taulukko
+
+Kuten alussa todettiin, taulukot (array) ovat hyvin harvinaisia, joten niihin ei kannata tällä kurssilla keskittyä. Niitä kuitenkin tarvitaan joidenkin tehtävien tekemiseen, joten tässä on hyvin lyhyt oppimäärä taulukoista.
+
+Taulukot ovat matriisien kaltaisia, mutta taulukossa voi olla yli kaksi ulottuvuutta. Oikeastaan matriisit ovat kaksiulotteisia taulukoita. Alla on esimerkki 3-ulotteisesta taulukosta, jota voi ajatella "peräkkäin" olevina matriiseina. Alla on kuva 1-ulotteisesta taulukosta eli vektorista, 2-ulotteisesta taulukosta eli matriisista ja 3-ulotteisesta taulukosta.
+
+![](files/array.png)
+
+Taulukkoja luodaan matriisien tapaan funktiolla ```array```. Toisin kuin matriisien tapauksessa, ```array```-funktiolle pitää kertoa rivien ja sarakkeiden määrän lisäksi ulottuvuuksien määrä. Alla oleva esimerkki luo 3-ulotteisen taulukon, jonka voi ajatella koostuvan kolmesta 4 x 2 matriisista.
+
+```{r}
+my_array <- array(1:24, dim = c(4, 2, 3))
+my_array
+```
+
+Taulukoita indeksoidaan aivan kuten matriiseja, mutta jokaiselle ulottuvuudelle on annettava oma indeksi:
+
+```{r}
+# The first 2 rows of each "layer"
+my_array[1:2, , ]
+
+
+# Second column from last two layers
+my_array[, 2, 2:3]
+```
+
+
+### Lista
+
+Listat ovat tärkeitä erityisesti silloin, kun aletaan toteuttamaan uusia toimintoja R-kieleen omien funktioiden avulla. Niin kauan kun valmiit R-funktiot riittävät, ei listoilla ole juuri käyttöä. 
+
+Lista (list) on vektorinkaltainen tietorakenne, jossa on järjestyksessä alkioita, jotka on mahdollisesti nimetty. Tärkeä ero vektoriin verrattuna on, että listan alkiot voivat olla erityyppisiä. Listoja luodaan ```list```-funktiolla:
+
+```{r}
+example_list <- list(c(1, 2, 3),
+                     matrix(0, nrow = 3, ncol = 4),
+                     "list can include anything")
+example_list
+
+subject_ids <- c("ANKL", "PEPA", "DIPR")
+measurements <- matrix(c(1, 2.5, 3,
+                         3.5, 5, 3,
+                         2.3, 3, 1.6),
+                       nrow = 3)
+colnames(measurements) <- c("CRP", "HDL", "LDL")
+rownames(measurements) <- subject_ids
+# List names can be given with or without quotes
+study <- list(Subject_ID = subject_ids,
+              "Measurements" = measurements,
+              Study_name = "Blood tests")
+study
+```
+
+Listoja ja niiden kaltaisia olioita käytetään R:ssä paljon. Listoihin on kätevä kerätä erilaista tietoa, jotka halutaan säilyttää samassa paketissa. Esimerkiksi yksinkertaisetkin tilastolliset mallit tuottavat paljon erilaista tietoa, jotka pakataan listaan (tarkemmin listan kaltaiseen olioon, tästä lisää myöhemmin).
+
+#### Listojen alkioiden käsittely
+
+Listan alkioihin pääsee käsiksi kahdella eri tavalla: kaksoishakasulkeilla ```[[]]``` tai, jos lista on nimetty, dollarimerkillä ```$```:
+
+```{r}
+# By position
+study[[2]]
+# By name
+study[["Subject_ID"]]
+# Using dollar sign
+study$Study_name
+```
+
+Listaa voi indeksoida myös yksinkertaisilla hakasulkeilla. Tällöin palautetaan aina lista, eikä yksittäistä alkiota kuten aiemmin. Tämän demonstroiminen vaatii tutustumista uuteen funktioon ```class```, joka palauttaa argumenttinsa luokan (class). Vektorin luokka vaihtelee vektorin sisällön mukaan: numeric = lukuja, character = merkkijonoja, logical = loogisia arvoja, jne. Listojen luokka on luonnollisesti list. Lisätietoa: R:ssä kaikki muuttujiin tallennettavat tiedot ovat olioita (object). Ohjelmointikielten olioilla on aina luokka, joka määrittää sen ominaisuudet. Esimerkiksi ```print``` ja ```plot```-komennot toimivat eri tavalla riippuen niiden argumentin luokasta.
+
+Tarkastellaan alla, mikä ero yksinkertaisilla ja kaksinkertaisilla hakasulkeilla on listan indeksoinnissa:
+
+```{r}
+# Returns a list of length one with the matrix as the only element
+study[2]
+class(study[2])
+# Returns the actual matrix
+study[[2]]
+class(study[[2]])
+# Dollar sign also returns the matrix
+class(study$Measurements)
+# Single brackets works as subscripting just like with vectors
+study[2:3]
+```
+
+#### Alkion lisäys listaan ja listojen yhdistäminen
+
+Yksittäisen alkion voi lisätä listaan sijoittamalla listan johonkin indeksiin tai nimeen uusi arvo (indeksin pitää olla yhtä suurempi kuin listan pituus). HUOM! Listan alkio voi myös itse olla lista (sisäkkäinen lista = nested list).
+
+```{r}
+# Add a character matrix as the fourth element of study
+study[[4]] <- matrix(c("CPR", "HDL", "LDL",
+                       "C-reactive protein", "High-density lipoprotein",
+                       "Low-density lipoprotein"),
+                     ncol = 2)
+# An element of a list can also be a list
+study[["professional"]] <- list(name = c("John H. Watson"),
+                                position = "Medical doctor",
+                                age = 45)
+study
+# Note that the fourth element has no name
+names(study)
+```
+
+Listoja voi yhdistää vektorien tapaan ```c()```-funktiolla:
+
+```{r}
+# Concatenate two vectors
+vector1 <- c(3, 6, 5)
+vector2 <- c(1, 2, 3)
+c(vector1, vector2)
+
+
+list1 <- list(vector = vector1,
+              name = "list1")
+list2 <- study[1:2]
+# Concatenate three lists, names stay the same
+c(list1, list2, list(first_element = "A", second = "B"))
+```
+
+
+
+<!--chapter:end:02-data_types.Rmd-->
+
+# Datan lukeminen {#reading_data}
+
+Tässä osiossa tutustutaan datan sisään lukemiseen ja sisäänluetun datan tarkistamiseen. Tähän mennessä kaikki kurssilla käsitelty data on luotu R:ssä. Useimmiten R:llä käsiteltävä data on kuitenkin tallennettu tiedostoon, joka on luotu automaattisesti jollain ohjelmalla tai kirjattu esim. Excelissä.
+
+Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttavat datan data frame-muodossa (voit kerrata data framen toimintaa [viime viikon materiaalista](#data-frame). Data frame toimii tähän tarkoitukseen hyvin, sillä siihen voi tallentaa niin numeerisia kuin tekstimuotoisia muuttujia.
+
+Lopussa käydään myös läpi tapoja lukea taulukkolaskenta (Excel) ja SPSS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin tekstitiedostoiksi.
+
+## Hakemistopolut ja tiedostopäätteet
+
+### Hakemistopolut
+
+Jotta aineiston lataus tiedostosta onnistuu, tulee käyttäjän olla tietoinen siitä, missä hakemistopolussa eli kansiossa R työskentelee lataushetkellä. R:llä on siis koko ajan jokin hakemistopolku, johon se viittaa. R:n käyttämän hakemistopolun saat selville komennolla ```getwd()```.
+
+```{r, eval=FALSE}
+getwd()
+```
+```
+[1] "C:/Users/jukop/Documents"
+```
+Minulla näyttäisi että R on oletuksena hakemistossa C:/Users/jukop/Documents. Jos olen purkanut kurssilla tarvittavan datasets.zip -tiedoston aineistot kansioon ```C:/Users/jukop/Documents/datasets```, niin minun kannattaa vaihtaa R käyttämään kyseistä hakemistoa. Se tapahtuu näin:
+
+```{r, eval=FALSE}
+setwd("C:/Users/jukop/Documents/datasets")
+```
+```setwd``` ei tulosta mitään, jos kansion vaihtaminen onnistuu. Voit vielä ```getwd()```-komennolla uudelleen tarkastaa, että hakemisto todella vaihtui.
+
+***Vinkki!*** Ellet tiedä mikä on tarkka hakemistopolku, johon olet tiedostot purkanut, niin se onnistuu klikkaamalla Windowsissa tiedostoselaimen osoiteriviä. Voit kopioida hakemistopolun siitä, mutta vaihda kuitenkin kenoviivat (```\```) vinoviivoiksi (```/```). Kenoviivoilla on R:ssä erityismerkitys merkkijonoissa, joten ne eivät kelpaa tässä. Kaksinkertainen kenoviiva (```\\```) toimisi myös.
+![](files/03-reading_data/windows_show_file_path2.png)
+
+### Tiedostopäätteet
+
+Windows ei oletuksena nykyisin näytä tiedostopäätteitä. Ne kannattaakin asettaa näkymään tiedostoselaimen avulla. Kyseinen asetus löytyy tiedostoselaimen View-välilehdeltä kohdasta Show/Hide valinta File extensions. Merkitse kyseinen täppä valituksi, jolloin näet tiedostopäätteet, kuten kuvassa. Nyt on helppoa käsittää, kun opettaja puhuu CSV-tiedostoista, että niiden tiedostopääte on .csv.
+![](files/03-reading_data/windows_show_file_extensions2.png)
+
+## Tekstitiedostot
+
+Tekstitiedosto tarkoittaa tässä tapauksessa tiedostoa, joka ei sisällä tekstin lisäksi mitään muuta, kuten erilaisia muotoilutietoja. Tekstitiedostojen yleisimmät tiedostopäätteet ovat .txt ja .csv (comma separated value, tästä lisää pian). Esim. Excelin .xlsx-tiedostot tai Wordin .docx-tiedostot eivät ole tekstitiedostoja, koska niissä on paljon muutakin tietoa tekstin lisäksi.
+
+### read.table()
+
+Kun dataa tallennetaan tekstitiedostoon, tiedoston ensimmäisellä rivillä on usein sarakkeiden nimet, ja seuraavilla riveillä mahdollisesti rivin nimi, ja sitten sarakkeiden arvot. Jokaisen kentän tulee olla erotettu samalla merkillä (field separator character). Yleisiä erotinmerkkejä ovat sarkain eli tab, välilyönti ja pilkku. Alla olevassa esimerkissä on neljältä kuvitteelliselta koehenkilöltä mitattu puna-vihervärisokeuteen liitettyjen geenien OPN1LW ja OPN1MW ilmentymistasot (lukuarvot ovat allekirjoittaneen hihasta). Tässä eri arvot on erotettu sarkaimella.
+
+```
+Subject_ID	OPN1LW	OPN1MW
+ANKL	11264	12365
+DIPR	10636	12725
+PEPA	5630	13248
+BRWA	8294	13060
+```
+
+Tämä data löytyy myös oheisesta tiedostosta ```gene_data.txt```. Tekstitiedostot voi lukea sisään funktiolla ```read.table()```, jolla on tiedoston polun (file path) lisäksi monta muutakin argumenttia, joista tärkeimmät ovat:
+
+- ```header```: looginen arvo (TRUE/FALSE), jolla kerrotaan funktiolle, onko ensimmäisellä rivillä sarakkeiden nimet vai ei
+- ```sep```: erotinmerkki, jolla arvot on eroteltu
+- ```dec```: desimaalierotin eli desimaalilukujen merkki, jolla desimaalit on eroteltu. Tämä on tärkeä lähinnä suomalaisille, koska Suomessa desimaalierotin on jostain syystä pilkku, eikä piste kuten useimmissa muissa maissa.
+
+Luetaan edellisen esimerkin data R:ään data frameksi:
+
+```{r}
+gene_data <- read.table("gene_data.txt", header = TRUE)
+gene_data
+```
+
+Yllä olevassa esimerkissä ei määritelty erikseen erotinmerkkiä, jolloin erotinmerkiksi tulkitaan kaikki tyhjä tila (white space) eli välilyönnit, sarkaimet jne. Halutessaan erotinmerkin voi myös asettaa. Jos erotinmerkki on sarkain, tulee asettaa ```sep = "\t"```
+
+```{r}
+gene_data <- read.table("gene_data.txt", sep = "\t", header = TRUE)
+gene_data
+```
+
+Kuten yllä huomattiin, sarkain erotinmerkkinä merkataan ```"\t"```, eikä hipsuilla, joiden sisään laitetaan tyhjää tilaa sarkainnäppäimellä. Tämä on yksi esimerkki koodinvaihtomerkin (escape character) ```\``` käytöstä. R:ssä ja ohjelmointikielissä ylipäätään kenoviiva toimii koodinvaihtomerkkinä, eli sitä ei käsitellä kuin muita merkkejä, vaan se muuttaa seuraavan merkin toimintaa. Usein tämä tarkoittaa sitä, että kenoviivan avulla merkataan sarkainta, rivinvaihtoa (newline, ```\n```) ja muita erikoismerkkejä. Koodinvaihtomerkin käyttöä ei tarvitse osata tämän enempää, mutta se esitellään tässä, koska se aiheuttaa ongelmia Windowsin käyttäjille.
+
+Windowsin tiedostopoluissa kansioiden välissä on kenoviiva, kun taas Mac- ja Linux-järjestelmissä käytetään kauttaviivaa ```/```. Koska R:ssä kenoviiva on koodinvaihtomerkki, tulee R:ssä käyttää tiedostopoluissa Macin ja Linuxien tyyliä. Eli kun haluaa lukea tiedoston R:ään Windowsissa, kenoviivat ```\``` pitää korvata kauttaviivoilla ```/```, jotta R ei mene sekaisin.
+
+Luetaan seuraavaksi sisään data-kansiossa oleva tiedosto tooth_growth.csv, joka sisältää dataa tutkimuksesta, jossa tutkittiin c-vitamiinin vaikutusta hampaiden kasvuun marsuilla. .csv-tiedostopääte tulee sanoista comma separated value, eli arvot on eroteltu pilkulla. Annetaan siis sep-parametriksi ",". Tämä tiedosto sisältää myös rivien nimet ensimmäisessä sarakkeessa. Tämä voidaan kertoa ``` read.table()```-funktiolle parametrilla row.names, jonka arvoksi voi asettaa sarakkeen numeron, josta rivien nimet napataan.
+
+```{r}
+tooth <- read.table("data/tooth_growth.csv", header = TRUE, sep = ",", row.names = 1)
+tooth
+```
+
+Tässä tutkimuksessa marsuille annettiin C-vitamiinia eri annoksina (dose, mitattu milligrammoina), joka appelsiinimehussa (OJ) tai askorbiinihappona (VC) ja mitattiin odontoblastien (hammasluun emosolu) pituus (len).
+
+### read.csv()
+
+.csv-tiedostot ovat niin yleisiä, että niiden lukemiseen on oma funktion: ```read.csv```, joka on käytännössä sama funktio kuin ```read.table```, mutta parametrien oletusarvot ovat erilaiset, nii että ```read.csv(file)``` ~ ```read.table(file, header = TRUE, sep = ",")). 
+
+```{r}
+tooth <- read.csv("data/tooth_growth.csv", row.names = 1)
+tooth
+```
+
+#### read.csv2()
+
+HUOM: Koska Suomessa pilkkua käytetään desimaalierottimena, kenttien rajaaminen pilkulla ei toimi. Käytännössä tämä näkyy siten, että suomenkielinen Excel tallentaa .csv-tiedosto oletuksena muodossa, jossa desimaalierottimena on pilkku ja kenttien välissä puolipilkku ";". Jos siis olet tallentanut Excelistä taulukon .csv-muotoon ja sen lukeminen R:ään aiheuttaa outouksia, kyse on todennäköisesti tästä. Onneksi R:ssä on valmiina funktio ```read.csv2()```, joka osaa lukea suomalaiset .csv-tiedostot oikein.
+
+
+## Data framen rakenteen tutkiminen
+
+Kun data on luettu sisään R:ään, kannattaa aina tarkistaa, että kaikki data on luettu oikein. Tässä muutama vinkki data framen tutkimiseen, joista osaa käsiteltiin jo viime kerralla:
+
+```dim()``` antaa data framen dimensiot, eli rivien ja sarakkeiden määrän.  
+```View()``` avaa data framen erilliseen ikkunaan, jossa sitä voi tarkastella. Suositellaan vain pienemmille data frameille
+```str()``` kertoo rivien ja sarakkeiden määrät sekä kaikkien sarakkeiden luokat. Kätevä tapa tarkistaa mm. että lukuja sisältävät sarakkeet eivät ole vahingossa muuttuneet merkkijonoiksi.
+```table()``` on kätevä kategoristen sarakkeiden tutkimiseen. Se kertoo, kuinka monta havaintoa muuttujan arvoilla on. ```table()``` voi ottaa vastaan myös kaksi kategorista muuttujaa, ja laskee jokaiselle muuttujien arvojen yhdistelmälle havaintojen lukumäärän.
+
+Katsotaan, mitä ```str()``` kertoo juuri lukemastamme tooth-datasta.
+
+```{r}
+str(tooth)
+```
+
+Kuten näimme aiemmin, mukana on 10 havaintoa ja 3 muuttujaa. len ja dose ovat luokkaa numeric eli desimaalilukuja ja supp on luokkaa factor. Factor-vektoreita käsitellään enemmän lineaaristen mallien yhteydessä, mutta niillä merkitään usein kategorisia muuttujia. 
+
+Lasketaan seuraavaksi, kuinka monelle marsulle annettiin appelsiinimehua ja kuinka monelle askorbiinihappoa. 
+
+```{r}
+table(tooth$supp)
+```
+
+Kumpaakin annostelutapaa käytettiin siis viisi kertaa. Voimme myös selvittää, miten eri annokset jakautuvat annostelutavan suhteen:
+
+```{r}
+table(tooth$supp, tooth$dose)
+```
+
+Appelsiinimehuna annettiin siis 0.5 mg ja 1 mg annoksia kumpaakin 1 kappale, ja 2 mg annoksia 3 kappaletta.
+
+### R:n sisäänrakennetut datasetit
+
+R:ssä on monta sisäänrakennettua (built-in) datasettiä. Näitä on kätevää käyttää nopeaan testaamiseen, ja ne vilahtelevatkin usein R-oppaissa. Esimerkiksi aikaisempi odontoblastien pituuksia sisältävä datasettimme on oikeastaan pieni otos R:n sisäisestä datasetistä ToothGrowth.
+
+R:n sisäiset datasetit ovat koko ajan käytettävissä, vaikka ne eivät näy RStudion ympäristössä (Environment). Voimme esimerkiksi katsoa, millainen rakenne kokonaisella ToothGroth-datasetillä on:
+
+```{r}
+str(ToothGrowth)
+```
+
+R:n datasettejä voi käyttää moneen eri tarkoitukseen, kuten datan visualisoinnin tai tilastollisten toimenpiteiden testaamiseen. Listan kaikista R:n dataseteistä saa komennolla ```data()```. Tarkempia tietoja datasetistä saa help-sivulta kuten funktioden tapauksessa, esimerkiksi ```?ToothGrowth```
+
+## Muut tiedostot
+
+### Excel
+
+Excelin käyttämiä .xlsx-tiedostoja voi lukea suoraan R:ään, vaikka jossain netissä olevissa ohjeissa suositellaan niiden muuntamista .csv-muotoon. Tätä varten pitää asentaa openxlsx-paketti. Tämän voi tehdä RStudion Packages-valikoksta tai suoraan komennolla ```install.packages("openxlsx")```. Tästä paketista löytyvät funktiot ```read.xlsx()``` ja ```write.xlsx()```, joilla voi lukea ja kirjoittaa .xlsx-tiedostoja.
+
+HUOM: .xlsx-tiedostoja varten on olemassa myös xlsx-paketti, mutta se tarvitsee Javaa ja erilaisten Java- ja R-versioiden kanssa voi tulla yhteensopivuusongelmia. Suosittelen siis openxlsx-pakettia, se on toiminut hyvin.
+
+### SPSS
+
+Eri tutkimusryhmissä dataa säilytetään usein SPSS-tiedostoissa (.sav). SPSS-tiedostojen käsittelyyn voi käyttää haven-paketin funktioita ```read_sav``` ja ```write_sav```. haven-paketissa on funktiot myös Stata:n ja SAS:n datatiedostoille. 
+
+SPSS-tiedostoja voi lukea myös foreign-paketin avulla, mutta ainakin minulla on parempia kokemuksia haven-paketista. haven on myös osa tidyverse-pakettikokoelmaa, joten oletan sen pysyvän hyvin ajan tasalla jatkossakin.
+
+<!--chapter:end:03-reading_data.Rmd-->
+
+# Datan muokkaaminen {#data-wrangling}
+
+Aineisto ei tyypillisesti ole valmiiksi oikeassa muodossa. Voi olla että haluat käyttää vain jotain osajoukkoa aineistosta. Tällöin tarvitaan komentoja aineiston muokkaamiseksi.
+
+**Yleinen käytännön vinkki**
+Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla todella työlästä. Tällöin saattaa joutua yhdistelemään aineistoja useista lähteistä, etsimään virheellisiä arvoja, muokkaamaan tekstimuotoisia (character) muuttujia eri muotoon jne. Mikäli aiot muokata tekstimuotoisia vektoreita eri muotoon, niin kannattaa muuttaa ne faktoriksi vasta lopuksi, sillä muuttujan ei ole yleensä tarpeellista olla faktorimuodossa aineistojan muokatessa. Faktorit ovat tyypillisesti tarpeen vasta kun aineistoa aletaan todella analysoimaan.
+
+## Uuden muuttujan tai rivin luonti datakehikkoon {#data-frame-wrangling}
+
+Uusi muuttuja voidaan luoda R:ssä joko perustuen aineiston muihin muuttujiin, tai muuttujan arvot voidaan syöttää vektorina aineistoon. Mikäli uusi muuttuja syötetään lukuina R-koodiin, tulee varmistua siitä, että havaintoja on sama määrä kuin aineistossa on rivejä. Muutoin aineisto tulee syötettyä virheellisesti ja tulokset eivät pidä paikkaansa.
+
+```{r}
+# evaluate the number of rows and columns
+dim(study_data)
+# there are 8 rows
+
+# initiate a new variable called weight (imput data) with correct number of rows
+study_data$weight <- c(78.2, 65.8, 49.2, 71.2, 58.3, 54.1, 74.2, 62.8)
+
+# calculate a new variable based on existing variables
+study_data$height_m <- study_data$height / 100 # height as metres
+study_data$BMI <- study_data$weight / (study_data$height_m^2)
+study_data
+```
+
+
+### Data framen käsittely 
+
+```{r}
+# Subscripting with variable names
+study_data[, c("height", "gender")]
+
+# Subscripting with brackets - as matrix (but I do not recommend this style!)
+study_data[, 1:2]
+
+# Rownames and colnames
+colnames(study_data)
+names(study_data)
+
+# Individual columns can be accessed and added with dollar sign
+# Let's say that we find out that the ID number 8 was typed in incorrectly. We can fix the entire height variables as follows
+study_data$height <- c(189.8, 184.0, 173.8, 175.9, 169.0, 183.7, NA, 160.9)
+study_data
+
+# It would have been possible to change value of only one cell e.g. like this
+study_data$height[8] <- 161.9
+study_data
+
+
+
+```
+
+Uuden rivin lisäys data frameen on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi data frame, jolla on samat sarakkeet kuin alkuperäisellä, ja vasta sitten liittää se komennolla ```rbind()```. Käyttäjän tulee myös huolehtia siitä, että sarakkeet ovat samaa tyyppiä kuin alkuperäisessä data framessa.
+
+```{r}
+new_row <- data.frame(ID = 11, height = 182, gender = "male", weight = 81.2)
+rbind(study_data, new_row)
+```
+
+
+## Osajoukkojen valinta
+
+Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita ja jos kriteerejä on useita niin myös loogisia operaattoreita. Tarkemmin operaattoreita käsitellään luvussa [Loogiset operaattorit](#loogiset-operaattorit). Voit käyttää kyseisen osion taulukkoa apuna jo tässä osiossa.
+
+```{r}
+# Filter only females
+study_data[study_data$gender == "female", ]
+# Filter individuals whose height is less than or equal to 175
+study_data[study_data$height <= 175, ]
+
+# Filter individuals whose height is not missing and is less than or equal to 175
+study_data[!is.na(study_data$height) & study_data$height <= 175, ]
+
+# Use multiple filter criteria
+study_data[study_data$height <= 175 & study_data$gender == "female", ]
+```
+
+## Faktorit
+
+R:n numeeriset vektorit ovat lähtökohtaisesti jatkuva-asteikollisia. Olet ehkä ihmetellytkin, miten kategorinen muuttuja määritellään. Kategorista muuttujaa sanotaan R:ssä faktoriksi. Numeerisen tai tekstimuotoisen muuttujan tai vektorin voi muuttaa faktori-muotoiseksi muuttujaksi ```factor``` -funktiolla.
+
+```{r}
+# Let's change gender from character string to a factor and rename it as fgender
+study_data$fgender <- factor(study_data$gender)
+
+# Let's now compare the printing of gender and fgender
+study_data$gender
+study_data$fgender
+```
+Huomataan, että faktori tulostaa faktorin tasot eli kaikkien mahdollisten luokkien nimet faktorin perässä: ```Levels: female male```.
+
+Usein vastaan tulee myös tilanne, jossa faktorin eri tasoja vastaa kokonaislukuarvot, kuten tässä esimerkissä 1, 2 ja 3. Tällaisessa tilanteessa faktorin tasojen merkitys on usein annettu jossain dokumenttitiedostossa. Tällöin faktorin tasot ja niiden kuvaukset (labels) tulee määrittää käsin.
+
+```{r}
+# Create a data for this example
+wall_dat <- data.frame(building_ID = c(1,2,3,4,5,6), building_material = c(1,1,2,2,3,3))
+
+# Name is 'building_material' very long, I want to rename it
+names(wall_dat) <- c("building_ID","build_mat")
+
+# We know from some kind of documentation that 1 stands for "wood", 2 is "steel" and 3 is "brick".
+wall_dat$fbuild_mat <- factor(wall_dat$build_mat,levels = c(1,2,3), labels = c("wood", "steel", "brick"))
+
+str(wall_dat)
+```
+
+
+## Extra: Lääketutkimusesimerkki
+
+R:ssä on aiemmin nähtyjen numeric, character ja logical-vektorien lisäksi muitakin vektoriluokkia, tärkeimpänä näistä factor. Factor-vektoreihin tallennetaan kategorisia muuttujia, kuten tutkimuksessa määrättyjä ryhmiä, aikapisteitä tms. Luodaan esimerkiksi factor-vektori, jossa on kuvitteellisen lääketutkimuksen osallistujien ryhmätiedot:
+  
+```{r}
+groups <- as.factor(c("drug1", "drug2", "control", "drug1", "control",
+                      "drug2", "drug2", "control", "control", "drug1"))
+groups
+```
+
+Factoreita voi luoda muista vektoreista funktioilla ```factor``` tai ```as.factor()```. ```as.factor``` muuntaa vektorin automaattisesti ja nopeasti factoriksi, ja säilyttää myös jo valmiiksi factor-luokan vektorien tasojen järjestyksen (tästä lisää pian).
+
+Kuten tulosteesta nähdään, factor-vektorin tulostus tulostaa factorin alkiot (HUOM: ei hipsuja) sekä factorin tasot. Factorit ovat pinnan alla kokonaisluku- eli integer-vektoreita, joissa on päällä "kerros", joka määrittää factorin tasot. Edellä nähty vektori groups näyttää siis tältä:
+
+![](files/05-statistics/factor.png)
+
+Factorien tasoille annetaan siis lukuarvot ykkösestä eteenpäin. Oletuksena ensimmäinen taso eli taso 1 on aakkosissa ensimmäinen arvo, tai pienin lukuarvo jos factori tehdään numeerisista muuttujista. Lukuarvot saa näkyville muuntamalla factorin numeeriseksi vektoriksi:
+
+```{r}
+as.numeric(groups)
+```
+
+Tasojen järjestyksen voi myös päättää itse. Tämä on tärkeää, sillä kuten pian nähdään, factorin ensimmäinen taso on monissa tilastollisissa testeissä ns. referenssitaso, johon muita tasoja verrataan. Usein esiintyvä tapaus ovat tutkimukset, joissa on ryhmät nimeltä case ja control. Koska case on aakkosissa ennen controllia, R käyttää oletuksen case-ryhmää referenssitasona, ja testaa miten control-ryhmä poikkeaa tästä tasosta, vaikka haluaisimme päinvastaisen tuloksen. Tasot voi itse määrittää näin:
+
+```{r}
+study_groups <- factor(c("case", "control", "control", "case", "case"),
+                       levels = c("control", "case"))
+study_groups
+```
+
+Nyt tasot ovat oikeassa järjestyksessä!
+
+Kuten aiemmin mainittiin, factoreita voi tehdä myös numeerisista vektoreista. HUOM: muista, että ```as.numeric()``` palauttaa factorin kokonaislukuarvot, ei alkuperäisiä lukuja. Alkuperäiset luvut saa käyttämällä ensin ```as.character```-funktiota, joka muuttaa factorin tasot merkkijonovektoriksi.
+
+```{r}
+time_points <- as.factor(c(0, 0, 1, 1, 5, 5, 1, 0, 5))
+time_points
+# Probably not what you expect
+as.numeric(time_points)
+# First to character, then to numeric
+as.numeric(as.character(time_points))
+```
+
+<!--chapter:end:04-data_wrangling.Rmd-->
+
+# Tunnusluvut {#statistics}
+
+Tunnusluvut (engl. statistics) ovat keskeinen osa tilastotiedettä. Tunnuslukujen avulla voidaan tiivistää ja tarkastella aineistoa. Tässä harjoittelemme tyypillisimpien tunnuslukujen laskemista aineistosta. Näitä tunnuslukuja voi sanoa myös empiirisiksi, koska ne on laskettu aineistosta.
+
+## Sijaintia kuvaavat tunnusluvut
+
+### Minimi ja maksimi
+Minimi tarkoittaa aineiston pienintä arvoa kyseiselle muuttujalle. Maksimi on vastaavasti suurin arvo. Minimi ja maksimi on periaatteessa helppoa laskea funktioiden ```min``` ja ```max``` avulla, mutta pari pientä sudenkuoppaa niihinkin liittyy. Funktiot ```min``` ja ```max``` hyväksyvät argumenteikseen vain numeeriset vektorit.
+
+```{r}
+dat_for_loc <- c(-1.25, -4.1, 1.16, -3.05, 4.17, 0.73, -3.14, 3.39, -2.55, 0.4)
+min(dat_for_loc)
+max(dat_for_loc)
+```
+
+Joskus minimiä ja maksimia tarvitsee tilanteessa, jossa halutaan vaikkapa muuttaa kaikki negatiiviset arvot nolliksi (tai positiiviset, jos maksimi). Tämä onnistuu helpoiten funktioiden ```pmin``` ja ```pmax``` avulla. Samalla tapaa, jos halutaan kaikki lukua 1 pienemmät luvut muutettua luvuksi 1, niin tämä onnistuu vaihtamalla luku 0 lukuun 1. 
+```{r}
+# We want to get rid of all values below 0 and make them 0
+pmin(dat_for_loc,0)
+# Similar, but get rid of all values over 0
+pmax(dat_for_loc,0)
+
+# We can do similar things to any limit, e.g. 1
+pmin(dat_for_loc,1)
+```
+Funktiota ```pmin``` ja ```pmax``` voi käyttää vieläkin yleisemmässä muodossa antamalla yksittäisen lukuarvon sijasta vektorin. Näitä emme käsittele tässä, mutta kiinnostuneet voivat kokeilla lisää itse.
+
+### Keskiarvo
+
+Keskiarvo saadaan laskemalla muuttujan kaikki havainnot yhteen ja jakamalla summa havaintojen määrällä. Esimerkiksi aineiston 1,2,3,4 keskiarvo on (1+2+3+4)/4 = 2.5 Keskiarvoa satunnaismuuttujan $X$ havainnoille voidaan merkitä matemaattisesti seuraavasti
+$$\overline{x} = \sum_{i=1}^n x_i = \frac{x_1+x_2+\dots+x_n}{n},$$
+missä merkintä $\overline{x}$ tarkoittaa itse keskiarvoa, $x_1,...,x_n$ ovat havaintoja ja $n$ on laskettavien havaintojen määrä.
+
+R:ssä keskiarvo voidaan laskea helposti funktiolla ```mean```.
+
+```{r}
+tooth_length <- ToothGrowth$len
+mean(tooth_length)
+```
+
+Mikäli muuttujassa on puuttuvia arvoja (NA) niin keskiarvoksi tulee oletusarvoisesti NA. NA-arvot voi jättää pois keskiarvon laskemisessa antamalla funktiolle lisäargumentiksi ```na.rm=TRUE```.
+
+```{r}
+# Create some data
+dat_for_mean <- c(1, 2, NA, 4)
+# Data with NA results mean with NA
+mean(dat_for_mean)
+# Leave NA-values out and calculate mean from the remaining ones
+mean(dat_for_mean,na.rm=TRUE)
+```
+
+### Mediaani
+
+Mediaani ilmaisee aineiston keskimmäisen luvun. Toisin sanoen puolet havainnoista on mediaania suurempia ja puolet mediaania pienempiä. Esimerkiksi aineiston 1,1,2,3,5 mediaani on 2. Jos aineistossa on parillinen määrä lukuja otetaan kaksi keskimmäisä ja lasketaan ne yhteen ja jaetaan kahdella (keskiarvo). Aineiston 3,3,5,6,7,17 mediaani on (5+6)/2 = 5.5. Mediaani on helppoa laskea R:ssä funktiolla median.
+
+
+```{r}
+# Let's think about median
+dat_for_median <- c(7, 2, 3, 4, 1, 7, 0, 4, 3, 3, 2, 6)
+dat_for_median
+sort(dat_for_median) # Median would be the middle value in the arranged data, thus 3
+
+# Getting median in R
+median(dat_for_median)
+```
+### Kvantiilit
+
+Mediaani siis kertoi kohdan, jossa 50 % aineistosta on pienenmpiä kuin kyseinen arvo. Entä, jos haluamme luvun, joka kertoo luvun, jota pienempiä ovat vaikkapa 10 % aineistosta? Tai mikä tahansa muu osuus? Tällainen yleistys on nimeltään kvantiili. Joillakin kvantiileilla on erityisnimet. Ne ovat
+
+ - mediaani (50 % aineistosta on tätä pienempiä)
+ - alakvartiili (25 %)
+ - yläkvartiili (75 %)
+ - desiilit (10% välein)
+    * 10 %:n desiili, 20 %:n desiili jne.
+
+Haluamansa kvantiilin voi laskea R:ssä funktiolla ```quantile```. Jos haluat laskea 30 %:n kvantiilin, niin arnna argumentille probs tätä vastaava suhteellinen osuus eli 0.30.
+
+```{r}
+quantile(dat_for_median,probs=0.30)
+```
+quantile-funktiolle voi antaa useita kvantiileita laskettavaksi kerralla. Tällöin argumentille probs on annettava vektori. Esimerkiksi voin laskea vaikkapa kvartiilit ja mediaanin kerralla näin:
+
+```{r}
+quantile(dat_for_median,probs=c(0.25,0.5,0.75))
+```
+Eräs jännä seikka on se, että pyytämällä R:ää laskemalla 0 %:n ja 100 %:n kvartiilit saa tulokseksi minimin ja maksimin. Samaan pääsee myös komennolla ```range()```. Kokeillaan tätä
+```{r}
+# 0 % and 100 % quantile gives a range of the data
+quantile(dat_for_median, probs=c(0.00,1.00))
+
+# Let's compare with min and max
+min(dat_for_median)
+max(dat_for_median)
+
+# There is also function called range
+range(dat_for_median)
+```
+Esimerkiksi viiksilaatikko-kuvaa vastaavat lukuarvot eli minimin, alakvartiilin, mediaanin, yläkvartiilin ja maksimin saa kätevästi quantile-funktiolla antamalla probs-argumentille vektorin ```c(0,0.2,0.5,0.75,1)```. Tätä sanotaan joskus viiden numeron yhteenvedoksi.
+
+```{r}
+quantile(dat_for_median, probs=c(0,0.2,0.5,0.75,1))
+```
+=======
+>>>>>>> 2addb63fb17a5ba14a96f219e1a448ce0ad905ba
+
+### Moodi
+
+Moodi ilmaisee muuttujan yleisimmän arvon. Valitettavasti R:ssä ei ole valmista funktiota moodin laskemiseen. Sen sijaan funktio nimeltään ```mode``` antaa objektin tyypin, eikä laske moodia. Jos moodin haluaa laskea R:ssä, on se tehtävä laskemalla ensin aineistosta taulukko ja sitten etsimällä siitä maksimiarvo.
+```{r}
+# Find out the mode
+dat_for_mode <- c(7, 2, 3, 4, 1, 7, 0, 4, 3, 3, 2, 6, 1, 3, 3, 1, 6, 0, 1, 3, 0, 6, 4, 2, 3, 2, 2, 7, 3, 1, 5, 3, 4, 3, 3, 2, 2, 4, 2, 1, 5, 3, 2, 2, 2, 3, 4, 2, 5, 3, 4, 2, 1, 4, 2, 3, 1, 1, 4, 3, 2, 3, 5, 4, 4, 4, 1, 3, 1, 3, 5, 2, 3, 1, 4, 2, 4, 2, 1, 0, 3, 3, 3, 3, 4, 4, 4, 3, 4, 4, 2, 1, 2, 4, 4, 4, 6, 2, 3, 2)
+tab <- table(dat_for_mode)
+# Let's see how is tab
+tab
+# Let's pick up the largest frequency using which.max function
+tab[which.max(tab)]
+# Mode is 3 and the frequency is 26
+
+# Let's pick up only the value 3
+names(tab)[which.max(tab)]
+# That is character so let's convert it to numeric
+as.numeric(names(tab)[which.max(tab)])
+```
+
+
+Ylläoleva käy itse asiassa hyvästä esimerkistä tilanteesta, jossa seuraavaksi tekisin viimeisen rivin funktioksi ja jatkossa käyttäisin kyseistä funktiota työssäni. Funktioihin palataan osiossa [Funktiot](#functions). En malta olla tekemättä funktiota, joten olkoon alla esimerkki moodi-funktiosta ilman suurempia selityksiä.
+
+```{r}
+# Write a function for mode
+moodi <- function(x) {
+  tab <- table(x)
+  as.numeric(names(tab)[which.max(tab)])
+}
+# Use that function
+moodi(dat_for_mode)
+```
+
+
+## summary()
+
+Kätevä tapa saada nopea yhteenveto data framen kaikista muuttujista on käyttää ```summary```-funktiota data frame -objektille.
+
+```{r}
+# Calculate summary for ToothGrowth data
+summary(ToothGrowth)
+```
+Summary huolii myös yksittäisen vektorin, jolloin yhteenveto tulostuu vaakasuuntaisena.
+```{r}
+tooth_length <- ToothGrowth$len
+summary(tooth_length)
+```
+
+
+## Varianssi ja keskihajonta ja kvantiilit
+
+
+<!--chapter:end:05-statistics.Rmd-->
+
+# Todennäköisyysjakaumat R:ssä {#distributions}
+
+Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista on valmiita funktiota R:ssä. Funktiota on neljää eri tyyppiä, jotka merkataan funktion nimen ensimmäisellä kirjaimella.
+
+- d: Tiheysfunktio: mikä on tiheysfunktion arvo pisteessä x?
+- p: Kertymäfunktio: millä todennäköisyydellä jakaumasta poimittu arvo on pienempi/suurempi kuin q?
+- q: Käänteinen kertymäfunktio (eli kvantiilifunktio): mille arvolle kertymäfunktio palauttaa todennäköisyyden p?
+- r: satunnaislukugeneraattori: arvo eli simuloi satunnaisia havaintoja jakaumasta
+
+Alla on kuvaajat ensimmäisestä kolmesta funktiosta:
+
+```{r, echo = FALSE, fig.width=10, fig.height=4}
+x <- seq(-2.5, 2.5, by = 0.01)
+p <- seq(0, 1, by = 0.01)
+par(mfrow = c(1,3))
+plot(x, dnorm(x), type = "l", main = "d: Tiheysfunktio")
+plot(x, pnorm(x), type = "l", main = "p: Kertymäfunktio")
+plot(p, qnorm(p), type ="l", main = "q: Käänteinen kertymäfunktio")
+```
+
+## Esimerkki: normaalijakauma
+
+Otetaan muutama käytännön esimerkki. Oletetaan, että suomalaisten miesten suolan saanti on normaalijakautunut odotusarvolla 10 grammaa päivässä ja keskihajonta on 4 grammaa päivässä (odotusarvo on totta, keskihajonta allekirjoittaneen hihasta). Piirretään ensin kuva jakaumasta välillä [0, 20] grammaa päivässä. Jakauman muoto saadaan funktiolla ```dnorm()```. Eli yllä olevan ohjeen mukaan d-alkuinen funktio antaa tiheysfunktion, ja norm-pääte viittaa normaalijakaumaan. Normaalijakauman funktiolle tulee kertoa jakauman odotusarvo (mean) ja keskihajonta (sd = standard deviation).
+
+```{r}
+# Sequential vector  of salt consumption
+salt <- seq(0, 20, by = 0.1)
+# Density function
+density <- dnorm(salt, mean = 10, sd = 4)
+# Line plot
+plot(salt, density, type = "l",
+     xlab = "Suolan saanti", ylab = "Tiheysfunktio",
+     main = "Suomalaisten miesten suolan saanti")
+```
+
+Aikuisten saantisuositus on enintään 5 grammaa suolaa päivässä. Kuinka moni suomalainen mies syö tämän jakauman mukaan sopivasti suolaa? Vastaus saadaan kertymäfunktiosta (P(X < 5)) ```pnorm()``` funktion avulla.
+
+```{r}
+pnorm(5, mean = 10, sd = 4)
+```
+
+Tämän jakauman mukaan vain noin 11% suomalaisista miehistä syö suolaa sopivasti!
+
+Suomalaisten naiset syövät keskimäärin 7 grammaa suolaa päivässä. Kuinka moni mies syö tätä enemmän suolaa? ```pnorm()``` antaa oletuksena arvon P(X < 7). Nyt halutaan kuitenkin tietää P(X > 7), joka saadaan asettamalla ```lower.tail = FALSE```:
+
+```{r}
+pnorm(7, mean = 10, sd = 4, lower.tail = FALSE)
+```
+
+Noin 77% miehistä syö suolaa keskimääräistä naista enemmän.
+
+Entä jos halutaan tietää, kuinka paljon suolaa eniten syövä 10% saa? Tähän voidaan vastata funktiolla ```qnorm()```, joka on käänteinen versio funktiosta  ```pnorm()```. Samoin kuin ```pnorm()```, ```qnorm```-funktion oletus on, että todennäköisyydet lasketaan jakauman alapäästä alkaen. Vastaus tähän kysymykseen selviää siis näillä kahdella tavalla:
+
+```{r}
+qnorm(0.1, mean = 10, sd = 4, lower.tail = FALSE)
+# OR
+qnorm(0.9, mean = 10, sd = 4)
+```
+
+Eli tämän jakauman mukaan eniten suolaa saava 10% miehistä syö yli kolminkertaisen määrän suolaa suositukseen verrattuna.
+
+
+## Muita jakaumia
+
+Vastaavat funktiot löytyvät myös muille jakaumille, kuten:
+
+- Chi-toiseen: chisq
+- Eksponentiaalinen: exp
+- Studentin t: t
+- Tasajakauma: unif
+
+ja niin edelleen.
+
+<!--chapter:end:06-probability-distributions.Rmd-->
+
+# Kuvaajien piirtäminen {#plotting}
+
+Tällä viikolla tutustutaan kuvaajien piirtämiseen. Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä on silti lyhyet kirjalliset ohjeet suomeksi.
+
+R:n piirtokomennot voidaan jakaa kolmeen ryhmään:
+
+- Korkean tason grafiikkatoiminnot piirtävät aina uuden kuvat
+- Alemman tason grafiikkatoiminnot lisäävät olemassa olevaan kuvaan uusia osia
+- Interaktiiviset grafiikkatoiminnot mahdollistavat vuorovaikutuksen kuvan kanssa. (Näiden käyttö on helpompaa opettaa videolla, joten niitä ei käsitellä tässä)
+
+## Korkean tason piirtofunktiot
+
+### plot()
+
+Korkean tason piirtofunktioista ylivoimaisesti yleisin on ```plot```. ```plot```-funktio on hyvin monipuolinen, mutta yleisin käyttötapa on piirtää hajontakuvio (scatter plot) yhdestä tai kahdesta vektorista. Alla on hajontakuvio auton jarrutusmatkoista eri nopeuksilla:
+
+```{r}
+# Car speeds (km/h)
+speed <- seq(40, 110, by = 10)
+# Stopping distances (m)
+stop_dist <- c(26, 35, 45, 56, 69, 83, 98, 113)
+
+plot(x = speed, y = stop_dist)
+```
+
+```plot```-funktiolle annetaan siis kaksi yhtä pitkää vektoria, joissa on pisteiden x- ja y-koordinaatit. Halutessaan kuvalle voi antaa otsikon (title) ja nimetä uudestaan kuvan akselit (axis labels). Tämä onkin usein hyvä idea, sillä R:n muuttujien nimissä ei saa olla välilyöntejä tai erikoismerkkejä, mutta usein näiden käyttö akselien nimissä on hyvin informatiivista.
+
+```{r}
+plot(x = speed, y = stop_dist,
+     main = "Auton pysähtymismatka eri nopeuksilla",
+     xlab = "Auton nopeus (km / h)", ylab = "Pysähtymismatka (m)")
+```
+
+```plot```-funktiolle voi antaa muitakin parametreja, jotka säätävät mm. pisteiden väriä, kokoa ja muotoa, akselien rajoja jne.
+
+
+### Muut korkean tason funktiot
+
+Tässä on esimerkkejä muutamista muista yleisistä korkean tason funktioista:
+
+```hist``` piirtää histogrammeja. Histogrammit kuvaavat jatkuvan muuttujan jakaumaa.
+
+```{r}
+# A vector of 1000 observations from a normal distribution of heights of Finnish women
+heights <- rnorm(n = 1000, mean = 168, sd = 5.4)
+hist(heights, breaks = 20, 
+     main = "Suomalaisten naisten pituuksien jakauma",
+     xlab = "Pituus (cm)", ylab = "Frekvenssi")
+```
+
+Toinen tapa kuvata jatkuvan muuttujan jakaumaa on viiksilaatikko (joskus myös laatikko-viikset -kuvaaja), joita piirretään ```boxplot```-funktiolla:
+
+```{r}
+boxplot(heights, breaks = 20, 
+     main = "Suomalaisten naisten pituuksien jakauma",
+     ylab = "Pituus (cm)")
+```
+
+
+Vastaavasti diskreetin muuttujan jakaumaa voi kuvata pylväsdiagrammilla käyttäen ```barplot```-funktiota. Alla on esimerkki opiskelijoiden kotipaikkakuntien jakaumasta. Tässä tulee myös tutuksi uusi vektorien ominaisuus: nimeäminen. Nimettyjen vektorien (named vectors) alkioilla on järjestyslukujen lisäksi nimet. Nimet annetaan olla olevaan tyyliin ```nimi = alkio```. Nimetyt vektori käyttäytyvät aivan kuin tavalliset vektorit, mutta niitä voi indeksoida myös nimien avulla, ja jotkut funktiot, kuten barplot, käyttävät hyödyksi alkioiden nimiä. Nimettyjen vektorien käyttö ei ole kurssin ydinasioita, mutta on joskus hyvin kätevä temppu osata.
+
+```{r}
+origin <- c("Pohjois-Savo" = 15, "Pk-seutu" = 10, "Turku" = 3,
+            "Pohjois-Suomi" = 8)
+origin
+origin["Turku"]
+barplot(origin, 
+        main = "Opiskelijoiden kotipaikkakunta",
+        ylab = "Opiskelijoiden lukumäärä")
+```
+
+
+
+## Alemman tason grafiikkatoiminnot
+
+Alemman tason grafiikkatoiminnoilla voi lisätä olemassa olevaan kuvaan lisää osia, kuten tekstiä, pisteitä tai selitteen (legend).
+
+Otetaan esimerkiksi alussa nähty kuvaaja autojen pysähtymismatkoista ja lisätään siihen uusia osia. Tässä vielä alkuperäinen kuva:
+
+```{r}
+plot(x = speed, y = stop_dist,
+     main = "Auton pysähtymismatka eri nopeuksilla",
+     xlab = "Auton nopeus (km / h)", ylab = "Pysähtymismatka (m)")
+```
+
+Lisätään kuvaajan jarrutusmatkat liukkaalla kelillä. Uusia pisteitä voi piirtää ```points```-funktiolla, jolle annetaan x- ja y-koordinaatit vektoreina ihan kuin ```plot```-funktiollekin. 
+
+```{r}
+stop_dist_wet <- c(30, 41, 54, 69, 85, 103, 122, 143)
+plot(x = speed, y = stop_dist,
+     main = "Auton pysähtymismatka eri nopeuksilla",
+     xlab = "Auton nopeus (km / h)", ylab = "Pysähtymismatka (m)")
+points(x = speed, y = stop_dist_wet)
+```
+
+Ylläolevassa kuvaajassa on kaksi ongelmaa: ylimmät pisteet eivät näy, koska kuvaajan y-akseli loppuu kesken. Y-akseli on piirretty alkuperäisten jarrutusmatkojen pohjalta, ja koska liukkaalla kelillä jarrutus kestää pidempään, uudet pisteet eivät mahdu kuvaajaan. Toinen ongelma on se, että pisteitä ei voi erottaa toisistaan.
+
+Ensimmäinen ongelma ratkeaa säätämällä käsin y-akselin rajat. Tämä tapahtuu argumentilla ```ylim```, jolle annetaan vektorissa ylä- ja alaraja (vastaavasti ```xlim``` säätää x-akselin rajat).
+
+Lisäksi piirretään selvyyden vuoksi pisteet eri värisinä ja eri kuvioilla. Argumentti ```col``` säätää pisteiden värin ja ```pch``` pisteiden muodon. Eri väri- ja muotovaihtoehdot löytää googlaamalla.
+
+```{r}
+plot(x = speed, y = stop_dist,
+     col = "darkblue", pch = 20,
+     ylim = c(20, 150),
+     main = "Auton pysähtymismatka eri nopeuksilla",
+     xlab = "Auton nopeus (km / h)", ylab = "Pysähtymismatka (m)")
+points(x = speed, y = stop_dist_wet, pch = 15, col = "darkred")
+```
+
+Nyt kuvaaja alkaa jo näyttää paremmalta, mutta kuvaajasta ei vielä voi päätellä, mitä eri väriset pisteet tarkoittavat. Lisätään siis kuvaajaan selite ```legend```-komennolla. Selitteelle määritetään paikka kuvaajassa ```x``` ja ```y``` argumenteilla (vasemman yläkulman koordinaatit). Sen jälkeen annetaan selitetekstit (```legend```), sekä selitteen muodot ja värit (```pch``` ja ```col```, kuten aiemmin). HUOM! Selitteen symbolit ja värit on itse osattava laittaa oikeaan järjestykseen. Selitteen tekstit annetaan järjestyksessä ylhäältä alas, ja piirtomerkit tulee antaa samassa järjestyksessä.
+
+```{r}
+plot(x = speed, y = stop_dist,
+     col = "darkblue", pch = 20,
+     ylim = c(20, 150),
+     main = "Auton pysähtymismatka eri nopeuksilla",
+     xlab = "Auton nopeus (km / h)", ylab = "Pysähtymismatka (m)")
+
+points(x = speed, y = stop_dist_wet, pch = 15, col = "darkred")
+
+legend(x = 40, y = 150,
+       legend = c("Märkä keli", "Kuiva keli"),
+       pch = c(15, 20), col = c("darkred", "darkblue"))
+```
+
+Tuunataan kuvaajaa vielä hiukan, ja lisätään siihen käyrä kuvaamaan jarrutusmatkan ennustetta ```lines```-funktiolla.
+
+
+Alla olevassa koodissa lasketaan ensin ```lm```-funktion avulla sopivat parametrit käyrälle. Lineaarisia malleja käsitellään seuraavien viikkojen aikana, joten tässä vaiheessa niistä ei tarvitse vielä ymmärtää muuta kuin se, että funktio sovittaa toisen asteen funktion (muotoa matka = a + b \* nopeus + c \* nopeus^2), jonka perusteella voidaan ennustaa pysähtymismatkaa myös muille kuin mitatuille nopeuksille
+
+```{r}
+# Create vecotr of squared speeds to fit second order polynomial
+speed_squared <- speed^2
+
+# Model for dry weather
+model_dry <- lm(stop_dist ~ speed + speed_squared)
+prediction_dry <- model_dry$fitted.values
+
+# Model for rainy weather
+model_wet <- lm(stop_dist_wet ~ speed + speed_squared)
+prediction_wet <- model_wet$fitted.values
+```
+
+```lines``` tarvitsee ```x``` ja ```y``` argumentit kuten ```points```, mutta piirtää viivan, ei pisteitä. Käytetään äsken laskettuja mallien antamia ```prediction```-vektoreita y-koordinaatteina. Tehdään viivoista katkoviivoja argumentilla ```lty = "dashed"``` (lty = line type).
+
+```{r}
+plot(x = speed, y = stop_dist,
+     col = "darkblue", pch = 20,
+     ylim = c(20, 150),
+     main = "Auton pysähtymismatka eri nopeuksilla",
+     xlab = "Auton nopeus (km / h)", ylab = "Pysähtymismatka (m)")
+
+points(x = speed, y = stop_dist_wet, pch = 15, col = "darkred")
+
+legend(x = 40, y = 150,
+       legend = c("Märkä keli", "Kuiva keli"),
+       pch = c(15, 20), col = c("darkred", "darkblue"))
+
+lines(speed, prediction_dry, lty = "dashed")
+lines(speed, prediction_wet, lty = "dashed")
+```
+
+Seuraavaksi voidaan värittää käyrät samoilla väreillä kuin pisteet, ja lisätä niille omat selitteet. Tässä vaiheessa selitteen tekemisestä tulee jo melko monimutkaista, sillä selitteessä on mukana pisteitä ja käyriä. Tästä syystä selitteen argumentteihin pitää laittaa puuttuvia arvoja ```pch``` ja ```lty```-argumenteille, koska selitteen ensimmäiset rivit eivät viittaa mihinkään käyrään, vaan pelkästään pisteisiin ja vastaavasti kaksi alinta riviä viittaavat vain käyriin.
+
+```{r}
+plot(x = speed, y = stop_dist,
+     col = "darkblue", pch = 20,
+     ylim = c(20, 150),
+     main = "Auton pysähtymismatka eri nopeuksilla",
+     xlab = "Auton nopeus (km / h)", ylab = "Pysähtymismatka (m)")
+
+points(x = speed, y = stop_dist_wet, pch = 15, col = "darkred")
+
+legend(x = 40, y = 150,
+       legend = c("Märkä keli", "Kuiva keli",
+                  "Ennuste märälle kelille",
+                  "Ennuste kuivalle kelille"),
+       pch = c(15, 20, NA, NA),
+       lty = c(NA, NA, "dashed", "dashed"),
+       col = c("darkred", "darkblue", "darkred", "darkblue"))
+
+lines(speed, prediction_dry, lty = "dashed", col = "darkblue")
+lines(speed, prediction_wet, lty = "dashed", col = "darkred")
+```
+
+Kuvaajamme on melkein valmis iltapäivälehteen muistuttamaan liukkaiden kelien vaaroista, mutta jotta siitä tulisi oikein säväyttävä, siinä pitää toki olla tekstiä! Lisätään siis vielä pieni tekstin pätkä, joka korostaa eroa liukkaan ja kuivan kelin välillä. Tekstiä voi lisätä ```text```-funktiolla, jolle annetaan tuttuun tapaan ```x``` ja ```y```-argumentit, joilla määritetään tekstin paikka ja ```labels``` määrittää itse tekstin (kaikki argumentit voivat olla myös pidempiä vektoreita, jolloin tulee useampi teksti eri paikkoihin). Lisäksi parametrillä ```adj``` (adjust) voi hienosäätää tekstin paikkaa. ```adj``` on vektori, jossa on hienosäätöarvot x- ja y-suunnassa. 
+
+
+```{r}
+plot(x = speed, y = stop_dist,
+     col = "darkblue", pch = 20,
+     ylim = c(20, 150),
+     main = "Auton pysähtymismatka eri nopeuksilla",
+     xlab = "Auton nopeus (km / h)", ylab = "Pysähtymismatka (m)")
+
+points(x = speed, y = stop_dist_wet, pch = 15, col = "darkred")
+
+legend(x = 40, y = 150,
+       legend = c("Märkä keli", "Kuiva keli",
+                  "Ennuste märälle kelille",
+                  "Ennuste kuivalle kelille"),
+       pch = c(15, 20, NA, NA),
+       lty = c(NA, NA, "dashed", "dashed"),
+       col = c("darkred", "darkblue", "darkred", "darkblue"))
+
+lines(speed, prediction_dry, lty = "dashed", col = "darkblue")
+lines(speed, prediction_wet, lty = "dashed", col = "darkred")
+
+text(x = 95, y = 145, labels = "ERO JOPA 30 METRIÄ!") 
+```
+
+Kuvaajamme on nyt valmis! Näitä komentoja käyttämällä ja pienellä googlailulla saa myös tehtyä tämän viikon tehtävän.
+
+## Kuvaajan tallentaminen
+
+Opinnäytteitä ja tutkimusjulkaisuja varten kuvasta tarvitaan yleensä tiedosto. Tiedostomuodoista pdf ja png-muotoiset tiedostot on helppoa toteuttaa R:ssä käyttämällä funktioista ```pdf()``` ja ```png()```. Keskeisimmät argumentit molemmissa ovat file, width ja height. ```pdf()```- tai ```png()```-komennon jälkeen tulee laittaa kuvan piirtokomennot. Muista kuvan piirrettyäsi sulkea yhteys tiedostoon ajamalla funkio ```dev.off()```
+
+***Vinkki!*** Mikäli haluat tallentaa kuvan R:n käyttämään hakemistoon, niin sinun ei tarvitse antaa ensimmäisenä argumenttina koko hakemistopolkua, vaan riittää antaa haluamasi tiedostonimi! Jos haluat tallentaa muualle, niin voit määritellä hakemistopolun kokonaan. Voit kerrata hakemistopoluista kohdasta [Hakemistopolut ja tiedostopäätteet](#hakemistopolut-ja-tiedostopäätteet).
+
+```{r, eval=FALSE}
+# Initiate plotting with pdf()
+pdf(file="cars_stopping.pdf", width=10, height = 10)
+
+# I copied the plotting commands from previous code section:
+plot(x = speed, y = stop_dist,
+     col = "darkblue", pch = 20,
+     ylim = c(20, 150),
+     main = "Auton pysähtymismatka eri nopeuksilla",
+     xlab = "Auton nopeus (km / h)", ylab = "Pysähtymismatka (m)")
+
+points(x = speed, y = stop_dist_wet, pch = 15, col = "darkred")
+
+legend(x = 40, y = 150,
+       legend = c("Märkä keli", "Kuiva keli",
+                  "Ennuste märälle kelille",
+                  "Ennuste kuivalle kelille"),
+       pch = c(15, 20, NA, NA),
+       lty = c(NA, NA, "dashed", "dashed"),
+       col = c("darkred", "darkblue", "darkred", "darkblue"))
+
+lines(speed, prediction_dry, lty = "dashed", col = "darkblue")
+lines(speed, prediction_wet, lty = "dashed", col = "darkred")
+
+
+# Close plotting to pdf-file using dev.off()
+dev.off()
+# Show a file
+file.show("cars_stopping.pdf")
+```
+
+
+## Kuvaajien piirtäminen käytännössä
+
+Jos äskeisen esimerkin aikana tuntui siltä, että näimme paljon työtä ja saimme lopputulokseksi kuvaajan, joka ei oikeastaan edes näytä kovin hyvältä, olet aivan oikeassa. Kuvaajien rakentaminen itse R:n peruskomennoilla on raskasta, ja usein perusgrafiikkatoimintoja käytetään lähinnä omaan käyttöön tulevien kuvaajien piirtämiseen nopeasti. Peruskomennot on kuitenkin hyvä hallita, sillä niitä saattaa tarvita valmiilla työkaluilla tehtyjen kuvaajien muokkaamiseen. Varsinkin tekstin lisääminen, sekä akselien nimeäminen ja otsikon muuttaminen ovat hyviä taitoja osata.
+
+R tarjoaa paljon valmiita työkaluja erilaisten kuvaajien piirtämiseen. Valitettavasti tällä kurssilla ei ole aikaa sukeltaa näiden työkalujen käyttöön, sillä ennen niiden käyttöä pitää ymmärtää enemmän R:n monimutkaisemmista tietorakenteista, joita käsitellään seuraavilla viikoilla. Inspiraatiota ja motivaatiota voi kuitenkin hakea esimerkiksi [R Graph Gallery](https://www.r-graph-gallery.com/index.html)-sivulta tai [ggpubr-paketin ohjeista](https://rpkgs.datanovia.com/ggpubr/index.html).
+
+<!--chapter:end:07-plotting.Rmd-->
+
+# Tilastollinen testaaminen {#tests}
+
+## Khi toiseen -testi {#chi-squared-test}
+
+Khi toiseen -testi eli $\chi^2$ voidaan toteuttaa seuraavasti.
+
+```{r}
+## From Agresti(2007) p.39
+M <- as.table(rbind(c(762, 327, 468), c(484, 239, 477)))
+dimnames(M) <- list(gender = c("F", "M"),
+                    party = c("Democrat","Independent", "Republican"))
+(Xsq <- chisq.test(M))  # Prints test summary
+Xsq$observed   # observed counts (same as M)
+Xsq$expected   # expected counts under the null
+Xsq$residuals  # Pearson residuals
+Xsq$stdres     # standardized residuals
+
+
+## Effect of simulating p-values
+x <- matrix(c(12, 5, 7, 7), ncol = 2)
+chisq.test(x)$p.value           # 0.4233
+chisq.test(x, simulate.p.value = TRUE, B = 10000)$p.value
+```
+
+
+## Kahden otoksen t-testi
+
+
+## Varianssianalyysi
+
+<!--chapter:end:08-statistical-tests.Rmd-->
+
+# Lineaariset mallit {#linear_models}
+
+Lineaarisessa mallissa eli lineaarisessa regressiossa tavoite on arvioida vastemuuttujan lineaarista riippuvuutta selittävistä muuttujista. Käytetään esimerkkinä R:n sisäistä datasettiä cars, jossa on kirjattu 50 auton nopeus ja pysähtymismatka. Tavoitteena on tutkia, miten auton pysähtymismatka riippuu auton nopeudesta.
+
+## Teoria
+
+Yksinkertaisin mahdollinen lineaarinen regressiomalli näyttää tältä:
+
+$$y = \beta_0 + \beta_1 x_1 + \epsilon$$
+
+- $y$ on vastemuuttuja, tässä auton pysähtymismatka
+- $\beta_0$ on ns. vakiotermi eli käyrän y-akselin leikkauskohta
+- $\beta_1$ on selittävän muuttujan eli auton nopeuden regressiokerroin
+- $x_1$ on selittävä muuttuja eli auton nopeus
+- $\epsilon$ on residuaalitermi (virhetermi)
+
+Mallissa siis oletetaan, että auton pysähtymismatka nopeudella 0 km/h on $\beta_0$ ja kasvaa $\beta_1$ verran, kun nopeus kasvaa 1 km/h. Lisäksi mukana on virhetermi, joka selittää satunnaisen vaihtelun tuloksissa lineaarisen käyrän ympärillä.
+
+Jos malliin halutaan lisätä selittäviä muuttujia, kuten auton jarrujen kunto ($x_2$) tai sääolosuhteet ($x_3$), malli näyttää tältä:
+
+$$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + ... + \epsilon$$
+
+Eli jokaiselle selittävälle muuttujalle annetaan oma regressiokerroin.
+
+## Esimerkki
+
+Muutetaan ensin cars-datasetin muuttujat meille tuttuihin yksikköihin, ja piirretään hajontakuvio havainnoista:
+
+```{r}
+# Change units
+cars$speed <- cars$speed * 1.60934
+cars$dist <- cars$dist * 0.0254
+# Scatter plot
+plot(cars$speed, cars$dist,
+     xlab = "Speed (km/h)", ylab = "Distance (m)",
+     main = "Stopping distances of cars") 
+```
+
+Autojen välillä on eroja, mutta kuten voi odottaa, suuremmilla nopeuksilla auton pysähtymismatka kasvaa. Käytetään seuraavaksi R:n funktiota ```lm()```, jolla voidaan sovittaa dataan lineaarinen malli:
+
+
+```{r}
+model <- lm(dist ~ speed, data = cars)
+model$coefficients
+```
+
+```lm()```-funktiolle annetaan ensimmäiseksi argumentiksi lineaarisen mallin kaava, jossa ```~``` korvaa yllä nähdyn yhtäkuin-merkin. HUOM: vakiotermi on automaattisesti mukana, eli sitä ei tarvitse kirjata erikseen. Lisäksi täytyy antaa data frame, josta kaavassa näkyvät muuttujat löytyvät.
+
+Lineaarisesta mallista saadaan irti paljon tietoa, tärkeimpinä mallin kertoimet (coefficients). Yllä olevista kertoimista voidaan päätellä, että kun auton nopeus nousee 1 km/h, autojen pysähtymismatka kasvaa noin 0.06 m ja odotettu kasvukäyrä leikkaa y-akselin -0.4 m kohdalla. Voimme piirtää tämän käyrän kuvaajaan ```abline()```-funktion avulla, antamalla sille mallin kertoimet:
+
+```{r}
+plot(cars$speed, cars$dist,
+     xlab = "Speed (km/h)", ylab = "Distance (m)",
+     main = "Stopping distances of cars")
+abline(a = model$coefficients[1], b = model$coefficients[2])
+```
+
+## Tarkempia tietoja mallista
+
+Muihin mallin tietoihin pääsee käsiksi ```summary```-funktion avulla, joko tulostamalla tuloksen konsoliin, tai sijoittamalla sen muuttujaan, josta voi etsiä mallin tietoja.
+
+```{r}
+# Print summary information
+summary(model)
+# Save summary and access specific information
+s <- summary(model)
+s$r.squared
+```
+
+```summary()``` kertoo mm. kertoimien arvojen lisäksi niiden saamat p-arvot kohdassa (Pr > |t|), sekä mallin selitysasteen (merkintätapa johtuu siitä, että p-arvot tulevat t-testeistä). Tässä tapauksessa muuttujan speed p-arvo on hyvin pieni, joten voimme todeta suurella varmuudella, että autojen pysähtymismatka riippuu (lineaarisesti) auton nopeudesta. R<sup>2</sup> eli R-squared kertoo, kuinka suuren osuuden pysähtymismatkojen varianssista auton nopeus selittää.
+
+
+## Ennustaminen
+
+Kun lineaarinen malli on luotu, sen perusteella voidaan myös ennustaa arvoja uusille havainnoille. Tämä tapahtuu ```predict()```-komennolla, jolle annetaan malli, sekä uuden datan sisältävä data frame. Ennustetaan edellisen mallin perusteella pysähtymismatka autolle neljällä uudella nopeudella ja lisätään ne edelliseen kuvaajaan punaisilla rukseilla:
+
+
+```{r}
+# Create data frame with new speed values
+new_data <- data.frame(speed = c(25, 15, 38))
+# Create dist column by predicting from linear model
+new_data$dist <- predict(model, newdata = new_data)
+
+# Add points to previous plot
+plot(cars$speed, cars$dist,
+     xlab = "Speed (km/h)", ylab = "Distance (m)",
+     main = "Stopping distances of cars")
+abline(a = model$coefficients[1], b = model$coefficients[2])
+points(new_data$speed, new_data$dist, pch = 4, col = "red")
+```
+
+Kuten huomataan, ennustetut arvot ovat täsmälleen käyrän päällä.
+
+## Korrelaatio
+
+Korrelaatio on lineaarisen regression ohella tapa mitata kahden muuttujan välistä riippuvuutta. Korrelaatiolle on monia erilaisia mittareita, joista yleisimmät ovat Pearsonin korrelaatiokerroin, joka mittaa kahden muuttujan välistä lineaarista riippuvuutta ja Spearmanin järjestyskorrelaatiokerroin, joka mittaa kahden muuttujan välistä riippuvuutta ilman lineaarisuusoletusta. HUOM: korrelaatio ei ota kantaa siihen, kuinka vahva riippuvuus on (käyrän jyrkkyys), vaan pelkästään siihen, kuinka systemaattinen riippuvuus on. Kummatkin korrelaatiokertoimet saavat arvoja väliltä [-1, 1], jossa -1 on täydellinen negatiivinen korrelaatio (toisen muuttujan kasvaessa toinen pienenee) ja 1 on täydellinen positiivinen korrelaatio.
+
+Korrelaation kahden vektorin välillä voi R:ssä laskea komennolla ```cor()```. Otetaan esimerkiksi R:n sisäinen datasetti Indometh, jossa on mitattu indometasiinin farmakokinetiikkaa, ja selvitetään ajan ja indometasiinin konsentraation väliselle riippuvuudelle Pearsonin ja Spearmanin korrelaatiokertoimet. Piirretään sen jälkeen hajontakuvio mittaustuloksista ja lisätään kuvaajaan alaotsikoksi korrelaatiokertoimet. Tutustumme samalla funktioon ```round()```, jolla voi pyöristää lukuja halutulle desimaalitarkkuudelle.
+
+```{r}
+# Pearson correlation
+pearson <- cor(Indometh$time, Indometh$conc, method = "pearson")
+# Spearman correlation
+spearman <- cor(Indometh$time, Indometh$conc, method = "spearman")
+# Scatter plot
+plot(Indometh$time, Indometh$conc,
+     xlab = "Time", ylab = "Concetration",
+     main = "Pharmacokinetics of indometacin")
+
+# Paste concatenates strings
+subtitle <- paste("Pearson correlation:", round(pearson, digits = 2),
+                  "Spearman correlation:", round(spearman, digits = 2))
+# Add subtitle to plot
+mtext(subtitle)
+
+```
+
+Tässä esimerkissä nähdään hyvin Pearsonin - ja Spearmanin korrelaatiokertoimien ero. Koska Indometasiinin konsentraatio laskee eksponentiaalisesti, ei lineaarisesti, Pearsonin korrelaatiokerroin on "vain" -0.7, kun taas Spearmanin korrelaatiokerroin -0.97 vastaa lähes täydellistä negatiivista korrelaatiota.
+
+
+
+
+
+<!--chapter:end:09-modelling.Rmd-->
+
+# Funktiot {#functions}
+
+Tällä viikolla opitaan kirjoittamaan itse funktioita ja pureudutaan sitä kautta syvemmälle R-funktioiden toimintaan. 
+
+## Funktion käsite
+
+Funktio on kokonaisuus järjesteltyä ja uudelleenkäytettävää koodia, jonka tarkoitus on suorittaa yksi tarkkaan määrätty tehtävä. Funktioilla on syöte (input) ja tulos (output). Funktion tehtävä on palauttaa (return) syötteen perusteella haluttu tulos. Alla olevassa kuvassa näkyvät funktion neljä osaa: nimi, syöte, toiminnallisuus ja tulos.
+
+![](files/06-functions/funktio_käsite.png)
+
+Otetaan esimerkiksi kaksi funktiota: "Keskiarvo" ottaa syötteenä halutun määrän lukuja, ja laskee niiden keskiarvon. "Vastinjuoste" ottaa syötteenä DNA-juosteen ja palauttaa sen vastinjuosteen.
+
+![](files/06-functions/funktio_esimerkit.png)
+
+Funktioilla voi olla myös erityyppisiä syötteitä, voitaisiin esimerkiksi määritellä funktio, jolle annettaisiin syötteenä henkilön ikä, pituus, paino, sekä elintapatietoja, ja funktio laskisi näiden pohjalta eliniänodotteen. 
+
+## R-funktiot
+
+### Funktioiden määrittely
+
+Tähän mennessä olemme jo käyttäneet monia R-funktioita eikä meidän ole tarvinnut miettiä niiden toimintaa kovin syvällisesti. Virhetilanteet on kuitenkin paljon helpompi ratkaista, kun ymmärtää miten funktiot toimivat R:ssä.
+
+R-funktioita luodaan ```function```-komennolla. Funktion rakennus näyttää tältä:
+
+![](files/06-functions/funktio_koodi_väri.png)
+
+R-funktiot siis koostuvat samoista osista kuin yllä esitellyt funktiot.
+- Funktion nimi on muuttuja, johon funktio tallennetaan.
+- Funktion syöte koostuu argumenteista
+- Funktion toiminnallisuus on R-koodia
+- Funktion tulos palautetaan komennolla ```return()```
+
+Tehdään esimerkiksi funktio BMI:n laskemiseen:
+
+```{r}
+# Define function name and arguments
+bmi <- function(height, mass) {
+  # Compute BMI
+  value <- mass / height^2
+  rounded <- round(value, digits = 1)
+  # Return computed value
+  return(rounded)
+}
+```
+
+Ensimmäisellä riville määritellään muuttuja, johon funktio tallennetaan, eli funktion nimi. Lisäksi määritetään funktion argumentit, tässä tapauksessa pituus ja paino. Itse funktion koodi tulee hakasulkeiden sisään seuraaville riveille. Ensimmäinen koodirivi laskee BMI:n ja toinen pyöristää tuloksen yhden desimaalin tarkkuuteen. Kolmas rivi palauttaa sen.
+
+Voimme nyt kutsua (call) funktiotamme aivan kuin muitakin R-funktioita:
+
+```{r}
+# Example
+my_bmi <- bmi(height = 1.79, mass = 74)
+
+my_bmi
+```
+
+HUOM: palautettava arvo on ainoa asia, joka välittyy funktion ulkopuolelle. Koska funktiomme palauttaa pyöristetyn arvon, alkuperäiseen arvoon ei pääse funktion ulkopuolelta käsiksi.
+
+```{r, eval=FALSE}
+my_bmi <- bmi(height = 1.90, mass = 95)
+# Throws error
+value
+```
+
+Funktioiden sisällä luodut muuttujat ovat siis olemassa vain sen sisällä ja lakkaavat olemasta, kun funktion suoritus lakkaa.
+
+
+### Argumentit ja funktion kutsuminen
+
+R:ssä funktioiden argumentteja voi määritellä eri tavoilla, mutta yleisimmässä tapauksessa funktioilla on tietty määrä nimettyjä argumentteja. Edellisen esimerkin bmi-funktiolla on kaksi argumenttia, pituus ja paino. R-kunktioita voi kutsua monella eri tavalla, ja tutustutaan tähän lisää tämän yksinkertaisen funktion avulla.
+
+Yksi tapa on kutsua funktiota antamalla argumenttien arvot ilman niiden nimiä. HUOM: jos argumentteja ei nimeä, niiden tulee olla oikeassa järjestyksessä. Alla olevan esimerkin toisessa kohdassa argumentit menevät sekaisin.
+
+```{r}
+# Call without argument names
+bmi(1.65, 62)
+# Arguments in wrong order -> weird results / error
+bmi(62, 1.65)
+```
+
+Argumentit voi myös nimetä, kuten edellisissä esimerkeissä tehtiin. Tällöin järjestyksellä ei ole väliä, koska funktiolle on selvää, mitä argumenttia tarkoitetaan.
+
+```{r}
+bmi(height = 1.65, mass = 62)
+bmi(mass = 62, height = 1.65)
+```
+
+On myös mahdollista nimetä vain osa argumenteista. Tällöin nimeämättömät argumentit asetetaan argumenteiksi "tyhjiin kohtiin" vasemmalta oikealle. 
+
+```{r}
+bmi(1.65, mass = 62)
+bmi(62, height = 1.65)
+```
+
+Jos funktioille yritetään antaa argumentteja, joita ei ole määritelty, seuraa virhe:
+
+```{r, eval=FALSE}
+# Causes error
+bmi(height = 1.65, weight = 62)
+```
+
+Samoin jos jokin argumentti puuttuu, seuraa virhe:
+
+```{r, eval=FALSE}
+# Causes error
+bmi(height = 1.65)
+```
+
+
+
+HUOM: vaikka argumentit saa antaa haluamassaan järjestyksessä ja nimettynä tai nimeämättömänä, kannattaa kuitenkin olla johdonmukainen. Yleisohjeena argumentit kannattaa aina nimetä ja pyrkiä antamaan siinä järjestyksessä, kuin ne on funktiossa määritelty. Näin koodin lukeminen ja ylläpito on paljon helpompaa. Poikkeuksena sääntöön ovat funktiot, joiden toiminta on yksinkertaista, tai joiden ensimmäiset argumentit ovat niin tunnettuja, että niitä ei ole syytä nimetä.
+
+Otetaan esimerkiksi funktio ```seq()```. Jos avaat funktion help-sivun komennolla ```?seq```, näet, että ensimmäiset argumentit ovat nimeltään ```from``` ja ```to```. Koska ```seq``` on hyvin yleinen ja tunnettu, ja ```from``` ja ```to``` on pakko määrittää, sitä kutsutaan yleensä niin, että ```from``` ja ```to``` jätetään nimeämättä. Muut argumentit, kuten ```by``` ja ```length.out``` yleensä nimetään, koska niitä ei aina käytetä, eikä voida olettaa koodin lukijan muistavan, mitä argumenttia tarkoitetaan, vaikka ```seq``` toimisi ilman nimiä, jos annettaisiin peräkkäin ```from```, ```to``` ja ```by```. Vastaavasti ```plot```-komennon tapauksessa ei aina kirjoiteta nimiä ```x``` ja ```y```-argumenteille, mutta väriä yms. ohjaavat argumentit nimetään.
+
+#### Oletusarvot (default values)
+
+Monilla R-funktioilla on paljon argumentteja, joista kaikkia ei kuitenkaan tarvitse määrittää erikseen, vaan niillä on oletusarvoja (default values). Esimerkiksi ```seq()``` tekee oletuksena vektorin, jossa on kaikki kokonaisluvut ```from```-argumentista ```to```-argumenttiin. Tätä käyttäytymistä voi kuitenkin muuttaa ```by``` ja ```length.out```-argumentteja säätämällä.
+
+Tehdään nyt omaan bmi-funktioomme uusi argumentti ```height_multiplier```, joka on oletuksena 1. Jos kuitenkin halutaan antaa pituus senttimetreissä metrien sijaan, voidaan asettaa korkeuden kertoimeksi 0.01.
+
+```{r}
+bmi <- function(height, mass, height_multiplier = 1) {
+  # Compute BMI
+  value <- mass / (height * height_multiplier)^2
+  rounded <- round(value, digits = 1)
+  # Return computed value
+  return(rounded)
+}
+bmi(height = 1.65, mass = 62)
+bmi(height = 165, mass = 62, height_multiplier = 0.01)
+```
+
+Argumentin oletusarvo merkataan siis funktion määrittelyssä ```=```-merkillä, kuten funktion argumenttien anto yleensä. Tämä on hyvä tietää omia funktioita tehdessä, mutta myös valmiiden funktioiden käytössä: jos argumentille ei ole funktion help-sivulla annettu vakioarvoa, se on pakko antaa, tai muuten seuraa virhe, kuten aikaisemmin kävi. Monilla valmiiden funktioiden argumenteilla on oletusarvona tyhjä arvo eli ```NULL```. Tämä tarkoittaa usein, että argumentin voi jättää tyhjäksi, mutta oletusarvon valinta on niin monimutkainen prosessi, että sitä ei voi kirjoittaa funktion määrittelyssä yhdelle riville. Usein tämä tarkoittaa sitä, että oletusarvo riippuu muista argumenteista. HUOM: ```NULL``` on eri asia kuin ```NA```, ja käyttäytyy eri tavoin. Aiheesta lisää [täällä](https://www.r-bloggers.com/r-na-vs-null/).
+
+### Funktio ilman argumentteja
+
+Joillain funktioilla ei ole ollenkaan argumentteja. Esimerkiksi R:n sisäiset funktiot ```Sys.time()``` ja ```Sys.Date()``` palauttavat tämänhetkisen ajan ja päivän, eivätkä tarvitse argumentteja.
+
+```{r}
+Sys.time()
+```
+
+
+Itse tehdyt funktiot voivat myös toimia ilman argumentteja. Niitä käytetään usein R-istunnon tilan, koodia ajavan tietokoneen ominaisuuksien tai ajan selvittämiseen. Tämä melko hyödytön esimerkkifunktio palauttaa tämän dokumentin kirjoittajan nimen:
+
+```{r}
+author <- function() {
+  return("Anton Klåvus")
+}
+author()
+```
+
+
+
+## Arvojen palautus
+
+Tutkitaan arvojen palautusta R-funktiosta hieman enemmän.
+
+### Usean arvon palautus
+
+R-funktiot palauttavat aina yhden arvon. Palautukseen käytetään funktiota ```return()```, kuten aiemmin nähtiin. R-funktio voi palauttaa vain yhden arvon, toisin kuin joissain muissa ohjelmointikielissä. Jos funktiosta halutaan ulos useampi arvo, ne on pakattava esim. listaan. Jos siis ```bmi```-funktiosta haluttaisiin palauttaa sekä pyöristetty, että alkuperäinen BMI:n arvo, voidaan ne palauttaa listassa:
+
+```{r}
+bmi_list <- function(height, mass, height_multiplier = 1) {
+  # Compute BMI
+  value <- mass / (height * height_multiplier)^2
+  rounded <- round(value, digits = 1)
+  # Return computed value
+  values <- list(original = value,
+                 rounded = rounded)
+  return(values)
+}
+result <- bmi_list(1.65, 62)
+result
+result$rounded
+```
+
+### Palautus ilman return-käskyä
+
+R on siitä erikoinen ohjelmointikieli, että R-funktiot voivat palauttaa arvoja myös ilman eksplisiittistä ```return```-käskyä. Jos R-funktiossa ei ole ```return```-käskyä, ja viimeinen rivi on vain muuttuja, tai sijoitus muuttujaan, tämän muuttujan arvo palautetaan automaattisesti. ```bmi```-funktion voisi siis kirjoittaa myös näin:
+
+```{r}
+bmi <- function(height, mass, height_multiplier = 1) {
+  # Compute BMI
+  value <- mass / (height * height_multiplier)^2
+  rounded <- round(value, digits = 1)
+  # Return computed value
+  rounded
+}
+bmi(1.65, 62)
+```
+
+Alussa on kuitenkin hyvä käyttää ```return```-käskyä, niin pysyy paremmin perässä siitä, mitä koodi tekee, eikä sen kirjoittaminen ole kokeneellekaan ohjelmoijalle huono tapa.
+
+
+### Funktio ilman tulosta
+
+Moni funktio ei palauta yhtään mitään. Yleisiä esimerkkejä ovat ```cat()``` ja ```plot()```, jotka tulostavat ja piirtävät asioita, mutta eivät palauta mitään. Jos näiden funktion paluuarvon yrittää sijoittaa muuttujaan, on tuloksena ```NULL```, eli tyhjä arvo. 
+
+```{r}
+cat_return <- cat("What does cat return?\n")
+cat_return
+```
+
+Itse tehty funktio palauttaa ```NULL```, jos viimeinen komento palauttaa ```NULL```:
+
+```{r}
+# Function for plotting blue squares
+blue_squares <- function(x, y) {
+  plot(x, y, pch = 3, col = "blue")
+}
+value <- blue_squares(1:5, c(2, 5, 3, 3, 8))
+value
+```
+
+
+
+
+
+
+<!--chapter:end:10-functions.Rmd-->
+
+# Ehtorakenteet {#ifelse}
+
+Viime kerralla tehdyt funktiot suorittavat aina samat komennot riippumatta syötteestä. Entä jos funktion toiminnassa pitäisi ottaa huomioon erilaisia tapauksia, eli suorittaa tiettyjä komentoja vain joissain tilanteissa? Tätä varten ohjelmointikielissä on ehtorakenteita, eli ns. if/else-rakenteita, jotka ohjaavat ohjelman toimintaa.
+
+Tutustutaan ensin tarkemmin loogisiin operaattoreihin.
+
+## Loogiset operaattorit {#loogiset-operaattorit}
+
+Tässä on lyhyt lista loogisista operaattoreista:
+
+<table class="tg">
+  <tr>
+    <th class="tg-0pky">Operaattori</th>
+    <th class="tg-0pky">Kuvaus</th>
+  </tr>
+  <tr>
+    <td class="tg-0pky">&lt;</td>
+    <td class="tg-0pky">pienempi kuin</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">&lt;=<br></td>
+    <td class="tg-0pky">pienempi tai yhtä suuri kuin<br></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">&gt;<br></td>
+    <td class="tg-0pky">suurempi kuin</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">&gt;=</td>
+    <td class="tg-0pky">suurempi tai yhtä suuri kuin</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">==</td>
+    <td class="tg-0pky">yhtä kuin</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">!=</td>
+    <td class="tg-0pky">ei yhtä kuin</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">!a</td>
+    <td class="tg-0pky">ei a (negaation)</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">a | b<br></td>
+    <td class="tg-0pky">a TAI b alkioittain</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">a || b<br></td>
+    <td class="tg-0pky">a TAI b yksittäisille arvoille</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">a &amp; b</td>
+    <td class="tg-0pky">a JA b alkioittain</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">a &amp;&amp; b</td>
+    <td class="tg-0pky">a JA b yksittäisille arvoille</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">a %in% b</td>
+    <td class="tg-0lax">a kuuluu b:hen</td>
+  </tr>
+</table>
+
+
+Kaikki loogiset operaattorit palauttavat joko arvon TRUE tai FALSE. Vertailuoperaattorien käyttö on jo tullut tutuksi aikaisemmissa tehtävissä, mutta tutustutaan vähän tarkemmin viimeisten rivien operaattoreihin:
+
+#### Negaatio
+
+Looginen negaatio palauttaa loogisen lauseen vastakohdan, eli muuttaa arvon TRUE arvoksi FALSE ja arvon FALSE arvoksi TRUE.
+
+```{r}
+10 > 12
+!(10 > 12)
+# Also works without parentheses
+!10 > 12
+
+!is.na(NA)
+```
+
+#### Looginen TAI (disjunktio)
+
+Loogiselle TAI operaattorille annetaan kaksi loogista lausetta, ja TAI operaattori palauttaa TRUE, jos kummatkin tai jompikumpi lauseista on TRUE. R:ssä TAI merkitään pystyviivalla "|" tai kahdella pystyviivalla "||". "|" käy läpi vektoreita alkioittain, "||" operoi yksittäisiä arvoja, ja toista lausetta ei edes ajeta, jos ensimmäinen on TRUE (koska "||" palauttaa TRUE riippumatta toisen lauseen arvosta). Jos tämä tuntui monimutkaiselta, niin riittää muistaa, että ehtorakenteissa kannattaa käyttää muotoa "||".
+
+```{r}
+10 > 12 || "a" < "b"
+
+2 > 1 || 4 > 2
+
+"a" > "c" || 1 > 10
+```
+
+#### Looginen JA (konjunktio)
+
+Loogiselle JA operaattorille annetaan kaksi lausetta. JA palauttaa TRUE, jos kummatkin lauseet ovat TRUE. R:ssä JA-operaattorit ovat "&" ja "&&", jotka käyttäytyvät kuten "|" ja "||".
+
+```{r}
+10 > 12 && "a" < "b"
+
+2 > 1 && 4 > 2
+
+"a" > "c" && 1 > 10
+```
+
+#### Osajoukko
+
+%in%-operaattorilla voi tarkistaa, kuuluuko jokin arvo suurempaan joukkoon. Tämä voitaisiin toteuttaa myös usealla TAI-operaattorilla, mutta %in% on usein paljon kätevämpi.
+
+```{r}
+dna_bases <- c("A", "C", "G", "T")
+rna_bases <- c("A", "C", "G", "U")
+
+"T" %in% dna_bases
+"T" %in% rna_bases
+# With negation
+!"A" %in% dna_bases
+```
+
+#### Monimutkaisemmat lauseet
+
+Operaattoreita voidaan myös yhdistellä monimutkaisemmiksi lauseiksi. Tällöin lauseiden arviointijärjestys määritetään tarvittaessa suluilla.
+
+```{r}
+dog <- list(breed = "golden retriever",
+            height = 45,
+            weight = 27)
+
+dog$breed == "golden retriever" && dog$weight < 25 || dog$height < 50
+```
+
+#### a < x < b
+
+usein tulee vastaan tilanteita, joissa halutaan tarkistaa, onko jokin luku halutulla välillä. Tämä kirjoitetaan matemaatiisesti esim. näin: a < x < b, jossa tarkastetaan, onko x välillä ]a, b[. Tämä ei kuitenkaan valitettavasti toimi R:ssä, vaan tarkistus pitää jakaa kahteen osaan:
+
+```{r}
+# Are x and y between 0 and 1?
+x <- 3
+y <- 0.3
+0 <= x && x <= 1
+0 <= y && y <= 1
+```
+
+
+## Ehtorakenteet
+
+Aloitetaan esimerkistä: tehtävänä on kirjoittaa funktio, jolle annetaan syötteenä potilaan hemoglobiiniarvo. Funktion on tarkoitus hälyttää, jos hemoglobiini laskee alle viitearvojen alarajan 117. Kyseinen funktio voisi näyttää vaikka tältä:
+
+
+```{r}
+hb_alert <- function(hb) {
+  if (hb < 117) {
+    return("Hemoglobin is low!")
+  }
+}
+```
+
+Funktiolla on siis yksi argumentti, hb eli hemoglobiiniarvo. Funktion sisällä on if-rakenne. If-rakenteessa on kaksi osaa: ehto, ja rakenteen sisäinen koodi. Rakenteen sisäinen koodi ajetaan vain, jos ehto täyttyy. Ehto merkitään if-komennon jälkeen sulkeisiin, ja rakenteen sisäinen koodi kirjoitetaan sulkeiden jälkeen hakasulkeiden sisään. (Jos hakasulkeiden sisään tulisi vain yksi rivi koodia, hakasulkeet voi jättää pois, mutta näissä esimerkeissä käytetään aina hakasulkeita).
+
+Kokeillaan, miten funktio toimii eri hemoglobiiniarvoilla:
+
+```{r}
+# Nothing happens
+hb_alert(130)
+# returns alert
+hb_alert(110)
+```
+
+Funktio siis toimii oletetusti, eli se hälyttää vain, jos hemoglobiinitaso on alle 117. Käyttäjän kannalta olisi kuitenkin kätevää saada jonkinlainen palaute myös silloin, kun hemoglobiinitaso on tarpeeksi korkea. Tätä varten voidaan käyttää else-komentoa:
+
+```{r}
+hb_alert <- function(hb) {
+  if (hb < 117) {
+    return("Hemoglobin is low!")
+  } else {
+    return("Hemoglobin OK")
+  }
+}
+
+hb_alert(130)
+```
+
+Else-komennon jälkeinen koodi siis ajetaan, jos ehto hb < 117 ei täyty.
+
+Tällä hetkellä funktiomme toimii vain naispotilaille, sillä miehillä hemoglobiiniarvojen alaraja on 134. Lisätään siis funktioomme argumentti sukupuolta varten ja muokataan sen toimintaa niin, että se osaa ottaa huomioon sukupuolen. Nyt if-rakenteen ehdosta tulee jo hieman monimutkaisempi:
+
+```{r}
+hb_alert <- function(hb, sex) {
+  if (sex == "female" && hb < 117 || sex == "male" && hb < 134) {
+    return("Hemoglobin is low!")
+  } else {
+    return("Hemoglobin OK")
+  }
+}
+
+hb_alert(hb = 120, sex = "female")
+hb_alert(hb = 120, sex = "male")
+```
+
+Entä jos haluaisimme tulostaa eri varoituksen mies- ja naispotilaille? Tähän tarvitaan "else if"-rakennetta:
+
+```{r}
+hb_alert <- function(hb, sex) {
+  if (sex == "female" && hb < 117) {
+    return("Hemoglobin is low for a female!")
+  } else if (sex == "male" && hb < 134) {
+    return("Hemoglobin is low for a male!")
+  } else {
+    return("Hemoglobin OK")
+  }
+}
+
+hb_alert(hb = 110, sex = "female")
+hb_alert(hb = 120, sex = "male")
+```
+
+
+Nyt funktio tarkistaa ensin, onko potilas nainen ja onko hänen hemoglobiininsa alle 117. Jos ei, siirrytään eteenpäin ja tarkistetaan, onko potilas mies ja onko hänen hemoglobiininsa alle 130. Jos ei, siirrytään viimeiseen kohtaan, ja tulostetaan "Hemoglobin ok".
+
+Else-if rakenteita voi olla rajoittamaton määrä ensimmäisen if-rakenteen jälkeen. Lisätään funktioon hälytys kriittisestä hemoglobiinin määrästä (hb < 50) riippumatta sukupuolesta:
+
+```{r}
+hb_alert <- function(hb, sex) {
+  if (sex == "female" && hb < 117) {
+    return("Hemoglobin is low for a female!")
+  } else if (sex == "male" && hb < 134) {
+    return("Hemoglobin is low for a male!")
+  } else if (hb < 50) {
+    return("Hemoglobin is critical")
+  } else {
+    return("Hemoglobin OK")
+  }
+}
+
+hb_alert(hb = 32, sex = "female")
+```
+
+Kuten huomataan, yllä oleva koodi ei toimikaan, kuten piti. Näin alhaisella hemoglobiinilla pitäisi tulla varoitus kriittisestä tilasta. Koodi suoritus ei kuitenkaan ikinä etene kriittisen tilan varoitukseen asti, sillä ensimmäinen ehto täyttyy. Korjataan tilanne siirtämällä kriittisen tilan ehto ensimmäiseksi:
+
+```{r}
+hb_alert <- function(hb, sex) {
+  if (hb < 50) {
+    return("Hemoglobin is critical")
+  } else if (sex == "male" && hb < 134) {
+    return("Hemoglobin is low for a male!")
+  } else if (sex == "female" && hb < 117) {
+    return("Hemoglobin is low for a female!")
+  } else {
+    return("Hemoglobin OK")
+  }
+}
+
+hb_alert(hb = 32, sex = "female")
+hb_alert(hb = 120, sex = "female")
+hb_alert(hb = 120, sex = "male")
+```
+
+Nyt funktio toimii haluamallamme tavalla!
+
+Funktioissa voi myös olla useampi ehtorakenne. Ehtorakenteita käytetään usein tarkistamaan argumenttien arvoja. Lisätään ehtorakenteet argumenttien tarkistamiseksi:
+
+
+```{r}
+hb_alert <- function(hb, sex) {
+  # Hemoglobin should be numeric and positive
+  if (!is.numeric(hb) || hb < 0) {
+    return("Hemoglobin should be numeric and positive")
+  }
+  if (!sex %in% c("female", "male")) {
+    return("This function can only deal with binary sex: female or male")
+  }
+  
+  if (hb < 50) {
+    return("Hemoglobin is critical")
+  } else if (sex == "male" && hb < 134) {
+    return("Hemoglobin is low for a male!")
+  } else if (sex == "female" && hb < 117) {
+    return("Hemoglobin is low for a female!")
+  } else {
+    return("Hemoglobin OK")
+  }
+}
+
+hb_alert(hb = "120", sex = "female")
+hb_alert(hb = 120, sex = "FEMALE")
+```
+
+## Alkioiden poimiminen vektorista tietyn ehdon perusteella
+
+Tämän viikon tehtävissä tuli ainakin allekirjoittaneelle vastaan tilanne, jossa piti käydä läpi useita arvoja vektorista, ja säilyttää niistä ne, jotka täyttivät tietyn ehdon. Tätä aihetta käsitellään enemmän ensi viikolla, mutta tässä lyhyt vinkki tällaisten tehtävien ratkaisuun:
+
+- Luo apufunktio, joka ottaa syötteeksi yhden arvon, ja tarkistaa täyttyykö ehto. Tämän funktion tulee palauttaa TRUE, jos ehto täyttyy ja FALSE, jos ehto ei täyty.
+- Käytä funktiota ```Vectorize```, jolla voit muuttaa funktiosi vektoroiduksi funktioksi. Kun vektoroidulle funktiolle annetaan vektori, jossa on monta alkiota, funktio ajetaan automaattisesti alkio kerrallaan, kuten monet R:n omat funktiot.
+- Käytä vektoroitua apufunktiota vektorin indeksointiin.
+
+Tässä on esimerkki, jossa käydään läpi vektori DNA:n emäksiä, joista poimitaan vain sytosiinit ja guaniinit.
+
+```{r}
+# Helper function
+is_cg <- function(base) {
+  if (base %in% c("C", "G")) {
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
+}
+
+# Vectorize
+is_cg_vector <- Vectorize(is_cg)
+
+# Main function
+pick_cg <- function(bases) {
+  only_cg <- bases[is_cg_vector(bases)]
+  return(only_cg)
+}
+
+# NOTE: this only checks the first value of the vector
+my_bases <- c("A", "C", "C", "T", "G", "T")
+is_cg(my_bases)
+
+# This works as expected
+is_cg_vector(my_bases)
+
+# Pick only C and G
+pick_cg(my_bases)
+```
+
+
+<!--chapter:end:11-ifelse.Rmd-->
+
+# Toistorakenteet (loops) {#loops}
+
+Toistorakenne toistaa annettua koodia. Toistorakenteet ovat ehtorakenteiden ohella ohjelmoinnin perusrakennuspalikoita. Tässä osiossa tutustutaan kahteen yleisimpään tapaukseen eli for ja while -silmukoihin. Mukana on myös maininta silmukoiden korvaamisesta R:n apply-funktioilla. Lopusta löytyy lisäksi vinkkejä tämän viikon tehtäviin.
+
+Lisäksi tällä viikolla puhutaan R-paketeista.
+
+## For-silmukka
+
+For-silmukka toistaa koodia ennalta määrättyjen iteraatioiden verran. For-silmukalla voi esimerkiksi käydä läpi data framen tai matriisin sarakkeita tai rivejä, tai vektorin arvoja. For-silmukka iteroi aina jonkin vektorin arvojen yli: for-silmukalle siis annetaan siis vektori arvoja, ja ns. iteraatiomuuttuja, johon tallennetaan vuorotellen yksi alkio annetusta vektorista. Käytännössä tämä näyttää tältä:
+
+```{r, eval=FALSE}
+for (i in seq(3, 7)) {
+  print(i)
+}
+```
+
+for-silmukassa määritetään siis ensin iteraatiomuuttuja eli ```i``` ja sen saamat arvot eli ```seq(3, 7)``` komennolla ```in```. Sen jälkeen hakasulkeiden sisältämä koodi toistetaan jokaiselle ```i```:n arvolle. Tässä tapauksessa yksinkertaisesti tulostetaan muuttujan ```i``` arvo.
+
+Usein halutaan kuitenkin käydä läpi jonkin vektorin tai matriisin arvoja. Alla oleva koodi laskee matriisin X rivien summan (tähän voisi myös käyttää valmista funktiota ```rowSums()```). Aluksi alustetaan tyhjä vektori, johon rivien summat tallennetaan. Sen jälkeen käydään läpi matriisin rivit ja tallennetaan rivin summa alussa alustettuun vektoriin.
+
+```{r, eval=FALSE}
+# Create matrix X
+X <- matrix(1:12, nrow = 4)
+X
+
+# Initialize vector for row sums
+row_sums <- rep(0, nrow(X))
+# Iterate over rows of X
+for (i in seq(1, nrow(X))) {
+  # Assign sum of the current row to the vector
+  row_sums[i] <- sum(X[i, ])
+}
+
+# Compare results with the result from base R function
+row_sums
+rowSums(X)
+```
+
+For-silmukalla voi myös toteuttaa viime kerralla tehdyn funktion, joka poimii DNA:n emäksistä vain sytosiinit ja guaniinit. Tällä kertaa apufunktiota ```is_cg()``` ei tarvitse vektorisoida, koska for-silmukka käy läpi kaikki emäkset. Tämä silmukka voidaan toteuttaa kahdella tavalla. Ensimmäinen tapa on käyttää iteraatiomuuttujana i:tä, joka käy läpi iteraation ykkösestä emäsvektroin pituuteen:
+
+
+```{r, eval=FALSE}
+# Helper function
+is_cg <- function(base) {
+  if (base %in% c("C", "G")) {
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
+}
+
+# Main function
+pick_cg1 <- function(bases) {
+  # Initialize empty vector
+  only_cg <- c()
+  for (i in seq(1, length(bases))) {
+    # If the current base is C or G, add it to only_cg
+    if (is_cg(bases[i])) {
+      only_cg <- c(only_cg, bases[i])
+    }
+  }
+  
+  return(only_cg)
+}
+
+my_bases <- c("A", "C", "C", "T", "G", "T")
+pick_cg1(my_bases)
+```
+
+Toinen vaihtoehto on iteroida suoraan vektorin bases yli, jolloin iteraatiomuuttujaan tallentuu suoraan kyseinen emäs:
+
+```{r, eval=FALSE}
+pick_cg2 <- function(bases) {
+  # Initialize empty vector
+  only_cg <- c()
+  for (base in bases) {
+    # If the current base is C or G, add it to only_cg
+    if (is_cg(base)) {
+      only_cg <- c(only_cg, base)
+    }
+  }
+  
+  return(only_cg)
+}
+
+my_bases <- c("A", "C", "C", "T", "G", "T")
+pick_cg2(my_bases)
+```
+
+Iteraatiomuuttujan voi siis nimetä haluamallaan tavalla, sen ei aina tarvitse olla i. Jos kuitenkin iteraatiomuuttujaan tallennetaan vain yksi luku, suosittelen vahvasti käyttämään i:tä. Tämä on hyvin vakiintunut tapa ohjelmointikielestä ja ohjelmoijasta riippumatta, vaikka muutoin muuttujien nimeämiseen on erilaisia koulukuntia riippuen ohjelmoijan taustasta. Jos taas iteroidaan vektorin nimeltä bases yli, on luonnollinen valinta iteraatiomuuttujan nimeksi base.
+
+![](files/08-functions/naming.jpg)
+
+## While-slimukat
+
+While-silmukkaa käytetään, kun iteraatioiden määrä ei ole ennalta tiedossa, vaan while-silmukkaa toistetaan niin kauan, kuin tietty ehto on voimassa. Hyvä esimerkki while-loopista on proteiinisynteesi (yksinkertaistettuna): alla oleva funktio käy läpi RNA-molekyylin kodoneita, kunnes löytää aloituskodonin AUG. Sen jälkeen funktio rakentaa aminohappoketjua kodonien perusteella, kunnes vastaan tulee jokin lopetuskodoneista. Oikean proteiinin löytämiseen käytetään Biostrings-paketista löytyvää geneettistä koodia, joka on nimetty vektori, jossa on kodoneita vastaavien aminohappojen kirjainlyhenne, tai lopetuskodonien tapauksessa merkki "*":
+
+```{r, eval=FALSE}
+rna_code <- Biostrings::RNA_GENETIC_CODE
+rna_code
+```
+
+
+```{r, eval=FALSE}
+prot_synth <- function(codons) {
+  # Initialize iterable as the first codon
+  i <- 1
+  # Initialize empty amino acid chain
+  protein <- c()
+  # Find starting codon
+  while (codons[i] != "AUG") {
+    i <- i + 1
+  }
+  # After starting codon, build protein until one of the stop codons is met
+  while (rna_code[codons[i]] != "*") {
+    protein <- c(protein, rna_code[codons[i]])
+    i <- i + 1
+  }
+  return(protein)
+}
+
+prot_synth(codons = c("UUG", "GAA", "AUG", "UGU", "AGU", "AGA", "UCG", "UCG", "UGA", "GCA"))
+```
+
+While silmukalle annetaan siis ensin ehto, joka tarkistetaan ennen jokaista iteraatiota. Jos ehto täyttyy, suoritetaan yksi iteraatio, ja tarkistetaan ehto uudestaan. HUOM: while-silmukan sisällä pitää itse kasvattaa iteraatiomuuttujaa, muuten silmukka saattaa jäädä pyörimään ikuisesti!
+
+Käytännössä kaikki for-silmukat voisi korvata while-silmukoilla, mutta for-silmukoiden käyttö on kätevämpää, sillä niissä iteraatiomuuttujaa tarvitse kasvattaa erikseen.
+
+```{r, eval=FALSE}
+# A simple for loop
+for (i in seq(1, 4)) {
+  print(i * 2)
+}
+
+# The same as above
+i <- 1
+while (i <= 4) {
+  print(i * 2)
+  i <- i + 1
+}
+```
+
+## Sisäkkäiset silmukat (nested loops)
+
+Silmukoita voi myös olla useampi sisäkkäin. Alla olevassa esimerkissä on taulukko tutkimuksesta, jossa on mitattu eri eliöiden $\beta$- globiinigeenin ensimmäisen eksonin samankaltaisuutta. Pienempi luku tarkoittaa enemmän samankaltaista geeniä.
+
+```{r, echo=FALSE}
+exons <- read.csv("exons.csv", row.names = 1)
+knitr::kable(exons)
+```
+
+Tämä data on tiedostossa exons.csv, joten luetaan se R:ään:
+
+```{r, eval=FALSE}
+exons <- read.csv("exons.csv", row.names = 1)
+```
+
+Etsitään seuravaksi kaikki eliöparit, joiden geenien etäisyys on alle 4 ja lisätään parit data frameen, jossa on kaksi saraketta, ja jokainen rivi edustaa yhtä eliöparia. Käytetään tähän kahta sisäkkäistä for-silmukkaa. Toisen silmukan iteraatiomuuttujan nimi on yleensä j, seuraavan k ja niin edelleen. Käydään exons läpi niin, että i on rivin numero, ja j sarakkeen numero, ja etsitään sopivat parit.
+
+
+```{r, eval=FALSE}
+# Initialize empty data frame for the pairs
+close_pairs <- data.frame()
+
+# Iterate over rows and columns
+for (i in seq(1, nrow(exons))) {
+  for (j in seq(1, ncol(exons))) {
+    # Check if dissimilarity is below 4
+    if (exons[i, j] < 4) {
+      # Add the pair as a new row to close_pairs
+      new_row <- data.frame(Species_1 = rownames(exons)[i],
+                            Species_2 = colnames(exons)[j])
+      close_pairs <- rbind(close_pairs,
+                           new_row)
+    }
+  }
+}
+
+close_pairs
+```
+
+Koodimme toimii jo ihan hyvin, mutta tuloksessa on hieman turhaa tavaraa: exons on symmetrinen, joten monet parit on esitetty tuloksessa kahdesti. Tämä voidaan ratkaista muuttamalla toista for-silmukkaa:
+
+```{r, eval=FALSE}
+# Initialize empty data frame for the pairs
+close_pairs <- data.frame()
+
+# Iterate over rows and columns
+for (i in seq(1, nrow(exons))) {
+  # Only check upper diagonal
+  for (j in seq(i, ncol(exons))) {
+    # Check if dissimilarity is below 4
+    if (exons[i, j] < 4) {
+      # Add the pair as a new row to close_pairs
+      new_row <- data.frame(Species_1 = rownames(exons)[i],
+                            Species_2 = colnames(exons)[j])
+      close_pairs <- rbind(close_pairs,
+                           new_row)
+    }
+  }
+}
+
+close_pairs
+```
+
+Nyt toisen silmukan läpi käymät j:n arvot riippuvat i:n arvosta. Tämä koodi käy läpi taulukon ylemmän diagonaalin, eli "yläpuolen". Ensimmäisellä kierroksella j käy läpi arvot 1-7, seuraavalla kierroksella 2-7, sitten 3-7 jne. Vastaavasti voitaisiin myös käydä läpi alempi diagonaali komennolla ```for(j in seq(1, i)```.
+
+Emme kuitenkaan voi olla vieläkään tyytyväisä tulokseen, sillä mukana ovat "parit", joissa kumpikin laji on sama. Näistä emme luonnollisesti ole kiinnostuneita. Nämä parit voidaan poistaa esimerkiksi ````next```-komennolla.
+
+## Iterointiin puuttuminen: next ja break
+
+Joskus silmukan toimintaan on hyvä puuttua kesken suorituksen. Joskus yksi iteraatio halutaan sivuuttaa kokonaan, toisinaan taas halutaan keskeyttää iteraatio kokonaan. Näihin tarkoituksiin R:ssä on komennot ```next``` ja ```break```.
+
+Lisätään edelliseen esimerkkiin toiminto, joka ohittaa diagonaalilla olevat rivit, eli hyppää iteraation yli, jos i ja j ovat yhtä suuret. Käytetään tähän ```next```-komentoa, joka ohjaa ohjelman suoraan seuraavaan iteraatioon:
+
+
+```{r, eval=FALSE}
+# Initialize empty data frame for the pairs
+close_pairs <- data.frame()
+
+# Iterate over rows and columns
+for (i in seq(1, nrow(exons))) {
+  # Only check upper diagonal
+  for (j in seq(i, ncol(exons))) {
+    if (i == j) {
+        next
+    }
+    # Check if dissimilarity is below 4
+    if (exons[i, j] < 4) {
+      # Add the pair as a new row to close_pairs
+      new_row <- data.frame(Species_1 = rownames(exons)[i],
+                            Species_2 = colnames(exons)[j])
+      close_pairs <- rbind(close_pairs,
+                           new_row)
+    }
+  }
+}
+
+close_pairs
+```
+
+Nyt pääsimme eroon kaikista turhista pareista! 
+
+Jos haluaisimme kaikkien parien sijaan etsiä vain ensimmäisen parin, jonka geenien etäisyys on alle 3, voisimme käyttää komentoa ```break```, joka keskeyttää silmukan suorittamisen turhaan haluamamme parin löydyttyä.
+
+```{r, eval=FALSE}
+close_pair <- c()
+
+# Iterate over rows and columns
+for (i in seq(1, nrow(exons))) {
+  # Only check upper diagonal
+  for (j in seq(i, ncol(exons))) {
+    if (i == j) {
+        next
+    }
+    # Check if dissimilarity is below 3
+    if (exons[i, j] < 3) {
+      # Assign pair to close_pair and stop search
+      close_pair <- c(Species_1 = rownames(exons)[i],
+                            Species_2 = colnames(exons)[j])
+      break
+    }
+  }
+}
+
+close_pair
+```
+
+HUOM: Tämä ei kuitenkaan ole oikea pari: Jos exons data framea käydään läpi rivi kerrallaan, ensimmäinen pari, jonka arvo on alle 3 on Human ja Lemur, ei Mouse ja Gorilla. Mikä siis meni väärin? Kun kyse on näin pienestä aineistosta, voidaan mahdollisia ongelmia tutkia lisäämällä silmukoiden sisään ```print()```-komentoja, jotka kertovat meille silmukan etenemisestä. Lisätään siis edelliseen silmukkaan rivi, joka tulostaa iteraatiomuuttujat i ja j jokaisella iteraatiolla, sekä rivi, joka tulostaa uuden parin, kun sellainen löytyy:
+
+```{r, eval=FALSE}
+close_pair <- c()
+
+# Iterate over rows and columns
+for (i in seq(1, nrow(exons))) {
+  # Only check upper diagonal
+  for (j in seq(i, ncol(exons))) {
+    # Monitor loop
+    print(c(i, j))
+    if (i == j) {
+        next
+    }
+    # Check if dissimilarity is below 3
+    if (exons[i, j] < 3) {
+      # Assign pair to close_pair and stop search
+      close_pair <- c(Species_1 = rownames(exons)[i],
+                            Species_2 = colnames(exons)[j])
+      print(close_pair)
+      break
+    }
+  }
+}
+
+close_pair
+```
+
+Nyt huomataan, että iteraatio etenee rivillä yksi neljänteen sarakkeeseen asti, ja löytää parin Human-Lemur, aivan kuten pitikin. Jostain syystä ohjelma siirtyy kuitenkin sen jälkeen toiselle riville. Tämä johtuu siitä, että ```break```-komento katkaisee vain yhden for-silmukan kerrallaan. Jos haluamme katkaista myös ulomman silmukan, meidän tulee lisätä ulomman silmukan loppuun tarkastus, joka tarkastaa, onko pari jo löytynyt. Tämä voidaan testata esimerkiksi vektorin close_pairs pituuden avulla. Jos if-rakenteelle antaa pelkän luvun, luku tulkitaan arvoksi TRUE, jos se ei ole nolla.
+
+```{r, eval=FALSE}
+close_pair <- c()
+
+# Iterate over rows and columns
+for (i in seq(1, nrow(exons))) {
+  # Only check upper diagonal
+  for (j in seq(i, ncol(exons))) {
+    if (i == j) {
+        next
+    }
+    # Check if dissimilarity is below 3
+    if (exons[i, j] < 3) {
+      # Assign pair to close_pair and stop search
+      close_pair <- c(Species_1 = rownames(exons)[i],
+                            Species_2 = colnames(exons)[j])
+      break
+    }
+  }
+  # Stop iterating if the pair has been found
+  if (length(close_pair)) {
+    break
+  }
+}
+
+close_pair
+```
+
+Nyt koodimme toimii, kuten pitääkin!
+
+## Apply-funktiot
+
+R:ssä käytetään silmukoiden lisäksi ```apply()```-funktioperheen funktioita, joilla voi käydä läpi data frameja, matriiseja tai vektoreita ilman silmukoita. Joissain tapauksissa ```apply```-funktiot ovat myös nopeampia kuin silmukat. Tästä syystä niitä näkee käytettävän paljon, ja varsinkin kokeneemmat R-ohjelmoijat käyttävät niitä paljon. Tällä kurssilla näitä funktioita ei kuitenkaan tarvita. Tässä on annettu muutamia esimerkkejä, voit lukea lisää esimerkiksi [DataCampin tutoriaalista](https://www.datacamp.com/community/tutorials/r-tutorial-apply-family)
+
+```apply()``` käy läpi matriisin/data framen rivit tai sarakkeet, ja ajaa jonkin funktion jokaiselle riville tai sarakkeelle. Alla oleva esimerkki normalisoi kaikki R:n sisäisen datan trees sarakkeet autoscaling-menetelmällä, jossa sarakkeen arvoista vähennetään sarakkeen keskiarvo ja tulos jaetaan sarakkeen keskihajonnalla. Normalisoinnin tarkoitus on, että kaikkien sarakkeiden keskiarvoksi saadaan 0, ja kaikilla on sama varianssi (ja keskihajonta) 1.
+
+```{r, eval=FALSE}
+head(trees)
+
+scaler <- function(x) {
+  scaled <- (x - mean(x)) / sd(x)
+  scaled
+}
+
+scaled_trees <- apply(X = trees, MARGIN = 2, FUN = scaler)
+scaled_trees <- as.data.frame(scaled_trees)
+head(scaled_trees)
+```
+
+MARGIN-argumentilla määritetään, käydäänkö läpi rivit vai sarakkeet (1 = rivit, 2 = sarakkeet). HUOM: ```apply``` palauttaa aina matriisin tai vektorin. Jos tulos halutaan muuntaa takaisin data frameksi, täytyy se tehdä erikseen.
+
+Tarkistetaan tulos laskemalla sarakkeiden keskiarvot ja varianssit. Tämä voidaan tehdä ```apply```-funktiolla, tai käyttää ```sapply```-funktiota, joka käy automaattisesti data framen sarakkeet, ja ajaa saman funktion sarakkeille kuten ```apply```. ```sapply```-komennon funktion on pakko palauttaa vain yksi arvo, sillä ```sapply``` kokoaa automaattisesti tuloksensa vektoriin.
+
+```{r, eval=FALSE}
+apply(scaled_trees, 2, mean)
+sapply(scaled_trees, var)
+```
+
+Huomaa, että sarakkeiden keskiarvot eivät ole tismalleen 0. Tämä johtuu R:n rajallisesta numeerisesta tarkkuudesta. Käytännössä itseisarvoltaan tätä luokkaa olevat arvot ovat nollia.
+
+## Vinkkejä tehtäviin
+
+Tämän viikon tehtävissä pitää muokata funktioita, jotka ovat erillisissä tiedostoissa. Jotta tehtävän palautus onnistuu, funktio pitää muokata tässä tiedostossa. Funktio kannattaa kuitenkin kopioida talteen toiseen tiedostoon, sillä tehtävän palauttaminen pyyhkii tiedoston.
+
+
+<!--chapter:end:12-loops.Rmd-->
+

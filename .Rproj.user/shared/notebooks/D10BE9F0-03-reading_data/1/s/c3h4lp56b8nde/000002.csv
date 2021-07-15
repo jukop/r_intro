@@ -1,0 +1,2 @@
+"0","gene_data <- read.table(""gene_data.txt"", header = TRUE)"
+"0","gene_data"

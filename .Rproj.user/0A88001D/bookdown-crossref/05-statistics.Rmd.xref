@@ -1,0 +1,10 @@
+h1:statistics Tunnusluvut
+h2:sijaintia-kuvaavat-tunnusluvut Sijaintia kuvaavat tunnusluvut
+h3:minimi-ja-maksimi Minimi ja maksimi
+h3:keskiarvo Keskiarvo
+h3:mediaani Mediaani
+h3:kvantiilit Kvantiilit
+h3:moodi Moodi
+h2:summary summary()
+h2:varianssi-ja-keskihajonta-ja-kvantiilit Varianssi ja keskihajonta ja kvantiilit
+

@@ -1,0 +1,26 @@
+{
+    "id": "5956015A",
+    "path": "~/Opetus/R/r_intro/04-data_wrangling.Rmd",
+    "project_path": "04-data_wrangling.Rmd",
+    "type": "r_markdown",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1626336337773.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "107,47",
+        "scrollLine": "89"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1626337560,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1626337560427,
+    "read_only": false,
+    "read_only_alternatives": []
+}

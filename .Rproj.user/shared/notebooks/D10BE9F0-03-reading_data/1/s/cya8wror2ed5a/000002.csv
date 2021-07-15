@@ -1,0 +1,2 @@
+"0","tooth <- read.csv(""data/tooth_growth.csv"", row.names = 1)"
+"0","tooth"
