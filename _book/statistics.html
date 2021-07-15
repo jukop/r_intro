@@ -231,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#osajoukkojen-valinta"><i class="fa fa-check"></i><b>5.2</b> Osajoukkojen valinta</a></li>
 <li class="chapter" data-level="5.3" data-path="data-wrangling.html"><a href="data-wrangling.html#faktorit"><i class="fa fa-check"></i><b>5.3</b> Faktorit</a></li>
-<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#extra-lääketutkimusesimerkki"><i class="fa fa-check"></i><b>5.4</b> Extra: Lääketutkimusesimerkki</a></li>
+<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#factor-extra"><i class="fa fa-check"></i><b>5.4</b> Extra: Lääketutkimusesimerkki</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>6</b> Tunnusluvut</a>
 <ul>
@@ -355,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="keskiarvo" class="section level3" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> Keskiarvo</h3>
 <p>Keskiarvo saadaan laskemalla muuttujan kaikki havainnot yhteen ja jakamalla summa havaintojen määrällä. Esimerkiksi aineiston 1,2,3,4 keskiarvo on (1+2+3+4)/4 = 2.5 Keskiarvoa satunnaismuuttujan <span class="math inline">\(X\)</span> havainnoille voidaan merkitä matemaattisesti seuraavasti
-<span class="math display">\[\overline{x} = \sum_{i=1}^n x_i = \frac{x_1+x_2+\dots+x_n}{n},\]</span>
+<span class="math display">\[\overline{x} = \frac{1}{n}\sum_{i=1}^n x_i = \frac{x_1+x_2+\dots+x_n}{n},\]</span>
 missä merkintä <span class="math inline">\(\overline{x}\)</span> tarkoittaa itse keskiarvoa, <span class="math inline">\(x_1,...,x_n\)</span> ovat havaintoja ja <span class="math inline">\(n\)</span> on laskettavien havaintojen määrä.</p>
 <p>R:ssä keskiarvo voidaan laskea helposti funktiolla <code>mean</code>.</p>
 <div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="statistics.html#cb305-1" aria-hidden="true" tabindex="-1"></a>tooth_length <span class="ot">&lt;-</span> ToothGrowth<span class="sc">$</span>len</span>

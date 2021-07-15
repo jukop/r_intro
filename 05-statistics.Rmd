@@ -100,8 +100,7 @@ Esimerkiksi viiksilaatikko-kuvaa vastaavat lukuarvot eli minimin, alakvartiilin,
 ```{r}
 quantile(dat_for_median, probs=c(0,0.2,0.5,0.75,1))
 ```
-=======
->>>>>>> 2addb63fb17a5ba14a96f219e1a448ce0ad905ba
+
 
 ### Moodi
 

@@ -231,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#osajoukkojen-valinta"><i class="fa fa-check"></i><b>5.2</b> Osajoukkojen valinta</a></li>
 <li class="chapter" data-level="5.3" data-path="data-wrangling.html"><a href="data-wrangling.html#faktorit"><i class="fa fa-check"></i><b>5.3</b> Faktorit</a></li>
-<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#extra-lääketutkimusesimerkki"><i class="fa fa-check"></i><b>5.4</b> Extra: Lääketutkimusesimerkki</a></li>
+<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#factor-extra"><i class="fa fa-check"></i><b>5.4</b> Extra: Lääketutkimusesimerkki</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>6</b> Tunnusluvut</a>
 <ul>
@@ -482,7 +482,7 @@ Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla t
 ##  $ build_mat  : num  1 1 2 2 3 3
 ##  $ fbuild_mat : Factor w/ 3 levels &quot;wood&quot;,&quot;steel&quot;,..: 1 1 2 2 3 3</code></pre>
 </div>
-<div id="extra-lääketutkimusesimerkki" class="section level2" number="5.4">
+<div id="factor-extra" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Extra: Lääketutkimusesimerkki</h2>
 <p>R:ssä on aiemmin nähtyjen numeric, character ja logical-vektorien lisäksi muitakin vektoriluokkia, tärkeimpänä näistä factor. Factor-vektoreihin tallennetaan kategorisia muuttujia, kuten tutkimuksessa määrättyjä ryhmiä, aikapisteitä tms. Luodaan esimerkiksi factor-vektori, jossa on kuvitteellisen lääketutkimuksen osallistujien ryhmätiedot:</p>
 <div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="data-wrangling.html#cb283-1" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">&quot;drug1&quot;</span>, <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;drug1&quot;</span>, <span class="st">&quot;control&quot;</span>,</span>
