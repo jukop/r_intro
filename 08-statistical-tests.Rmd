@@ -29,8 +29,59 @@ chisq.test(x, simulate.p.value = TRUE, B = 10000)$p.value
 Kahden otoksen t-testi soveltuu tilanteeseen, jossa kahden erillisen joukon keskiarvoja halutaan verrata ja selvittää voiko kyseinen ero johtua sattumasta. Mikäli samasta joukosta on tehty kaksi mittausta, on kyseessä riippuvat otokset ja tulee käyttää riippuvien otosten t-testiä.
 
 ```{r}
+# evaluate the averages of variables for men and women
+# there are many ways to do this but one is to use subset to extract separate data set for men and women indepenently
+# we also choose just columns with numeric data (height, weight, BMI)
+study_data_male <- subset(x=study_data,subset= gender == "male", select = c("height","weight","BMI"))
+study_data_female <- subset(x=study_data,subset= gender == "female", select = c("height","weight","BMI"))
 
+# apply-function can be used to calculate function for multiple columns with one command
+avg_male <- apply(study_data_male,MARGIN=2,FUN=mean,na.rm=T)
+avg_female <- apply(study_data_female,MARGIN=2,FUN=mean,na.rm=T)
+
+avg_male
+avg_female
+
+# regarding just height, apply does the same as
+mean(study_data_male$height,na.rm=TRUE)
+mean(study_data_female$height,na.rm=TRUE)
+```
+Yllä olevasta koodistamme huomasimme että aineistossa miesten keskimäärinen pituus on ```r avg_male["height"]``` cm ja naisten on ```r avg_female["height"]``` cm. Varianssianalyysillä voidaan selvittää onko kolmen tai useamman ryhmän välillä eroa vähintään joidenkin ryhmien osalta.
+
+ * H_0: Ryhmien odotusarvot ovat yhtäsuuret tarkasteltavan muuttujan suhteen ($\mu_1 = \mu_2$),
+ * H_1: Ryhmien odotusarvot ovat erisuuret tarkasteltavan muuttujan suhteen ($\mu_i \ne \mu_j$).
+ 
+```{r}
+# conduct Analysis of Variance (ANOVA) for study_data
+# we test if averages of height
+
+t.test(height ~ fgender,data=study_data)
 ```
 
 
 ## Varianssianalyysi
+
+Varianssianalyysillä voidaan selvittää onko kolmen tai useamman ryhmän välillä eroa vähintään joidenkin ryhmien osalta. Varianssianalyysi on kahden riippumattoman otoksen t-testin yleistys kolmen tai useamman ryhmän tilanteeseen. Koska harjoitusaineistossa ```study_data``` ei vielä ole kategorista muuttujaa, jossa on vähintään kolme kategoriaa, niin luodaan sellainen.
+
+```{r}
+# create a new categorical variable called age_group
+View(study_data)
+#3,5,6 => ryhmä 1
+#2,4,8 => ryhmä 2
+#1,7   => ryhmä 3
+# vaste: weight
+study_data$age_group <- c("3","2","1","2","1","1","3","2")
+study_data$fage_group <- factor(study_data$age_group)
+```
+
+ * H_0: Ryhmien odotusarvot ovat samat tarkasteltavan muuttujan suhteen ($\mu_1 = \mu_2 = \dots = \mu_n$),
+ * H_1: Ryhmien odotusarvoissa on eroa tarkasteltavan muuttujan suhteen ($\mu_i \ne \mu_j$ ainakin joillekin $i \ne j$).
+ 
+```{r}
+# conduct Analysis of Variance (ANOVA) for study_data
+# we test if averages of height
+
+summary(aov(height ~ fage_group,data=study_data))
+
+summary(aov(height ~ fage_group,data=study_data[rep(c(1:8),3),])) # the same data three times
+```
