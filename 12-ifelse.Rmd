@@ -1,6 +1,6 @@
 # Ehtorakenteet {#ifelse}
 
-Viime kerralla tehdyt funktiot suorittavat aina samat komennot riippumatta syötteestä. Entä jos funktion toiminnassa pitäisi ottaa huomioon erilaisia tapauksia, eli suorittaa tiettyjä komentoja vain joissain tilanteissa? Tätä varten ohjelmointikielissä on ehtorakenteita, eli ns. if/else-rakenteita, jotka ohjaavat ohjelman toimintaa.
+[Funktiot](#functions) kappaleen funktiot suorittavat aina samat komennot riippumatta syötteestä. Entä jos funktion toiminnassa pitäisi ottaa huomioon erilaisia tapauksia, eli suorittaa tiettyjä komentoja vain joissain tilanteissa? Tätä varten ohjelmointikielissä on ehtorakenteita, eli ns. if/else-rakenteita, jotka ohjaavat ohjelman toimintaa.
 
 Tutustutaan ensin tarkemmin loogisiin operaattoreihin.
 
@@ -8,67 +8,27 @@ Tutustutaan ensin tarkemmin loogisiin operaattoreihin.
 
 Tässä on lyhyt lista loogisista operaattoreista:
 
-<table class="tg">
-  <tr>
-    <th class="tg-0pky">Operaattori</th>
-    <th class="tg-0pky">Kuvaus</th>
-  </tr>
-  <tr>
-    <td class="tg-0pky">&lt;</td>
-    <td class="tg-0pky">pienempi kuin</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">&lt;=<br></td>
-    <td class="tg-0pky">pienempi tai yhtä suuri kuin<br></td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">&gt;<br></td>
-    <td class="tg-0pky">suurempi kuin</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">&gt;=</td>
-    <td class="tg-0pky">suurempi tai yhtä suuri kuin</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">==</td>
-    <td class="tg-0pky">yhtä kuin</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">!=</td>
-    <td class="tg-0pky">ei yhtä kuin</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">!a</td>
-    <td class="tg-0pky">ei a (negaation)</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">a | b<br></td>
-    <td class="tg-0pky">a TAI b alkioittain</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">a || b<br></td>
-    <td class="tg-0pky">a TAI b yksittäisille arvoille</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">a &amp; b</td>
-    <td class="tg-0pky">a JA b alkioittain</td>
-  </tr>
-  <tr>
-    <td class="tg-0pky">a &amp;&amp; b</td>
-    <td class="tg-0pky">a JA b yksittäisille arvoille</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">a %in% b</td>
-    <td class="tg-0lax">a kuuluu b:hen</td>
-  </tr>
-</table>
+Operaattori       Toiminto
+----------------  -------------------------------
+<                 pienempi kuin
+<=                pienempi tai yhtä suuri kuin
+>                 suurempi kuin
+>=                suurempi tai yhtä suuri kuin
+==                yhtä kuin
+!=                ei yhtä kuin
+!a                ei a (negaation) 
+a | b             a TAI b alkioittain
+a || b            a TAI b yksittäisille arvoille
+a & b	            a JA b alkioittain
+a && b            a JA b yksittäisille arvoille
+a %in% b          mitkä a:n alkiot ovat myös b:n alkioita
 
-
-Kaikki loogiset operaattorit palauttavat joko arvon TRUE tai FALSE. Vertailuoperaattorien käyttö on jo tullut tutuksi aikaisemmissa tehtävissä, mutta tutustutaan vähän tarkemmin viimeisten rivien operaattoreihin:
+<!-- Santtu: myös NA on mahdollinen tulos esim NA & TRUE == NA -->
+Kaikki loogiset operaattorit palauttavat joko arvon `TRUE`, `FALSE` tai `NA`. Vertailuoperaattorien käyttö on jo tullut tutuksi aikaisemmissa kappaleissa, mutta tutustutaan vähän tarkemmin viimeisten rivien operaattoreihin.
 
 #### Negaatio
 
-Looginen negaatio palauttaa loogisen lauseen vastakohdan, eli muuttaa arvon TRUE arvoksi FALSE ja arvon FALSE arvoksi TRUE.
+Looginen negaatio palauttaa loogisen lauseen vastakohdan, eli muuttaa arvon `TRUE` arvoksi `FALSE` ja arvon `FALSE` arvoksi `TRUE`.
 
 ```{r}
 10 > 12
@@ -81,7 +41,7 @@ Looginen negaatio palauttaa loogisen lauseen vastakohdan, eli muuttaa arvon TRUE
 
 #### Looginen TAI (disjunktio)
 
-Loogiselle TAI operaattorille annetaan kaksi loogista lausetta, ja TAI operaattori palauttaa TRUE, jos kummatkin tai jompikumpi lauseista on TRUE. R:ssä TAI merkitään pystyviivalla "|" tai kahdella pystyviivalla "||". "|" käy läpi vektoreita alkioittain, "||" operoi yksittäisiä arvoja, ja toista lausetta ei edes ajeta, jos ensimmäinen on TRUE (koska "||" palauttaa TRUE riippumatta toisen lauseen arvosta). Jos tämä tuntui monimutkaiselta, niin riittää muistaa, että ehtorakenteissa kannattaa käyttää muotoa "||".
+Loogiselle TAI operaattorille annetaan kaksi loogista lausetta, ja TAI operaattori palauttaa `TRUE`, jos vähintään toinen lauseista on `TRUE`. R:ssä TAI merkitään pystyviivalla `|` tai kahdella pystyviivalla `||`. `|` käy läpi vektoreita alkioittain, `||` vertaa kahta loogista lausetta, ja toista lausetta ei edes ajeta, jos ensimmäinen on `TRUE` (koska `||` palauttaa `TRUE` riippumatta toisen lauseen arvosta). Jos tämä tuntui monimutkaiselta, niin riittää muistaa, että ehtorakenteissa kannattaa käyttää muotoa "||".
 
 ```{r}
 10 > 12 || "a" < "b"
@@ -93,7 +53,7 @@ Loogiselle TAI operaattorille annetaan kaksi loogista lausetta, ja TAI operaatto
 
 #### Looginen JA (konjunktio)
 
-Loogiselle JA operaattorille annetaan kaksi lausetta. JA palauttaa TRUE, jos kummatkin lauseet ovat TRUE. R:ssä JA-operaattorit ovat "&" ja "&&", jotka käyttäytyvät kuten "|" ja "||".
+Loogiselle JA operaattorille annetaan kaksi lausetta. JA palauttaa `TRUE`, jos kummatkin lauseet ovat `TRUE`. R:ssä JA-operaattorit ovat `&` ja `&&`, jotka käyttäytyvät kuten `|` ja `||`.
 
 ```{r}
 10 > 12 && "a" < "b"
@@ -105,7 +65,7 @@ Loogiselle JA operaattorille annetaan kaksi lausetta. JA palauttaa TRUE, jos kum
 
 #### Osajoukko
 
-%in%-operaattorilla voi tarkistaa, kuuluuko jokin arvo suurempaan joukkoon. Tämä voitaisiin toteuttaa myös usealla TAI-operaattorilla, mutta %in% on usein paljon kätevämpi.
+`%in%`-operaattorilla voi tarkistaa, kuuluuko jokin arvo suurempaan joukkoon. Tämä voitaisiin toteuttaa myös usealla TAI-operaattorilla, mutta `%in%` on usein paljon kätevämpi.
 
 ```{r}
 dna_bases <- c("A", "C", "G", "T")
@@ -117,9 +77,14 @@ rna_bases <- c("A", "C", "G", "U")
 !"A" %in% dna_bases
 ```
 
+Operaattoria voi soveltaa myös vektoreihin, jolloin operaattori palauttaa loogisen vektorin, jonka alkio jokainen alkio kertoo, kuuluiko vastaava operaation vasemman puolen alkio operaation oikeaan puoleen.
+```{r}
+dna_bases %in% rna_bases
+```
+
 #### Monimutkaisemmat lauseet
 
-Operaattoreita voidaan myös yhdistellä monimutkaisemmiksi lauseiksi. Tällöin lauseiden arviointijärjestys määritetään tarvittaessa suluilla.
+Operaattoreita voidaan myös yhdistellä monimutkaisemmiksi lauseiksi. Tällöin lauseiden evaluointijärjestys määritetään tarvittaessa suluilla.
 
 ```{r}
 dog <- list(breed = "golden retriever",
@@ -131,7 +96,8 @@ dog$breed == "golden retriever" && dog$weight < 25 || dog$height < 50
 
 #### a < x < b
 
-usein tulee vastaan tilanteita, joissa halutaan tarkistaa, onko jokin luku halutulla välillä. Tämä kirjoitetaan matemaatiisesti esim. näin: a < x < b, jossa tarkastetaan, onko x välillä ]a, b[. Tämä ei kuitenkaan valitettavasti toimi R:ssä, vaan tarkistus pitää jakaa kahteen osaan:
+usein tulee vastaan tilanteita, joissa halutaan tarkistaa, onko jokin luku halutulla välillä. Tämä kirjoitetaan matemaatiisesti esim. näin: $a < x < b$, jossa tarkastetaan, onko $x$ välillä $(a, b)$. Tämä ei kuitenkaan valitettavasti toimi R:ssä, vaan tarkistus pitää jakaa kahteen osaan:
+<!-- Santtu: ihan vain huomiona, onko ohjelmointikieltä jossa a < x < b toimisi suoraan? Itse en ainakaan tiedä yhtäkään, ehkä Haskell mutta en muista.-->
 
 ```{r}
 # Are x and y between 0 and 1?
@@ -146,7 +112,6 @@ y <- 0.3
 
 Aloitetaan esimerkistä: tehtävänä on kirjoittaa funktio, jolle annetaan syötteenä potilaan hemoglobiiniarvo. Funktion on tarkoitus hälyttää, jos hemoglobiini laskee alle viitearvojen alarajan 117. Kyseinen funktio voisi näyttää vaikka tältä:
 
-
 ```{r}
 hb_alert <- function(hb) {
   if (hb < 117) {
@@ -155,7 +120,7 @@ hb_alert <- function(hb) {
 }
 ```
 
-Funktiolla on siis yksi argumentti, hb eli hemoglobiiniarvo. Funktion sisällä on if-rakenne. If-rakenteessa on kaksi osaa: ehto, ja rakenteen sisäinen koodi. Rakenteen sisäinen koodi ajetaan vain, jos ehto täyttyy. Ehto merkitään if-komennon jälkeen sulkeisiin, ja rakenteen sisäinen koodi kirjoitetaan sulkeiden jälkeen hakasulkeiden sisään. (Jos hakasulkeiden sisään tulisi vain yksi rivi koodia, hakasulkeet voi jättää pois, mutta näissä esimerkeissä käytetään aina hakasulkeita).
+Funktiolla on siis yksi argumentti, `hb` eli hemoglobiiniarvo. Funktion sisällä on if-rakenne. If-rakenteessa on kaksi osaa: ehto, ja rakenteen sisäinen koodi. Rakenteen sisäinen koodi ajetaan vain, jos ehto täyttyy. Ehto merkitään if-komennon jälkeen sulkeisiin, ja rakenteen sisäinen koodi kirjoitetaan sulkeiden jälkeen aaltosulkeiden sisään. (Jos aaltosulkeiden sisään tulisi vain yksi rivi koodia, aaltoasulkeet voi jättää pois, mutta näissä esimerkeissä käytetään aina aaltoasulkeita).
 
 Kokeillaan, miten funktio toimii eri hemoglobiiniarvoilla:
 
@@ -180,9 +145,9 @@ hb_alert <- function(hb) {
 hb_alert(130)
 ```
 
-Else-komennon jälkeinen koodi siis ajetaan, jos ehto hb < 117 ei täyty.
+Else-komennon jälkeinen koodi siis ajetaan, jos ehto `hb < 117` ei täyty.
 
-Tällä hetkellä funktiomme toimii vain naispotilaille, sillä miehillä hemoglobiiniarvojen alaraja on 134. Lisätään siis funktioomme argumentti sukupuolta varten ja muokataan sen toimintaa niin, että se osaa ottaa huomioon sukupuolen. Nyt if-rakenteen ehdosta tulee jo hieman monimutkaisempi:
+Tällä hetkellä funktiomme toimii vain naispotilaille, sillä miehillä hemoglobiiniarvojen alaraja on 134. Lisätään siis funktioomme argumentti `sex`  sukupuolta varten ja muokataan funktion toimintaa niin, että se osaa ottaa huomioon sukupuolen. Nyt if-rakenteen ehdosta tulee jo hieman monimutkaisempi:
 
 ```{r}
 hb_alert <- function(hb, sex) {
@@ -258,7 +223,7 @@ hb_alert(hb = 120, sex = "male")
 Nyt funktio toimii haluamallamme tavalla!
 
 Funktioissa voi myös olla useampi ehtorakenne. Ehtorakenteita käytetään usein tarkistamaan argumenttien arvoja. Lisätään ehtorakenteet argumenttien tarkistamiseksi:
-
+<!-- Santtu: Mielestäni näiden tarkastusten tulisi kutsua stop, eikä palauttaa tekstiä, kyseessä on kuitenkin virhetilanne -->
 
 ```{r}
 hb_alert <- function(hb, sex) {
@@ -287,10 +252,14 @@ hb_alert(hb = 120, sex = "FEMALE")
 
 ## Alkioiden poimiminen vektorista tietyn ehdon perusteella
 
-Tämän viikon tehtävissä tuli ainakin allekirjoittaneelle vastaan tilanne, jossa piti käydä läpi useita arvoja vektorista, ja säilyttää niistä ne, jotka täyttivät tietyn ehdon. Tätä aihetta käsitellään enemmän ensi viikolla, mutta tässä lyhyt vinkki tällaisten tehtävien ratkaisuun:
+<!-- Santtu: poistin taas viittaukse viikkoihin jotta yleisyys säilyy -->
+Seuraava tilanne on melko tyypillinen: on käytävä läpi vektorin arvot, ja säilytettävä niistä ne, jotka täyttivät tietyn ehdon. Tätä ongelmaa voi lähestyä esimerkiksi seuraavalla tavalla: 
+<!--Tätä aihetta käsitellään enemmän ensi viikolla, mutta tässä lyhyt vinkki tällaisten tehtävien ratkaisuun:-->
 
-- Luo apufunktio, joka ottaa syötteeksi yhden arvon, ja tarkistaa täyttyykö ehto. Tämän funktion tulee palauttaa TRUE, jos ehto täyttyy ja FALSE, jos ehto ei täyty.
-- Käytä funktiota ```Vectorize```, jolla voit muuttaa funktiosi vektoroiduksi funktioksi. Kun vektoroidulle funktiolle annetaan vektori, jossa on monta alkiota, funktio ajetaan automaattisesti alkio kerrallaan, kuten monet R:n omat funktiot.
+<!-- Santtu: Tämä voi olla joskus nopea ja yksinkertainen ratkaisu, mutta käytännössä vectorize vain niputtaa annetun funktion sopivaan sapply kutsuun, mikä ei välttämättä ole hyvä ratkaisu, jos alkuperäisen funktion olisii itse voinut koodata vektorimuotoiseksi ilman silmukkarakenteita. Opetuksena siis se, että vectorize ei ole "aitoa" vektorisointia. -->
+- Luo apufunktio, joka ottaa syötteeksi yhden arvon, ja tarkistaa täyttyykö ehto. Tämän funktion tulee palauttaa `TRUE`, jos ehto täyttyy ja `FALSE`, jos ehto ei täyty.
+- Käytä funktiota `Vectorize`, jolla voit muuttaa funktiosi vektoroiduksi funktioksi. Vektorointi tarkoittaa tässä yhteydessä sitä, että yhden alkion sijaan vektoroitua funktiota voidaankin kutsua vektoriargumentilla, ja jokaiselle argumentin alkiolle suoritetaan alkuperäisen funktion määrittelemä operaatio. 
+<!--Kun vektoroidulle funktiolle annetaan vektori, jossa on monta alkiota, funktio ajetaan automaattisesti alkio kerrallaan, kuten monet R:n omat funktiot. -->
 - Käytä vektoroitua apufunktiota vektorin indeksointiin.
 
 Tässä on esimerkki, jossa käydään läpi vektori DNA:n emäksiä, joista poimitaan vain sytosiinit ja guaniinit.

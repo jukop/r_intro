@@ -29,7 +29,7 @@ Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä 
 
 - [Johdanto](#intro)
   * [Mikä on R ja mitä sillä tehdään?](#what_R)
-  * [Muuttujat ja vektorit](#variables_and_vectors)
+- [Muuttujat ja vektorit](#variables_and_vectors)
   * [Extra: Alkeistietotyypit ja puuttuvat arvot](#extra)
 - [Tietotyypit: data frame, matriisi, taulukko ja lista](#data_types)
   * [data frame](#data-frame)
@@ -52,9 +52,9 @@ Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä 
 - [Kuvaajien piirtäminen](#plotting)
   * [Kuvaajan tallentaminen](#kuvaajan-tallentaminen)
 - [Tilastollinen testaaminen](#tests)
-  * [Khi toiseen -testi](#chi-squared-test)
-  * Kahden otoksen t-testi
-  * Varianssianalyysi
+  * [t-testi](#-test)
+  * [Khiin neliö -testi](#chi-squared-test)
+  * [Varianssianalyysi](#anova)
 - [Lineaariset mallit](#linear_models)
 - [Funktiot](#functions)
 - [Ehtorakenteet](#ifelse)

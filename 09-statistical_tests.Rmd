@@ -1,0 +1,137 @@
+# Tilastollinen testaaminen {#tests}
+
+## Testaamisen periaatteita
+
+TODO: Nollahypoteesi, testisuure, p-arvo ym. 
+
+## t-testi {#t-test}
+Tarkastellaan R:n sisäistä dataa `sleep`, joka sisältää muutoksia oppilaiden unen määrässä (muuttuja `extra`, muutos unen määrässä tunneissa) kahdella eri lääkkeellä (muuttuja `group`). Jokainen oppilas kokeili kumpaakin lääkettä, muuttuja `ID` yksilöi oppilaat.
+
+### Yhden otoksen t-testi
+Testaamme aluksi hypoteesia, että muutos unen määrässä lääkkeen käytön jälkeen on 0 ($H_0 : \mu = 0$). Funktiota `t.test` voi käyttää monella tapaa. Tässä esimerkissä annamme funktiolle kaavan `extra ~ 1`, eli ns. `formula`-objektin ensimmäisenä argumenttina, joka on osa R:n syntaksia tilastollisten mallien ja riippuvuusrakenteiden määrittellyyn. Kaava määrittelee, että `~`-merkin vasen puoli on vastemuuttuja, ja oikea puoli sisältää selittävät muuttujat. Koska emme tee testiä minkään toisen muuttujan suhteen, niin kaavan oikean puoli on vain luku 1, joka R:n syntaksissa tarkoittaa, että se on vakio. Tämä ei siis tarkoita esimerkiksi sitä, että nollahypoteesimme olisi, että muutos unen määrässä olisi 1 tunti. Nollahypoteesin mukainen odotusarvo määritellään argumentilla `mu`, joka yhden otoksen testissä saa oletusarvon 0.
+```{r}
+# One sample test
+tt1 <- t.test(extra ~ 1, data = sleep)
+tt1
+```
+Tuloksena saamme t-testisuureen arvon, vapausasteet sekä testin p-arvon. Koska p-arvo on pieni (perinteisesti rajana käytetään lukua 0.05, mutta tämä vaihtelee tieteenalasta riippuen) niin nollahypoteesi hylätään, eli testin mukaan muutos unen määrässä poikkeaa tilastollisesti merkitsevästi nollasta kumpaa tahansa lääkettä käytettäessä.
+
+Testiin liittyvät tunnusluvut saamme eriteltyä tulosobjektista `tt1` seuraavasti:
+```{r}
+# Test statistic
+tt1$statistic
+# Degrees of freedom
+tt1$parameter
+# p-value
+tt1$p.value
+```
+
+### Kahden otoksen t-testi
+Entäpä jos haluammekin testata hypoteesia, että kumpikin lääke vaikuttaa samalla tavalla unen määrään ($H_0 : \mu_1 = \mu_2$)? Voimme tässäkin tapauksessa käyttää `formula`-syntaksia hyödyksi. Vakion 1 sijaan sijoitamme nyt lääkettä vastaavan muuttujan `group` kaavassa `~`-merkin oikealle puolelle.
+```{r}
+tt2 <- t.test(extra ~ group, data = sleep)
+tt2
+```
+Testiobjektin sisältö vastaa yhden otoksen testiä suurimmilta osin. Näämme, että testin tulos ei tällä kertaa ollut tilastollisesti merkitsevä (merkitsevyystasolla 0.05) eli testin mukaan ei ole näyttöä siitä, että lääkkeet vaikuttaisivat eri tavalla unen määrään, jolloin nollahypoteesia ei hylätä. 
+
+Tarkkasilmäinen lukija saattoi kuitenkin huomata, että tämä testi ei aivan vastaa tarkoitusta, sillä `sleep`-aineistossa jokainen koehenkilö kokeili kumpaakin lääkettä, jolloin oikea tapa olisi testata lääkkeiden vaikutuksen erotusta, mikä tehdäänkin seuraavaksi.
+
+### Parittaisten otosten t-testi
+Jotta mittausparit tulevat otettua huomioon testissä, on `t.test`-funktiolle annettava argumentti `paired = TRUE`. Tässä testissä nollahypoteesi on, että lääkkeiden vaikutuksen erotuksen odotusarvo on 0 ($H_0 : \mu_d = 0$).
+```{r}
+tt3 <- t.test(extra ~ group, data = sleep, paired = TRUE)
+tt3
+```
+Tällä kertaa tulos on taas tilastollisesti merkitsevä, eli lääkkeiden vaikutuksessa unen määrään on tilastollisesti merkitsevä ero, jolloin nollahypoteesi hylätään.
+
+<!-- Santtu: Kirjoitin t-testit kokonaan uudelleen yllä
+## Kahden otoksen t-testi
+
+Kahden otoksen t-testi soveltuu tilanteeseen, jossa kahden erillisen joukon keskiarvoja halutaan verrata ja selvittää voiko kyseinen ero johtua sattumasta. Mikäli samasta joukosta on tehty kaksi mittausta, on kyseessä riippuvat otokset ja tulee käyttää riippuvien otosten t-testiä.
+
+```{r}
+# evaluate the averages of variables for men and women
+# there are many ways to do this but one is to use subset to extract separate data set for men and women indepenently
+# we also choose just columns with numeric data (height, weight, BMI)
+study_data_male <- subset(x=study_data,subset= gender == "male", select = c("height","weight","BMI"))
+study_data_female <- subset(x=study_data,subset= gender == "female", select = c("height","weight","BMI"))
+
+# apply-function can be used to calculate function for multiple columns with one command
+avg_male <- apply(study_data_male,MARGIN=2,FUN=mean,na.rm=T)
+avg_female <- apply(study_data_female,MARGIN=2,FUN=mean,na.rm=T)
+
+avg_male
+avg_female
+
+# regarding just height, apply does the same as
+mean(study_data_male$height,na.rm=TRUE)
+mean(study_data_female$height,na.rm=TRUE)
+```
+Yllä olevasta koodistamme huomasimme että aineistossa miesten keskimäärinen pituus on ```r avg_male["height"]``` cm ja naisten on ```r avg_female["height"]``` cm. Varianssianalyysillä voidaan selvittää onko kolmen tai useamman ryhmän välillä eroa vähintään joidenkin ryhmien osalta.
+
+ * H_0: Ryhmien odotusarvot ovat yhtäsuuret tarkasteltavan muuttujan suhteen ($\mu_1 = \mu_2$),
+ * H_1: Ryhmien odotusarvot ovat erisuuret tarkasteltavan muuttujan suhteen ($\mu_i \ne \mu_j$).
+ 
+```{r}
+# conduct Analysis of Variance (ANOVA) for study_data
+# we test if averages of height
+
+t.test(height ~ fgender,data=study_data)
+```
+-->
+
+## Khiin neliö -testi {#chi-squared-test}
+
+Kahden kategorisen muuttujan riippuvuuden tutkimiseen voidaan käyttää khiin neliö -testiä. Tyypillisesti halutaan verrata jotain ryhmien välisiä eroja, kuten puoluekannatusta alueittain tai sukupuolten suhteen. Testin ideana on verrata havaittua ristiintaulukkoa nollahypoteesin mukaiseen ristiintaulukkoon, jossa muuttujien välillä ei ole lainkaan riippuvuutta. Khiin neliö -testin testisuure perustuu näiden kahden taulukon eroihin.
+
+Tarkastellaan Yhdysvaltalaista kyselytutkimusaineistoa, joka sisältää tiedon henkilön puoluekannatuksesta ja sukupuolesta. Tutkitaan khiin neliö -testin avulla, riippuuko puoluekannatus sukupuolesta. R:ssä tämä voidaan tehdä funktiolla `chisq.test`.
+
+```{r}
+## From Agresti(2007) p.39
+M <- as.table(rbind(c(762, 327, 468), c(484, 239, 477)))
+dimnames(M) <- list(gender = c("F", "M"),
+                    party = c("Democrat", "Independent", "Republican"))
+(Xsq <- chisq.test(M))  # Prints test summary
+Xsq$observed   # observed counts (same as M)
+Xsq$expected   # expected counts under the null
+Xsq$residuals  # Pearson residuals
+Xsq$stdres     # standardized residuals
+```
+Koska testin p-arvo on pieni, niin nollahypoteesi hylätään ja todetaan, että puoluekannatus riippuu tilastollisesti merkitsevästi sukupuolesta. Testin luotettavuuden kannalta on kuitenkin hyvä huomioida, että testiin liittyy oletuksia, jotka koskevat odotettuja frekvenssejä (eli nollahypoteesin mukaisen ristiintaulukon frekvenssejä). Tyypillisesti vaaditaan, että odotetun frekvenssin on oltava vähintään 5 vähintään 80%:ssa taulukon soluista, eikä yhdenkään solun odotettu frekvenssi ole alle 1. Tarkistetaan oletukset edellisen esimerkin tapauksessa:
+```{r}
+all(Xsq$expected >= 1)
+mean(Xsq$expected >= 5) >= 0.80
+```
+Oletukset ovat tältä osin kunnossa. Edellä funktio `all` ottaa syötteenään loogisen vektorin ja palauttaa `TRUE` jos syötteen kaikki alkiot ovat `TRUE`. Muutoin funktio palauttaa `FALSE`.
+
+<!-- Santtu: Monte Carlo menee varmaan yli kurssin aihepiiristä
+## Effect of simulating p-values
+x <- matrix(c(12, 5, 7, 7), ncol = 2)
+chisq.test(x)$p.value           # 0.4233
+chisq.test(x, simulate.p.value = TRUE, B = 10000)$p.value -->
+
+
+## Varianssianalyysi {#anova}
+
+Varianssianalyysin voidaan ajatella olevan t-testin yleistys, jossa yhden tai kahden odotusarvon sijaan verrataankin kerralla useamman ryhmän odotusarvoja keskenään. Menetelmä saa nimensä siitä, että sen testisuure perustuu kiinnostuksen kohteena olevan muuttujan kokonaisvaihtelun jakamiseen verratavien ryhmien sisäiseen vaihteluun ja niiden väliseen vaihteluun. Koska harjoitusaineistossa `study_data` ei vielä ole kategorista muuttujaa, jossa on vähintään kolme kategoriaa, niin luodaan sellainen.
+
+```{r}
+# create a new categorical variable called age_group
+#3,5,6 => ryhmä 1
+#2,4,8 => ryhmä 2
+#1,7   => ryhmä 3
+# vaste: weight
+study_data$age_group <- c("3", "2", "1", "2", "1", "1", "3", "2")
+study_data$fage_group <- factor(study_data$age_group)
+```
+Hypoteesit ovat:
+ * H_0: Ryhmien odotusarvot ovat samat tarkasteltavan muuttujan suhteen ($\mu_1 = \mu_2 = \dots = \mu_n$),
+ * H_1: Ryhmien odotusarvoissa on eroa tarkasteltavan muuttujan suhteen ($\mu_i \ne \mu_j$ ainakin joillekin $i \ne j$).
+ 
+```{r}
+# conduct Analysis of Variance (ANOVA) for study_data
+# we test if averages of height differ between age groups
+summary(aov(height ~ fage_group, data = study_data))
+summary(aov(height ~ fage_group, data = study_data[rep(1:8,3),])) # the same data three times
+```
+
