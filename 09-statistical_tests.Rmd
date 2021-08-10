@@ -2,9 +2,13 @@
 
 ## Testaamisen periaatteita
 
-TODO: Nollahypoteesi, testisuure, p-arvo ym. 
+Tilastollisilla testeillä pyritään arvioimaan perusjoukkoa koskevien väiteiden paikkansapitävyyttä todennäköisyyslaskennan keinoin. Lähtökohtana on niin sanottu **nollahypoteesi** ($H_0$), joka yleensä vastaa tilannetta, jossa mahdolliset väitettä tukevat haivainnot ovat vain sattuman seurausta. Esimerkiksi jos tutkitaan onko jokin lääkeaine tehokas hoitokeino, voisi nollahypoteesi olla muotoa "ei vaikutusta". Nollahypoteesiin liittyy aina **vastahypoteesi** ($H_1$), joka yleensä nollahypoteesin vastakohta, ja vastaa mielenkiinnon kohteena olevaa väitettä (esim. "on vaikutusta").
+
+Tilastolliset testit olettava nollahypoteesin olevan totta, jolloin epäuskottavat tulokset antavat aihetta epäillä nollahypoteesin mielekkyyttä. Testiin liittyy yleensä **testisuure**, joka on jokin aineistosta laskettu tunnusluku. Testisuureen jakauman perusteella voidaan arvioida todennäköisyyttä, että havaittu tulos olisi vain sattuman seurausta. Tätä todennäköisyyttä kutsutaan **p-arvoksi**. Perinteisesti tilastotieteessä asetetaan etukäteen jokin riskitaso ($\alpha$), ja jos saatu p-arvo on riskitasoa pienempi niin nollahypoteesi hylätään (yleensä $\alpha = 0.05$). Jos p-arvo on riskitasoa pienempi, niin havaintoa kutsutaan tilastollisesti merkitseväksi.  
 
 ## t-testi {#t-test}
+Studentin t-testi on yksi tunnetuimmista tilastollisista testeistä. Se testaa muuttujien odotusarvoja.
+
 Tarkastellaan R:n sisäistä dataa `sleep`, joka sisältää muutoksia oppilaiden unen määrässä (muuttuja `extra`, muutos unen määrässä tunneissa) kahdella eri lääkkeellä (muuttuja `group`). Jokainen oppilas kokeili kumpaakin lääkettä, muuttuja `ID` yksilöi oppilaat.
 
 ### Yhden otoksen t-testi
@@ -125,8 +129,8 @@ study_data$age_group <- c("3", "2", "1", "2", "1", "1", "3", "2")
 study_data$fage_group <- factor(study_data$age_group)
 ```
 Hypoteesit ovat:
- * H_0: Ryhmien odotusarvot ovat samat tarkasteltavan muuttujan suhteen ($\mu_1 = \mu_2 = \dots = \mu_n$),
- * H_1: Ryhmien odotusarvoissa on eroa tarkasteltavan muuttujan suhteen ($\mu_i \ne \mu_j$ ainakin joillekin $i \ne j$).
+- $H_0$: Ryhmien odotusarvot ovat samat tarkasteltavan muuttujan suhteen ($\mu_1 = \mu_2 = \dots = \mu_n$),
+- $H_1$: Ryhmien odotusarvoissa on eroa tarkasteltavan muuttujan suhteen ($\mu_i \ne \mu_j$ ainakin joillekin $i \ne j$).
  
 ```{r}
 # conduct Analysis of Variance (ANOVA) for study_data
@@ -135,3 +139,23 @@ summary(aov(height ~ fage_group, data = study_data))
 summary(aov(height ~ fage_group, data = study_data[rep(1:8,3),])) # the same data three times
 ```
 
+## Levenen testi {#levene}
+Levenen testillä tutkitaan ovatko jonkin muuttujan varianssit samat kahdessa tai useammassa ryhmässä. Testiä ei ole toteutettu perus R:ssä, mutta se on saatavilla Rcourse-paketin kautta funktiossa `leveneTest`. Testin nollahypoteesi on, että muuttujan varianssit ovat samat joka ryhmässä.
+
+Selvitetään onko harjoitusaineiston `study_data` muuttujan `height` varianssissa eroa eri ikäryhmien välillä (`fage_group`) Levenen testillä.
+```{r include = FALSE}
+library(Rcourse)
+```
+```{r}
+leveneTest(height ~ fage_group, data = study_data)
+```
+Testin p-arvo löytyy sarakkeesta `Pr(>F)`, ja se on noin $0.61$. Testin mukaan muuttujan varianssit ovat siis samat joka ryhmässä, ja nollahypoteesi jää voimaan. 
+
+## Shapiro-Wilk -testi
+Shapiro-Wilk -testillä tutkitaan onko jokin muuttuja normaalijakautunut. Testi löytyy funktiosta `shapiro.test`, ja se ottaa argumenttinaan yhden muuttujan havainnot vektorina. Funktiolla ei voi siis suoraan testata esimerkiksi sitä, onko muuttuja normaalijakautunut joissakin osaryhmissä, vaan aineisto on ensin jaettava sopiviin osiin. Testin nollahypoteesi on, että muuttuja on normaalijakautunut.
+
+Tarkastellaan jälleen harjoitusaineistoa `study_data` ja testataan muuttujan `height` normaalisuutta.
+```{r}
+shapiro.test(study_data$height)
+```
+Testin p-arvon voi lukea kohdasta `p-value` ja se on aineistolle noin $0.90$, eli `height`-muuttuja on testin mukaan normaalijakautunut, ja nollahypoteesi jää voimaan.

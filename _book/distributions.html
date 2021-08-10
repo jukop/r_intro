@@ -267,6 +267,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="tests.html"><a href="tests.html#chi-squared-test"><i class="fa fa-check"></i><b>9.3</b> Khiin neliö -testi</a></li>
 <li class="chapter" data-level="9.4" data-path="tests.html"><a href="tests.html#anova"><i class="fa fa-check"></i><b>9.4</b> Varianssianalyysi</a></li>
+<li class="chapter" data-level="9.5" data-path="tests.html"><a href="tests.html#levene"><i class="fa fa-check"></i><b>9.5</b> Levenen testi</a></li>
+<li class="chapter" data-level="9.6" data-path="tests.html"><a href="tests.html#shapiro-wilk--testi"><i class="fa fa-check"></i><b>9.6</b> Shapiro-Wilk -testi</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
 <ul>
@@ -307,6 +309,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5" data-path="loops.html"><a href="loops.html#apply-funktiot"><i class="fa fa-check"></i><b>13.5</b> Apply-funktiot</a></li>
 <li class="chapter" data-level="13.6" data-path="loops.html"><a href="loops.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>13.6</b> Vinkkejä tehtäviin</a></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="numerical.html"><a href="numerical.html"><i class="fa fa-check"></i><b>14</b> Numeeriset menetelmät</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="numerical.html"><a href="numerical.html#optimointi"><i class="fa fa-check"></i><b>14.1</b> Optimointi</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="numerical.html"><a href="numerical.html#yksi-parametri"><i class="fa fa-check"></i><b>14.1.1</b> Yksi parametri</a></li>
+<li class="chapter" data-level="14.1.2" data-path="numerical.html"><a href="numerical.html#useampi-parametri"><i class="fa fa-check"></i><b>14.1.2</b> Useampi parametri</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="numerical.html"><a href="numerical.html#funktion-juurten-etsintä"><i class="fa fa-check"></i><b>14.2</b> Funktion juurten etsintä</a></li>
+<li class="chapter" data-level="14.3" data-path="numerical.html"><a href="numerical.html#numeerinen-integrointi"><i class="fa fa-check"></i><b>14.3</b> Numeerinen integrointi</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Julkaistu bookdownilla.</a></li>
 
@@ -337,32 +349,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>r: satunnaislukugeneraattori: arvo eli simuloi satunnaisia havaintoja jakaumasta.</li>
 </ul>
 <p>Alla ovat kuvaajat ensimmäisestä kolmesta funktiosta standardinormaalijakaumalle (pääte <code>norm</code>):</p>
-<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-94-1.png" width="960" /></p>
+<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-95-1.png" width="960" /></p>
 <div id="esimerkki-normaalijakauma" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Esimerkki: normaalijakauma</h2>
 <p>Otetaan muutama käytännön esimerkki. Oletetaan, että suomalaisten miesten suolan saanti on normaalijakautunut odotusarvolla 10 grammaa päivässä ja keskihajonta on 4 grammaa päivässä (odotusarvo on totta, keskihajonta allekirjoittaneen hihasta). Piirretään ensin kuva jakaumasta välillä <span class="math inline">\([0, 20]\)</span> grammaa päivässä. Jakauman muoto saadaan funktiolla <code>dnorm</code>, eli yllä olevan ohjeen mukaan d-alkuinen funktio antaa tiheysfunktion, ja norm-pääte viittaa normaalijakaumaan. Normaalijakauman funktiolle tulee kertoa jakauman odotusarvo (<code>mean</code>) ja keskihajonta (<code>sd</code>).</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="distributions.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sequential vector  of salt consumption</span></span>
-<span id="cb357-2"><a href="distributions.html#cb357-2" aria-hidden="true" tabindex="-1"></a>salt <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
-<span id="cb357-3"><a href="distributions.html#cb357-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Density function</span></span>
-<span id="cb357-4"><a href="distributions.html#cb357-4" aria-hidden="true" tabindex="-1"></a>density <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(salt, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span>
-<span id="cb357-5"><a href="distributions.html#cb357-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Line plot</span></span>
-<span id="cb357-6"><a href="distributions.html#cb357-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(salt, density, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>,</span>
-<span id="cb357-7"><a href="distributions.html#cb357-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Suolan saanti&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Tiheysfunktio&quot;</span>,</span>
-<span id="cb357-8"><a href="distributions.html#cb357-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Suomalaisten miesten suolan saanti&quot;</span>)</span></code></pre></div>
-<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-95-1.png" width="672" /></p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="distributions.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sequential vector  of salt consumption</span></span>
+<span id="cb358-2"><a href="distributions.html#cb358-2" aria-hidden="true" tabindex="-1"></a>salt <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb358-3"><a href="distributions.html#cb358-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Density function</span></span>
+<span id="cb358-4"><a href="distributions.html#cb358-4" aria-hidden="true" tabindex="-1"></a>density <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(salt, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span>
+<span id="cb358-5"><a href="distributions.html#cb358-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Line plot</span></span>
+<span id="cb358-6"><a href="distributions.html#cb358-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(salt, density, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>,</span>
+<span id="cb358-7"><a href="distributions.html#cb358-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Suolan saanti&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Tiheysfunktio&quot;</span>,</span>
+<span id="cb358-8"><a href="distributions.html#cb358-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Suomalaisten miesten suolan saanti&quot;</span>)</span></code></pre></div>
+<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-96-1.png" width="672" /></p>
 <p>Aikuisten saantisuositus on enintään 5 grammaa suolaa päivässä. Kuinka moni suomalainen mies syö tämän jakauman mukaan sopivasti suolaa? Vastaus saadaan kertymäfunktiosta (<span class="math inline">\(P(X \leq 5)\)</span>) <code>pnorm</code>-funktion avulla.</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="distributions.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="distributions.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## [1] 0.1056498</code></pre>
 <p>Tämän jakauman mukaan vain noin 11 % suomalaisista miehistä syö suolaa sopivasti!</p>
 <p>Suomalaisten naiset syövät keskimäärin 7 grammaa suolaa päivässä. Kuinka moni mies syö tätä enemmän suolaa? <code>pnorm</code> antaa oletuksena arvon <span class="math inline">\(P(X \leq 7)\)</span>. Nyt halutaan kuitenkin tietää <span class="math inline">\(P(X &gt; 7)\)</span>, joka saadaan asettamalla <code>lower.tail = FALSE</code>:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="distributions.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">7</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="distributions.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">7</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 0.7733726</code></pre>
 <p>Noin 77 % miehistä syö suolaa keskimääräistä naista enemmän.</p>
 <p>Entä jos halutaan tietää, kuinka paljon suolaa eniten syövä 10 % vähintään saa? Tähän voidaan vastata funktiolla <code>qnorm</code>, joka on jakauman käänteinen kertymäfunktio, eli funktion <code>pnorm</code> käänteisfunktio. Samoin kuin <code>pnorm</code>, <code>qnorm</code>-funktion oletus on, että todennäköisyydet lasketaan jakauman vasemmasta hännästä alkaen. Vastaus tähän kysymykseen selviää siis näillä kahdella tavalla:</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="distributions.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.1</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="distributions.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.1</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1] 15.12621</code></pre>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="distributions.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb364-2"><a href="distributions.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.9</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="distributions.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb365-2"><a href="distributions.html#cb365-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.9</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## [1] 15.12621</code></pre>
 <p>Eli tämän jakauman mukaan eniten suolaa saava 10 % miehistä syö yli kolminkertaisen määrän suolaa suositukseen verrattuna.</p>
 </div>

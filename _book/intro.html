@@ -267,6 +267,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="tests.html"><a href="tests.html#chi-squared-test"><i class="fa fa-check"></i><b>9.3</b> Khiin neliö -testi</a></li>
 <li class="chapter" data-level="9.4" data-path="tests.html"><a href="tests.html#anova"><i class="fa fa-check"></i><b>9.4</b> Varianssianalyysi</a></li>
+<li class="chapter" data-level="9.5" data-path="tests.html"><a href="tests.html#levene"><i class="fa fa-check"></i><b>9.5</b> Levenen testi</a></li>
+<li class="chapter" data-level="9.6" data-path="tests.html"><a href="tests.html#shapiro-wilk--testi"><i class="fa fa-check"></i><b>9.6</b> Shapiro-Wilk -testi</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
 <ul>
@@ -307,6 +309,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.5" data-path="loops.html"><a href="loops.html#apply-funktiot"><i class="fa fa-check"></i><b>13.5</b> Apply-funktiot</a></li>
 <li class="chapter" data-level="13.6" data-path="loops.html"><a href="loops.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>13.6</b> Vinkkejä tehtäviin</a></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="numerical.html"><a href="numerical.html"><i class="fa fa-check"></i><b>14</b> Numeeriset menetelmät</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="numerical.html"><a href="numerical.html#optimointi"><i class="fa fa-check"></i><b>14.1</b> Optimointi</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="numerical.html"><a href="numerical.html#yksi-parametri"><i class="fa fa-check"></i><b>14.1.1</b> Yksi parametri</a></li>
+<li class="chapter" data-level="14.1.2" data-path="numerical.html"><a href="numerical.html#useampi-parametri"><i class="fa fa-check"></i><b>14.1.2</b> Useampi parametri</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="numerical.html"><a href="numerical.html#funktion-juurten-etsintä"><i class="fa fa-check"></i><b>14.2</b> Funktion juurten etsintä</a></li>
+<li class="chapter" data-level="14.3" data-path="numerical.html"><a href="numerical.html#numeerinen-integrointi"><i class="fa fa-check"></i><b>14.3</b> Numeerinen integrointi</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Julkaistu bookdownilla.</a></li>
 
@@ -335,10 +347,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>R on tehty ensisijaisesti tilastotiedettä ja data-analyysiä varten. R:llä kirjoitetaan yleensä lyhyitä ohjelmia, joita kutsutaan skripteiksi. R:llä ei siis ole tarkoitus kehittää esimerkiksi pelejä, tai muita ohjelmia joissa on graafinen käyttöliittymä, kuten vaikkapa Photoshop. R ei myöskään ole web-ohjelmointiin tarkoitettu kieli (vaikka oikeilla paketeilla R:lläkin pystyy tekemään web-sovelluksia).</p>
 <p>R on korkean tason ohjelmointikieli. Tämä tarkoittaa sitä, että R:ssä on paljon valmiita komentoja, joiden “alta” löytyy paljon lisää koodia, johon R-ohjelmoijan ei kuitenkaan tarvitse itse koskea. Esimerkiksi tilastollinen t-testi vaatii useita matemaattisia välivaiheita, mutta R-ohjelmoija voi suorittaa testin yhdellä komennolla (<code>t.test</code>) joka antaa kaikki tarvittavat tiedot testistä.</p>
 <p>R:n käyttöä ja ohjelmointia oppii parhaiten tekemällä. Tässä dokumentaatiossa on tekstin väliin upotettu R-koodia harmaissa laatikoissa, kuten alla olevassa esimerkissä. Kahdella ruudulla eli <code>##</code>-merkinnällä alkavat rivit eivät ole koodia vaan koodin ajamisen aiheuttamia tulosteita (output). Otetaan ensimmäiseksi esimerkiksi klassinen <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">“Hello, world!”</a>-komento:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello, world!&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hello, world!&quot;</code></pre>
 <p><code>print</code>-funktio tulostaa sille annetun tekstin konsoliin. <code>print</code> on kätevä funktio mm. ohjelman toiminnan testaamiseen ja pidemmän ohjelman etenemisen seurantaan. R:ää voi käyttää myös laskimen sijaan. Alla olevassa esimerkissä lasketaan kuinka paljon jää hintaa 80 euron hintaiselle tuotteelle 35% alennuksen jälkeen.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dv">80</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.35</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="intro.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">80</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.35</span>)</span></code></pre></div>
 <pre><code>## [1] 52</code></pre>
 <p>Yksittäisten komentojen ajamisesta ei kuitenkaan ole yleensä hyötyä, ellei tuloksia voi tallentaa johonkin. Ohjelmointikielissä tietoja tallennetaan muuttujiin, joita käsitellään seuraavaksi.</p>
 

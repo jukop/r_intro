@@ -267,6 +267,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="tests.html"><a href="tests.html#chi-squared-test"><i class="fa fa-check"></i><b>9.3</b> Khiin neliö -testi</a></li>
 <li class="chapter" data-level="9.4" data-path="tests.html"><a href="tests.html#anova"><i class="fa fa-check"></i><b>9.4</b> Varianssianalyysi</a></li>
+<li class="chapter" data-level="9.5" data-path="tests.html"><a href="tests.html#levene"><i class="fa fa-check"></i><b>9.5</b> Levenen testi</a></li>
+<li class="chapter" data-level="9.6" data-path="tests.html"><a href="tests.html#shapiro-wilk--testi"><i class="fa fa-check"></i><b>9.6</b> Shapiro-Wilk -testi</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
 <ul>
@@ -306,6 +308,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="loops.html"><a href="loops.html#iterointiin-puuttuminen-next-ja-break"><i class="fa fa-check"></i><b>13.4</b> Iterointiin puuttuminen: next ja break</a></li>
 <li class="chapter" data-level="13.5" data-path="loops.html"><a href="loops.html#apply-funktiot"><i class="fa fa-check"></i><b>13.5</b> Apply-funktiot</a></li>
 <li class="chapter" data-level="13.6" data-path="loops.html"><a href="loops.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>13.6</b> Vinkkejä tehtäviin</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="numerical.html"><a href="numerical.html"><i class="fa fa-check"></i><b>14</b> Numeeriset menetelmät</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="numerical.html"><a href="numerical.html#optimointi"><i class="fa fa-check"></i><b>14.1</b> Optimointi</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="numerical.html"><a href="numerical.html#yksi-parametri"><i class="fa fa-check"></i><b>14.1.1</b> Yksi parametri</a></li>
+<li class="chapter" data-level="14.1.2" data-path="numerical.html"><a href="numerical.html#useampi-parametri"><i class="fa fa-check"></i><b>14.1.2</b> Useampi parametri</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="numerical.html"><a href="numerical.html#funktion-juurten-etsintä"><i class="fa fa-check"></i><b>14.2</b> Funktion juurten etsintä</a></li>
+<li class="chapter" data-level="14.3" data-path="numerical.html"><a href="numerical.html#numeerinen-integrointi"><i class="fa fa-check"></i><b>14.3</b> Numeerinen integrointi</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Julkaistu bookdownilla.</a></li>
@@ -358,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="konsoli." class="section level4 unnumbered">
 <h4>2. Konsoli.</h4>
 <p>Konsolissa “ajetaan” eli suoritetaan R-komentoja. Jos editoriin kirjoitettua koodia ajetaan, RStudio ajaa komennot automaattisesti konsolissa. Konsolissa pelkkä Enter riittää koodirivin suorittamiseen. Voit kokeilla kirjoittaa konsoliin jonkun laskutoimituksen, kuten <code>2 * 3</code> ja painaa Enter, jolloin tuloksen pitäisi tulostua konsoliin. Voit myös kokeilla kirjoittaa laskuja editoriin, ja painaa Ctrl + Enter, jolloin pitäisi tapahtua sama asia.</p>
-<p>Suurin ero konsolin ja editorin välillä on se, että <strong>konsoliin kirjoitetut komennot eivät tallennu mihinkään tiedostoon</strong>. Jos siis haluat säästää koodisi, se tulee kirjoittaa editoriin ja tallentaa .R-tiedostoon. Saman istunnon aikana tehtyjä komentoja voi konsolissa selata ylös- ja alas-nuolila.</p>
+<p>Suurin ero konsolin ja editorin välillä on se, että <strong>konsoliin kirjoitetut komennot eivät tallennu mihinkään tiedostoon</strong>. Jos siis haluat säilyttää koodisi, se tulee kirjoittaa editoriin ja tallentaa .R-tiedostoon. Saman istunnon aikana tehtyjä komentoja voi konsolissa selata ylös- ja alas-nuolila.</p>
 <p>Moodlen ohjeissa ja videoissa käytetään R:ää puhtaasta R-konsolista. Voit siis kuvitella, että kurssin videoissa näkyy vain RStudion tämä osa, ja muut osat ovat vain helpottamassa työtäsi.</p>
 </div>
 <div id="työtila" class="section level4 unnumbered">
@@ -373,51 +385,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Packages: Täältä voi hallita asennettuja paketteja (alla ohjeet tällä kurssilla tarvittavien pakettien asennukseen)</li>
 <li>Help: Täällä voi selata R:n manuaalia, jossa on ohjeet jokaiselle R-komennolla. Voit kokeilla ajaa editorissa tai konsolissa komennon <code>?print</code>, joka avaa <code>print</code>-funktion ohjesivun.</li>
 </ul>
-<p>Kun tehtävät tallentaa tähän tyyliin, voi ensi kerralla vain yksinkertaisesti ajaa skriptin haluamaansa tehtävään asti. Samalla koneella ja samalla opiskelijanumerolla pitäisi tulla samat tehtävät.</p>
+<p>Kun tehtävät tallentaa tällä tavalla, voi ensi kerralla vain yksinkertaisesti ajaa skriptin haluamaansa tehtävään asti.</p>
 </div>
 </div>
 <div id="rcourse-paketin-asentaminen" class="section level2 unnumbered">
 <h2>Rcourse-paketin asentaminen</h2>
 <div id="r-paketit" class="section level3 unnumbered">
 <h3>R-paketit</h3>
-<p>R-ohjelmoinnissa asennetaan usein R-paketteja. Paketit ovat kokonaisuuksia, jotka lisäävät R:ään ominaisuuksia. Esimerkiksi tälle kurssille tarvittava paketti arpoo opiskelijalle tehtäviä kurssin aihepiiristä ja lähettää tiedon osioiden suorituksesta opettajalle.</p>
+<p>R-ohjelmoinnissa asennetaan usein R-paketteja. Paketit ovat kokonaisuuksia, jotka lisäävät R:ään ominaisuuksia. Esimerkiksi tälle kurssille tarvittava paketti sisältää harjoitustehtäviä kurssin aihepiireistä sekä loppukokeen, jonka perusteella kurssin suoritus arvioidaan.</p>
 </div>
 <div id="asentaminen" class="section level3 unnumbered">
 <h3>Asentaminen</h3>
 <p>Rcourse-paketti asennetaan suorittamalla seuraava koodi R:ssä. Kopioi koodi joko R-skriptiin ja aja se tai kopioi se suoraan Console-ikkunaan ja paina Enter-näppäintä.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="alkuvalmistelut.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">url</span>(<span class="st">&quot;http://users.jyu.fi/~santikka/Rcourse/install.R&quot;</span>))</span></code></pre></div>
-<p>Tämän jälkeen paketti tulee ladata käyttöön</p>
+<p>Tämän jälkeen paketti tulee ottaa käyttöön</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="alkuvalmistelut.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Rcourse)</span></code></pre></div>
-<p>Komento <code>info()</code> tulostaa ohjeet (ensimmäisellä käyttökerralla kieli on englanti). Voit vaihtaa kielen suomeksi näin:</p>
+<p>Komento <code>info()</code> tulostaa paketin ohjeet (ensimmäisellä käyttökerralla kieli on englanti). Voit vaihtaa kielen suomeksi näin:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="alkuvalmistelut.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select_language</span>(<span class="st">&quot;finnish&quot;</span>)</span></code></pre></div>
-<p>Tarkastele vielä suomenkielisiä komentoja:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="alkuvalmistelut.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">info</span>()</span></code></pre></div>
+<p>Jos haluat, että kielivalinta säilyy R-istunnosta toiseen, tulee asettaa seuraava argumentti:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="alkuvalmistelut.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select_language</span>(<span class="st">&quot;finnish&quot;</span>, <span class="at">save_selection =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Huomaa, että kielen vaihtuessa myös joidenkin pakettiin liittyvien funktioiden nimet vaihtuvat.
+Tarkastele vielä suomenkielisiä komentoja:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="alkuvalmistelut.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">info</span>()</span></code></pre></div>
 <p><img src="files/00-start/Rcourse_package_info.png" /></p>
 <p>Aloita sitten osion 1 harjoitustehtävien suorittaminen komennolla</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="alkuvalmistelut.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">osio1</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="alkuvalmistelut.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">osio1</span>()</span></code></pre></div>
 <p>Kun olet suorittanut harjoitusosion 1, voit jatkaa seuraavaan osioon. Osiot 1-8 ovat pakollisia (tentit kysyvät näiden osioiden sisältöjä) ja osiot 9-11 ovat lisämateriaalia kiinnostuneille (ei kysytä tentissä).</p>
 </div>
 <div id="opiskelu-ja-tenttiminen-rcourse-paketin-avulla" class="section level3 unnumbered">
 <h3>Opiskelu ja tenttiminen Rcourse-paketin avulla</h3>
 <p>Kurssin harjoitustehtävät suoritetaan käyttäen Rcourse-pakettia, eli 1. osion voi aloittaa komennolla</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="alkuvalmistelut.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">osio1</span>()</span></code></pre></div>
-<p>Lisäksi tenttimien onnistuu vastaavasti funktiolla loppukoe(x), mutta tällöin merkin x tilalle on annettava oma syntymäaika muodossa dddmmyyyy. Esim. henkilö joka on syntynyt 1. tammikuuta 1990 antaisi</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="alkuvalmistelut.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">loppukoe</span>(<span class="dv">01011990</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="alkuvalmistelut.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">osio1</span>()</span></code></pre></div>
+<p>Lisäksi tenttiminen onnistuu vastaavasti funktiolla <code>loppukoe(x)</code>, mutta tällöin merkin <code>x</code> tilalle on annettava oma syntymäaika muodossa “dd/mm/yyyy”. Esim. henkilö joka on syntynyt 1. tammikuuta 1990 antaisi</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="alkuvalmistelut.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">loppukoe</span>(<span class="st">&quot;01/01/1990&quot;</span>)</span></code></pre></div>
 </div>
 <div id="tehtävien-tallentaminen-skripteihin-rstudiolla" class="section level3 unnumbered">
 <h3>Tehtävien tallentaminen skripteihin RStudiolla</h3>
 <p>Suurin osa kurssin tehtävistä on melko lyhyitä, joten ne voi tarvittaessa tehdä suoraan konsoliin. Suosittelen kuitenkin kirjoittamaan varsinkin pidemmät ja monimutkaisemmat tehtävät muistiin editoriin. Suosittelenkin tekemään jokaista osiota varten erillisen R-skriptin, joka sisältää itse tehtävien tarvitseman koodin sekä palautuskomennot. Tällainen skripti näyttää jotakuinkin tältä:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="alkuvalmistelut.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teht 1</span></span>
-<span id="cb8-2"><a href="alkuvalmistelut.html#cb8-2" aria-hidden="true" tabindex="-1"></a>vast <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb8-3"><a href="alkuvalmistelut.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tarkista</span>(vast)</span>
-<span id="cb8-4"><a href="alkuvalmistelut.html#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="alkuvalmistelut.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Teht 2</span></span>
-<span id="cb8-6"><a href="alkuvalmistelut.html#cb8-6" aria-hidden="true" tabindex="-1"></a>vast <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb8-7"><a href="alkuvalmistelut.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tarkista</span>(vast)</span>
-<span id="cb8-8"><a href="alkuvalmistelut.html#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="alkuvalmistelut.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Teht 3</span></span>
-<span id="cb8-10"><a href="alkuvalmistelut.html#cb8-10" aria-hidden="true" tabindex="-1"></a>vast <span class="ot">&lt;-</span> <span class="st">&quot;jotain&quot;</span></span>
-<span id="cb8-11"><a href="alkuvalmistelut.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tarkista</span>(vast)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="alkuvalmistelut.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teht 1</span></span>
+<span id="cb9-2"><a href="alkuvalmistelut.html#cb9-2" aria-hidden="true" tabindex="-1"></a>vast <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb9-3"><a href="alkuvalmistelut.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tarkista</span>(vast)</span>
+<span id="cb9-4"><a href="alkuvalmistelut.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="alkuvalmistelut.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Teht 2</span></span>
+<span id="cb9-6"><a href="alkuvalmistelut.html#cb9-6" aria-hidden="true" tabindex="-1"></a>vast <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb9-7"><a href="alkuvalmistelut.html#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tarkista</span>(vast)</span>
+<span id="cb9-8"><a href="alkuvalmistelut.html#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="alkuvalmistelut.html#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Teht 3</span></span>
+<span id="cb9-10"><a href="alkuvalmistelut.html#cb9-10" aria-hidden="true" tabindex="-1"></a>vast <span class="ot">&lt;-</span> <span class="st">&quot;jotain&quot;</span></span>
+<span id="cb9-11"><a href="alkuvalmistelut.html#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tarkista</span>(vast)</span></code></pre></div>
 <p>Mikäli käytät nimen <code>vast</code> sijasta jotain muuta nimeä, niin sinun on käytettävä samaa nimä myös tarkista-funktion argumenttina!</p>
 
 </div>

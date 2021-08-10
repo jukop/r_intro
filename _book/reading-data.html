@@ -267,6 +267,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="tests.html"><a href="tests.html#chi-squared-test"><i class="fa fa-check"></i><b>9.3</b> Khiin neliö -testi</a></li>
 <li class="chapter" data-level="9.4" data-path="tests.html"><a href="tests.html#anova"><i class="fa fa-check"></i><b>9.4</b> Varianssianalyysi</a></li>
+<li class="chapter" data-level="9.5" data-path="tests.html"><a href="tests.html#levene"><i class="fa fa-check"></i><b>9.5</b> Levenen testi</a></li>
+<li class="chapter" data-level="9.6" data-path="tests.html"><a href="tests.html#shapiro-wilk--testi"><i class="fa fa-check"></i><b>9.6</b> Shapiro-Wilk -testi</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
 <ul>
@@ -306,6 +308,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="loops.html"><a href="loops.html#iterointiin-puuttuminen-next-ja-break"><i class="fa fa-check"></i><b>13.4</b> Iterointiin puuttuminen: next ja break</a></li>
 <li class="chapter" data-level="13.5" data-path="loops.html"><a href="loops.html#apply-funktiot"><i class="fa fa-check"></i><b>13.5</b> Apply-funktiot</a></li>
 <li class="chapter" data-level="13.6" data-path="loops.html"><a href="loops.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>13.6</b> Vinkkejä tehtäviin</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="numerical.html"><a href="numerical.html"><i class="fa fa-check"></i><b>14</b> Numeeriset menetelmät</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="numerical.html"><a href="numerical.html#optimointi"><i class="fa fa-check"></i><b>14.1</b> Optimointi</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="numerical.html"><a href="numerical.html#yksi-parametri"><i class="fa fa-check"></i><b>14.1.1</b> Yksi parametri</a></li>
+<li class="chapter" data-level="14.1.2" data-path="numerical.html"><a href="numerical.html#useampi-parametri"><i class="fa fa-check"></i><b>14.1.2</b> Useampi parametri</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="numerical.html"><a href="numerical.html#funktion-juurten-etsintä"><i class="fa fa-check"></i><b>14.2</b> Funktion juurten etsintä</a></li>
+<li class="chapter" data-level="14.3" data-path="numerical.html"><a href="numerical.html#numeerinen-integrointi"><i class="fa fa-check"></i><b>14.3</b> Numeerinen integrointi</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Julkaistu bookdownilla.</a></li>
@@ -350,16 +362,16 @@ BRWA    8294    13060</code></pre>
 <li><code>dec</code>: desimaalierotin eli desimaalilukujen merkki, jolla desimaalit on eroteltu. Tämä on tärkeä lähinnä suomalaisille, koska Suomessa desimaalierotin on jostain syystä pilkku, eikä piste kuten useimmissa muissa maissa.</li>
 </ul>
 <p>Luetaan edellisen esimerkin data R:ään data frameksi:</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="reading-data.html#cb240-1" aria-hidden="true" tabindex="-1"></a>gene_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;gene_data.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb240-2"><a href="reading-data.html#cb240-2" aria-hidden="true" tabindex="-1"></a>gene_data</span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="reading-data.html#cb241-1" aria-hidden="true" tabindex="-1"></a>gene_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;gene_data.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb241-2"><a href="reading-data.html#cb241-2" aria-hidden="true" tabindex="-1"></a>gene_data</span></code></pre></div>
 <pre><code>##   Subject_ID OPN1LW OPN1MW
 ## 1       ANKL  11264  12365
 ## 2       DIPR  10636  12725
 ## 3       PEPA   5630  13248
 ## 4       BRWA   8294  13060</code></pre>
 <p>Yllä olevassa esimerkissä ei määritelty erikseen erotinmerkkiä, jolloin erotinmerkiksi tulkitaan kaikki tyhjä tila (white space) eli välilyönnit, sarkaimet jne. Halutessaan erotinmerkin voi myös asettaa. Jos erotinmerkki on sarkain, tulee asettaa <code>sep = "\t"</code></p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="reading-data.html#cb242-1" aria-hidden="true" tabindex="-1"></a>gene_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;gene_data.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb242-2"><a href="reading-data.html#cb242-2" aria-hidden="true" tabindex="-1"></a>gene_data</span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="reading-data.html#cb243-1" aria-hidden="true" tabindex="-1"></a>gene_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;gene_data.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb243-2"><a href="reading-data.html#cb243-2" aria-hidden="true" tabindex="-1"></a>gene_data</span></code></pre></div>
 <pre><code>##   Subject_ID OPN1LW OPN1MW
 ## 1       ANKL  11264  12365
 ## 2       DIPR  10636  12725
@@ -368,8 +380,8 @@ BRWA    8294    13060</code></pre>
 <p>Kuten yllä huomattiin, sarkain erotinmerkkinä merkataan <code>"\t"</code>, eikä lainausmerkeillä, joiden sisään laitettaisiin tyhjää tilaa sarkainnäppäimellä. Tämä on yksi esimerkki koodinvaihtomerkin (escape character) <code>\</code> käytöstä. R:ssä ja ohjelmointikielissä ylipäätään kenoviiva toimii koodinvaihtomerkkinä, eli sitä ei käsitellä kuin muita merkkejä, vaan se muuttaa seuraavan merkin toimintaa. Usein tämä tarkoittaa sitä, että kenoviivan avulla merkataan sarkainta, rivinvaihtoa (newline, <code>\n</code>) ja muita erikoismerkkejä. Koodinvaihtomerkin käyttöä ei tarvitse osata tämän enempää, mutta se esitellään tässä, koska se aiheuttaa ongelmia Windowsin käyttäjille.</p>
 <p>Windowsin tiedostopoluissa kansioiden välissä on kenoviiva, kun taas Mac- ja Linux-järjestelmissä käytetään kauttaviivaa <code>/</code>. Koska R:ssä kenoviiva on koodinvaihtomerkki, niin helpoin tapa on käyttää tiedostopoluissa Macin ja Linuxien tyyliä. Jos taas halutaan lukea tiedosto R:ään käyttäen Windowsin tapaisia tiedostopolkuja, kenoviivat <code>\</code> pitää kirjoittaa kahteen kertaan eli <code>\\</code>, jotta R tulkitsee polun oikein. Tällöin ensimmäinen kenoviiva kertoo, että toinen kenoviiva on aito kenoviiva, eikä koodinvaihtomerkki.</p>
 <p>Luetaan seuraavaksi sisään data-hakemistossa oleva tiedosto tooth_growth.csv, joka sisältää dataa tutkimuksesta c-vitamiinin vaikutuksesta hampaiden kasvuun marsuilla. .csv-tiedostopääte tulee sanoista comma separated value, eli tiedostossa arvot ovat eroteltu pilkulla. Asetetaan siis sep-argumentiksi “,”. Tämä tiedosto sisältää myös rivien nimet ensimmäisessä sarakkeessa. Tämä voidaan kertoa <code>read.table</code>-funktiolle argumentilla row.names, jonka arvoksi voi asettaa sarakkeen numeron, josta rivien nimet napataan.</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="reading-data.html#cb244-1" aria-hidden="true" tabindex="-1"></a>tooth <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/tooth_growth.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb244-2"><a href="reading-data.html#cb244-2" aria-hidden="true" tabindex="-1"></a>tooth</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="reading-data.html#cb245-1" aria-hidden="true" tabindex="-1"></a>tooth <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/tooth_growth.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb245-2"><a href="reading-data.html#cb245-2" aria-hidden="true" tabindex="-1"></a>tooth</span></code></pre></div>
 <pre><code>##     len supp dose
 ## 34  9.7   OJ  0.5
 ## 16 17.3   VC  1.0
@@ -386,8 +398,8 @@ BRWA    8294    13060</code></pre>
 <div id="read.csv" class="section level3" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> read.csv</h3>
 <p>.csv-tiedostot ovat niin yleisiä, että niiden lukemiseen on oma funktio: <code>read.csv</code>, joka on käytännössä sama funktio kuin <code>read.table</code>, mutta parametrien oletusarvot ovat erilaiset, niin että <code>read.csv(file)</code> ~ <code>read.table(file, header = TRUE, sep = ","))</code>.</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="reading-data.html#cb246-1" aria-hidden="true" tabindex="-1"></a>tooth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tooth_growth.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb246-2"><a href="reading-data.html#cb246-2" aria-hidden="true" tabindex="-1"></a>tooth</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="reading-data.html#cb247-1" aria-hidden="true" tabindex="-1"></a>tooth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tooth_growth.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb247-2"><a href="reading-data.html#cb247-2" aria-hidden="true" tabindex="-1"></a>tooth</span></code></pre></div>
 <pre><code>##     len supp dose
 ## 34  9.7   OJ  0.5
 ## 16 17.3   VC  1.0
@@ -413,19 +425,19 @@ BRWA    8294    13060</code></pre>
 <code>str</code> kertoo rivien ja sarakkeiden määrät sekä kaikkien sarakkeiden luokat. Kätevä tapa tarkistaa mm. että lukuja sisältävät sarakkeet eivät ole vahingossa muuttuneet merkkijonoiksi.
 <code>table</code> on kätevä kategoristen sarakkeiden tutkimiseen. Se kertoo, kuinka monta havaintoa muuttujan arvoilla on. <code>table</code> voi ottaa vastaan myös kaksi kategorista muuttujaa, ja laskee jokaiselle muuttujien arvojen yhdistelmälle havaintojen lukumäärän. <!-- Santtu: ristiintaulukko? pitäisikö mainita. --></p>
 <p>Katsotaan, mitä <code>str</code> kertoo juuri lukemastamme tooth-datasta.</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="reading-data.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tooth)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="reading-data.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tooth)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    10 obs. of  3 variables:
 ##  $ len : num  9.7 17.3 24.8 26.4 27.3 32.5 17.3 23 22.5 5.2
 ##  $ supp: chr  &quot;OJ&quot; &quot;VC&quot; &quot;OJ&quot; &quot;OJ&quot; ...
 ##  $ dose: num  0.5 1 2 1 2 2 1 2 1 0.5</code></pre>
 <p>Kuten näimme aiemmin, mukana on 10 havaintoa ja 3 muuttujaa. len ja dose ovat luokkaa numeric eli desimaalilukuja, ja supp on luokkaa factor. Factor-tietotyyppiä käsitellään enemmän lineaaristen mallien yhteydessä, mutta sillä merkitään usein kategorisia muuttujia.</p>
 <p>Lasketaan seuraavaksi, kuinka monelle marsulle annettiin appelsiinimehua ja kuinka monelle askorbiinihappoa.</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="reading-data.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tooth<span class="sc">$</span>supp)</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="reading-data.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tooth<span class="sc">$</span>supp)</span></code></pre></div>
 <pre><code>## 
 ## OJ VC 
 ##  5  5</code></pre>
 <p>Kumpaakin annostelutapaa käytettiin siis viisi kertaa. Voimme myös selvittää, miten eri annokset jakautuvat annostelutavan suhteen:</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="reading-data.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tooth<span class="sc">$</span>supp, tooth<span class="sc">$</span>dose)</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="reading-data.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tooth<span class="sc">$</span>supp, tooth<span class="sc">$</span>dose)</span></code></pre></div>
 <pre><code>##     
 ##      0.5 1 2
 ##   OJ   1 1 3
@@ -435,7 +447,7 @@ BRWA    8294    13060</code></pre>
 <h3><span class="header-section-number">4.2.1</span> R:n sisäänrakennetut datasetit</h3>
 <p>R:ssä on monta sisäänrakennettua (built-in) datasettiä. Näitä on kätevää käyttää nopeaan testaamiseen, ja ne vilahtelevatkin usein R-oppaissa. Esimerkiksi aikaisempi odontoblastien pituuksia sisältävä datasettimme on oikeastaan pieni otos R:n sisäisestä datasetistä ToothGrowth.</p>
 <p>R:n sisäiset datasetit ovat koko ajan käytettävissä, vaikka ne eivät näy RStudion ympäristössä (Environment). Voimme esimerkiksi katsoa, millainen rakenne kokonaisella ToothGroth-datasetillä on:</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="reading-data.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ToothGrowth)</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="reading-data.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ToothGrowth)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    60 obs. of  3 variables:
 ##  $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
 ##  $ supp: Factor w/ 2 levels &quot;OJ&quot;,&quot;VC&quot;: 2 2 2 2 2 2 2 2 2 2 ...

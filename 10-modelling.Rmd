@@ -101,10 +101,10 @@ Kuten huomataan, ennustetut arvot ovat täsmälleen käyrän päällä.
 
 ## Korrelaatio
 
-<--! Santtu: Spearmanissa riippuvuuden on silti oltava monotonista, muuten järjestysluvut eivät kuvaa riippuvuutta -->
+<!-- Santtu: Spearmanissa riippuvuuden on silti oltava monotonista, muuten järjestysluvut eivät kuvaa riippuvuutta -->
 Korrelaatio on lineaarisen regression ohella tapa mitata kahden muuttujan välistä riippuvuutta. Korrelaatiolle on monia erilaisia mittareita, joista yleisimmät ovat Pearsonin korrelaatiokerroin, joka mittaa kahden muuttujan välistä lineaarista riippuvuutta ja Spearmanin järjestyskorrelaatiokerroin, joka mittaa kahden muuttujan välistä riippuvuutta ilman lineaarisuusoletusta, mutta olettaa kuitenkin monotonisen riippuvuuden. HUOM: korrelaatio ei ota kantaa siihen, kuinka vahva riippuvuus on (käyrän jyrkkyys), vaan pelkästään siihen, kuinka systemaattinen riippuvuus on. Kummatkin korrelaatiokertoimet saavat arvoja väliltä [-1, 1], jossa -1 on täydellinen negatiivinen korrelaatio (toisen muuttujan kasvaessa toinen aina pienenee) ja 1 on täydellinen positiivinen korrelaatio.
 
-Korrelaation kahden vektorin välillä voi R:ssä laskea funktiolla `cor`. Otetaan esimerkiksi R:n sisäinen datasetti Indometh, jossa on mitattu indometasiinin farmakokinetiikkaa, ja selvitetään ajan ja indometasiinin konsentraation väliselle riippuvuudelle Pearsonin ja Spearmanin korrelaatiokertoimet. Piirretään sen jälkeen hajontakuvio mittaustuloksista ja lisätään kuvaajaan alaotsikoksi korrelaatiokertoimet. Tutustumme samalla funktioon `round`, jolla voi pyöristää lukuja halutulle desimaalitarkkuudelle. Huomaa, että `round``-funktio pyöristää aina lähimpään parilliseen lukuun, esim. luku 0.5 pyöristyy lukuun 0, mutta 1.5 pyöristyy lukuun 2.
+Korrelaation kahden vektorin välillä voi R:ssä laskea funktiolla `cor`. Otetaan esimerkiksi R:n sisäinen datasetti Indometh, jossa on mitattu indometasiinin farmakokinetiikkaa, ja selvitetään ajan ja indometasiinin konsentraation väliselle riippuvuudelle Pearsonin ja Spearmanin korrelaatiokertoimet. Piirretään sen jälkeen hajontakuvio mittaustuloksista ja lisätään kuvaajaan alaotsikoksi korrelaatiokertoimet. Tutustumme samalla funktioon `round`, jolla voi pyöristää lukuja halutulle desimaalitarkkuudelle. Huomaa, että `round`-funktio pyöristää aina lähimpään parilliseen lukuun, esim. luku 0.5 pyöristyy lukuun 0, mutta 1.5 pyöristyy lukuun 2.
 
 ```{r}
 # Pearson correlation

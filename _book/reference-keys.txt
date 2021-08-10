@@ -75,6 +75,8 @@ kahden-otoksen-t-testi
 parittaisten-otosten-t-testi
 chi-squared-test
 anova
+levene
+shapiro-wilk--testi
 linear_models
 teoria
 esimerkki
@@ -109,3 +111,9 @@ sisäkkäiset-silmukat-nested-loops
 iterointiin-puuttuminen-next-ja-break
 apply-funktiot
 vinkkejä-tehtäviin
+numerical
+optimointi
+yksi-parametri
+useampi-parametri
+funktion-juurten-etsintä
+numeerinen-integrointi

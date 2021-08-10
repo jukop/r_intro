@@ -5,9 +5,9 @@ output:
 ---
 # R-kurssi {-}
 
-Täältä löydät suomenkielisen materiaalin, joka tukee UEF:in R-kurssin suorittamista (R-kieli 3622223, 2 op). Jokaisen viikon materiaalit päivitetään tänne. Alla on ohjeet tarvittavien asioiden asentamiseen UEF:in koneille.
+Täältä löydät suomenkielisen materiaalin, joka tukee JYU:n ja UEF:in yhteisen R-kurssin suorittamista.
 
-Anton Klåvusin vuonna 2020 kirjoittamaa ansiokasta materiaalia on kehitetty lukukauden 2021-22 R-kielen kurssia ajatellen. Materiaalia on täydennetty tarvittavin osin. Samalla materiaali on konvertoitu bookdown-verkkokirjamuotoon.
+Anton Klåvusin vuonna 2020 kirjoittamaa ansiokasta materiaalia on kehitetty lukukauden 2021-22 R-kielen kurssia ajatellen. Materiaalia on täydennetty tarvittavin osin. Samalla materiaali on muunnettu bookdown-verkkokirjamuotoon.
 
 ## Ohjeita verkkokirjan käyttöön {-}
 
@@ -16,7 +16,6 @@ Tämä opiskelumateriaali on luotu bookdown-verkkokirjaohjelman avulla. Kirjaa v
 ## Lunttilappu {-}
 
 Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli "lunttilappua". Lunttilapusta on helppo tarkastaa miten jokin jo oppimasi asia tehdään R:ssä, jos et vielä muista kunnolla kyseistä asiaa. Internetistä löytyy Cheat Sheetejä useisiin [R-paketteihin](https://www.rstudio.com/resources/cheatsheets/) ja muihin kokonaisuuksiin, mutta tässä käytetään Base R Cheat Sheetiä. Lataa Base R Cheat Sheet itsellesi [painamalla tästä](files/base_R_cheat_sheet.pdf). Suosittelen tulostamaan lunttilapun värillisenä kaksipuoleisena. Mikäli mahdollista niin A3-kokoisena tulosteena teksti näkyy parhaiten.
-
 
 ## Verkkolähteitä {-}
 
@@ -95,13 +94,13 @@ Editorilla kirjoitetaan R-koodia sisältäviä tiedostoja, eli R-skriptejä. Uud
 
 Editoriin kirjoitettua koodia voi ajaa rivi kerrallaan painamalla rivin kohdalla Ctrl + Enter. Useamman rivin voi myös maalata ja suorittaa kerrallaan. Yläreunassa oleva "Source"-nappi ajaa kaiken nykyisen tiedoston koodin.
 
-R-skriptejä voi tallentaa ihan kuin muitakin tiedostoja. R-skpriptien  tiedostopääte on .R
+R-skriptejä voi tallentaa ihan kuin muitakin tiedostoja. R-skpriptien tiedostopääte on .R
 
 #### 2. Konsoli. {-}
 
 Konsolissa "ajetaan" eli suoritetaan R-komentoja. Jos editoriin kirjoitettua koodia ajetaan, RStudio ajaa komennot automaattisesti konsolissa. Konsolissa pelkkä Enter riittää koodirivin suorittamiseen. Voit kokeilla kirjoittaa konsoliin jonkun laskutoimituksen, kuten ```2 * 3``` ja painaa Enter, jolloin tuloksen pitäisi tulostua konsoliin. Voit myös kokeilla kirjoittaa laskuja editoriin, ja painaa Ctrl + Enter, jolloin pitäisi tapahtua sama asia.
 
-Suurin ero konsolin ja editorin välillä on se, että **konsoliin kirjoitetut komennot eivät tallennu mihinkään tiedostoon**. Jos siis haluat säästää koodisi, se tulee kirjoittaa editoriin ja tallentaa .R-tiedostoon. Saman istunnon aikana tehtyjä komentoja voi konsolissa selata ylös- ja alas-nuolila.
+Suurin ero konsolin ja editorin välillä on se, että **konsoliin kirjoitetut komennot eivät tallennu mihinkään tiedostoon**. Jos siis haluat säilyttää koodisi, se tulee kirjoittaa editoriin ja tallentaa .R-tiedostoon. Saman istunnon aikana tehtyjä komentoja voi konsolissa selata ylös- ja alas-nuolila.
 
 Moodlen ohjeissa ja videoissa käytetään R:ää puhtaasta R-konsolista. Voit siis kuvitella, että kurssin videoissa näkyy vain RStudion tämä osa, ja muut osat ovat vain helpottamassa työtäsi.
 
@@ -115,18 +114,15 @@ Tässä osassa on monta käytännöllistä välilehteä:
 
 - Plots: tänne ilmestyvät R:llä piirretyt kuvaajat
 - Packages: Täältä voi hallita asennettuja paketteja (alla ohjeet tällä kurssilla tarvittavien pakettien asennukseen)
-- Help: Täällä voi selata R:n manuaalia, jossa on ohjeet jokaiselle R-komennolla. Voit kokeilla ajaa editorissa tai konsolissa komennon ```?print```, joka avaa ```print```-funktion ohjesivun.
+- Help: Täällä voi selata R:n manuaalia, jossa on ohjeet jokaiselle R-komennolla. Voit kokeilla ajaa editorissa tai konsolissa komennon `?print`, joka avaa `print`-funktion ohjesivun.
 
-
-
-Kun tehtävät tallentaa tähän tyyliin, voi ensi kerralla vain yksinkertaisesti ajaa skriptin haluamaansa tehtävään asti. Samalla koneella ja samalla opiskelijanumerolla pitäisi tulla samat tehtävät.
-
+Kun tehtävät tallentaa tällä tavalla, voi ensi kerralla vain yksinkertaisesti ajaa skriptin haluamaansa tehtävään asti.
 
 ## Rcourse-paketin asentaminen {-}
 
 ### R-paketit {-}
 
-R-ohjelmoinnissa asennetaan usein R-paketteja. Paketit ovat kokonaisuuksia, jotka lisäävät R:ään ominaisuuksia. Esimerkiksi tälle kurssille tarvittava paketti arpoo opiskelijalle tehtäviä kurssin aihepiiristä ja lähettää tiedon osioiden suorituksesta opettajalle.
+R-ohjelmoinnissa asennetaan usein R-paketteja. Paketit ovat kokonaisuuksia, jotka lisäävät R:ään ominaisuuksia. Esimerkiksi tälle kurssille tarvittava paketti sisältää harjoitustehtäviä kurssin aihepiireistä sekä loppukokeen, jonka perusteella kurssin suoritus arvioidaan.
 
 ### Asentaminen {-}
 
@@ -134,14 +130,19 @@ Rcourse-paketti asennetaan suorittamalla seuraava koodi R:ssä. Kopioi koodi jok
 ```{r, eval=FALSE}
 source(url("http://users.jyu.fi/~santikka/Rcourse/install.R"))
 ```
-Tämän jälkeen paketti tulee ladata käyttöön
+Tämän jälkeen paketti tulee ottaa käyttöön
 ```{r, eval=FALSE}
 library(Rcourse)
 ```
-Komento ```info()``` tulostaa ohjeet (ensimmäisellä käyttökerralla kieli on englanti). Voit vaihtaa kielen suomeksi näin:
+Komento `info()` tulostaa paketin ohjeet (ensimmäisellä käyttökerralla kieli on englanti). Voit vaihtaa kielen suomeksi näin:
 ```{r, eval=FALSE}
 select_language("finnish")
 ```
+Jos haluat, että kielivalinta säilyy R-istunnosta toiseen, tulee asettaa seuraava argumentti:
+```{r, eval=FALSE}
+select_language("finnish", save_selection = TRUE)
+```
+Huomaa, että kielen vaihtuessa myös joidenkin pakettiin liittyvien funktioiden nimet vaihtuvat.
 Tarkastele vielä suomenkielisiä komentoja:
 ```{r, eval=FALSE}
 info()
@@ -154,16 +155,15 @@ osio1()
 ```
 Kun olet suorittanut harjoitusosion 1, voit jatkaa seuraavaan osioon. Osiot 1-8 ovat pakollisia (tentit kysyvät näiden osioiden sisältöjä) ja osiot 9-11 ovat lisämateriaalia kiinnostuneille (ei kysytä tentissä).
 
-
 ### Opiskelu ja tenttiminen Rcourse-paketin avulla {-}
 
 Kurssin harjoitustehtävät suoritetaan käyttäen Rcourse-pakettia, eli 1. osion voi aloittaa komennolla
 ```{r, eval=FALSE}
 osio1()
 ```
-Lisäksi tenttimien onnistuu vastaavasti funktiolla loppukoe(x), mutta tällöin merkin x tilalle on annettava oma syntymäaika muodossa dddmmyyyy. Esim. henkilö joka on syntynyt 1. tammikuuta 1990 antaisi
+Lisäksi tenttiminen onnistuu vastaavasti funktiolla `loppukoe(x)`, mutta tällöin merkin `x` tilalle on annettava oma syntymäaika muodossa "dd/mm/yyyy". Esim. henkilö joka on syntynyt 1. tammikuuta 1990 antaisi
 ```{r, eval=FALSE}
-loppukoe(01011990)
+loppukoe("01/01/1990")
 ```
 
 ### Tehtävien tallentaminen skripteihin RStudiolla {-}
