@@ -57,14 +57,14 @@ Alkuarvot funktioille `optim` ja `optimize` tulee valita siten, että rajoitteet
 
 ## Funktion juurten etsintä
 Funktion juuria voidaan etsiä funktiolla `uniroot`.
-```{r}
+```{r, eval = FALSE}
 uniroot(f, interval, ...,
         lower = min(interval), upper = max(interval),
         f.lower = f(lower, ...), f.upper = f(upper, ...),
         extendInt = c("no", "yes", "downX", "upX"), check.conv = FALSE,
         tol = .Machine$double.eps^0.25, maxiter = 1000, trace = 0)
 ```
-Funktion `f` juuria etsitään annetulta väliltä `interval`, sen ensimmäisen argumentin suhteen (jonka tulee olla skalaari), jonka voi määrittää myös välin päätepisteinä käyttäen argumentteja `lower` ja `upper`. Muut argumentit eivät ole tämän kurssin kannalta oleellisia.
+Funktion `f` juuria etsitään annetulta väliltä `interval`, sen ensimmäisen argumentin suhteen (jonka tulee olla skalaari). Halutun välin voi määrittää myös sen päätepisteinä käyttäen argumentteja `lower` ja `upper`. Muut `uniroot`-funktion argumentit eivät ole tämän kurssin kannalta oleellisia.
 
 Etsitään funktion $w(x)=x^3-2x-5$ juurta väliltä $(-5,5)$.
 ```{r}
