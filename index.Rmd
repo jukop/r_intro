@@ -1,6 +1,6 @@
 --- 
 title: "R-ohjelmoinnin perusteet"
-author: "Anton Klåvus (2020), converted to bookdown by Juho Kopra (2021)"
+author: "Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021)"
 date: "`r format(Sys.Date(),'%d.%m.%Y')`"
 site: bookdown::bookdown_site
 documentclass: book

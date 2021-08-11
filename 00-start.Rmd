@@ -24,40 +24,40 @@ Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä 
  - [Tutorialspoint](https://www.tutorialspoint.com/r/index.htm) Soveltuu R:n opiskeluun englannin kielellä, jos osaa entuudestaan jo vähän ohjelmoida.
 
 
-## Sisällysluettelo {-}
+<!-- ## Sisällysluettelo {-} -->
 
-- [Johdanto](#intro)
-  * [Mikä on R ja mitä sillä tehdään?](#what_R)
-- [Muuttujat ja vektorit](#variables_and_vectors)
-  * [Extra: Alkeistietotyypit ja puuttuvat arvot](#extra)
-- [Tietotyypit: data frame, matriisi, taulukko ja lista](#data_types)
-  * [data frame](#data-frame)
-  * [matriisi (matrix)](#matriisi)
-  * [Tietotyyppien tarkastelu](tietotyyppien-tarkastelu)
-  * [Extra: Taulukko ja lista](#taulukot-ja-listat)
-    * [taulukko (array)](#taulukko)
-    * [lista (list)](#lista)
-- [Datan lukeminen](#reading_data)
-- [Aineiston muokkaaminen](#data-wrangling)
-  * [Uuden muuttujan tai rivin luonti datakehikkoon](#data-frame-wrangling)
-  * [Osajoukkojen valinta](#osajoukkojen-valinta)
-  * [Faktorit](#faktorit)
-  * [Extra: Lääketutkimusesimerkki](#factor-extra) 
-- [Tunnusluvut](#statistics)
-  * [Sijaintia kuvaavat tunnusluvut](#sijaintia-kuvaavat-tunnusluvut)
-  * [summary()](#summary)
-  * [Varianssi ja keskihajonta](#varianssi-ja-keskihajonta)
-- [Todennäköisyysjakaumat](#distributions)
-- [Kuvaajien piirtäminen](#plotting)
-  * [Kuvaajan tallentaminen](#kuvaajan-tallentaminen)
-- [Tilastollinen testaaminen](#tests)
-  * [t-testi](#-test)
-  * [Khiin neliö -testi](#chi-squared-test)
-  * [Varianssianalyysi](#anova)
-- [Lineaariset mallit](#linear_models)
-- [Funktiot](#functions)
-- [Ehtorakenteet](#ifelse)
-- [Toistorakenteet](#loops)
+<!-- - [Johdanto](#intro) -->
+<!--   * [Mikä on R ja mitä sillä tehdään?](#what_R) -->
+<!-- - [Muuttujat ja vektorit](#variables_and_vectors) -->
+<!--   * [Extra: Alkeistietotyypit ja puuttuvat arvot](#extra) -->
+<!-- - [Tietotyypit: data frame, matriisi, taulukko ja lista](#data_types) -->
+<!--   * [data frame](#data-frame) -->
+<!--   * [matriisi (matrix)](#matriisi) -->
+<!--   * [Tietotyyppien tarkastelu](tietotyyppien-tarkastelu) -->
+<!--   * [Extra: Taulukko ja lista](#taulukot-ja-listat) -->
+<!--     * [taulukko (array)](#taulukko) -->
+<!--     * [lista (list)](#lista) -->
+<!-- - [Datan lukeminen](#reading_data) -->
+<!-- - [Aineiston muokkaaminen](#data-wrangling) -->
+<!--   * [Uuden muuttujan tai rivin luonti datakehikkoon](#data-frame-wrangling) -->
+<!--   * [Osajoukkojen valinta](#osajoukkojen-valinta) -->
+<!--   * [Faktorit](#faktorit) -->
+<!--   * [Extra: Lääketutkimusesimerkki](#factor-extra)  -->
+<!-- - [Tunnusluvut](#statistics) -->
+<!--   * [Sijaintia kuvaavat tunnusluvut](#sijaintia-kuvaavat-tunnusluvut) -->
+<!--   * [summary()](#summary) -->
+<!--   * [Varianssi ja keskihajonta](#varianssi-ja-keskihajonta) -->
+<!-- - [Todennäköisyysjakaumat](#distributions) -->
+<!-- - [Kuvaajien piirtäminen](#plotting) -->
+<!--   * [Kuvaajan tallentaminen](#kuvaajan-tallentaminen) -->
+<!-- - [Tilastollinen testaaminen](#tests) -->
+<!--   * [t-testi](#-test) -->
+<!--   * [Khiin neliö -testi](#chi-squared-test) -->
+<!--   * [Varianssianalyysi](#anova) -->
+<!-- - [Lineaariset mallit](#linear_models) -->
+<!-- - [Funktiot](#functions) -->
+<!-- - [Ehtorakenteet](#ifelse) -->
+<!-- - [Toistorakenteet](#loops) -->
 
 
 # Alkuvalmistelut {-}
