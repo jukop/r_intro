@@ -3,7 +3,7 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">R-ohjelmoinnin perusteet</a></li>
+        <li><a href="http://www.tinyurl.com/rkurssi">R-ohjelmoinnin perusteet</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Julkaistu bookdownilla.</a></li>
     download: ["pdf"]
