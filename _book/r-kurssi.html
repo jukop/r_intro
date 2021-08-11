@@ -21,7 +21,7 @@
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
   
 
-<meta name="author" content="Anton Klåvus (2020), converted to bookdown by Juho Kopra and Santtu Tikka (2021)" />
+<meta name="author" content="Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021)" />
 
 
 
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R-ohjelmoinnin perusteet</a></li>
+<li><a href="http://www.tinyurl.com/rkurssi">R-ohjelmoinnin perusteet</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html"><i class="fa fa-check"></i>R-kurssi</a>
@@ -141,7 +141,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html#ohjeita-verkkokirjan-käyttöön"><i class="fa fa-check"></i>Ohjeita verkkokirjan käyttöön</a></li>
 <li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html#lunttilappu"><i class="fa fa-check"></i>Lunttilappu</a></li>
 <li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html#verkkolähteitä"><i class="fa fa-check"></i>Verkkolähteitä</a></li>
-<li class="chapter" data-level="" data-path="r-kurssi.html"><a href="r-kurssi.html#sisällysluettelo"><i class="fa fa-check"></i>Sisällysluettelo</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="alkuvalmistelut.html"><a href="alkuvalmistelut.html"><i class="fa fa-check"></i>Alkuvalmistelut</a>
 <ul>
@@ -341,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">R-ohjelmoinnin perusteet</h1>
-<p class="author"><em>Anton Klåvus (2020), converted to bookdown by Juho Kopra and Santtu Tikka (2021)</em></p>
+<p class="author"><em>Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021)</em></p>
 <p class="date" style="margin-top: 1.5em;"><em>11.08.2021</em></p>
 </div>
 <div id="r-kurssi" class="section level1 unnumbered">
@@ -362,65 +361,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><a href="https://www.tutorialspoint.com/r/index.htm">Tutorialspoint</a> Soveltuu R:n opiskeluun englannin kielellä, jos osaa entuudestaan jo vähän ohjelmoida.</li>
 </ul>
-</div>
-<div id="sisällysluettelo" class="section level2 unnumbered">
-<h2>Sisällysluettelo</h2>
-<ul>
-<li><a href="intro.html#intro">Johdanto</a>
-<ul>
-<li><a href="intro.html#what_R">Mikä on R ja mitä sillä tehdään?</a></li>
-</ul></li>
-<li><a href="variables-and-vectors.html#variables_and_vectors">Muuttujat ja vektorit</a>
-<ul>
-<li><a href="variables-and-vectors.html#variables">Muuttujat</a></li>
-<li><a href="variables-and-vectors.html#comments">Kommentit</a></li>
-<li><a href="variables-and-vectors.html#vectors">Vektorit</a></li>
-<li><a href="variables-and-vectors.html#extra">Extra: Alkeistietotyypit ja puuttuvat arvot</a></li>
-</ul></li>
-<li><a href="data-types.html#data_types">Tietotyypit: data frame, matriisi, taulukko ja lista</a>
-<ul>
-<li><a href="data-types.html#data-frame">Datakehikko</a></li>
-<li><a href="#matriisi">Matriisi</a></li>
-<li><a href="data-types.html#data-type-view">Tietotyyppien tarkastelu</a></li>
-<li><a href="#taulukot-ja-listat">Extra: Taulukko ja lista</a>
-<ul>
-<li><a href="#taulukko">taulukko (array)</a></li>
-<li><a href="#lista">lista (list)</a></li>
-</ul></li>
-</ul></li>
-<li><a href="reading-data.html#reading_data">Datan lukeminen</a></li>
-<li><a href="data-wrangling.html#data-wrangling">Aineiston muokkaaminen</a>
-<ul>
-<li><a href="data-wrangling.html#data-frame-wrangling">Uuden muuttujan tai rivin luonti datakehikkoon</a></li>
-<li><a href="data-wrangling.html#osajoukkojen-valinta">Osajoukkojen valinta</a></li>
-<li><a href="data-wrangling.html#faktorit">Faktorit</a></li>
-<li><a href="data-wrangling.html#factor-extra">Extra: Lääketutkimusesimerkki</a></li>
-</ul></li>
-<li><a href="statistics.html#statistics">Tunnusluvut</a>
-<ul>
-<li><a href="statistics.html#sijaintia-kuvaavat-tunnusluvut">Sijaintia kuvaavat tunnusluvut</a></li>
-<li><a href="#summary">summary()</a></li>
-<li><a href="statistics.html#varianssi-ja-keskihajonta">Varianssi ja keskihajonta</a></li>
-</ul></li>
-<li><a href="distributions.html#distributions">Todennäköisyysjakaumat</a></li>
-<li><a href="plotting.html#plotting">Kuvaajien piirtäminen</a>
-<ul>
-<li><a href="#kuvaajan-tallentaminen">Kuvaajan tallentaminen</a></li>
-</ul></li>
-<li><a href="tests.html#tests">Tilastollinen testaaminen</a>
-<ul>
-<li><a href="#-test">t-testi</a></li>
-<li><a href="tests.html#chi-squared-test">Khiin neliö -testi</a></li>
-<li><a href="tests.html#anova">Varianssianalyysi</a></li>
-<li><a href="tests.html#levene">Levenen testi</a></li>
-<li><a href="tests.html#shapiro">Shapiro-Wilk -testi</a></li>
-</ul></li>
-<li><a href="linear-models.html#linear_models">Lineaariset mallit</a></li>
-<li><a href="functions.html#functions">Funktiot</a></li>
-<li><a href="ifelse.html#ifelse">Ehtorakenteet</a></li>
-<li><a href="loops.html#loops">Toistorakenteet</a></li>
-<li><a href="numerical.html#numerical">Numeeriset menetelmät</a></li>
-</ul>
+<!-- ## Sisällysluettelo {-} -->
+<!-- - [Johdanto](#intro) -->
+<!--   * [Mikä on R ja mitä sillä tehdään?](#what_R) -->
+<!-- - [Muuttujat ja vektorit](#variables_and_vectors) -->
+<!--   * [Extra: Alkeistietotyypit ja puuttuvat arvot](#extra) -->
+<!-- - [Tietotyypit: data frame, matriisi, taulukko ja lista](#data_types) -->
+<!--   * [data frame](#data-frame) -->
+<!--   * [matriisi (matrix)](#matriisi) -->
+<!--   * [Tietotyyppien tarkastelu](tietotyyppien-tarkastelu) -->
+<!--   * [Extra: Taulukko ja lista](#taulukot-ja-listat) -->
+<!--     * [taulukko (array)](#taulukko) -->
+<!--     * [lista (list)](#lista) -->
+<!-- - [Datan lukeminen](#reading_data) -->
+<!-- - [Aineiston muokkaaminen](#data-wrangling) -->
+<!--   * [Uuden muuttujan tai rivin luonti datakehikkoon](#data-frame-wrangling) -->
+<!--   * [Osajoukkojen valinta](#osajoukkojen-valinta) -->
+<!--   * [Faktorit](#faktorit) -->
+<!--   * [Extra: Lääketutkimusesimerkki](#factor-extra)  -->
+<!-- - [Tunnusluvut](#statistics) -->
+<!--   * [Sijaintia kuvaavat tunnusluvut](#sijaintia-kuvaavat-tunnusluvut) -->
+<!--   * [summary()](#summary) -->
+<!--   * [Varianssi ja keskihajonta](#varianssi-ja-keskihajonta) -->
+<!-- - [Todennäköisyysjakaumat](#distributions) -->
+<!-- - [Kuvaajien piirtäminen](#plotting) -->
+<!--   * [Kuvaajan tallentaminen](#kuvaajan-tallentaminen) -->
+<!-- - [Tilastollinen testaaminen](#tests) -->
+<!--   * [t-testi](#-test) -->
+<!--   * [Khiin neliö -testi](#chi-squared-test) -->
+<!--   * [Varianssianalyysi](#anova) -->
+<!-- - [Lineaariset mallit](#linear_models) -->
+<!-- - [Funktiot](#functions) -->
+<!-- - [Ehtorakenteet](#ifelse) -->
+<!-- - [Toistorakenteet](#loops) -->
 </div>
 </div>
             </section>
