@@ -1,10 +1,10 @@
 intro
 what_R
 variables_and_vectors
-muuttujat-variables
-kommentit
-vektorit-vectors
-vektorilaskentaa
+variables
+comments
+vectors
+vectorcalc
 ei-numeeriset-vektorit
 merkkijonovektorit
 loogiset-vektorit
@@ -24,7 +24,7 @@ indeksimatriisi-index-matrix
 matriisien-rakentaminen-vektoreista
 rivien-ja-sarakkeiden-nimeäminen
 matriiseilla-laskeminen
-tietotyyppien-tarkastelu
+data-type-view
 view
 str
 head
@@ -76,7 +76,7 @@ parittaisten-otosten-t-testi
 chi-squared-test
 anova
 levene
-shapiro-wilk--testi
+shapiro
 linear_models
 teoria
 esimerkki

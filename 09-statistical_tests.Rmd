@@ -151,7 +151,7 @@ leveneTest(height ~ fage_group, data = study_data)
 ```
 Testin p-arvo löytyy sarakkeesta `Pr(>F)`, ja se on noin $0.61$. Testin mukaan muuttujan varianssit ovat siis samat joka ryhmässä, ja nollahypoteesi jää voimaan. 
 
-## Shapiro-Wilk -testi
+## Shapiro-Wilk -testi {#shapiro}
 Shapiro-Wilk -testillä tutkitaan onko jokin muuttuja normaalijakautunut. Testi löytyy funktiosta `shapiro.test`, ja se ottaa argumenttinaan yhden muuttujan havainnot vektorina. Funktiolla ei voi siis suoraan testata esimerkiksi sitä, onko muuttuja normaalijakautunut joissakin osaryhmissä, vaan aineisto on ensin jaettava sopiviin osiin. Testin nollahypoteesi on, että muuttuja on normaalijakautunut.
 
 Tarkastellaan jälleen harjoitusaineistoa `study_data` ja testataan muuttujan `height` normaalisuutta.

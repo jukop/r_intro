@@ -41,3 +41,6 @@ vignettes/*.pdf
 
 # HTML-pages
 *.html
+
+# .zip of _book for Moodle
+_book.zip

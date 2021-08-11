@@ -1,6 +1,6 @@
 # Muuttujat ja vektorit {#variables_and_vectors}
 
-## Muuttujat (variables)
+## Muuttujat {#variables}
 
 **Muuttujat** (variables) ovat yksi tärkeimmistä ohjelmointikielien rakenteista. Muuttujien tehtävä on säilyttää tietoa ja tuloksia edellisistä laskutoimituksista. Alla on yksinkertainen esimerkki muuttujien käytöstä R:ssä.
 
@@ -35,7 +35,7 @@ x <- "Hello world"
 x
 ```
 
-## Kommentit
+## Kommentit {#comments}
 
 Myöhemmin vastaan tulevassa koodissa käytetään kommentteja. Kommentit ovat koodin oheen kirjoitettua tekstiä, joka ei ole ohjelmointikieltä, ja joka ohitetaan koodia ajettaessa. Kommenttien tarkoitus on kuvailla koodin toimintaa. Oman koodin kommentointia on hyvä harjoitella alusta lähtien, vaikka ensimmäisten tehtävien koodi onkin hyvin yksinkertaista. R:ssä kommentit merkataan `#`-symbolilla. Edellinen esimerkki kommentoituna voisi näyttää jotakuinkin tältä:
 
@@ -53,9 +53,9 @@ z
 ```
 
 
-## Vektorit (Vectors)
+## Vektorit {#vectors}
 
-Nyt kun muuttujat ovat tuttuja, voimme siirtyä käsittelemään vektoreita. R:n vektorit ovat yksinkertaisia järjestettyjä tietorakenteita, jotka koostuvat alkioista (elements), esimerkiksi desimaaliluvuista. Alla oleva esimerkki sijoittaa muuttujaan x vektorin, joka sisältää 5 lukua.
+Nyt kun muuttujat ovat tuttuja, voimme siirtyä käsittelemään vektoreita (vector). R:n vektorit ovat yksinkertaisia järjestettyjä tietorakenteita, jotka koostuvat alkioista (elements), esimerkiksi desimaaliluvuista. Alla oleva esimerkki sijoittaa muuttujaan x vektorin, joka sisältää 5 lukua.
 
 ```{r}
 x <- c(1, 2, 7.4, 15, 0.2)
@@ -77,7 +77,7 @@ rep(c(1, 2), 3) # Repeat vector c(1, 2) 3 times
 rep(c(1, 2, 3), 3) # Repeat all values in vector c(1, 2, 3) 3 times
 ```
 
-#### Vektorilaskentaa
+#### Vektorilaskentaa {#vectorcalc}
 
 Vektoreilla laskeminen on usein hyvin intuitiivista (lisää vaaranpaikoista myöhemmin). Kun vektoriin kohdistetaan laskutoimintoja, sama operaatio tehdään kaikille vektorin alkioille (engl. vectorization).
 

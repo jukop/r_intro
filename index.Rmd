@@ -1,11 +1,11 @@
 --- 
 title: "R-ohjelmoinnin perusteet"
-author: "Anton Klåvus (2020), converted to bookdown by Juho Kopra (2021)"
+author: "Anton Klåvus (2020), converted to bookdown by Juho Kopra and Santtu Tikka (2021)"
 date: "`r format(Sys.Date(),'%d.%m.%Y')`"
 site: bookdown::bookdown_site
 documentclass: book
 #bibliography: [book.bib, packages.bib]
 #biblio-style: apalike
 #link-citations: yes
-description: "This repository contains materials used in an introductory level R course at university of Eastern Finland."
+description: "This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland."
 ---

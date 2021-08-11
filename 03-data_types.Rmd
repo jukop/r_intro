@@ -17,8 +17,6 @@ Lista on järjestetty kokoelma alkioita, jotka voivat olla eri tyyppisiä objekt
 
 Koska datakehikko on kaikista tärkein ja eniten käytetty tietotyyppi, niin aloitetaan siitä.
 
-<!-- Santtu: Data frame ei ole suomea -->
-
 ## Datakehikko (data.frame) {#data-frame}
 
 Datakehikko on erittäin yleinen tietorakenne tiedon tallentamiseen R:ssä. Datakehikko on kaksiulotteinen tietorakenne, eli sillä on rivejä ja sarakkeita. Datakehikon sarakkeet muodostuvat vektoreista. Sarakevektorit voivat olla eri luokan vektoreita, mutta datakehikko asettaa lisärajoitteen: vektoreiden on oltava yhtä pitkiä. Yhden rivin sarakkeilla olevien arvojen ajatellaan koskevan yhtä havaintoa.
@@ -209,7 +207,7 @@ X + Y
 <!-- Santtu: Oppikirja? -->
 Matriiseille on lisäksi määritelty paljon matriisien omia laskutoimituksia, niistä voi lukea lisää oppikirjasta. Matriisilaskentaa opiskelleille huomio: R:ssä oletuksena kertolasku tehdään alkioittain, matriisitulo tapahtuu operaattorilla `%*%` ja matriisin transpoosin voi määrittää funktiolla `t`.
 
-## Tietotyyppien tarkastelu
+## Tietotyyppien tarkastelu {#data-type-view}
 
 Kaikkia objekteja voi tulostaa Console-ikkunassa kutsumalla objektin nimen. Joskus tarvitaan kuitenkin apufunktioita.
 

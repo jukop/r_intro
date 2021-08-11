@@ -29,11 +29,14 @@ Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä 
 - [Johdanto](#intro)
   * [Mikä on R ja mitä sillä tehdään?](#what_R)
 - [Muuttujat ja vektorit](#variables_and_vectors)
+  * [Muuttujat](#variables)
+  * [Kommentit](#comments)
+  * [Vektorit](#vectors)
   * [Extra: Alkeistietotyypit ja puuttuvat arvot](#extra)
 - [Tietotyypit: data frame, matriisi, taulukko ja lista](#data_types)
-  * [data frame](#data-frame)
-  * [matriisi (matrix)](#matriisi)
-  * [Tietotyyppien tarkastelu](tietotyyppien-tarkastelu)
+  * [Datakehikko](#data-frame)
+  * [Matriisi](#matriisi)
+  * [Tietotyyppien tarkastelu](#data-type-view)
   * [Extra: Taulukko ja lista](#taulukot-ja-listat)
     * [taulukko (array)](#taulukko)
     * [lista (list)](#lista)
@@ -54,10 +57,13 @@ Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä 
   * [t-testi](#-test)
   * [Khiin neliö -testi](#chi-squared-test)
   * [Varianssianalyysi](#anova)
+  * [Levenen testi](#levene)
+  * [Shapiro-Wilk -testi](#shapiro)
 - [Lineaariset mallit](#linear_models)
 - [Funktiot](#functions)
 - [Ehtorakenteet](#ifelse)
 - [Toistorakenteet](#loops)
+- [Numeeriset menetelmät](#numerical)
 
 
 # Alkuvalmistelut {-}
@@ -145,13 +151,13 @@ select_language("finnish", save_selection = TRUE)
 Huomaa, että kielen vaihtuessa myös joidenkin pakettiin liittyvien funktioiden nimet vaihtuvat.
 Tarkastele vielä suomenkielisiä komentoja:
 ```{r, eval=FALSE}
-info()
+ohje()
 ```
 ![](files/00-start/Rcourse_package_info.png)
 
 Aloita sitten osion 1 harjoitustehtävien suorittaminen komennolla
 ```{r, eval=FALSE}
-osio1()
+osio(1)
 ```
 Kun olet suorittanut harjoitusosion 1, voit jatkaa seuraavaan osioon. Osiot 1-8 ovat pakollisia (tentit kysyvät näiden osioiden sisältöjä) ja osiot 9-11 ovat lisämateriaalia kiinnostuneille (ei kysytä tentissä).
 
@@ -159,7 +165,7 @@ Kun olet suorittanut harjoitusosion 1, voit jatkaa seuraavaan osioon. Osiot 1-8 
 
 Kurssin harjoitustehtävät suoritetaan käyttäen Rcourse-pakettia, eli 1. osion voi aloittaa komennolla
 ```{r, eval=FALSE}
-osio1()
+osio(1)
 ```
 Lisäksi tenttiminen onnistuu vastaavasti funktiolla `loppukoe(x)`, mutta tällöin merkin `x` tilalle on annettava oma syntymäaika muodossa "dd/mm/yyyy". Esim. henkilö joka on syntynyt 1. tammikuuta 1990 antaisi
 ```{r, eval=FALSE}
