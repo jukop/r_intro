@@ -6,7 +6,7 @@ output: html_notebook
 
 Tässä osiossa tutustutaan datan sisään lukemiseen ja sisäänluetun datan tarkistamiseen. Tähän mennessä kaikki kurssilla käsitelty data on luotu R:ssä. Useimmiten R:llä käsiteltävä data on kuitenkin tallennettu tiedostoon, joka on luotu automaattisesti jollain ohjelmalla tai kirjattu esim. Excelissä.
 
-Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttavat datan data frame-muodossa (voit kerrata data framen toimintaa [viime viikon materiaalista](https://github.com/antonvsdata/r_intro/tree/master/viikko_3#data-frame)). Data frame toimii tähän tarkoitukseen hyvin, sillä siihen voi tallentaa niin numeerisia kuin tekstimuotoisia muuttujia.
+Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttavat datan data frame-muodossa. Data frame toimii tähän tarkoitukseen hyvin, sillä siihen voi tallentaa niin numeerisia kuin tekstimuotoisia muuttujia.
 
 Lopussa käydään myös läpi tapoja lukea Excel ja SPSS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin tekstitiedostoiksi.
 

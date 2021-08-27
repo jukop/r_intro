@@ -1,6 +1,6 @@
 # Toistorakenteet (loops) {#loops}
 
-Toistorakenne toistaa annettua koodia. Toistorakenteet ovat ehtorakenteiden ohella ohjelmoinnin perusrakennuspalikoita. Tässä osiossa tutustutaan kahteen yleisimpään tapaukseen eli for ja while -silmukoihin. Mukana on myös maininta silmukoiden korvaamisesta R:n apply-funktioilla. Lopusta löytyy lisäksi vinkkejä tämän viikon tehtäviin.
+Toistorakenne toistaa annettua koodia. Toistorakenteet ovat ehtorakenteiden ohella ohjelmoinnin perusrakennuspalikoita. Tässä osiossa tutustutaan kahteen yleisimpään tapaukseen eli for ja while -silmukoihin. Mukana on myös maininta silmukoiden korvaamisesta R:n apply-funktioilla.
 <!-- TODO: viikko -->
 
 Lisäksi tällä viikolla puhutaan R-paketeista.
@@ -359,8 +359,4 @@ sapply(scaled_trees, var)
 ```
 
 Huomaa, että sarakkeiden keskiarvot eivät ole täsmälleen 0. Tämä johtuu R:n rajallisesta numeerisesta tarkkuudesta. Käytännössä itseisarvoltaan tätä luokkaa olevat arvot ovat nollia.
-
-## Vinkkejä tehtäviin
-<!-- TODO: viikko -->
-Tämän viikon tehtävissä pitää muokata funktioita, jotka ovat erillisissä tiedostoissa. Jotta tehtävän palautus onnistuu, funktio pitää muokata tässä tiedostossa. Funktio kannattaa kuitenkin kopioida talteen toiseen tiedostoon, sillä tehtävän palauttaminen pyyhkii tiedoston.
 

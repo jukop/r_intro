@@ -246,7 +246,3 @@ is.na(1)
 missing <- c(1, 2, NA, 4, NA, 6)
 is.na(missing)
 ```
-
-## Tehtävien aloitus
-
-Tämän ohjeen ja R:n virallisen manuaalin tai pienen googlailun avulla selviät ensimmäisen viikon tehtävistä. Katso vielä etusivulta vinkki tehtävien tallentamisesta R-skriptiin [(linkki)](https://github.com/antonvsdata/r_intro#kurssin-suoritus-rstudiolla).
