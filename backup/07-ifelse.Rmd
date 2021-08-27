@@ -287,7 +287,7 @@ hb_alert(hb = 120, sex = "FEMALE")
 
 ## Alkioiden poimiminen vektorista tietyh ehdon perusteella
 
-Tämän viikon tehtävissä tuli ainakin allekirjoittaneelle vastaan tilanne, jossa piti käydä läpi useita arvoja vektorista, ja säilyttää niistä ne, jotka täyttivät tietyn ehdon. Tätä aihetta käsitellään enemmän ensi viikolla, mutta tässä lyhyt vinkki tällaisten tehtävien ratkaisuun:
+Joskus vastaan tilanne, jossa piti käydä läpi useita arvoja vektorista, ja säilyttää niistä ne, jotka täyttivät tietyn ehdon. Tätä aihetta käsitellään enemmän ensi viikolla, mutta tässä lyhyt vinkki tällaisten tehtävien ratkaisuun:
 
 - Luo apufunktio, joka ottaa syötteeksi yhden arvon, ja tarkistaa täyttyykö ehto. Tämän funktion tulee palauttaa TRUE, jos ehto täyttyy ja FALSE, jos ehto ei täyty.
 - Käytä funktiota ```Vectorize```, jolla voit muuttaa funktiosi vektoroiduksi funktioksi. Kun vektoroidulle funktiolle annetaan vektori, jossa on monta alkiota, funktio ajetaan automaattisesti alkio kerrallaan, kuten monet R:n omat funktiot.

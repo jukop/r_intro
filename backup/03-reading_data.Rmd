@@ -129,4 +129,4 @@ SPSS-tiedostoja voi lukea myös foreign-paketin avulla, mutta ainakin minulla on
 
 ## Vinkkejä tehtäviin
 
-Datan sisään lukemiseen liittyvät tehtävät ovat melko suorviivaisia yhtä poikkeusta lukuun ottamatta. Ainakin minulle Rkurssi-paketti generoi tiedoston, jonka tiedostopääte oli .csv, mutta alkiot oli erotettu sarkaimella, ei pilkulla. Jos siis saat outoja virheilmoituksia, tarkasta tiedoston rakenne joko R:n komennolla ```file.show()``` tai avaamalla tiedosto esim. Notepadilla.
+Datan sisään lukemiseen liittyvät tehtävät ovat melko suoraviivaisia yhtä poikkeusta lukuun ottamatta. Ainakin minulle Rkurssi-paketti generoi tiedoston, jonka tiedostopääte oli .csv, mutta alkiot oli erotettu sarkaimella, ei pilkulla. Jos siis saat outoja virheilmoituksia, tarkasta tiedoston rakenne joko R:n komennolla ```file.show()``` tai avaamalla tiedosto esim. Notepadilla.
