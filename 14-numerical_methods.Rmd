@@ -1,5 +1,7 @@
 # Numeeriset menetelmät {#numerical}
 
+**Tätä osiota ei tarvitse opiskella Itä-Suomen yliopiston kurssilla!**
+
 Monilla käytännön matemaattisilla ongelmilla ei ole suljetussa muodossa esitettävissä olevaa ratkaisua. Tällöin joudutaan tyypillisesti turvautumaan numeerisiin menetelmiin, joiden avulla pyritään tuottamaan likiarvoinen ratkaisu ongelmaan. R:stä löytyy useita valmiita funktioita erilaisiin numeerista laskentaa vaativiin ongelmiin. Tyypillisimpiä tapauksia ovat jonkin funktion minimin tai maksimin etsiminen, funktion juurten etsintä ja integrointi. 
 
 ## Optimointi
