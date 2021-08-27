@@ -6,6 +6,32 @@ Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttava
 
 Lopussa käydään myös läpi tapoja lukea taulukkolaskenta- (Excel), SPSS- ja SAS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin johonkin toiseen muotoon.
 
+## Hakemistopolut ja tiedostopäätteet
+
+### Hakemistopolut
+
+Jotta aineiston lataus tiedostosta onnistuu, tulee käyttäjän olla tietoinen siitä, missä hakemistopolussa eli kansiossa R työskentelee lataushetkellä. R:llä on siis koko ajan jokin hakemistopolku, johon se viittaa. R:n käyttämän hakemistopolun saat selville komennolla `getwd()`.
+
+```{r, eval=FALSE}
+getwd()
+```
+```
+[1] "C:/Users/jukop/Documents"
+```
+Minulla näyttäisi siltä, että R on oletuksena hakemistossa C:/Users/jukop/Documents. Jos olen purkanut kurssilla tarvittavan datasets.zip -tiedoston aineistot kansioon `C:/Users/jukop/Documents/datasets`, niin minun kannattaa vaihtaa R käyttämään kyseistä hakemistoa. Se tapahtuu näin:
+
+```{r, eval=FALSE}
+setwd("C:/Users/jukop/Documents/datasets")
+```
+`setwd` ei tulosta mitään, jos kansion vaihtaminen onnistuu. Voit vielä `getwd()`-komennolla uudelleen tarkastaa, että hakemisto todella vaihtui.
+***Vinkki!*** Ellet tiedä mikä on tarkka hakemistopolku, johon olet purkanut tiedostot, niin se onnistuu klikkaamalla Windowsissa tiedostoselaimen osoiteriviä. Voit kopioida hakemistopolun siitä, mutta vaihda kuitenkin kenoviivat (`\`) kauttaviivoiksi (`/`). Kenoviivoilla on R:ssä erityismerkitys merkkijonoissa, joten ne eivät kelpaa sellaisenaan. Kaksinkertainen kenoviiva (`\\`) toimisi myös.
+![](files/03-reading_data/windows_show_file_path2.png)
+
+### Tiedostopäätteet
+
+Windows ei oletuksena nykyisin näytä tiedostopäätteitä. Ne kannattaakin asettaa näkymään tiedostoselaimen avulla. Kyseinen asetus löytyy tiedostoselaimen View-välilehdeltä kohdasta Show/Hide valinta File extensions. Merkitse kyseinen kohta valituksi, jolloin näet tiedostopäätteet, kuten kuvassa. Nyt on helppoa käsittää, kun opettaja puhuu CSV-tiedostoista, että niiden tiedostopääte on .csv.
+![](files/03-reading_data/windows_show_file_extensions2.png)
+
 ## Tekstitiedostot
 
 Tekstitiedosto tarkoittaa tässä tapauksessa tiedostoa, joka ei sisällä tekstin lisäksi mitään muuta, kuten erilaisia muotoilutietoja. Tekstitiedostojen yleisimmät tiedostopäätteet ovat .txt ja .csv (comma separated value). Esim. Excelin .xlsx-tiedostot tai Wordin .docx-tiedostot eivät ole tekstitiedostoja, koska niissä on paljon muutakin tietoa tekstin lisäksi.

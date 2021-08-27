@@ -202,19 +202,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="reading-data.html"><a href="reading-data.html"><i class="fa fa-check"></i><b>4</b> Datan lukeminen</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="reading-data.html"><a href="reading-data.html#tekstitiedostot"><i class="fa fa-check"></i><b>4.1</b> Tekstitiedostot</a>
+<li class="chapter" data-level="4.1" data-path="reading-data.html"><a href="reading-data.html#hakemistopolut-ja-tiedostopäätteet"><i class="fa fa-check"></i><b>4.1</b> Hakemistopolut ja tiedostopäätteet</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="reading-data.html"><a href="reading-data.html#read.table"><i class="fa fa-check"></i><b>4.1.1</b> read.table</a></li>
-<li class="chapter" data-level="4.1.2" data-path="reading-data.html"><a href="reading-data.html#read.csv"><i class="fa fa-check"></i><b>4.1.2</b> read.csv</a></li>
+<li class="chapter" data-level="4.1.1" data-path="reading-data.html"><a href="reading-data.html#hakemistopolut"><i class="fa fa-check"></i><b>4.1.1</b> Hakemistopolut</a></li>
+<li class="chapter" data-level="4.1.2" data-path="reading-data.html"><a href="reading-data.html#tiedostopäätteet"><i class="fa fa-check"></i><b>4.1.2</b> Tiedostopäätteet</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="reading-data.html"><a href="reading-data.html#datakehikon-tarkastelu"><i class="fa fa-check"></i><b>4.2</b> Datakehikon tarkastelu</a>
+<li class="chapter" data-level="4.2" data-path="reading-data.html"><a href="reading-data.html#tekstitiedostot"><i class="fa fa-check"></i><b>4.2</b> Tekstitiedostot</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="reading-data.html"><a href="reading-data.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>4.2.1</b> R:n sisäänrakennetut datasetit</a></li>
+<li class="chapter" data-level="4.2.1" data-path="reading-data.html"><a href="reading-data.html#read.table"><i class="fa fa-check"></i><b>4.2.1</b> read.table</a></li>
+<li class="chapter" data-level="4.2.2" data-path="reading-data.html"><a href="reading-data.html#read.csv"><i class="fa fa-check"></i><b>4.2.2</b> read.csv</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="reading-data.html"><a href="reading-data.html#muut-tiedostot"><i class="fa fa-check"></i><b>4.3</b> Muut tiedostot</a>
+<li class="chapter" data-level="4.3" data-path="reading-data.html"><a href="reading-data.html#datakehikon-tarkastelu"><i class="fa fa-check"></i><b>4.3</b> Datakehikon tarkastelu</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="reading-data.html"><a href="reading-data.html#excel"><i class="fa fa-check"></i><b>4.3.1</b> Excel</a></li>
-<li class="chapter" data-level="4.3.2" data-path="reading-data.html"><a href="reading-data.html#spss"><i class="fa fa-check"></i><b>4.3.2</b> SPSS</a></li>
+<li class="chapter" data-level="4.3.1" data-path="reading-data.html"><a href="reading-data.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>4.3.1</b> R:n sisäänrakennetut datasetit</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="reading-data.html"><a href="reading-data.html#muut-tiedostot"><i class="fa fa-check"></i><b>4.4</b> Muut tiedostot</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="reading-data.html"><a href="reading-data.html#excel"><i class="fa fa-check"></i><b>4.4.1</b> Excel</a></li>
+<li class="chapter" data-level="4.4.2" data-path="reading-data.html"><a href="reading-data.html#spss"><i class="fa fa-check"></i><b>4.4.2</b> SPSS</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i><b>5</b> Datan muokkaaminen</a>
@@ -346,68 +351,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="for-silmukka" class="section level2" number="13.1">
 <h2><span class="header-section-number">13.1</span> For-silmukka</h2>
 <p>For-silmukka toistaa koodia ennalta määrättyjen iteraatioiden verran. For-silmukalla voi esimerkiksi käydä läpi data framen tai matriisin sarakkeita tai rivejä, tai vektorin arvoja. For-silmukka iteroi aina jonkin järjestetyn rakenteen yli, esimerkiksi vektorin. For-silmukalle annetaan tyypillisesti vektori arvoja, ja ns. iteraatiomuuttuja, johon tallennetaan vuorotellen yksi alkio annetusta vektorista. Käytännössä tämä näyttää tältä:</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="loops.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">3</span>, <span class="dv">7</span>)) {</span>
-<span id="cb540-2"><a href="loops.html#cb540-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
-<span id="cb540-3"><a href="loops.html#cb540-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="loops.html#cb543-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">3</span>, <span class="dv">7</span>)) {</span>
+<span id="cb543-2"><a href="loops.html#cb543-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb543-3"><a href="loops.html#cb543-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>for-silmukassa määritetään siis ensin iteraatiomuuttuja eli <code>i</code> ja sen saamat arvot eli <code>seq(3, 7)</code> komennolla <code>in</code>. Sen jälkeen hakasulkeiden sisältämä koodi toistetaan jokaiselle <code>i</code>:n arvolle. Tässä tapauksessa yksinkertaisesti tulostetaan muuttujan <code>i</code> arvo. Huomaa, että for-silmukan <code>ìn</code> ei ole sama asia kuin looginen operaattori <code>%in%</code>.</p>
 <p>Usein halutaan kuitenkin käydä läpi jonkin vektorin tai matriisin arvoja. Alla oleva koodi laskee matriisin X rivien summan (tähän voisi myös käyttää valmista funktiota <code>rowSums()</code>). Aluksi alustetaan tyhjä vektori, johon rivien summat tallennetaan. Sen jälkeen käydään läpi matriisin rivit ja tallennetaan rivin summa alussa alustettuun vektoriin.</p>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="loops.html#cb541-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create matrix X</span></span>
-<span id="cb541-2"><a href="loops.html#cb541-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
-<span id="cb541-3"><a href="loops.html#cb541-3" aria-hidden="true" tabindex="-1"></a>X</span>
-<span id="cb541-4"><a href="loops.html#cb541-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb541-5"><a href="loops.html#cb541-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize vector for row sums</span></span>
-<span id="cb541-6"><a href="loops.html#cb541-6" aria-hidden="true" tabindex="-1"></a>row_sums <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">nrow</span>(X))</span>
-<span id="cb541-7"><a href="loops.html#cb541-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows of X</span></span>
-<span id="cb541-8"><a href="loops.html#cb541-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(X))) {</span>
-<span id="cb541-9"><a href="loops.html#cb541-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Assign sum of the current row to the vector</span></span>
-<span id="cb541-10"><a href="loops.html#cb541-10" aria-hidden="true" tabindex="-1"></a>  row_sums[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(X[i, ])</span>
-<span id="cb541-11"><a href="loops.html#cb541-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb541-12"><a href="loops.html#cb541-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb541-13"><a href="loops.html#cb541-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare results with the result from base R function</span></span>
-<span id="cb541-14"><a href="loops.html#cb541-14" aria-hidden="true" tabindex="-1"></a>row_sums</span>
-<span id="cb541-15"><a href="loops.html#cb541-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(X)</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="loops.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create matrix X</span></span>
+<span id="cb544-2"><a href="loops.html#cb544-2" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">4</span>)</span>
+<span id="cb544-3"><a href="loops.html#cb544-3" aria-hidden="true" tabindex="-1"></a>X</span>
+<span id="cb544-4"><a href="loops.html#cb544-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb544-5"><a href="loops.html#cb544-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize vector for row sums</span></span>
+<span id="cb544-6"><a href="loops.html#cb544-6" aria-hidden="true" tabindex="-1"></a>row_sums <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">nrow</span>(X))</span>
+<span id="cb544-7"><a href="loops.html#cb544-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows of X</span></span>
+<span id="cb544-8"><a href="loops.html#cb544-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(X))) {</span>
+<span id="cb544-9"><a href="loops.html#cb544-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Assign sum of the current row to the vector</span></span>
+<span id="cb544-10"><a href="loops.html#cb544-10" aria-hidden="true" tabindex="-1"></a>  row_sums[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(X[i, ])</span>
+<span id="cb544-11"><a href="loops.html#cb544-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb544-12"><a href="loops.html#cb544-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb544-13"><a href="loops.html#cb544-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare results with the result from base R function</span></span>
+<span id="cb544-14"><a href="loops.html#cb544-14" aria-hidden="true" tabindex="-1"></a>row_sums</span>
+<span id="cb544-15"><a href="loops.html#cb544-15" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(X)</span></code></pre></div>
 <p>For-silmukalla voi myös toteuttaa viime kerralla tehdyn funktion, joka poimii DNA:n emäksistä vain sytosiinit ja guaniinit. Tällä kertaa apufunktiota <code>is_cg()</code> ei tarvitse vektorisoida, koska for-silmukka käy läpi kaikki emäkset. Tämä silmukka voidaan toteuttaa kahdella tavalla. Ensimmäinen tapa on käyttää iteraatiomuuttujana i:tä, joka käy läpi iteraation ykkösestä emäsvektroin pituuteen:</p>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="loops.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function</span></span>
-<span id="cb542-2"><a href="loops.html#cb542-2" aria-hidden="true" tabindex="-1"></a>is_cg <span class="ot">&lt;-</span> <span class="cf">function</span>(base) {</span>
-<span id="cb542-3"><a href="loops.html#cb542-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (base <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>)) {</span>
-<span id="cb542-4"><a href="loops.html#cb542-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
-<span id="cb542-5"><a href="loops.html#cb542-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb542-6"><a href="loops.html#cb542-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
-<span id="cb542-7"><a href="loops.html#cb542-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb542-8"><a href="loops.html#cb542-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb542-9"><a href="loops.html#cb542-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb542-10"><a href="loops.html#cb542-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Main function</span></span>
-<span id="cb542-11"><a href="loops.html#cb542-11" aria-hidden="true" tabindex="-1"></a>pick_cg1 <span class="ot">&lt;-</span> <span class="cf">function</span>(bases) {</span>
-<span id="cb542-12"><a href="loops.html#cb542-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize empty vector</span></span>
-<span id="cb542-13"><a href="loops.html#cb542-13" aria-hidden="true" tabindex="-1"></a>  only_cg <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb542-14"><a href="loops.html#cb542-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">length</span>(bases))) {</span>
-<span id="cb542-15"><a href="loops.html#cb542-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If the current base is C or G, add it to only_cg</span></span>
-<span id="cb542-16"><a href="loops.html#cb542-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is_cg</span>(bases[i])) {</span>
-<span id="cb542-17"><a href="loops.html#cb542-17" aria-hidden="true" tabindex="-1"></a>      only_cg <span class="ot">&lt;-</span> <span class="fu">c</span>(only_cg, bases[i])</span>
-<span id="cb542-18"><a href="loops.html#cb542-18" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb542-19"><a href="loops.html#cb542-19" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb542-20"><a href="loops.html#cb542-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb542-21"><a href="loops.html#cb542-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(only_cg)</span>
-<span id="cb542-22"><a href="loops.html#cb542-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb542-23"><a href="loops.html#cb542-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb542-24"><a href="loops.html#cb542-24" aria-hidden="true" tabindex="-1"></a>my_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
-<span id="cb542-25"><a href="loops.html#cb542-25" aria-hidden="true" tabindex="-1"></a><span class="fu">pick_cg1</span>(my_bases)</span></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="loops.html#cb545-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function</span></span>
+<span id="cb545-2"><a href="loops.html#cb545-2" aria-hidden="true" tabindex="-1"></a>is_cg <span class="ot">&lt;-</span> <span class="cf">function</span>(base) {</span>
+<span id="cb545-3"><a href="loops.html#cb545-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (base <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>)) {</span>
+<span id="cb545-4"><a href="loops.html#cb545-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb545-5"><a href="loops.html#cb545-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb545-6"><a href="loops.html#cb545-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb545-7"><a href="loops.html#cb545-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb545-8"><a href="loops.html#cb545-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb545-9"><a href="loops.html#cb545-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb545-10"><a href="loops.html#cb545-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Main function</span></span>
+<span id="cb545-11"><a href="loops.html#cb545-11" aria-hidden="true" tabindex="-1"></a>pick_cg1 <span class="ot">&lt;-</span> <span class="cf">function</span>(bases) {</span>
+<span id="cb545-12"><a href="loops.html#cb545-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize empty vector</span></span>
+<span id="cb545-13"><a href="loops.html#cb545-13" aria-hidden="true" tabindex="-1"></a>  only_cg <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb545-14"><a href="loops.html#cb545-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">length</span>(bases))) {</span>
+<span id="cb545-15"><a href="loops.html#cb545-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If the current base is C or G, add it to only_cg</span></span>
+<span id="cb545-16"><a href="loops.html#cb545-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is_cg</span>(bases[i])) {</span>
+<span id="cb545-17"><a href="loops.html#cb545-17" aria-hidden="true" tabindex="-1"></a>      only_cg <span class="ot">&lt;-</span> <span class="fu">c</span>(only_cg, bases[i])</span>
+<span id="cb545-18"><a href="loops.html#cb545-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb545-19"><a href="loops.html#cb545-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb545-20"><a href="loops.html#cb545-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb545-21"><a href="loops.html#cb545-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(only_cg)</span>
+<span id="cb545-22"><a href="loops.html#cb545-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb545-23"><a href="loops.html#cb545-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb545-24"><a href="loops.html#cb545-24" aria-hidden="true" tabindex="-1"></a>my_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
+<span id="cb545-25"><a href="loops.html#cb545-25" aria-hidden="true" tabindex="-1"></a><span class="fu">pick_cg1</span>(my_bases)</span></code></pre></div>
 <p>Toinen vaihtoehto on iteroida suoraan vektorin bases yli, jolloin iteraatiomuuttujaan tallentuu suoraan kyseinen emäs:</p>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb543-1"><a href="loops.html#cb543-1" aria-hidden="true" tabindex="-1"></a>pick_cg2 <span class="ot">&lt;-</span> <span class="cf">function</span>(bases) {</span>
-<span id="cb543-2"><a href="loops.html#cb543-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize empty vector</span></span>
-<span id="cb543-3"><a href="loops.html#cb543-3" aria-hidden="true" tabindex="-1"></a>  only_cg <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb543-4"><a href="loops.html#cb543-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (base <span class="cf">in</span> bases) {</span>
-<span id="cb543-5"><a href="loops.html#cb543-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If the current base is C or G, add it to only_cg</span></span>
-<span id="cb543-6"><a href="loops.html#cb543-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is_cg</span>(base)) {</span>
-<span id="cb543-7"><a href="loops.html#cb543-7" aria-hidden="true" tabindex="-1"></a>      only_cg <span class="ot">&lt;-</span> <span class="fu">c</span>(only_cg, base)</span>
-<span id="cb543-8"><a href="loops.html#cb543-8" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb543-9"><a href="loops.html#cb543-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb543-10"><a href="loops.html#cb543-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb543-11"><a href="loops.html#cb543-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(only_cg)</span>
-<span id="cb543-12"><a href="loops.html#cb543-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb543-13"><a href="loops.html#cb543-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb543-14"><a href="loops.html#cb543-14" aria-hidden="true" tabindex="-1"></a>my_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
-<span id="cb543-15"><a href="loops.html#cb543-15" aria-hidden="true" tabindex="-1"></a><span class="fu">pick_cg2</span>(my_bases)</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="loops.html#cb546-1" aria-hidden="true" tabindex="-1"></a>pick_cg2 <span class="ot">&lt;-</span> <span class="cf">function</span>(bases) {</span>
+<span id="cb546-2"><a href="loops.html#cb546-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize empty vector</span></span>
+<span id="cb546-3"><a href="loops.html#cb546-3" aria-hidden="true" tabindex="-1"></a>  only_cg <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb546-4"><a href="loops.html#cb546-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (base <span class="cf">in</span> bases) {</span>
+<span id="cb546-5"><a href="loops.html#cb546-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If the current base is C or G, add it to only_cg</span></span>
+<span id="cb546-6"><a href="loops.html#cb546-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is_cg</span>(base)) {</span>
+<span id="cb546-7"><a href="loops.html#cb546-7" aria-hidden="true" tabindex="-1"></a>      only_cg <span class="ot">&lt;-</span> <span class="fu">c</span>(only_cg, base)</span>
+<span id="cb546-8"><a href="loops.html#cb546-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb546-9"><a href="loops.html#cb546-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb546-10"><a href="loops.html#cb546-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb546-11"><a href="loops.html#cb546-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(only_cg)</span>
+<span id="cb546-12"><a href="loops.html#cb546-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb546-13"><a href="loops.html#cb546-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb546-14"><a href="loops.html#cb546-14" aria-hidden="true" tabindex="-1"></a>my_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
+<span id="cb546-15"><a href="loops.html#cb546-15" aria-hidden="true" tabindex="-1"></a><span class="fu">pick_cg2</span>(my_bases)</span></code></pre></div>
 <p>Iteraatiomuuttujan voi siis nimetä haluamallaan tavalla, sen ei aina tarvitse olla i. Jos kuitenkin iteraatiomuuttujaan tallennetaan vain yksi luku, suosittelen vahvasti käyttämään i:tä. Tämä on hyvin vakiintunut tapa ohjelmointikielestä ja ohjelmoijasta riippumatta, vaikka muutoin muuttujien nimeämiseen on erilaisia koulukuntia riippuen ohjelmoijan taustasta. Jos taas iteroidaan vektorin nimeltä bases yli, on luonnollinen valinta iteraatiomuuttujan nimeksi base.</p>
 <p><img src="files/08-functions/naming.jpg" /></p>
 </div>
@@ -415,39 +420,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">13.2</span> While-slimukat</h2>
 <!-- Santtu: saattaa olla aika pelottavalta kuulostava esimerkki ensimmäiseksi esimerkiksi while-silmukasta, ehkä jotain yksinkertaisempaan aluksi? -->
 <p>While-silmukkaa käytetään, kun iteraatioiden määrä ei ole ennalta tiedossa, vaan while-silmukkaa toistetaan niin kauan, kuin tietty ehto on voimassa. Hyvä esimerkki while-silmukasta on proteiinisynteesi (yksinkertaistettuna): alla oleva funktio käy läpi RNA-molekyylin kodoneita, kunnes löytää aloituskodonin AUG. Sen jälkeen funktio rakentaa aminohappoketjua kodonien perusteella, kunnes vastaan tulee jokin lopetuskodoneista. Oikean proteiinin löytämiseen käytetään Biostrings-paketista löytyvää geneettistä koodia, joka on nimetty vektori, jossa on kodoneita vastaavien aminohappojen kirjainlyhenne, tai lopetuskodonien tapauksessa merkki "*":</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="loops.html#cb544-1" aria-hidden="true" tabindex="-1"></a>rna_code <span class="ot">&lt;-</span> Biostrings<span class="sc">::</span>RNA_GENETIC_CODE</span>
-<span id="cb544-2"><a href="loops.html#cb544-2" aria-hidden="true" tabindex="-1"></a>rna_code</span></code></pre></div>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb545-1"><a href="loops.html#cb545-1" aria-hidden="true" tabindex="-1"></a>prot_synth <span class="ot">&lt;-</span> <span class="cf">function</span>(codons) {</span>
-<span id="cb545-2"><a href="loops.html#cb545-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize iterable as the first codon</span></span>
-<span id="cb545-3"><a href="loops.html#cb545-3" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb545-4"><a href="loops.html#cb545-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize empty amino acid chain</span></span>
-<span id="cb545-5"><a href="loops.html#cb545-5" aria-hidden="true" tabindex="-1"></a>  protein <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb545-6"><a href="loops.html#cb545-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Find starting codon</span></span>
-<span id="cb545-7"><a href="loops.html#cb545-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (codons[i] <span class="sc">!=</span> <span class="st">&quot;AUG&quot;</span>) {</span>
-<span id="cb545-8"><a href="loops.html#cb545-8" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb545-9"><a href="loops.html#cb545-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb545-10"><a href="loops.html#cb545-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># After starting codon, build protein until one of the stop codons is met</span></span>
-<span id="cb545-11"><a href="loops.html#cb545-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (rna_code[codons[i]] <span class="sc">!=</span> <span class="st">&quot;*&quot;</span>) {</span>
-<span id="cb545-12"><a href="loops.html#cb545-12" aria-hidden="true" tabindex="-1"></a>    protein <span class="ot">&lt;-</span> <span class="fu">c</span>(protein, rna_code[codons[i]])</span>
-<span id="cb545-13"><a href="loops.html#cb545-13" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb545-14"><a href="loops.html#cb545-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb545-15"><a href="loops.html#cb545-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(protein)</span>
-<span id="cb545-16"><a href="loops.html#cb545-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb545-17"><a href="loops.html#cb545-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb545-18"><a href="loops.html#cb545-18" aria-hidden="true" tabindex="-1"></a><span class="fu">prot_synth</span>(<span class="at">codons =</span> <span class="fu">c</span>(<span class="st">&quot;UUG&quot;</span>, <span class="st">&quot;GAA&quot;</span>, <span class="st">&quot;AUG&quot;</span>, <span class="st">&quot;UGU&quot;</span>, <span class="st">&quot;AGU&quot;</span>, <span class="st">&quot;AGA&quot;</span>, <span class="st">&quot;UCG&quot;</span>, <span class="st">&quot;UCG&quot;</span>, <span class="st">&quot;UGA&quot;</span>, <span class="st">&quot;GCA&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="loops.html#cb547-1" aria-hidden="true" tabindex="-1"></a>rna_code <span class="ot">&lt;-</span> Biostrings<span class="sc">::</span>RNA_GENETIC_CODE</span>
+<span id="cb547-2"><a href="loops.html#cb547-2" aria-hidden="true" tabindex="-1"></a>rna_code</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="loops.html#cb548-1" aria-hidden="true" tabindex="-1"></a>prot_synth <span class="ot">&lt;-</span> <span class="cf">function</span>(codons) {</span>
+<span id="cb548-2"><a href="loops.html#cb548-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize iterable as the first codon</span></span>
+<span id="cb548-3"><a href="loops.html#cb548-3" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb548-4"><a href="loops.html#cb548-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize empty amino acid chain</span></span>
+<span id="cb548-5"><a href="loops.html#cb548-5" aria-hidden="true" tabindex="-1"></a>  protein <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb548-6"><a href="loops.html#cb548-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Find starting codon</span></span>
+<span id="cb548-7"><a href="loops.html#cb548-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (codons[i] <span class="sc">!=</span> <span class="st">&quot;AUG&quot;</span>) {</span>
+<span id="cb548-8"><a href="loops.html#cb548-8" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb548-9"><a href="loops.html#cb548-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb548-10"><a href="loops.html#cb548-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># After starting codon, build protein until one of the stop codons is met</span></span>
+<span id="cb548-11"><a href="loops.html#cb548-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (rna_code[codons[i]] <span class="sc">!=</span> <span class="st">&quot;*&quot;</span>) {</span>
+<span id="cb548-12"><a href="loops.html#cb548-12" aria-hidden="true" tabindex="-1"></a>    protein <span class="ot">&lt;-</span> <span class="fu">c</span>(protein, rna_code[codons[i]])</span>
+<span id="cb548-13"><a href="loops.html#cb548-13" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb548-14"><a href="loops.html#cb548-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb548-15"><a href="loops.html#cb548-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(protein)</span>
+<span id="cb548-16"><a href="loops.html#cb548-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb548-17"><a href="loops.html#cb548-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb548-18"><a href="loops.html#cb548-18" aria-hidden="true" tabindex="-1"></a><span class="fu">prot_synth</span>(<span class="at">codons =</span> <span class="fu">c</span>(<span class="st">&quot;UUG&quot;</span>, <span class="st">&quot;GAA&quot;</span>, <span class="st">&quot;AUG&quot;</span>, <span class="st">&quot;UGU&quot;</span>, <span class="st">&quot;AGU&quot;</span>, <span class="st">&quot;AGA&quot;</span>, <span class="st">&quot;UCG&quot;</span>, <span class="st">&quot;UCG&quot;</span>, <span class="st">&quot;UGA&quot;</span>, <span class="st">&quot;GCA&quot;</span>))</span></code></pre></div>
 <p>While-silmukalle annetaan siis ensin ehto, joka tarkistetaan ennen jokaista iteraatiota. Jos ehto täyttyy, suoritetaan yksi iteraatio, ja tarkistetaan ehto uudestaan. HUOM: while-silmukkaa koodatessa tulee huolehtia siitä, että silmukan ehdon on mahdollista olla lopulta epätosi, muuten silmukka saattaa jäädä pyörimään ikuisesti!</p>
 <p>Käytännössä kaikki for-silmukat voisi korvata while-silmukoilla, mutta for-silmukoiden käyttö on kätevämpää, sillä niissä iteraatiomuuttujaa ei tarvitse kasvattaa erikseen.</p>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="loops.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A simple for loop</span></span>
-<span id="cb546-2"><a href="loops.html#cb546-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">4</span>)) {</span>
-<span id="cb546-3"><a href="loops.html#cb546-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i <span class="sc">*</span> <span class="dv">2</span>)</span>
-<span id="cb546-4"><a href="loops.html#cb546-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb546-5"><a href="loops.html#cb546-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb546-6"><a href="loops.html#cb546-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The same as above</span></span>
-<span id="cb546-7"><a href="loops.html#cb546-7" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb546-8"><a href="loops.html#cb546-8" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">4</span>) {</span>
-<span id="cb546-9"><a href="loops.html#cb546-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i <span class="sc">*</span> <span class="dv">2</span>)</span>
-<span id="cb546-10"><a href="loops.html#cb546-10" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb546-11"><a href="loops.html#cb546-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="loops.html#cb549-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A simple for loop</span></span>
+<span id="cb549-2"><a href="loops.html#cb549-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">4</span>)) {</span>
+<span id="cb549-3"><a href="loops.html#cb549-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i <span class="sc">*</span> <span class="dv">2</span>)</span>
+<span id="cb549-4"><a href="loops.html#cb549-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb549-5"><a href="loops.html#cb549-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb549-6"><a href="loops.html#cb549-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The same as above</span></span>
+<span id="cb549-7"><a href="loops.html#cb549-7" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb549-8"><a href="loops.html#cb549-8" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> (i <span class="sc">&lt;=</span> <span class="dv">4</span>) {</span>
+<span id="cb549-9"><a href="loops.html#cb549-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i <span class="sc">*</span> <span class="dv">2</span>)</span>
+<span id="cb549-10"><a href="loops.html#cb549-10" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb549-11"><a href="loops.html#cb549-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="sisäkkäiset-silmukat-nested-loops" class="section level2" number="13.3">
 <h2><span class="header-section-number">13.3</span> Sisäkkäiset silmukat (nested loops)</h2>
@@ -539,46 +544,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Tämä data on tiedostossa exons.csv, joten luetaan se R:ään:</p>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb547-1"><a href="loops.html#cb547-1" aria-hidden="true" tabindex="-1"></a>exons <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;exons.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="loops.html#cb550-1" aria-hidden="true" tabindex="-1"></a>exons <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;exons.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p>Etsitään seuravaksi kaikki eliöparit, joiden geenien etäisyys on alle 4 ja lisätään parit data frameen, jossa on kaksi saraketta, ja jokainen rivi edustaa yhtä eliöparia. Käytetään tähän kahta sisäkkäistä for-silmukkaa. Toisen silmukan iteraatiomuuttujan nimi on yleensä j, seuraavan k ja niin edelleen. Käydään exons läpi niin, että i on rivin numero, ja j sarakkeen numero, ja etsitään sopivat parit.</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="loops.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty data frame for the pairs</span></span>
-<span id="cb548-2"><a href="loops.html#cb548-2" aria-hidden="true" tabindex="-1"></a>close_pairs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb548-3"><a href="loops.html#cb548-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb548-4"><a href="loops.html#cb548-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
-<span id="cb548-5"><a href="loops.html#cb548-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
-<span id="cb548-6"><a href="loops.html#cb548-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">ncol</span>(exons))) {</span>
-<span id="cb548-7"><a href="loops.html#cb548-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 4</span></span>
-<span id="cb548-8"><a href="loops.html#cb548-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">4</span>) {</span>
-<span id="cb548-9"><a href="loops.html#cb548-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Add the pair as a new row to close_pairs</span></span>
-<span id="cb548-10"><a href="loops.html#cb548-10" aria-hidden="true" tabindex="-1"></a>      new_row <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
-<span id="cb548-11"><a href="loops.html#cb548-11" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
-<span id="cb548-12"><a href="loops.html#cb548-12" aria-hidden="true" tabindex="-1"></a>      close_pairs <span class="ot">&lt;-</span> <span class="fu">rbind</span>(close_pairs,</span>
-<span id="cb548-13"><a href="loops.html#cb548-13" aria-hidden="true" tabindex="-1"></a>                           new_row)</span>
-<span id="cb548-14"><a href="loops.html#cb548-14" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb548-15"><a href="loops.html#cb548-15" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb548-16"><a href="loops.html#cb548-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb548-17"><a href="loops.html#cb548-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb548-18"><a href="loops.html#cb548-18" aria-hidden="true" tabindex="-1"></a>close_pairs</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="loops.html#cb551-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty data frame for the pairs</span></span>
+<span id="cb551-2"><a href="loops.html#cb551-2" aria-hidden="true" tabindex="-1"></a>close_pairs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb551-3"><a href="loops.html#cb551-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb551-4"><a href="loops.html#cb551-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
+<span id="cb551-5"><a href="loops.html#cb551-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
+<span id="cb551-6"><a href="loops.html#cb551-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">ncol</span>(exons))) {</span>
+<span id="cb551-7"><a href="loops.html#cb551-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 4</span></span>
+<span id="cb551-8"><a href="loops.html#cb551-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">4</span>) {</span>
+<span id="cb551-9"><a href="loops.html#cb551-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Add the pair as a new row to close_pairs</span></span>
+<span id="cb551-10"><a href="loops.html#cb551-10" aria-hidden="true" tabindex="-1"></a>      new_row <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
+<span id="cb551-11"><a href="loops.html#cb551-11" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
+<span id="cb551-12"><a href="loops.html#cb551-12" aria-hidden="true" tabindex="-1"></a>      close_pairs <span class="ot">&lt;-</span> <span class="fu">rbind</span>(close_pairs,</span>
+<span id="cb551-13"><a href="loops.html#cb551-13" aria-hidden="true" tabindex="-1"></a>                           new_row)</span>
+<span id="cb551-14"><a href="loops.html#cb551-14" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb551-15"><a href="loops.html#cb551-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb551-16"><a href="loops.html#cb551-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb551-17"><a href="loops.html#cb551-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb551-18"><a href="loops.html#cb551-18" aria-hidden="true" tabindex="-1"></a>close_pairs</span></code></pre></div>
 <p>Koodimme toimii jo ihan hyvin, mutta tuloksessa on hieman turhaa tavaraa: exons on symmetrinen, joten monet parit on esitetty tuloksessa kahdesti. Tämä voidaan ratkaista muuttamalla toista for-silmukkaa:</p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="loops.html#cb549-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty data frame for the pairs</span></span>
-<span id="cb549-2"><a href="loops.html#cb549-2" aria-hidden="true" tabindex="-1"></a>close_pairs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb549-3"><a href="loops.html#cb549-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb549-4"><a href="loops.html#cb549-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
-<span id="cb549-5"><a href="loops.html#cb549-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
-<span id="cb549-6"><a href="loops.html#cb549-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only check upper diagonal</span></span>
-<span id="cb549-7"><a href="loops.html#cb549-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(i, <span class="fu">ncol</span>(exons))) {</span>
-<span id="cb549-8"><a href="loops.html#cb549-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 4</span></span>
-<span id="cb549-9"><a href="loops.html#cb549-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">4</span>) {</span>
-<span id="cb549-10"><a href="loops.html#cb549-10" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Add the pair as a new row to close_pairs</span></span>
-<span id="cb549-11"><a href="loops.html#cb549-11" aria-hidden="true" tabindex="-1"></a>      new_row <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
-<span id="cb549-12"><a href="loops.html#cb549-12" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
-<span id="cb549-13"><a href="loops.html#cb549-13" aria-hidden="true" tabindex="-1"></a>      close_pairs <span class="ot">&lt;-</span> <span class="fu">rbind</span>(close_pairs,</span>
-<span id="cb549-14"><a href="loops.html#cb549-14" aria-hidden="true" tabindex="-1"></a>                           new_row)</span>
-<span id="cb549-15"><a href="loops.html#cb549-15" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb549-16"><a href="loops.html#cb549-16" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb549-17"><a href="loops.html#cb549-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb549-18"><a href="loops.html#cb549-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb549-19"><a href="loops.html#cb549-19" aria-hidden="true" tabindex="-1"></a>close_pairs</span></code></pre></div>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="loops.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty data frame for the pairs</span></span>
+<span id="cb552-2"><a href="loops.html#cb552-2" aria-hidden="true" tabindex="-1"></a>close_pairs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb552-3"><a href="loops.html#cb552-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb552-4"><a href="loops.html#cb552-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
+<span id="cb552-5"><a href="loops.html#cb552-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
+<span id="cb552-6"><a href="loops.html#cb552-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only check upper diagonal</span></span>
+<span id="cb552-7"><a href="loops.html#cb552-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(i, <span class="fu">ncol</span>(exons))) {</span>
+<span id="cb552-8"><a href="loops.html#cb552-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 4</span></span>
+<span id="cb552-9"><a href="loops.html#cb552-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">4</span>) {</span>
+<span id="cb552-10"><a href="loops.html#cb552-10" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Add the pair as a new row to close_pairs</span></span>
+<span id="cb552-11"><a href="loops.html#cb552-11" aria-hidden="true" tabindex="-1"></a>      new_row <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
+<span id="cb552-12"><a href="loops.html#cb552-12" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
+<span id="cb552-13"><a href="loops.html#cb552-13" aria-hidden="true" tabindex="-1"></a>      close_pairs <span class="ot">&lt;-</span> <span class="fu">rbind</span>(close_pairs,</span>
+<span id="cb552-14"><a href="loops.html#cb552-14" aria-hidden="true" tabindex="-1"></a>                           new_row)</span>
+<span id="cb552-15"><a href="loops.html#cb552-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb552-16"><a href="loops.html#cb552-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb552-17"><a href="loops.html#cb552-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb552-18"><a href="loops.html#cb552-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb552-19"><a href="loops.html#cb552-19" aria-hidden="true" tabindex="-1"></a>close_pairs</span></code></pre></div>
 <!-- Santtu: yläkolmion? yläkolmiomatriisin? diagonaaleja on vain yksi. -->
 <p>Nyt toisen silmukan läpi käymät j:n arvot riippuvat i:n arvosta. Tämä koodi käy läpi taulukon ylemmän diagonaalin, eli “yläpuolen”. Ensimmäisellä kierroksella j käy läpi arvot 1-7, seuraavalla kierroksella 2-7, sitten 3-7 jne. Vastaavasti voitaisiin myös käydä läpi alempi diagonaali komennolla <code>for(j in seq(1, i)</code>.</p>
 <!-- Santtu: tässä kohtaa voi herätä kysymys, että miksi edellisessä kohdassa kahteen kertaan esiintyviä iterointeja ei sivuutettu nextillä, tai miksi iterointia muokatessa ei huomioitu diagonaalia valmiiksi -->
@@ -588,99 +593,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">13.4</span> Iterointiin puuttuminen: next ja break</h2>
 <p>Joskus silmukan toimintaan on hyvä puuttua kesken suorituksen. Joskus yksi iteraatio halutaan sivuuttaa kokonaan, toisinaan taas halutaan keskeyttää koko silmukka. Näihin tarkoituksiin R:ssä on komennot <code>next</code> ja <code>break</code>.</p>
 <p>Lisätään edelliseen esimerkkiin toiminto, joka ohittaa diagonaalilla olevat rivit, eli hyppää iteraation yli, jos i ja j ovat yhtä suuret. Käytetään tähän <code>next</code>-komentoa, joka ohjaa ohjelman suoraan seuraavaan iteraatioon:</p>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="loops.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty data frame for the pairs</span></span>
-<span id="cb550-2"><a href="loops.html#cb550-2" aria-hidden="true" tabindex="-1"></a>close_pairs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
-<span id="cb550-3"><a href="loops.html#cb550-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb550-4"><a href="loops.html#cb550-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
-<span id="cb550-5"><a href="loops.html#cb550-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
-<span id="cb550-6"><a href="loops.html#cb550-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only check upper diagonal</span></span>
-<span id="cb550-7"><a href="loops.html#cb550-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(i, <span class="fu">ncol</span>(exons))) {</span>
-<span id="cb550-8"><a href="loops.html#cb550-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> j) {</span>
-<span id="cb550-9"><a href="loops.html#cb550-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">next</span></span>
-<span id="cb550-10"><a href="loops.html#cb550-10" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb550-11"><a href="loops.html#cb550-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 4</span></span>
-<span id="cb550-12"><a href="loops.html#cb550-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">4</span>) {</span>
-<span id="cb550-13"><a href="loops.html#cb550-13" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Add the pair as a new row to close_pairs</span></span>
-<span id="cb550-14"><a href="loops.html#cb550-14" aria-hidden="true" tabindex="-1"></a>      new_row <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
-<span id="cb550-15"><a href="loops.html#cb550-15" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
-<span id="cb550-16"><a href="loops.html#cb550-16" aria-hidden="true" tabindex="-1"></a>      close_pairs <span class="ot">&lt;-</span> <span class="fu">rbind</span>(close_pairs,</span>
-<span id="cb550-17"><a href="loops.html#cb550-17" aria-hidden="true" tabindex="-1"></a>                           new_row)</span>
-<span id="cb550-18"><a href="loops.html#cb550-18" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb550-19"><a href="loops.html#cb550-19" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb550-20"><a href="loops.html#cb550-20" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb550-21"><a href="loops.html#cb550-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb550-22"><a href="loops.html#cb550-22" aria-hidden="true" tabindex="-1"></a>close_pairs</span></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="loops.html#cb553-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize empty data frame for the pairs</span></span>
+<span id="cb553-2"><a href="loops.html#cb553-2" aria-hidden="true" tabindex="-1"></a>close_pairs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>()</span>
+<span id="cb553-3"><a href="loops.html#cb553-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb553-4"><a href="loops.html#cb553-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
+<span id="cb553-5"><a href="loops.html#cb553-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
+<span id="cb553-6"><a href="loops.html#cb553-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only check upper diagonal</span></span>
+<span id="cb553-7"><a href="loops.html#cb553-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(i, <span class="fu">ncol</span>(exons))) {</span>
+<span id="cb553-8"><a href="loops.html#cb553-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> j) {</span>
+<span id="cb553-9"><a href="loops.html#cb553-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">next</span></span>
+<span id="cb553-10"><a href="loops.html#cb553-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb553-11"><a href="loops.html#cb553-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 4</span></span>
+<span id="cb553-12"><a href="loops.html#cb553-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">4</span>) {</span>
+<span id="cb553-13"><a href="loops.html#cb553-13" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Add the pair as a new row to close_pairs</span></span>
+<span id="cb553-14"><a href="loops.html#cb553-14" aria-hidden="true" tabindex="-1"></a>      new_row <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
+<span id="cb553-15"><a href="loops.html#cb553-15" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
+<span id="cb553-16"><a href="loops.html#cb553-16" aria-hidden="true" tabindex="-1"></a>      close_pairs <span class="ot">&lt;-</span> <span class="fu">rbind</span>(close_pairs,</span>
+<span id="cb553-17"><a href="loops.html#cb553-17" aria-hidden="true" tabindex="-1"></a>                           new_row)</span>
+<span id="cb553-18"><a href="loops.html#cb553-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb553-19"><a href="loops.html#cb553-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb553-20"><a href="loops.html#cb553-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb553-21"><a href="loops.html#cb553-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb553-22"><a href="loops.html#cb553-22" aria-hidden="true" tabindex="-1"></a>close_pairs</span></code></pre></div>
 <p>Nyt pääsimme eroon kaikista turhista pareista!</p>
 <p>Jos haluaisimme kaikkien parien sijaan etsiä vain ensimmäisen parin, jonka geenien etäisyys on alle 3, voisimme käyttää komentoa <code>break</code>, joka keskeyttää silmukan turhan suorittamisen haluamamme parin löydyttyä.</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="loops.html#cb551-1" aria-hidden="true" tabindex="-1"></a>close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb551-2"><a href="loops.html#cb551-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb551-3"><a href="loops.html#cb551-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
-<span id="cb551-4"><a href="loops.html#cb551-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
-<span id="cb551-5"><a href="loops.html#cb551-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only check upper diagonal</span></span>
-<span id="cb551-6"><a href="loops.html#cb551-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(i, <span class="fu">ncol</span>(exons))) {</span>
-<span id="cb551-7"><a href="loops.html#cb551-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> j) {</span>
-<span id="cb551-8"><a href="loops.html#cb551-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">next</span></span>
-<span id="cb551-9"><a href="loops.html#cb551-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb551-10"><a href="loops.html#cb551-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 3</span></span>
-<span id="cb551-11"><a href="loops.html#cb551-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">3</span>) {</span>
-<span id="cb551-12"><a href="loops.html#cb551-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Assign pair to close_pair and stop search</span></span>
-<span id="cb551-13"><a href="loops.html#cb551-13" aria-hidden="true" tabindex="-1"></a>      close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
-<span id="cb551-14"><a href="loops.html#cb551-14" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
-<span id="cb551-15"><a href="loops.html#cb551-15" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
-<span id="cb551-16"><a href="loops.html#cb551-16" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb551-17"><a href="loops.html#cb551-17" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb551-18"><a href="loops.html#cb551-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb551-19"><a href="loops.html#cb551-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb551-20"><a href="loops.html#cb551-20" aria-hidden="true" tabindex="-1"></a>close_pair</span></code></pre></div>
+<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="loops.html#cb554-1" aria-hidden="true" tabindex="-1"></a>close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb554-2"><a href="loops.html#cb554-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb554-3"><a href="loops.html#cb554-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
+<span id="cb554-4"><a href="loops.html#cb554-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
+<span id="cb554-5"><a href="loops.html#cb554-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only check upper diagonal</span></span>
+<span id="cb554-6"><a href="loops.html#cb554-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(i, <span class="fu">ncol</span>(exons))) {</span>
+<span id="cb554-7"><a href="loops.html#cb554-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> j) {</span>
+<span id="cb554-8"><a href="loops.html#cb554-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">next</span></span>
+<span id="cb554-9"><a href="loops.html#cb554-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb554-10"><a href="loops.html#cb554-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 3</span></span>
+<span id="cb554-11"><a href="loops.html#cb554-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">3</span>) {</span>
+<span id="cb554-12"><a href="loops.html#cb554-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Assign pair to close_pair and stop search</span></span>
+<span id="cb554-13"><a href="loops.html#cb554-13" aria-hidden="true" tabindex="-1"></a>      close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
+<span id="cb554-14"><a href="loops.html#cb554-14" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
+<span id="cb554-15"><a href="loops.html#cb554-15" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb554-16"><a href="loops.html#cb554-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb554-17"><a href="loops.html#cb554-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb554-18"><a href="loops.html#cb554-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb554-19"><a href="loops.html#cb554-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb554-20"><a href="loops.html#cb554-20" aria-hidden="true" tabindex="-1"></a>close_pair</span></code></pre></div>
 <p>HUOM: Tämä ei kuitenkaan ole oikea pari: Jos exons data framea käydään läpi rivi kerrallaan, ensimmäinen pari, jonka arvo on alle 3 on Human ja Lemur, ei Mouse ja Gorilla. Mikä siis meni väärin? Kun kyse on näin pienestä aineistosta, voidaan mahdollisia ongelmia tutkia lisäämällä silmukoiden sisään <code>print()</code>-komentoja, jotka kertovat meille silmukan etenemisestä. Lisätään siis edelliseen silmukkaan rivi, joka tulostaa iteraatiomuuttujat i ja j jokaisella iteraatiolla, sekä rivi, joka tulostaa uuden parin, kun sellainen löytyy:</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="loops.html#cb552-1" aria-hidden="true" tabindex="-1"></a>close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb552-2"><a href="loops.html#cb552-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb552-3"><a href="loops.html#cb552-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
-<span id="cb552-4"><a href="loops.html#cb552-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
-<span id="cb552-5"><a href="loops.html#cb552-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only check upper diagonal</span></span>
-<span id="cb552-6"><a href="loops.html#cb552-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(i, <span class="fu">ncol</span>(exons))) {</span>
-<span id="cb552-7"><a href="loops.html#cb552-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Monitor loop</span></span>
-<span id="cb552-8"><a href="loops.html#cb552-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">c</span>(i, j))</span>
-<span id="cb552-9"><a href="loops.html#cb552-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> j) {</span>
-<span id="cb552-10"><a href="loops.html#cb552-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">next</span></span>
-<span id="cb552-11"><a href="loops.html#cb552-11" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb552-12"><a href="loops.html#cb552-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 3</span></span>
-<span id="cb552-13"><a href="loops.html#cb552-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">3</span>) {</span>
-<span id="cb552-14"><a href="loops.html#cb552-14" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Assign pair to close_pair and stop search</span></span>
-<span id="cb552-15"><a href="loops.html#cb552-15" aria-hidden="true" tabindex="-1"></a>      close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
-<span id="cb552-16"><a href="loops.html#cb552-16" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
-<span id="cb552-17"><a href="loops.html#cb552-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(close_pair)</span>
-<span id="cb552-18"><a href="loops.html#cb552-18" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
-<span id="cb552-19"><a href="loops.html#cb552-19" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb552-20"><a href="loops.html#cb552-20" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb552-21"><a href="loops.html#cb552-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb552-22"><a href="loops.html#cb552-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb552-23"><a href="loops.html#cb552-23" aria-hidden="true" tabindex="-1"></a>close_pair</span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="loops.html#cb555-1" aria-hidden="true" tabindex="-1"></a>close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb555-2"><a href="loops.html#cb555-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb555-3"><a href="loops.html#cb555-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
+<span id="cb555-4"><a href="loops.html#cb555-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
+<span id="cb555-5"><a href="loops.html#cb555-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only check upper diagonal</span></span>
+<span id="cb555-6"><a href="loops.html#cb555-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(i, <span class="fu">ncol</span>(exons))) {</span>
+<span id="cb555-7"><a href="loops.html#cb555-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Monitor loop</span></span>
+<span id="cb555-8"><a href="loops.html#cb555-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">c</span>(i, j))</span>
+<span id="cb555-9"><a href="loops.html#cb555-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> j) {</span>
+<span id="cb555-10"><a href="loops.html#cb555-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">next</span></span>
+<span id="cb555-11"><a href="loops.html#cb555-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb555-12"><a href="loops.html#cb555-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 3</span></span>
+<span id="cb555-13"><a href="loops.html#cb555-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">3</span>) {</span>
+<span id="cb555-14"><a href="loops.html#cb555-14" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Assign pair to close_pair and stop search</span></span>
+<span id="cb555-15"><a href="loops.html#cb555-15" aria-hidden="true" tabindex="-1"></a>      close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
+<span id="cb555-16"><a href="loops.html#cb555-16" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
+<span id="cb555-17"><a href="loops.html#cb555-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(close_pair)</span>
+<span id="cb555-18"><a href="loops.html#cb555-18" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb555-19"><a href="loops.html#cb555-19" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb555-20"><a href="loops.html#cb555-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb555-21"><a href="loops.html#cb555-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb555-22"><a href="loops.html#cb555-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb555-23"><a href="loops.html#cb555-23" aria-hidden="true" tabindex="-1"></a>close_pair</span></code></pre></div>
 <p>Nyt huomataan, että iteraatio etenee rivillä yksi neljänteen sarakkeeseen asti, ja löytää parin Human-Lemur, aivan kuten pitikin. Jostain syystä ohjelma siirtyy kuitenkin sen jälkeen toiselle riville. Tämä johtuu siitä, että <code>break</code>-komento katkaisee vain yhden for-silmukan kerrallaan. Jos haluamme katkaista myös ulomman silmukan, meidän tulee lisätä ulomman silmukan loppuun tarkastus, joka tarkastaa, onko pari jo löytynyt. Tämä voidaan testata esimerkiksi vektorin close_pairs pituuden avulla. Jos if-rakenteelle antaa pelkän luvun, luku tulkitaan arvoksi TRUE, jos se ei ole nolla.</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="loops.html#cb553-1" aria-hidden="true" tabindex="-1"></a>close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb553-2"><a href="loops.html#cb553-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb553-3"><a href="loops.html#cb553-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
-<span id="cb553-4"><a href="loops.html#cb553-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
-<span id="cb553-5"><a href="loops.html#cb553-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only check upper diagonal</span></span>
-<span id="cb553-6"><a href="loops.html#cb553-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(i, <span class="fu">ncol</span>(exons))) {</span>
-<span id="cb553-7"><a href="loops.html#cb553-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> j) {</span>
-<span id="cb553-8"><a href="loops.html#cb553-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">next</span></span>
-<span id="cb553-9"><a href="loops.html#cb553-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb553-10"><a href="loops.html#cb553-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 3</span></span>
-<span id="cb553-11"><a href="loops.html#cb553-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">3</span>) {</span>
-<span id="cb553-12"><a href="loops.html#cb553-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Assign pair to close_pair and stop search</span></span>
-<span id="cb553-13"><a href="loops.html#cb553-13" aria-hidden="true" tabindex="-1"></a>      close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
-<span id="cb553-14"><a href="loops.html#cb553-14" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
-<span id="cb553-15"><a href="loops.html#cb553-15" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
-<span id="cb553-16"><a href="loops.html#cb553-16" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb553-17"><a href="loops.html#cb553-17" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb553-18"><a href="loops.html#cb553-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stop iterating if the pair has been found</span></span>
-<span id="cb553-19"><a href="loops.html#cb553-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(close_pair)) {</span>
-<span id="cb553-20"><a href="loops.html#cb553-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
-<span id="cb553-21"><a href="loops.html#cb553-21" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb553-22"><a href="loops.html#cb553-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb553-23"><a href="loops.html#cb553-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb553-24"><a href="loops.html#cb553-24" aria-hidden="true" tabindex="-1"></a>close_pair</span></code></pre></div>
+<div class="sourceCode" id="cb556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb556-1"><a href="loops.html#cb556-1" aria-hidden="true" tabindex="-1"></a>close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb556-2"><a href="loops.html#cb556-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb556-3"><a href="loops.html#cb556-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over rows and columns</span></span>
+<span id="cb556-4"><a href="loops.html#cb556-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nrow</span>(exons))) {</span>
+<span id="cb556-5"><a href="loops.html#cb556-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only check upper diagonal</span></span>
+<span id="cb556-6"><a href="loops.html#cb556-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(i, <span class="fu">ncol</span>(exons))) {</span>
+<span id="cb556-7"><a href="loops.html#cb556-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> j) {</span>
+<span id="cb556-8"><a href="loops.html#cb556-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">next</span></span>
+<span id="cb556-9"><a href="loops.html#cb556-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb556-10"><a href="loops.html#cb556-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if dissimilarity is below 3</span></span>
+<span id="cb556-11"><a href="loops.html#cb556-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (exons[i, j] <span class="sc">&lt;</span> <span class="dv">3</span>) {</span>
+<span id="cb556-12"><a href="loops.html#cb556-12" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Assign pair to close_pair and stop search</span></span>
+<span id="cb556-13"><a href="loops.html#cb556-13" aria-hidden="true" tabindex="-1"></a>      close_pair <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">Species_1 =</span> <span class="fu">rownames</span>(exons)[i],</span>
+<span id="cb556-14"><a href="loops.html#cb556-14" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Species_2 =</span> <span class="fu">colnames</span>(exons)[j])</span>
+<span id="cb556-15"><a href="loops.html#cb556-15" aria-hidden="true" tabindex="-1"></a>      <span class="cf">break</span></span>
+<span id="cb556-16"><a href="loops.html#cb556-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb556-17"><a href="loops.html#cb556-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb556-18"><a href="loops.html#cb556-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Stop iterating if the pair has been found</span></span>
+<span id="cb556-19"><a href="loops.html#cb556-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">length</span>(close_pair)) {</span>
+<span id="cb556-20"><a href="loops.html#cb556-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb556-21"><a href="loops.html#cb556-21" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb556-22"><a href="loops.html#cb556-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb556-23"><a href="loops.html#cb556-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb556-24"><a href="loops.html#cb556-24" aria-hidden="true" tabindex="-1"></a>close_pair</span></code></pre></div>
 <p>Nyt koodimme toimii, kuten pitääkin!</p>
 </div>
 <div id="apply-funktiot" class="section level2" number="13.5">
@@ -688,22 +693,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>R:ssä käytetään silmukoiden lisäksi <code>apply()</code>-funktioperheen funktioita, joilla voi käydä läpi data frameja, matriiseja tai vektoreita ilman silmukoita. Joissain tapauksissa <code>apply</code>-funktiot ovat myös nopeampia kuin silmukat. Tästä syystä niitä näkee käytettävän paljon, ja varsinkin kokeneemmat R-ohjelmoijat käyttävät niitä usein silmukoiden sijaan. Tällä kurssilla näitä funktioita ei kuitenkaan tarvita. Tässä on annettu muutamia esimerkkejä, voit lukea lisää esimerkiksi <a href="https://www.datacamp.com/community/tutorials/r-tutorial-apply-family">DataCampin tutoriaalista</a></p>
 <!-- Santtu: autoscaling? eikö kyseessä ole ihan tavallinen standardointi? -->
 <p><code>apply()</code> käy läpi matriisin/data framen rivit tai sarakkeet, ja ajaa jonkin funktion jokaiselle riville tai sarakkeelle. Alla oleva esimerkki normalisoi kaikki R:n sisäisen datan trees sarakkeet autoscaling-menetelmällä, jossa sarakkeen arvoista vähennetään sarakkeen keskiarvo ja tulos jaetaan sarakkeen keskihajonnalla. Normalisoinnin tarkoitus on, että kaikkien sarakkeiden keskiarvoksi saadaan 0, ja kaikilla on sama varianssi (ja keskihajonta) 1.</p>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb554-1"><a href="loops.html#cb554-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trees)</span>
-<span id="cb554-2"><a href="loops.html#cb554-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb554-3"><a href="loops.html#cb554-3" aria-hidden="true" tabindex="-1"></a>scaler <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb554-4"><a href="loops.html#cb554-4" aria-hidden="true" tabindex="-1"></a>  scaled <span class="ot">&lt;-</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x)</span>
-<span id="cb554-5"><a href="loops.html#cb554-5" aria-hidden="true" tabindex="-1"></a>  scaled</span>
-<span id="cb554-6"><a href="loops.html#cb554-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb554-7"><a href="loops.html#cb554-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb554-8"><a href="loops.html#cb554-8" aria-hidden="true" tabindex="-1"></a>scaled_trees <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="at">X =</span> trees, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> scaler)</span>
-<span id="cb554-9"><a href="loops.html#cb554-9" aria-hidden="true" tabindex="-1"></a>scaled_trees <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(scaled_trees)</span>
-<span id="cb554-10"><a href="loops.html#cb554-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(scaled_trees)</span></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="loops.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(trees)</span>
+<span id="cb557-2"><a href="loops.html#cb557-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb557-3"><a href="loops.html#cb557-3" aria-hidden="true" tabindex="-1"></a>scaler <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb557-4"><a href="loops.html#cb557-4" aria-hidden="true" tabindex="-1"></a>  scaled <span class="ot">&lt;-</span> (x <span class="sc">-</span> <span class="fu">mean</span>(x)) <span class="sc">/</span> <span class="fu">sd</span>(x)</span>
+<span id="cb557-5"><a href="loops.html#cb557-5" aria-hidden="true" tabindex="-1"></a>  scaled</span>
+<span id="cb557-6"><a href="loops.html#cb557-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb557-7"><a href="loops.html#cb557-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb557-8"><a href="loops.html#cb557-8" aria-hidden="true" tabindex="-1"></a>scaled_trees <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="at">X =</span> trees, <span class="at">MARGIN =</span> <span class="dv">2</span>, <span class="at">FUN =</span> scaler)</span>
+<span id="cb557-9"><a href="loops.html#cb557-9" aria-hidden="true" tabindex="-1"></a>scaled_trees <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(scaled_trees)</span>
+<span id="cb557-10"><a href="loops.html#cb557-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(scaled_trees)</span></code></pre></div>
 <p>MARGIN-argumentilla määritetään, käydäänkö läpi rivit vai sarakkeet (1 = rivit, 2 = sarakkeet). HUOM: <code>apply</code> palauttaa aina matriisin tai vektorin. Jos tulos halutaan muuntaa takaisin data frameksi, täytyy se tehdä erikseen.</p>
 <!-- Santtu: sapplyn ei tarvitse palauttaa vain yhtä arvoa, katso argumentti "simplify" -->
 <p>Tarkistetaan tulos laskemalla sarakkeiden keskiarvot ja varianssit. Tämä voidaan tehdä <code>apply</code>-funktiolla, tai käyttää <code>sapply</code>-funktiota, joka käy automaattisesti data framen sarakkeet, ja ajaa saman funktion sarakkeille kuten <code>apply</code>.
 <!--```sapply```-komennon funktion on pakko palauttaa vain yksi arvo, sillä ```sapply``` kokoaa automaattisesti tuloksensa vektoriin.--></p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="loops.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(scaled_trees, <span class="dv">2</span>, mean)</span>
-<span id="cb555-2"><a href="loops.html#cb555-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(scaled_trees, var)</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="loops.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(scaled_trees, <span class="dv">2</span>, mean)</span>
+<span id="cb558-2"><a href="loops.html#cb558-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(scaled_trees, var)</span></code></pre></div>
 <p>Huomaa, että sarakkeiden keskiarvot eivät ole täsmälleen 0. Tämä johtuu R:n rajallisesta numeerisesta tarkkuudesta. Käytännössä itseisarvoltaan tätä luokkaa olevat arvot ovat nollia.</p>
 </div>
 <div id="vinkkejä-tehtäviin" class="section level2" number="13.6">

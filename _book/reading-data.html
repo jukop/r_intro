@@ -202,19 +202,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="reading-data.html"><a href="reading-data.html"><i class="fa fa-check"></i><b>4</b> Datan lukeminen</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="reading-data.html"><a href="reading-data.html#tekstitiedostot"><i class="fa fa-check"></i><b>4.1</b> Tekstitiedostot</a>
+<li class="chapter" data-level="4.1" data-path="reading-data.html"><a href="reading-data.html#hakemistopolut-ja-tiedostopäätteet"><i class="fa fa-check"></i><b>4.1</b> Hakemistopolut ja tiedostopäätteet</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="reading-data.html"><a href="reading-data.html#read.table"><i class="fa fa-check"></i><b>4.1.1</b> read.table</a></li>
-<li class="chapter" data-level="4.1.2" data-path="reading-data.html"><a href="reading-data.html#read.csv"><i class="fa fa-check"></i><b>4.1.2</b> read.csv</a></li>
+<li class="chapter" data-level="4.1.1" data-path="reading-data.html"><a href="reading-data.html#hakemistopolut"><i class="fa fa-check"></i><b>4.1.1</b> Hakemistopolut</a></li>
+<li class="chapter" data-level="4.1.2" data-path="reading-data.html"><a href="reading-data.html#tiedostopäätteet"><i class="fa fa-check"></i><b>4.1.2</b> Tiedostopäätteet</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="reading-data.html"><a href="reading-data.html#datakehikon-tarkastelu"><i class="fa fa-check"></i><b>4.2</b> Datakehikon tarkastelu</a>
+<li class="chapter" data-level="4.2" data-path="reading-data.html"><a href="reading-data.html#tekstitiedostot"><i class="fa fa-check"></i><b>4.2</b> Tekstitiedostot</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="reading-data.html"><a href="reading-data.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>4.2.1</b> R:n sisäänrakennetut datasetit</a></li>
+<li class="chapter" data-level="4.2.1" data-path="reading-data.html"><a href="reading-data.html#read.table"><i class="fa fa-check"></i><b>4.2.1</b> read.table</a></li>
+<li class="chapter" data-level="4.2.2" data-path="reading-data.html"><a href="reading-data.html#read.csv"><i class="fa fa-check"></i><b>4.2.2</b> read.csv</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="reading-data.html"><a href="reading-data.html#muut-tiedostot"><i class="fa fa-check"></i><b>4.3</b> Muut tiedostot</a>
+<li class="chapter" data-level="4.3" data-path="reading-data.html"><a href="reading-data.html#datakehikon-tarkastelu"><i class="fa fa-check"></i><b>4.3</b> Datakehikon tarkastelu</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="reading-data.html"><a href="reading-data.html#excel"><i class="fa fa-check"></i><b>4.3.1</b> Excel</a></li>
-<li class="chapter" data-level="4.3.2" data-path="reading-data.html"><a href="reading-data.html#spss"><i class="fa fa-check"></i><b>4.3.2</b> SPSS</a></li>
+<li class="chapter" data-level="4.3.1" data-path="reading-data.html"><a href="reading-data.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>4.3.1</b> R:n sisäänrakennetut datasetit</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="reading-data.html"><a href="reading-data.html#muut-tiedostot"><i class="fa fa-check"></i><b>4.4</b> Muut tiedostot</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="reading-data.html"><a href="reading-data.html#excel"><i class="fa fa-check"></i><b>4.4.1</b> Excel</a></li>
+<li class="chapter" data-level="4.4.2" data-path="reading-data.html"><a href="reading-data.html#spss"><i class="fa fa-check"></i><b>4.4.2</b> SPSS</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i><b>5</b> Datan muokkaaminen</a>
@@ -343,11 +348,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Tässä osiossa tutustutaan datan sisään lukemiseen ja sisäänluetun datan tarkistamiseen. Tähän mennessä kaikki kurssilla käsitelty data on luotu R:ssä. Useimmiten R:llä käsiteltävä data on kuitenkin tallennettu tiedostoon, joka on luotu jollain ohjelmalla tai kirjattu esim. Excelissä.</p>
 <p>Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttavat datakehikon. Datakehikko sopii aineiston käsittelyyn hyvin, sillä siihen voi tallentaa niin numeerisia kuin tekstimuotoisia muuttujia. Voit tarvittessa kerrata datakehikon toimintaa <a href="data-types.html#data-frame">datakehikko</a>-kappaleesta.</p>
 <p>Lopussa käydään myös läpi tapoja lukea taulukkolaskenta- (Excel), SPSS- ja SAS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin johonkin toiseen muotoon.</p>
-<div id="tekstitiedostot" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Tekstitiedostot</h2>
+<div id="hakemistopolut-ja-tiedostopäätteet" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Hakemistopolut ja tiedostopäätteet</h2>
+<div id="hakemistopolut" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Hakemistopolut</h3>
+<p>Jotta aineiston lataus tiedostosta onnistuu, tulee käyttäjän olla tietoinen siitä, missä hakemistopolussa eli kansiossa R työskentelee lataushetkellä. R:llä on siis koko ajan jokin hakemistopolku, johon se viittaa. R:n käyttämän hakemistopolun saat selville komennolla <code>getwd()</code>.</p>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="reading-data.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<pre><code>[1] &quot;C:/Users/jukop/Documents&quot;</code></pre>
+<p>Minulla näyttäisi siltä, että R on oletuksena hakemistossa C:/Users/jukop/Documents. Jos olen purkanut kurssilla tarvittavan datasets.zip -tiedoston aineistot kansioon <code>C:/Users/jukop/Documents/datasets</code>, niin minun kannattaa vaihtaa R käyttämään kyseistä hakemistoa. Se tapahtuu näin:</p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="reading-data.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;C:/Users/jukop/Documents/datasets&quot;</span>)</span></code></pre></div>
+<p><code>setwd</code> ei tulosta mitään, jos kansion vaihtaminen onnistuu. Voit vielä <code>getwd()</code>-komennolla uudelleen tarkastaa, että hakemisto todella vaihtui.
+<strong><em>Vinkki!</em></strong> Ellet tiedä mikä on tarkka hakemistopolku, johon olet purkanut tiedostot, niin se onnistuu klikkaamalla Windowsissa tiedostoselaimen osoiteriviä. Voit kopioida hakemistopolun siitä, mutta vaihda kuitenkin kenoviivat (<code>\</code>) kauttaviivoiksi (<code>/</code>). Kenoviivoilla on R:ssä erityismerkitys merkkijonoissa, joten ne eivät kelpaa sellaisenaan. Kaksinkertainen kenoviiva (<code>\\</code>) toimisi myös.
+<img src="files/03-reading_data/windows_show_file_path2.png" /></p>
+</div>
+<div id="tiedostopäätteet" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Tiedostopäätteet</h3>
+<p>Windows ei oletuksena nykyisin näytä tiedostopäätteitä. Ne kannattaakin asettaa näkymään tiedostoselaimen avulla. Kyseinen asetus löytyy tiedostoselaimen View-välilehdeltä kohdasta Show/Hide valinta File extensions. Merkitse kyseinen kohta valituksi, jolloin näet tiedostopäätteet, kuten kuvassa. Nyt on helppoa käsittää, kun opettaja puhuu CSV-tiedostoista, että niiden tiedostopääte on .csv.
+<img src="files/03-reading_data/windows_show_file_extensions2.png" /></p>
+</div>
+</div>
+<div id="tekstitiedostot" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Tekstitiedostot</h2>
 <p>Tekstitiedosto tarkoittaa tässä tapauksessa tiedostoa, joka ei sisällä tekstin lisäksi mitään muuta, kuten erilaisia muotoilutietoja. Tekstitiedostojen yleisimmät tiedostopäätteet ovat .txt ja .csv (comma separated value). Esim. Excelin .xlsx-tiedostot tai Wordin .docx-tiedostot eivät ole tekstitiedostoja, koska niissä on paljon muutakin tietoa tekstin lisäksi.</p>
-<div id="read.table" class="section level3" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> read.table</h3>
+<div id="read.table" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> read.table</h3>
 <p>Kun dataa tallennetaan tekstitiedostoon, tiedoston ensimmäisellä rivillä ovat usein sarakkeiden nimet, ja seuraavilla riveillä mahdollisesti rivin nimi, ja sitten sarakkeiden arvot. Jokaisen kentän tulee olla erotettu samalla merkillä (field separator character). Yleisiä erotinmerkkejä ovat sarkain eli tab, välilyönti ja pilkku. Alla olevassa esimerkissä on neljältä kuvitteelliselta koehenkilöltä mitattu puna-vihervärisokeuteen liitettyjen geenien OPN1LW ja OPN1MW ilmentymistasot (lukuarvot ovat allekirjoittaneen hihasta). Tässä eri arvot on erotettu sarkaimella.</p>
 <pre><code>Subject_ID  OPN1LW  OPN1MW
 ANKL    11264   12365
@@ -361,16 +385,16 @@ BRWA    8294    13060</code></pre>
 <li><code>dec</code>: desimaalierotin eli desimaalilukujen merkki, jolla desimaalit on eroteltu. Tämä on tärkeä lähinnä suomalaisille, koska Suomessa desimaalierotin on jostain syystä pilkku, eikä piste kuten useimmissa muissa maissa.</li>
 </ul>
 <p>Luetaan edellisen esimerkin data R:ään data frameksi:</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="reading-data.html#cb241-1" aria-hidden="true" tabindex="-1"></a>gene_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;gene_data.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb241-2"><a href="reading-data.html#cb241-2" aria-hidden="true" tabindex="-1"></a>gene_data</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="reading-data.html#cb244-1" aria-hidden="true" tabindex="-1"></a>gene_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;gene_data.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb244-2"><a href="reading-data.html#cb244-2" aria-hidden="true" tabindex="-1"></a>gene_data</span></code></pre></div>
 <pre><code>##   Subject_ID OPN1LW OPN1MW
 ## 1       ANKL  11264  12365
 ## 2       DIPR  10636  12725
 ## 3       PEPA   5630  13248
 ## 4       BRWA   8294  13060</code></pre>
 <p>Yllä olevassa esimerkissä ei määritelty erikseen erotinmerkkiä, jolloin erotinmerkiksi tulkitaan kaikki tyhjä tila (white space) eli välilyönnit, sarkaimet jne. Halutessaan erotinmerkin voi myös asettaa. Jos erotinmerkki on sarkain, tulee asettaa <code>sep = "\t"</code></p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="reading-data.html#cb243-1" aria-hidden="true" tabindex="-1"></a>gene_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;gene_data.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb243-2"><a href="reading-data.html#cb243-2" aria-hidden="true" tabindex="-1"></a>gene_data</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="reading-data.html#cb246-1" aria-hidden="true" tabindex="-1"></a>gene_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;gene_data.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb246-2"><a href="reading-data.html#cb246-2" aria-hidden="true" tabindex="-1"></a>gene_data</span></code></pre></div>
 <pre><code>##   Subject_ID OPN1LW OPN1MW
 ## 1       ANKL  11264  12365
 ## 2       DIPR  10636  12725
@@ -379,8 +403,8 @@ BRWA    8294    13060</code></pre>
 <p>Kuten yllä huomattiin, sarkain erotinmerkkinä merkataan <code>"\t"</code>, eikä lainausmerkeillä, joiden sisään laitettaisiin tyhjää tilaa sarkainnäppäimellä. Tämä on yksi esimerkki koodinvaihtomerkin (escape character) <code>\</code> käytöstä. R:ssä ja ohjelmointikielissä ylipäätään kenoviiva toimii koodinvaihtomerkkinä, eli sitä ei käsitellä kuin muita merkkejä, vaan se muuttaa seuraavan merkin toimintaa. Usein tämä tarkoittaa sitä, että kenoviivan avulla merkataan sarkainta, rivinvaihtoa (newline, <code>\n</code>) ja muita erikoismerkkejä. Koodinvaihtomerkin käyttöä ei tarvitse osata tämän enempää, mutta se esitellään tässä, koska se aiheuttaa ongelmia Windowsin käyttäjille.</p>
 <p>Windowsin tiedostopoluissa kansioiden välissä on kenoviiva, kun taas Mac- ja Linux-järjestelmissä käytetään kauttaviivaa <code>/</code>. Koska R:ssä kenoviiva on koodinvaihtomerkki, niin helpoin tapa on käyttää tiedostopoluissa Macin ja Linuxien tyyliä. Jos taas halutaan lukea tiedosto R:ään käyttäen Windowsin tapaisia tiedostopolkuja, kenoviivat <code>\</code> pitää kirjoittaa kahteen kertaan eli <code>\\</code>, jotta R tulkitsee polun oikein. Tällöin ensimmäinen kenoviiva kertoo, että toinen kenoviiva on aito kenoviiva, eikä koodinvaihtomerkki.</p>
 <p>Luetaan seuraavaksi sisään data-hakemistossa oleva tiedosto tooth_growth.csv, joka sisältää dataa tutkimuksesta c-vitamiinin vaikutuksesta hampaiden kasvuun marsuilla. .csv-tiedostopääte tulee sanoista comma separated value, eli tiedostossa arvot ovat eroteltu pilkulla. Asetetaan siis sep-argumentiksi “,”. Tämä tiedosto sisältää myös rivien nimet ensimmäisessä sarakkeessa. Tämä voidaan kertoa <code>read.table</code>-funktiolle argumentilla row.names, jonka arvoksi voi asettaa sarakkeen numeron, josta rivien nimet napataan.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="reading-data.html#cb245-1" aria-hidden="true" tabindex="-1"></a>tooth <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/tooth_growth.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb245-2"><a href="reading-data.html#cb245-2" aria-hidden="true" tabindex="-1"></a>tooth</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="reading-data.html#cb248-1" aria-hidden="true" tabindex="-1"></a>tooth <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/tooth_growth.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb248-2"><a href="reading-data.html#cb248-2" aria-hidden="true" tabindex="-1"></a>tooth</span></code></pre></div>
 <pre><code>##     len supp dose
 ## 34  9.7   OJ  0.5
 ## 16 17.3   VC  1.0
@@ -394,11 +418,11 @@ BRWA    8294    13060</code></pre>
 ## 9   5.2   VC  0.5</code></pre>
 <p>Tutkimuksessa marsuille annettiin C-vitamiinia eri annoksina (dose, mitattu milligrammoina), joko appelsiinimehussa (OJ) tai askorbiinihappona (VC), ja mitattiin odontoblastien (hammasluun emosolu) pituus (len).</p>
 </div>
-<div id="read.csv" class="section level3" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> read.csv</h3>
+<div id="read.csv" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> read.csv</h3>
 <p>.csv-tiedostot ovat niin yleisiä, että niiden lukemiseen on oma funktio: <code>read.csv</code>, joka on käytännössä sama funktio kuin <code>read.table</code>, mutta parametrien oletusarvot ovat erilaiset, niin että <code>read.csv(file)</code> ~ <code>read.table(file, header = TRUE, sep = ","))</code>.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="reading-data.html#cb247-1" aria-hidden="true" tabindex="-1"></a>tooth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tooth_growth.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
-<span id="cb247-2"><a href="reading-data.html#cb247-2" aria-hidden="true" tabindex="-1"></a>tooth</span></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="reading-data.html#cb250-1" aria-hidden="true" tabindex="-1"></a>tooth <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/tooth_growth.csv&quot;</span>, <span class="at">row.names =</span> <span class="dv">1</span>)</span>
+<span id="cb250-2"><a href="reading-data.html#cb250-2" aria-hidden="true" tabindex="-1"></a>tooth</span></code></pre></div>
 <pre><code>##     len supp dose
 ## 34  9.7   OJ  0.5
 ## 16 17.3   VC  1.0
@@ -410,43 +434,43 @@ BRWA    8294    13060</code></pre>
 ## 60 23.0   OJ  2.0
 ## 15 22.5   VC  1.0
 ## 9   5.2   VC  0.5</code></pre>
-<div id="read.csv2" class="section level4" number="4.1.2.1">
-<h4><span class="header-section-number">4.1.2.1</span> read.csv2</h4>
+<div id="read.csv2" class="section level4" number="4.2.2.1">
+<h4><span class="header-section-number">4.2.2.1</span> read.csv2</h4>
 <p>HUOM: Koska Suomessa pilkkua käytetään desimaalierottimena, kenttien rajaaminen pilkulla ei toimi. Käytännössä tämä näkyy siten, että suomenkielinen Excel tallentaa .csv-tiedosto oletuksena muodossa, jossa desimaalierottimena on pilkku ja kenttien välissä puolipilkku “;”. Jos siis olet tallentanut Excelistä taulukon .csv-muotoon ja sen lukeminen R:ään aiheuttaa hankaluuksia, kyse on todennäköisesti erotinmerkistä. Onneksi R:ssä on valmiina funktio <code>read.csv2</code>, joka osaa lukea puolipilkulliset .csv-tiedostot oikein.</p>
 </div>
 </div>
 </div>
-<div id="datakehikon-tarkastelu" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Datakehikon tarkastelu</h2>
+<div id="datakehikon-tarkastelu" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Datakehikon tarkastelu</h2>
 <p>Kun data on luettu sisään R:ään, kannattaa aina tarkistaa, että kaikki data on luettu oikein. Tässä muutama vinkki datakehikon tutkimiseen, joista osaa käsiteltiin jo <a href="data-types.html#data-frame">datakehikko</a>-kappaleessa:</p>
 <p><code>dim</code> antaa data framen dimensiot, eli rivien ja sarakkeiden määrän.<br />
 <code>View</code> avaa data framen erilliseen ikkunaan, jossa sitä voi tarkastella. Suositellaan vain pienemmille data frameille <!-- Santtu: mielestäni view pitäisi jättää mainitsematta -->
 <code>str</code> kertoo rivien ja sarakkeiden määrät sekä kaikkien sarakkeiden luokat. Kätevä tapa tarkistaa mm. että lukuja sisältävät sarakkeet eivät ole vahingossa muuttuneet merkkijonoiksi.
 <code>table</code> on kätevä kategoristen sarakkeiden tutkimiseen. Se kertoo, kuinka monta havaintoa muuttujan arvoilla on. <code>table</code> voi ottaa vastaan myös kaksi kategorista muuttujaa, ja laskee jokaiselle muuttujien arvojen yhdistelmälle havaintojen lukumäärän. <!-- Santtu: ristiintaulukko? pitäisikö mainita. --></p>
 <p>Katsotaan, mitä <code>str</code> kertoo juuri lukemastamme tooth-datasta.</p>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="reading-data.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tooth)</span></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="reading-data.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(tooth)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    10 obs. of  3 variables:
 ##  $ len : num  9.7 17.3 24.8 26.4 27.3 32.5 17.3 23 22.5 5.2
 ##  $ supp: chr  &quot;OJ&quot; &quot;VC&quot; &quot;OJ&quot; &quot;OJ&quot; ...
 ##  $ dose: num  0.5 1 2 1 2 2 1 2 1 0.5</code></pre>
 <p>Kuten näimme aiemmin, mukana on 10 havaintoa ja 3 muuttujaa. len ja dose ovat luokkaa numeric eli desimaalilukuja, ja supp on luokkaa factor. Factor-tietotyyppiä käsitellään enemmän lineaaristen mallien yhteydessä, mutta sillä merkitään usein kategorisia muuttujia.</p>
 <p>Lasketaan seuraavaksi, kuinka monelle marsulle annettiin appelsiinimehua ja kuinka monelle askorbiinihappoa.</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="reading-data.html#cb251-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tooth<span class="sc">$</span>supp)</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="reading-data.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tooth<span class="sc">$</span>supp)</span></code></pre></div>
 <pre><code>## 
 ## OJ VC 
 ##  5  5</code></pre>
 <p>Kumpaakin annostelutapaa käytettiin siis viisi kertaa. Voimme myös selvittää, miten eri annokset jakautuvat annostelutavan suhteen:</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="reading-data.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tooth<span class="sc">$</span>supp, tooth<span class="sc">$</span>dose)</span></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="reading-data.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(tooth<span class="sc">$</span>supp, tooth<span class="sc">$</span>dose)</span></code></pre></div>
 <pre><code>##     
 ##      0.5 1 2
 ##   OJ   1 1 3
 ##   VC   1 3 1</code></pre>
 <p>Appelsiinimehuna annettiin siis 0.5 mg ja 1 mg annoksia kumpaakin 1 kappale, ja 2 mg annoksia 3 kappaletta.</p>
-<div id="rn-sisäänrakennetut-datasetit" class="section level3" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> R:n sisäänrakennetut datasetit</h3>
+<div id="rn-sisäänrakennetut-datasetit" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> R:n sisäänrakennetut datasetit</h3>
 <p>R:ssä on monta sisäänrakennettua (built-in) datasettiä. Näitä on kätevää käyttää nopeaan testaamiseen, ja ne vilahtelevatkin usein R-oppaissa. Esimerkiksi aikaisempi odontoblastien pituuksia sisältävä datasettimme on oikeastaan pieni otos R:n sisäisestä datasetistä ToothGrowth.</p>
 <p>R:n sisäiset datasetit ovat koko ajan käytettävissä, vaikka ne eivät näy RStudion ympäristössä (Environment). Voimme esimerkiksi katsoa, millainen rakenne kokonaisella ToothGroth-datasetillä on:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="reading-data.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ToothGrowth)</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="reading-data.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ToothGrowth)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    60 obs. of  3 variables:
 ##  $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
 ##  $ supp: Factor w/ 2 levels &quot;OJ&quot;,&quot;VC&quot;: 2 2 2 2 2 2 2 2 2 2 ...
@@ -454,17 +478,17 @@ BRWA    8294    13060</code></pre>
 <p>R:n datasettejä voi käyttää moneen eri tarkoitukseen, kuten datan visualisoinnin tai tilastollisten toimenpiteiden testaamiseen. Listan kaikista R:n dataseteistä saa komennolla <code>data()</code>. Tarkempia tietoja datasetistä saa help-sivulta kuten funktioden tapauksessa, esimerkiksi <code>?ToothGrowth</code></p>
 </div>
 </div>
-<div id="muut-tiedostot" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Muut tiedostot</h2>
-<div id="excel" class="section level3" number="4.3.1">
-<h3><span class="header-section-number">4.3.1</span> Excel</h3>
+<div id="muut-tiedostot" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Muut tiedostot</h2>
+<div id="excel" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Excel</h3>
 <!-- Santtu: Vaihdettu readxl ja writexl -->
 <p>Excelin käyttämiä .xlsx-tiedostoja voi lukea suoraan R:ään, vaikka jossain netissä olevissa ohjeissa suositellaan niiden muuntamista ensin .csv-muotoon. Tätä varten pitää asentaa <strong>readxl</strong>-paketti, minkä voi tehdä RStudion Packages-valikoksta tai suoraan komennolla <code>install.packages("readxl")</code>. Paketin funktiolla <code>read_xlsx()</code> voi lukea sisään .xlsx-tiedostoja, tai yksikkäitisä taulukon sivuja. Excel-tiedostojen kirjoittamiseen löytyy myös vastaava paketti <strong>writexl</strong>.</p>
 <p>Vaihtoehtoinen paketti Excel-tiedostojen lukemiseen on <strong>openxlsx</strong>, jolla voi sekä lukea että kirjoittaa .xlsx-tiedostoja, mutta se on tyypillisesti hitaampi <em>readxl</em> ja <em>writexl</em> paketteihin verattuna.</p>
 <!-- HUOM: .xlsx-tiedostoja varten on olemassa myös xlsx-paketti, mutta se tarvitsee Javaa ja erilaisten Java- ja R-versioiden kanssa voi tulla yhteensopivuusongelmia. Suosittelen siis openxlsx-pakettia, se on toiminut hyvin. -->
 </div>
-<div id="spss" class="section level3" number="4.3.2">
-<h3><span class="header-section-number">4.3.2</span> SPSS</h3>
+<div id="spss" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> SPSS</h3>
 <p>Eri tutkimusryhmissä dataa säilytetään usein SPSS-tiedostoissa (.sav). SPSS-tiedostojen käsittelyyn voi käyttää <strong>haven</strong>-paketin funktioita <code>read_sav</code> ja <code>write_sav</code>. <strong>haven</strong>-paketti sisältää myös funktiot Stata- ja SAS-tiedostoille.</p>
 <p>SPSS-tiedostoja voi lukea myös <strong>foreign</strong>-paketin avulla, mutta ainakin minulla on parempia kokemuksia haven-paketista. <strong>haven</strong> on myös osa tidyverse-pakettikokoelmaa, joten oletan sen pysyvän hyvin ajan tasalla jatkossakin.</p>
 
