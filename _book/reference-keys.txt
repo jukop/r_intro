@@ -113,7 +113,6 @@ while-slimukat
 sisäkkäiset-silmukat-nested-loops
 iterointiin-puuttuminen-next-ja-break
 apply-funktiot
-vinkkejä-tehtäviin
 numerical
 optimointi
 yksi-parametri

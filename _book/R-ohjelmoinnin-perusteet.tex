@@ -117,7 +117,7 @@
 
 \title{R-ohjelmoinnin perusteet}
 \author{Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021)}
-\date{11.08.2021}
+\date{27.08.2021}
 
 \begin{document}
 \maketitle
@@ -2203,6 +2203,42 @@ Tässä esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttava
 
 Lopussa käydään myös läpi tapoja lukea taulukkolaskenta- (Excel), SPSS- ja SAS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin johonkin toiseen muotoon.
 
+\hypertarget{hakemistopolut-ja-tiedostopuxe4uxe4tteet}{%
+\section{Hakemistopolut ja tiedostopäätteet}\label{hakemistopolut-ja-tiedostopuxe4uxe4tteet}}
+
+\hypertarget{hakemistopolut}{%
+\subsection{Hakemistopolut}\label{hakemistopolut}}
+
+Jotta aineiston lataus tiedostosta onnistuu, tulee käyttäjän olla tietoinen siitä, missä hakemistopolussa eli kansiossa R työskentelee lataushetkellä. R:llä on siis koko ajan jokin hakemistopolku, johon se viittaa. R:n käyttämän hakemistopolun saat selville komennolla \texttt{getwd()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "C:/Users/jukop/Documents"
+\end{verbatim}
+
+Minulla näyttäisi siltä, että R on oletuksena hakemistossa C:/Users/jukop/Documents. Jos olen purkanut kurssilla tarvittavan datasets.zip -tiedoston aineistot kansioon \texttt{C:/Users/jukop/Documents/datasets}, niin minun kannattaa vaihtaa R käyttämään kyseistä hakemistoa. Se tapahtuu näin:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"C:/Users/jukop/Documents/datasets"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{setwd} ei tulosta mitään, jos kansion vaihtaminen onnistuu. Voit vielä \texttt{getwd()}-komennolla uudelleen tarkastaa, että hakemisto todella vaihtui.
+\textbf{\emph{Vinkki!}} Ellet tiedä mikä on tarkka hakemistopolku, johon olet purkanut tiedostot, niin se onnistuu klikkaamalla Windowsissa tiedostoselaimen osoiteriviä. Voit kopioida hakemistopolun siitä, mutta vaihda kuitenkin kenoviivat (\texttt{\textbackslash{}}) kauttaviivoiksi (\texttt{/}). Kenoviivoilla on R:ssä erityismerkitys merkkijonoissa, joten ne eivät kelpaa sellaisenaan. Kaksinkertainen kenoviiva (\texttt{\textbackslash{}\textbackslash{}}) toimisi myös.
+\includegraphics{files/03-reading_data/windows_show_file_path2.png}
+
+\hypertarget{tiedostopuxe4uxe4tteet}{%
+\subsection{Tiedostopäätteet}\label{tiedostopuxe4uxe4tteet}}
+
+Windows ei oletuksena nykyisin näytä tiedostopäätteitä. Ne kannattaakin asettaa näkymään tiedostoselaimen avulla. Kyseinen asetus löytyy tiedostoselaimen View-välilehdeltä kohdasta Show/Hide valinta File extensions. Merkitse kyseinen kohta valituksi, jolloin näet tiedostopäätteet, kuten kuvassa. Nyt on helppoa käsittää, kun opettaja puhuu CSV-tiedostoista, että niiden tiedostopääte on .csv.
+\includegraphics{files/03-reading_data/windows_show_file_extensions2.png}
+
 \hypertarget{tekstitiedostot}{%
 \section{Tekstitiedostot}\label{tekstitiedostot}}
 
@@ -3255,7 +3291,7 @@ Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista 
 
 Alla ovat kuvaajat ensimmäisestä kolmesta funktiosta standardinormaalijakaumalle (pääte \texttt{norm}):
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-95-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-97-1.pdf}
 
 \hypertarget{esimerkki-normaalijakauma}{%
 \section{Esimerkki: normaalijakauma}\label{esimerkki-normaalijakauma}}
@@ -3275,7 +3311,7 @@ Otetaan muutama käytännön esimerkki. Oletetaan, että suomalaisten miesten su
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-96-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-98-1.pdf}
 
 Aikuisten saantisuositus on enintään 5 grammaa suolaa päivässä. Kuinka moni suomalainen mies syö tämän jakauman mukaan sopivasti suolaa? Vastaus saadaan kertymäfunktiosta (\(P(X \leq 5)\)) \texttt{pnorm}-funktion avulla.
 
@@ -3385,7 +3421,7 @@ Korkean tason piirtofunktioista ylivoimaisesti yleisin on \texttt{plot}. \texttt
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-100-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-102-1.pdf}
 
 \texttt{plot}-funktiolle annetaan siis kaksi yhtä pitkää vektoria, joissa ovat pisteiden \(x\)- ja \(y\)-koordinaatit. Halutessaan kuvalle voi antaa otsikon (title) ja nimetä uudestaan kuvan akselit (axis labels). Tämä onkin usein hyvä idea, sillä R:n muuttujien nimissä ei saa olla välilyöntejä tai erikoismerkkejä, mutta usein näiden käyttö akselien nimissä on hyvin informatiivista.
 
@@ -3397,7 +3433,7 @@ Korkean tason piirtofunktioista ylivoimaisesti yleisin on \texttt{plot}. \texttt
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-101-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-103-1.pdf}
 
 \texttt{plot}-funktiolle voi antaa muitakin argumentteja, jotka säätävät mm. pisteiden väriä, kokoa ja muotoa, akselien rajoja jne. Yleisiä kuvaajien parametreja voi säätää funktiolla `\texttt{par} (graphical parameters).
 
@@ -3418,7 +3454,7 @@ Tässä on esimerkkejä muutamista muista yleisistä korkean tason funktioista:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-102-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-104-1.pdf}
 
 Toinen tapa kuvata jatkuvan muuttujan jakaumaa on viiksilaatikko (joskus myös laatikko-viikset -kuvaaja), joita piirretään \texttt{boxplot}-funktiolla:
 
@@ -3430,7 +3466,7 @@ Toinen tapa kuvata jatkuvan muuttujan jakaumaa on viiksilaatikko (joskus myös l
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-103-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-105-1.pdf}
 
 Vastaavasti diskreetin muuttujan jakaumaa voi kuvata pylväsdiagrammilla käyttäen \texttt{barplot}-funktiota. Alla on esimerkki opiskelijoiden kotipaikkakuntien jakaumasta. Tässä tulee myös tutuksi uusi vektorien ominaisuus: nimeäminen. Nimettyjen vektorien (named vectors) alkioilla on järjestyslukujen lisäksi nimet. Nimet annetaan olla olevaan tyyliin \texttt{nimi\ =\ alkio}. Nimetyt vektori käyttäytyvät aivan kuin tavalliset vektorit, mutta niitä voi indeksoida myös nimien avulla, ja jotkut funktiot, kuten barplot, käyttävät hyödyksi alkioiden nimiä. Nimettyjen vektorien käyttö ei ole kurssin ydinasioita, mutta on joskus hyvin kätevä temppu osata.
 
@@ -3466,7 +3502,7 @@ Vastaavasti diskreetin muuttujan jakaumaa voi kuvata pylväsdiagrammilla käytt�
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-104-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-106-1.pdf}
 
 \hypertarget{alemman-tason-grafiikkatoiminnot}{%
 \section{Alemman tason grafiikkatoiminnot}\label{alemman-tason-grafiikkatoiminnot}}
@@ -3483,7 +3519,7 @@ Otetaan esimerkiksi alussa nähty kuvaaja autojen pysähtymismatkoista ja lisät
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-105-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-107-1.pdf}
 
 Lisätään kuvaajan jarrutusmatkat liukkaalla kelillä. Uusia pisteitä voi piirtää \texttt{points}-funktiolla, jolle annetaan x- ja y-koordinaatit vektoreina ihan kuin \texttt{plot}-funktiollekin.
 
@@ -3497,7 +3533,7 @@ Lisätään kuvaajan jarrutusmatkat liukkaalla kelillä. Uusia pisteitä voi pii
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-106-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-108-1.pdf}
 
 Ylläolevassa kuvaajassa on kaksi ongelmaa: ylimmät pisteet eivät näy, koska kuvaajan y-akseli loppuu kesken. \(y\)-akseli on piirretty alkuperäisten jarrutusmatkojen pohjalta, ja koska liukkaalla kelillä jarrutus kestää pidempään, uudet pisteet eivät mahdu kuvaajaan. Toinen ongelma on se, että pisteitä ei voi erottaa toisistaan.
 
@@ -3516,7 +3552,7 @@ Lisäksi piirretään selvyyden vuoksi pisteet eri värisinä ja eri kuvioilla. 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-107-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-109-1.pdf}
 
 Nyt kuvaaja alkaa jo näyttää paremmalta, mutta kuvaajasta ei vielä voi päätellä, mitä eri väriset pisteet tarkoittavat. Lisätään siis kuvaajaan selite \texttt{legend}-komennolla. Selitteelle määritetään paikka kuvaajassa \texttt{x} ja \texttt{y} argumenteilla (vasemman yläkulman koordinaatit). Sen jälkeen annetaan selitetekstit (\texttt{legend}), sekä selitteen muodot ja värit (\texttt{pch} ja \texttt{col}, kuten aiemmin). HUOM! Selitteen symbolit ja värit on itse osattava laittaa oikeaan järjestykseen. Selitteen tekstit annetaan järjestyksessä ylhäältä alas, ja piirtomerkit tulee antaa samassa järjestyksessä.
 
@@ -3536,7 +3572,7 @@ Nyt kuvaaja alkaa jo näyttää paremmalta, mutta kuvaajasta ei vielä voi pää
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-108-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-110-1.pdf}
 
 Tuunataan kuvaajaa vielä hiukan, ja lisätään siihen käyrä kuvaamaan jarrutusmatkan ennustetta \texttt{lines}-funktiolla.
 
@@ -3578,7 +3614,7 @@ Alla olevassa koodissa lasketaan ensin \texttt{lm}-funktion avulla sopivat param
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-110-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-112-1.pdf}
 
 Seuraavaksi voidaan värittää käyrät samoilla väreillä kuin pisteet, ja lisätä niille omat selitteet. Tässä vaiheessa selitteen tekemisestä tulee jo melko monimutkaista, sillä selitteessä on mukana pisteitä ja käyriä. Tästä syystä selitteen argumentteihin pitää laittaa puuttuvia arvoja \texttt{pch} ja \texttt{lty}-argumenteille, koska selitteen ensimmäiset rivit eivät viittaa mihinkään käyrään, vaan pelkästään pisteisiin ja vastaavasti kaksi alinta riviä viittaavat vain käyriin.
 
@@ -3605,7 +3641,7 @@ Seuraavaksi voidaan värittää käyrät samoilla väreillä kuin pisteet, ja li
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-111-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-113-1.pdf}
 
 Kuvaajamme on melkein valmis iltapäivälehteen muistuttamaan liukkaiden kelien vaaroista, mutta jotta siitä tulisi oikein säväyttävä, siinä pitää toki olla tekstiä! Lisätään siis vielä pieni tekstin pätkä, joka korostaa eroa liukkaan ja kuivan kelin välillä. Tekstiä voi lisätä \texttt{text}-funktiolla, jolle annetaan tuttuun tapaan \texttt{x} ja \texttt{y}-argumentit, joilla määritetään tekstin paikka ja \texttt{labels} määrittää itse tekstin (kaikki argumentit voivat olla myös pidempiä vektoreita, jolloin tulee useampi teksti eri paikkoihin). Lisäksi parametrillä \texttt{adj} (adjust) voi hienosäätää tekstin paikkaa. \texttt{adj} on vektori, jossa on hienosäätöarvot \(x\)- ja \(y\)-suunnissa.
 
@@ -3634,7 +3670,7 @@ Kuvaajamme on melkein valmis iltapäivälehteen muistuttamaan liukkaiden kelien 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-112-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-114-1.pdf}
 Kuvaajamme on nyt valmis!
 
 \hypertarget{kuvaajien-piirtuxe4minen-kuxe4ytuxe4nnuxf6ssuxe4}{%
@@ -4033,7 +4069,7 @@ Muutetaan ensin cars-datasetin muuttujat meille tuttuihin yksiköihin, ja piirre
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-126-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-128-1.pdf}
 
 Autojen välillä on eroja, mutta kuten voi odottaa, suuremmilla nopeuksilla auton pysähtymismatka kasvaa. Käytetään seuraavaksi R:n funktiota \texttt{lm}, jolla voidaan sovittaa dataan lineaarinen malli:
 
@@ -4062,7 +4098,7 @@ Lineaarisesta mallista saadaan irti paljon tietoa, tärkeimpinä mallin regressi
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-128-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-130-1.pdf}
 
 \hypertarget{tarkempia-tietoja-mallista}{%
 \section{Tarkempia tietoja mallista}\label{tarkempia-tietoja-mallista}}
@@ -4159,7 +4195,7 @@ Kun lineaarinen malli on estimoitu, sen perusteella voidaan myös ennustaa arvoj
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-131-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-133-1.pdf}
 
 Kuten huomataan, ennustetut arvot ovat täsmälleen käyrän päällä.
 
@@ -4189,7 +4225,7 @@ Korrelaation kahden vektorin välillä voi R:ssä laskea funktiolla \texttt{cor}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-132-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-134-1.pdf}
 
 Tässä esimerkissä nähdään hyvin Pearsonin ja Spearmanin korrelaatiokertoimien ero. Koska Indometasiinin konsentraatio laskee eksponentiaalisesti, ei lineaarisesti, Pearsonin korrelaatiokerroin on ``vain'' -0.7, kun taas Spearmanin korrelaatiokerroin -0.97 vastaa lähes täydellistä negatiivista korrelaatiota.
 
@@ -4424,7 +4460,7 @@ Joillain funktioilla ei ole ollenkaan argumentteja. Esimerkiksi R:n sisäiset fu
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2021-08-11 13:56:52 EEST"
+## [1] "2021-08-27 13:01:07 EEST"
 \end{verbatim}
 
 Itse tehdyt funktiot voivat myös toimia ilman argumentteja. Niitä käytetään usein R-istunnon tilan, koodia ajavan tietokoneen ominaisuuksien tai ajan selvittämiseen. Tämä melko hyödytön esimerkkifunktio palauttaa tämän dokumentin kirjoittajan nimen:
@@ -4547,7 +4583,7 @@ Itse tehty funktio palauttaa \texttt{NULL}, jos viimeinen komento palauttaa \tex
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-147-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-149-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5518,13 +5554,10 @@ Tarkistetaan tulos laskemalla sarakkeiden keskiarvot ja varianssit. Tämä voida
 
 Huomaa, että sarakkeiden keskiarvot eivät ole täsmälleen 0. Tämä johtuu R:n rajallisesta numeerisesta tarkkuudesta. Käytännössä itseisarvoltaan tätä luokkaa olevat arvot ovat nollia.
 
-\hypertarget{vinkkejuxe4-tehtuxe4viin}{%
-\section{Vinkkejä tehtäviin}\label{vinkkejuxe4-tehtuxe4viin}}
-
-Tämän viikon tehtävissä pitää muokata funktioita, jotka ovat erillisissä tiedostoissa. Jotta tehtävän palautus onnistuu, funktio pitää muokata tässä tiedostossa. Funktio kannattaa kuitenkin kopioida talteen toiseen tiedostoon, sillä tehtävän palauttaminen pyyhkii tiedoston.
-
 \hypertarget{numerical}{%
 \chapter{Numeeriset menetelmät}\label{numerical}}
+
+\textbf{Tätä osiota ei tarvitse opiskella Itä-Suomen yliopiston kurssilla!}
 
 Monilla käytännön matemaattisilla ongelmilla ei ole suljetussa muodossa esitettävissä olevaa ratkaisua. Tällöin joudutaan tyypillisesti turvautumaan numeerisiin menetelmiin, joiden avulla pyritään tuottamaan likiarvoinen ratkaisu ongelmaan. R:stä löytyy useita valmiita funktioita erilaisiin numeerista laskentaa vaativiin ongelmiin. Tyypillisimpiä tapauksia ovat jonkin funktion minimin tai maksimin etsiminen, funktion juurten etsintä ja integrointi.
 
@@ -5555,7 +5588,7 @@ Etsitään nyt funktion \(g(x) = x^2 + 2x + 2\) minimi. Hakuvälin \texttt{inter
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-182-1.pdf}
+\includegraphics{R-ohjelmoinnin-perusteet_files/figure-latex/unnamed-chunk-184-1.pdf}
 
 Kuvan perusteella minimiarvo saavutetaan pisteessä \(x = -1\). Käytetään nyt \texttt{optimize} funktiota:
 

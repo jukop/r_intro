@@ -32,7 +32,7 @@
   
 <link rel="prev" href="linear-models.html"/>
 <link rel="next" href="ifelse.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -311,7 +311,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="loops.html"><a href="loops.html#sisäkkäiset-silmukat-nested-loops"><i class="fa fa-check"></i><b>13.3</b> Sisäkkäiset silmukat (nested loops)</a></li>
 <li class="chapter" data-level="13.4" data-path="loops.html"><a href="loops.html#iterointiin-puuttuminen-next-ja-break"><i class="fa fa-check"></i><b>13.4</b> Iterointiin puuttuminen: next ja break</a></li>
 <li class="chapter" data-level="13.5" data-path="loops.html"><a href="loops.html#apply-funktiot"><i class="fa fa-check"></i><b>13.5</b> Apply-funktiot</a></li>
-<li class="chapter" data-level="13.6" data-path="loops.html"><a href="loops.html#vinkkejä-tehtäviin"><i class="fa fa-check"></i><b>13.6</b> Vinkkejä tehtäviin</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="numerical.html"><a href="numerical.html"><i class="fa fa-check"></i><b>14</b> Numeeriset menetelmät</a>
 <ul>
@@ -349,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="funktion-käsite" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> Funktion käsite</h2>
 <p>Funktio on nimetty kokonaisuus järjesteltyä ja uudelleenkäytettävää koodia, jonka tarkoitus on suorittaa yksi tarkkaan määrätty tehtävä. Funktioilla on syöte (input) ja tulos (output). Funktion tehtävä on palauttaa (return) syötteen perusteella laskettu tulos. Alla olevassa kuvassa näkyvät funktion neljä osaa: nimi, syöte, toiminnallisuus ja tulos.</p>
-<p><img src="files/06-functions/funktio_käsite.png" /></p>
+<p><img src="files/06-functions/funktio_k%C3%A4site.png" /></p>
 <p>Otetaan esimerkiksi kaksi funktiota: “Keskiarvo” ottaa syötteenä halutun määrän lukuja, ja laskee niiden keskiarvon. “Vastinjuoste” ottaa syötteenä DNA-juosteen ja palauttaa sen vastinjuosteen.</p>
 <p><img src="files/06-functions/funktio_esimerkit.png" /></p>
 <p>Funktioilla voi olla myös erityyppisiä syötteitä. Voitaisiin esimerkiksi määritellä funktio, jolle annettaisiin syötteenä henkilön ikä, pituus, paino, sekä elintapatietoja, ja funktio laskisi näiden pohjalta eliniänodotteen. Yksittäisestä funktion syötteestä käytetään tavallisesti nimitystä “argumentti”.</p>
@@ -360,7 +359,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.2.1</span> Funktioiden määrittely</h3>
 <p>Tähän mennessä olemme jo käyttäneet monia R-funktioita, eikä meidän ole tarvinnut miettiä niiden toimintaa kovin syvällisesti. Mahdolliset virhetilanteet on kuitenkin paljon helpompi ratkaista, kun ymmärtää miten funktiot toimivat R:ssä.</p>
 <p>R-funktioita luodaan <code>function</code>-komennolla. Funktion luominen näyttää tältä:</p>
-<p><img src="files/06-functions/funktio_koodi_väri.png" /></p>
+<p><img src="files/06-functions/funktio_koodi_v%C3%A4ri.png" /></p>
 <p>R-funktiot siis koostuvat samoista osista kuin yllä esitellyt funktiot.
 - Funktion nimi nimeää muuttujan, johon funktio tallennetaan.
 - Funktion syöte koostuu argumenteista
@@ -442,7 +441,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.2.3</span> Funktio ilman argumentteja</h3>
 <p>Joillain funktioilla ei ole ollenkaan argumentteja. Esimerkiksi R:n sisäiset funktiot <code>Sys.time</code> ja <code>Sys.Date</code> palauttavat tämänhetkisen ajan ja päivämäärän, eivätkä tarvitse argumentteja.</p>
 <div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="functions.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.time</span>()</span></code></pre></div>
-<pre><code>## [1] &quot;2021-08-27 12:00:03 EEST&quot;</code></pre>
+<pre><code>## [1] &quot;2021-08-27 13:00:59 EEST&quot;</code></pre>
 <p>Itse tehdyt funktiot voivat myös toimia ilman argumentteja. Niitä käytetään usein R-istunnon tilan, koodia ajavan tietokoneen ominaisuuksien tai ajan selvittämiseen. Tämä melko hyödytön esimerkkifunktio palauttaa tämän dokumentin kirjoittajan nimen:</p>
 <div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="functions.html#cb462-1" aria-hidden="true" tabindex="-1"></a>author <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
 <span id="cb462-2"><a href="functions.html#cb462-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="st">&quot;Anton Klåvus&quot;</span>)</span>
