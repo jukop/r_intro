@@ -50,6 +50,7 @@ data-wrangling
 data-frame-wrangling
 datakehikon-käsittely
 osajoukkojen-valinta
+datakehikon-ja-vektorin-järjestäminen
 faktorit
 factor-extra
 statistics
@@ -97,6 +98,7 @@ palautus-return
 usean-arvon-palautus
 palautus-ilman-return-käskyä
 funktio-ilman-tulosta
+funktion-lyhytmuoto
 ifelse
 loogiset-operaattorit
 negaatio

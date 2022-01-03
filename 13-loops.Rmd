@@ -1,9 +1,6 @@
 # Toistorakenteet (loops) {#loops}
 
-Toistorakenne toistaa annettua koodia. Toistorakenteet ovat ehtorakenteiden ohella ohjelmoinnin perusrakennuspalikoita. Tässä osiossa tutustutaan kahteen yleisimpään tapaukseen eli for ja while -silmukoihin. Mukana on myös maininta silmukoiden korvaamisesta R:n apply-funktioilla. Lopusta löytyy lisäksi vinkkejä tämän viikon tehtäviin.
-<!-- TODO: viikko -->
-
-Lisäksi tällä viikolla puhutaan R-paketeista.
+Toistorakenne toistaa annettua koodia. Toistorakenteet ovat ehtorakenteiden ohella ohjelmoinnin perusrakennuspalikoita. Tässä osiossa tutustutaan kahteen yleisimpään tapaukseen eli for ja while -silmukoihin. Mukana on myös maininta silmukoiden korvaamisesta R:n apply-funktioilla.
 
 ## For-silmukka
 
@@ -15,9 +12,9 @@ for (i in seq(3, 7)) {
 }
 ```
 
-for-silmukassa määritetään siis ensin iteraatiomuuttuja eli ```i``` ja sen saamat arvot eli ```seq(3, 7)``` komennolla ```in```. Sen jälkeen hakasulkeiden sisältämä koodi toistetaan jokaiselle ```i```:n arvolle. Tässä tapauksessa yksinkertaisesti tulostetaan muuttujan ```i``` arvo. Huomaa, että for-silmukan ```ìn``` ei ole sama asia kuin looginen operaattori ```%in%```.
+for-silmukassa määritetään siis ensin iteraatiomuuttuja eli `i` ja sen saamat arvot eli `seq(3, 7)` komennolla `in`. Sen jälkeen hakasulkeiden sisältämä koodi toistetaan jokaiselle `i`:n arvolle. Tässä tapauksessa yksinkertaisesti tulostetaan muuttujan `i` arvo. Huomaa, että for-silmukan `ìn` ei ole sama asia kuin looginen operaattori `%in%`. `in` on R-kielen varattu symboli, jolloin esimerkiksi muuttuujaa nimeltä `in` ei ole mahdollista luoda.
 
-Usein halutaan kuitenkin käydä läpi jonkin vektorin tai matriisin arvoja. Alla oleva koodi laskee matriisin X rivien summan (tähän voisi myös käyttää valmista funktiota ```rowSums()```). Aluksi alustetaan tyhjä vektori, johon rivien summat tallennetaan. Sen jälkeen käydään läpi matriisin rivit ja tallennetaan rivin summa alussa alustettuun vektoriin.
+Usein halutaan käydä läpi jonkin vektorin tai matriisin arvoja. Alla oleva koodi laskee matriisin `X` rivien summan (tähän voisi myös käyttää valmista funktiota `rowSums()`). Aluksi alustetaan tyhjä vektori, johon rivien summat tallennetaan. Sen jälkeen käydään läpi matriisin rivit ja tallennetaan rivin summa alussa alustettuun vektoriin.
 
 ```{r, eval=FALSE}
 # Create matrix X
@@ -37,8 +34,7 @@ row_sums
 rowSums(X)
 ```
 
-For-silmukalla voi myös toteuttaa viime kerralla tehdyn funktion, joka poimii DNA:n emäksistä vain sytosiinit ja guaniinit. Tällä kertaa apufunktiota ```is_cg()``` ei tarvitse vektorisoida, koska for-silmukka käy läpi kaikki emäkset. Tämä silmukka voidaan toteuttaa kahdella tavalla. Ensimmäinen tapa on käyttää iteraatiomuuttujana i:tä, joka käy läpi iteraation ykkösestä emäsvektroin pituuteen:
-
+For-silmukalla voi myös toteuttaa viime kerralla tehdyn funktion, joka poimii DNA:n emäksistä vain sytosiinit ja guaniinit. Tällä kertaa apufunktiota `is_cg()` ei tarvitse vektorisoida, koska for-silmukka käy läpi kaikki emäkset. Tämä silmukka voidaan toteuttaa kahdella tavalla. Ensimmäinen tapa on käyttää iteraatiomuuttujana `i`:tä, joka käy läpi iteraation ykkösestä emäsvektroin pituuteen:
 
 ```{r, eval=FALSE}
 # Helper function
@@ -88,7 +84,7 @@ my_bases <- c("A", "C", "C", "T", "G", "T")
 pick_cg2(my_bases)
 ```
 
-Iteraatiomuuttujan voi siis nimetä haluamallaan tavalla, sen ei aina tarvitse olla i. Jos kuitenkin iteraatiomuuttujaan tallennetaan vain yksi luku, suosittelen vahvasti käyttämään i:tä. Tämä on hyvin vakiintunut tapa ohjelmointikielestä ja ohjelmoijasta riippumatta, vaikka muutoin muuttujien nimeämiseen on erilaisia koulukuntia riippuen ohjelmoijan taustasta. Jos taas iteroidaan vektorin nimeltä bases yli, on luonnollinen valinta iteraatiomuuttujan nimeksi base.
+Iteraatiomuuttujan voi siis nimetä haluamallaan tavalla, sen ei aina tarvitse olla `i`. Jos kuitenkin iteraatiomuuttujaan tallennetaan vain yksi luku, suosittelen vahvasti käyttämään `i`:tä. Tämä on hyvin vakiintunut tapa ohjelmointikielestä ja ohjelmoijasta riippumatta, vaikka muutoin muuttujien nimeämiseen on erilaisia koulukuntia riippuen ohjelmoijan taustasta. Jos taas iteroidaan vektorin nimeltä bases yli, on luonnollinen valinta iteraatiomuuttujan nimeksi base.
 
 ![](files/08-functions/naming.jpg)
 
@@ -156,8 +152,7 @@ Tämä data on tiedostossa exons.csv, joten luetaan se R:ään:
 exons <- read.csv("exons.csv", row.names = 1)
 ```
 
-Etsitään seuravaksi kaikki eliöparit, joiden geenien etäisyys on alle 4 ja lisätään parit data frameen, jossa on kaksi saraketta, ja jokainen rivi edustaa yhtä eliöparia. Käytetään tähän kahta sisäkkäistä for-silmukkaa. Toisen silmukan iteraatiomuuttujan nimi on yleensä j, seuraavan k ja niin edelleen. Käydään exons läpi niin, että i on rivin numero, ja j sarakkeen numero, ja etsitään sopivat parit.
-
+Etsitään seuravaksi kaikki eliöparit, joiden geenien etäisyys on alle 4 ja lisätään parit data frameen, jossa on kaksi saraketta, ja jokainen rivi edustaa yhtä eliöparia. Käytetään tähän kahta sisäkkäistä for-silmukkaa. Toisen silmukan iteraatiomuuttujan nimi on yleensä `j`, seuraavan `k` ja niin edelleen. Käydään exons läpi niin, että `i` on rivin numero, ja `j` sarakkeen numero, ja etsitään sopivat parit.
 
 ```{r, eval=FALSE}
 # Initialize empty data frame for the pairs
@@ -205,17 +200,16 @@ close_pairs
 ```
 
 <!-- Santtu: yläkolmion? yläkolmiomatriisin? diagonaaleja on vain yksi. -->
-Nyt toisen silmukan läpi käymät j:n arvot riippuvat i:n arvosta. Tämä koodi käy läpi taulukon ylemmän diagonaalin, eli "yläpuolen". Ensimmäisellä kierroksella j käy läpi arvot 1-7, seuraavalla kierroksella 2-7, sitten 3-7 jne. Vastaavasti voitaisiin myös käydä läpi alempi diagonaali komennolla ```for(j in seq(1, i)```.
+Nyt toisen silmukan läpi käymät j:n arvot riippuvat i:n arvosta. Tämä koodi käy läpi taulukon ylemmän diagonaalin, eli "yläpuolen". Ensimmäisellä kierroksella `j` käy läpi arvot 1--7, seuraavalla kierroksella 2--7, sitten 3--7 jne. Vastaavasti voitaisiin myös käydä läpi alempi diagonaali komennolla `for(j in seq(1, i)`.
 
 <!-- Santtu: tässä kohtaa voi herätä kysymys, että miksi edellisessä kohdassa kahteen kertaan esiintyviä iterointeja ei sivuutettu nextillä, tai miksi iterointia muokatessa ei huomioitu diagonaalia valmiiksi -->
-Emme kuitenkaan voi olla vieläkään tyytyväisä tulokseen, sillä mukana ovat "parit", joissa kumpikin laji on sama. Näistä emme luonnollisesti ole kiinnostuneita. Nämä parit voidaan poistaa esimerkiksi ````next```-komennolla.
+Emme kuitenkaan voi olla vieläkään tyytyväisä tulokseen, sillä mukana ovat "parit", joissa kumpikin laji on sama. Näistä emme luonnollisesti ole kiinnostuneita. Nämä parit voidaan poistaa esimerkiksi `next`-komennolla.
 
 ## Iterointiin puuttuminen: next ja break
 
-Joskus silmukan toimintaan on hyvä puuttua kesken suorituksen. Joskus yksi iteraatio halutaan sivuuttaa kokonaan, toisinaan taas halutaan keskeyttää koko silmukka. Näihin tarkoituksiin R:ssä on komennot ```next``` ja ```break```.
+Joskus silmukan toimintaan on hyvä puuttua kesken suorituksen. Joskus yksi iteraatio halutaan sivuuttaa kokonaan, toisinaan taas halutaan keskeyttää koko silmukka. Näihin tarkoituksiin R:ssä on komennot `next` ja `break`.
 
-Lisätään edelliseen esimerkkiin toiminto, joka ohittaa diagonaalilla olevat rivit, eli hyppää iteraation yli, jos i ja j ovat yhtä suuret. Käytetään tähän ```next```-komentoa, joka ohjaa ohjelman suoraan seuraavaan iteraatioon:
-
+Lisätään edelliseen esimerkkiin toiminto, joka ohittaa diagonaalilla olevat rivit, eli hyppää iteraation yli, jos `i` ja `j` ovat yhtä suuret. Käytetään tähän `next`-komentoa, joka ohjaa ohjelman suoraan seuraavaan iteraatioon:
 
 ```{r, eval=FALSE}
 # Initialize empty data frame for the pairs
@@ -242,9 +236,7 @@ for (i in seq(1, nrow(exons))) {
 close_pairs
 ```
 
-Nyt pääsimme eroon kaikista turhista pareista! 
-
-Jos haluaisimme kaikkien parien sijaan etsiä vain ensimmäisen parin, jonka geenien etäisyys on alle 3, voisimme käyttää komentoa ```break```, joka keskeyttää silmukan turhan suorittamisen haluamamme parin löydyttyä.
+Nyt pääsimme eroon kaikista turhista pareista! Jos haluaisimme kaikkien parien sijaan etsiä vain ensimmäisen parin, jonka geenien etäisyys on alle 3, voisimme käyttää komentoa `break`, joka keskeyttää silmukan turhan suorittamisen haluamamme parin löydyttyä.
 
 ```{r, eval=FALSE}
 close_pair <- c()
@@ -269,7 +261,7 @@ for (i in seq(1, nrow(exons))) {
 close_pair
 ```
 
-HUOM: Tämä ei kuitenkaan ole oikea pari: Jos exons data framea käydään läpi rivi kerrallaan, ensimmäinen pari, jonka arvo on alle 3 on Human ja Lemur, ei Mouse ja Gorilla. Mikä siis meni väärin? Kun kyse on näin pienestä aineistosta, voidaan mahdollisia ongelmia tutkia lisäämällä silmukoiden sisään ```print()```-komentoja, jotka kertovat meille silmukan etenemisestä. Lisätään siis edelliseen silmukkaan rivi, joka tulostaa iteraatiomuuttujat i ja j jokaisella iteraatiolla, sekä rivi, joka tulostaa uuden parin, kun sellainen löytyy:
+HUOM: Tämä ei kuitenkaan ole oikea pari: Jos exons data framea käydään läpi rivi kerrallaan, ensimmäinen pari, jonka arvo on alle 3 on Human ja Lemur, ei Mouse ja Gorilla. Mikä siis meni väärin? Kun kyse on näin pienestä aineistosta, voidaan mahdollisia ongelmia tutkia lisäämällä silmukoiden sisään `print()`-komentoja, jotka kertovat meille silmukan etenemisestä. Lisätään siis edelliseen silmukkaan rivi, joka tulostaa iteraatiomuuttujat `i` ja `j` jokaisella iteraatiolla, sekä rivi, joka tulostaa uuden parin, kun sellainen löytyy:
 
 ```{r, eval=FALSE}
 close_pair <- c()
@@ -297,7 +289,7 @@ for (i in seq(1, nrow(exons))) {
 close_pair
 ```
 
-Nyt huomataan, että iteraatio etenee rivillä yksi neljänteen sarakkeeseen asti, ja löytää parin Human-Lemur, aivan kuten pitikin. Jostain syystä ohjelma siirtyy kuitenkin sen jälkeen toiselle riville. Tämä johtuu siitä, että ```break```-komento katkaisee vain yhden for-silmukan kerrallaan. Jos haluamme katkaista myös ulomman silmukan, meidän tulee lisätä ulomman silmukan loppuun tarkastus, joka tarkastaa, onko pari jo löytynyt. Tämä voidaan testata esimerkiksi vektorin close_pairs pituuden avulla. Jos if-rakenteelle antaa pelkän luvun, luku tulkitaan arvoksi TRUE, jos se ei ole nolla.
+Nyt huomataan, että iteraatio etenee rivillä yksi neljänteen sarakkeeseen asti, ja löytää parin Human-Lemur, aivan kuten pitikin. Jostain syystä ohjelma siirtyy kuitenkin sen jälkeen toiselle riville. Tämä johtuu siitä, että `break`-komento katkaisee vain yhden for-silmukan kerrallaan. Jos haluamme katkaista myös ulomman silmukan, meidän tulee lisätä ulomman silmukan loppuun tarkastus, joka tarkastaa, onko pari jo löytynyt. Tämä voidaan testata esimerkiksi vektorin `close_pairs` pituuden avulla. Jos if-rakenteelle antaa pelkän luvun, luku tulkitaan arvoksi `TRUE`, jos se ei ole nolla.
 
 ```{r, eval=FALSE}
 close_pair <- c()
@@ -330,10 +322,10 @@ Nyt koodimme toimii, kuten pitääkin!
 
 ## Apply-funktiot
 
-R:ssä käytetään silmukoiden lisäksi ```apply()```-funktioperheen funktioita, joilla voi käydä läpi data frameja, matriiseja tai vektoreita ilman silmukoita. Joissain tapauksissa ```apply```-funktiot ovat myös nopeampia kuin silmukat. Tästä syystä niitä näkee käytettävän paljon, ja varsinkin kokeneemmat R-ohjelmoijat käyttävät niitä usein silmukoiden sijaan. Tällä kurssilla näitä funktioita ei kuitenkaan tarvita. Tässä on annettu muutamia esimerkkejä, voit lukea lisää esimerkiksi [DataCampin tutoriaalista](https://www.datacamp.com/community/tutorials/r-tutorial-apply-family)
+R:ssä käytetään silmukoiden lisäksi `apply`-funktioperheen funktioita, joilla voi käydä läpi data frameja, matriiseja tai vektoreita ilman silmukoita. Joissain tapauksissa `apply`-funktiot ovat myös nopeampia kuin silmukat. Tästä syystä niitä näkee käytettävän paljon, ja varsinkin kokeneemmat R-ohjelmoijat käyttävät niitä usein silmukoiden sijaan. Tällä kurssilla näitä funktioita ei kuitenkaan tarvita. Tässä on annettu muutamia esimerkkejä, voit lukea lisää esimerkiksi [DataCampin tutoriaalista](https://www.datacamp.com/community/tutorials/r-tutorial-apply-family)
 
 <!-- Santtu: autoscaling? eikö kyseessä ole ihan tavallinen standardointi? -->
-```apply()``` käy läpi matriisin/data framen rivit tai sarakkeet, ja ajaa jonkin funktion jokaiselle riville tai sarakkeelle. Alla oleva esimerkki normalisoi kaikki R:n sisäisen datan trees sarakkeet autoscaling-menetelmällä, jossa sarakkeen arvoista vähennetään sarakkeen keskiarvo ja tulos jaetaan sarakkeen keskihajonnalla. Normalisoinnin tarkoitus on, että kaikkien sarakkeiden keskiarvoksi saadaan 0, ja kaikilla on sama varianssi (ja keskihajonta) 1.
+`apply()` käy läpi matriisin/data framen rivit tai sarakkeet, ja ajaa jonkin funktion jokaiselle riville tai sarakkeelle. Alla oleva esimerkki normalisoi kaikki R:n sisäisen datan `trees` sarakkeet autoscaling-menetelmällä, jossa sarakkeen arvoista vähennetään sarakkeen keskiarvo ja tulos jaetaan sarakkeen keskihajonnalla. Normalisoinnin tarkoitus on, että kaikkien sarakkeiden keskiarvoksi saadaan 0, ja kaikilla on sama varianssi (ja keskihajonta) 1.
 
 ```{r, eval=FALSE}
 head(trees)
@@ -348,10 +340,10 @@ scaled_trees <- as.data.frame(scaled_trees)
 head(scaled_trees)
 ```
 
-MARGIN-argumentilla määritetään, käydäänkö läpi rivit vai sarakkeet (1 = rivit, 2 = sarakkeet). HUOM: ```apply``` palauttaa aina matriisin tai vektorin. Jos tulos halutaan muuntaa takaisin data frameksi, täytyy se tehdä erikseen.
+`MARGIN`-argumentilla määritetään, käydäänkö läpi rivit vai sarakkeet (1 = rivit, 2 = sarakkeet). HUOM: `apply` palauttaa aina matriisin tai vektorin. Jos tulos halutaan muuntaa takaisin datakehikoksi, täytyy se tehdä erikseen.
 
 <!-- Santtu: sapplyn ei tarvitse palauttaa vain yhtä arvoa, katso argumentti "simplify" -->
-Tarkistetaan tulos laskemalla sarakkeiden keskiarvot ja varianssit. Tämä voidaan tehdä ```apply```-funktiolla, tai käyttää ```sapply```-funktiota, joka käy automaattisesti data framen sarakkeet, ja ajaa saman funktion sarakkeille kuten ```apply```.
+Tarkistetaan tulos laskemalla sarakkeiden keskiarvot ja varianssit. Tämä voidaan tehdä `apply`-funktiolla, tai käyttää `sapply`-funktiota, joka käy automaattisesti datakehikon sarakkeet, ja ajaa saman funktion sarakkeille kuten `apply`.
 <!--```sapply```-komennon funktion on pakko palauttaa vain yksi arvo, sillä ```sapply``` kokoaa automaattisesti tuloksensa vektoriin.-->
 ```{r, eval=FALSE}
 apply(scaled_trees, 2, mean)
@@ -359,5 +351,3 @@ sapply(scaled_trees, var)
 ```
 
 Huomaa, että sarakkeiden keskiarvot eivät ole täsmälleen 0. Tämä johtuu R:n rajallisesta numeerisesta tarkkuudesta. Käytännössä itseisarvoltaan tätä luokkaa olevat arvot ovat nollia.
-
-

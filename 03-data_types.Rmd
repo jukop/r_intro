@@ -75,7 +75,6 @@ ncol(X)
 dim(X)
 ```
 
-
 ### Matriisin indeksointi
 
 Matriisin indeksointi on hyvin samantapainen operaatio kuin vektorin indeksointi, eli matriisin perään laitetaan hakasulkeet ja niihin määritellään halutut indeksit. Matriisin indeksoinnissa pitää kuitenkin antaa erikseen indeksit riveille ja sarakkeille, pilkulla erotettuna. Jos hakasulkeisiin antaa vain yhden luvun ilman pilkkua, niin R käsittelee matriisia vektorina, jolloin indeksointi tapahtuu kuten vektoreiden tapauksessa.
@@ -213,8 +212,6 @@ Kaikkia objekteja voi tulostaa Console-ikkunassa kutsumalla objektin nimen. Josk
 
 ### View()
 
-<!-- Santtu: Ainakin Mac-koneilla View on joskus kaatanut koko R:n, en suosittelisi sen käyttöä! -->
- <!-- Santtu; Mielstäni koko view:stä ei pitäisi edes puhua, se on tarkoituksen vastainen. Aineistoa tulisi tarkastella koodin avulla  -->
 Mikäli käytät RStudiota, niin tarkempaa tarkastelua varten kannattaa kuitenkin käyttää `View`-funktiota. `View` avaa ikkunan, jossa voi selata data framen tai matriisin rivejä ja sarakkeita, sekä järjestää arvoja halutun sarakkeen mukaan (tämä järjestys säilyy vain `View`-näkymässä, itse muuttujan rakenne ei muutu). Mikäli aineistossasi on satoja tuhansia tai miljoonia rivejä, niin `View` saattaa olla liian hidas.
 
 ### str()
@@ -225,6 +222,7 @@ Perineinen tapa tarkastella objekteja R:ssä on funktio `str`, joka toimii kaiki
 # Examine the structure of data frame
 str(study_data)
 ```
+
 ### head()
 
 Jos aineistossa on todella paljon rivejä, on sen tulostaminen Console-ikkunaan ikävää. Ladataan esimerkiksi iris-data, jossa on 150 havaintoa. Tulostettaessa rivejä on niin monta, että muuttujien nimet eivät näy, mikä on epämiellyttävää. Parempi tapa saada käsitys aineistosta on kutsua sitä head-funktion avulla.
@@ -281,7 +279,6 @@ my_array[1:2, , ]
 # Second column from last two layers
 my_array[, 2, 2:3]
 ```
-
 
 ### Lista {#list}
 

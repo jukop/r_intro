@@ -52,7 +52,6 @@ z <- x + y
 z
 ```
 
-
 ## Vektorit {#vectors}
 
 Nyt kun muuttujat ovat tuttuja, voimme siirtyä käsittelemään vektoreita (vector). R:n vektorit ovat yksinkertaisia järjestettyjä tietorakenteita, jotka koostuvat alkioista (elements), esimerkiksi desimaaliluvuista. Alla oleva esimerkki sijoittaa muuttujaan x vektorin, joka sisältää 5 lukua.
@@ -303,6 +302,7 @@ x_div_zero <- c(1, 2, -3) / c(3, 0, 0)
 x_div_zero
 is.finite(x_div_zero)
 ```
+
 ### Ei-numero
 
 Mikäli R:ssä sattuu tekemään jonkin matemaattisen toimenpiteen, joka ei ole sallittu, esimerkiksi nollan jaon nollalla tai luvun -1 logaritmin, niin tämä tuottaa R:ssä tietotyypin, joka on `NaN` (lyhenne sanoista Not a Number). Mikäli `NaN`-arvoa tutkii funktiolla `is.finite` tai `is.na`, niin huomaa että `NaN` ei ole äärellinen ja `NaN` tulkitaan `NA`:ksi.

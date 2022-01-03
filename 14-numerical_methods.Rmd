@@ -7,6 +7,7 @@ Monilla käytännön matemaattisilla ongelmilla ei ole suljetussa muodossa esite
 ## Optimointi
 
 ### Yksi parametri
+
 Aloitetaan yksinkertaisesta tapauksesta, jossa haluamme löytää funktion minimin yhden parametrin suhteen. Tällöin voidaan käyttää funktiota `optimize`.
 ```{r, eval = FALSE}
 optimize(f, interval, ..., lower = min(interval), upper = max(interval),
@@ -28,6 +29,7 @@ optimize(g, interval = c(-3, 1))
 Funktion palauttmassa listassa alkio `minimum` ilmoittaa pisteen, jossa minimi saavutetaan. Alkio `objective` antaa tavoitefunktion (eli funktion `f`) arvon kyseisessä psiteessä.
 
 ### Useampi parametri
+
 Mikäli funktiota halutaan minimoida useamman kuin yhden parametrin suhteen, voidaan käyttää funktiota `optim`.
 ```{r, eval = FALSE}
 optim(par, fn, gr = NULL, ...,
@@ -51,13 +53,13 @@ Etsitään vielä kolmen muuttujan funktion $h(x,y,z) = \exp(-x^2-3x-7y^2+3y+z^3
 h <- function(x) exp(-x[1]^2 - 3*x[1] - 7*x[2]^2 + 3*x[2] + x[3]^3 - 2*x[3] - 3)
 optim(c(0.5, 0.5, -0.5), h, lower = c(-2, -3, -3), upper = c(2, 3, 0), 
       method = "L-BFGS-B", control = list(fnscale = -1))
-````
+```
 Kuten edellä, `par` ilmoittaa maksimipisteen koordinaatit. Maksimi saavutetaan siis pisteessä $(x,y,z) \approx (-1.5000009, 0.2142866, -0.8164968)$ jolloin funktio $h$ saa kohdan `value` ilmoittaman arvon $\approx 1.934968$. Nyt koska käytettiin argumenttia `control = list(fnscale = -1)`, ei tuloksen merkkiä tarvitse vaihtaa.
 
 Alkuarvot funktioille `optim` ja `optimize` tulee valita siten, että rajoitteet ovat voimassa. Alkuarvojen valintaan on vaikea antaa yleispätevää ohjetta, ja usein onkin hyvä kokeilla eri arvoja ja verrata niillä saatuja tuloksia. Yhden ja kahden muuttujan tapauksissa löydettyjen optimipisteiden mielekkyyttä voi tarkastella esimerkiksi piirtämällä funktion kuvaajan annetussa joukossa.
 
-
 ## Funktion juurten etsintä
+
 Funktion juuria voidaan etsiä funktiolla `uniroot`.
 ```{r, eval = FALSE}
 uniroot(f, interval, ...,
@@ -78,7 +80,7 @@ Funktion palauttamassa tulosteessa kohta `root` ilmoittaa löydetyn juuren. Mik�
 ## Numeerinen integrointi 
 
 R:n optimointityökaluihin kuuluu myös funktio `integrate`, jolla voi laskea useimpien funktioiden määrättyjä integraaleja.
-````{r, eval = FALSE}
+```{r, eval = FALSE}
 integrate(f, lower, upper, ..., subdivisions = 100L,
           rel.tol = .Machine$double.eps^0.25, abs.tol = rel.tol,
           stop.on.error = TRUE, keep.xy = FALSE, aux = NULL)

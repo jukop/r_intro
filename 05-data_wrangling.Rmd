@@ -25,8 +25,9 @@ study_data$BMI <- study_data$weight / (study_data$height_m^2)
 study_data
 ```
 
-### Datakehikon käsittely 
+## Datakehikon käsittely 
 
+Datakehikosta voidaan poimia sarakkeita joko niiden nimien tai niitä vastaavien indeksien perusteella, kuten matriisin tapauksessa. Yksittäisiä sarakkeita voidaan poimia ja muokata myös dollarisymbolin `$` kautta.
 ```{r}
 # Subscripting with variable names
 study_data[, c("height", "gender")]
@@ -58,7 +59,7 @@ rbind(study_data, new_row)
 
 ## Osajoukkojen valinta
 
-Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita, ja jos kriteerejä on useita, niin tarvitaan myös useita loogisia operaattoreita. Tarkemmin operaattoreita käsitellään luvussa [Loogiset operaattorit](#loogiset-operaattorit). Voit käyttää kyseisen osion taulukkoa apuna jo tässä osiossa.
+Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita, ja jos kriteerejä on useita, niin tarvitaan myös useita loogisia operaattoreita. Tarkemmin operaattoreita käsitellään luvussa [Loogiset operaattorit](#loogiset-operaattorit). Voit käyttää kyseisen osion taulukkoa apuna jo tässä osiossa. Osajoukkoja voidaan poimia myös suoraan antamalla halutut indeksit esimerkiksi indeksivektorin avulla.
 
 ```{r}
 # Filter only females
@@ -71,7 +72,33 @@ study_data[!is.na(study_data$height) & study_data$height <= 175, ]
 
 # Use multiple filter criteria
 study_data[study_data$height <= 175 & study_data$gender == "female", ]
+
+# Select individuals (rows) 1,3, and 7 directly with a vector of indices
+ind <- c(1, 3, 7)
+study_data[ind,]
 ```
+
+## Datakehikon ja vektorin järjestäminen
+
+Yhden vektorin arvot voidaan asettaa nousevaan tai laskevaan järjestykseen funktiolla `sort`. Funktiota voidaan soveltaa niin numeerisiin kuin merkkitietoa sisältäviin vektoreihinkin. Oletusarvoisesti järjestys on nouseva, eli numeeriset arvot järjestetään pienimmästä suurimpaan ja merkkitieto aakkosjärjestykseen. Järjestyksen voi kääntää laskevaksi argumentilla `decreasing = TRUE`.
+```{r}
+nums <- c(3, 1, 7, 8, 5, 4)
+chars <- c("ab", "ca", "ac", "bb", "ba", "cb")
+
+# Ascending order
+sort(nums)
+sort(chars)
+
+# Descending order
+sort(nums, decreasing = TRUE)
+sort(chars, decreasing = TRUE)
+```
+
+Jossain tilanteissa on haluttavaa järjestää datakehikon rivit jonkin muuttujan tai muuttujien suhteen. Tähän tarkoitukseen voi käyttää funktiota `order`, joka palauttaa yhden tai useamman argumentin alkioiden järjestysluvut (rank). Seuraavassa esimerkissä aineiston rivit järjestetään koehenkilöiden pituuden suhteen nouseevaan suuruusjärjestykseen.
+```{r}
+study_data[order(study_data$height),]
+```
+Järjestäminen voidaan tehdä usean muuttujan suhteen, esimerkiksi pituuden ja painon. Tämä tarkoittaa nousevassa järjestyksessä sitä, että jos kahdella koehenkilöllä on täsmälleen sama pituus, valitaan heidän keskinäinen järjestyksensä painon perusteella.
 
 ## Faktorit
 
@@ -101,6 +128,7 @@ wall_dat$fbuild_mat <- factor(wall_dat$build_mat,levels = c(1, 2, 3), labels = c
 
 str(wall_dat)
 ```
+
 ## Extra: Lääketutkimusesimerkki {#factor-extra}
 
 R:ssä on aiemmin nähtyjen numeric, character ja logical-vektorien lisäksi muitakin vektoriluokkia, tärkeimpänä näistä factor. Factor-vektoreihin tallennetaan kategorisia muuttujia, kuten tutkimuksessa määrättyjä ryhmiä, aikapisteitä tms. Luodaan esimerkiksi factor-vektori, jossa on kuvitteellisen lääketutkimuksen osallistujien ryhmätiedot:

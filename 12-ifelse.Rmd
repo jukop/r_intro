@@ -107,7 +107,6 @@ y <- 0.3
 0 <= y && y <= 1
 ```
 
-
 ## Ehtorakenteet
 
 Aloitetaan esimerkistä: tehtävänä on kirjoittaa funktio, jolle annetaan syötteenä potilaan hemoglobiiniarvo. Funktion on tarkoitus hälyttää, jos hemoglobiini laskee alle viitearvojen alarajan 117. Kyseinen funktio voisi näyttää vaikka tältä:
@@ -252,9 +251,7 @@ hb_alert(hb = 120, sex = "FEMALE")
 
 ## Alkioiden poimiminen vektorista tietyn ehdon perusteella
 
-<!-- Santtu: poistin taas viittaukse viikkoihin jotta yleisyys säilyy -->
 Seuraava tilanne on melko tyypillinen: on käytävä läpi vektorin arvot, ja säilytettävä niistä ne, jotka täyttivät tietyn ehdon. Tätä ongelmaa voi lähestyä esimerkiksi seuraavalla tavalla: 
-<!--Tätä aihetta käsitellään enemmän ensi viikolla, mutta tässä lyhyt vinkki tällaisten tehtävien ratkaisuun:-->
 
 <!-- Santtu: Tämä voi olla joskus nopea ja yksinkertainen ratkaisu, mutta käytännössä vectorize vain niputtaa annetun funktion sopivaan sapply kutsuun, mikä ei välttämättä ole hyvä ratkaisu, jos alkuperäisen funktion olisii itse voinut koodata vektorimuotoiseksi ilman silmukkarakenteita. Opetuksena siis se, että vectorize ei ole "aitoa" vektorisointia. -->
 - Luo apufunktio, joka ottaa syötteeksi yhden arvon, ja tarkistaa täyttyykö ehto. Tämän funktion tulee palauttaa `TRUE`, jos ehto täyttyy ja `FALSE`, jos ehto ei täyty.
@@ -293,4 +290,3 @@ is_cg_vector(my_bases)
 # Pick only C and G
 pick_cg(my_bases)
 ```
-

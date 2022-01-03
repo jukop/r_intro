@@ -97,7 +97,7 @@ R-skriptejä voi tallentaa ihan kuin muitakin tiedostoja. R-skpriptien tiedostop
 
 #### 2. Konsoli. {-}
 
-Konsolissa "ajetaan" eli suoritetaan R-komentoja. Jos editoriin kirjoitettua koodia ajetaan, RStudio ajaa komennot automaattisesti konsolissa. Konsolissa pelkkä Enter riittää koodirivin suorittamiseen. Voit kokeilla kirjoittaa konsoliin jonkun laskutoimituksen, kuten ```2 * 3``` ja painaa Enter, jolloin tuloksen pitäisi tulostua konsoliin. Voit myös kokeilla kirjoittaa laskuja editoriin, ja painaa Ctrl + Enter, jolloin pitäisi tapahtua sama asia.
+Konsolissa "ajetaan" eli suoritetaan R-komentoja. Jos editoriin kirjoitettua koodia ajetaan, RStudio ajaa komennot automaattisesti konsolissa. Konsolissa pelkkä Enter riittää koodirivin suorittamiseen. Voit kokeilla kirjoittaa konsoliin jonkun laskutoimituksen, kuten `2 * 3` ja painaa Enter, jolloin tuloksen pitäisi tulostua konsoliin. Voit myös kokeilla kirjoittaa laskuja editoriin, ja painaa Ctrl + Enter, jolloin pitäisi tapahtua sama asia.
 
 Suurin ero konsolin ja editorin välillä on se, että **konsoliin kirjoitetut komennot eivät tallennu mihinkään tiedostoon**. Jos siis haluat säilyttää koodisi, se tulee kirjoittaa editoriin ja tallentaa .R-tiedostoon. Saman istunnon aikana tehtyjä komentoja voi konsolissa selata ylös- ja alas-nuolila.
 
@@ -127,7 +127,8 @@ R-ohjelmoinnissa asennetaan usein R-paketteja. Paketit ovat kokonaisuuksia, jotk
 
 Rcourse-paketti asennetaan suorittamalla seuraava koodi R:ssä. Kopioi koodi joko R-skriptiin ja aja se tai kopioi se suoraan Console-ikkunaan ja paina Enter-näppäintä.
 ```{r, eval=FALSE}
-source(url("http://users.jyu.fi/~santikka/Rcourse/install.R"))
+install.packages("remotes")
+remotes::install_github("santikka/R-course/Rcourse")
 ```
 Tämän jälkeen paketti tulee ottaa käyttöön
 ```{r, eval=FALSE}
@@ -172,15 +173,15 @@ Suurin osa kurssin tehtävistä on melko lyhyitä, joten ne voi tarvittaessa teh
 ```{r, eval=FALSE}
 # Teht 1
 vast <- 1
-tarkista(vast)
+vastaa(vast)
 
 # Teht 2
 vast <- c(1, 2, 3)
-tarkista(vast)
+vastaa(vast)
 
 # Teht 3
 vast <- "jotain"
-tarkista(vast)
+vastaa(vast)
 ```
 
-Mikäli käytät nimen ```vast``` sijasta jotain muuta nimeä, niin sinun on käytettävä samaa nimä myös tarkista-funktion argumenttina!
+Mikäli käytät nimen `vast` sijasta jotain muuta nimeä, niin sinun on käytettävä samaa nimä myös tarkista-funktion argumenttina!

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kappale 12 Ehtorakenteet | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kappale 12 Ehtorakenteet | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="functions.html"/>
 <link rel="next" href="loops.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -160,77 +160,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#what_R"><i class="fa fa-check"></i><b>1.1</b> Mikä R on ja mitä sillä tehdään?</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html"><i class="fa fa-check"></i><b>2</b> Muuttujat ja vektorit</a>
+<li class="chapter" data-level="2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html"><i class="fa fa-check"></i><b>2</b> Muuttujat ja vektorit</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#variables"><i class="fa fa-check"></i><b>2.1</b> Muuttujat</a></li>
-<li class="chapter" data-level="2.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#comments"><i class="fa fa-check"></i><b>2.2</b> Kommentit</a></li>
-<li class="chapter" data-level="2.3" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#vectors"><i class="fa fa-check"></i><b>2.3</b> Vektorit</a>
+<li class="chapter" data-level="2.1" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#variables"><i class="fa fa-check"></i><b>2.1</b> Muuttujat</a></li>
+<li class="chapter" data-level="2.2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#comments"><i class="fa fa-check"></i><b>2.2</b> Kommentit</a></li>
+<li class="chapter" data-level="2.3" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#vectors"><i class="fa fa-check"></i><b>2.3</b> Vektorit</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ei-numeeriset-vektorit"><i class="fa fa-check"></i><b>2.3.1</b> Ei-numeeriset vektorit</a></li>
-<li class="chapter" data-level="2.3.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#vektorien-indeksointi-ja-osajoukon-valinta"><i class="fa fa-check"></i><b>2.3.2</b> Vektorien indeksointi ja osajoukon valinta</a></li>
-<li class="chapter" data-level="2.3.3" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#puuttuvat-arvot"><i class="fa fa-check"></i><b>2.3.3</b> Puuttuvat arvot</a></li>
+<li class="chapter" data-level="2.3.1" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#ei-numeeriset-vektorit"><i class="fa fa-check"></i><b>2.3.1</b> Ei-numeeriset vektorit</a></li>
+<li class="chapter" data-level="2.3.2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#vektorien-indeksointi-ja-osajoukon-valinta"><i class="fa fa-check"></i><b>2.3.2</b> Vektorien indeksointi ja osajoukon valinta</a></li>
+<li class="chapter" data-level="2.3.3" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#puuttuvat-arvot"><i class="fa fa-check"></i><b>2.3.3</b> Puuttuvat arvot</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#extra"><i class="fa fa-check"></i><b>2.4</b> Extra: Alkeistietotyypit ja erikoisarvot</a>
+<li class="chapter" data-level="2.4" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#extra"><i class="fa fa-check"></i><b>2.4</b> Extra: Alkeistietotyypit ja erikoisarvot</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ääretön-ja-miinus-ääretön"><i class="fa fa-check"></i><b>2.4.1</b> Ääretön ja miinus ääretön</a></li>
-<li class="chapter" data-level="2.4.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ei-numero"><i class="fa fa-check"></i><b>2.4.2</b> Ei-numero</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Tietotyypit</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="data-types.html"><a href="data-types.html#data-frame"><i class="fa fa-check"></i><b>3.1</b> Datakehikko (data.frame)</a></li>
-<li class="chapter" data-level="3.2" data-path="data-types.html"><a href="data-types.html#matrix"><i class="fa fa-check"></i><b>3.2</b> Matriisi</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="data-types.html"><a href="data-types.html#matriisin-luominen"><i class="fa fa-check"></i><b>3.2.1</b> Matriisin luominen</a></li>
-<li class="chapter" data-level="3.2.2" data-path="data-types.html"><a href="data-types.html#matriisin-koko"><i class="fa fa-check"></i><b>3.2.2</b> Matriisin koko</a></li>
-<li class="chapter" data-level="3.2.3" data-path="data-types.html"><a href="data-types.html#matriisin-indeksointi"><i class="fa fa-check"></i><b>3.2.3</b> Matriisin indeksointi</a></li>
-<li class="chapter" data-level="3.2.4" data-path="data-types.html"><a href="data-types.html#matriisien-rakentaminen-vektoreista"><i class="fa fa-check"></i><b>3.2.4</b> Matriisien rakentaminen vektoreista</a></li>
-<li class="chapter" data-level="3.2.5" data-path="data-types.html"><a href="data-types.html#rivien-ja-sarakkeiden-nimeäminen"><i class="fa fa-check"></i><b>3.2.5</b> Rivien ja sarakkeiden nimeäminen</a></li>
-<li class="chapter" data-level="3.2.6" data-path="data-types.html"><a href="data-types.html#matriiseilla-laskeminen"><i class="fa fa-check"></i><b>3.2.6</b> Matriiseilla laskeminen</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="data-types.html"><a href="data-types.html#data-type-view"><i class="fa fa-check"></i><b>3.3</b> Tietotyyppien tarkastelu</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="data-types.html"><a href="data-types.html#view"><i class="fa fa-check"></i><b>3.3.1</b> View()</a></li>
-<li class="chapter" data-level="3.3.2" data-path="data-types.html"><a href="data-types.html#str"><i class="fa fa-check"></i><b>3.3.2</b> str()</a></li>
-<li class="chapter" data-level="3.3.3" data-path="data-types.html"><a href="data-types.html#head"><i class="fa fa-check"></i><b>3.3.3</b> head()</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html#extra-taulukko-ja-lista"><i class="fa fa-check"></i><b>3.4</b> Extra: Taulukko ja lista</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="data-types.html"><a href="data-types.html#array"><i class="fa fa-check"></i><b>3.4.1</b> Taulukko</a></li>
-<li class="chapter" data-level="3.4.2" data-path="data-types.html"><a href="data-types.html#list"><i class="fa fa-check"></i><b>3.4.2</b> Lista</a></li>
+<li class="chapter" data-level="2.4.1" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#ääretön-ja-miinus-ääretön"><i class="fa fa-check"></i><b>2.4.1</b> Ääretön ja miinus ääretön</a></li>
+<li class="chapter" data-level="2.4.2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#ei-numero"><i class="fa fa-check"></i><b>2.4.2</b> Ei-numero</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="reading-data.html"><a href="reading-data.html"><i class="fa fa-check"></i><b>4</b> Datan lukeminen</a>
+<li class="chapter" data-level="3" data-path="data_types.html"><a href="data_types.html"><i class="fa fa-check"></i><b>3</b> Tietotyypit</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="reading-data.html"><a href="reading-data.html#hakemistopolut-ja-tiedostopäätteet"><i class="fa fa-check"></i><b>4.1</b> Hakemistopolut ja tiedostopäätteet</a>
+<li class="chapter" data-level="3.1" data-path="data_types.html"><a href="data_types.html#data-frame"><i class="fa fa-check"></i><b>3.1</b> Datakehikko (data.frame)</a></li>
+<li class="chapter" data-level="3.2" data-path="data_types.html"><a href="data_types.html#matrix"><i class="fa fa-check"></i><b>3.2</b> Matriisi</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="reading-data.html"><a href="reading-data.html#hakemistopolut"><i class="fa fa-check"></i><b>4.1.1</b> Hakemistopolut</a></li>
-<li class="chapter" data-level="4.1.2" data-path="reading-data.html"><a href="reading-data.html#tiedostopäätteet"><i class="fa fa-check"></i><b>4.1.2</b> Tiedostopäätteet</a></li>
+<li class="chapter" data-level="3.2.1" data-path="data_types.html"><a href="data_types.html#matriisin-luominen"><i class="fa fa-check"></i><b>3.2.1</b> Matriisin luominen</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data_types.html"><a href="data_types.html#matriisin-koko"><i class="fa fa-check"></i><b>3.2.2</b> Matriisin koko</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data_types.html"><a href="data_types.html#matriisin-indeksointi"><i class="fa fa-check"></i><b>3.2.3</b> Matriisin indeksointi</a></li>
+<li class="chapter" data-level="3.2.4" data-path="data_types.html"><a href="data_types.html#matriisien-rakentaminen-vektoreista"><i class="fa fa-check"></i><b>3.2.4</b> Matriisien rakentaminen vektoreista</a></li>
+<li class="chapter" data-level="3.2.5" data-path="data_types.html"><a href="data_types.html#rivien-ja-sarakkeiden-nimeäminen"><i class="fa fa-check"></i><b>3.2.5</b> Rivien ja sarakkeiden nimeäminen</a></li>
+<li class="chapter" data-level="3.2.6" data-path="data_types.html"><a href="data_types.html#matriiseilla-laskeminen"><i class="fa fa-check"></i><b>3.2.6</b> Matriiseilla laskeminen</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="reading-data.html"><a href="reading-data.html#tekstitiedostot"><i class="fa fa-check"></i><b>4.2</b> Tekstitiedostot</a>
+<li class="chapter" data-level="3.3" data-path="data_types.html"><a href="data_types.html#data-type-view"><i class="fa fa-check"></i><b>3.3</b> Tietotyyppien tarkastelu</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="reading-data.html"><a href="reading-data.html#read.table"><i class="fa fa-check"></i><b>4.2.1</b> read.table</a></li>
-<li class="chapter" data-level="4.2.2" data-path="reading-data.html"><a href="reading-data.html#read.csv"><i class="fa fa-check"></i><b>4.2.2</b> read.csv</a></li>
+<li class="chapter" data-level="3.3.1" data-path="data_types.html"><a href="data_types.html#view"><i class="fa fa-check"></i><b>3.3.1</b> View()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data_types.html"><a href="data_types.html#str"><i class="fa fa-check"></i><b>3.3.2</b> str()</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data_types.html"><a href="data_types.html#head"><i class="fa fa-check"></i><b>3.3.3</b> head()</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="reading-data.html"><a href="reading-data.html#datakehikon-tarkastelu"><i class="fa fa-check"></i><b>4.3</b> Datakehikon tarkastelu</a>
+<li class="chapter" data-level="3.4" data-path="data_types.html"><a href="data_types.html#extra-taulukko-ja-lista"><i class="fa fa-check"></i><b>3.4</b> Extra: Taulukko ja lista</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="reading-data.html"><a href="reading-data.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>4.3.1</b> R:n sisäänrakennetut datasetit</a></li>
+<li class="chapter" data-level="3.4.1" data-path="data_types.html"><a href="data_types.html#array"><i class="fa fa-check"></i><b>3.4.1</b> Taulukko</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data_types.html"><a href="data_types.html#list"><i class="fa fa-check"></i><b>3.4.2</b> Lista</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="reading-data.html"><a href="reading-data.html#muut-tiedostot"><i class="fa fa-check"></i><b>4.4</b> Muut tiedostot</a>
+</ul></li>
+<li class="chapter" data-level="4" data-path="reading_data.html"><a href="reading_data.html"><i class="fa fa-check"></i><b>4</b> Datan lukeminen</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="reading-data.html"><a href="reading-data.html#excel"><i class="fa fa-check"></i><b>4.4.1</b> Excel</a></li>
-<li class="chapter" data-level="4.4.2" data-path="reading-data.html"><a href="reading-data.html#spss"><i class="fa fa-check"></i><b>4.4.2</b> SPSS</a></li>
+<li class="chapter" data-level="4.1" data-path="reading_data.html"><a href="reading_data.html#hakemistopolut-ja-tiedostopäätteet"><i class="fa fa-check"></i><b>4.1</b> Hakemistopolut ja tiedostopäätteet</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="reading_data.html"><a href="reading_data.html#hakemistopolut"><i class="fa fa-check"></i><b>4.1.1</b> Hakemistopolut</a></li>
+<li class="chapter" data-level="4.1.2" data-path="reading_data.html"><a href="reading_data.html#tiedostopäätteet"><i class="fa fa-check"></i><b>4.1.2</b> Tiedostopäätteet</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="reading_data.html"><a href="reading_data.html#tekstitiedostot"><i class="fa fa-check"></i><b>4.2</b> Tekstitiedostot</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="reading_data.html"><a href="reading_data.html#read.table"><i class="fa fa-check"></i><b>4.2.1</b> read.table</a></li>
+<li class="chapter" data-level="4.2.2" data-path="reading_data.html"><a href="reading_data.html#read.csv"><i class="fa fa-check"></i><b>4.2.2</b> read.csv</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="reading_data.html"><a href="reading_data.html#datakehikon-tarkastelu"><i class="fa fa-check"></i><b>4.3</b> Datakehikon tarkastelu</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="reading_data.html"><a href="reading_data.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>4.3.1</b> R:n sisäänrakennetut datasetit</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="reading_data.html"><a href="reading_data.html#muut-tiedostot"><i class="fa fa-check"></i><b>4.4</b> Muut tiedostot</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="reading_data.html"><a href="reading_data.html#excel"><i class="fa fa-check"></i><b>4.4.1</b> Excel</a></li>
+<li class="chapter" data-level="4.4.2" data-path="reading_data.html"><a href="reading_data.html#spss"><i class="fa fa-check"></i><b>4.4.2</b> SPSS</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i><b>5</b> Datan muokkaaminen</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="data-wrangling.html"><a href="data-wrangling.html#data-frame-wrangling"><i class="fa fa-check"></i><b>5.1</b> Uuden muuttujan tai rivin luonti datakehikkoon</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="data-wrangling.html"><a href="data-wrangling.html#datakehikon-käsittely"><i class="fa fa-check"></i><b>5.1.1</b> Datakehikon käsittely</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#osajoukkojen-valinta"><i class="fa fa-check"></i><b>5.2</b> Osajoukkojen valinta</a></li>
-<li class="chapter" data-level="5.3" data-path="data-wrangling.html"><a href="data-wrangling.html#faktorit"><i class="fa fa-check"></i><b>5.3</b> Faktorit</a></li>
-<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#factor-extra"><i class="fa fa-check"></i><b>5.4</b> Extra: Lääketutkimusesimerkki</a></li>
+<li class="chapter" data-level="5.1" data-path="data-wrangling.html"><a href="data-wrangling.html#data-frame-wrangling"><i class="fa fa-check"></i><b>5.1</b> Uuden muuttujan tai rivin luonti datakehikkoon</a></li>
+<li class="chapter" data-level="5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#datakehikon-käsittely"><i class="fa fa-check"></i><b>5.2</b> Datakehikon käsittely</a></li>
+<li class="chapter" data-level="5.3" data-path="data-wrangling.html"><a href="data-wrangling.html#osajoukkojen-valinta"><i class="fa fa-check"></i><b>5.3</b> Osajoukkojen valinta</a></li>
+<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#datakehikon-ja-vektorin-järjestäminen"><i class="fa fa-check"></i><b>5.4</b> Datakehikon ja vektorin järjestäminen</a></li>
+<li class="chapter" data-level="5.5" data-path="data-wrangling.html"><a href="data-wrangling.html#faktorit"><i class="fa fa-check"></i><b>5.5</b> Faktorit</a></li>
+<li class="chapter" data-level="5.6" data-path="data-wrangling.html"><a href="data-wrangling.html#factor-extra"><i class="fa fa-check"></i><b>5.6</b> Extra: Lääketutkimusesimerkki</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>6</b> Tunnusluvut</a>
 <ul>
@@ -274,13 +273,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="tests.html"><a href="tests.html#levene"><i class="fa fa-check"></i><b>9.5</b> Levenen testi</a></li>
 <li class="chapter" data-level="9.6" data-path="tests.html"><a href="tests.html#shapiro"><i class="fa fa-check"></i><b>9.6</b> Shapiro-Wilk -testi</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
+<li class="chapter" data-level="10" data-path="linear_models.html"><a href="linear_models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="linear-models.html"><a href="linear-models.html#teoria"><i class="fa fa-check"></i><b>10.1</b> Teoria</a></li>
-<li class="chapter" data-level="10.2" data-path="linear-models.html"><a href="linear-models.html#esimerkki"><i class="fa fa-check"></i><b>10.2</b> Esimerkki</a></li>
-<li class="chapter" data-level="10.3" data-path="linear-models.html"><a href="linear-models.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>10.3</b> Tarkempia tietoja mallista</a></li>
-<li class="chapter" data-level="10.4" data-path="linear-models.html"><a href="linear-models.html#ennustaminen"><i class="fa fa-check"></i><b>10.4</b> Ennustaminen</a></li>
-<li class="chapter" data-level="10.5" data-path="linear-models.html"><a href="linear-models.html#korrelaatio"><i class="fa fa-check"></i><b>10.5</b> Korrelaatio</a></li>
+<li class="chapter" data-level="10.1" data-path="linear_models.html"><a href="linear_models.html#teoria"><i class="fa fa-check"></i><b>10.1</b> Teoria</a></li>
+<li class="chapter" data-level="10.2" data-path="linear_models.html"><a href="linear_models.html#esimerkki"><i class="fa fa-check"></i><b>10.2</b> Esimerkki</a></li>
+<li class="chapter" data-level="10.3" data-path="linear_models.html"><a href="linear_models.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>10.3</b> Tarkempia tietoja mallista</a></li>
+<li class="chapter" data-level="10.4" data-path="linear_models.html"><a href="linear_models.html#ennustaminen"><i class="fa fa-check"></i><b>10.4</b> Ennustaminen</a></li>
+<li class="chapter" data-level="10.5" data-path="linear_models.html"><a href="linear_models.html#korrelaatio"><i class="fa fa-check"></i><b>10.5</b> Korrelaatio</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>11</b> Funktiot</a>
 <ul>
@@ -296,6 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.1" data-path="functions.html"><a href="functions.html#usean-arvon-palautus"><i class="fa fa-check"></i><b>11.3.1</b> Usean arvon palautus</a></li>
 <li class="chapter" data-level="11.3.2" data-path="functions.html"><a href="functions.html#palautus-ilman-return-käskyä"><i class="fa fa-check"></i><b>11.3.2</b> Palautus ilman return-käskyä</a></li>
 <li class="chapter" data-level="11.3.3" data-path="functions.html"><a href="functions.html#funktio-ilman-tulosta"><i class="fa fa-check"></i><b>11.3.3</b> Funktio ilman tulosta</a></li>
+<li class="chapter" data-level="11.3.4" data-path="functions.html"><a href="functions.html#funktion-lyhytmuoto"><i class="fa fa-check"></i><b>11.3.4</b> Funktion lyhytmuoto</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>12</b> Ehtorakenteet</a>
@@ -412,199 +412,197 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="negaatio" class="section level4" number="12.1.0.1">
 <h4><span class="header-section-number">12.1.0.1</span> Negaatio</h4>
 <p>Looginen negaatio palauttaa loogisen lauseen vastakohdan, eli muuttaa arvon <code>TRUE</code> arvoksi <code>FALSE</code> ja arvon <code>FALSE</code> arvoksi <code>TRUE</code>.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="ifelse.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span></span></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="ifelse.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="ifelse.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(<span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="ifelse.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(<span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="ifelse.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Also works without parentheses</span></span>
-<span id="cb481-2"><a href="ifelse.html#cb481-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span></span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="ifelse.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Also works without parentheses</span></span>
+<span id="cb495-2"><a href="ifelse.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="ifelse.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">is.na</span>(<span class="cn">NA</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="ifelse.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">is.na</span>(<span class="cn">NA</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 </div>
 <div id="looginen-tai-disjunktio" class="section level4" number="12.1.0.2">
 <h4><span class="header-section-number">12.1.0.2</span> Looginen TAI (disjunktio)</h4>
 <p>Loogiselle TAI operaattorille annetaan kaksi loogista lausetta, ja TAI operaattori palauttaa <code>TRUE</code>, jos vähintään toinen lauseista on <code>TRUE</code>. R:ssä TAI merkitään pystyviivalla <code>|</code> tai kahdella pystyviivalla <code>||</code>. <code>|</code> käy läpi vektoreita alkioittain, <code>||</code> vertaa kahta loogista lausetta, ja toista lausetta ei edes ajeta, jos ensimmäinen on <code>TRUE</code> (koska <code>||</code> palauttaa <code>TRUE</code> riippumatta toisen lauseen arvosta). Jos tämä tuntui monimutkaiselta, niin riittää muistaa, että ehtorakenteissa kannattaa käyttää muotoa “||”.</p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="ifelse.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">||</span> <span class="st">&quot;a&quot;</span> <span class="sc">&lt;</span> <span class="st">&quot;b&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="ifelse.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">||</span> <span class="st">&quot;a&quot;</span> <span class="sc">&lt;</span> <span class="st">&quot;b&quot;</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="ifelse.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">||</span> <span class="dv">4</span> <span class="sc">&gt;</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="ifelse.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">||</span> <span class="dv">4</span> <span class="sc">&gt;</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="ifelse.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;a&quot;</span> <span class="sc">&gt;</span> <span class="st">&quot;c&quot;</span> <span class="sc">||</span> <span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="ifelse.html#cb503-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;a&quot;</span> <span class="sc">&gt;</span> <span class="st">&quot;c&quot;</span> <span class="sc">||</span> <span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">10</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 </div>
 <div id="looginen-ja-konjunktio" class="section level4" number="12.1.0.3">
 <h4><span class="header-section-number">12.1.0.3</span> Looginen JA (konjunktio)</h4>
 <p>Loogiselle JA operaattorille annetaan kaksi lausetta. JA palauttaa <code>TRUE</code>, jos kummatkin lauseet ovat <code>TRUE</code>. R:ssä JA-operaattorit ovat <code>&amp;</code> ja <code>&amp;&amp;</code>, jotka käyttäytyvät kuten <code>|</code> ja <code>||</code>.</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="ifelse.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">&amp;&amp;</span> <span class="st">&quot;a&quot;</span> <span class="sc">&lt;</span> <span class="st">&quot;b&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="ifelse.html#cb505-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">12</span> <span class="sc">&amp;&amp;</span> <span class="st">&quot;a&quot;</span> <span class="sc">&lt;</span> <span class="st">&quot;b&quot;</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="ifelse.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> <span class="dv">4</span> <span class="sc">&gt;</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="ifelse.html#cb507-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;&amp;</span> <span class="dv">4</span> <span class="sc">&gt;</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="ifelse.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;a&quot;</span> <span class="sc">&gt;</span> <span class="st">&quot;c&quot;</span> <span class="sc">&amp;&amp;</span> <span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="ifelse.html#cb509-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;a&quot;</span> <span class="sc">&gt;</span> <span class="st">&quot;c&quot;</span> <span class="sc">&amp;&amp;</span> <span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">10</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 </div>
 <div id="osajoukko" class="section level4" number="12.1.0.4">
 <h4><span class="header-section-number">12.1.0.4</span> Osajoukko</h4>
 <p><code>%in%</code>-operaattorilla voi tarkistaa, kuuluuko jokin arvo suurempaan joukkoon. Tämä voitaisiin toteuttaa myös usealla TAI-operaattorilla, mutta <code>%in%</code> on usein paljon kätevämpi.</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="ifelse.html#cb497-1" aria-hidden="true" tabindex="-1"></a>dna_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
-<span id="cb497-2"><a href="ifelse.html#cb497-2" aria-hidden="true" tabindex="-1"></a>rna_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;U&quot;</span>)</span>
-<span id="cb497-3"><a href="ifelse.html#cb497-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb497-4"><a href="ifelse.html#cb497-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;T&quot;</span> <span class="sc">%in%</span> dna_bases</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="ifelse.html#cb511-1" aria-hidden="true" tabindex="-1"></a>dna_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
+<span id="cb511-2"><a href="ifelse.html#cb511-2" aria-hidden="true" tabindex="-1"></a>rna_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;U&quot;</span>)</span>
+<span id="cb511-3"><a href="ifelse.html#cb511-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb511-4"><a href="ifelse.html#cb511-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;T&quot;</span> <span class="sc">%in%</span> dna_bases</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="ifelse.html#cb499-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;T&quot;</span> <span class="sc">%in%</span> rna_bases</span></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="ifelse.html#cb513-1" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;T&quot;</span> <span class="sc">%in%</span> rna_bases</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="ifelse.html#cb501-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With negation</span></span>
-<span id="cb501-2"><a href="ifelse.html#cb501-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="st">&quot;A&quot;</span> <span class="sc">%in%</span> dna_bases</span></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="ifelse.html#cb515-1" aria-hidden="true" tabindex="-1"></a><span class="co"># With negation</span></span>
+<span id="cb515-2"><a href="ifelse.html#cb515-2" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="st">&quot;A&quot;</span> <span class="sc">%in%</span> dna_bases</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Operaattoria voi soveltaa myös vektoreihin, jolloin operaattori palauttaa loogisen vektorin, jonka alkio jokainen alkio kertoo, kuuluiko vastaava operaation vasemman puolen alkio operaation oikeaan puoleen.</p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="ifelse.html#cb503-1" aria-hidden="true" tabindex="-1"></a>dna_bases <span class="sc">%in%</span> rna_bases</span></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb517-1"><a href="ifelse.html#cb517-1" aria-hidden="true" tabindex="-1"></a>dna_bases <span class="sc">%in%</span> rna_bases</span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE  TRUE FALSE</code></pre>
 </div>
 <div id="monimutkaisemmat-lauseet" class="section level4" number="12.1.0.5">
 <h4><span class="header-section-number">12.1.0.5</span> Monimutkaisemmat lauseet</h4>
 <p>Operaattoreita voidaan myös yhdistellä monimutkaisemmiksi lauseiksi. Tällöin lauseiden evaluointijärjestys määritetään tarvittaessa suluilla.</p>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="ifelse.html#cb505-1" aria-hidden="true" tabindex="-1"></a>dog <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">breed =</span> <span class="st">&quot;golden retriever&quot;</span>,</span>
-<span id="cb505-2"><a href="ifelse.html#cb505-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">height =</span> <span class="dv">45</span>,</span>
-<span id="cb505-3"><a href="ifelse.html#cb505-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">weight =</span> <span class="dv">27</span>)</span>
-<span id="cb505-4"><a href="ifelse.html#cb505-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb505-5"><a href="ifelse.html#cb505-5" aria-hidden="true" tabindex="-1"></a>dog<span class="sc">$</span>breed <span class="sc">==</span> <span class="st">&quot;golden retriever&quot;</span> <span class="sc">&amp;&amp;</span> dog<span class="sc">$</span>weight <span class="sc">&lt;</span> <span class="dv">25</span> <span class="sc">||</span> dog<span class="sc">$</span>height <span class="sc">&lt;</span> <span class="dv">50</span></span></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb519-1"><a href="ifelse.html#cb519-1" aria-hidden="true" tabindex="-1"></a>dog <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">breed =</span> <span class="st">&quot;golden retriever&quot;</span>,</span>
+<span id="cb519-2"><a href="ifelse.html#cb519-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">height =</span> <span class="dv">45</span>,</span>
+<span id="cb519-3"><a href="ifelse.html#cb519-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">weight =</span> <span class="dv">27</span>)</span>
+<span id="cb519-4"><a href="ifelse.html#cb519-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb519-5"><a href="ifelse.html#cb519-5" aria-hidden="true" tabindex="-1"></a>dog<span class="sc">$</span>breed <span class="sc">==</span> <span class="st">&quot;golden retriever&quot;</span> <span class="sc">&amp;&amp;</span> dog<span class="sc">$</span>weight <span class="sc">&lt;</span> <span class="dv">25</span> <span class="sc">||</span> dog<span class="sc">$</span>height <span class="sc">&lt;</span> <span class="dv">50</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="a-x-b" class="section level4" number="12.1.0.6">
 <h4><span class="header-section-number">12.1.0.6</span> a &lt; x &lt; b</h4>
 <p>usein tulee vastaan tilanteita, joissa halutaan tarkistaa, onko jokin luku halutulla välillä. Tämä kirjoitetaan matemaatiisesti esim. näin: <span class="math inline">\(a &lt; x &lt; b\)</span>, jossa tarkastetaan, onko <span class="math inline">\(x\)</span> välillä <span class="math inline">\((a, b)\)</span>. Tämä ei kuitenkaan valitettavasti toimi R:ssä, vaan tarkistus pitää jakaa kahteen osaan:
 <!-- Santtu: ihan vain huomiona, onko ohjelmointikieltä jossa a < x < b toimisi suoraan? Itse en ainakaan tiedä yhtäkään, ehkä Haskell mutta en muista.--></p>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb507-1"><a href="ifelse.html#cb507-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Are x and y between 0 and 1?</span></span>
-<span id="cb507-2"><a href="ifelse.html#cb507-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb507-3"><a href="ifelse.html#cb507-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
-<span id="cb507-4"><a href="ifelse.html#cb507-4" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">&lt;=</span> x <span class="sc">&amp;&amp;</span> x <span class="sc">&lt;=</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb521-1"><a href="ifelse.html#cb521-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Are x and y between 0 and 1?</span></span>
+<span id="cb521-2"><a href="ifelse.html#cb521-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb521-3"><a href="ifelse.html#cb521-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb521-4"><a href="ifelse.html#cb521-4" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">&lt;=</span> x <span class="sc">&amp;&amp;</span> x <span class="sc">&lt;=</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb509-1"><a href="ifelse.html#cb509-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">&lt;=</span> y <span class="sc">&amp;&amp;</span> y <span class="sc">&lt;=</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb523-1"><a href="ifelse.html#cb523-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> <span class="sc">&lt;=</span> y <span class="sc">&amp;&amp;</span> y <span class="sc">&lt;=</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
 <div id="ehtorakenteet" class="section level2" number="12.2">
 <h2><span class="header-section-number">12.2</span> Ehtorakenteet</h2>
 <p>Aloitetaan esimerkistä: tehtävänä on kirjoittaa funktio, jolle annetaan syötteenä potilaan hemoglobiiniarvo. Funktion on tarkoitus hälyttää, jos hemoglobiini laskee alle viitearvojen alarajan 117. Kyseinen funktio voisi näyttää vaikka tältä:</p>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="ifelse.html#cb511-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb) {</span>
-<span id="cb511-2"><a href="ifelse.html#cb511-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
-<span id="cb511-3"><a href="ifelse.html#cb511-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low!&quot;</span>)</span>
-<span id="cb511-4"><a href="ifelse.html#cb511-4" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb511-5"><a href="ifelse.html#cb511-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="ifelse.html#cb525-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb) {</span>
+<span id="cb525-2"><a href="ifelse.html#cb525-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb525-3"><a href="ifelse.html#cb525-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low!&quot;</span>)</span>
+<span id="cb525-4"><a href="ifelse.html#cb525-4" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb525-5"><a href="ifelse.html#cb525-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Funktiolla on siis yksi argumentti, <code>hb</code> eli hemoglobiiniarvo. Funktion sisällä on if-rakenne. If-rakenteessa on kaksi osaa: ehto, ja rakenteen sisäinen koodi. Rakenteen sisäinen koodi ajetaan vain, jos ehto täyttyy. Ehto merkitään if-komennon jälkeen sulkeisiin, ja rakenteen sisäinen koodi kirjoitetaan sulkeiden jälkeen aaltosulkeiden sisään. (Jos aaltosulkeiden sisään tulisi vain yksi rivi koodia, aaltoasulkeet voi jättää pois, mutta näissä esimerkeissä käytetään aina aaltoasulkeita).</p>
 <p>Kokeillaan, miten funktio toimii eri hemoglobiiniarvoilla:</p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="ifelse.html#cb512-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nothing happens</span></span>
-<span id="cb512-2"><a href="ifelse.html#cb512-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="dv">130</span>)</span>
-<span id="cb512-3"><a href="ifelse.html#cb512-3" aria-hidden="true" tabindex="-1"></a><span class="co"># returns alert</span></span>
-<span id="cb512-4"><a href="ifelse.html#cb512-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="dv">110</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="ifelse.html#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nothing happens</span></span>
+<span id="cb526-2"><a href="ifelse.html#cb526-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="dv">130</span>)</span>
+<span id="cb526-3"><a href="ifelse.html#cb526-3" aria-hidden="true" tabindex="-1"></a><span class="co"># returns alert</span></span>
+<span id="cb526-4"><a href="ifelse.html#cb526-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="dv">110</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hemoglobin is low!&quot;</code></pre>
 <p>Funktio siis toimii oletetusti, eli se hälyttää vain, jos hemoglobiinitaso on alle 117. Käyttäjän kannalta olisi kuitenkin kätevää saada jonkinlainen palaute myös silloin, kun hemoglobiinitaso on tarpeeksi korkea. Tätä varten voidaan käyttää else-komentoa:</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="ifelse.html#cb514-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb) {</span>
-<span id="cb514-2"><a href="ifelse.html#cb514-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
-<span id="cb514-3"><a href="ifelse.html#cb514-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low!&quot;</span>)</span>
-<span id="cb514-4"><a href="ifelse.html#cb514-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb514-5"><a href="ifelse.html#cb514-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
-<span id="cb514-6"><a href="ifelse.html#cb514-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb514-7"><a href="ifelse.html#cb514-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb514-8"><a href="ifelse.html#cb514-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb514-9"><a href="ifelse.html#cb514-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="dv">130</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="ifelse.html#cb528-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb) {</span>
+<span id="cb528-2"><a href="ifelse.html#cb528-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb528-3"><a href="ifelse.html#cb528-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low!&quot;</span>)</span>
+<span id="cb528-4"><a href="ifelse.html#cb528-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb528-5"><a href="ifelse.html#cb528-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb528-6"><a href="ifelse.html#cb528-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb528-7"><a href="ifelse.html#cb528-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb528-8"><a href="ifelse.html#cb528-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb528-9"><a href="ifelse.html#cb528-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="dv">130</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hemoglobin OK&quot;</code></pre>
 <p>Else-komennon jälkeinen koodi siis ajetaan, jos ehto <code>hb &lt; 117</code> ei täyty.</p>
 <p>Tällä hetkellä funktiomme toimii vain naispotilaille, sillä miehillä hemoglobiiniarvojen alaraja on 134. Lisätään siis funktioomme argumentti <code>sex</code> sukupuolta varten ja muokataan funktion toimintaa niin, että se osaa ottaa huomioon sukupuolen. Nyt if-rakenteen ehdosta tulee jo hieman monimutkaisempi:</p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="ifelse.html#cb516-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
-<span id="cb516-2"><a href="ifelse.html#cb516-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span> <span class="sc">||</span> sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
-<span id="cb516-3"><a href="ifelse.html#cb516-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low!&quot;</span>)</span>
-<span id="cb516-4"><a href="ifelse.html#cb516-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb516-5"><a href="ifelse.html#cb516-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
-<span id="cb516-6"><a href="ifelse.html#cb516-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb516-7"><a href="ifelse.html#cb516-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb516-8"><a href="ifelse.html#cb516-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb516-9"><a href="ifelse.html#cb516-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="ifelse.html#cb530-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
+<span id="cb530-2"><a href="ifelse.html#cb530-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span> <span class="sc">||</span> sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
+<span id="cb530-3"><a href="ifelse.html#cb530-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low!&quot;</span>)</span>
+<span id="cb530-4"><a href="ifelse.html#cb530-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb530-5"><a href="ifelse.html#cb530-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb530-6"><a href="ifelse.html#cb530-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb530-7"><a href="ifelse.html#cb530-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb530-8"><a href="ifelse.html#cb530-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb530-9"><a href="ifelse.html#cb530-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hemoglobin OK&quot;</code></pre>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="ifelse.html#cb518-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;male&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="ifelse.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;male&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hemoglobin is low!&quot;</code></pre>
 <p>Entä jos haluaisimme tulostaa eri varoituksen mies- ja naispotilaille? Tähän tarvitaan “else if”-rakennetta:</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="ifelse.html#cb520-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
-<span id="cb520-2"><a href="ifelse.html#cb520-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
-<span id="cb520-3"><a href="ifelse.html#cb520-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
-<span id="cb520-4"><a href="ifelse.html#cb520-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
-<span id="cb520-5"><a href="ifelse.html#cb520-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
-<span id="cb520-6"><a href="ifelse.html#cb520-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb520-7"><a href="ifelse.html#cb520-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
-<span id="cb520-8"><a href="ifelse.html#cb520-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb520-9"><a href="ifelse.html#cb520-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb520-10"><a href="ifelse.html#cb520-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb520-11"><a href="ifelse.html#cb520-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">110</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="ifelse.html#cb534-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
+<span id="cb534-2"><a href="ifelse.html#cb534-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb534-3"><a href="ifelse.html#cb534-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
+<span id="cb534-4"><a href="ifelse.html#cb534-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
+<span id="cb534-5"><a href="ifelse.html#cb534-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
+<span id="cb534-6"><a href="ifelse.html#cb534-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb534-7"><a href="ifelse.html#cb534-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb534-8"><a href="ifelse.html#cb534-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb534-9"><a href="ifelse.html#cb534-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb534-10"><a href="ifelse.html#cb534-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb534-11"><a href="ifelse.html#cb534-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">110</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hemoglobin is low for a female!&quot;</code></pre>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="ifelse.html#cb522-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;male&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="ifelse.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;male&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hemoglobin is low for a male!&quot;</code></pre>
 <p>Nyt funktio tarkistaa ensin, onko potilas nainen ja onko hänen hemoglobiininsa alle 117. Jos ei, siirrytään eteenpäin ja tarkistetaan, onko potilas mies ja onko hänen hemoglobiininsa alle 130. Jos ei, siirrytään viimeiseen kohtaan, ja tulostetaan “Hemoglobin ok”.</p>
 <p>Else-if rakenteita voi olla rajoittamaton määrä ensimmäisen if-rakenteen jälkeen. Lisätään funktioon hälytys kriittisestä hemoglobiinin määrästä (hb &lt; 50) riippumatta sukupuolesta:</p>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="ifelse.html#cb524-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
-<span id="cb524-2"><a href="ifelse.html#cb524-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
-<span id="cb524-3"><a href="ifelse.html#cb524-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
-<span id="cb524-4"><a href="ifelse.html#cb524-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
-<span id="cb524-5"><a href="ifelse.html#cb524-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
-<span id="cb524-6"><a href="ifelse.html#cb524-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
-<span id="cb524-7"><a href="ifelse.html#cb524-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is critical&quot;</span>)</span>
-<span id="cb524-8"><a href="ifelse.html#cb524-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb524-9"><a href="ifelse.html#cb524-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
-<span id="cb524-10"><a href="ifelse.html#cb524-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb524-11"><a href="ifelse.html#cb524-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb524-12"><a href="ifelse.html#cb524-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb524-13"><a href="ifelse.html#cb524-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">32</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="ifelse.html#cb538-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
+<span id="cb538-2"><a href="ifelse.html#cb538-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb538-3"><a href="ifelse.html#cb538-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
+<span id="cb538-4"><a href="ifelse.html#cb538-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
+<span id="cb538-5"><a href="ifelse.html#cb538-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
+<span id="cb538-6"><a href="ifelse.html#cb538-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
+<span id="cb538-7"><a href="ifelse.html#cb538-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is critical&quot;</span>)</span>
+<span id="cb538-8"><a href="ifelse.html#cb538-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb538-9"><a href="ifelse.html#cb538-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb538-10"><a href="ifelse.html#cb538-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb538-11"><a href="ifelse.html#cb538-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb538-12"><a href="ifelse.html#cb538-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb538-13"><a href="ifelse.html#cb538-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">32</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hemoglobin is low for a female!&quot;</code></pre>
 <p>Kuten huomataan, yllä oleva koodi ei toimikaan, kuten piti. Näin alhaisella hemoglobiinilla pitäisi tulla varoitus kriittisestä tilasta. Koodi suoritus ei kuitenkaan ikinä etene kriittisen tilan varoitukseen asti, sillä ensimmäinen ehto täyttyy. Korjataan tilanne siirtämällä kriittisen tilan ehto ensimmäiseksi:</p>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="ifelse.html#cb526-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
-<span id="cb526-2"><a href="ifelse.html#cb526-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
-<span id="cb526-3"><a href="ifelse.html#cb526-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is critical&quot;</span>)</span>
-<span id="cb526-4"><a href="ifelse.html#cb526-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
-<span id="cb526-5"><a href="ifelse.html#cb526-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
-<span id="cb526-6"><a href="ifelse.html#cb526-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
-<span id="cb526-7"><a href="ifelse.html#cb526-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
-<span id="cb526-8"><a href="ifelse.html#cb526-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb526-9"><a href="ifelse.html#cb526-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
-<span id="cb526-10"><a href="ifelse.html#cb526-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb526-11"><a href="ifelse.html#cb526-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb526-12"><a href="ifelse.html#cb526-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb526-13"><a href="ifelse.html#cb526-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">32</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="ifelse.html#cb540-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
+<span id="cb540-2"><a href="ifelse.html#cb540-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
+<span id="cb540-3"><a href="ifelse.html#cb540-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is critical&quot;</span>)</span>
+<span id="cb540-4"><a href="ifelse.html#cb540-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
+<span id="cb540-5"><a href="ifelse.html#cb540-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
+<span id="cb540-6"><a href="ifelse.html#cb540-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb540-7"><a href="ifelse.html#cb540-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
+<span id="cb540-8"><a href="ifelse.html#cb540-8" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb540-9"><a href="ifelse.html#cb540-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb540-10"><a href="ifelse.html#cb540-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb540-11"><a href="ifelse.html#cb540-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb540-12"><a href="ifelse.html#cb540-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb540-13"><a href="ifelse.html#cb540-13" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">32</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hemoglobin is critical&quot;</code></pre>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="ifelse.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="ifelse.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hemoglobin OK&quot;</code></pre>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="ifelse.html#cb530-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;male&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="ifelse.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;male&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hemoglobin is low for a male!&quot;</code></pre>
 <p>Nyt funktio toimii haluamallamme tavalla!</p>
 <p>Funktioissa voi myös olla useampi ehtorakenne. Ehtorakenteita käytetään usein tarkistamaan argumenttien arvoja. Lisätään ehtorakenteet argumenttien tarkistamiseksi:
 <!-- Santtu: Mielestäni näiden tarkastusten tulisi kutsua stop, eikä palauttaa tekstiä, kyseessä on kuitenkin virhetilanne --></p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="ifelse.html#cb532-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
-<span id="cb532-2"><a href="ifelse.html#cb532-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Hemoglobin should be numeric and positive</span></span>
-<span id="cb532-3"><a href="ifelse.html#cb532-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(hb) <span class="sc">||</span> hb <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb532-4"><a href="ifelse.html#cb532-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin should be numeric and positive&quot;</span>)</span>
-<span id="cb532-5"><a href="ifelse.html#cb532-5" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb532-6"><a href="ifelse.html#cb532-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>)) {</span>
-<span id="cb532-7"><a href="ifelse.html#cb532-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;This function can only deal with binary sex: female or male&quot;</span>)</span>
-<span id="cb532-8"><a href="ifelse.html#cb532-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb532-9"><a href="ifelse.html#cb532-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb532-10"><a href="ifelse.html#cb532-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
-<span id="cb532-11"><a href="ifelse.html#cb532-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is critical&quot;</span>)</span>
-<span id="cb532-12"><a href="ifelse.html#cb532-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
-<span id="cb532-13"><a href="ifelse.html#cb532-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
-<span id="cb532-14"><a href="ifelse.html#cb532-14" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
-<span id="cb532-15"><a href="ifelse.html#cb532-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
-<span id="cb532-16"><a href="ifelse.html#cb532-16" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb532-17"><a href="ifelse.html#cb532-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
-<span id="cb532-18"><a href="ifelse.html#cb532-18" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb532-19"><a href="ifelse.html#cb532-19" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb532-20"><a href="ifelse.html#cb532-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb532-21"><a href="ifelse.html#cb532-21" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="st">&quot;120&quot;</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="ifelse.html#cb546-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb, sex) {</span>
+<span id="cb546-2"><a href="ifelse.html#cb546-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Hemoglobin should be numeric and positive</span></span>
+<span id="cb546-3"><a href="ifelse.html#cb546-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(hb) <span class="sc">||</span> hb <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb546-4"><a href="ifelse.html#cb546-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin should be numeric and positive&quot;</span>)</span>
+<span id="cb546-5"><a href="ifelse.html#cb546-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb546-6"><a href="ifelse.html#cb546-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span>sex <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;female&quot;</span>, <span class="st">&quot;male&quot;</span>)) {</span>
+<span id="cb546-7"><a href="ifelse.html#cb546-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;This function can only deal with binary sex: female or male&quot;</span>)</span>
+<span id="cb546-8"><a href="ifelse.html#cb546-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb546-9"><a href="ifelse.html#cb546-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb546-10"><a href="ifelse.html#cb546-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">50</span>) {</span>
+<span id="cb546-11"><a href="ifelse.html#cb546-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is critical&quot;</span>)</span>
+<span id="cb546-12"><a href="ifelse.html#cb546-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;male&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">134</span>) {</span>
+<span id="cb546-13"><a href="ifelse.html#cb546-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a male!&quot;</span>)</span>
+<span id="cb546-14"><a href="ifelse.html#cb546-14" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sex <span class="sc">==</span> <span class="st">&quot;female&quot;</span> <span class="sc">&amp;&amp;</span> hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>
+<span id="cb546-15"><a href="ifelse.html#cb546-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin is low for a female!&quot;</span>)</span>
+<span id="cb546-16"><a href="ifelse.html#cb546-16" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb546-17"><a href="ifelse.html#cb546-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="st">&quot;Hemoglobin OK&quot;</span>)</span>
+<span id="cb546-18"><a href="ifelse.html#cb546-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb546-19"><a href="ifelse.html#cb546-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb546-20"><a href="ifelse.html#cb546-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb546-21"><a href="ifelse.html#cb546-21" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="st">&quot;120&quot;</span>, <span class="at">sex =</span> <span class="st">&quot;female&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Hemoglobin should be numeric and positive&quot;</code></pre>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="ifelse.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;FEMALE&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="ifelse.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hb_alert</span>(<span class="at">hb =</span> <span class="dv">120</span>, <span class="at">sex =</span> <span class="st">&quot;FEMALE&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;This function can only deal with binary sex: female or male&quot;</code></pre>
 </div>
 <div id="alkioiden-poimiminen-vektorista-tietyn-ehdon-perusteella" class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> Alkioiden poimiminen vektorista tietyn ehdon perusteella</h2>
-<!-- Santtu: poistin taas viittaukse viikkoihin jotta yleisyys säilyy -->
-<p>Seuraava tilanne on melko tyypillinen: on käytävä läpi vektorin arvot, ja säilytettävä niistä ne, jotka täyttivät tietyn ehdon. Tätä ongelmaa voi lähestyä esimerkiksi seuraavalla tavalla:
-<!--Tätä aihetta käsitellään enemmän ensi viikolla, mutta tässä lyhyt vinkki tällaisten tehtävien ratkaisuun:--></p>
+<p>Seuraava tilanne on melko tyypillinen: on käytävä läpi vektorin arvot, ja säilytettävä niistä ne, jotka täyttivät tietyn ehdon. Tätä ongelmaa voi lähestyä esimerkiksi seuraavalla tavalla:</p>
 <!-- Santtu: Tämä voi olla joskus nopea ja yksinkertainen ratkaisu, mutta käytännössä vectorize vain niputtaa annetun funktion sopivaan sapply kutsuun, mikä ei välttämättä ole hyvä ratkaisu, jos alkuperäisen funktion olisii itse voinut koodata vektorimuotoiseksi ilman silmukkarakenteita. Opetuksena siis se, että vectorize ei ole "aitoa" vektorisointia. -->
 <ul>
 <li>Luo apufunktio, joka ottaa syötteeksi yhden arvon, ja tarkistaa täyttyykö ehto. Tämän funktion tulee palauttaa <code>TRUE</code>, jos ehto täyttyy ja <code>FALSE</code>, jos ehto ei täyty.</li>
@@ -613,36 +611,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Käytä vektoroitua apufunktiota vektorin indeksointiin.</li>
 </ul>
 <p>Tässä on esimerkki, jossa käydään läpi vektori DNA:n emäksiä, joista poimitaan vain sytosiinit ja guaniinit.</p>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="ifelse.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function</span></span>
-<span id="cb536-2"><a href="ifelse.html#cb536-2" aria-hidden="true" tabindex="-1"></a>is_cg <span class="ot">&lt;-</span> <span class="cf">function</span>(base) {</span>
-<span id="cb536-3"><a href="ifelse.html#cb536-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (base <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>)) {</span>
-<span id="cb536-4"><a href="ifelse.html#cb536-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
-<span id="cb536-5"><a href="ifelse.html#cb536-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb536-6"><a href="ifelse.html#cb536-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
-<span id="cb536-7"><a href="ifelse.html#cb536-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb536-8"><a href="ifelse.html#cb536-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb536-9"><a href="ifelse.html#cb536-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb536-10"><a href="ifelse.html#cb536-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectorize</span></span>
-<span id="cb536-11"><a href="ifelse.html#cb536-11" aria-hidden="true" tabindex="-1"></a>is_cg_vector <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(is_cg)</span>
-<span id="cb536-12"><a href="ifelse.html#cb536-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb536-13"><a href="ifelse.html#cb536-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Main function</span></span>
-<span id="cb536-14"><a href="ifelse.html#cb536-14" aria-hidden="true" tabindex="-1"></a>pick_cg <span class="ot">&lt;-</span> <span class="cf">function</span>(bases) {</span>
-<span id="cb536-15"><a href="ifelse.html#cb536-15" aria-hidden="true" tabindex="-1"></a>  only_cg <span class="ot">&lt;-</span> bases[<span class="fu">is_cg_vector</span>(bases)]</span>
-<span id="cb536-16"><a href="ifelse.html#cb536-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(only_cg)</span>
-<span id="cb536-17"><a href="ifelse.html#cb536-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb536-18"><a href="ifelse.html#cb536-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb536-19"><a href="ifelse.html#cb536-19" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: this only checks the first value of the vector</span></span>
-<span id="cb536-20"><a href="ifelse.html#cb536-20" aria-hidden="true" tabindex="-1"></a>my_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
-<span id="cb536-21"><a href="ifelse.html#cb536-21" aria-hidden="true" tabindex="-1"></a><span class="fu">is_cg</span>(my_bases)</span></code></pre></div>
+<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="ifelse.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper function</span></span>
+<span id="cb550-2"><a href="ifelse.html#cb550-2" aria-hidden="true" tabindex="-1"></a>is_cg <span class="ot">&lt;-</span> <span class="cf">function</span>(base) {</span>
+<span id="cb550-3"><a href="ifelse.html#cb550-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (base <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;C&quot;</span>, <span class="st">&quot;G&quot;</span>)) {</span>
+<span id="cb550-4"><a href="ifelse.html#cb550-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb550-5"><a href="ifelse.html#cb550-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb550-6"><a href="ifelse.html#cb550-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb550-7"><a href="ifelse.html#cb550-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb550-8"><a href="ifelse.html#cb550-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb550-9"><a href="ifelse.html#cb550-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb550-10"><a href="ifelse.html#cb550-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Vectorize</span></span>
+<span id="cb550-11"><a href="ifelse.html#cb550-11" aria-hidden="true" tabindex="-1"></a>is_cg_vector <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(is_cg)</span>
+<span id="cb550-12"><a href="ifelse.html#cb550-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb550-13"><a href="ifelse.html#cb550-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Main function</span></span>
+<span id="cb550-14"><a href="ifelse.html#cb550-14" aria-hidden="true" tabindex="-1"></a>pick_cg <span class="ot">&lt;-</span> <span class="cf">function</span>(bases) {</span>
+<span id="cb550-15"><a href="ifelse.html#cb550-15" aria-hidden="true" tabindex="-1"></a>  only_cg <span class="ot">&lt;-</span> bases[<span class="fu">is_cg_vector</span>(bases)]</span>
+<span id="cb550-16"><a href="ifelse.html#cb550-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(only_cg)</span>
+<span id="cb550-17"><a href="ifelse.html#cb550-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb550-18"><a href="ifelse.html#cb550-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb550-19"><a href="ifelse.html#cb550-19" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: this only checks the first value of the vector</span></span>
+<span id="cb550-20"><a href="ifelse.html#cb550-20" aria-hidden="true" tabindex="-1"></a>my_bases <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;T&quot;</span>, <span class="st">&quot;G&quot;</span>, <span class="st">&quot;T&quot;</span>)</span>
+<span id="cb550-21"><a href="ifelse.html#cb550-21" aria-hidden="true" tabindex="-1"></a><span class="fu">is_cg</span>(my_bases)</span></code></pre></div>
 <pre><code>## Warning in if (base %in% c(&quot;C&quot;, &quot;G&quot;)) {: the condition has length &gt; 1 and only
 ## the first element will be used</code></pre>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb539-1"><a href="ifelse.html#cb539-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This works as expected</span></span>
-<span id="cb539-2"><a href="ifelse.html#cb539-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is_cg_vector</span>(my_bases)</span></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="ifelse.html#cb553-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This works as expected</span></span>
+<span id="cb553-2"><a href="ifelse.html#cb553-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is_cg_vector</span>(my_bases)</span></code></pre></div>
 <pre><code>##     A     C     C     T     G     T 
 ## FALSE  TRUE  TRUE FALSE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb541-1"><a href="ifelse.html#cb541-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pick only C and G</span></span>
-<span id="cb541-2"><a href="ifelse.html#cb541-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pick_cg</span>(my_bases)</span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="ifelse.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pick only C and G</span></span>
+<span id="cb555-2"><a href="ifelse.html#cb555-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pick_cg</span>(my_bases)</span></code></pre></div>
 <pre><code>## [1] &quot;C&quot; &quot;C&quot; &quot;G&quot;</code></pre>
 
 </div>
@@ -657,7 +655,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -670,8 +667,8 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
@@ -696,7 +693,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["R-ohjelmoinnin-perusteet.pdf"],
+"download": {},
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

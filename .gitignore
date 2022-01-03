@@ -44,3 +44,7 @@ vignettes/*.pdf
 
 # .zip of _book for Moodle
 _book.zip
+
+# output files
+/_book/
+/_bookdown_files/

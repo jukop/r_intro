@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 
 <link rel="next" href="alkuvalmistelut.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -160,77 +160,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#what_R"><i class="fa fa-check"></i><b>1.1</b> Mikä R on ja mitä sillä tehdään?</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html"><i class="fa fa-check"></i><b>2</b> Muuttujat ja vektorit</a>
+<li class="chapter" data-level="2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html"><i class="fa fa-check"></i><b>2</b> Muuttujat ja vektorit</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#variables"><i class="fa fa-check"></i><b>2.1</b> Muuttujat</a></li>
-<li class="chapter" data-level="2.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#comments"><i class="fa fa-check"></i><b>2.2</b> Kommentit</a></li>
-<li class="chapter" data-level="2.3" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#vectors"><i class="fa fa-check"></i><b>2.3</b> Vektorit</a>
+<li class="chapter" data-level="2.1" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#variables"><i class="fa fa-check"></i><b>2.1</b> Muuttujat</a></li>
+<li class="chapter" data-level="2.2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#comments"><i class="fa fa-check"></i><b>2.2</b> Kommentit</a></li>
+<li class="chapter" data-level="2.3" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#vectors"><i class="fa fa-check"></i><b>2.3</b> Vektorit</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ei-numeeriset-vektorit"><i class="fa fa-check"></i><b>2.3.1</b> Ei-numeeriset vektorit</a></li>
-<li class="chapter" data-level="2.3.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#vektorien-indeksointi-ja-osajoukon-valinta"><i class="fa fa-check"></i><b>2.3.2</b> Vektorien indeksointi ja osajoukon valinta</a></li>
-<li class="chapter" data-level="2.3.3" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#puuttuvat-arvot"><i class="fa fa-check"></i><b>2.3.3</b> Puuttuvat arvot</a></li>
+<li class="chapter" data-level="2.3.1" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#ei-numeeriset-vektorit"><i class="fa fa-check"></i><b>2.3.1</b> Ei-numeeriset vektorit</a></li>
+<li class="chapter" data-level="2.3.2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#vektorien-indeksointi-ja-osajoukon-valinta"><i class="fa fa-check"></i><b>2.3.2</b> Vektorien indeksointi ja osajoukon valinta</a></li>
+<li class="chapter" data-level="2.3.3" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#puuttuvat-arvot"><i class="fa fa-check"></i><b>2.3.3</b> Puuttuvat arvot</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#extra"><i class="fa fa-check"></i><b>2.4</b> Extra: Alkeistietotyypit ja erikoisarvot</a>
+<li class="chapter" data-level="2.4" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#extra"><i class="fa fa-check"></i><b>2.4</b> Extra: Alkeistietotyypit ja erikoisarvot</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ääretön-ja-miinus-ääretön"><i class="fa fa-check"></i><b>2.4.1</b> Ääretön ja miinus ääretön</a></li>
-<li class="chapter" data-level="2.4.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ei-numero"><i class="fa fa-check"></i><b>2.4.2</b> Ei-numero</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Tietotyypit</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="data-types.html"><a href="data-types.html#data-frame"><i class="fa fa-check"></i><b>3.1</b> Datakehikko (data.frame)</a></li>
-<li class="chapter" data-level="3.2" data-path="data-types.html"><a href="data-types.html#matrix"><i class="fa fa-check"></i><b>3.2</b> Matriisi</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="data-types.html"><a href="data-types.html#matriisin-luominen"><i class="fa fa-check"></i><b>3.2.1</b> Matriisin luominen</a></li>
-<li class="chapter" data-level="3.2.2" data-path="data-types.html"><a href="data-types.html#matriisin-koko"><i class="fa fa-check"></i><b>3.2.2</b> Matriisin koko</a></li>
-<li class="chapter" data-level="3.2.3" data-path="data-types.html"><a href="data-types.html#matriisin-indeksointi"><i class="fa fa-check"></i><b>3.2.3</b> Matriisin indeksointi</a></li>
-<li class="chapter" data-level="3.2.4" data-path="data-types.html"><a href="data-types.html#matriisien-rakentaminen-vektoreista"><i class="fa fa-check"></i><b>3.2.4</b> Matriisien rakentaminen vektoreista</a></li>
-<li class="chapter" data-level="3.2.5" data-path="data-types.html"><a href="data-types.html#rivien-ja-sarakkeiden-nimeäminen"><i class="fa fa-check"></i><b>3.2.5</b> Rivien ja sarakkeiden nimeäminen</a></li>
-<li class="chapter" data-level="3.2.6" data-path="data-types.html"><a href="data-types.html#matriiseilla-laskeminen"><i class="fa fa-check"></i><b>3.2.6</b> Matriiseilla laskeminen</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="data-types.html"><a href="data-types.html#data-type-view"><i class="fa fa-check"></i><b>3.3</b> Tietotyyppien tarkastelu</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="data-types.html"><a href="data-types.html#view"><i class="fa fa-check"></i><b>3.3.1</b> View()</a></li>
-<li class="chapter" data-level="3.3.2" data-path="data-types.html"><a href="data-types.html#str"><i class="fa fa-check"></i><b>3.3.2</b> str()</a></li>
-<li class="chapter" data-level="3.3.3" data-path="data-types.html"><a href="data-types.html#head"><i class="fa fa-check"></i><b>3.3.3</b> head()</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html#extra-taulukko-ja-lista"><i class="fa fa-check"></i><b>3.4</b> Extra: Taulukko ja lista</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="data-types.html"><a href="data-types.html#array"><i class="fa fa-check"></i><b>3.4.1</b> Taulukko</a></li>
-<li class="chapter" data-level="3.4.2" data-path="data-types.html"><a href="data-types.html#list"><i class="fa fa-check"></i><b>3.4.2</b> Lista</a></li>
+<li class="chapter" data-level="2.4.1" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#ääretön-ja-miinus-ääretön"><i class="fa fa-check"></i><b>2.4.1</b> Ääretön ja miinus ääretön</a></li>
+<li class="chapter" data-level="2.4.2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#ei-numero"><i class="fa fa-check"></i><b>2.4.2</b> Ei-numero</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="reading-data.html"><a href="reading-data.html"><i class="fa fa-check"></i><b>4</b> Datan lukeminen</a>
+<li class="chapter" data-level="3" data-path="data_types.html"><a href="data_types.html"><i class="fa fa-check"></i><b>3</b> Tietotyypit</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="reading-data.html"><a href="reading-data.html#hakemistopolut-ja-tiedostopäätteet"><i class="fa fa-check"></i><b>4.1</b> Hakemistopolut ja tiedostopäätteet</a>
+<li class="chapter" data-level="3.1" data-path="data_types.html"><a href="data_types.html#data-frame"><i class="fa fa-check"></i><b>3.1</b> Datakehikko (data.frame)</a></li>
+<li class="chapter" data-level="3.2" data-path="data_types.html"><a href="data_types.html#matrix"><i class="fa fa-check"></i><b>3.2</b> Matriisi</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="reading-data.html"><a href="reading-data.html#hakemistopolut"><i class="fa fa-check"></i><b>4.1.1</b> Hakemistopolut</a></li>
-<li class="chapter" data-level="4.1.2" data-path="reading-data.html"><a href="reading-data.html#tiedostopäätteet"><i class="fa fa-check"></i><b>4.1.2</b> Tiedostopäätteet</a></li>
+<li class="chapter" data-level="3.2.1" data-path="data_types.html"><a href="data_types.html#matriisin-luominen"><i class="fa fa-check"></i><b>3.2.1</b> Matriisin luominen</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data_types.html"><a href="data_types.html#matriisin-koko"><i class="fa fa-check"></i><b>3.2.2</b> Matriisin koko</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data_types.html"><a href="data_types.html#matriisin-indeksointi"><i class="fa fa-check"></i><b>3.2.3</b> Matriisin indeksointi</a></li>
+<li class="chapter" data-level="3.2.4" data-path="data_types.html"><a href="data_types.html#matriisien-rakentaminen-vektoreista"><i class="fa fa-check"></i><b>3.2.4</b> Matriisien rakentaminen vektoreista</a></li>
+<li class="chapter" data-level="3.2.5" data-path="data_types.html"><a href="data_types.html#rivien-ja-sarakkeiden-nimeäminen"><i class="fa fa-check"></i><b>3.2.5</b> Rivien ja sarakkeiden nimeäminen</a></li>
+<li class="chapter" data-level="3.2.6" data-path="data_types.html"><a href="data_types.html#matriiseilla-laskeminen"><i class="fa fa-check"></i><b>3.2.6</b> Matriiseilla laskeminen</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="reading-data.html"><a href="reading-data.html#tekstitiedostot"><i class="fa fa-check"></i><b>4.2</b> Tekstitiedostot</a>
+<li class="chapter" data-level="3.3" data-path="data_types.html"><a href="data_types.html#data-type-view"><i class="fa fa-check"></i><b>3.3</b> Tietotyyppien tarkastelu</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="reading-data.html"><a href="reading-data.html#read.table"><i class="fa fa-check"></i><b>4.2.1</b> read.table</a></li>
-<li class="chapter" data-level="4.2.2" data-path="reading-data.html"><a href="reading-data.html#read.csv"><i class="fa fa-check"></i><b>4.2.2</b> read.csv</a></li>
+<li class="chapter" data-level="3.3.1" data-path="data_types.html"><a href="data_types.html#view"><i class="fa fa-check"></i><b>3.3.1</b> View()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data_types.html"><a href="data_types.html#str"><i class="fa fa-check"></i><b>3.3.2</b> str()</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data_types.html"><a href="data_types.html#head"><i class="fa fa-check"></i><b>3.3.3</b> head()</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="reading-data.html"><a href="reading-data.html#datakehikon-tarkastelu"><i class="fa fa-check"></i><b>4.3</b> Datakehikon tarkastelu</a>
+<li class="chapter" data-level="3.4" data-path="data_types.html"><a href="data_types.html#extra-taulukko-ja-lista"><i class="fa fa-check"></i><b>3.4</b> Extra: Taulukko ja lista</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="reading-data.html"><a href="reading-data.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>4.3.1</b> R:n sisäänrakennetut datasetit</a></li>
+<li class="chapter" data-level="3.4.1" data-path="data_types.html"><a href="data_types.html#array"><i class="fa fa-check"></i><b>3.4.1</b> Taulukko</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data_types.html"><a href="data_types.html#list"><i class="fa fa-check"></i><b>3.4.2</b> Lista</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="reading-data.html"><a href="reading-data.html#muut-tiedostot"><i class="fa fa-check"></i><b>4.4</b> Muut tiedostot</a>
+</ul></li>
+<li class="chapter" data-level="4" data-path="reading_data.html"><a href="reading_data.html"><i class="fa fa-check"></i><b>4</b> Datan lukeminen</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="reading-data.html"><a href="reading-data.html#excel"><i class="fa fa-check"></i><b>4.4.1</b> Excel</a></li>
-<li class="chapter" data-level="4.4.2" data-path="reading-data.html"><a href="reading-data.html#spss"><i class="fa fa-check"></i><b>4.4.2</b> SPSS</a></li>
+<li class="chapter" data-level="4.1" data-path="reading_data.html"><a href="reading_data.html#hakemistopolut-ja-tiedostopäätteet"><i class="fa fa-check"></i><b>4.1</b> Hakemistopolut ja tiedostopäätteet</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="reading_data.html"><a href="reading_data.html#hakemistopolut"><i class="fa fa-check"></i><b>4.1.1</b> Hakemistopolut</a></li>
+<li class="chapter" data-level="4.1.2" data-path="reading_data.html"><a href="reading_data.html#tiedostopäätteet"><i class="fa fa-check"></i><b>4.1.2</b> Tiedostopäätteet</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="reading_data.html"><a href="reading_data.html#tekstitiedostot"><i class="fa fa-check"></i><b>4.2</b> Tekstitiedostot</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="reading_data.html"><a href="reading_data.html#read.table"><i class="fa fa-check"></i><b>4.2.1</b> read.table</a></li>
+<li class="chapter" data-level="4.2.2" data-path="reading_data.html"><a href="reading_data.html#read.csv"><i class="fa fa-check"></i><b>4.2.2</b> read.csv</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="reading_data.html"><a href="reading_data.html#datakehikon-tarkastelu"><i class="fa fa-check"></i><b>4.3</b> Datakehikon tarkastelu</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="reading_data.html"><a href="reading_data.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>4.3.1</b> R:n sisäänrakennetut datasetit</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="reading_data.html"><a href="reading_data.html#muut-tiedostot"><i class="fa fa-check"></i><b>4.4</b> Muut tiedostot</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="reading_data.html"><a href="reading_data.html#excel"><i class="fa fa-check"></i><b>4.4.1</b> Excel</a></li>
+<li class="chapter" data-level="4.4.2" data-path="reading_data.html"><a href="reading_data.html#spss"><i class="fa fa-check"></i><b>4.4.2</b> SPSS</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i><b>5</b> Datan muokkaaminen</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="data-wrangling.html"><a href="data-wrangling.html#data-frame-wrangling"><i class="fa fa-check"></i><b>5.1</b> Uuden muuttujan tai rivin luonti datakehikkoon</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="data-wrangling.html"><a href="data-wrangling.html#datakehikon-käsittely"><i class="fa fa-check"></i><b>5.1.1</b> Datakehikon käsittely</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#osajoukkojen-valinta"><i class="fa fa-check"></i><b>5.2</b> Osajoukkojen valinta</a></li>
-<li class="chapter" data-level="5.3" data-path="data-wrangling.html"><a href="data-wrangling.html#faktorit"><i class="fa fa-check"></i><b>5.3</b> Faktorit</a></li>
-<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#factor-extra"><i class="fa fa-check"></i><b>5.4</b> Extra: Lääketutkimusesimerkki</a></li>
+<li class="chapter" data-level="5.1" data-path="data-wrangling.html"><a href="data-wrangling.html#data-frame-wrangling"><i class="fa fa-check"></i><b>5.1</b> Uuden muuttujan tai rivin luonti datakehikkoon</a></li>
+<li class="chapter" data-level="5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#datakehikon-käsittely"><i class="fa fa-check"></i><b>5.2</b> Datakehikon käsittely</a></li>
+<li class="chapter" data-level="5.3" data-path="data-wrangling.html"><a href="data-wrangling.html#osajoukkojen-valinta"><i class="fa fa-check"></i><b>5.3</b> Osajoukkojen valinta</a></li>
+<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#datakehikon-ja-vektorin-järjestäminen"><i class="fa fa-check"></i><b>5.4</b> Datakehikon ja vektorin järjestäminen</a></li>
+<li class="chapter" data-level="5.5" data-path="data-wrangling.html"><a href="data-wrangling.html#faktorit"><i class="fa fa-check"></i><b>5.5</b> Faktorit</a></li>
+<li class="chapter" data-level="5.6" data-path="data-wrangling.html"><a href="data-wrangling.html#factor-extra"><i class="fa fa-check"></i><b>5.6</b> Extra: Lääketutkimusesimerkki</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>6</b> Tunnusluvut</a>
 <ul>
@@ -274,13 +273,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="tests.html"><a href="tests.html#levene"><i class="fa fa-check"></i><b>9.5</b> Levenen testi</a></li>
 <li class="chapter" data-level="9.6" data-path="tests.html"><a href="tests.html#shapiro"><i class="fa fa-check"></i><b>9.6</b> Shapiro-Wilk -testi</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
+<li class="chapter" data-level="10" data-path="linear_models.html"><a href="linear_models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="linear-models.html"><a href="linear-models.html#teoria"><i class="fa fa-check"></i><b>10.1</b> Teoria</a></li>
-<li class="chapter" data-level="10.2" data-path="linear-models.html"><a href="linear-models.html#esimerkki"><i class="fa fa-check"></i><b>10.2</b> Esimerkki</a></li>
-<li class="chapter" data-level="10.3" data-path="linear-models.html"><a href="linear-models.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>10.3</b> Tarkempia tietoja mallista</a></li>
-<li class="chapter" data-level="10.4" data-path="linear-models.html"><a href="linear-models.html#ennustaminen"><i class="fa fa-check"></i><b>10.4</b> Ennustaminen</a></li>
-<li class="chapter" data-level="10.5" data-path="linear-models.html"><a href="linear-models.html#korrelaatio"><i class="fa fa-check"></i><b>10.5</b> Korrelaatio</a></li>
+<li class="chapter" data-level="10.1" data-path="linear_models.html"><a href="linear_models.html#teoria"><i class="fa fa-check"></i><b>10.1</b> Teoria</a></li>
+<li class="chapter" data-level="10.2" data-path="linear_models.html"><a href="linear_models.html#esimerkki"><i class="fa fa-check"></i><b>10.2</b> Esimerkki</a></li>
+<li class="chapter" data-level="10.3" data-path="linear_models.html"><a href="linear_models.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>10.3</b> Tarkempia tietoja mallista</a></li>
+<li class="chapter" data-level="10.4" data-path="linear_models.html"><a href="linear_models.html#ennustaminen"><i class="fa fa-check"></i><b>10.4</b> Ennustaminen</a></li>
+<li class="chapter" data-level="10.5" data-path="linear_models.html"><a href="linear_models.html#korrelaatio"><i class="fa fa-check"></i><b>10.5</b> Korrelaatio</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>11</b> Funktiot</a>
 <ul>
@@ -296,6 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.1" data-path="functions.html"><a href="functions.html#usean-arvon-palautus"><i class="fa fa-check"></i><b>11.3.1</b> Usean arvon palautus</a></li>
 <li class="chapter" data-level="11.3.2" data-path="functions.html"><a href="functions.html#palautus-ilman-return-käskyä"><i class="fa fa-check"></i><b>11.3.2</b> Palautus ilman return-käskyä</a></li>
 <li class="chapter" data-level="11.3.3" data-path="functions.html"><a href="functions.html#funktio-ilman-tulosta"><i class="fa fa-check"></i><b>11.3.3</b> Funktio ilman tulosta</a></li>
+<li class="chapter" data-level="11.3.4" data-path="functions.html"><a href="functions.html#funktion-lyhytmuoto"><i class="fa fa-check"></i><b>11.3.4</b> Funktion lyhytmuoto</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>12</b> Ehtorakenteet</a>
@@ -345,7 +345,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">R-ohjelmoinnin perusteet</h1>
 <p class="author"><em>Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021)</em></p>
-<p class="date" style="margin-top: 1.5em;"><em>27.08.2021</em></p>
+<p class="date"><em>03.01.2022</em></p>
 </div>
 <div id="r-kurssi" class="section level1 unnumbered">
 <h1>R-kurssi</h1>
@@ -410,7 +410,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -423,8 +422,8 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
@@ -449,7 +448,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["R-ohjelmoinnin-perusteet.pdf"],
+"download": {},
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

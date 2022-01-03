@@ -34,7 +34,6 @@ plot(x = speed, y = stop_dist,
 
 `plot`-funktiolle voi antaa muitakin argumentteja, jotka säätävät mm. pisteiden väriä, kokoa ja muotoa, akselien rajoja jne. Yleisiä kuvaajien parametreja voi säätää funktiolla ``par` (graphical parameters).
 
-
 ### Muut korkean tason funktiot
 
 Tässä on esimerkkejä muutamista muista yleisistä korkean tason funktioista:
@@ -68,8 +67,6 @@ barplot(origin,
         main = "Opiskelijoiden kotipaikkakunta",
         ylab = "Opiskelijoiden lukumäärä")
 ```
-
-
 
 ## Alemman tason grafiikkatoiminnot
 
@@ -208,8 +205,7 @@ lines(speed, prediction_wet, lty = "dashed", col = "darkred")
 
 text(x = 95, y = 145, labels = "ERO JOPA 30 METRIÄ!") 
 ```
-<!-- Santtu: Viikon tehtävä? Eikö materiaalin tulisi olla kurssin iteraatiosta riippumaton -->
-Kuvaajamme on nyt valmis! <!--Näitä komentoja käyttämällä ja pienellä googlailulla saa myös tehtyä tämän viikon tehtävän.-->
+Kuvaajamme on nyt valmis!
 
 ## Kuvaajien piirtäminen käytännössä
 

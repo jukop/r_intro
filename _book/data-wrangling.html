@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kappale 5 Datan muokkaaminen | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kappale 5 Datan muokkaaminen | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
@@ -30,10 +30,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="reading-data.html"/>
+<link rel="prev" href="reading_data.html"/>
 <link rel="next" href="statistics.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -41,7 +42,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -160,77 +160,76 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#what_R"><i class="fa fa-check"></i><b>1.1</b> Mikä R on ja mitä sillä tehdään?</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html"><i class="fa fa-check"></i><b>2</b> Muuttujat ja vektorit</a>
+<li class="chapter" data-level="2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html"><i class="fa fa-check"></i><b>2</b> Muuttujat ja vektorit</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#variables"><i class="fa fa-check"></i><b>2.1</b> Muuttujat</a></li>
-<li class="chapter" data-level="2.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#comments"><i class="fa fa-check"></i><b>2.2</b> Kommentit</a></li>
-<li class="chapter" data-level="2.3" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#vectors"><i class="fa fa-check"></i><b>2.3</b> Vektorit</a>
+<li class="chapter" data-level="2.1" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#variables"><i class="fa fa-check"></i><b>2.1</b> Muuttujat</a></li>
+<li class="chapter" data-level="2.2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#comments"><i class="fa fa-check"></i><b>2.2</b> Kommentit</a></li>
+<li class="chapter" data-level="2.3" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#vectors"><i class="fa fa-check"></i><b>2.3</b> Vektorit</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ei-numeeriset-vektorit"><i class="fa fa-check"></i><b>2.3.1</b> Ei-numeeriset vektorit</a></li>
-<li class="chapter" data-level="2.3.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#vektorien-indeksointi-ja-osajoukon-valinta"><i class="fa fa-check"></i><b>2.3.2</b> Vektorien indeksointi ja osajoukon valinta</a></li>
-<li class="chapter" data-level="2.3.3" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#puuttuvat-arvot"><i class="fa fa-check"></i><b>2.3.3</b> Puuttuvat arvot</a></li>
+<li class="chapter" data-level="2.3.1" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#ei-numeeriset-vektorit"><i class="fa fa-check"></i><b>2.3.1</b> Ei-numeeriset vektorit</a></li>
+<li class="chapter" data-level="2.3.2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#vektorien-indeksointi-ja-osajoukon-valinta"><i class="fa fa-check"></i><b>2.3.2</b> Vektorien indeksointi ja osajoukon valinta</a></li>
+<li class="chapter" data-level="2.3.3" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#puuttuvat-arvot"><i class="fa fa-check"></i><b>2.3.3</b> Puuttuvat arvot</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#extra"><i class="fa fa-check"></i><b>2.4</b> Extra: Alkeistietotyypit ja erikoisarvot</a>
+<li class="chapter" data-level="2.4" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#extra"><i class="fa fa-check"></i><b>2.4</b> Extra: Alkeistietotyypit ja erikoisarvot</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ääretön-ja-miinus-ääretön"><i class="fa fa-check"></i><b>2.4.1</b> Ääretön ja miinus ääretön</a></li>
-<li class="chapter" data-level="2.4.2" data-path="variables-and-vectors.html"><a href="variables-and-vectors.html#ei-numero"><i class="fa fa-check"></i><b>2.4.2</b> Ei-numero</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="data-types.html"><a href="data-types.html"><i class="fa fa-check"></i><b>3</b> Tietotyypit</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="data-types.html"><a href="data-types.html#data-frame"><i class="fa fa-check"></i><b>3.1</b> Datakehikko (data.frame)</a></li>
-<li class="chapter" data-level="3.2" data-path="data-types.html"><a href="data-types.html#matrix"><i class="fa fa-check"></i><b>3.2</b> Matriisi</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="data-types.html"><a href="data-types.html#matriisin-luominen"><i class="fa fa-check"></i><b>3.2.1</b> Matriisin luominen</a></li>
-<li class="chapter" data-level="3.2.2" data-path="data-types.html"><a href="data-types.html#matriisin-koko"><i class="fa fa-check"></i><b>3.2.2</b> Matriisin koko</a></li>
-<li class="chapter" data-level="3.2.3" data-path="data-types.html"><a href="data-types.html#matriisin-indeksointi"><i class="fa fa-check"></i><b>3.2.3</b> Matriisin indeksointi</a></li>
-<li class="chapter" data-level="3.2.4" data-path="data-types.html"><a href="data-types.html#matriisien-rakentaminen-vektoreista"><i class="fa fa-check"></i><b>3.2.4</b> Matriisien rakentaminen vektoreista</a></li>
-<li class="chapter" data-level="3.2.5" data-path="data-types.html"><a href="data-types.html#rivien-ja-sarakkeiden-nimeäminen"><i class="fa fa-check"></i><b>3.2.5</b> Rivien ja sarakkeiden nimeäminen</a></li>
-<li class="chapter" data-level="3.2.6" data-path="data-types.html"><a href="data-types.html#matriiseilla-laskeminen"><i class="fa fa-check"></i><b>3.2.6</b> Matriiseilla laskeminen</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="data-types.html"><a href="data-types.html#data-type-view"><i class="fa fa-check"></i><b>3.3</b> Tietotyyppien tarkastelu</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="data-types.html"><a href="data-types.html#view"><i class="fa fa-check"></i><b>3.3.1</b> View()</a></li>
-<li class="chapter" data-level="3.3.2" data-path="data-types.html"><a href="data-types.html#str"><i class="fa fa-check"></i><b>3.3.2</b> str()</a></li>
-<li class="chapter" data-level="3.3.3" data-path="data-types.html"><a href="data-types.html#head"><i class="fa fa-check"></i><b>3.3.3</b> head()</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="data-types.html"><a href="data-types.html#extra-taulukko-ja-lista"><i class="fa fa-check"></i><b>3.4</b> Extra: Taulukko ja lista</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="data-types.html"><a href="data-types.html#array"><i class="fa fa-check"></i><b>3.4.1</b> Taulukko</a></li>
-<li class="chapter" data-level="3.4.2" data-path="data-types.html"><a href="data-types.html#list"><i class="fa fa-check"></i><b>3.4.2</b> Lista</a></li>
+<li class="chapter" data-level="2.4.1" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#ääretön-ja-miinus-ääretön"><i class="fa fa-check"></i><b>2.4.1</b> Ääretön ja miinus ääretön</a></li>
+<li class="chapter" data-level="2.4.2" data-path="variables_and_vectors.html"><a href="variables_and_vectors.html#ei-numero"><i class="fa fa-check"></i><b>2.4.2</b> Ei-numero</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="reading-data.html"><a href="reading-data.html"><i class="fa fa-check"></i><b>4</b> Datan lukeminen</a>
+<li class="chapter" data-level="3" data-path="data_types.html"><a href="data_types.html"><i class="fa fa-check"></i><b>3</b> Tietotyypit</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="reading-data.html"><a href="reading-data.html#hakemistopolut-ja-tiedostopäätteet"><i class="fa fa-check"></i><b>4.1</b> Hakemistopolut ja tiedostopäätteet</a>
+<li class="chapter" data-level="3.1" data-path="data_types.html"><a href="data_types.html#data-frame"><i class="fa fa-check"></i><b>3.1</b> Datakehikko (data.frame)</a></li>
+<li class="chapter" data-level="3.2" data-path="data_types.html"><a href="data_types.html#matrix"><i class="fa fa-check"></i><b>3.2</b> Matriisi</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="reading-data.html"><a href="reading-data.html#hakemistopolut"><i class="fa fa-check"></i><b>4.1.1</b> Hakemistopolut</a></li>
-<li class="chapter" data-level="4.1.2" data-path="reading-data.html"><a href="reading-data.html#tiedostopäätteet"><i class="fa fa-check"></i><b>4.1.2</b> Tiedostopäätteet</a></li>
+<li class="chapter" data-level="3.2.1" data-path="data_types.html"><a href="data_types.html#matriisin-luominen"><i class="fa fa-check"></i><b>3.2.1</b> Matriisin luominen</a></li>
+<li class="chapter" data-level="3.2.2" data-path="data_types.html"><a href="data_types.html#matriisin-koko"><i class="fa fa-check"></i><b>3.2.2</b> Matriisin koko</a></li>
+<li class="chapter" data-level="3.2.3" data-path="data_types.html"><a href="data_types.html#matriisin-indeksointi"><i class="fa fa-check"></i><b>3.2.3</b> Matriisin indeksointi</a></li>
+<li class="chapter" data-level="3.2.4" data-path="data_types.html"><a href="data_types.html#matriisien-rakentaminen-vektoreista"><i class="fa fa-check"></i><b>3.2.4</b> Matriisien rakentaminen vektoreista</a></li>
+<li class="chapter" data-level="3.2.5" data-path="data_types.html"><a href="data_types.html#rivien-ja-sarakkeiden-nimeäminen"><i class="fa fa-check"></i><b>3.2.5</b> Rivien ja sarakkeiden nimeäminen</a></li>
+<li class="chapter" data-level="3.2.6" data-path="data_types.html"><a href="data_types.html#matriiseilla-laskeminen"><i class="fa fa-check"></i><b>3.2.6</b> Matriiseilla laskeminen</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="reading-data.html"><a href="reading-data.html#tekstitiedostot"><i class="fa fa-check"></i><b>4.2</b> Tekstitiedostot</a>
+<li class="chapter" data-level="3.3" data-path="data_types.html"><a href="data_types.html#data-type-view"><i class="fa fa-check"></i><b>3.3</b> Tietotyyppien tarkastelu</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="reading-data.html"><a href="reading-data.html#read.table"><i class="fa fa-check"></i><b>4.2.1</b> read.table</a></li>
-<li class="chapter" data-level="4.2.2" data-path="reading-data.html"><a href="reading-data.html#read.csv"><i class="fa fa-check"></i><b>4.2.2</b> read.csv</a></li>
+<li class="chapter" data-level="3.3.1" data-path="data_types.html"><a href="data_types.html#view"><i class="fa fa-check"></i><b>3.3.1</b> View()</a></li>
+<li class="chapter" data-level="3.3.2" data-path="data_types.html"><a href="data_types.html#str"><i class="fa fa-check"></i><b>3.3.2</b> str()</a></li>
+<li class="chapter" data-level="3.3.3" data-path="data_types.html"><a href="data_types.html#head"><i class="fa fa-check"></i><b>3.3.3</b> head()</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="reading-data.html"><a href="reading-data.html#datakehikon-tarkastelu"><i class="fa fa-check"></i><b>4.3</b> Datakehikon tarkastelu</a>
+<li class="chapter" data-level="3.4" data-path="data_types.html"><a href="data_types.html#extra-taulukko-ja-lista"><i class="fa fa-check"></i><b>3.4</b> Extra: Taulukko ja lista</a>
 <ul>
-<li class="chapter" data-level="4.3.1" data-path="reading-data.html"><a href="reading-data.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>4.3.1</b> R:n sisäänrakennetut datasetit</a></li>
+<li class="chapter" data-level="3.4.1" data-path="data_types.html"><a href="data_types.html#array"><i class="fa fa-check"></i><b>3.4.1</b> Taulukko</a></li>
+<li class="chapter" data-level="3.4.2" data-path="data_types.html"><a href="data_types.html#list"><i class="fa fa-check"></i><b>3.4.2</b> Lista</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="reading-data.html"><a href="reading-data.html#muut-tiedostot"><i class="fa fa-check"></i><b>4.4</b> Muut tiedostot</a>
+</ul></li>
+<li class="chapter" data-level="4" data-path="reading_data.html"><a href="reading_data.html"><i class="fa fa-check"></i><b>4</b> Datan lukeminen</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="reading-data.html"><a href="reading-data.html#excel"><i class="fa fa-check"></i><b>4.4.1</b> Excel</a></li>
-<li class="chapter" data-level="4.4.2" data-path="reading-data.html"><a href="reading-data.html#spss"><i class="fa fa-check"></i><b>4.4.2</b> SPSS</a></li>
+<li class="chapter" data-level="4.1" data-path="reading_data.html"><a href="reading_data.html#hakemistopolut-ja-tiedostopäätteet"><i class="fa fa-check"></i><b>4.1</b> Hakemistopolut ja tiedostopäätteet</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="reading_data.html"><a href="reading_data.html#hakemistopolut"><i class="fa fa-check"></i><b>4.1.1</b> Hakemistopolut</a></li>
+<li class="chapter" data-level="4.1.2" data-path="reading_data.html"><a href="reading_data.html#tiedostopäätteet"><i class="fa fa-check"></i><b>4.1.2</b> Tiedostopäätteet</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="reading_data.html"><a href="reading_data.html#tekstitiedostot"><i class="fa fa-check"></i><b>4.2</b> Tekstitiedostot</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="reading_data.html"><a href="reading_data.html#read.table"><i class="fa fa-check"></i><b>4.2.1</b> read.table</a></li>
+<li class="chapter" data-level="4.2.2" data-path="reading_data.html"><a href="reading_data.html#read.csv"><i class="fa fa-check"></i><b>4.2.2</b> read.csv</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="reading_data.html"><a href="reading_data.html#datakehikon-tarkastelu"><i class="fa fa-check"></i><b>4.3</b> Datakehikon tarkastelu</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="reading_data.html"><a href="reading_data.html#rn-sisäänrakennetut-datasetit"><i class="fa fa-check"></i><b>4.3.1</b> R:n sisäänrakennetut datasetit</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="reading_data.html"><a href="reading_data.html#muut-tiedostot"><i class="fa fa-check"></i><b>4.4</b> Muut tiedostot</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="reading_data.html"><a href="reading_data.html#excel"><i class="fa fa-check"></i><b>4.4.1</b> Excel</a></li>
+<li class="chapter" data-level="4.4.2" data-path="reading_data.html"><a href="reading_data.html#spss"><i class="fa fa-check"></i><b>4.4.2</b> SPSS</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-wrangling.html"><a href="data-wrangling.html"><i class="fa fa-check"></i><b>5</b> Datan muokkaaminen</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="data-wrangling.html"><a href="data-wrangling.html#data-frame-wrangling"><i class="fa fa-check"></i><b>5.1</b> Uuden muuttujan tai rivin luonti datakehikkoon</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="data-wrangling.html"><a href="data-wrangling.html#datakehikon-käsittely"><i class="fa fa-check"></i><b>5.1.1</b> Datakehikon käsittely</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#osajoukkojen-valinta"><i class="fa fa-check"></i><b>5.2</b> Osajoukkojen valinta</a></li>
-<li class="chapter" data-level="5.3" data-path="data-wrangling.html"><a href="data-wrangling.html#faktorit"><i class="fa fa-check"></i><b>5.3</b> Faktorit</a></li>
-<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#factor-extra"><i class="fa fa-check"></i><b>5.4</b> Extra: Lääketutkimusesimerkki</a></li>
+<li class="chapter" data-level="5.1" data-path="data-wrangling.html"><a href="data-wrangling.html#data-frame-wrangling"><i class="fa fa-check"></i><b>5.1</b> Uuden muuttujan tai rivin luonti datakehikkoon</a></li>
+<li class="chapter" data-level="5.2" data-path="data-wrangling.html"><a href="data-wrangling.html#datakehikon-käsittely"><i class="fa fa-check"></i><b>5.2</b> Datakehikon käsittely</a></li>
+<li class="chapter" data-level="5.3" data-path="data-wrangling.html"><a href="data-wrangling.html#osajoukkojen-valinta"><i class="fa fa-check"></i><b>5.3</b> Osajoukkojen valinta</a></li>
+<li class="chapter" data-level="5.4" data-path="data-wrangling.html"><a href="data-wrangling.html#datakehikon-ja-vektorin-järjestäminen"><i class="fa fa-check"></i><b>5.4</b> Datakehikon ja vektorin järjestäminen</a></li>
+<li class="chapter" data-level="5.5" data-path="data-wrangling.html"><a href="data-wrangling.html#faktorit"><i class="fa fa-check"></i><b>5.5</b> Faktorit</a></li>
+<li class="chapter" data-level="5.6" data-path="data-wrangling.html"><a href="data-wrangling.html#factor-extra"><i class="fa fa-check"></i><b>5.6</b> Extra: Lääketutkimusesimerkki</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="statistics.html"><a href="statistics.html"><i class="fa fa-check"></i><b>6</b> Tunnusluvut</a>
 <ul>
@@ -274,13 +273,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="tests.html"><a href="tests.html#levene"><i class="fa fa-check"></i><b>9.5</b> Levenen testi</a></li>
 <li class="chapter" data-level="9.6" data-path="tests.html"><a href="tests.html#shapiro"><i class="fa fa-check"></i><b>9.6</b> Shapiro-Wilk -testi</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="linear-models.html"><a href="linear-models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
+<li class="chapter" data-level="10" data-path="linear_models.html"><a href="linear_models.html"><i class="fa fa-check"></i><b>10</b> Lineaariset mallit</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="linear-models.html"><a href="linear-models.html#teoria"><i class="fa fa-check"></i><b>10.1</b> Teoria</a></li>
-<li class="chapter" data-level="10.2" data-path="linear-models.html"><a href="linear-models.html#esimerkki"><i class="fa fa-check"></i><b>10.2</b> Esimerkki</a></li>
-<li class="chapter" data-level="10.3" data-path="linear-models.html"><a href="linear-models.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>10.3</b> Tarkempia tietoja mallista</a></li>
-<li class="chapter" data-level="10.4" data-path="linear-models.html"><a href="linear-models.html#ennustaminen"><i class="fa fa-check"></i><b>10.4</b> Ennustaminen</a></li>
-<li class="chapter" data-level="10.5" data-path="linear-models.html"><a href="linear-models.html#korrelaatio"><i class="fa fa-check"></i><b>10.5</b> Korrelaatio</a></li>
+<li class="chapter" data-level="10.1" data-path="linear_models.html"><a href="linear_models.html#teoria"><i class="fa fa-check"></i><b>10.1</b> Teoria</a></li>
+<li class="chapter" data-level="10.2" data-path="linear_models.html"><a href="linear_models.html#esimerkki"><i class="fa fa-check"></i><b>10.2</b> Esimerkki</a></li>
+<li class="chapter" data-level="10.3" data-path="linear_models.html"><a href="linear_models.html#tarkempia-tietoja-mallista"><i class="fa fa-check"></i><b>10.3</b> Tarkempia tietoja mallista</a></li>
+<li class="chapter" data-level="10.4" data-path="linear_models.html"><a href="linear_models.html#ennustaminen"><i class="fa fa-check"></i><b>10.4</b> Ennustaminen</a></li>
+<li class="chapter" data-level="10.5" data-path="linear_models.html"><a href="linear_models.html#korrelaatio"><i class="fa fa-check"></i><b>10.5</b> Korrelaatio</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>11</b> Funktiot</a>
 <ul>
@@ -296,6 +295,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.3.1" data-path="functions.html"><a href="functions.html#usean-arvon-palautus"><i class="fa fa-check"></i><b>11.3.1</b> Usean arvon palautus</a></li>
 <li class="chapter" data-level="11.3.2" data-path="functions.html"><a href="functions.html#palautus-ilman-return-käskyä"><i class="fa fa-check"></i><b>11.3.2</b> Palautus ilman return-käskyä</a></li>
 <li class="chapter" data-level="11.3.3" data-path="functions.html"><a href="functions.html#funktio-ilman-tulosta"><i class="fa fa-check"></i><b>11.3.3</b> Funktio ilman tulosta</a></li>
+<li class="chapter" data-level="11.3.4" data-path="functions.html"><a href="functions.html#funktion-lyhytmuoto"><i class="fa fa-check"></i><b>11.3.4</b> Funktion lyhytmuoto</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="ifelse.html"><a href="ifelse.html"><i class="fa fa-check"></i><b>12</b> Ehtorakenteet</a>
@@ -372,8 +372,10 @@ Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla t
 ## 6  6  183.7   male   54.1    1.837   16.03168
 ## 7  7  181.8   male   74.2    1.818   22.44999
 ## 8  8   16.9 female   62.8    0.169 2198.80256</code></pre>
-<div id="datakehikon-käsittely" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> Datakehikon käsittely</h3>
+</div>
+<div id="datakehikon-käsittely" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Datakehikon käsittely</h2>
+<p>Datakehikosta voidaan poimia sarakkeita joko niiden nimien tai niitä vastaavien indeksien perusteella, kuten matriisin tapauksessa. Yksittäisiä sarakkeita voidaan poimia ja muokata myös dollarisymbolin <code>$</code> kautta.</p>
 <div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="data-wrangling.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subscripting with variable names</span></span>
 <span id="cb264-2"><a href="data-wrangling.html#cb264-2" aria-hidden="true" tabindex="-1"></a>study_data[, <span class="fu">c</span>(<span class="st">&quot;height&quot;</span>, <span class="st">&quot;gender&quot;</span>)]</span></code></pre></div>
 <pre><code>##   height gender
@@ -441,10 +443,9 @@ Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla t
 ## 8  8  161.9 female   62.8    0.169 2198.80256
 ## 9 11  182.0   male   81.2    1.820   24.51395</code></pre>
 </div>
-</div>
-<div id="osajoukkojen-valinta" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Osajoukkojen valinta</h2>
-<p>Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita, ja jos kriteerejä on useita, niin tarvitaan myös useita loogisia operaattoreita. Tarkemmin operaattoreita käsitellään luvussa <a href="ifelse.html#loogiset-operaattorit">Loogiset operaattorit</a>. Voit käyttää kyseisen osion taulukkoa apuna jo tässä osiossa.</p>
+<div id="osajoukkojen-valinta" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Osajoukkojen valinta</h2>
+<p>Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita, ja jos kriteerejä on useita, niin tarvitaan myös useita loogisia operaattoreita. Tarkemmin operaattoreita käsitellään luvussa <a href="ifelse.html#loogiset-operaattorit">Loogiset operaattorit</a>. Voit käyttää kyseisen osion taulukkoa apuna jo tässä osiossa. Osajoukkoja voidaan poimia myös suoraan antamalla halutut indeksit esimerkiksi indeksivektorin avulla.</p>
 <div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="data-wrangling.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter only females</span></span>
 <span id="cb278-2"><a href="data-wrangling.html#cb278-2" aria-hidden="true" tabindex="-1"></a>study_data[study_data<span class="sc">$</span>gender <span class="sc">==</span> <span class="st">&quot;female&quot;</span>, ]</span></code></pre></div>
 <pre><code>##   ID height gender weight height_m        BMI
@@ -469,42 +470,78 @@ Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla t
 <pre><code>##   ID height gender weight height_m        BMI
 ## 5  5  169.0 female   58.3    1.690   20.41245
 ## 8  8  161.9 female   62.8    0.169 2198.80256</code></pre>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="data-wrangling.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select individuals (rows) 1,3, and 7 directly with a vector of indices</span></span>
+<span id="cb286-2"><a href="data-wrangling.html#cb286-2" aria-hidden="true" tabindex="-1"></a>ind <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">7</span>)</span>
+<span id="cb286-3"><a href="data-wrangling.html#cb286-3" aria-hidden="true" tabindex="-1"></a>study_data[ind,]</span></code></pre></div>
+<pre><code>##   ID height gender weight height_m      BMI
+## 1  1  189.8   male   78.2    1.898 21.70773
+## 3  3  173.8   male   49.2    1.738 16.28792
+## 7  7     NA   male   74.2    1.818 22.44999</code></pre>
 </div>
-<div id="faktorit" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Faktorit</h2>
+<div id="datakehikon-ja-vektorin-järjestäminen" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Datakehikon ja vektorin järjestäminen</h2>
+<p>Yhden vektorin arvot voidaan asettaa nousevaan tai laskevaan järjestykseen funktiolla <code>sort</code>. Funktiota voidaan soveltaa niin numeerisiin kuin merkkitietoa sisältäviin vektoreihinkin. Oletusarvoisesti järjestys on nouseva, eli numeeriset arvot järjestetään pienimmästä suurimpaan ja merkkitieto aakkosjärjestykseen. Järjestyksen voi kääntää laskevaksi argumentilla <code>decreasing = TRUE</code>.</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="data-wrangling.html#cb288-1" aria-hidden="true" tabindex="-1"></a>nums <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">5</span>, <span class="dv">4</span>)</span>
+<span id="cb288-2"><a href="data-wrangling.html#cb288-2" aria-hidden="true" tabindex="-1"></a>chars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ab&quot;</span>, <span class="st">&quot;ca&quot;</span>, <span class="st">&quot;ac&quot;</span>, <span class="st">&quot;bb&quot;</span>, <span class="st">&quot;ba&quot;</span>, <span class="st">&quot;cb&quot;</span>)</span>
+<span id="cb288-3"><a href="data-wrangling.html#cb288-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb288-4"><a href="data-wrangling.html#cb288-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ascending order</span></span>
+<span id="cb288-5"><a href="data-wrangling.html#cb288-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(nums)</span></code></pre></div>
+<pre><code>## [1] 1 3 4 5 7 8</code></pre>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="data-wrangling.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(chars)</span></code></pre></div>
+<pre><code>## [1] &quot;ab&quot; &quot;ac&quot; &quot;ba&quot; &quot;bb&quot; &quot;ca&quot; &quot;cb&quot;</code></pre>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="data-wrangling.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descending order</span></span>
+<span id="cb292-2"><a href="data-wrangling.html#cb292-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(nums, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 8 7 5 4 3 1</code></pre>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="data-wrangling.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(chars, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;cb&quot; &quot;ca&quot; &quot;bb&quot; &quot;ba&quot; &quot;ac&quot; &quot;ab&quot;</code></pre>
+<p>Jossain tilanteissa on haluttavaa järjestää datakehikon rivit jonkin muuttujan tai muuttujien suhteen. Tähän tarkoitukseen voi käyttää funktiota <code>order</code>, joka palauttaa yhden tai useamman argumentin alkioiden järjestysluvut (rank). Seuraavassa esimerkissä aineiston rivit järjestetään koehenkilöiden pituuden suhteen nouseevaan suuruusjärjestykseen.</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="data-wrangling.html#cb296-1" aria-hidden="true" tabindex="-1"></a>study_data[<span class="fu">order</span>(study_data<span class="sc">$</span>height),]</span></code></pre></div>
+<pre><code>##   ID height gender weight height_m        BMI
+## 8  8  161.9 female   62.8    0.169 2198.80256
+## 5  5  169.0 female   58.3    1.690   20.41245
+## 3  3  173.8   male   49.2    1.738   16.28792
+## 4  4  175.9   male   71.2    1.759   23.01168
+## 6  6  183.7   male   54.1    1.837   16.03168
+## 2  2  184.0 female   65.8    1.840   19.43526
+## 1  1  189.8   male   78.2    1.898   21.70773
+## 7  7     NA   male   74.2    1.818   22.44999</code></pre>
+<p>Järjestäminen voidaan tehdä usean muuttujan suhteen, esimerkiksi pituuden ja painon. Tämä tarkoittaa nousevassa järjestyksessä sitä, että jos kahdella koehenkilöllä on täsmälleen sama pituus, valitaan heidän keskinäinen järjestyksensä painon perusteella.</p>
+</div>
+<div id="faktorit" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Faktorit</h2>
 <p>R:n numeeriset vektorit ovat lähtökohtaisesti jatkuva-asteikollisia. Olet ehkä ihmetellytkin, miten kategorinen muuttuja määritellään. Kategorista muuttujaa sanotaan R:ssä faktoriksi. Numeerisen tai tekstimuotoisen muuttujan tai vektorin voi muuttaa faktori-muotoiseksi muuttujaksi <code>factor</code> -funktiolla.</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="data-wrangling.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s change gender from character string to a factor and rename it as fgender</span></span>
-<span id="cb286-2"><a href="data-wrangling.html#cb286-2" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>fgender <span class="ot">&lt;-</span> <span class="fu">factor</span>(study_data<span class="sc">$</span>gender)</span>
-<span id="cb286-3"><a href="data-wrangling.html#cb286-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb286-4"><a href="data-wrangling.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s now compare the printing of gender and fgender</span></span>
-<span id="cb286-5"><a href="data-wrangling.html#cb286-5" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>gender</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="data-wrangling.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s change gender from character string to a factor and rename it as fgender</span></span>
+<span id="cb298-2"><a href="data-wrangling.html#cb298-2" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>fgender <span class="ot">&lt;-</span> <span class="fu">factor</span>(study_data<span class="sc">$</span>gender)</span>
+<span id="cb298-3"><a href="data-wrangling.html#cb298-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb298-4"><a href="data-wrangling.html#cb298-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s now compare the printing of gender and fgender</span></span>
+<span id="cb298-5"><a href="data-wrangling.html#cb298-5" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>gender</span></code></pre></div>
 <pre><code>## [1] &quot;male&quot;   &quot;female&quot; &quot;male&quot;   &quot;male&quot;   &quot;female&quot; &quot;male&quot;   &quot;male&quot;   &quot;female&quot;</code></pre>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="data-wrangling.html#cb288-1" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>fgender</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="data-wrangling.html#cb300-1" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>fgender</span></code></pre></div>
 <pre><code>## [1] male   female male   male   female male   male   female
 ## Levels: female male</code></pre>
 <p>Huomataan, että faktori tulostaa faktorin tasot eli kaikkien mahdollisten luokkien nimet faktorin perässä: <code>Levels: female male</code>.</p>
 <p>Usein vastaan tulee myös tilanne, jossa faktorin eri tasoja vastaavat kokonaislukuarvot, kuten tässä esimerkissä luvut 1, 2 ja 3. Tällaisessa tilanteessa faktorin tasojen merkitys on usein annettu jossain dokumenttitiedostossa. Tällöin faktorin tasot ja niiden kuvaukset (labels) tulee määrittää käsin.</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="data-wrangling.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data for this example</span></span>
-<span id="cb290-2"><a href="data-wrangling.html#cb290-2" aria-hidden="true" tabindex="-1"></a>wall_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">building_ID =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="at">building_material =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb290-3"><a href="data-wrangling.html#cb290-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-4"><a href="data-wrangling.html#cb290-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Name is &#39;building_material&#39; very long, I want to rename it</span></span>
-<span id="cb290-5"><a href="data-wrangling.html#cb290-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(wall_dat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;building_ID&quot;</span>, <span class="st">&quot;build_mat&quot;</span>)</span>
-<span id="cb290-6"><a href="data-wrangling.html#cb290-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-7"><a href="data-wrangling.html#cb290-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We know from some kind of documentation that 1 stands for &quot;wood&quot;, 2 is &quot;steel&quot; and 3 is &quot;brick&quot;.</span></span>
-<span id="cb290-8"><a href="data-wrangling.html#cb290-8" aria-hidden="true" tabindex="-1"></a>wall_dat<span class="sc">$</span>fbuild_mat <span class="ot">&lt;-</span> <span class="fu">factor</span>(wall_dat<span class="sc">$</span>build_mat,<span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;wood&quot;</span>, <span class="st">&quot;steel&quot;</span>, <span class="st">&quot;brick&quot;</span>))</span>
-<span id="cb290-9"><a href="data-wrangling.html#cb290-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-10"><a href="data-wrangling.html#cb290-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wall_dat)</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="data-wrangling.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data for this example</span></span>
+<span id="cb302-2"><a href="data-wrangling.html#cb302-2" aria-hidden="true" tabindex="-1"></a>wall_dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">building_ID =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="at">building_material =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>))</span>
+<span id="cb302-3"><a href="data-wrangling.html#cb302-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-4"><a href="data-wrangling.html#cb302-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Name is &#39;building_material&#39; very long, I want to rename it</span></span>
+<span id="cb302-5"><a href="data-wrangling.html#cb302-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(wall_dat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;building_ID&quot;</span>, <span class="st">&quot;build_mat&quot;</span>)</span>
+<span id="cb302-6"><a href="data-wrangling.html#cb302-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-7"><a href="data-wrangling.html#cb302-7" aria-hidden="true" tabindex="-1"></a><span class="co"># We know from some kind of documentation that 1 stands for &quot;wood&quot;, 2 is &quot;steel&quot; and 3 is &quot;brick&quot;.</span></span>
+<span id="cb302-8"><a href="data-wrangling.html#cb302-8" aria-hidden="true" tabindex="-1"></a>wall_dat<span class="sc">$</span>fbuild_mat <span class="ot">&lt;-</span> <span class="fu">factor</span>(wall_dat<span class="sc">$</span>build_mat,<span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;wood&quot;</span>, <span class="st">&quot;steel&quot;</span>, <span class="st">&quot;brick&quot;</span>))</span>
+<span id="cb302-9"><a href="data-wrangling.html#cb302-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb302-10"><a href="data-wrangling.html#cb302-10" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(wall_dat)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    6 obs. of  3 variables:
 ##  $ building_ID: num  1 2 3 4 5 6
 ##  $ build_mat  : num  1 1 2 2 3 3
 ##  $ fbuild_mat : Factor w/ 3 levels &quot;wood&quot;,&quot;steel&quot;,..: 1 1 2 2 3 3</code></pre>
 </div>
-<div id="factor-extra" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Extra: Lääketutkimusesimerkki</h2>
+<div id="factor-extra" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Extra: Lääketutkimusesimerkki</h2>
 <p>R:ssä on aiemmin nähtyjen numeric, character ja logical-vektorien lisäksi muitakin vektoriluokkia, tärkeimpänä näistä factor. Factor-vektoreihin tallennetaan kategorisia muuttujia, kuten tutkimuksessa määrättyjä ryhmiä, aikapisteitä tms. Luodaan esimerkiksi factor-vektori, jossa on kuvitteellisen lääketutkimuksen osallistujien ryhmätiedot:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="data-wrangling.html#cb292-1" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">&quot;drug1&quot;</span>, <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;drug1&quot;</span>, <span class="st">&quot;control&quot;</span>,</span>
-<span id="cb292-2"><a href="data-wrangling.html#cb292-2" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;drug1&quot;</span>))</span>
-<span id="cb292-3"><a href="data-wrangling.html#cb292-3" aria-hidden="true" tabindex="-1"></a>groups</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="data-wrangling.html#cb304-1" aria-hidden="true" tabindex="-1"></a>groups <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">&quot;drug1&quot;</span>, <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;drug1&quot;</span>, <span class="st">&quot;control&quot;</span>,</span>
+<span id="cb304-2"><a href="data-wrangling.html#cb304-2" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;drug2&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;drug1&quot;</span>))</span>
+<span id="cb304-3"><a href="data-wrangling.html#cb304-3" aria-hidden="true" tabindex="-1"></a>groups</span></code></pre></div>
 <pre><code>##  [1] drug1   drug2   control drug1   control drug2   drug2   control control
 ## [10] drug1  
 ## Levels: control drug1 drug2</code></pre>
@@ -512,25 +549,25 @@ Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla t
 <p>Kuten tulosteesta nähdään, factor-vektorin tulostus tulostaa factorin alkiot (HUOM: ei lainausmerkkejä) sekä factorin tasot. Factorit ovat pinnan alla kokonaisluku- eli integer-vektoreita, joissa on päällä “kerros”, joka määrittää factorin tasot. Edellä nähty vektori groups näyttää siis tältä:</p>
 <p><img src="files/05-statistics/factor.png" /></p>
 <p>Factorien tasoille annetaan siis lukuarvot ykkösestä eteenpäin. Oletuksena ensimmäinen taso eli taso 1 on aakkosissa ensimmäinen arvo, tai pienin lukuarvo jos factori tehdään numeerisista muuttujista. Lukuarvot saa näkyville muuntamalla factorin numeeriseksi vektoriksi:</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="data-wrangling.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(groups)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="data-wrangling.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(groups)</span></code></pre></div>
 <pre><code>##  [1] 2 3 1 2 1 3 3 1 1 2</code></pre>
 <p>Tasojen järjestyksen voi myös päättää itse. Tämä on tärkeää, sillä kuten pian nähdään, factorin ensimmäinen taso on monissa tilastollisissa testeissä ns. referenssitaso, johon muita tasoja verrataan. Usein esiintyvä tapaus ovat tutkimukset, joissa on ryhmät nimeltä case ja control. Koska case on aakkosissa ennen controllia, R käyttää oletuksen case-ryhmää referenssitasona, ja testaa miten control-ryhmä poikkeaa tästä tasosta, vaikka haluaisimme päinvastaisen tuloksen. Tasot voi itse määrittää näin:</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="data-wrangling.html#cb296-1" aria-hidden="true" tabindex="-1"></a>study_groups <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>, <span class="st">&quot;case&quot;</span>),</span>
-<span id="cb296-2"><a href="data-wrangling.html#cb296-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>))</span>
-<span id="cb296-3"><a href="data-wrangling.html#cb296-3" aria-hidden="true" tabindex="-1"></a>study_groups</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="data-wrangling.html#cb308-1" aria-hidden="true" tabindex="-1"></a>study_groups <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>, <span class="st">&quot;case&quot;</span>),</span>
+<span id="cb308-2"><a href="data-wrangling.html#cb308-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">&quot;control&quot;</span>, <span class="st">&quot;case&quot;</span>))</span>
+<span id="cb308-3"><a href="data-wrangling.html#cb308-3" aria-hidden="true" tabindex="-1"></a>study_groups</span></code></pre></div>
 <pre><code>## [1] case    control control case    case   
 ## Levels: control case</code></pre>
 <p>Nyt tasot ovat oikeassa järjestyksessä!</p>
 <p>Kuten aiemmin mainittiin, factoreita voi tehdä myös numeerisista vektoreista. HUOM: muista, että <code>as.numeric()</code> palauttaa factorin kokonaislukuarvot, ei alkuperäisiä lukuja. Alkuperäiset luvut saa käyttämällä ensin <code>as.character</code>-funktiota, joka muuttaa factorin tasot merkkijonovektoriksi.</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="data-wrangling.html#cb298-1" aria-hidden="true" tabindex="-1"></a>time_points <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>))</span>
-<span id="cb298-2"><a href="data-wrangling.html#cb298-2" aria-hidden="true" tabindex="-1"></a>time_points</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="data-wrangling.html#cb310-1" aria-hidden="true" tabindex="-1"></a>time_points <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">5</span>))</span>
+<span id="cb310-2"><a href="data-wrangling.html#cb310-2" aria-hidden="true" tabindex="-1"></a>time_points</span></code></pre></div>
 <pre><code>## [1] 0 0 1 1 5 5 1 0 5
 ## Levels: 0 1 5</code></pre>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="data-wrangling.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probably not what you expect</span></span>
-<span id="cb300-2"><a href="data-wrangling.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(time_points)</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="data-wrangling.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Probably not what you expect</span></span>
+<span id="cb312-2"><a href="data-wrangling.html#cb312-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(time_points)</span></code></pre></div>
 <pre><code>## [1] 1 1 2 2 3 3 2 1 3</code></pre>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="data-wrangling.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First to character, then to numeric</span></span>
-<span id="cb302-2"><a href="data-wrangling.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(time_points))</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="data-wrangling.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First to character, then to numeric</span></span>
+<span id="cb314-2"><a href="data-wrangling.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(time_points))</span></code></pre></div>
 <pre><code>## [1] 0 0 1 1 5 5 1 0 5</code></pre>
 
 </div>
@@ -540,12 +577,11 @@ Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla t
           </div>
         </div>
       </div>
-<a href="reading-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reading_data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -558,8 +594,8 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
@@ -584,7 +620,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["R-ohjelmoinnin-perusteet.pdf"],
+"download": {},
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

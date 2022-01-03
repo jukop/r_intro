@@ -5,6 +5,7 @@ Tunnusluvut (engl. statistics) ovat keskeinen osa tilastotiedettä. Tunnuslukuje
 ## Sijaintia kuvaavat tunnusluvut
 
 ### Minimi ja maksimi
+
 Minimi tarkoittaa aineiston pienintä arvoa kyseiselle muuttujalle. Maksimi on vastaavasti suurin arvo. Minimi ja maksimi ovat periaatteessa helppo laskea funktioiden `min` ja `max` avulla, mutta niihinkin liittyy pari pientä sudenkuoppaa. Funktiot `min` ja `max` hyväksyvät argumenteikseen vain numeerisia vektoreita.
 
 ```{r}
@@ -50,6 +51,7 @@ mean(dat_for_mean, na.rm = TRUE)
 ```
 
 ### Mediaani
+
 Mediaani ilmaisee aineiston keskimmäisen havainnon. Toisin sanoen puolet havainnoista on mediaania suurempia ja puolet mediaania pienempiä. Esimerkiksi aineiston $1, 1, 2, 3, 5$ mediaani on $2$. Jos aineistossa on parillinen määrä lukuja, otetaan kaksi keskimmäisä ja lasketaan ne yhteen ja jaetaan kahdella (keskiarvo). Aineiston $3, 3, 5, 6, 7, 17$ mediaani on $(5 + 6) / 2 = 5.5$. Mediaani on helppoa laskea funktiolla `median`.
 
 

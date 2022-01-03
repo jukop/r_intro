@@ -194,8 +194,6 @@ Alussa on kuitenkin hyvä käyttää `return`-käskyä, niin pysyy paremmin per�
 
 ### Funktio ilman tulosta
 
-<!-- Santtu: On ristiriitaista sanoa, että nämä funktiot eivät palauta mitään, juuri aikasemmin sanottiin että funktiot palauttavat aina jotain (mikä on totta) ja nämäkin funktiot palauttavat NULL, joka on sekin jotain itsessään. Kirjoitin hieman eri tavalla. -->
-
 Funktion tarkoitus ei ole aina palauttaa jotain. Yleisiä esimerkkejä ovat `cat` ja `plot`, jotka tulostavat ja piirtävät asioita. Jos näiden funktion paluuarvon yrittää sijoittaa muuttujaan, on tuloksena `NULL`, eli tyhjä arvo. 
 
 ```{r}
@@ -213,4 +211,19 @@ blue_squares <- function(x, y) {
 }
 value <- blue_squares(1:5, c(2, 5, 3, 3, 8))
 value
+```
+
+### Funktion lyhytmuoto
+
+Yksinkertaisten (tyypillisesti yhden rivin) funktioiden tapauksessa aaltosulkuja ei ole pakollista käyttää funktion koodin rajaamiseen. Tarkastellaan esimerkkifunktiota, joka laskee puuttuvien havaintojen `NA` määrän vektorista `x`.
+```{r}
+count_missing <- function(x) {
+  mis <- is.na(x)
+  count <- sum(mis)
+  return(count)
+}
+```
+Purkamalla välivaiheet auki ja jättämällä `return`-käsky pois, voitaisiin funktio kirjoittaa lyhytmuodossa seuraavasti:
+```{r}
+count_missing <- function(x) sum(is.na(x))
 ```

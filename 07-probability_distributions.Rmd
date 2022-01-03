@@ -59,7 +59,6 @@ qnorm(0.9, mean = 10, sd = 4)
 
 Eli tämän jakauman mukaan eniten suolaa saava 10 % miehistä syö yli kolminkertaisen määrän suolaa suositukseen verrattuna.
 
-
 ## Muita jakaumia
 
 Vastaavat funktiot löytyvät myös muille jakaumille, kuten:
