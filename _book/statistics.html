@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kappale 6 Tunnusluvut | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kappale 6 Tunnusluvut | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
   
@@ -21,7 +20,7 @@
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
   
 
-<meta name="author" content="Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021)" />
+<meta name="author" content="Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021, 2022)" />
 
 
 
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="data-wrangling.html"/>
 <link rel="next" href="distributions.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -342,67 +341,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="statistics" class="section level1" number="6">
-<h1><span class="header-section-number">Kappale 6</span> Tunnusluvut</h1>
+<div id="statistics" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Kappale 6</span> Tunnusluvut<a href="statistics.html#statistics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Tunnusluvut (engl. statistics) ovat keskeinen osa tilastotiedettä. Tunnuslukujen avulla voidaan tiivistää ja tarkastella aineistoa. Tässä harjoittelemme tyypillisimpien tunnuslukujen laskemista aineistosta. Näitä tunnuslukuja voi sanoa myös empiirisiksi, koska ne on laskettu aineistosta.</p>
-<div id="sijaintia-kuvaavat-tunnusluvut" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Sijaintia kuvaavat tunnusluvut</h2>
-<div id="minimi-ja-maksimi" class="section level3" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Minimi ja maksimi</h3>
+<div id="sijaintia-kuvaavat-tunnusluvut" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Sijaintia kuvaavat tunnusluvut<a href="statistics.html#sijaintia-kuvaavat-tunnusluvut" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="minimi-ja-maksimi" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Minimi ja maksimi<a href="statistics.html#minimi-ja-maksimi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Minimi tarkoittaa aineiston pienintä arvoa kyseiselle muuttujalle. Maksimi on vastaavasti suurin arvo. Minimi ja maksimi ovat periaatteessa helppo laskea funktioiden <code>min</code> ja <code>max</code> avulla, mutta niihinkin liittyy pari pientä sudenkuoppaa. Funktiot <code>min</code> ja <code>max</code> hyväksyvät argumenteikseen vain numeerisia vektoreita.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="statistics.html#cb316-1" aria-hidden="true" tabindex="-1"></a>dat_for_loc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.25</span>, <span class="sc">-</span><span class="fl">4.1</span>, <span class="fl">1.16</span>, <span class="sc">-</span><span class="fl">3.05</span>, <span class="fl">4.17</span>, <span class="fl">0.73</span>, <span class="sc">-</span><span class="fl">3.14</span>, <span class="fl">3.39</span>, <span class="sc">-</span><span class="fl">2.55</span>, <span class="fl">0.4</span>)</span>
-<span id="cb316-2"><a href="statistics.html#cb316-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(dat_for_loc)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="statistics.html#cb320-1" aria-hidden="true" tabindex="-1"></a>dat_for_loc <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.25</span>, <span class="sc">-</span><span class="fl">4.1</span>, <span class="fl">1.16</span>, <span class="sc">-</span><span class="fl">3.05</span>, <span class="fl">4.17</span>, <span class="fl">0.73</span>, <span class="sc">-</span><span class="fl">3.14</span>, <span class="fl">3.39</span>, <span class="sc">-</span><span class="fl">2.55</span>, <span class="fl">0.4</span>)</span>
+<span id="cb320-2"><a href="statistics.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(dat_for_loc)</span></code></pre></div>
 <pre><code>## [1] -4.1</code></pre>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="statistics.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(dat_for_loc)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="statistics.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(dat_for_loc)</span></code></pre></div>
 <pre><code>## [1] 4.17</code></pre>
 <!-- Santtu: pmin ja pmax on selitetty tässä oudosti, niiden pääasiallinen tarkoitus on laskea alkiokohtaisia minimejä ja maksimeja (tästähän nniiden nimetkin tulevat, pointwise-minimum) eikä vain verrata vektoria lukuun -->
 <p>Joskus minimiä ja maksimia tarvitaan tilanteessa, jossa halutaan vaikkapa muuttaa kaikki negatiiviset arvot nolliksi (tai positiiviset, jos maksimi). Tämä onnistuu helpoiten funktioiden <code>pmin</code> ja <code>pmax</code> avulla. Samalla tapaa, jos halutaan kaikki lukua 1 pienemmät luvut muutettua luvuksi 1, niin tämä onnistuu vaihtamalla luku 0 lukuun 1. <!-- Santtu: en ymmärrä tätä viimeistä lausetta: jos vektori sisältää lukuja jotka ovat < 0, niin ei riitä vain vaihtaa lukua 0 luvuksi 1--></p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="statistics.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We want to get rid of all values below 0 and make them 0</span></span>
-<span id="cb320-2"><a href="statistics.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pmin</span>(dat_for_loc, <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="statistics.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We want to get rid of all values below 0 and make them 0</span></span>
+<span id="cb324-2"><a href="statistics.html#cb324-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pmin</span>(dat_for_loc, <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>##  [1] -1.25 -4.10  0.00 -3.05  0.00  0.00 -3.14  0.00 -2.55  0.00</code></pre>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="statistics.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Similar, but get rid of all values over 0</span></span>
-<span id="cb322-2"><a href="statistics.html#cb322-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pmax</span>(dat_for_loc, <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="statistics.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Similar, but get rid of all values over 0</span></span>
+<span id="cb326-2"><a href="statistics.html#cb326-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pmax</span>(dat_for_loc, <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>##  [1] 0.00 0.00 1.16 0.00 4.17 0.73 0.00 3.39 0.00 0.40</code></pre>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="statistics.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can do similar things to any limit, e.g. 1</span></span>
-<span id="cb324-2"><a href="statistics.html#cb324-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pmin</span>(dat_for_loc, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="statistics.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can do similar things to any limit, e.g. 1</span></span>
+<span id="cb328-2"><a href="statistics.html#cb328-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pmin</span>(dat_for_loc, <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##  [1] -1.25 -4.10  1.00 -3.05  1.00  0.73 -3.14  1.00 -2.55  0.40</code></pre>
 <p>Funktiota <code>pmin</code> ja <code>pmax</code> voi käyttää vieläkin yleisemmässä muodossa antamalla yksittäisen lukuarvon sijasta vektorin. Näitä emme käsittele tässä, mutta kiinnostuneet voivat kokeilla lisää itse.</p>
 </div>
-<div id="keskiarvo" class="section level3" number="6.1.2">
-<h3><span class="header-section-number">6.1.2</span> Keskiarvo</h3>
+<div id="keskiarvo" class="section level3 hasAnchor" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Keskiarvo<a href="statistics.html#keskiarvo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Keskiarvo saadaan laskemalla muuttujan kaikki havainnot yhteen ja jakamalla summa havaintojen määrällä. Esimerkiksi aineiston <span class="math inline">\(1,2,3,4\)</span> keskiarvo on <span class="math inline">\((1+2+3+4)/4 = 2.5\)</span>. Keskiarvoa satunnaismuuttujan <span class="math inline">\(X\)</span> havainnoille voidaan merkitä matemaattisesti seuraavasti
 <!-- Santtu: kaavasta puuttui tässä 1/n summamerkin edestä -->
 <span class="math display">\[\overline{x} = \frac1n \sum_{i=1}^n x_i = \frac{x_1+x_2+\dots+x_n}{n},\]</span>
 missä merkintä <span class="math inline">\(\overline{x}\)</span> tarkoittaa itse keskiarvoa, <span class="math inline">\(x_1,...,x_n\)</span> ovat havaintoja ja <span class="math inline">\(n\)</span> on havaintojen määrä.</p>
 <p>Keskiarvo voidaan laskea helposti funktiolla <code>mean</code>.</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="statistics.html#cb326-1" aria-hidden="true" tabindex="-1"></a>tooth_length <span class="ot">&lt;-</span> ToothGrowth<span class="sc">$</span>len</span>
-<span id="cb326-2"><a href="statistics.html#cb326-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(tooth_length)</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="statistics.html#cb330-1" aria-hidden="true" tabindex="-1"></a>tooth_length <span class="ot">&lt;-</span> ToothGrowth<span class="sc">$</span>len</span>
+<span id="cb330-2"><a href="statistics.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(tooth_length)</span></code></pre></div>
 <pre><code>## [1] 18.81333</code></pre>
 <p>Mikäli muuttujassa on puuttuvia arvoja (<code>NA</code>) niin keskiarvoksi tulee oletusarvoisesti <code>NA</code>. Puuttuvat arvot voi jättää pois keskiarvon laskemisessa antamalla funktiolle lisäargumentiksi <code>na.rm = TRUE</code>.</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="statistics.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create some data</span></span>
-<span id="cb328-2"><a href="statistics.html#cb328-2" aria-hidden="true" tabindex="-1"></a>dat_for_mean <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
-<span id="cb328-3"><a href="statistics.html#cb328-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Data with NA results mean with NA</span></span>
-<span id="cb328-4"><a href="statistics.html#cb328-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat_for_mean)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="statistics.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create some data</span></span>
+<span id="cb332-2"><a href="statistics.html#cb332-2" aria-hidden="true" tabindex="-1"></a>dat_for_mean <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
+<span id="cb332-3"><a href="statistics.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Data with NA results mean with NA</span></span>
+<span id="cb332-4"><a href="statistics.html#cb332-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat_for_mean)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="statistics.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Leave NA-values out and calculate mean from the remaining ones</span></span>
-<span id="cb330-2"><a href="statistics.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat_for_mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="statistics.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Leave NA-values out and calculate mean from the remaining ones</span></span>
+<span id="cb334-2"><a href="statistics.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(dat_for_mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 2.333333</code></pre>
 </div>
-<div id="mediaani" class="section level3" number="6.1.3">
-<h3><span class="header-section-number">6.1.3</span> Mediaani</h3>
+<div id="mediaani" class="section level3 hasAnchor" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Mediaani<a href="statistics.html#mediaani" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Mediaani ilmaisee aineiston keskimmäisen havainnon. Toisin sanoen puolet havainnoista on mediaania suurempia ja puolet mediaania pienempiä. Esimerkiksi aineiston <span class="math inline">\(1, 1, 2, 3, 5\)</span> mediaani on <span class="math inline">\(2\)</span>. Jos aineistossa on parillinen määrä lukuja, otetaan kaksi keskimmäisä ja lasketaan ne yhteen ja jaetaan kahdella (keskiarvo). Aineiston <span class="math inline">\(3, 3, 5, 6, 7, 17\)</span> mediaani on <span class="math inline">\((5 + 6) / 2 = 5.5\)</span>. Mediaani on helppoa laskea funktiolla <code>median</code>.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="statistics.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s think about median</span></span>
-<span id="cb332-2"><a href="statistics.html#cb332-2" aria-hidden="true" tabindex="-1"></a>dat_for_median <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">6</span>)</span>
-<span id="cb332-3"><a href="statistics.html#cb332-3" aria-hidden="true" tabindex="-1"></a>dat_for_median</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="statistics.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s think about median</span></span>
+<span id="cb336-2"><a href="statistics.html#cb336-2" aria-hidden="true" tabindex="-1"></a>dat_for_median <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">6</span>)</span>
+<span id="cb336-3"><a href="statistics.html#cb336-3" aria-hidden="true" tabindex="-1"></a>dat_for_median</span></code></pre></div>
 <pre><code>##  [1] 7 2 3 4 1 7 0 4 3 3 2 6</code></pre>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="statistics.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(dat_for_median) <span class="co"># Median would be the middle value in the arranged data, thus 3</span></span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="statistics.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(dat_for_median) <span class="co"># Median would be the middle value in the arranged data, thus 3</span></span></code></pre></div>
 <pre><code>##  [1] 0 1 2 2 3 3 3 4 4 6 7 7</code></pre>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="statistics.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting median in R</span></span>
-<span id="cb336-2"><a href="statistics.html#cb336-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(dat_for_median)</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="statistics.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting median in R</span></span>
+<span id="cb340-2"><a href="statistics.html#cb340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(dat_for_median)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
-<div id="kvantiilit" class="section level3" number="6.1.4">
-<h3><span class="header-section-number">6.1.4</span> Kvantiilit</h3>
+<div id="kvantiilit" class="section level3 hasAnchor" number="6.1.4">
+<h3><span class="header-section-number">6.1.4</span> Kvantiilit<a href="statistics.html#kvantiilit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Mediaani siis kertoi kohdan, jossa 50 % aineistosta on pienenmpiä kuin kyseinen arvo. Entä jos haluamme luvun, jota pienempiä ovat vaikkapa 10 % aineiston havainnoista tai mikä tahansa muu osuus? Tällainen yleistys on nimeltään kvantiili. Joillakin kvantiileilla on erityisnimet. Ne ovat</p>
 <ul>
 <li>mediaani (50 % aineistosta on tätä pienempiä)</li>
@@ -414,74 +413,74 @@ missä merkintä <span class="math inline">\(\overline{x}\)</span> tarkoittaa it
 </ul></li>
 </ul>
 <p>Haluamansa kvantiilin voi laskea funktiolla <code>quantile</code>. Jos haluat laskea 30 %:n kvantiilin, niin arnna argumentille <code>probs</code> tätä vastaava suhteellinen osuus eli 0.30.</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="statistics.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dat_for_median, <span class="at">probs =</span> <span class="fl">0.30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="statistics.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dat_for_median, <span class="at">probs =</span> <span class="fl">0.30</span>)</span></code></pre></div>
 <pre><code>## 30% 
 ## 2.3</code></pre>
 <p><code>quantile</code>-funktiolle voi antaa useita kvantiileita laskettavaksi kerralla. Tällöin argumentille probs on annettava vektori. Esimerkiksi kvartiilit ja mediaanin voi laskea samanaikaisesti näin:</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="statistics.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dat_for_median, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="statistics.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dat_for_median, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))</span></code></pre></div>
 <pre><code>## 25% 50% 75% 
 ## 2.0 3.0 4.5</code></pre>
 <p>Eräs jännä seikka on se, että laskemalla 0 %:n ja 100 %:n kvantiilit saa tulokseksi minimin ja maksimin. Samaan lopputulokseen pääsee myös funktiolla <code>range</code>. Kokeillaan tätä</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="statistics.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0 % and 100 % quantile gives a range of the data</span></span>
-<span id="cb342-2"><a href="statistics.html#cb342-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dat_for_median, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.00</span>, <span class="fl">1.00</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="statistics.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0 % and 100 % quantile gives a range of the data</span></span>
+<span id="cb346-2"><a href="statistics.html#cb346-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dat_for_median, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.00</span>, <span class="fl">1.00</span>))</span></code></pre></div>
 <pre><code>##   0% 100% 
 ##    0    7</code></pre>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="statistics.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s compare with min and max</span></span>
-<span id="cb344-2"><a href="statistics.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(dat_for_median)</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="statistics.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s compare with min and max</span></span>
+<span id="cb348-2"><a href="statistics.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(dat_for_median)</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="statistics.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(dat_for_median)</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="statistics.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(dat_for_median)</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="statistics.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># There is also function called range</span></span>
-<span id="cb348-2"><a href="statistics.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dat_for_median)</span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="statistics.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co"># There is also function called range</span></span>
+<span id="cb352-2"><a href="statistics.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(dat_for_median)</span></code></pre></div>
 <pre><code>## [1] 0 7</code></pre>
 <p>Esimerkiksi viiksilaatikko-kuvaa vastaavat lukuarvot eli minimin, alakvartiilin, mediaanin, yläkvartiilin ja maksimin saa kätevästi quantile-funktiolla antamalla <code>probs</code>-argumentille vektorin <code>c(0, 0.25, 0.5, 0.75, 1)</code>. Tätä sanotaan joskus viiden numeron yhteenvedoksi.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="statistics.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dat_for_median, <span class="at">probs =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="statistics.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(dat_for_median, <span class="at">probs =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>##   0%  25%  50%  75% 100% 
 ##  0.0  2.0  3.0  4.5  7.0</code></pre>
 </div>
-<div id="moodi" class="section level3" number="6.1.5">
-<h3><span class="header-section-number">6.1.5</span> Moodi</h3>
+<div id="moodi" class="section level3 hasAnchor" number="6.1.5">
+<h3><span class="header-section-number">6.1.5</span> Moodi<a href="statistics.html#moodi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Moodi ilmaisee muuttujan yleisimmän arvon. Valitettavasti R:ssä ei ole valmista funktiota moodin laskemiseen. Sen sijaan funktio nimeltään <code>mode</code> antaa objektin tyypin, eikä laske moodia. Jos moodin haluaa laskea R:ssä, on ensin muodostettava aineistosta frekvenssitaulukko ja sitten etsittävä taulokosta se arvo, josta on eniten havaintoja, eli suurin frekvenssi</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="statistics.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find out the mode</span></span>
-<span id="cb352-2"><a href="statistics.html#cb352-2" aria-hidden="true" tabindex="-1"></a>dat_for_mode <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>, </span>
-<span id="cb352-3"><a href="statistics.html#cb352-3" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, </span>
-<span id="cb352-4"><a href="statistics.html#cb352-4" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, </span>
-<span id="cb352-5"><a href="statistics.html#cb352-5" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, </span>
-<span id="cb352-6"><a href="statistics.html#cb352-6" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb352-7"><a href="statistics.html#cb352-7" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(dat_for_mode)</span>
-<span id="cb352-8"><a href="statistics.html#cb352-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s see how is tab</span></span>
-<span id="cb352-9"><a href="statistics.html#cb352-9" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="statistics.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find out the mode</span></span>
+<span id="cb356-2"><a href="statistics.html#cb356-2" aria-hidden="true" tabindex="-1"></a>dat_for_mode <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>, </span>
+<span id="cb356-3"><a href="statistics.html#cb356-3" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, </span>
+<span id="cb356-4"><a href="statistics.html#cb356-4" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>, </span>
+<span id="cb356-5"><a href="statistics.html#cb356-5" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">0</span>, </span>
+<span id="cb356-6"><a href="statistics.html#cb356-6" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb356-7"><a href="statistics.html#cb356-7" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(dat_for_mode)</span>
+<span id="cb356-8"><a href="statistics.html#cb356-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s see how is tab</span></span>
+<span id="cb356-9"><a href="statistics.html#cb356-9" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div>
 <pre><code>## dat_for_mode
 ##  0  1  2  3  4  5  6  7 
 ##  4 14 22 26 22  5  4  3</code></pre>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="statistics.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s pick up the largest frequency using which.max function</span></span>
-<span id="cb354-2"><a href="statistics.html#cb354-2" aria-hidden="true" tabindex="-1"></a>tab[<span class="fu">which.max</span>(tab)]</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="statistics.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s pick up the largest frequency using which.max function</span></span>
+<span id="cb358-2"><a href="statistics.html#cb358-2" aria-hidden="true" tabindex="-1"></a>tab[<span class="fu">which.max</span>(tab)]</span></code></pre></div>
 <pre><code>##  3 
 ## 26</code></pre>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="statistics.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mode is 3 and the frequency is 26</span></span>
-<span id="cb356-2"><a href="statistics.html#cb356-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb356-3"><a href="statistics.html#cb356-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s pick up only the value 3</span></span>
-<span id="cb356-4"><a href="statistics.html#cb356-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tab)[<span class="fu">which.max</span>(tab)]</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="statistics.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mode is 3 and the frequency is 26</span></span>
+<span id="cb360-2"><a href="statistics.html#cb360-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-3"><a href="statistics.html#cb360-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s pick up only the value 3</span></span>
+<span id="cb360-4"><a href="statistics.html#cb360-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tab)[<span class="fu">which.max</span>(tab)]</span></code></pre></div>
 <pre><code>## [1] &quot;3&quot;</code></pre>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="statistics.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co"># That is character so let&#39;s convert it to numeric</span></span>
-<span id="cb358-2"><a href="statistics.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">names</span>(tab)[<span class="fu">which.max</span>(tab)])</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="statistics.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="co"># That is character so let&#39;s convert it to numeric</span></span>
+<span id="cb362-2"><a href="statistics.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">names</span>(tab)[<span class="fu">which.max</span>(tab)])</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Ylläoleva käy itse asiassa hyvästä esimerkistä tilanteesta, jossa seuraavaksi tekisin viimeisen rivin funktioksi ja jatkossa käyttäisin kyseistä funktiota työssäni. Funktiohin palataan osiossa <a href="functions.html#functions">Funktiot</a>. En malta olla tekemättä funktiota, joten olkoon alla esimerkki moodi-funktiosta ilman suurempia selityksiä.</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="statistics.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function for mode</span></span>
-<span id="cb360-2"><a href="statistics.html#cb360-2" aria-hidden="true" tabindex="-1"></a>moodi <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb360-3"><a href="statistics.html#cb360-3" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">table</span>(x)</span>
-<span id="cb360-4"><a href="statistics.html#cb360-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(<span class="fu">names</span>(tab)[<span class="fu">which.max</span>(tab)])</span>
-<span id="cb360-5"><a href="statistics.html#cb360-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb360-6"><a href="statistics.html#cb360-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use that function</span></span>
-<span id="cb360-7"><a href="statistics.html#cb360-7" aria-hidden="true" tabindex="-1"></a><span class="fu">moodi</span>(dat_for_mode)</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="statistics.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write a function for mode</span></span>
+<span id="cb364-2"><a href="statistics.html#cb364-2" aria-hidden="true" tabindex="-1"></a>moodi <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb364-3"><a href="statistics.html#cb364-3" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">table</span>(x)</span>
+<span id="cb364-4"><a href="statistics.html#cb364-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(<span class="fu">names</span>(tab)[<span class="fu">which.max</span>(tab)])</span>
+<span id="cb364-5"><a href="statistics.html#cb364-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb364-6"><a href="statistics.html#cb364-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use that function</span></span>
+<span id="cb364-7"><a href="statistics.html#cb364-7" aria-hidden="true" tabindex="-1"></a><span class="fu">moodi</span>(dat_for_mode)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
 </div>
-<div id="yhteenveto-datasta-summary" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Yhteenveto datasta (summary)</h2>
+<div id="yhteenveto-datasta-summary" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Yhteenveto datasta (summary)<a href="statistics.html#yhteenveto-datasta-summary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Kätevä tapa saada nopea yhteenveto datakehikon kaikista muuttujista on soveltaa <code>summary</code>-funktiota datakehikkoon.</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="statistics.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate summary for ToothGrowth data</span></span>
-<span id="cb362-2"><a href="statistics.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ToothGrowth)</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="statistics.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate summary for ToothGrowth data</span></span>
+<span id="cb366-2"><a href="statistics.html#cb366-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ToothGrowth)</span></code></pre></div>
 <pre><code>##       len        supp         dose      
 ##  Min.   : 4.20   OJ:30   Min.   :0.500  
 ##  1st Qu.:13.07   VC:30   1st Qu.:0.500  
@@ -489,30 +488,30 @@ missä merkintä <span class="math inline">\(\overline{x}\)</span> tarkoittaa it
 ##  Mean   :18.81           Mean   :1.167  
 ##  3rd Qu.:25.27           3rd Qu.:2.000  
 ##  Max.   :33.90           Max.   :2.000</code></pre>
-<p>`summary`` huolii myös yksittäisen vektorin, jolloin yhteenveto tulostuu vaakasuuntaisena.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="statistics.html#cb364-1" aria-hidden="true" tabindex="-1"></a>tooth_length <span class="ot">&lt;-</span> ToothGrowth<span class="sc">$</span>len</span>
-<span id="cb364-2"><a href="statistics.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tooth_length)</span></code></pre></div>
+<p><code>summary</code> huolii myös yksittäisen vektorin, jolloin yhteenveto tulostuu vaakasuuntaisena.</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="statistics.html#cb368-1" aria-hidden="true" tabindex="-1"></a>tooth_length <span class="ot">&lt;-</span> ToothGrowth<span class="sc">$</span>len</span>
+<span id="cb368-2"><a href="statistics.html#cb368-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tooth_length)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    4.20   13.07   19.25   18.81   25.27   33.90</code></pre>
 </div>
-<div id="varianssi-ja-keskihajonta" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Varianssi ja keskihajonta</h2>
+<div id="varianssi-ja-keskihajonta" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Varianssi ja keskihajonta<a href="statistics.html#varianssi-ja-keskihajonta" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Yksittäiselle numeeriselle muuttujalle voidaan laskea varianssi funktiolla <code>var</code>. Varianssia tulkittaessa kannattaa muistaa, että varianssin mittayksikkö ei ole sama kuin alkuperäisen muuttujan, vaan mittayksikkö tulee korottaa toiseen potenssiin. Esim. jos pituuden yksikkö on cm, niin pituuden varianssin yksikkö on <span class="math inline">\(\text{cm}^2\)</span>. Käytännössä tulkintaa kannattaa yrittää keskihajonnan avulla.</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="statistics.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull the variable from data frame and use it directly in function var</span></span>
-<span id="cb366-2"><a href="statistics.html#cb366-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ToothGrowth<span class="sc">$</span>len)</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="statistics.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull the variable from data frame and use it directly in function var</span></span>
+<span id="cb370-2"><a href="statistics.html#cb370-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ToothGrowth<span class="sc">$</span>len)</span></code></pre></div>
 <pre><code>## [1] 58.51202</code></pre>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="statistics.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the variance-covariance matrix for entire data frame </span></span>
-<span id="cb368-2"><a href="statistics.html#cb368-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (gives NA to any pairs with categorical variables)</span></span>
-<span id="cb368-3"><a href="statistics.html#cb368-3" aria-hidden="true" tabindex="-1"></a><span class="co"># variances are obtained from the diagonal (58.51, NA, 0.3954)</span></span>
-<span id="cb368-4"><a href="statistics.html#cb368-4" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ToothGrowth)</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="statistics.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the variance-covariance matrix for entire data frame </span></span>
+<span id="cb372-2"><a href="statistics.html#cb372-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (gives NA to any pairs with categorical variables)</span></span>
+<span id="cb372-3"><a href="statistics.html#cb372-3" aria-hidden="true" tabindex="-1"></a><span class="co"># variances are obtained from the diagonal (58.51, NA, 0.3954)</span></span>
+<span id="cb372-4"><a href="statistics.html#cb372-4" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(ToothGrowth)</span></code></pre></div>
 <pre><code>## Warning in var(ToothGrowth): NAs introduced by coercion</code></pre>
 <pre><code>##            len supp      dose
 ## len  58.512023   NA 3.8612994
 ## supp        NA   NA        NA
 ## dose  3.861299   NA 0.3954802</code></pre>
 <p>Keskihajonta (engl. standard deviation) saadaan vastaavasti funktiolla <code>sd</code>. Keskihajonta on varianssin neliöjuuri.</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="statistics.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="co"># standard deviation</span></span>
-<span id="cb371-2"><a href="statistics.html#cb371-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ToothGrowth<span class="sc">$</span>len)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="statistics.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="co"># standard deviation</span></span>
+<span id="cb375-2"><a href="statistics.html#cb375-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(ToothGrowth<span class="sc">$</span>len)</span></code></pre></div>
 <pre><code>## [1] 7.649315</code></pre>
 
 </div>

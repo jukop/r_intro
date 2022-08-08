@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kappale 9 Tilastollinen testaaminen | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kappale 9 Tilastollinen testaaminen | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
   
@@ -21,7 +20,7 @@
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
   
 
-<meta name="author" content="Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021)" />
+<meta name="author" content="Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021, 2022)" />
 
 
 
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="plotting.html"/>
 <link rel="next" href="linear_models.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -342,23 +341,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tests" class="section level1" number="9">
-<h1><span class="header-section-number">Kappale 9</span> Tilastollinen testaaminen</h1>
-<div id="testaamisen-periaatteita" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Testaamisen periaatteita</h2>
+<div id="tests" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Kappale 9</span> Tilastollinen testaaminen<a href="tests.html#tests" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="testaamisen-periaatteita" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Testaamisen periaatteita<a href="tests.html#testaamisen-periaatteita" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Tilastollisilla testeillä pyritään arvioimaan perusjoukkoa koskevien väiteiden paikkansapitävyyttä todennäköisyyslaskennan keinoin. Lähtökohtana on niin sanottu <strong>nollahypoteesi</strong> (<span class="math inline">\(H_0\)</span>), joka yleensä vastaa tilannetta, jossa mahdolliset väitettä tukevat haivainnot ovat vain sattuman seurausta. Esimerkiksi jos tutkitaan onko jokin lääkeaine tehokas hoitokeino, voisi nollahypoteesi olla muotoa “ei vaikutusta”. Nollahypoteesiin liittyy aina <strong>vastahypoteesi</strong> (<span class="math inline">\(H_1\)</span>), joka yleensä nollahypoteesin vastakohta, ja vastaa mielenkiinnon kohteena olevaa väitettä (esim. “on vaikutusta”).</p>
 <p>Tilastolliset testit olettava nollahypoteesin olevan totta, jolloin epäuskottavat tulokset antavat aihetta epäillä nollahypoteesin mielekkyyttä. Testiin liittyy yleensä <strong>testisuure</strong>, joka on jokin aineistosta laskettu tunnusluku. Testisuureen jakauman perusteella voidaan arvioida todennäköisyyttä, että havaittu tulos olisi vain sattuman seurausta. Tätä todennäköisyyttä kutsutaan <strong>p-arvoksi</strong>. Perinteisesti tilastotieteessä asetetaan etukäteen jokin riskitaso (<span class="math inline">\(\alpha\)</span>), ja jos saatu p-arvo on riskitasoa pienempi niin nollahypoteesi hylätään (yleensä <span class="math inline">\(\alpha = 0.05\)</span>). Jos p-arvo on riskitasoa pienempi, niin havaintoa kutsutaan tilastollisesti merkitseväksi.</p>
 </div>
-<div id="t-test" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> t-testi</h2>
+<div id="t-test" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> t-testi<a href="tests.html#t-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Studentin t-testi on yksi tunnetuimmista tilastollisista testeistä. Se testaa muuttujien odotusarvoja.</p>
 <p>Tarkastellaan R:n sisäistä dataa <code>sleep</code>, joka sisältää muutoksia oppilaiden unen määrässä (muuttuja <code>extra</code>, muutos unen määrässä tunneissa) kahdella eri lääkkeellä (muuttuja <code>group</code>). Jokainen oppilas kokeili kumpaakin lääkettä, muuttuja <code>ID</code> yksilöi oppilaat.</p>
-<div id="yhden-otoksen-t-testi" class="section level3" number="9.2.1">
-<h3><span class="header-section-number">9.2.1</span> Yhden otoksen t-testi</h3>
+<div id="yhden-otoksen-t-testi" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> Yhden otoksen t-testi<a href="tests.html#yhden-otoksen-t-testi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Testaamme aluksi hypoteesia, että muutos unen määrässä lääkkeen käytön jälkeen on 0 (<span class="math inline">\(H_0 : \mu = 0\)</span>). Funktiota <code>t.test</code> voi käyttää monella tapaa. Tässä esimerkissä annamme funktiolle kaavan <code>extra ~ 1</code>, eli ns. <code>formula</code>-objektin ensimmäisenä argumenttina, joka on osa R:n syntaksia tilastollisten mallien ja riippuvuusrakenteiden määrittellyyn. Kaava määrittelee, että <code>~</code>-merkin vasen puoli on vastemuuttuja, ja oikea puoli sisältää selittävät muuttujat. Koska emme tee testiä minkään toisen muuttujan suhteen, niin kaavan oikean puoli on vain luku 1, joka R:n syntaksissa tarkoittaa, että se on vakio. Tämä ei siis tarkoita esimerkiksi sitä, että nollahypoteesimme olisi, että muutos unen määrässä olisi 1 tunti. Nollahypoteesin mukainen odotusarvo määritellään argumentilla <code>mu</code>, joka yhden otoksen testissä saa oletusarvon 0.</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="tests.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One sample test</span></span>
-<span id="cb399-2"><a href="tests.html#cb399-2" aria-hidden="true" tabindex="-1"></a>tt1 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(extra <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> sleep)</span>
-<span id="cb399-3"><a href="tests.html#cb399-3" aria-hidden="true" tabindex="-1"></a>tt1</span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="tests.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One sample test</span></span>
+<span id="cb403-2"><a href="tests.html#cb403-2" aria-hidden="true" tabindex="-1"></a>tt1 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(extra <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> sleep)</span>
+<span id="cb403-3"><a href="tests.html#cb403-3" aria-hidden="true" tabindex="-1"></a>tt1</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -370,25 +369,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x 
 ##      1.54</code></pre>
-<p>Tuloksena saamme t-testisuureen arvon, vapausasteet sekä testin p-arvon. Koska p-arvo on pieni (perinteisesti rajana käytetään lukua 0.05, mutta tämä vaihtelee tieteenalasta riippuen) niin nollahypoteesi hylätään, eli testin mukaan muutos unen määrässä poikkeaa tilastollisesti merkitsevästi nollasta kumpaa tahansa lääkettä käytettäessä.</p>
+<p>Tuloksena saamme t-testisuureen arvon, vapausasteet sekä testin p-arvon. Koska p-arvo on pieni (perinteisesti rajana käytetään lukua 0.05, mutta tämä vaihtelee tieteenalasta riippuen) niin nollahypoteesi hylätään, eli testin mukaan muutos unen määrässä poikkeaa tilastollisesti merkitsevästi nollasta kumpaa tahansa lääkettä käytettäessä. Tuloste kertoo myös testin vastahypoteesin <span class="math inline">\(H_1\)</span> kohdassa “alternative hypothesis”.</p>
 <p>Testiin liittyvät tunnusluvut saamme eriteltyä tulosobjektista <code>tt1</code> seuraavasti:</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="tests.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test statistic</span></span>
-<span id="cb401-2"><a href="tests.html#cb401-2" aria-hidden="true" tabindex="-1"></a>tt1<span class="sc">$</span>statistic</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="tests.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test statistic</span></span>
+<span id="cb405-2"><a href="tests.html#cb405-2" aria-hidden="true" tabindex="-1"></a>tt1<span class="sc">$</span>statistic</span></code></pre></div>
 <pre><code>##        t 
 ## 3.412965</code></pre>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="tests.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Degrees of freedom</span></span>
-<span id="cb403-2"><a href="tests.html#cb403-2" aria-hidden="true" tabindex="-1"></a>tt1<span class="sc">$</span>parameter</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="tests.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Degrees of freedom</span></span>
+<span id="cb407-2"><a href="tests.html#cb407-2" aria-hidden="true" tabindex="-1"></a>tt1<span class="sc">$</span>parameter</span></code></pre></div>
 <pre><code>## df 
 ## 19</code></pre>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="tests.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value</span></span>
-<span id="cb405-2"><a href="tests.html#cb405-2" aria-hidden="true" tabindex="-1"></a>tt1<span class="sc">$</span>p.value</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="tests.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="co"># p-value</span></span>
+<span id="cb409-2"><a href="tests.html#cb409-2" aria-hidden="true" tabindex="-1"></a>tt1<span class="sc">$</span>p.value</span></code></pre></div>
 <pre><code>## [1] 0.00291762</code></pre>
 </div>
-<div id="kahden-otoksen-t-testi" class="section level3" number="9.2.2">
-<h3><span class="header-section-number">9.2.2</span> Kahden otoksen t-testi</h3>
+<div id="kahden-otoksen-t-testi" class="section level3 hasAnchor" number="9.2.2">
+<h3><span class="header-section-number">9.2.2</span> Kahden otoksen t-testi<a href="tests.html#kahden-otoksen-t-testi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Entäpä jos haluammekin testata hypoteesia, että kumpikin lääke vaikuttaa samalla tavalla unen määrään (<span class="math inline">\(H_0 : \mu_1 = \mu_2\)</span>)? Voimme tässäkin tapauksessa käyttää <code>formula</code>-syntaksia hyödyksi. Vakion 1 sijaan sijoitamme nyt lääkettä vastaavan muuttujan <code>group</code> kaavassa <code>~</code>-merkin oikealle puolelle.</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="tests.html#cb407-1" aria-hidden="true" tabindex="-1"></a>tt2 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(extra <span class="sc">~</span> group, <span class="at">data =</span> sleep)</span>
-<span id="cb407-2"><a href="tests.html#cb407-2" aria-hidden="true" tabindex="-1"></a>tt2</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="tests.html#cb411-1" aria-hidden="true" tabindex="-1"></a>tt2 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(extra <span class="sc">~</span> group, <span class="at">data =</span> sleep)</span>
+<span id="cb411-2"><a href="tests.html#cb411-2" aria-hidden="true" tabindex="-1"></a>tt2</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -403,11 +402,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Testiobjektin sisältö vastaa yhden otoksen testiä suurimmilta osin. Näämme, että testin tulos ei tällä kertaa ollut tilastollisesti merkitsevä (merkitsevyystasolla 0.05) eli testin mukaan ei ole näyttöä siitä, että lääkkeet vaikuttaisivat eri tavalla unen määrään, jolloin nollahypoteesia ei hylätä.</p>
 <p>Tarkkasilmäinen lukija saattoi kuitenkin huomata, että tämä testi ei aivan vastaa tarkoitusta, sillä <code>sleep</code>-aineistossa jokainen koehenkilö kokeili kumpaakin lääkettä, jolloin oikea tapa olisi testata lääkkeiden vaikutuksen erotusta, mikä tehdäänkin seuraavaksi.</p>
 </div>
-<div id="parittaisten-otosten-t-testi" class="section level3" number="9.2.3">
-<h3><span class="header-section-number">9.2.3</span> Parittaisten otosten t-testi</h3>
+<div id="parittaisten-otosten-t-testi" class="section level3 hasAnchor" number="9.2.3">
+<h3><span class="header-section-number">9.2.3</span> Parittaisten otosten t-testi<a href="tests.html#parittaisten-otosten-t-testi" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Jotta mittausparit tulevat otettua huomioon testissä, on <code>t.test</code>-funktiolle annettava argumentti <code>paired = TRUE</code>. Tässä testissä nollahypoteesi on, että lääkkeiden vaikutuksen erotuksen odotusarvo on 0 (<span class="math inline">\(H_0 : \mu_d = 0\)</span>).</p>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="tests.html#cb409-1" aria-hidden="true" tabindex="-1"></a>tt3 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(extra <span class="sc">~</span> group, <span class="at">data =</span> sleep, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb409-2"><a href="tests.html#cb409-2" aria-hidden="true" tabindex="-1"></a>tt3</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="tests.html#cb413-1" aria-hidden="true" tabindex="-1"></a>tt3 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(extra <span class="sc">~</span> group, <span class="at">data =</span> sleep, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb413-2"><a href="tests.html#cb413-2" aria-hidden="true" tabindex="-1"></a>tt3</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -499,102 +498,112 @@ t.test(height ~ fgender,data=study_data)
 -->
 </div>
 </div>
-<div id="chi-squared-test" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Khiin neliö -testi</h2>
+<div id="chi-squared-test" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Khiin neliö -testi<a href="tests.html#chi-squared-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Kahden kategorisen muuttujan riippuvuuden tutkimiseen voidaan käyttää khiin neliö -testiä. Tyypillisesti halutaan verrata jotain ryhmien välisiä eroja, kuten puoluekannatusta alueittain tai sukupuolten suhteen. Testin ideana on verrata havaittua ristiintaulukkoa nollahypoteesin mukaiseen ristiintaulukkoon, jossa muuttujien välillä ei ole lainkaan riippuvuutta. Khiin neliö -testin testisuure perustuu näiden kahden taulukon eroihin.</p>
 <p>Tarkastellaan Yhdysvaltalaista kyselytutkimusaineistoa, joka sisältää tiedon henkilön puoluekannatuksesta ja sukupuolesta. Tutkitaan khiin neliö -testin avulla, riippuuko puoluekannatus sukupuolesta. R:ssä tämä voidaan tehdä funktiolla <code>chisq.test</code>.</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="tests.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="do">## From Agresti(2007) p.39</span></span>
-<span id="cb411-2"><a href="tests.html#cb411-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">as.table</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">762</span>, <span class="dv">327</span>, <span class="dv">468</span>), <span class="fu">c</span>(<span class="dv">484</span>, <span class="dv">239</span>, <span class="dv">477</span>)))</span>
-<span id="cb411-3"><a href="tests.html#cb411-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(M) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>),</span>
-<span id="cb411-4"><a href="tests.html#cb411-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">party =</span> <span class="fu">c</span>(<span class="st">&quot;Democrat&quot;</span>, <span class="st">&quot;Independent&quot;</span>, <span class="st">&quot;Republican&quot;</span>))</span>
-<span id="cb411-5"><a href="tests.html#cb411-5" aria-hidden="true" tabindex="-1"></a>(Xsq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(M))  <span class="co"># Prints test summary</span></span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="tests.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="do">## From Agresti(2007) p.39</span></span>
+<span id="cb415-2"><a href="tests.html#cb415-2" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">as.table</span>(<span class="fu">rbind</span>(<span class="fu">c</span>(762L, 327L, 468L), <span class="fu">c</span>(484L, 239L, 477L)))</span>
+<span id="cb415-3"><a href="tests.html#cb415-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(M) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">gender =</span> <span class="fu">c</span>(<span class="st">&quot;F&quot;</span>, <span class="st">&quot;M&quot;</span>),</span>
+<span id="cb415-4"><a href="tests.html#cb415-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">party =</span> <span class="fu">c</span>(<span class="st">&quot;Democrat&quot;</span>, <span class="st">&quot;Independent&quot;</span>, <span class="st">&quot;Republican&quot;</span>))</span>
+<span id="cb415-5"><a href="tests.html#cb415-5" aria-hidden="true" tabindex="-1"></a>(Xsq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(M))  <span class="co"># Prints test summary</span></span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s Chi-squared test
 ## 
 ## data:  M
 ## X-squared = 30.07, df = 2, p-value = 2.954e-07</code></pre>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="tests.html#cb413-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>observed   <span class="co"># observed counts (same as M)</span></span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="tests.html#cb417-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>observed   <span class="co"># observed counts (same as M)</span></span></code></pre></div>
 <pre><code>##       party
 ## gender Democrat Independent Republican
 ##      F      762         327        468
 ##      M      484         239        477</code></pre>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="tests.html#cb415-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>expected   <span class="co"># expected counts under the null</span></span></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="tests.html#cb419-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>expected   <span class="co"># expected counts under the null</span></span></code></pre></div>
 <pre><code>##       party
 ## gender Democrat Independent Republican
 ##      F 703.6714    319.6453   533.6834
 ##      M 542.3286    246.3547   411.3166</code></pre>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="tests.html#cb417-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>residuals  <span class="co"># Pearson residuals</span></span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="tests.html#cb421-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>residuals  <span class="co"># Pearson residuals</span></span></code></pre></div>
 <pre><code>##       party
 ## gender   Democrat Independent Republican
 ##      F  2.1988558   0.4113702 -2.8432397
 ##      M -2.5046695  -0.4685829  3.2386734</code></pre>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="tests.html#cb419-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>stdres     <span class="co"># standardized residuals</span></span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="tests.html#cb423-1" aria-hidden="true" tabindex="-1"></a>Xsq<span class="sc">$</span>stdres     <span class="co"># standardized residuals</span></span></code></pre></div>
 <pre><code>##       party
 ## gender   Democrat Independent Republican
 ##      F  4.5020535   0.6994517 -5.3159455
 ##      M -4.5020535  -0.6994517  5.3159455</code></pre>
 <p>Koska testin p-arvo on pieni, niin nollahypoteesi hylätään ja todetaan, että puoluekannatus riippuu tilastollisesti merkitsevästi sukupuolesta. Testin luotettavuuden kannalta on kuitenkin hyvä huomioida, että testiin liittyy oletuksia, jotka koskevat odotettuja frekvenssejä (eli nollahypoteesin mukaisen ristiintaulukon frekvenssejä). Tyypillisesti vaaditaan, että odotetun frekvenssin on oltava vähintään 5 vähintään 80%:ssa taulukon soluista, eikä yhdenkään solun odotettu frekvenssi ole alle 1. Tarkistetaan oletukset edellisen esimerkin tapauksessa:</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="tests.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(Xsq<span class="sc">$</span>expected <span class="sc">&gt;=</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="tests.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(Xsq<span class="sc">$</span>expected <span class="sc">&gt;=</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="tests.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Xsq<span class="sc">$</span>expected <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">&gt;=</span> <span class="fl">0.80</span></span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="tests.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Xsq<span class="sc">$</span>expected <span class="sc">&gt;=</span> <span class="dv">5</span>) <span class="sc">&gt;=</span> <span class="fl">0.80</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Oletukset ovat tältä osin kunnossa. Edellä funktio <code>all</code> ottaa syötteenään loogisen vektorin ja palauttaa <code>TRUE</code> jos syötteen kaikki alkiot ovat <code>TRUE</code>. Muutoin funktio palauttaa <code>FALSE</code>.</p>
+<p>Edellisessä esimerkissä ristiintaulukko oli valmiiksi rakennettu annetuista frekvensseistä. Ristiintaulukko voitaisiin myös rakentaa yksilötason aineistosta, esimerkiksi datakehikosta, joka sisältää rivin jokaista kyselyyn vastannutta henkilöä kohden ja tiedon vastaajan ilmoittamasta puolueesta ja sukupuolesta. Seuraavassa esimerkissä kyselytutkimusaineisto on muuttujassa <code>poll_data</code>, joka voidaan muuntaa ristiintauloksi funktiolla <code>table</code>. Huomataan, että tällä tavalla muodostettu ristiintaulukko on sama kuin suoraan frekvensseistä koottu taulukko.</p>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="tests.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(poll_data)</span></code></pre></div>
+<pre><code>##   gender    party
+## 1      F Democrat
+## 2      F Democrat
+## 3      F Democrat
+## 4      F Democrat
+## 5      F Democrat
+## 6      F Democrat</code></pre>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="tests.html#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(poll_data)</span></code></pre></div>
+<pre><code>## [1] 2757</code></pre>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="tests.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The cross tabulations are the same</span></span>
+<span id="cb433-2"><a href="tests.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="fu">identical</span>(M, <span class="fu">table</span>(poll_data))</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
 <!-- Santtu: Monte Carlo menee varmaan yli kurssin aihepiiristä
 ## Effect of simulating p-values
 x <- matrix(c(12, 5, 7, 7), ncol = 2)
 chisq.test(x)$p.value           # 0.4233
 chisq.test(x, simulate.p.value = TRUE, B = 10000)$p.value -->
 </div>
-<div id="anova" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> Varianssianalyysi</h2>
-<p>Varianssianalyysin voidaan ajatella olevan t-testin yleistys, jossa yhden tai kahden odotusarvon sijaan verrataankin kerralla useamman ryhmän odotusarvoja keskenään. Menetelmä saa nimensä siitä, että sen testisuure perustuu kiinnostuksen kohteena olevan muuttujan kokonaisvaihtelun jakamiseen verratavien ryhmien sisäiseen vaihteluun ja niiden väliseen vaihteluun. Koska harjoitusaineistossa <code>study_data</code> ei vielä ole kategorista muuttujaa, jossa on vähintään kolme kategoriaa, niin luodaan sellainen.</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="tests.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new categorical variable called age_group</span></span>
-<span id="cb425-2"><a href="tests.html#cb425-2" aria-hidden="true" tabindex="-1"></a><span class="co">#3,5,6 =&gt; ryhmä 1</span></span>
-<span id="cb425-3"><a href="tests.html#cb425-3" aria-hidden="true" tabindex="-1"></a><span class="co">#2,4,8 =&gt; ryhmä 2</span></span>
-<span id="cb425-4"><a href="tests.html#cb425-4" aria-hidden="true" tabindex="-1"></a><span class="co">#1,7   =&gt; ryhmä 3</span></span>
-<span id="cb425-5"><a href="tests.html#cb425-5" aria-hidden="true" tabindex="-1"></a><span class="co"># vaste: weight</span></span>
-<span id="cb425-6"><a href="tests.html#cb425-6" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;3&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;2&quot;</span>)</span>
-<span id="cb425-7"><a href="tests.html#cb425-7" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>fage_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(study_data<span class="sc">$</span>age_group)</span></code></pre></div>
-<p>Hypoteesit ovat:
-- <span class="math inline">\(H_0\)</span>: Ryhmien odotusarvot ovat samat tarkasteltavan muuttujan suhteen (<span class="math inline">\(\mu_1 = \mu_2 = \dots = \mu_n\)</span>),
-- <span class="math inline">\(H_1\)</span>: Ryhmien odotusarvoissa on eroa tarkasteltavan muuttujan suhteen (<span class="math inline">\(\mu_i \ne \mu_j\)</span> ainakin joillekin <span class="math inline">\(i \ne j\)</span>).</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="tests.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conduct Analysis of Variance (ANOVA) for study_data</span></span>
-<span id="cb426-2"><a href="tests.html#cb426-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we test if averages of height differ between age groups</span></span>
-<span id="cb426-3"><a href="tests.html#cb426-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">aov</span>(height <span class="sc">~</span> fage_group, <span class="at">data =</span> study_data))</span></code></pre></div>
+<div id="anova" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Varianssianalyysi<a href="tests.html#anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Varianssianalyysin voidaan ajatella olevan t-testin yleistys, jossa yhden tai kahden odotusarvon sijaan verrataankin kerralla useamman ryhmän odotusarvoja keskenään. Menetelmä saa nimensä siitä, että sen testisuure perustuu kiinnostuksen kohteena olevan muuttujan kokonaisvaihtelun (varianssin) jakamiseen verratavien ryhmien sisäiseen vaihteluun ja niiden väliseen vaihteluun. Koska harjoitusaineistossa <code>study_data</code> ei vielä ole kategorista muuttujaa, jossa on vähintään kolme kategoriaa, niin luodaan sellainen.</p>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="tests.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new categorical variable called age_group</span></span>
+<span id="cb435-2"><a href="tests.html#cb435-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 3,5,6 =&gt; ryhmä 1</span></span>
+<span id="cb435-3"><a href="tests.html#cb435-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2,4,8 =&gt; ryhmä 2</span></span>
+<span id="cb435-4"><a href="tests.html#cb435-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1,7   =&gt; ryhmä 3</span></span>
+<span id="cb435-5"><a href="tests.html#cb435-5" aria-hidden="true" tabindex="-1"></a><span class="co"># vaste: weight</span></span>
+<span id="cb435-6"><a href="tests.html#cb435-6" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>age_group <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;3&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;2&quot;</span>)</span>
+<span id="cb435-7"><a href="tests.html#cb435-7" aria-hidden="true" tabindex="-1"></a>study_data<span class="sc">$</span>fage_group <span class="ot">&lt;-</span> <span class="fu">factor</span>(study_data<span class="sc">$</span>age_group)</span></code></pre></div>
+<p>Hypoteesit ovat:</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: Ryhmien odotusarvot ovat samat tarkasteltavan muuttujan suhteen (<span class="math inline">\(\mu_1 = \mu_2 = \dots = \mu_n\)</span>),</li>
+<li><span class="math inline">\(H_1\)</span>: Ryhmien odotusarvoissa on eroa tarkasteltavan muuttujan suhteen (<span class="math inline">\(\mu_i \ne \mu_j\)</span> ainakin joillekin <span class="math inline">\(i \ne j\)</span>).</li>
+</ul>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="tests.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conduct Analysis of Variance (ANOVA) for study_data</span></span>
+<span id="cb436-2"><a href="tests.html#cb436-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we test if averages of height differ between age groups</span></span>
+<span id="cb436-3"><a href="tests.html#cb436-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">aov</span>(height <span class="sc">~</span> fage_group, <span class="at">data =</span> study_data))</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
 ## fage_group   2  198.7   99.34   1.097  0.417
 ## Residuals    4  362.4   90.60               
 ## 1 observation deleted due to missingness</code></pre>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="tests.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">aov</span>(height <span class="sc">~</span> fage_group, <span class="at">data =</span> study_data[<span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>,<span class="dv">3</span>),])) <span class="co"># the same data three times</span></span></code></pre></div>
-<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
-## fage_group   2  596.1   298.0   4.934 0.0196 *
-## Residuals   18 1087.2    60.4                 
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 3 observations deleted due to missingness</code></pre>
+<p>Varianssianalyysin <code>summary</code> sisältää seuraavat sarakkeet: <code>Df</code> kertoo testiin liittyvän <span class="math inline">\(F\)</span>-jakauman vapausasteet, <code>Sum Sq</code> kertoo ryhmiin liittyvän neliösumman ja jäännösneliösumman, <code>Mean Sq</code> kertoo vastaavan keskineliösumman, <code>F value</code> kertoo testisuureen arvon ja <code>Pr(&gt;F)</code> kertoo testin P-arvon. Tässä tapauksessa testin p-arvo on <span class="math inline">\(0.417\)</span>, joten nollahypoteesia ei hylätä.</p>
 </div>
-<div id="levene" class="section level2" number="9.5">
-<h2><span class="header-section-number">9.5</span> Levenen testi</h2>
-<p>Levenen testillä tutkitaan ovatko jonkin muuttujan varianssit samat kahdessa tai useammassa ryhmässä. Testiä ei ole toteutettu perus R:ssä, mutta se on saatavilla Rcourse-paketin kautta funktiossa <code>leveneTest</code>. Testin nollahypoteesi on, että muuttujan varianssit ovat samat joka ryhmässä.</p>
+<div id="levene" class="section level2 hasAnchor" number="9.5">
+<h2><span class="header-section-number">9.5</span> Levenen testi<a href="tests.html#levene" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Levenen testillä tutkitaan ovatko jonkin muuttujan varianssit samat kahdessa tai useammassa ryhmässä. Testiä ei ole toteutettu valmiiksi R:ssä, mutta se on saatavilla Rcourse-paketin kautta funktiossa <code>leveneTest</code>. Testin nollahypoteesi on, että muuttujan varianssit ovat samat joka ryhmässä.</p>
 <p>Selvitetään onko harjoitusaineiston <code>study_data</code> muuttujan <code>height</code> varianssissa eroa eri ikäryhmien välillä (<code>fage_group</code>) Levenen testillä.</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="tests.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(height <span class="sc">~</span> fage_group, <span class="at">data =</span> study_data)</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="tests.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(height <span class="sc">~</span> fage_group, <span class="at">data =</span> study_data)</span></code></pre></div>
 <pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
 ##       Df F value Pr(&gt;F)
 ## group  2  0.5597 0.6105
 ##        4</code></pre>
-<p>Testin p-arvo löytyy sarakkeesta <code>Pr(&gt;F)</code>, ja se on noin <span class="math inline">\(0.61\)</span>. Testin mukaan muuttujan varianssit ovat siis samat joka ryhmässä, ja nollahypoteesi jää voimaan.</p>
+<p>Testin p-arvo löytyy sarakkeesta <code>Pr(&gt;F)</code>, ja se on <span class="math inline">\(0.6105\)</span>. Testin mukaan muuttujan varianssit ovat siis samat joka ryhmässä, ja nollahypoteesi jää voimaan.</p>
 </div>
-<div id="shapiro" class="section level2" number="9.6">
-<h2><span class="header-section-number">9.6</span> Shapiro-Wilk -testi</h2>
+<div id="shapiro" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> Shapiro-Wilk -testi<a href="tests.html#shapiro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Shapiro-Wilk -testillä tutkitaan onko jokin muuttuja normaalijakautunut. Testi löytyy funktiosta <code>shapiro.test</code>, ja se ottaa argumenttinaan yhden muuttujan havainnot vektorina. Funktiolla ei voi siis suoraan testata esimerkiksi sitä, onko muuttuja normaalijakautunut joissakin osaryhmissä, vaan aineisto on ensin jaettava sopiviin osiin. Testin nollahypoteesi on, että muuttuja on normaalijakautunut.</p>
 <p>Tarkastellaan jälleen harjoitusaineistoa <code>study_data</code> ja testataan muuttujan <code>height</code> normaalisuutta.</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="tests.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(study_data<span class="sc">$</span>height)</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="tests.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(study_data<span class="sc">$</span>height)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  study_data$height
 ## W = 0.96985, p-value = 0.8973</code></pre>
-<p>Testin p-arvon voi lukea kohdasta <code>p-value</code> ja se on aineistolle noin <span class="math inline">\(0.90\)</span>, eli <code>height</code>-muuttuja on testin mukaan normaalijakautunut, ja nollahypoteesi jää voimaan.</p>
+<p>Testin p-arvon voi lukea kohdasta <code>p-value</code> ja se on aineistolle <span class="math inline">\(0.8973\)</span>, eli <code>height</code>-muuttuja on testin mukaan normaalijakautunut, ja nollahypoteesi jää voimaan.</p>
 
 </div>
 </div>

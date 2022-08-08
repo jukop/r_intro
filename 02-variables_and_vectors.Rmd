@@ -12,10 +12,9 @@ z <- x + y
 z
 ```
 
-Edellisessä esimerkissä **sijoitetaan (assign)** eli tallennetaan muuttujaan x arvo 3 ja muuttujaan y arvo 4. Sen jälkeen muuttujien x ja y summa sijoitetaan muuttujaan z, jonka jälkeen tulostetaan muuttujan z arvo.
- `<-` on R:n **sijoitusoperaattori** (myös yhtä kuin-merkki `=` toimii melkein aina, mutta `<-` merkin käyttöä suositellaan vahvasti).
+Edellisessä esimerkissä **sijoitetaan (assign)** eli tallennetaan muuttujaan `x` arvo 3 ja muuttujaan `y` arvo 4. Sen jälkeen muuttujien `x` ja `y` summa sijoitetaan muuttujaan `z`, jonka jälkeen tulostetaan muuttujan `z` arvo. `<-` on R:n **sijoitusoperaattori** (myös yhtä kuin-merkki `=` toimii melkein aina, mutta `<-` merkin käyttöä suositellaan vahvasti).
 
-Mutta miten muuttujan z arvo tulostui konsoliin, vaikka koodissa ei käytetty funktiota `print`? R:n erikoisominaisuus moneen muuhun ohjelmointikieleen verrattuna on se, että print-käskyä ei tarvitse aina kirjoittaa, vaan pelkästään muuttujan (tai laskutoimituksen) kirjoittaminen tulostaa arvon konsoliin, kuten alla oleva koodi havainnollistaa:
+Mutta miten muuttujan `z` arvo tulostui konsoliin, vaikka koodissa ei käytetty funktiota `print`? R:n erikoisominaisuus moneen muuhun ohjelmointikieleen verrattuna on se, että print-käskyä ei tarvitse aina kirjoittaa, vaan pelkästään muuttujan (tai laskutoimituksen) kirjoittaminen tulostaa arvon konsoliin, kuten alla oleva koodi havainnollistaa:
 
 ```{r, eval = FALSE}
 z
@@ -39,9 +38,6 @@ x
 
 Myöhemmin vastaan tulevassa koodissa käytetään kommentteja. Kommentit ovat koodin oheen kirjoitettua tekstiä, joka ei ole ohjelmointikieltä, ja joka ohitetaan koodia ajettaessa. Kommenttien tarkoitus on kuvailla koodin toimintaa. Oman koodin kommentointia on hyvä harjoitella alusta lähtien, vaikka ensimmäisten tehtävien koodi onkin hyvin yksinkertaista. R:ssä kommentit merkataan `#`-symbolilla. Edellinen esimerkki kommentoituna voisi näyttää jotakuinkin tältä:
 
-<!-- Santtu: Olen edellisessä eri mieltä siitä, koodia kirjoitetaan ihmisille. Kuten aikaisemmin todettiin, koodin tarkoitus on saada  tietokone toteuttamaan jokin tehtävä, kaikki muu on toissijaista. -->
-<!-- Hyvä nyrkkisääntö on muistaa, että koodia kirjoitetaan ihmisille, ei koneelle.-->
-
 ```{r}
 # Assign arbitrary numbers to two variables
 x <- 3
@@ -54,7 +50,7 @@ z
 
 ## Vektorit {#vectors}
 
-Nyt kun muuttujat ovat tuttuja, voimme siirtyä käsittelemään vektoreita (vector). R:n vektorit ovat yksinkertaisia järjestettyjä tietorakenteita, jotka koostuvat alkioista (elements), esimerkiksi desimaaliluvuista. Alla oleva esimerkki sijoittaa muuttujaan x vektorin, joka sisältää 5 lukua.
+Nyt kun muuttujat ovat tuttuja, voimme siirtyä käsittelemään vektoreita (vector). R:n vektorit ovat yksinkertaisia järjestettyjä tietorakenteita, jotka koostuvat alkioista (elements), esimerkiksi desimaaliluvuista. Alla oleva esimerkki sijoittaa muuttujaan `x` vektorin, joka sisältää 5 lukua.
 
 ```{r}
 x <- c(1, 2, 7.4, 15, 0.2)
@@ -201,7 +197,7 @@ sum(missing, na.rm = TRUE)
 
 ```
 
-HUOM! Funktio `is.na` tarkistaa, onko jokin arvo puuttuva. Perinteinen yhtäsuuruuden testaaminen ei siis toimi.
+HUOM! Funktio `is.na` tarkistaa, onko jokin arvo puuttuva. Perinteinen yhtäsuuruuden testaaminen ei siis toimi. Funktio `complete.cases` muistuttaa `is.na` funktiota, mutta sitä voidaan käyttää myös kokonaisille aineistoille, jolloin se palauttaa totuusarvon `TRUE` niiden rivien kohdalla, jotka eivät sisällä lainkaan puuttuvaa tietoa yhdessäkään muuttujassa.
 
 ```{r}
 # Just returns NA
@@ -223,14 +219,16 @@ complete.cases(missing)
 
 Tässä lisätieto-osiossa käsitellään asioita, joita et välttämättä tarvitse kurssista suoriutuaksesi. Mikäli käytät R:ää enemmän, niin vastaan tulee enemmin tai myöhemmin ongelmia, joissa tarvitsee näitä taitoja. Voit palata näihin myöhemmin koska tahansa, kun haluat syventää ymmärrystäsi R:stä.
 
-R on rakennettu sisäisesti siten, että vektorin kukin elementti on jotain alkeistietotyyppiä. R:ssä on valmiina neljä alkeistietotyyppiä:
+R on rakennettu sisäisesti siten, että vektorin kukin elementti on jotain alkeistietotyyppiä. R:ssä on valmiina kuusi alkeistietotyyppiä:
 
- - numeerinen (eli reaaliluku)
- - kokonaisluku (integer)
- - merkkijono (character)
- - kompleksiluku (complex)
+ - looginen (`logical`)
+ - kokonaisluku (`integer`)
+ - numeerinen (eli reaaliluku, `numeric`)
+ - kompleksiluku (`complex`)
+ - merkkijono (`character`)
+ - bitti (`raw`)
 
-Näistä tarpeellisimpia ovat numeerinen ja merkkijono. Kompleksilukua tarvitsee vain joissain erityistapauksissa ja kokonaisluvut ovat nykyään lähes aina tallennettu numeerisina.
+Näistä tarpeellisimpia ovat numeerinen, looginen, ja merkkijono. Kompleksilukua tarvitsee vain joissain erityistapauksissa ja kokonaisluvut ovat nykyään lähes aina tallennettu numeerisina. Bittejä, eli `raw`-tyypin vektoreita käytetään harvoin.
 
 ```{r}
 # Integers are usually stored as reals
@@ -248,6 +246,14 @@ class(x_char)
 # Complex numbers
 x_comp <- c(0i, 2 + 1i, 1 - 3i)
 class(x_comp)
+
+# Logical vector
+x_logi <- c(TRUE, FALSE)
+class(x_logi)
+
+# Raw vector
+x_raw <- as.raw(c(0, 1, 2))
+class(x_raw)
 ```
 Joskus vektorin tiedot ovat väärässä muodossa, esim. merkkijonoina, mutta niitä haluttaisiin käsitellä numeroarvoina. Näihin operaatioihin on omat funktionsa. Tällöin voi kuitenkin tulla ongelmia, jos muutettava vektori ei ole helposti muutettavissa haluttuun muotoon.
 
@@ -270,7 +276,7 @@ x_num_to_int
 class(x_num_to_int)
 ```
 
-Vielä pari lisähuomiota puuttuvista arvoista (näitä ei tarvise usein) koskien niiden tietotyyppejä. Puuttuvalla arvolla on myös alkeistietotyyppi. Mikäli NA-arvon tietotyyppi tulee määritellä, niin sen voi tehdä seuraavasti. Jos luodaan muuttuja tai vektori, jossa on vain yksi arvo, joka on NA, niin se oletusarvoisesti looginen.
+Vielä pari lisähuomiota puuttuvista arvoista (näitä ei tarvita usein) koskien niiden tietotyyppejä. Puuttuvalla arvolla on myös alkeistietotyyppi. Mikäli NA-arvon tietotyyppi tulee määritellä, niin sen voi tehdä seuraavasti. Jos luodaan muuttuja tai vektori, jossa on vain yksi arvo, joka on NA, niin se oletusarvoisesti looginen.
 ```{r}
 # Specify a numeric NA value
 NA_real_

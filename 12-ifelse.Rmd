@@ -16,10 +16,10 @@ Operaattori       Toiminto
 >=                suurempi tai yhtä suuri kuin
 ==                yhtä kuin
 !=                ei yhtä kuin
-!a                ei a (negaation) 
+!a                ei a (negaatio) 
 a | b             a TAI b alkioittain
 a || b            a TAI b yksittäisille arvoille
-a & b	            a JA b alkioittain
+a & b             a JA b alkioittain
 a && b            a JA b yksittäisille arvoille
 a %in% b          mitkä a:n alkiot ovat myös b:n alkioita
 
@@ -41,7 +41,7 @@ Looginen negaatio palauttaa loogisen lauseen vastakohdan, eli muuttaa arvon `TRU
 
 #### Looginen TAI (disjunktio)
 
-Loogiselle TAI operaattorille annetaan kaksi loogista lausetta, ja TAI operaattori palauttaa `TRUE`, jos vähintään toinen lauseista on `TRUE`. R:ssä TAI merkitään pystyviivalla `|` tai kahdella pystyviivalla `||`. `|` käy läpi vektoreita alkioittain, `||` vertaa kahta loogista lausetta, ja toista lausetta ei edes ajeta, jos ensimmäinen on `TRUE` (koska `||` palauttaa `TRUE` riippumatta toisen lauseen arvosta). Jos tämä tuntui monimutkaiselta, niin riittää muistaa, että ehtorakenteissa kannattaa käyttää muotoa "||".
+Loogiselle TAI operaattorille annetaan kaksi loogista lausetta, ja TAI operaattori palauttaa `TRUE`, jos vähintään toinen lauseista on `TRUE`. R:ssä TAI merkitään pystyviivalla `|` tai kahdella pystyviivalla `||`. `|` käy läpi vektoreita alkioittain, `||` vertaa kahta loogista lausetta, ja toista lausetta ei edes ajeta, jos ensimmäinen on `TRUE` (koska `||` palauttaa `TRUE` riippumatta toisen lauseen arvosta). Jos tämä tuntui monimutkaiselta, niin riittää muistaa, että ehtorakenteissa kannattaa käyttää muotoa `||`.
 
 ```{r}
 10 > 12 || "a" < "b"
@@ -65,7 +65,7 @@ Loogiselle JA operaattorille annetaan kaksi lausetta. JA palauttaa `TRUE`, jos k
 
 #### Osajoukko
 
-`%in%`-operaattorilla voi tarkistaa, kuuluuko jokin arvo suurempaan joukkoon. Tämä voitaisiin toteuttaa myös usealla TAI-operaattorilla, mutta `%in%` on usein paljon kätevämpi.
+`%in%`-operaattorilla voi tarkistaa, kuulvatko jotkin arvot johonkin joukkoon. Tämä voitaisiin toteuttaa myös usealla TAI-operaattorilla, mutta `%in%` on usein paljon kätevämpi.
 
 ```{r}
 dna_bases <- c("A", "C", "G", "T")
@@ -119,7 +119,7 @@ hb_alert <- function(hb) {
 }
 ```
 
-Funktiolla on siis yksi argumentti, `hb` eli hemoglobiiniarvo. Funktion sisällä on if-rakenne. If-rakenteessa on kaksi osaa: ehto, ja rakenteen sisäinen koodi. Rakenteen sisäinen koodi ajetaan vain, jos ehto täyttyy. Ehto merkitään if-komennon jälkeen sulkeisiin, ja rakenteen sisäinen koodi kirjoitetaan sulkeiden jälkeen aaltosulkeiden sisään. (Jos aaltosulkeiden sisään tulisi vain yksi rivi koodia, aaltoasulkeet voi jättää pois, mutta näissä esimerkeissä käytetään aina aaltoasulkeita).
+Funktiolla on siis yksi argumentti, `hb` eli hemoglobiiniarvo. Funktion sisällä on `if`-rakenne. Rakenteessa on kaksi osaa: ehto, ja rakenteen sisäinen koodi. Rakenteen sisäinen koodi ajetaan vain, jos ehto täyttyy. Ehto merkitään `if`-komennon jälkeen sulkeisiin, ja rakenteen sisäinen koodi kirjoitetaan sulkeiden jälkeen aaltosulkeiden sisään. (Jos aaltosulkeiden sisään tulisi vain yksi rivi koodia, aaltoasulkeet voi jättää pois, mutta näissä esimerkeissä käytetään aina aaltoasulkeita).
 
 Kokeillaan, miten funktio toimii eri hemoglobiiniarvoilla:
 
@@ -137,16 +137,16 @@ hb_alert <- function(hb) {
   if (hb < 117) {
     return("Hemoglobin is low!")
   } else {
-    return("Hemoglobin OK")
+    return("Hemoglobin is OK")
   }
 }
 
 hb_alert(130)
 ```
 
-Else-komennon jälkeinen koodi siis ajetaan, jos ehto `hb < 117` ei täyty.
+`else`-komennon jälkeinen koodi siis ajetaan, jos ehto `hb < 117` ei täyty.
 
-Tällä hetkellä funktiomme toimii vain naispotilaille, sillä miehillä hemoglobiiniarvojen alaraja on 134. Lisätään siis funktioomme argumentti `sex`  sukupuolta varten ja muokataan funktion toimintaa niin, että se osaa ottaa huomioon sukupuolen. Nyt if-rakenteen ehdosta tulee jo hieman monimutkaisempi:
+Tällä hetkellä funktiomme toimii oikein vain naispotilaille, sillä miehillä hemoglobiiniarvojen alaraja on 134. Lisätään siis funktioomme argumentti `sex` sukupuolta varten ja muokataan funktion toimintaa niin, että se osaa ottaa huomioon sukupuolen. Nyt `if`-rakenteen ehdosta tulee jo hieman monimutkaisempi:
 
 ```{r}
 hb_alert <- function(hb, sex) {
@@ -161,7 +161,7 @@ hb_alert(hb = 120, sex = "female")
 hb_alert(hb = 120, sex = "male")
 ```
 
-Entä jos haluaisimme tulostaa eri varoituksen mies- ja naispotilaille? Tähän tarvitaan "else if"-rakennetta:
+Entä jos haluaisimme tulostaa eri varoituksen mies- ja naispotilaille? Tähän tarvitaan `else if`-rakennetta:
 
 ```{r}
 hb_alert <- function(hb, sex) {
@@ -178,10 +178,9 @@ hb_alert(hb = 110, sex = "female")
 hb_alert(hb = 120, sex = "male")
 ```
 
+Nyt funktio tarkistaa ensin, onko potilas nainen ja onko hänen hemoglobiininsa alle 117. Jos ei, siirrytään eteenpäin ja tarkistetaan, onko potilas mies ja onko hänen hemoglobiininsa alle 130. Jos ei, siirrytään viimeiseen kohtaan, ja tulostetaan "Hemoglobin is OK".
 
-Nyt funktio tarkistaa ensin, onko potilas nainen ja onko hänen hemoglobiininsa alle 117. Jos ei, siirrytään eteenpäin ja tarkistetaan, onko potilas mies ja onko hänen hemoglobiininsa alle 130. Jos ei, siirrytään viimeiseen kohtaan, ja tulostetaan "Hemoglobin ok".
-
-Else-if rakenteita voi olla rajoittamaton määrä ensimmäisen if-rakenteen jälkeen. Lisätään funktioon hälytys kriittisestä hemoglobiinin määrästä (hb < 50) riippumatta sukupuolesta:
+`else if`-rakenteita voi olla rajoittamaton määrä ensimmäisen `if`-rakenteen jälkeen. Lisätään funktioon hälytys kriittisestä hemoglobiinin määrästä (hb < 50) riippumatta sukupuolesta:
 
 ```{r}
 hb_alert <- function(hb, sex) {

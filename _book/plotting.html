@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kappale 8 Kuvaajien piirtäminen | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kappale 8 Kuvaajien piirtäminen | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
   
@@ -21,7 +20,7 @@
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
   
 
-<meta name="author" content="Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021)" />
+<meta name="author" content="Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021, 2022)" />
 
 
 
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="distributions.html"/>
 <link rel="next" href="tests.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -342,8 +341,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="plotting" class="section level1" number="8">
-<h1><span class="header-section-number">Kappale 8</span> Kuvaajien piirtäminen</h1>
+<div id="plotting" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Kappale 8</span> Kuvaajien piirtäminen<a href="plotting.html#plotting" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <!-- En puhuisi viikoista, aiheuttaa vain hämmennystä -->
 <p>Tässä kappaleessa tutustutaan kuvaajien piirtämiseen. <!-- Moodlessa on aiheesta myös suomenkielinen opetusvideo, mutta tässä ovat silti lyhyet kirjalliset ohjeet suomeksi. --></p>
 <p>R:n piirtokomennot voidaan jakaa kolmeen ryhmään:</p>
@@ -352,143 +351,81 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Alemman tason grafiikkatoiminnot lisäävät olemassa olevaan kuvaan uusia osia</li>
 <li>Interaktiiviset grafiikkatoiminnot mahdollistavat vuorovaikutuksen kuvan kanssa. (Näiden käyttö on helpompaa opettaa videolla, joten niitä ei käsitellä tässä)</li>
 </ul>
-<div id="korkean-tason-piirtofunktiot" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Korkean tason piirtofunktiot</h2>
-<div id="plot" class="section level3" number="8.1.1">
-<h3><span class="header-section-number">8.1.1</span> plot</h3>
+<div id="korkean-tason-piirtofunktiot" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Korkean tason piirtofunktiot<a href="plotting.html#korkean-tason-piirtofunktiot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="plot" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> plot<a href="plotting.html#plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Korkean tason piirtofunktioista ylivoimaisesti yleisin on <code>plot</code>. <code>plot</code>-funktio on hyvin monipuolinen, mutta sen yleisin käyttötarkoitus on piirtää hajontakuvio (scatter plot) yhdestä tai kahdesta vektorista. Alla on hajontakuvio auton jarrutusmatkoista eri nopeuksilla:</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="plotting.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Car speeds (km/h)</span></span>
-<span id="cb382-2"><a href="plotting.html#cb382-2" aria-hidden="true" tabindex="-1"></a>speed <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">110</span>, <span class="at">by =</span> <span class="dv">10</span>)</span>
-<span id="cb382-3"><a href="plotting.html#cb382-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Stopping distances (m)</span></span>
-<span id="cb382-4"><a href="plotting.html#cb382-4" aria-hidden="true" tabindex="-1"></a>stop_dist <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">45</span>, <span class="dv">56</span>, <span class="dv">69</span>, <span class="dv">83</span>, <span class="dv">98</span>, <span class="dv">113</span>)</span>
-<span id="cb382-5"><a href="plotting.html#cb382-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb382-6"><a href="plotting.html#cb382-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist)</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="plotting.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Car speeds (km/h)</span></span>
+<span id="cb386-2"><a href="plotting.html#cb386-2" aria-hidden="true" tabindex="-1"></a>speed <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">110</span>, <span class="at">by =</span> <span class="dv">10</span>)</span>
+<span id="cb386-3"><a href="plotting.html#cb386-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Stopping distances (m)</span></span>
+<span id="cb386-4"><a href="plotting.html#cb386-4" aria-hidden="true" tabindex="-1"></a>stop_dist <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">26</span>, <span class="dv">35</span>, <span class="dv">45</span>, <span class="dv">56</span>, <span class="dv">69</span>, <span class="dv">83</span>, <span class="dv">98</span>, <span class="dv">113</span>)</span>
+<span id="cb386-5"><a href="plotting.html#cb386-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb386-6"><a href="plotting.html#cb386-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist)</span></code></pre></div>
 <p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
 <p><code>plot</code>-funktiolle annetaan siis kaksi yhtä pitkää vektoria, joissa ovat pisteiden <span class="math inline">\(x\)</span>- ja <span class="math inline">\(y\)</span>-koordinaatit. Halutessaan kuvalle voi antaa otsikon (title) ja nimetä uudestaan kuvan akselit (axis labels). Tämä onkin usein hyvä idea, sillä R:n muuttujien nimissä ei saa olla välilyöntejä tai erikoismerkkejä, mutta usein näiden käyttö akselien nimissä on hyvin informatiivista.</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="plotting.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
-<span id="cb383-2"><a href="plotting.html#cb383-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
-<span id="cb383-3"><a href="plotting.html#cb383-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="plotting.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
+<span id="cb387-2"><a href="plotting.html#cb387-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
+<span id="cb387-3"><a href="plotting.html#cb387-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span></code></pre></div>
 <p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p><code>plot</code>-funktiolle voi antaa muitakin argumentteja, jotka säätävät mm. pisteiden väriä, kokoa ja muotoa, akselien rajoja jne. Yleisiä kuvaajien parametreja voi säätää funktiolla `<code>par</code> (graphical parameters).</p>
 </div>
-<div id="muut-korkean-tason-funktiot" class="section level3" number="8.1.2">
-<h3><span class="header-section-number">8.1.2</span> Muut korkean tason funktiot</h3>
+<div id="muut-korkean-tason-funktiot" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Muut korkean tason funktiot<a href="plotting.html#muut-korkean-tason-funktiot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Tässä on esimerkkejä muutamista muista yleisistä korkean tason funktioista:</p>
 <p><code>hist</code> piirtää histogrammeja. Histogrammit kuvaavat jatkuvan muuttujan jakaumaa.</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="plotting.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector of 1000 observations from a normal distribution of heights of Finnish women</span></span>
-<span id="cb384-2"><a href="plotting.html#cb384-2" aria-hidden="true" tabindex="-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">168</span>, <span class="at">sd =</span> <span class="fl">5.4</span>)</span>
-<span id="cb384-3"><a href="plotting.html#cb384-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(heights, <span class="at">breaks =</span> <span class="dv">20</span>, </span>
-<span id="cb384-4"><a href="plotting.html#cb384-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Suomalaisten naisten pituuksien jakauma&quot;</span>,</span>
-<span id="cb384-5"><a href="plotting.html#cb384-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Pituus (cm)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frekvenssi&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="plotting.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A vector of 1000 observations from a normal distribution of heights of Finnish women</span></span>
+<span id="cb388-2"><a href="plotting.html#cb388-2" aria-hidden="true" tabindex="-1"></a>heights <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">168</span>, <span class="at">sd =</span> <span class="fl">5.4</span>)</span>
+<span id="cb388-3"><a href="plotting.html#cb388-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(heights, <span class="at">breaks =</span> <span class="dv">20</span>, </span>
+<span id="cb388-4"><a href="plotting.html#cb388-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Suomalaisten naisten pituuksien jakauma&quot;</span>,</span>
+<span id="cb388-5"><a href="plotting.html#cb388-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Pituus (cm)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Frekvenssi&quot;</span>)</span></code></pre></div>
 <p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 <p>Toinen tapa kuvata jatkuvan muuttujan jakaumaa on viiksilaatikko (joskus myös laatikko-viikset -kuvaaja), joita piirretään <code>boxplot</code>-funktiolla:</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="plotting.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(heights, <span class="at">breaks =</span> <span class="dv">20</span>, </span>
-<span id="cb385-2"><a href="plotting.html#cb385-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Suomalaisten naisten pituuksien jakauma&quot;</span>,</span>
-<span id="cb385-3"><a href="plotting.html#cb385-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Pituus (cm)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="plotting.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(heights, <span class="at">breaks =</span> <span class="dv">20</span>, </span>
+<span id="cb389-2"><a href="plotting.html#cb389-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Suomalaisten naisten pituuksien jakauma&quot;</span>,</span>
+<span id="cb389-3"><a href="plotting.html#cb389-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Pituus (cm)&quot;</span>)</span></code></pre></div>
 <p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-107-1.png" width="672" /></p>
 <p>Vastaavasti diskreetin muuttujan jakaumaa voi kuvata pylväsdiagrammilla käyttäen <code>barplot</code>-funktiota. Alla on esimerkki opiskelijoiden kotipaikkakuntien jakaumasta. Tässä tulee myös tutuksi uusi vektorien ominaisuus: nimeäminen. Nimettyjen vektorien (named vectors) alkioilla on järjestyslukujen lisäksi nimet. Nimet annetaan olla olevaan tyyliin <code>nimi = alkio</code>. Nimetyt vektori käyttäytyvät aivan kuin tavalliset vektorit, mutta niitä voi indeksoida myös nimien avulla, ja jotkut funktiot, kuten barplot, käyttävät hyödyksi alkioiden nimiä. Nimettyjen vektorien käyttö ei ole kurssin ydinasioita, mutta on joskus hyvin kätevä temppu osata.</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="plotting.html#cb386-1" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Pohjois-Savo&quot;</span> <span class="ot">=</span> <span class="dv">15</span>, <span class="st">&quot;Pk-seutu&quot;</span> <span class="ot">=</span> <span class="dv">10</span>, <span class="st">&quot;Turku&quot;</span> <span class="ot">=</span> <span class="dv">3</span>,</span>
-<span id="cb386-2"><a href="plotting.html#cb386-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;Pohjois-Suomi&quot;</span> <span class="ot">=</span> <span class="dv">8</span>)</span>
-<span id="cb386-3"><a href="plotting.html#cb386-3" aria-hidden="true" tabindex="-1"></a>origin</span></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="plotting.html#cb390-1" aria-hidden="true" tabindex="-1"></a>origin <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Pohjois-Savo&quot;</span> <span class="ot">=</span> <span class="dv">15</span>, <span class="st">&quot;Pk-seutu&quot;</span> <span class="ot">=</span> <span class="dv">10</span>, <span class="st">&quot;Turku&quot;</span> <span class="ot">=</span> <span class="dv">3</span>,</span>
+<span id="cb390-2"><a href="plotting.html#cb390-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;Pohjois-Suomi&quot;</span> <span class="ot">=</span> <span class="dv">8</span>)</span>
+<span id="cb390-3"><a href="plotting.html#cb390-3" aria-hidden="true" tabindex="-1"></a>origin</span></code></pre></div>
 <pre><code>##  Pohjois-Savo      Pk-seutu         Turku Pohjois-Suomi 
 ##            15            10             3             8</code></pre>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="plotting.html#cb388-1" aria-hidden="true" tabindex="-1"></a>origin[<span class="st">&quot;Turku&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="plotting.html#cb392-1" aria-hidden="true" tabindex="-1"></a>origin[<span class="st">&quot;Turku&quot;</span>]</span></code></pre></div>
 <pre><code>## Turku 
 ##     3</code></pre>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="plotting.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(origin, </span>
-<span id="cb390-2"><a href="plotting.html#cb390-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Opiskelijoiden kotipaikkakunta&quot;</span>,</span>
-<span id="cb390-3"><a href="plotting.html#cb390-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Opiskelijoiden lukumäärä&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="plotting.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(origin, </span>
+<span id="cb394-2"><a href="plotting.html#cb394-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Opiskelijoiden kotipaikkakunta&quot;</span>,</span>
+<span id="cb394-3"><a href="plotting.html#cb394-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;Opiskelijoiden lukumäärä&quot;</span>)</span></code></pre></div>
 <p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
 </div>
 </div>
-<div id="alemman-tason-grafiikkatoiminnot" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Alemman tason grafiikkatoiminnot</h2>
+<div id="alemman-tason-grafiikkatoiminnot" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Alemman tason grafiikkatoiminnot<a href="plotting.html#alemman-tason-grafiikkatoiminnot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Alemman tason grafiikkatoiminnoilla voi lisätä olemassa olevaan kuvaan lisää osia, kuten tekstiä, pisteitä tai selitteen (legend).</p>
 <p>Otetaan esimerkiksi alussa nähty kuvaaja autojen pysähtymismatkoista ja lisätään siihen uusia osia. Tässä vielä alkuperäinen kuva:</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="plotting.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
-<span id="cb391-2"><a href="plotting.html#cb391-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
-<span id="cb391-3"><a href="plotting.html#cb391-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="plotting.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
+<span id="cb395-2"><a href="plotting.html#cb395-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
+<span id="cb395-3"><a href="plotting.html#cb395-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span></code></pre></div>
 <p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
 <p>Lisätään kuvaajan jarrutusmatkat liukkaalla kelillä. Uusia pisteitä voi piirtää <code>points</code>-funktiolla, jolle annetaan x- ja y-koordinaatit vektoreina ihan kuin <code>plot</code>-funktiollekin.</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="plotting.html#cb392-1" aria-hidden="true" tabindex="-1"></a>stop_dist_wet <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">41</span>, <span class="dv">54</span>, <span class="dv">69</span>, <span class="dv">85</span>, <span class="dv">103</span>, <span class="dv">122</span>, <span class="dv">143</span>)</span>
-<span id="cb392-2"><a href="plotting.html#cb392-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
-<span id="cb392-3"><a href="plotting.html#cb392-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
-<span id="cb392-4"><a href="plotting.html#cb392-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span>
-<span id="cb392-5"><a href="plotting.html#cb392-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist_wet)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="plotting.html#cb396-1" aria-hidden="true" tabindex="-1"></a>stop_dist_wet <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">41</span>, <span class="dv">54</span>, <span class="dv">69</span>, <span class="dv">85</span>, <span class="dv">103</span>, <span class="dv">122</span>, <span class="dv">143</span>)</span>
+<span id="cb396-2"><a href="plotting.html#cb396-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
+<span id="cb396-3"><a href="plotting.html#cb396-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
+<span id="cb396-4"><a href="plotting.html#cb396-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span>
+<span id="cb396-5"><a href="plotting.html#cb396-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist_wet)</span></code></pre></div>
 <p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
 <p>Ylläolevassa kuvaajassa on kaksi ongelmaa: ylimmät pisteet eivät näy, koska kuvaajan y-akseli loppuu kesken. <span class="math inline">\(y\)</span>-akseli on piirretty alkuperäisten jarrutusmatkojen pohjalta, ja koska liukkaalla kelillä jarrutus kestää pidempään, uudet pisteet eivät mahdu kuvaajaan. Toinen ongelma on se, että pisteitä ei voi erottaa toisistaan.</p>
 <p>Ensimmäinen ongelma ratkeaa säätämällä käsin <span class="math inline">\(y\)</span>-akselin rajat. Tämä tapahtuu argumentilla <code>ylim</code>, jolle annetaan vektorissa ylä- ja alaraja (vastaavasti <code>xlim</code> säätää <span class="math inline">\(x\)</span>-akselin rajat).</p>
 <p>Lisäksi piirretään selvyyden vuoksi pisteet eri värisinä ja eri kuvioilla. Argumentti <code>col</code> säätää pisteiden värin ja <code>pch</code> pisteiden muodon. Eri väri- ja muotovaihtoehdot löytyvät googlaamalla.</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="plotting.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
-<span id="cb393-2"><a href="plotting.html#cb393-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
-<span id="cb393-3"><a href="plotting.html#cb393-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">150</span>),</span>
-<span id="cb393-4"><a href="plotting.html#cb393-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
-<span id="cb393-5"><a href="plotting.html#cb393-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span>
-<span id="cb393-6"><a href="plotting.html#cb393-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist_wet, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span></code></pre></div>
-<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
-<p>Nyt kuvaaja alkaa jo näyttää paremmalta, mutta kuvaajasta ei vielä voi päätellä, mitä eri väriset pisteet tarkoittavat. Lisätään siis kuvaajaan selite <code>legend</code>-komennolla. Selitteelle määritetään paikka kuvaajassa <code>x</code> ja <code>y</code> argumenteilla (vasemman yläkulman koordinaatit). Sen jälkeen annetaan selitetekstit (<code>legend</code>), sekä selitteen muodot ja värit (<code>pch</code> ja <code>col</code>, kuten aiemmin). HUOM! Selitteen symbolit ja värit on itse osattava laittaa oikeaan järjestykseen. Selitteen tekstit annetaan järjestyksessä ylhäältä alas, ja piirtomerkit tulee antaa samassa järjestyksessä.</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="plotting.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
-<span id="cb394-2"><a href="plotting.html#cb394-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
-<span id="cb394-3"><a href="plotting.html#cb394-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">150</span>),</span>
-<span id="cb394-4"><a href="plotting.html#cb394-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
-<span id="cb394-5"><a href="plotting.html#cb394-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span>
-<span id="cb394-6"><a href="plotting.html#cb394-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb394-7"><a href="plotting.html#cb394-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist_wet, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span>
-<span id="cb394-8"><a href="plotting.html#cb394-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb394-9"><a href="plotting.html#cb394-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="dv">40</span>, <span class="at">y =</span> <span class="dv">150</span>,</span>
-<span id="cb394-10"><a href="plotting.html#cb394-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Märkä keli&quot;</span>, <span class="st">&quot;Kuiva keli&quot;</span>),</span>
-<span id="cb394-11"><a href="plotting.html#cb394-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">20</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>))</span></code></pre></div>
-<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
-<p>Tuunataan kuvaajaa vielä hiukan, ja lisätään siihen käyrä kuvaamaan jarrutusmatkan ennustetta <code>lines</code>-funktiolla.</p>
-<!-- Santtu: ristiviite lineaarisiin malleihin viikon sijaan -->
-<p>Alla olevassa koodissa lasketaan ensin <code>lm</code>-funktion avulla sopivat parametrit käyrälle. Lineaarisia malleja käsitellään vasta kappaleessa <a href="linear_models.html#linear_models">lineaariset mallit</a>, joten tässä vaiheessa niistä ei tarvitse vielä ymmärtää muuta kuin se, että <code>lm</code>-funktio sovittaa lineaarisen mallin (tässä tapauksessa muotoa <span class="math inline">\(\text{matka} = a + b \cdot \text{nopeus} + c \cdot \text{nopeus}^2)\)</span>, jonka perusteella voidaan ennustaa pysähtymismatkaa myös muille kuin mitatuille nopeuksille.</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="plotting.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vecotr of squared speeds to fit second order polynomial</span></span>
-<span id="cb395-2"><a href="plotting.html#cb395-2" aria-hidden="true" tabindex="-1"></a>speed_squared <span class="ot">&lt;-</span> speed<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb395-3"><a href="plotting.html#cb395-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb395-4"><a href="plotting.html#cb395-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Model for dry weather</span></span>
-<span id="cb395-5"><a href="plotting.html#cb395-5" aria-hidden="true" tabindex="-1"></a>model_dry <span class="ot">&lt;-</span> <span class="fu">lm</span>(stop_dist <span class="sc">~</span> speed <span class="sc">+</span> speed_squared)</span>
-<span id="cb395-6"><a href="plotting.html#cb395-6" aria-hidden="true" tabindex="-1"></a>prediction_dry <span class="ot">&lt;-</span> model_dry<span class="sc">$</span>fitted.values</span>
-<span id="cb395-7"><a href="plotting.html#cb395-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb395-8"><a href="plotting.html#cb395-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Model for rainy weather</span></span>
-<span id="cb395-9"><a href="plotting.html#cb395-9" aria-hidden="true" tabindex="-1"></a>model_wet <span class="ot">&lt;-</span> <span class="fu">lm</span>(stop_dist_wet <span class="sc">~</span> speed <span class="sc">+</span> speed_squared)</span>
-<span id="cb395-10"><a href="plotting.html#cb395-10" aria-hidden="true" tabindex="-1"></a>prediction_wet <span class="ot">&lt;-</span> model_wet<span class="sc">$</span>fitted.values</span></code></pre></div>
-<p><code>lines</code> tarvitsee <code>x</code> ja <code>y</code> argumentit kuten <code>points</code>, mutta piirtää viivan, ei pisteitä. Käytetään äsken laskettuja mallien antamia <code>prediction</code>-vektoreita y-koordinaatteina. Tehdään viivoista katkoviivoja argumentilla <code>lty = "dashed"</code> (lty = line type).</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="plotting.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
-<span id="cb396-2"><a href="plotting.html#cb396-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
-<span id="cb396-3"><a href="plotting.html#cb396-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">150</span>),</span>
-<span id="cb396-4"><a href="plotting.html#cb396-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
-<span id="cb396-5"><a href="plotting.html#cb396-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span>
-<span id="cb396-6"><a href="plotting.html#cb396-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb396-7"><a href="plotting.html#cb396-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist_wet, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span>
-<span id="cb396-8"><a href="plotting.html#cb396-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb396-9"><a href="plotting.html#cb396-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="dv">40</span>, <span class="at">y =</span> <span class="dv">150</span>,</span>
-<span id="cb396-10"><a href="plotting.html#cb396-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Märkä keli&quot;</span>, <span class="st">&quot;Kuiva keli&quot;</span>),</span>
-<span id="cb396-11"><a href="plotting.html#cb396-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">20</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>))</span>
-<span id="cb396-12"><a href="plotting.html#cb396-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb396-13"><a href="plotting.html#cb396-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_dry, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>)</span>
-<span id="cb396-14"><a href="plotting.html#cb396-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_wet, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>)</span></code></pre></div>
-<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
-<p>Seuraavaksi voidaan värittää käyrät samoilla väreillä kuin pisteet, ja lisätä niille omat selitteet. Tässä vaiheessa selitteen tekemisestä tulee jo melko monimutkaista, sillä selitteessä on mukana pisteitä ja käyriä. Tästä syystä selitteen argumentteihin pitää laittaa puuttuvia arvoja <code>pch</code> ja <code>lty</code>-argumenteille, koska selitteen ensimmäiset rivit eivät viittaa mihinkään käyrään, vaan pelkästään pisteisiin ja vastaavasti kaksi alinta riviä viittaavat vain käyriin.</p>
 <div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="plotting.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
 <span id="cb397-2"><a href="plotting.html#cb397-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
 <span id="cb397-3"><a href="plotting.html#cb397-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">150</span>),</span>
 <span id="cb397-4"><a href="plotting.html#cb397-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
 <span id="cb397-5"><a href="plotting.html#cb397-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span>
-<span id="cb397-6"><a href="plotting.html#cb397-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb397-7"><a href="plotting.html#cb397-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist_wet, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span>
-<span id="cb397-8"><a href="plotting.html#cb397-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb397-9"><a href="plotting.html#cb397-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="dv">40</span>, <span class="at">y =</span> <span class="dv">150</span>,</span>
-<span id="cb397-10"><a href="plotting.html#cb397-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Märkä keli&quot;</span>, <span class="st">&quot;Kuiva keli&quot;</span>,</span>
-<span id="cb397-11"><a href="plotting.html#cb397-11" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Ennuste märälle kelille&quot;</span>,</span>
-<span id="cb397-12"><a href="plotting.html#cb397-12" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Ennuste kuivalle kelille&quot;</span>),</span>
-<span id="cb397-13"><a href="plotting.html#cb397-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">20</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
-<span id="cb397-14"><a href="plotting.html#cb397-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&quot;dashed&quot;</span>, <span class="st">&quot;dashed&quot;</span>),</span>
-<span id="cb397-15"><a href="plotting.html#cb397-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>, <span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>))</span>
-<span id="cb397-16"><a href="plotting.html#cb397-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb397-17"><a href="plotting.html#cb397-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_dry, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>)</span>
-<span id="cb397-18"><a href="plotting.html#cb397-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_wet, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span></code></pre></div>
-<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
-<p>Kuvaajamme on melkein valmis iltapäivälehteen muistuttamaan liukkaiden kelien vaaroista, mutta jotta siitä tulisi oikein säväyttävä, siinä pitää toki olla tekstiä! Lisätään siis vielä pieni tekstin pätkä, joka korostaa eroa liukkaan ja kuivan kelin välillä. Tekstiä voi lisätä <code>text</code>-funktiolla, jolle annetaan tuttuun tapaan <code>x</code> ja <code>y</code>-argumentit, joilla määritetään tekstin paikka ja <code>labels</code> määrittää itse tekstin (kaikki argumentit voivat olla myös pidempiä vektoreita, jolloin tulee useampi teksti eri paikkoihin). Lisäksi parametrillä <code>adj</code> (adjust) voi hienosäätää tekstin paikkaa. <code>adj</code> on vektori, jossa on hienosäätöarvot <span class="math inline">\(x\)</span>- ja <span class="math inline">\(y\)</span>-suunnissa.</p>
+<span id="cb397-6"><a href="plotting.html#cb397-6" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist_wet, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span></code></pre></div>
+<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
+<p>Nyt kuvaaja alkaa jo näyttää paremmalta, mutta kuvaajasta ei vielä voi päätellä, mitä eri väriset pisteet tarkoittavat. Lisätään siis kuvaajaan selite <code>legend</code>-komennolla. Selitteelle määritetään paikka kuvaajassa <code>x</code> ja <code>y</code> argumenteilla (vasemman yläkulman koordinaatit). Sen jälkeen annetaan selitetekstit (<code>legend</code>), sekä selitteen muodot ja värit (<code>pch</code> ja <code>col</code>, kuten aiemmin). HUOM! Selitteen symbolit ja värit on itse osattava laittaa oikeaan järjestykseen. Selitteen tekstit annetaan järjestyksessä ylhäältä alas, ja piirtomerkit tulee antaa samassa järjestyksessä.</p>
 <div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="plotting.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
 <span id="cb398-2"><a href="plotting.html#cb398-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
 <span id="cb398-3"><a href="plotting.html#cb398-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">150</span>),</span>
@@ -498,22 +435,84 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb398-7"><a href="plotting.html#cb398-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist_wet, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span>
 <span id="cb398-8"><a href="plotting.html#cb398-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb398-9"><a href="plotting.html#cb398-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="dv">40</span>, <span class="at">y =</span> <span class="dv">150</span>,</span>
-<span id="cb398-10"><a href="plotting.html#cb398-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Märkä keli&quot;</span>, <span class="st">&quot;Kuiva keli&quot;</span>,</span>
-<span id="cb398-11"><a href="plotting.html#cb398-11" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Ennuste märälle kelille&quot;</span>,</span>
-<span id="cb398-12"><a href="plotting.html#cb398-12" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Ennuste kuivalle kelille&quot;</span>),</span>
-<span id="cb398-13"><a href="plotting.html#cb398-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">20</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
-<span id="cb398-14"><a href="plotting.html#cb398-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&quot;dashed&quot;</span>, <span class="st">&quot;dashed&quot;</span>),</span>
-<span id="cb398-15"><a href="plotting.html#cb398-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>, <span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>))</span>
-<span id="cb398-16"><a href="plotting.html#cb398-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb398-17"><a href="plotting.html#cb398-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_dry, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>)</span>
-<span id="cb398-18"><a href="plotting.html#cb398-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_wet, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span>
-<span id="cb398-19"><a href="plotting.html#cb398-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb398-20"><a href="plotting.html#cb398-20" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">95</span>, <span class="at">y =</span> <span class="dv">145</span>, <span class="at">labels =</span> <span class="st">&quot;ERO JOPA 30 METRIÄ!&quot;</span>) </span></code></pre></div>
+<span id="cb398-10"><a href="plotting.html#cb398-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Märkä keli&quot;</span>, <span class="st">&quot;Kuiva keli&quot;</span>),</span>
+<span id="cb398-11"><a href="plotting.html#cb398-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">20</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>))</span></code></pre></div>
+<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+<p>Tuunataan kuvaajaa vielä hiukan, ja lisätään siihen käyrä kuvaamaan jarrutusmatkan ennustetta <code>lines</code>-funktiolla.</p>
+<!-- Santtu: ristiviite lineaarisiin malleihin viikon sijaan -->
+<p>Alla olevassa koodissa lasketaan ensin <code>lm</code>-funktion avulla sopivat parametrit käyrälle. Lineaarisia malleja käsitellään vasta kappaleessa <a href="linear_models.html#linear_models">lineaariset mallit</a>, joten tässä vaiheessa niistä ei tarvitse vielä ymmärtää muuta kuin se, että <code>lm</code>-funktio sovittaa lineaarisen mallin (tässä tapauksessa muotoa <span class="math inline">\(\text{matka} = a + b \cdot \text{nopeus} + c \cdot \text{nopeus}^2)\)</span>, jonka perusteella voidaan ennustaa pysähtymismatkaa myös muille kuin mitatuille nopeuksille.</p>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="plotting.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vecotr of squared speeds to fit second order polynomial</span></span>
+<span id="cb399-2"><a href="plotting.html#cb399-2" aria-hidden="true" tabindex="-1"></a>speed_squared <span class="ot">&lt;-</span> speed<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb399-3"><a href="plotting.html#cb399-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb399-4"><a href="plotting.html#cb399-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Model for dry weather</span></span>
+<span id="cb399-5"><a href="plotting.html#cb399-5" aria-hidden="true" tabindex="-1"></a>model_dry <span class="ot">&lt;-</span> <span class="fu">lm</span>(stop_dist <span class="sc">~</span> speed <span class="sc">+</span> speed_squared)</span>
+<span id="cb399-6"><a href="plotting.html#cb399-6" aria-hidden="true" tabindex="-1"></a>prediction_dry <span class="ot">&lt;-</span> model_dry<span class="sc">$</span>fitted.values</span>
+<span id="cb399-7"><a href="plotting.html#cb399-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb399-8"><a href="plotting.html#cb399-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Model for rainy weather</span></span>
+<span id="cb399-9"><a href="plotting.html#cb399-9" aria-hidden="true" tabindex="-1"></a>model_wet <span class="ot">&lt;-</span> <span class="fu">lm</span>(stop_dist_wet <span class="sc">~</span> speed <span class="sc">+</span> speed_squared)</span>
+<span id="cb399-10"><a href="plotting.html#cb399-10" aria-hidden="true" tabindex="-1"></a>prediction_wet <span class="ot">&lt;-</span> model_wet<span class="sc">$</span>fitted.values</span></code></pre></div>
+<p><code>lines</code> tarvitsee <code>x</code> ja <code>y</code> argumentit kuten <code>points</code>, mutta piirtää viivan, ei pisteitä. Käytetään äsken laskettuja mallien antamia <code>prediction</code>-vektoreita y-koordinaatteina. Tehdään viivoista katkoviivoja argumentilla <code>lty = "dashed"</code> (lty = line type).</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="plotting.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
+<span id="cb400-2"><a href="plotting.html#cb400-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb400-3"><a href="plotting.html#cb400-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">150</span>),</span>
+<span id="cb400-4"><a href="plotting.html#cb400-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
+<span id="cb400-5"><a href="plotting.html#cb400-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span>
+<span id="cb400-6"><a href="plotting.html#cb400-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-7"><a href="plotting.html#cb400-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist_wet, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span>
+<span id="cb400-8"><a href="plotting.html#cb400-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-9"><a href="plotting.html#cb400-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="dv">40</span>, <span class="at">y =</span> <span class="dv">150</span>,</span>
+<span id="cb400-10"><a href="plotting.html#cb400-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Märkä keli&quot;</span>, <span class="st">&quot;Kuiva keli&quot;</span>),</span>
+<span id="cb400-11"><a href="plotting.html#cb400-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">20</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>))</span>
+<span id="cb400-12"><a href="plotting.html#cb400-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-13"><a href="plotting.html#cb400-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_dry, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>)</span>
+<span id="cb400-14"><a href="plotting.html#cb400-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_wet, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>)</span></code></pre></div>
+<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
+<p>Seuraavaksi voidaan värittää käyrät samoilla väreillä kuin pisteet, ja lisätä niille omat selitteet. Tässä vaiheessa selitteen tekemisestä tulee jo melko monimutkaista, sillä selitteessä on mukana pisteitä ja käyriä. Tästä syystä selitteen argumentteihin pitää laittaa puuttuvia arvoja <code>pch</code> ja <code>lty</code>-argumenteille, koska selitteen ensimmäiset rivit eivät viittaa mihinkään käyrään, vaan pelkästään pisteisiin ja vastaavasti kaksi alinta riviä viittaavat vain käyriin.</p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="plotting.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
+<span id="cb401-2"><a href="plotting.html#cb401-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb401-3"><a href="plotting.html#cb401-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">150</span>),</span>
+<span id="cb401-4"><a href="plotting.html#cb401-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
+<span id="cb401-5"><a href="plotting.html#cb401-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span>
+<span id="cb401-6"><a href="plotting.html#cb401-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-7"><a href="plotting.html#cb401-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist_wet, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span>
+<span id="cb401-8"><a href="plotting.html#cb401-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-9"><a href="plotting.html#cb401-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="dv">40</span>, <span class="at">y =</span> <span class="dv">150</span>,</span>
+<span id="cb401-10"><a href="plotting.html#cb401-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Märkä keli&quot;</span>, <span class="st">&quot;Kuiva keli&quot;</span>,</span>
+<span id="cb401-11"><a href="plotting.html#cb401-11" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Ennuste märälle kelille&quot;</span>,</span>
+<span id="cb401-12"><a href="plotting.html#cb401-12" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Ennuste kuivalle kelille&quot;</span>),</span>
+<span id="cb401-13"><a href="plotting.html#cb401-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">20</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
+<span id="cb401-14"><a href="plotting.html#cb401-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&quot;dashed&quot;</span>, <span class="st">&quot;dashed&quot;</span>),</span>
+<span id="cb401-15"><a href="plotting.html#cb401-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>, <span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>))</span>
+<span id="cb401-16"><a href="plotting.html#cb401-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-17"><a href="plotting.html#cb401-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_dry, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>)</span>
+<span id="cb401-18"><a href="plotting.html#cb401-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_wet, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span></code></pre></div>
+<p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
+<p>Kuvaajamme on melkein valmis iltapäivälehteen muistuttamaan liukkaiden kelien vaaroista, mutta jotta siitä tulisi oikein säväyttävä, siinä pitää toki olla tekstiä! Lisätään siis vielä pieni tekstin pätkä, joka korostaa eroa liukkaan ja kuivan kelin välillä. Tekstiä voi lisätä <code>text</code>-funktiolla, jolle annetaan tuttuun tapaan <code>x</code> ja <code>y</code>-argumentit, joilla määritetään tekstin paikka ja <code>labels</code> määrittää itse tekstin (kaikki argumentit voivat olla myös pidempiä vektoreita, jolloin tulee useampi teksti eri paikkoihin). Lisäksi parametrillä <code>adj</code> (adjust) voi hienosäätää tekstin paikkaa. <code>adj</code> on vektori, jossa on hienosäätöarvot <span class="math inline">\(x\)</span>- ja <span class="math inline">\(y\)</span>-suunnissa.</p>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="plotting.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist,</span>
+<span id="cb402-2"><a href="plotting.html#cb402-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb402-3"><a href="plotting.html#cb402-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">150</span>),</span>
+<span id="cb402-4"><a href="plotting.html#cb402-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Auton pysähtymismatka eri nopeuksilla&quot;</span>,</span>
+<span id="cb402-5"><a href="plotting.html#cb402-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Auton nopeus (km / h)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pysähtymismatka (m)&quot;</span>)</span>
+<span id="cb402-6"><a href="plotting.html#cb402-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-7"><a href="plotting.html#cb402-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> speed, <span class="at">y =</span> stop_dist_wet, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span>
+<span id="cb402-8"><a href="plotting.html#cb402-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-9"><a href="plotting.html#cb402-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="dv">40</span>, <span class="at">y =</span> <span class="dv">150</span>,</span>
+<span id="cb402-10"><a href="plotting.html#cb402-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Märkä keli&quot;</span>, <span class="st">&quot;Kuiva keli&quot;</span>,</span>
+<span id="cb402-11"><a href="plotting.html#cb402-11" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Ennuste märälle kelille&quot;</span>,</span>
+<span id="cb402-12"><a href="plotting.html#cb402-12" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;Ennuste kuivalle kelille&quot;</span>),</span>
+<span id="cb402-13"><a href="plotting.html#cb402-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">20</span>, <span class="cn">NA</span>, <span class="cn">NA</span>),</span>
+<span id="cb402-14"><a href="plotting.html#cb402-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="cn">NA</span>, <span class="st">&quot;dashed&quot;</span>, <span class="st">&quot;dashed&quot;</span>),</span>
+<span id="cb402-15"><a href="plotting.html#cb402-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>, <span class="st">&quot;darkred&quot;</span>, <span class="st">&quot;darkblue&quot;</span>))</span>
+<span id="cb402-16"><a href="plotting.html#cb402-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-17"><a href="plotting.html#cb402-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_dry, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkblue&quot;</span>)</span>
+<span id="cb402-18"><a href="plotting.html#cb402-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(speed, prediction_wet, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">col =</span> <span class="st">&quot;darkred&quot;</span>)</span>
+<span id="cb402-19"><a href="plotting.html#cb402-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb402-20"><a href="plotting.html#cb402-20" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> <span class="dv">95</span>, <span class="at">y =</span> <span class="dv">145</span>, <span class="at">labels =</span> <span class="st">&quot;ERO JOPA 30 METRIÄ!&quot;</span>) </span></code></pre></div>
 <p><img src="R-ohjelmoinnin-perusteet_files/figure-html/unnamed-chunk-116-1.png" width="672" />
 Kuvaajamme on nyt valmis!</p>
 </div>
-<div id="kuvaajien-piirtäminen-käytännössä" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Kuvaajien piirtäminen käytännössä</h2>
+<div id="kuvaajien-piirtäminen-käytännössä" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Kuvaajien piirtäminen käytännössä<a href="plotting.html#kuvaajien-piirtäminen-käytännössä" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Jos äskeisen esimerkin aikana tuntui siltä, että näimme paljon työtä ja saimme lopputulokseksi kuvaajan, joka ei oikeastaan edes näytä kovin hyvältä, olet aivan oikeassa. Kuvaajien rakentaminen itse R:n peruskomennoilla on raskasta, ja usein perusgrafiikkatoimintoja käytetään lähinnä omaan käyttöön tulevien kuvaajien piirtämiseen nopeasti. Peruskomennot on kuitenkin hyvä hallita, sillä niitä saattaa tarvita valmiilla työkaluilla tehtyjen kuvaajien muokkaamiseen. Varsinkin tekstin lisääminen, sekä akselien nimeäminen ja otsikon muuttaminen ovat hyviä taitoja osata.</p>
 <p>R tarjoaa paljon valmiita työkaluja erilaisten kuvaajien piirtämiseen. Valitettavasti tällä kurssilla ei ole aikaa sukeltaa näiden työkalujen käyttöön, sillä ennen niiden käyttöä pitää ymmärtää enemmän R:n monimutkaisemmista tietorakenteista, joita käsitellään seuraavilla viikoilla. Inspiraatiota ja motivaatiota voi kuitenkin hakea esimerkiksi <a href="https://www.r-graph-gallery.com/index.html">R Graph Gallery</a>-sivulta tai <a href="https://rpkgs.datanovia.com/ggpubr/index.html">ggpubr-paketin ohjeista</a>.</p>
 

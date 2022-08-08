@@ -146,7 +146,7 @@ Kätevä tapa saada nopea yhteenveto datakehikon kaikista muuttujista on sovelta
 # Calculate summary for ToothGrowth data
 summary(ToothGrowth)
 ```
-`summary`` huolii myös yksittäisen vektorin, jolloin yhteenveto tulostuu vaakasuuntaisena.
+`summary` huolii myös yksittäisen vektorin, jolloin yhteenveto tulostuu vaakasuuntaisena.
 ```{r}
 tooth_length <- ToothGrowth$len
 summary(tooth_length)

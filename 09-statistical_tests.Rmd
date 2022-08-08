@@ -20,7 +20,7 @@ Testaamme aluksi hypoteesia, että muutos unen määrässä lääkkeen käytön 
 tt1 <- t.test(extra ~ 1, data = sleep)
 tt1
 ```
-Tuloksena saamme t-testisuureen arvon, vapausasteet sekä testin p-arvon. Koska p-arvo on pieni (perinteisesti rajana käytetään lukua 0.05, mutta tämä vaihtelee tieteenalasta riippuen) niin nollahypoteesi hylätään, eli testin mukaan muutos unen määrässä poikkeaa tilastollisesti merkitsevästi nollasta kumpaa tahansa lääkettä käytettäessä.
+Tuloksena saamme t-testisuureen arvon, vapausasteet sekä testin p-arvon. Koska p-arvo on pieni (perinteisesti rajana käytetään lukua 0.05, mutta tämä vaihtelee tieteenalasta riippuen) niin nollahypoteesi hylätään, eli testin mukaan muutos unen määrässä poikkeaa tilastollisesti merkitsevästi nollasta kumpaa tahansa lääkettä käytettäessä. Tuloste kertoo myös testin vastahypoteesin $H_1$ kohdassa "alternative hypothesis". 
 
 Testiin liittyvät tunnusluvut saamme eriteltyä tulosobjektista `tt1` seuraavasti:
 ```{r}
@@ -96,7 +96,7 @@ Tarkastellaan Yhdysvaltalaista kyselytutkimusaineistoa, joka sisältää tiedon 
 
 ```{r}
 ## From Agresti(2007) p.39
-M <- as.table(rbind(c(762, 327, 468), c(484, 239, 477)))
+M <- as.table(rbind(c(762L, 327L, 468L), c(484L, 239L, 477L)))
 dimnames(M) <- list(gender = c("F", "M"),
                     party = c("Democrat", "Independent", "Republican"))
 (Xsq <- chisq.test(M))  # Prints test summary
@@ -112,6 +112,19 @@ mean(Xsq$expected >= 5) >= 0.80
 ```
 Oletukset ovat tältä osin kunnossa. Edellä funktio `all` ottaa syötteenään loogisen vektorin ja palauttaa `TRUE` jos syötteen kaikki alkiot ovat `TRUE`. Muutoin funktio palauttaa `FALSE`.
 
+Edellisessä esimerkissä ristiintaulukko oli valmiiksi rakennettu annetuista frekvensseistä. Ristiintaulukko voitaisiin myös rakentaa yksilötason aineistosta, esimerkiksi datakehikosta, joka sisältää rivin jokaista kyselyyn vastannutta henkilöä kohden ja tiedon vastaajan ilmoittamasta puolueesta ja sukupuolesta. Seuraavassa esimerkissä kyselytutkimusaineisto on muuttujassa `poll_data`, joka voidaan muuntaa ristiintauloksi funktiolla `table`. Huomataan, että tällä tavalla muodostettu ristiintaulukko on sama kuin suoraan frekvensseistä koottu taulukko.
+```{r, echo=FALSE, eval=TRUE}
+poll_data <- as.data.frame.table(M)
+poll_data <- poll_data[rep(seq_len(nrow(poll_data)), poll_data$Freq), -3L]
+rownames(poll_data) <- seq_len(nrow(poll_data))
+```
+```{r}
+head(poll_data)
+nrow(poll_data)
+# The cross tabulations are the same
+identical(M, table(poll_data))
+```
+
 <!-- Santtu: Monte Carlo menee varmaan yli kurssin aihepiiristä
 ## Effect of simulating p-values
 x <- matrix(c(12, 5, 7, 7), ncol = 2)
@@ -121,18 +134,19 @@ chisq.test(x, simulate.p.value = TRUE, B = 10000)$p.value -->
 
 ## Varianssianalyysi {#anova}
 
-Varianssianalyysin voidaan ajatella olevan t-testin yleistys, jossa yhden tai kahden odotusarvon sijaan verrataankin kerralla useamman ryhmän odotusarvoja keskenään. Menetelmä saa nimensä siitä, että sen testisuure perustuu kiinnostuksen kohteena olevan muuttujan kokonaisvaihtelun jakamiseen verratavien ryhmien sisäiseen vaihteluun ja niiden väliseen vaihteluun. Koska harjoitusaineistossa `study_data` ei vielä ole kategorista muuttujaa, jossa on vähintään kolme kategoriaa, niin luodaan sellainen.
+Varianssianalyysin voidaan ajatella olevan t-testin yleistys, jossa yhden tai kahden odotusarvon sijaan verrataankin kerralla useamman ryhmän odotusarvoja keskenään. Menetelmä saa nimensä siitä, että sen testisuure perustuu kiinnostuksen kohteena olevan muuttujan kokonaisvaihtelun (varianssin) jakamiseen verratavien ryhmien sisäiseen vaihteluun ja niiden väliseen vaihteluun. Koska harjoitusaineistossa `study_data` ei vielä ole kategorista muuttujaa, jossa on vähintään kolme kategoriaa, niin luodaan sellainen.
 
 ```{r}
 # create a new categorical variable called age_group
-#3,5,6 => ryhmä 1
-#2,4,8 => ryhmä 2
-#1,7   => ryhmä 3
+# 3,5,6 => ryhmä 1
+# 2,4,8 => ryhmä 2
+# 1,7   => ryhmä 3
 # vaste: weight
 study_data$age_group <- c("3", "2", "1", "2", "1", "1", "3", "2")
 study_data$fage_group <- factor(study_data$age_group)
 ```
 Hypoteesit ovat:
+
 - $H_0$: Ryhmien odotusarvot ovat samat tarkasteltavan muuttujan suhteen ($\mu_1 = \mu_2 = \dots = \mu_n$),
 - $H_1$: Ryhmien odotusarvoissa on eroa tarkasteltavan muuttujan suhteen ($\mu_i \ne \mu_j$ ainakin joillekin $i \ne j$).
  
@@ -140,12 +154,12 @@ Hypoteesit ovat:
 # conduct Analysis of Variance (ANOVA) for study_data
 # we test if averages of height differ between age groups
 summary(aov(height ~ fage_group, data = study_data))
-summary(aov(height ~ fage_group, data = study_data[rep(1:8,3),])) # the same data three times
 ```
+Varianssianalyysin `summary` sisältää seuraavat sarakkeet: `Df` kertoo testiin liittyvän $F$-jakauman vapausasteet, `Sum Sq` kertoo ryhmiin liittyvän neliösumman ja jäännösneliösumman, `Mean Sq` kertoo vastaavan keskineliösumman, `F value` kertoo testisuureen arvon ja `Pr(>F)` kertoo testin P-arvon. Tässä tapauksessa testin p-arvo on $0.417$, joten nollahypoteesia ei hylätä.
 
 ## Levenen testi {#levene}
 
-Levenen testillä tutkitaan ovatko jonkin muuttujan varianssit samat kahdessa tai useammassa ryhmässä. Testiä ei ole toteutettu perus R:ssä, mutta se on saatavilla Rcourse-paketin kautta funktiossa `leveneTest`. Testin nollahypoteesi on, että muuttujan varianssit ovat samat joka ryhmässä.
+Levenen testillä tutkitaan ovatko jonkin muuttujan varianssit samat kahdessa tai useammassa ryhmässä. Testiä ei ole toteutettu valmiiksi R:ssä, mutta se on saatavilla Rcourse-paketin kautta funktiossa `leveneTest`. Testin nollahypoteesi on, että muuttujan varianssit ovat samat joka ryhmässä.
 
 Selvitetään onko harjoitusaineiston `study_data` muuttujan `height` varianssissa eroa eri ikäryhmien välillä (`fage_group`) Levenen testillä.
 ```{r include = FALSE}
@@ -154,7 +168,7 @@ library(Rcourse)
 ```{r}
 leveneTest(height ~ fage_group, data = study_data)
 ```
-Testin p-arvo löytyy sarakkeesta `Pr(>F)`, ja se on noin $0.61$. Testin mukaan muuttujan varianssit ovat siis samat joka ryhmässä, ja nollahypoteesi jää voimaan. 
+Testin p-arvo löytyy sarakkeesta `Pr(>F)`, ja se on $0.6105$. Testin mukaan muuttujan varianssit ovat siis samat joka ryhmässä, ja nollahypoteesi jää voimaan. 
 
 ## Shapiro-Wilk -testi {#shapiro}
 
@@ -164,4 +178,4 @@ Tarkastellaan jälleen harjoitusaineistoa `study_data` ja testataan muuttujan `h
 ```{r}
 shapiro.test(study_data$height)
 ```
-Testin p-arvon voi lukea kohdasta `p-value` ja se on aineistolle noin $0.90$, eli `height`-muuttuja on testin mukaan normaalijakautunut, ja nollahypoteesi jää voimaan.
+Testin p-arvon voi lukea kohdasta `p-value` ja se on aineistolle $0.8973$, eli `height`-muuttuja on testin mukaan normaalijakautunut, ja nollahypoteesi jää voimaan.

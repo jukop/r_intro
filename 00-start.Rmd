@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 # R-kurssi {-}
 
@@ -93,11 +93,11 @@ Editorilla kirjoitetaan R-koodia sisältäviä tiedostoja, eli R-skriptejä. Uud
 
 Editoriin kirjoitettua koodia voi ajaa rivi kerrallaan painamalla rivin kohdalla Ctrl + Enter. Useamman rivin voi myös maalata ja suorittaa kerrallaan. Yläreunassa oleva "Source"-nappi ajaa kaiken nykyisen tiedoston koodin.
 
-R-skriptejä voi tallentaa ihan kuin muitakin tiedostoja. R-skpriptien tiedostopääte on .R
+R-skriptejä voi tallentaa ihan kuin muitakin tiedostoja. R-skpriptien tiedostopääte on .R. Kaikki harjoitustehtävissä ja loppukokeessa käyttämäsi koodi on syytä kirjoittaa skripteihin. Kun tehtävät tallentaa tällä tavalla, voi ensi kerralla vain yksinkertaisesti ajaa skriptin haluamaansa tehtävään asti.
 
 #### 2. Konsoli. {-}
 
-Konsolissa "ajetaan" eli suoritetaan R-komentoja. Jos editoriin kirjoitettua koodia ajetaan, RStudio ajaa komennot automaattisesti konsolissa. Konsolissa pelkkä Enter riittää koodirivin suorittamiseen. Voit kokeilla kirjoittaa konsoliin jonkun laskutoimituksen, kuten `2 * 3` ja painaa Enter, jolloin tuloksen pitäisi tulostua konsoliin. Voit myös kokeilla kirjoittaa laskuja editoriin, ja painaa Ctrl + Enter, jolloin pitäisi tapahtua sama asia.
+Konsolissa "ajetaan" eli suoritetaan R-komentoja. Jos editoriin kirjoitettua koodia ajetaan, RStudio ajaa komennot automaattisesti konsolissa. Konsolissa pelkkä Enter riittää koodirivin suorittamiseen. Voit kokeilla kirjoittaa konsoliin jonkun laskutoimituksen, kuten `2 * 3` ja painaa Enter, jolloin tuloksen pitäisi tulostua konsoliin. Voit myös kokeilla kirjoittaa laskuja editoriin, ja painaa Ctrl + Enter, jolloin pitäisi tapahtua sama asia. Konsoliin tulostuvat myös mahdolliset viestit, varoitukset ja virheilmoitukset.
 
 Suurin ero konsolin ja editorin välillä on se, että **konsoliin kirjoitetut komennot eivät tallennu mihinkään tiedostoon**. Jos siis haluat säilyttää koodisi, se tulee kirjoittaa editoriin ja tallentaa .R-tiedostoon. Saman istunnon aikana tehtyjä komentoja voi konsolissa selata ylös- ja alas-nuolila.
 
@@ -105,17 +105,16 @@ Moodlen ohjeissa ja videoissa käytetään R:ää puhtaasta R-konsolista. Voit s
 
 #### 3. Työtila {-}
 
-Työtilassa näkyvät R-istunnon aikana luodut muuttujat. Näistä lisää ensimmäisen viikon materiaalissa.
+Työtilassa näkyvät R-istunnon aikana luodut muuttujat.
 
-#### 4. Kuvaajat / Paketit / Manuaali {-}
+#### 4. Tiedostot / Kuvaajat / Paketit / Manuaali {-}
 
 Tässä osassa on monta käytännöllistä välilehteä:
 
-- Plots: tänne ilmestyvät R:llä piirretyt kuvaajat
-- Packages: Täältä voi hallita asennettuja paketteja (alla ohjeet tällä kurssilla tarvittavien pakettien asennukseen)
+- Files: Näyttää käyttöjärjestelmän hakemistorakenteen, oletusarvoitesti työhakemiston.
+- Plots: Tänne ilmestyvät R:llä piirretyt kuvaajat.
+- Packages: Täältä voi hallita asennettuja paketteja (alla ohjeet tällä kurssilla tarvittavien pakettien asennukseen).
 - Help: Täällä voi selata R:n manuaalia, jossa on ohjeet jokaiselle R-komennolla. Voit kokeilla ajaa editorissa tai konsolissa komennon `?print`, joka avaa `print`-funktion ohjesivun.
-
-Kun tehtävät tallentaa tällä tavalla, voi ensi kerralla vain yksinkertaisesti ajaa skriptin haluamaansa tehtävään asti.
 
 ## Rcourse-paketin asentaminen {-}
 
@@ -184,4 +183,4 @@ vast <- "jotain"
 vastaa(vast)
 ```
 
-Mikäli käytät nimen `vast` sijasta jotain muuta nimeä, niin sinun on käytettävä samaa nimä myös tarkista-funktion argumenttina!
+Mikäli käytät nimen `vast` sijasta jotain muuta nimeä, niin sinun on käytettävä samaa nimä myös vastaa-funktion argumenttina!

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
   
@@ -21,7 +20,7 @@
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
   
 
-<meta name="author" content="Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021)" />
+<meta name="author" content="Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021, 2022)" />
 
 
 
@@ -32,7 +31,6 @@
   
 
 <link rel="next" href="alkuvalmistelut.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -344,23 +343,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="header">
 <h1 class="title">R-ohjelmoinnin perusteet</h1>
-<p class="author"><em>Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021)</em></p>
-<p class="date"><em>03.01.2022</em></p>
+<p class="author"><em>Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021, 2022)</em></p>
+<p class="date"><em>08.08.2022</em></p>
 </div>
-<div id="r-kurssi" class="section level1 unnumbered">
-<h1>R-kurssi</h1>
+<div id="r-kurssi" class="section level1 unnumbered hasAnchor">
+<h1>R-kurssi<a href="r-kurssi.html#r-kurssi" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Täältä löydät suomenkielisen materiaalin, joka tukee JYU:n ja UEF:in yhteisen R-kurssin suorittamista.</p>
 <p>Anton Klåvusin vuonna 2020 kirjoittamaa ansiokasta materiaalia on kehitetty lukukauden 2021-22 R-kielen kurssia ajatellen. Materiaalia on täydennetty tarvittavin osin. Samalla materiaali on muunnettu bookdown-verkkokirjamuotoon.</p>
-<div id="ohjeita-verkkokirjan-käyttöön" class="section level2 unnumbered">
-<h2>Ohjeita verkkokirjan käyttöön</h2>
+<div id="ohjeita-verkkokirjan-käyttöön" class="section level2 unnumbered hasAnchor">
+<h2>Ohjeita verkkokirjan käyttöön<a href="r-kurssi.html#ohjeita-verkkokirjan-käyttöön" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Tämä opiskelumateriaali on luotu bookdown-verkkokirjaohjelman avulla. Kirjaa voi lukea verkkoselaimella ja se toimii myös puhelimella. Sivun ylälaidasta löydät asetuksia, joilla voit tehdä ainakin seuraavia asioita: piilottaa ja näyttää vasemman sivuvalikon, etsiä dokumentista hakusanalla, muuttaa fonttia, muuttaa fontin kokoa ja sivun väritystä sekä ladata monisteen pdf-muodossa.</p>
 </div>
-<div id="lunttilappu" class="section level2 unnumbered">
-<h2>Lunttilappu</h2>
+<div id="lunttilappu" class="section level2 unnumbered hasAnchor">
+<h2>Lunttilappu<a href="r-kurssi.html#lunttilappu" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli “lunttilappua”. Lunttilapusta on helppo tarkastaa miten jokin jo oppimasi asia tehdään R:ssä, jos et vielä muista kunnolla kyseistä asiaa. Internetistä löytyy Cheat Sheetejä useisiin <a href="https://www.rstudio.com/resources/cheatsheets/">R-paketteihin</a> ja muihin kokonaisuuksiin, mutta tässä käytetään Base R Cheat Sheetiä. Lataa Base R Cheat Sheet itsellesi <a href="files/base_R_cheat_sheet.pdf">painamalla tästä</a>. Suosittelen tulostamaan lunttilapun värillisenä kaksipuoleisena. Mikäli mahdollista niin A3-kokoisena tulosteena teksti näkyy parhaiten.</p>
 </div>
-<div id="verkkolähteitä" class="section level2 unnumbered">
-<h2>Verkkolähteitä</h2>
+<div id="verkkolähteitä" class="section level2 unnumbered hasAnchor">
+<h2>Verkkolähteitä<a href="r-kurssi.html#verkkolähteitä" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä kuitenkin joitakin verkosta löytyviä lähteitä, joista voi olla apua.</p>
 <ul>
 <li><a href="https://www.tutorialspoint.com/r/index.htm">Tutorialspoint</a> Soveltuu R:n opiskeluun englannin kielellä, jos osaa entuudestaan jo vähän ohjelmoida.</li>

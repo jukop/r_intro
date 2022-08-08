@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Kappale 1 Johdanto | R-ohjelmoinnin perusteet</title>
   <meta name="description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Kappale 1 Johdanto | R-ohjelmoinnin perusteet" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
   
@@ -21,7 +20,7 @@
   <meta name="twitter:description" content="This repository contains materials used in an introductory level R course at University of Jyväskylä and University of Eastern Finland." />
   
 
-<meta name="author" content="Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021)" />
+<meta name="author" content="Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021, 2022)" />
 
 
 
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="alkuvalmistelut.html"/>
 <link rel="next" href="variables_and_vectors.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -342,10 +341,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="intro" class="section level1" number="1">
-<h1><span class="header-section-number">Kappale 1</span> Johdanto</h1>
-<div id="what_R" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Mikä R on ja mitä sillä tehdään?</h2>
+<div id="intro" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Kappale 1</span> Johdanto<a href="intro.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="what_R" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Mikä R on ja mitä sillä tehdään?<a href="intro.html#what_R" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ohjelmoinnin tavoitteena on kirjoittaa eli koodata ohjelma, joka suorittaa jonkun halutun tehtävän. Ohjelma koostuu useista komennoista, joista jokainen tekee jotain hyvin yksinkertaista.</p>
 <p>R on tehty ensisijaisesti tilastotiedettä ja data-analyysiä varten. R:llä kirjoitetaan yleensä lyhyitä ohjelmia, joita kutsutaan skripteiksi. R:llä ei siis ole tarkoitus kehittää esimerkiksi pelejä, tai muita ohjelmia joissa on graafinen käyttöliittymä, kuten vaikkapa Photoshop. R ei myöskään ole web-ohjelmointiin tarkoitettu kieli (vaikka oikeilla paketeilla R:lläkin pystyy tekemään web-sovelluksia).</p>
 <p>R on korkean tason ohjelmointikieli. Tämä tarkoittaa sitä, että R:ssä on paljon valmiita komentoja, joiden “alta” löytyy paljon lisää koodia, johon R-ohjelmoijan ei kuitenkaan tarvitse itse koskea. Esimerkiksi tilastollinen t-testi vaatii useita matemaattisia välivaiheita, mutta R-ohjelmoija voi suorittaa testin yhdellä komennolla (<code>t.test</code>) joka antaa kaikki tarvittavat tiedot testistä.</p>

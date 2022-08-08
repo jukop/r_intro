@@ -1,6 +1,6 @@
 # Toistorakenteet (loops) {#loops}
 
-Toistorakenne toistaa annettua koodia. Toistorakenteet ovat ehtorakenteiden ohella ohjelmoinnin perusrakennuspalikoita. Tässä osiossa tutustutaan kahteen yleisimpään tapaukseen eli for ja while -silmukoihin. Mukana on myös maininta silmukoiden korvaamisesta R:n apply-funktioilla.
+Toistorakenne toistaa annettua koodia. Toistorakenteet ovat ehtorakenteiden ohella ohjelmoinnin perusrakennuspalikoita. Tässä osiossa tutustutaan kahteen yleisimpään tapaukseen eli `for` ja `while` -silmukoihin. Mukana on myös maininta silmukoiden korvaamisesta R:n apply-funktioilla.
 
 ## For-silmukka
 
@@ -12,7 +12,7 @@ for (i in seq(3, 7)) {
 }
 ```
 
-for-silmukassa määritetään siis ensin iteraatiomuuttuja eli `i` ja sen saamat arvot eli `seq(3, 7)` komennolla `in`. Sen jälkeen hakasulkeiden sisältämä koodi toistetaan jokaiselle `i`:n arvolle. Tässä tapauksessa yksinkertaisesti tulostetaan muuttujan `i` arvo. Huomaa, että for-silmukan `ìn` ei ole sama asia kuin looginen operaattori `%in%`. `in` on R-kielen varattu symboli, jolloin esimerkiksi muuttuujaa nimeltä `in` ei ole mahdollista luoda.
+For-silmukassa määritetään siis ensin iteraatiomuuttuja eli `i` ja sen saamat arvot eli `seq(3, 7)` komennolla `in`. Sen jälkeen hakasulkeiden sisältämä koodi toistetaan jokaiselle `i`:n arvolle järjestyksessä. Tässä tapauksessa yksinkertaisesti tulostetaan muuttujan `i` arvo. Huomaa, että for-silmukan `ìn` ei ole sama asia kuin looginen operaattori `%in%`. `in` on R-kielen varattu symboli, jolloin esimerkiksi muuttuujaa nimeltä `in` ei ole mahdollista luoda.
 
 Usein halutaan käydä läpi jonkin vektorin tai matriisin arvoja. Alla oleva koodi laskee matriisin `X` rivien summan (tähän voisi myös käyttää valmista funktiota `rowSums()`). Aluksi alustetaan tyhjä vektori, johon rivien summat tallennetaan. Sen jälkeen käydään läpi matriisin rivit ja tallennetaan rivin summa alussa alustettuun vektoriin.
 
@@ -152,7 +152,7 @@ Tämä data on tiedostossa exons.csv, joten luetaan se R:ään:
 exons <- read.csv("exons.csv", row.names = 1)
 ```
 
-Etsitään seuravaksi kaikki eliöparit, joiden geenien etäisyys on alle 4 ja lisätään parit data frameen, jossa on kaksi saraketta, ja jokainen rivi edustaa yhtä eliöparia. Käytetään tähän kahta sisäkkäistä for-silmukkaa. Toisen silmukan iteraatiomuuttujan nimi on yleensä `j`, seuraavan `k` ja niin edelleen. Käydään exons läpi niin, että `i` on rivin numero, ja `j` sarakkeen numero, ja etsitään sopivat parit.
+Etsitään seuravaksi kaikki eliöparit, joiden geenien etäisyys on alle 4 ja lisätään parit datakehikkoon, jossa on kaksi saraketta, ja jokainen rivi edustaa yhtä eliöparia. Käytetään tähän kahta sisäkkäistä for-silmukkaa. Toisen silmukan iteraatiomuuttujan nimi on yleensä `j`, seuraavan `k` ja niin edelleen. Käydään exons läpi niin, että `i` on rivin numero, ja `j` sarakkeen numero, ja etsitään sopivat parit.
 
 ```{r, eval=FALSE}
 # Initialize empty data frame for the pairs
@@ -199,10 +199,8 @@ for (i in seq(1, nrow(exons))) {
 close_pairs
 ```
 
-<!-- Santtu: yläkolmion? yläkolmiomatriisin? diagonaaleja on vain yksi. -->
-Nyt toisen silmukan läpi käymät j:n arvot riippuvat i:n arvosta. Tämä koodi käy läpi taulukon ylemmän diagonaalin, eli "yläpuolen". Ensimmäisellä kierroksella `j` käy läpi arvot 1--7, seuraavalla kierroksella 2--7, sitten 3--7 jne. Vastaavasti voitaisiin myös käydä läpi alempi diagonaali komennolla `for(j in seq(1, i)`.
+Nyt toisen silmukan läpi käymät j:n arvot riippuvat i:n arvosta. Tämä koodi käy läpi taulukon yläkolmion, eli diagonaalin yläpuolella olevat alkiot. Ensimmäisellä kierroksella `j` käy läpi arvot 1--7, seuraavalla kierroksella 2--7, sitten 3--7 jne. Vastaavasti voitaisiin myös käydä läpi alakolmio komennolla `for(j in seq(1, i))`.
 
-<!-- Santtu: tässä kohtaa voi herätä kysymys, että miksi edellisessä kohdassa kahteen kertaan esiintyviä iterointeja ei sivuutettu nextillä, tai miksi iterointia muokatessa ei huomioitu diagonaalia valmiiksi -->
 Emme kuitenkaan voi olla vieläkään tyytyväisä tulokseen, sillä mukana ovat "parit", joissa kumpikin laji on sama. Näistä emme luonnollisesti ole kiinnostuneita. Nämä parit voidaan poistaa esimerkiksi `next`-komennolla.
 
 ## Iterointiin puuttuminen: next ja break
@@ -220,7 +218,7 @@ for (i in seq(1, nrow(exons))) {
   # Only check upper diagonal
   for (j in seq(i, ncol(exons))) {
     if (i == j) {
-        next
+       next
     }
     # Check if dissimilarity is below 4
     if (exons[i, j] < 4) {
@@ -246,13 +244,13 @@ for (i in seq(1, nrow(exons))) {
   # Only check upper diagonal
   for (j in seq(i, ncol(exons))) {
     if (i == j) {
-        next
+       next
     }
     # Check if dissimilarity is below 3
     if (exons[i, j] < 3) {
       # Assign pair to close_pair and stop search
       close_pair <- c(Species_1 = rownames(exons)[i],
-                            Species_2 = colnames(exons)[j])
+                      Species_2 = colnames(exons)[j])
       break
     }
   }
@@ -273,13 +271,13 @@ for (i in seq(1, nrow(exons))) {
     # Monitor loop
     print(c(i, j))
     if (i == j) {
-        next
+      next
     }
     # Check if dissimilarity is below 3
     if (exons[i, j] < 3) {
       # Assign pair to close_pair and stop search
       close_pair <- c(Species_1 = rownames(exons)[i],
-                            Species_2 = colnames(exons)[j])
+                      Species_2 = colnames(exons)[j])
       print(close_pair)
       break
     }
@@ -299,7 +297,7 @@ for (i in seq(1, nrow(exons))) {
   # Only check upper diagonal
   for (j in seq(i, ncol(exons))) {
     if (i == j) {
-        next
+       next
     }
     # Check if dissimilarity is below 3
     if (exons[i, j] < 3) {
@@ -322,10 +320,10 @@ Nyt koodimme toimii, kuten pitääkin!
 
 ## Apply-funktiot
 
-R:ssä käytetään silmukoiden lisäksi `apply`-funktioperheen funktioita, joilla voi käydä läpi data frameja, matriiseja tai vektoreita ilman silmukoita. Joissain tapauksissa `apply`-funktiot ovat myös nopeampia kuin silmukat. Tästä syystä niitä näkee käytettävän paljon, ja varsinkin kokeneemmat R-ohjelmoijat käyttävät niitä usein silmukoiden sijaan. Tällä kurssilla näitä funktioita ei kuitenkaan tarvita. Tässä on annettu muutamia esimerkkejä, voit lukea lisää esimerkiksi [DataCampin tutoriaalista](https://www.datacamp.com/community/tutorials/r-tutorial-apply-family)
+R:ssä käytetään silmukoiden lisäksi `apply`-funktioperheen funktioita, joilla voi käydä läpi datakehikkoja, matriiseja tai vektoreita ilman silmukoita. Joissain tapauksissa `apply`-funktiot ovat myös nopeampia kuin silmukat. Tästä syystä niitä näkee käytettävän paljon, ja varsinkin kokeneemmat R-ohjelmoijat käyttävät niitä usein silmukoiden sijaan. Tällä kurssilla näitä funktioita ei kuitenkaan tarvita. Tässä on annettu muutamia esimerkkejä, voit lukea lisää esimerkiksi [DataCampin tutoriaalista](https://www.datacamp.com/community/tutorials/r-tutorial-apply-family)
 
 <!-- Santtu: autoscaling? eikö kyseessä ole ihan tavallinen standardointi? -->
-`apply()` käy läpi matriisin/data framen rivit tai sarakkeet, ja ajaa jonkin funktion jokaiselle riville tai sarakkeelle. Alla oleva esimerkki normalisoi kaikki R:n sisäisen datan `trees` sarakkeet autoscaling-menetelmällä, jossa sarakkeen arvoista vähennetään sarakkeen keskiarvo ja tulos jaetaan sarakkeen keskihajonnalla. Normalisoinnin tarkoitus on, että kaikkien sarakkeiden keskiarvoksi saadaan 0, ja kaikilla on sama varianssi (ja keskihajonta) 1.
+`apply` käy läpi matriisin/data framen rivit tai sarakkeet, ja ajaa jonkin funktion jokaiselle riville tai sarakkeelle. Alla oleva esimerkki normalisoi kaikki R:n sisäisen datan `trees` sarakkeet autoscaling-menetelmällä, jossa sarakkeen arvoista vähennetään sarakkeen keskiarvo ja tulos jaetaan sarakkeen keskihajonnalla. Normalisoinnin tarkoitus on, että kaikkien sarakkeiden keskiarvoksi saadaan 0, ja kaikilla on sama varianssi (ja keskihajonta) 1.
 
 ```{r, eval=FALSE}
 head(trees)

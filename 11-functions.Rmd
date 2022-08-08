@@ -24,7 +24,8 @@ R-funktioita luodaan `function`-komennolla. Funktion luominen näyttää tältä
 
 ![](files/06-functions/funktio_koodi_väri.png)
 
-R-funktiot siis koostuvat samoista osista kuin yllä esitellyt funktiot.
+R-funktiot siis koostuvat samoista osista kuin yllä esitellyt funktiot:
+
 - Funktion nimi nimeää muuttujan, johon funktio tallennetaan.
 - Funktion syöte koostuu argumenteista
 - Funktion toiminnallisuus on R-koodia
@@ -201,7 +202,6 @@ cat_return <- cat("What does cat return?\n")
 cat_return
 ```
 
-<!-- Santtu: Tämä lienee selvää? Juurihan sanottiin, että palautetaan viimeisen komennon palauttama arvo. -->
 Itse tehty funktio palauttaa `NULL`, jos viimeinen komento palauttaa `NULL`:
 
 ```{r}
@@ -223,7 +223,9 @@ count_missing <- function(x) {
   return(count)
 }
 ```
+
 Purkamalla välivaiheet auki ja jättämällä `return`-käsky pois, voitaisiin funktio kirjoittaa lyhytmuodossa seuraavasti:
+
 ```{r}
 count_missing <- function(x) sum(is.na(x))
 ```

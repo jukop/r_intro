@@ -21,21 +21,27 @@ Koska datakehikko on kaikista tärkein ja eniten käytetty tietotyyppi, niin alo
 
 Datakehikko on erittäin yleinen tietorakenne tiedon tallentamiseen R:ssä. Datakehikko on kaksiulotteinen tietorakenne, eli sillä on rivejä ja sarakkeita. Datakehikon sarakkeet muodostuvat vektoreista. Sarakevektorit voivat olla eri luokan vektoreita, mutta datakehikko asettaa lisärajoitteen: vektoreiden on oltava yhtä pitkiä. Yhden rivin sarakkeilla olevien arvojen ajatellaan koskevan yhtä havaintoa.
 
-Luodaan datakehikko, jossa on kaksi muuttujaa, height ja weight, ja sijoitetaan niihin kahdeksan mittauksen tiedot. Huomionarvoista on se, että komennon `data.frame` sulkujen sisällä on käytettävä yhtäsuuruusmerkkiä (=) eikä sijoitusoperaattoria (<-). Tämä johtuu siitä, että teknisesti ottaen komento `data.frame` on funktio (funktioista lisää myöhemmin).
+Luodaan datakehikko, jossa on kaksi muuttujaa, `height` ja `weight`, ja sijoitetaan niihin kahdeksan mittauksen tiedot. Huomionarvoista on se, että komennon `data.frame` sulkujen sisällä on käytettävä yhtäsuuruusmerkkiä (=) eikä sijoitusoperaattoria (<-). Tämä johtuu siitä, että teknisesti ottaen komento `data.frame` on funktio (funktioista lisää myöhemmin).
 
 ```{r}
-study_data <- data.frame(ID = 1:8,
-                         height = c(189.8, 184.0, 173.8, 175.9, 169.0, 183.7, 181.8, 16.9),
-                         gender = c("male", "female", "male", "male", "female", "male", "male", "female"))
+study_data <- data.frame(
+    ID = 1:8,
+    height = c(189.8, 184.0, 173.8, 175.9, 169.0, 183.7, 181.8, 16.9),
+    gender = c("male", "female", "male", "male", "female", "male", "male", "female")
+)
 study_data
 ```
 Huomaa, että jos sarakkeita ei itse nimeä, niin `data.frame` nimeää ne automaattisesti, mutta näin luodut nimet eivät välttämättä ole ollenkaan kuvaavia.
 ```{r}
-no_names_data <- data.frame(1:8,
-                            c(189.8, 184.0, 173.8, 175.9, 169.0, 183.7, 181.8, 16.9),
-                            c("male", "female", "male", "male", "female", "male", "male", "female"))
+no_names_data <- data.frame(
+    1:8,
+    c(189.8, 184.0, 173.8, 175.9, 169.0, 183.7, 181.8, 16.9),
+    c("male", "female", "male", "male", "female", "male", "male", "female")
+)
 no_names_data
 ```
+Datakehikkojen käsittelystä kerrotaan tarkemmin luvussa [Datan muokkaaminen](#data-frame-wrangling).
+
 
 ## Matriisi {#matrix}
 
@@ -100,7 +106,7 @@ HUOM: jos matriisia indeksoidessa tuloksessa sarakkeiden tai rivien määrä on 
 
 ```{r}
 # The complete first row
-X[1, ,drop = FALSE]
+X[1, , drop = FALSE]
 # The second and third values of the second column
 X[2:3, 3, drop = FALSE]
 ```
@@ -126,23 +132,25 @@ X[-1, ]
 # Without second column
 X[, -2]
 ```
+
 Huomaa kuitenkin, että positiivisia ja negatiivisia indeksejä ei voi käyttää samanaikaisesti tietyssä dimensiossa:
+
 ```{r, error = TRUE}
 # Trying to mix positive and negative indices
-X[c(-1, 1),]
+X[c(-1, 1), ]
 ```
 
 #### Indeksimatriisi (index matrix)
 
 Jos halutaan poimia useampi yksittäinen arvo matriisista, tulee käyttää indeksimatriisia (index matrix).
 
-Esimerkiksi, jos haluttaisiin poimia äskeisestä X-matriisista arvot indekseissä [1, 2], [1, 3] ja [2, 2], niin seuraava koodi ei toimi:
+Esimerkiksi, jos haluttaisiin poimia äskeisestä matriisista `x` arvot indekseissä [1, 2], [1, 3] ja [2, 2], niin seuraava koodi ei toimi:
 
 ```{r}
 X[c(1, 1, 2), c(2, 3, 2)]
 ```
 
-vaan tulee käyttää indeksimatriisia, jonka jokainen rivi antaa yhden halutun alkion rivi- ja sarakeindeksin tässä järjestyksessä.  Indeksimatriiseja tehdessä kannattaa asettaa argumentti `byrow = TRUE`, jolloin alkiot laitetaan matriisiin rivi kerrallaan, ei sarake kerrallaan kuten oletusarvoisesti tehtäisiin.
+vaan tulee käyttää indeksimatriisia, jonka jokainen rivi antaa yhden halutun alkion rivi- ja sarakeindeksin tässä järjestyksessä. Indeksimatriiseja tehdessä kannattaa asettaa argumentti `byrow = TRUE`, jolloin alkiot laitetaan matriisiin rivi kerrallaan, ei sarake kerrallaan kuten oletusarvoisesti tehtäisiin.
 
 ```{r}
 i <- matrix(c(1, 2, 1, 3, 2, 2), nrow = 3, byrow = TRUE)
@@ -225,7 +233,7 @@ str(study_data)
 
 ### head()
 
-Jos aineistossa on todella paljon rivejä, on sen tulostaminen Console-ikkunaan ikävää. Ladataan esimerkiksi iris-data, jossa on 150 havaintoa. Tulostettaessa rivejä on niin monta, että muuttujien nimet eivät näy, mikä on epämiellyttävää. Parempi tapa saada käsitys aineistosta on kutsua sitä head-funktion avulla.
+Jos aineistossa on todella paljon rivejä, on sen tulostaminen Console-ikkunaan ikävää. Ladataan esimerkiksi `iris`-data, jossa on 150 havaintoa. Tulostettaessa rivejä on niin monta, että muuttujien nimet eivät näy, mikä on epämiellyttävää. Parempi tapa saada käsitys aineistosta on kutsua sitä `head`-funktion avulla.
 
 ```{r, eval=FALSE}
 # Load data for this example
