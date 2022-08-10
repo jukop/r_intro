@@ -127,7 +127,7 @@ R-ohjelmoinnissa asennetaan usein R-paketteja. Paketit ovat kokonaisuuksia, jotk
 Rcourse-paketti asennetaan suorittamalla seuraava koodi R:ssä. Kopioi koodi joko R-skriptiin ja aja se tai kopioi se suoraan Console-ikkunaan ja paina Enter-näppäintä.
 ```{r, eval=FALSE}
 install.packages("remotes")
-remotes::install_github("santikka/R-course/Rcourse")
+remotes::install_github("santikka/R-course")
 ```
 Tämän jälkeen paketti tulee ottaa käyttöön
 ```{r, eval=FALSE}
