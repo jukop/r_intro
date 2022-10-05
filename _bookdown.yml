@@ -1,5 +1,22 @@
 book_filename: "R-ohjelmoinnin-perusteet"
-delete_merged_file: true
 language:
+  label:
+    fig: 'Kuva '
+    tab: 'Taulukko '
+    eq: 'Kaava '
+    thm: 'Lause '
+    lem: 'Lemma '
+    cor: 'Seuraus '
+    cnj: 'Konjektuuri '
+    def: 'Määritelmä '
+    exm: 'Esimerkki '
+    exr: 'Tehtävä '
+    hyp: 'Hypoteesi '
+    proof: 'Todistus. '
+    remark: 'Huomautus. '
+    solution: 'Ratkaisu. '
   ui:
-    chapter_name: "Kappale "
+    edit: Edit
+    chapter_name: ''
+    appendix_name: ''
+delete_merged_file: true
