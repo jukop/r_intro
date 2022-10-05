@@ -281,7 +281,7 @@ pick_cg <- function(bases) {
 
 # NOTE: this only checks the first value of the vector
 my_bases <- c("A", "C", "C", "T", "G", "T")
-is_cg(my_bases)
+#is_cg(my_bases) # This produces error in 4.2.x
 
 # This works as expected
 is_cg_vector(my_bases)
