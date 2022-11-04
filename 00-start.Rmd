@@ -152,7 +152,7 @@ Aloita sitten osion 1 harjoitustehtävien suorittaminen komennolla
 ```{r, eval=FALSE}
 osio(1)
 ```
-Kun olet suorittanut harjoitusosion 1, voit jatkaa seuraavaan osioon. Osiot 1-8 ovat pakollisia (tentit kysyvät näiden osioiden sisältöjä) ja osiot 9-11 ovat lisämateriaalia kiinnostuneille (ei kysytä tentissä).
+Kun olet suorittanut harjoitusosion 1, voit jatkaa seuraavaan osioon. Osiot 1-7 ovat pakollisia (tentit kysyvät näiden osioiden sisältöjä) ja osiot 8-11 ovat lisämateriaalia kiinnostuneille (ei kysytä tentissä).
 
 ### Opiskelu ja tenttiminen Rcourse-paketin avulla {-}
 
