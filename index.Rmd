@@ -1,9 +1,0 @@
---- 
-title: "R-ohjelmoinnin perusteet"
-author: "Anton Klåvus (2020), Juho Kopra and Santtu Tikka (2021, 2022)"
-date: "`r format(Sys.Date(),'%d.%m.%Y')`"
-site: bookdown::bookdown_site
-documentclass: book
-description: This repository contains materials used in an introductory level R course
-  at University of Jyväskylä and University of Eastern Finland.
----

@@ -1,0 +1,77 @@
+# Todennäköisyysjakaumat {#sec-distributions}
+
+Monille yleisimmistä tilastollisista jakaumista eli todennäköisyysjakaumista on valmiita funktiota R:ssä. Funktioita on neljää eri tyyppiä, jotka merkitään funktion nimen ensimmäisellä kirjaimella.
+
+- `d`: Tiheysfunktio: mikä on tiheysfunktion arvo pisteessä $x$?
+- `p`: Kertymäfunktio: millä todennäköisyydellä jakaumasta poimittu arvo on pienempi/suurempi kuin $q$?
+- `q`: Käänteinen kertymäfunktio (eli kvantiilifunktio): mille arvolle kertymäfunktio palauttaa todennäköisyyden $p$?
+- `r`: Satunnaislukugeneraattori: simuloi satunnaisia havaintoja jakaumasta.
+
+Näitä neljää kirjainta seuraa varsinaisen jakauman määrittävä pääte. Esim. normaalijakaumalle pääte on `norm`, jolloin tätä vastaavat R:n jakaumafunktiot ovat `dnorm`, `pnorm`, `qnorm`, ja `rnorm`. Vastaavasti $t$-jakaumalle pääte on `t`, jolloin funktiot ovat `dt`, `pt`, `qt` ja `rt`.
+
+Alla ovat kuvaajat ensimmäisestä kolmesta funktiosta standardinormaalijakaumalle (pääte `norm`):
+
+```{r, echo = FALSE, fig.width=10, fig.height=4}
+x <- seq(-2.5, 2.5, by = 0.01)
+p <- seq(0, 1, by = 0.01)
+par(mfrow = c(1,3))
+plot(x, dnorm(x), type = "l", main = "d: Tiheysfunktio")
+plot(x, pnorm(x), type = "l", main = "p: Kertymäfunktio")
+plot(p, qnorm(p), type ="l", main = "q: Käänteinen kertymäfunktio")
+```
+
+## Esimerkki: normaalijakauma
+
+Oletetaan, että suomalaisten miesten suolan saanti on normaalijakautunut odotusarvolla 10 grammaa päivässä ja keskihajonta on 4 grammaa päivässä (odotusarvo on totta, keskihajonta allekirjoittaneen hihasta). Piirretään ensin kuva jakaumasta välillä $[0, 20]$ grammaa päivässä. Jakauman muoto saadaan funktiolla `dnorm`, eli yllä olevan ohjeen mukaan `d`-alkuinen funktio antaa tiheysfunktion, ja `norm`-pääte viittaa normaalijakaumaan. Normaalijakauman funktiolle tulee kertoa jakauman odotusarvo (`mean`) ja keskihajonta (`sd`).
+
+```{r}
+# Sequential vector  of salt consumption
+salt <- seq(0, 20, by = 0.1)
+# Density function
+density <- dnorm(salt, mean = 10, sd = 4)
+# Line plot
+plot(
+  salt, density, type = "l",
+  xlab = "Suolan saanti", 
+  ylab = "Tiheys",
+  main = "Suomalaisten miesten suolan saanti"
+)
+```
+
+Aikuisten saantisuositus on enintään 5 grammaa suolaa päivässä. Kuinka moni suomalainen mies syö tämän jakauman mukaan sopivasti suolaa? Vastaus saadaan kertymäfunktiosta todennäköisyytenä $P(X \leq 5)$ `pnorm`-funktion avulla.
+
+```{r}
+pnorm(5, mean = 10, sd = 4)
+```
+
+Tämän jakauman mukaan vain noin 11 % suomalaisista miehistä syö suolaa sopivasti!
+
+Suomalaisten naiset syövät keskimäärin 7 grammaa suolaa päivässä. Kuinka moni mies syö tätä enemmän suolaa? `pnorm` antaa oletuksena arvon $P(X \leq 7)$. Nyt halutaan kuitenkin tietää $P(X > 7)$, joka saadaan asettamalla `lower.tail = FALSE`:
+
+```{r}
+pnorm(7, mean = 10, sd = 4, lower.tail = FALSE)
+```
+
+Noin 77 % miehistä syö suolaa keskimääräistä naista enemmän.
+
+Entä jos halutaan tietää, kuinka paljon suolaa eniten syövä 10 % vähintään saa? Tähän voidaan vastata funktiolla `qnorm`, joka on jakauman käänteinen kertymäfunktio, eli funktion  `pnorm` käänteisfunktio. Samoin kuin `pnorm`, `qnorm`-funktion oletus on, että todennäköisyydet lasketaan jakauman vasemmasta hännästä alkaen. Vastaus tähän kysymykseen selviää siis näillä kahdella tavalla:
+
+```{r}
+qnorm(0.1, mean = 10, sd = 4, lower.tail = FALSE)
+qnorm(0.9, mean = 10, sd = 4)
+```
+
+Eli tämän jakauman mukaan eniten suolaa saava 10 % miehistä syö yli kolminkertaisen määrän suolaa suositukseen verrattuna.
+
+## Muita jakaumia
+
+Vastaavat funktiot löytyvät myös muille jakaumille, kuten:
+
+- Khiin neliö: `chisq`
+- Eksponentiaalinen: `exp`
+- Studentin $t$: `t`
+- Tasajakauma: `unif`
+- Poisson: `pois`
+- Binomijakauma: `binom`
+
+ja niin edelleen.

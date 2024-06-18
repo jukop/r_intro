@@ -1,0 +1,195 @@
+# Datan muokkaaminen {#sec-data-wrangling}
+
+Aineisto ei tyypillisesti ole valmiiksi oikeassa muodossa. Voi olla, että halutaan esimerkiksi käyttää vain jotain osajoukkoa aineistosta tai muodostaa uusia muuttujia analyysia varten. Tällöin tarvitaan komentoja aineiston muokkaamiseksi.
+
+**Yleinen käytännön vinkki**: Aineiston muokkaaminen (data wrangling) on isojen tutkimusaineistojen kohdalla todella työlästä. Tällöin saatetaan joutua yhdistelemään aineistoja useista lähteistä, etsimään virheellisiä arvoja, muokkaamaan tekstimuotoisia (character) muuttujia eri muotoon ym. Mikäli halutaan muokata tekstimuotoisia vektoreita eri muotoon, niin ne kannattaa muuttaa faktoriksi vasta lopuksi, sillä muuttujan ei ole yleensä tarpeellista olla faktorimuodossa aineistoja muokatessa. Faktorit ovat tyypillisesti tarpeen vasta kun aineistoa aletaan todella analysoimaan.
+
+## Uuden muuttujan tai rivin luonti datakehikkoon {#sec-data-frame-wrangling}
+
+Uusi muuttuja voidaan luoda R:ssä joko perustuen aineiston muihin muuttujiin, tai muuttujan arvot voidaan syöttää vektorina aineistoon. Mikäli uusi muuttuja syötetään lukuina R-koodiin, tulee varmistua siitä, että havaintoja on sama määrä kuin aineistossa on rivejä. Muutoin aineisto tulee syötettyä virheellisesti ja tulokset eivät pidä paikkaansa.
+
+Uuden sarakkeen luonti tapahtuu samalla tavalla kuin jo olemassa olevan sarakkeen muokkaaminen eli dollarisymbolilla, jossa dollarin jälkeen annetaan ensin uuden sarakkeen nimi ja tähän sijoitetaan halutut uuden muuttujan arvot.
+
+```{r}
+study_data <- read.table("data/study_data.txt")
+
+# evaluate the number of rows and columns
+dim(study_data)
+# there are 8 rows
+
+# initiate a new variable called weight (imput data) with correct number of rows
+study_data$weight <- c(78.2, 65.8, 49.2, 71.2, 58.3, 54.1, 74.2, 62.8)
+
+# calculate a new variable based on existing variables
+study_data$height_m <- study_data$height / 100 # height as metres
+study_data$BMI <- study_data$weight / (study_data$height_m^2)
+study_data
+```
+
+## Datakehikon käsittely 
+
+Datakehikosta voidaan poimia sarakkeita joko niiden nimien tai niitä vastaavien indeksien perusteella, kuten matriisin tapauksessa. Yksittäisiä sarakkeita voidaan poimia ja muokata myös dollarisymbolin `$` kautta.
+```{r}
+# Subscripting with variable names
+study_data[, c("height", "gender")]
+
+# Subscripting with brackets - as matrix (but I do not recommend this style!)
+study_data[, 1:2]
+
+# Rownames and colnames
+colnames(study_data)
+names(study_data)
+
+# Individual columns can be accessed and added with dollar sign
+# Let's say that we find out that the ID number 8 was typed in incorrectly. We can fix the entire height variables as follows
+study_data$height <- c(189.8, 184.0, 173.8, 175.9, 169.0, 183.7, NA, 160.9)
+study_data
+
+# It would have been possible to change value of only one cell e.g. like this
+study_data$height[8] <- 161.9
+study_data
+```
+
+Uuden rivin lisäys datakehikkoon on hieman monimutkaisempaa kuin uuden rivin lisääminen matriisiin, sillä ensin pitää tehdä uusi datakehikko, jolla on samat sarakkeet kuin alkuperäisellä (samassa järjestyksessä), ja vasta sitten liittää se komennolla `rbind`. Käyttäjän tulee myös huolehtia siitä, että sarakkeet ovat samaa tyyppiä kuin alkuperäisessä datakehikossa.
+
+```{r}
+new_row <- data.frame(
+  ID = 11, 
+  height = 182, 
+  gender = "male", 
+  weight = 81.2, 
+  height_m = 1.82,
+  BMI = 81.2 / 1.82^2
+)
+rbind(study_data, new_row)
+```
+
+## Osajoukon valinta
+
+Aineistosta voi poimia osajoukon hakasulkujen avulla indeksoimalla. Osajoukon poimintaan tarvitaan usein vertailuoperattoreita, ja jos kriteerejä on useita, niin tarvitaan myös useita loogisia operaattoreita. Tarkemmin operaattoreita käsitellään luvussa [Loogiset operaattorit](#sec-logical-operators). Voit käyttää kyseisen osion taulukkoa apuna jo tässä osiossa. Osajoukkoja voidaan poimia myös suoraan antamalla halutut indeksit esimerkiksi indeksivektorin avulla.
+
+```{r}
+# Filter only females
+study_data[study_data$gender == "female", ]
+# Filter individuals whose height is less than or equal to 175
+study_data[study_data$height <= 175, ]
+
+# Filter individuals whose height is not missing and is less than or equal to 175
+study_data[!is.na(study_data$height) & study_data$height <= 175, ]
+
+# Use multiple filter criteria
+study_data[study_data$height <= 175 & study_data$gender == "female", ]
+
+# Select individuals (rows) 1,3, and 7 directly with a vector of indices
+ind <- c(1, 3, 7)
+study_data[ind,]
+```
+
+## Datakehikon ja vektorin järjestäminen
+
+Yhden vektorin arvot voidaan asettaa nousevaan tai laskevaan järjestykseen funktiolla `sort`. Funktiota voidaan soveltaa niin numeerisiin kuin merkkitietoa sisältäviin vektoreihinkin. Oletusarvoisesti järjestys on nouseva, eli numeeriset arvot järjestetään pienimmästä suurimpaan ja merkkitieto aakkosjärjestykseen. Järjestyksen voi kääntää laskevaksi argumentilla `decreasing = TRUE`. Huomaa, että ääkkösten tapauksessa `sort` ei välttämättä aina järjestä alkioita oikein merkistöstä riippuen. 
+```{r}
+nums <- c(3, 1, 7, 8, 5, 4)
+chars <- c("ab", "ca", "ac", "bb", "ba", "cb")
+
+# Ascending order
+sort(nums)
+sort(chars)
+
+# Descending order
+sort(nums, decreasing = TRUE)
+sort(chars, decreasing = TRUE)
+```
+
+Jossain tilanteissa on haluttavaa järjestää datakehikon rivit jonkin muuttujan tai muuttujien suhteen. Tähän tarkoitukseen voi käyttää funktiota `order`, joka palauttaa yhden tai useamman argumentin alkioiden järjestysluvut (rank). Seuraavassa esimerkissä aineiston rivit järjestetään koehenkilöiden pituuden suhteen nouseevaan suuruusjärjestykseen.
+```{r}
+study_data[order(study_data$height),]
+```
+Järjestäminen voidaan tehdä usean muuttujan suhteen, esimerkiksi pituuden ja painon. Tämä tarkoittaa nousevassa järjestyksessä sitä, että jos kahdella koehenkilöllä on täsmälleen sama pituus, valitaan heidän keskinäinen järjestyksensä painon perusteella. Huomaa `sort`- ja `order`-funktioiden ero: `sort` palauttaa suoraan järjestetyn vektorin kun taas `order` alkioiden järjestysluvut.
+
+## Faktorit
+
+R:n numeeriset vektorit ovat lähtökohtaisesti välimatka- tai suhdeasteikollisia. Olet ehkä ihmetellytkin, miten luokitteluasteikollinen (kategorinen) tai järjestysasteikollinen muuttuja määritellään. Kategorista muuttujaa sanotaan R:ssä faktoriksi. Numeerisen tai tekstimuotoisen muuttujan tai vektorin voi muuttaa faktori-muotoiseksi muuttujaksi `factor` -funktiolla.
+
+```{r}
+# Let's change gender from character string to a factor and rename it as fgender
+study_data$fgender <- factor(study_data$gender)
+
+# Let's now compare the printing of gender and fgender
+study_data$gender
+study_data$fgender
+```
+Huomaa, että faktori tulostaa faktorin tasot eli kaikkien mahdollisten luokkien nimet faktorin perässä: `Levels: female male`.
+
+Usein vastaan tulee myös tilanne, jossa faktorin eri tasoja vastaavat kokonaislukuarvot, kuten tässä esimerkissä luvut 1, 2 ja 3. Tällaisessa tilanteessa faktorin tasojen merkitys on usein annettu jossain dokumenttitiedostossa. Tällöin faktorin tasot ja niiden kuvaukset (labels) tulee määrittää käsin.
+
+```{r}
+# Create a data for this example
+wall_dat <- data.frame(
+  building_ID = c(1, 2, 3, 4, 5, 6), 
+  building_material = c(1, 1, 2, 2, 3, 3)
+)
+
+# Name is 'building_material' very long, I want to rename it
+names(wall_dat) <- c("building_ID", "build_mat")
+
+# We know from some kind of documentation that 1 stands for "wood", 2 is "steel" and 3 is "brick".
+wall_dat$fbuild_mat <- factor(
+  wall_dat$build_mat,levels = c(1, 2, 3), 
+  labels = c("wood", "steel", "brick")
+)
+
+str(wall_dat)
+```
+
+Faktorimuuttujan kuvaukset siis kertovat, mitä varsinaiset tasoarvot tarkoittavat.
+
+
+## Extra: Lääketutkimusesimerkki
+
+R:ssä on aiemmin nähtyjen `numeric`-, `character`- ja `logical`-tyyppien lisäksi muitakin vektoriluokkia, joista tärkein on `factor` eli faktori. Faktoreihin tallennetaan kategorisia muuttujia, kuten tutkimuksessa määrättyjä ryhmiä, aikapisteitä tms. Luodaan esimerkiksi faktori, jossa on kuvitteellisen lääketutkimuksen osallistujien ryhmätiedot:
+  
+```{r}
+groups <- as.factor(
+  c(
+    "drug1", "drug2", "control", "drug1", "control",
+    "drug2", "drug2", "control", "control", "drug1"
+  )
+)
+groups
+```
+
+Factoreita voi luoda muista vektoreista funktioilla `factor` tai `as.factor`. `as.factor` muuntaa vektorin automaattisesti ja nopeasti factoriksi, ja säilyttää myös jo valmiiksi faktoriluokan vektorien tasojen järjestyksen (tästä lisää pian).
+
+Kuten tulosteesta nähdään, faktorin tulostus tulostaa faktorin alkiot (HUOM: ei lainausmerkkejä) sekä faktorin tasot. Faktorit ovat pinnan alla kokonaisluku- eli `integer`-vektoreita, joissa on päällä "kerros", joka määrittää factorin tasot. Edellä nähty vektori `groups` näyttää siis tältä:
+
+![](files/factor.png)
+
+Faktorien tasoille annetaan siis lukuarvot ykkösestä eteenpäin. Oletuksena ensimmäinen taso eli taso 1 on aakkosissa ensimmäinen arvo, tai pienin lukuarvo jos faktori tehdään numeerisista muuttujista. Lukuarvot saa näkyville muuntamalla factorin numeeriseksi vektoriksi:
+
+```{r}
+as.numeric(groups)
+```
+
+Tasojen järjestyksen voi myös päättää itse. Tämä on tärkeää, sillä kuten pian nähdään, faktorin ensimmäinen taso on monissa tilastollisissa testeissä ns. referenssitaso, johon muita tasoja verrataan. Usein esiintyvä tapaus ovat tutkimukset, joissa ovat ryhmät nimeltä case ja control. Koska case on aakkosissa ennen controllia, R käyttää oletuksen case-ryhmää referenssitasona, ja testaa miten control-ryhmä poikkeaa tästä tasosta, vaikka haluaisimme päinvastaisen määrittelyn. Tasot voi itse määrittää näin:
+
+```{r}
+study_groups <- factor(
+  c("case", "control", "control", "case", "case"),
+  levels = c("control", "case")
+)
+study_groups
+```
+
+Nyt tasot ovat oikeassa järjestyksessä!
+
+Kuten aiemmin mainittiin, faktoreita voi tehdä myös numeerisista vektoreista. HUOM: muista, että `as.numeric()` palauttaa faktorin kokonaislukuarvot, ei alkuperäisiä lukuja. Alkuperäiset luvut saa käyttämällä ensin `as.character`-funktiota, joka muuttaa faktorin tasot merkkijonovektoriksi.
+
+```{r}
+time_points <- as.factor(c(0, 0, 1, 1, 5, 5, 1, 0, 5))
+time_points
+# Probably not what you expect
+as.numeric(time_points)
+# First to character, then to numeric
+as.numeric(as.character(time_points))
+```

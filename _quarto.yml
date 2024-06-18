@@ -1,0 +1,33 @@
+project:
+  type: book
+
+lang: fi
+
+book:
+  title: "Tilastolliset Ohjelmistot: R"
+  author: "Anton Klåvus (2020), Juho Kopra ja Santtu Tikka (2021--2024)"
+  date: "2024-06-18"
+  search: true
+  downloads: [pdf]
+  chapters:
+    - index.qmd
+    - 01-intro.qmd
+    - 02-variables.qmd
+    - 03-data_types.qmd
+    - 04-reading_data.qmd
+    - 05-data_wrangling.qmd
+    - 06-statistics.qmd
+    - 07-distributions.qmd
+    - 08-plots.qmd
+    - 09-statistical_tests.qmd
+    - 10-modelling.qmd
+    - 11-functions.qmd
+    - 12-control_flow.qmd
+    - 13-loops.qmd
+    - 14-numerical_methods.qmd
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt

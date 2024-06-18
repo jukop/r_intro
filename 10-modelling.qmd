@@ -1,0 +1,151 @@
+# Lineaariset mallit {#sec-linear-models}
+
+Lineaarisessa mallissa eli lineaarisessa regressiossa tavoite on arvioida vastemuuttujan lineaarista riippuvuutta selittävistä muuttujista. Käytetään esimerkkinä R:n sisäistä dataa `cars`, joka sisältää 50 auton nopeudet ja pysähtymismatkat. Tavoitteena on tutkia, miten auton pysähtymismatka riippuu auton nopeudesta.
+
+## Teoria
+
+Yksinkertaisin mahdollinen lineaarinen regressiomalli on:
+
+$$ 
+  y = \beta_0 + \beta_1 x_1 + \epsilon
+$$
+
+- $y$ on **vastemuuttuja**, eli tässä auton pysähtymismatka
+- $\beta_0$ on ns. **vakiotermi** eli **regressiosuoran** $y$-akselin leikkauskohta
+- $\beta_1$ on selittävän muuttujan eli auton nopeuden **regressiokerroin** eli **regressiosuoran** kulmakerroin
+- $x_1$ on selittävä muuttuja eli auton nopeus
+- $\epsilon$ on **residuaali** (jäännösvirhe), joka oletetaan normaalijakautuneeksi
+
+Mallissa siis oletetaan, että auton pysähtymismatka nopeudella 0 km/h on $\beta_0$ ja kasvaa $\beta_1$ verran, kun nopeus kasvaa 1 km/h. Lisäksi mukana on virhetermi $\epsilon$, joka selittää satunnaisen vaihtelun tuloksissa lineaarisen käyrän ympärillä.
+
+Jos malliin halutaan lisätä selittäviä muuttujia, kuten auton jarrujen kunto ($x_2$) tai sääolosuhteet ($x_3$), malli näyttää tältä:
+
+$$ 
+  y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \ldots + \epsilon
+$$
+
+Eli jokaiselle selittävälle muuttujalle annetaan oma regressiokerroin.
+
+## Esimerkki
+
+Muutetaan ensin `cars`-aineiston muuttujat meille tuttuihin yksiköihin, ja piirretään hajontakuvio havainnoista:
+
+```{r}
+# Change to SI units
+cars$speed <- cars$speed * 1.60934
+cars$dist <- cars$dist * 0.0254
+# Scatter plot
+plot(
+  cars$speed, 
+  cars$dist,
+  xlab = "Speed (km/h)", 
+  ylab = "Distance (m)",
+  main = "Stopping distances of cars"
+)
+```
+
+Autojen välillä on eroja, mutta kuten voi odottaa, suuremmilla nopeuksilla auton pysähtymismatka kasvaa. Käytetään seuraavaksi R:n funktiota `lm`, jolla voidaan sovittaa dataan lineaarinen malli:
+
+```{r}
+model <- lm(dist ~ speed, data = cars)
+```
+
+`lm`-funktiolle annetaan ensimmäiseksi argumentiksi lineaarisen mallin kaava, jossa `~` korvaa yllä nähdyn yhtäkuin-merkin. HUOM: vakiotermi on automaattisesti mukana, eli sitä ei tarvitse kirjata erikseen. Lisäksi täytyy antaa argumentti `data`, jonka tulee olla datakehikko, josta kaavassa olevat muuttujat löytyvät.
+
+Lineaarisesta mallista saadaan irti paljon tietoa, tärkeimpinä mallin regressiokertoimet (coefficients), jotka saadaan näkyviin funktiolla `coef`, jolle annetaan argumenttina lineaarisen mallin sisältävä objekti `model`.
+```{r}
+coef(model)
+```
+Yllä olevista kertoimista voidaan päätellä, että kun auton nopeus kasvaa 1 km/h niin sen pysähtymismatka kasvaa keskimäärin noin 0.06 m, ja odotettu kasvukäyrä leikkaa $y$-akselin -0.4 m kohdalla. Voimme piirtää tämän käyrän kuvaajaan `abline`-funktion avulla, antamalla sille mallin kertoimet:
+
+<!-- Tässä kohtaa voisi huomioida, että tämä tulos ei ole kovinkaan järkevä vakiotermin osalta, jonka pitäisi kaiken järjen mukaan olla 0. Jos auto ei liiku, niin sen pysähtymismatkakin pitäisi olla 0.  -->
+
+```{r}
+cf <- coef(model)
+plot(
+  cars$speed, 
+  cars$dist,
+  xlab = "Speed (km/h)", 
+  ylab = "Distance (m)",
+  main = "Stopping distances of cars"
+)
+abline(a = cf[1], b = cf[2])
+```
+
+## Tarkempia tietoja mallista
+
+Muihin mallin tietoihin pääsee käsiksi `summary`-funktion avulla, joko tulostamalla tuloksen konsoliin, tai sijoittamalla sen muuttujaan, josta voi etsiä mallin tietoja.
+
+```{r}
+# Print summary information
+summary(model)
+# Save summary and access specific information
+s <- summary(model)
+s$r.squared
+```
+
+`summary` kertoo mm. regressiokertoimien arvojen lisäksi niihin liittyvät p-arvot kohdassa `Pr(>|t|)`, sekä mallin selitysasteen (merkintätapa johtuu siitä, että p-arvot tulevat $t$-testeistä). Tässä tapauksessa muuttujan `speed` p-arvo on hyvin pieni, joten voimme todeta suurella varmuudella, että autojen pysähtymismatka riippuu (lineaarisesti) auton nopeudesta. $R^2$ eli R-squared kertoo, kuinka suuren osuuden pysähtymismatkojen varianssista auton nopeus selittää.
+
+Mallin regressiokerrointen estimoitu kovarianssimatriisi saadaan funktiolla `vcov` (variance-covariance matrix). Kertoimien keskivirheet saadaan tästä edelleen helposti matriisin diagonaalin neliöjuurina (funktiot `diag` ja `sqrt`):
+```{r}
+# Covariance matrix of the regression coefficients
+vcov(model)
+# Standard errors only
+sqrt(diag(vcov(model)))
+```
+
+## Ennustaminen
+
+Kun lineaarinen malli on estimoitu, sen perusteella voidaan myös ennustaa arvoja uusille havainnoille. Tämä tapahtuu `predict`-funktiolla, jolle annetaan malli, sekä datakehikko, joka sisältää ne selittäjien arvot, joille halutaan laskea ennusteet. Tämä datakehikko voi sisältää useita rivejä, jolloin ennuste lasketaan joka riville. Ennustetaan edellisen mallin perusteella pysähtymismatka autolle kolmella uudella nopeudella ja lisätään ne edelliseen kuvaajaan punaisilla rukseilla:
+
+
+```{r}
+# Create data frame with new speed values
+new_data <- data.frame(speed = c(25, 15, 38))
+# Create dist column by predicting from linear model
+new_data$dist <- predict(model, newdata = new_data)
+
+# Add points to previous plot
+plot(
+  cars$speed, 
+  cars$dist,
+  xlab = "Speed (km/h)", 
+  ylab = "Distance (m)",
+  main = "Stopping distances of cars")
+abline(a = model$coefficients[1], b = model$coefficients[2])
+points(new_data$speed, new_data$dist, pch = 4, col = "red")
+```
+
+Kuten huomataan, ennustetut arvot ovat täsmälleen käyrän päällä.
+
+## Korrelaatio
+
+<!-- Santtu: Spearmanissa riippuvuuden on silti oltava monotonista, muuten järjestysluvut eivät kuvaa riippuvuutta -->
+Korrelaatio on lineaarisen regression ohella tapa mitata kahden muuttujan välistä riippuvuutta. Korrelaatiolle on monia erilaisia mittareita, joista yleisimmät ovat Pearsonin korrelaatiokerroin, joka mittaa kahden muuttujan välistä lineaarista riippuvuutta, ja Spearmanin järjestyskorrelaatiokerroin, joka mittaa kahden muuttujan välistä riippuvuutta ilman lineaarisuusoletusta, mutta olettaa kuitenkin monotonisen riippuvuuden. HUOM: korrelaatio ei ota kantaa siihen, kuinka vahva riippuvuus on (käyrän jyrkkyys), vaan pelkästään siihen, kuinka systemaattinen riippuvuus on. Kummatkin korrelaatiokertoimet saavat arvoja väliltä [-1, 1], jossa -1 on täydellinen negatiivinen korrelaatio (toisen muuttujan kasvaessa toinen aina pienenee) ja 1 on täydellinen positiivinen korrelaatio.
+
+Korrelaation kahden vektorin välillä voi R:ssä laskea funktiolla `cor`. Otetaan esimerkiksi R:n sisäinen aineisto `Indometh`, jossa on mitattu indometasiinin farmakokinetiikkaa, ja selvitetään ajan ja indometasiinin konsentraation väliselle riippuvuudelle Pearsonin ja Spearmanin korrelaatiokertoimet. Piirretään sen jälkeen hajontakuvio mittaustuloksista ja lisätään kuvaajaan alaotsikoksi korrelaatiokertoimet. Tutustumme samalla funktioon `round`, jolla voi pyöristää lukuja halutulle desimaalitarkkuudelle. Huomaa, että `round`-funktio pyöristää aina lähimpään parilliseen lukuun, esim. luku 0.5 pyöristyy lukuun 0, mutta 1.5 pyöristyy lukuun 2. Funktio `mtext` lisää tekstin kuvaajan marginaaliin.
+
+```{r}
+# Pearson correlation
+pearson <- cor(Indometh$time, Indometh$conc, method = "pearson")
+# Spearman correlation
+spearman <- cor(Indometh$time, Indometh$conc, method = "spearman")
+# Scatter plot
+plot(
+  Indometh$time, 
+  Indometh$conc,
+  xlab = "Time", 
+  ylab = "Concetration",
+  main = "Pharmacokinetics of indometacin"
+)
+
+# Paste concatenates strings
+subtitle <- paste(
+  "Pearson correlation:", round(pearson, digits = 2),
+  "Spearman correlation:", round(spearman, digits = 2)
+)
+# Add subtitle to plot
+mtext(subtitle)
+```
+
+Tässä esimerkissä nähdään hyvin Pearsonin ja Spearmanin korrelaatiokertoimien ero. Koska Indometasiinin konsentraatio laskee eksponentiaalisesti, ei lineaarisesti, Pearsonin korrelaatiokerroin on "vain" -0.7, kun taas Spearmanin korrelaatiokerroin -0.97 vastaa lähes täydellistä negatiivista korrelaatiota.
