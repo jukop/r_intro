@@ -21,7 +21,7 @@ dim(study_data)
 study_data$weight <- c(78.2, 65.8, 49.2, 71.2, 58.3, 54.1, 74.2, 62.8)
 
 # calculate a new variable based on existing variables
-study_data$height_m <- study_data$height / 100 # height as metres
+study_data$height_m <- study_data$height / 100 # height as meters
 study_data$BMI <- study_data$weight / (study_data$height_m^2)
 study_data
 ```
@@ -103,13 +103,13 @@ sort(chars, decreasing = TRUE)
 
 Jossain tilanteissa on haluttavaa järjestää datakehikon rivit jonkin muuttujan tai muuttujien suhteen. Tähän tarkoitukseen voi käyttää funktiota `order`, joka palauttaa yhden tai useamman argumentin alkioiden järjestysluvut (rank). Seuraavassa esimerkissä aineiston rivit järjestetään koehenkilöiden pituuden suhteen nouseevaan suuruusjärjestykseen.
 ```{r}
-study_data[order(study_data$height),]
+study_data[order(study_data$height), ]
 ```
 Järjestäminen voidaan tehdä usean muuttujan suhteen, esimerkiksi pituuden ja painon. Tämä tarkoittaa nousevassa järjestyksessä sitä, että jos kahdella koehenkilöllä on täsmälleen sama pituus, valitaan heidän keskinäinen järjestyksensä painon perusteella. Huomaa `sort`- ja `order`-funktioiden ero: `sort` palauttaa suoraan järjestetyn vektorin kun taas `order` alkioiden järjestysluvut.
 
 ## Faktorit
 
-R:n numeeriset vektorit ovat lähtökohtaisesti välimatka- tai suhdeasteikollisia. Olet ehkä ihmetellytkin, miten luokitteluasteikollinen (kategorinen) tai järjestysasteikollinen muuttuja määritellään. Kategorista muuttujaa sanotaan R:ssä faktoriksi. Numeerisen tai tekstimuotoisen muuttujan tai vektorin voi muuttaa faktori-muotoiseksi muuttujaksi `factor` -funktiolla.
+R:n numeeriset vektorit ovat lähtökohtaisesti välimatka- tai suhdeasteikollisia. Olet ehkä ihmetellytkin, miten luokitteluasteikollinen (kategorinen) tai järjestysasteikollinen muuttuja määritellään. Kategorista muuttujaa sanotaan R:ssä **faktoriksi**. Numeerisen tai tekstimuotoisen muuttujan tai vektorin voi muuttaa faktori-muotoiseksi muuttujaksi `factor` -funktiolla.
 
 ```{r}
 # Let's change gender from character string to a factor and rename it as fgender
@@ -143,6 +143,7 @@ str(wall_dat)
 ```
 
 Faktorimuuttujan kuvaukset siis kertovat, mitä varsinaiset tasoarvot tarkoittavat.
+
 
 
 ## Extra: Lääketutkimusesimerkki
@@ -183,7 +184,7 @@ study_groups
 
 Nyt tasot ovat oikeassa järjestyksessä!
 
-Kuten aiemmin mainittiin, faktoreita voi tehdä myös numeerisista vektoreista. HUOM: muista, että `as.numeric()` palauttaa faktorin kokonaislukuarvot, ei alkuperäisiä lukuja. Alkuperäiset luvut saa käyttämällä ensin `as.character`-funktiota, joka muuttaa faktorin tasot merkkijonovektoriksi.
+Kuten aiemmin mainittiin, faktoreita voi tehdä myös numeerisista vektoreista. HUOM: muista, että `as.numeric` palauttaa faktorin kokonaislukuarvot, ei alkuperäisiä lukuja. Alkuperäiset luvut saa käyttämällä ensin `as.character`-funktiota, joka muuttaa faktorin tasot merkkijonovektoriksi.
 
 ```{r}
 time_points <- as.factor(c(0, 0, 1, 1, 5, 5, 1, 0, 5))

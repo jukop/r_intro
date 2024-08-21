@@ -39,8 +39,8 @@ vignettes/*.pdf
 # R Environment Variables
 .Renviron
 
-# .zip of _book for Moodle
-_book.zip
-
-
+# Quarto files
 /.quarto/
+
+# Rendered files
+/_book/

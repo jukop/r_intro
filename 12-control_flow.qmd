@@ -29,7 +29,7 @@ Operaattori       Toiminto
 :::
 :::
 
-Kaikki loogiset operaattorit palauttavat joko arvon (tai vektorin arvoja) `TRUE`, `FALSE` tai `NA`. Vertailuoperaattorien käyttö on jo tullut tutuksi aikaisemmissa kappaleissa, mutta tutustutaan vielä tarkemmin viimeisten rivien operaattoreihin.
+Kaikki loogiset operaattorit palauttavat joko arvon (tai vektorin arvoja) `TRUE`, `FALSE` tai `NA`. Vertailuoperaattorien käyttö on jo tullut tutuksi aikaisemmissa luvuissa, mutta tutustutaan vielä tarkemmin viimeisten rivien operaattoreihin.
 
 #### Negaatio
 
@@ -136,7 +136,7 @@ hb_alert(130)
 hb_alert(110)
 ```
 
-Funktio siis toimii oletetusti, eli se hälyttää vain, jos hemoglobiinitaso on alle 117. Käyttäjän kannalta olisi kuitenkin kätevää saada jonkinlainen palaute myös silloin, kun hemoglobiinitaso on tarpeeksi korkea. Tätä varten voidaan käyttää else-komentoa:
+Funktio siis toimii oletetusti, eli se hälyttää vain, jos hemoglobiinitaso on alle 117. Käyttäjän kannalta olisi kuitenkin kätevää saada jonkinlainen palaute myös silloin, kun hemoglobiinitaso on tarpeeksi korkea. Tätä varten voidaan käyttää `else`-komentoa:
 
 ```{r}
 hb_alert <- function(hb) {

@@ -4,7 +4,7 @@
 
 Tilastollisilla testeillä pyritään arvioimaan perusjoukkoa koskevien väiteiden paikkansapitävyyttä todennäköisyyslaskennan keinoin. Lähtökohtana on niin sanottu **nollahypoteesi** ($H_0$), joka yleensä vastaa tilannetta, jossa mahdolliset väitettä tukevat haivainnot ovat vain sattuman seurausta. Esimerkiksi jos tutkitaan onko jokin lääkeaine tehokas hoitokeino, voisi nollahypoteesi olla muotoa "lääkeaineella ei ole vaikutusta". Nollahypoteesiin liittyy aina **vastahypoteesi** ($H_1$), joka yleensä nollahypoteesin vastakohta, ja vastaa mielenkiinnon kohteena olevaa väitettä (esim. "lääkeaineella on vaikutusta").
 
-Tilastolliset testit olettava nollahypoteesin olevan totta, jolloin nollahypoteesin mielessä erittäin harvinaiset tulokset antavat aihetta epäillä nollahypoteesin mielekkyyttä. Testiin liittyy yleensä **testisuure**, joka on jokin aineistosta laskettu tunnusluku. Testisuureen jakauman perusteella voidaan arvioida todennäköisyyttä, että havaittu tulos olisi vain sattuman seurausta. Tätä todennäköisyyttä kutsutaan **p-arvoksi**. Perinteisesti tilastotieteessä asetetaan etukäteen jokin riskitaso ($\alpha$), ja jos saatu p-arvo on riskitasoa pienempi niin nollahypoteesi hylätään (yleensä $\alpha = 0.05$). Jos p-arvo on riskitasoa pienempi, niin havaintoa kutsutaan tilastollisesti merkitseväksi (nykyisin suositellaan myös termiä tilastollisesti erottuva, sillä sana merkitsevä menee usein sekaisin sanan merkittävä kanssa).
+Tilastolliset testit olettava nollahypoteesin olevan totta, jolloin nollahypoteesin mielessä erittäin harvinaiset tulokset antavat aihetta epäillä nollahypoteesin mielekkyyttä. Testiin liittyy yleensä **testisuure**, joka on jokin aineistosta laskettu tunnusluku. Testisuureen jakauman perusteella voidaan arvioida todennäköisyyttä, että havaittu tulos olisi vain sattuman seurausta. Tätä todennäköisyyttä kutsutaan **p-arvoksi**. Perinteisesti tilastotieteessä asetetaan etukäteen jokin merkitsevyystaso (significance level, $\alpha$), ja jos saatu p-arvo on merkitsevyystasoa pienempi niin nollahypoteesi hylätään (yleensä $\alpha = 0.05$). Jos p-arvo on merkitsevyystaso pienempi, niin havaintoa kutsutaan tilastollisesti merkitseväksi (nykyisin suositellaan myös termiä "tilastollisesti erottuva", sillä sana "merkitsevä" menee usein sekaisin sanan "merkittävä" kanssa).
 
 ## $t$-testi
 
@@ -54,9 +54,9 @@ tt3
 Tällä kertaa tulos on taas tilastollisesti merkitsevä, eli lääkkeiden vaikutuksessa unen määrään on tilastollisesti merkitsevä ero, jolloin nollahypoteesi hylätään.
 
 
-## Khiin neliö -testi
+## Khiin neliö -testi {#sec-chi}
 
-Kahden kategorisen muuttujan riippuvuuden tutkimiseen voidaan käyttää khiin neliö -testiä ($\chi^2$ test). Tyypillisesti halutaan verrata jonkin muuttujan ryhmien välisiä eroja, kuten puoluekannatusta alueittain tai sukupuolten suhteen. Testin ideana on verrata havaittua ristiintaulukkoa nollahypoteesin mukaiseen ristiintaulukkoon, jossa muuttujien välillä ei ole lainkaan riippuvuutta. Khiin neliö -testin testisuure perustuu näiden kahden taulukon eroihin.
+Kahden kategorisen muuttujan riippuvuuden tutkimiseen voidaan käyttää khiin neliö -testiä ($\chi^2$ test). Tyypillisesti halutaan verrata jonkin muuttujan ryhmien välisiä eroja, kuten puoluekannatusta alueittain tai sukupuolten suhteen. Testin ideana on verrata havaittua ristitaulukkoa nollahypoteesin mukaiseen ristitaulukkoon, jossa muuttujien välillä ei ole lainkaan riippuvuutta. Khiin neliö -testin testisuure perustuu näiden kahden taulukon eroihin.
 
 Tarkastellaan Yhdysvaltalaista kyselytutkimusaineistoa, joka sisältää tiedon henkilön puoluekannatuksesta ja sukupuolesta. Tutkitaan khiin neliö -testin avulla, riippuuko puoluekannatus sukupuolesta. R:ssä tämä voidaan tehdä funktiolla `chisq.test`.
 
@@ -74,14 +74,18 @@ Xsq$residuals  # Pearson residuals
 Xsq$stdres     # standardized residuals
 ```
 
-Koska testin p-arvo on pieni, niin nollahypoteesi hylätään ja todetaan, että puoluekannatus riippuu tilastollisesti merkitsevästi sukupuolesta. Testin luotettavuuden kannalta on kuitenkin hyvä huomioida, että testiin liittyy oletuksia, jotka koskevat odotettuja frekvenssejä (eli nollahypoteesin mukaisen ristiintaulukon frekvenssejä). Tyypillisesti vaaditaan, että odotetun frekvenssin on oltava vähintään 5 vähintään 80%:ssa taulukon soluista, eikä yhdenkään solun odotettu frekvenssi ole alle 1. Tarkistetaan oletukset edellisen esimerkin tapauksessa:
+Koska testin p-arvo on pieni, niin nollahypoteesi hylätään ja todetaan, että puoluekannatus riippuu tilastollisesti merkitsevästi sukupuolesta. Testin luotettavuuden kannalta on kuitenkin hyvä huomioida, että testiin liittyy oletuksia, jotka koskevat odotettuja frekvenssejä (eli nollahypoteesin mukaisen ristitaulukon frekvenssejä). Tyypillisesti vaaditaan, että odotetun frekvenssin on oltava vähintään 5 vähintään 80%:ssa taulukon soluista, eikä yhdenkään solun odotettu frekvenssi ole alle 1. Tarkistetaan oletukset edellisen esimerkin tapauksessa, odotetut frekvenssit löytyvät testiobjektin alkiosta `expected`:
 ```{r}
 all(Xsq$expected >= 1)
 mean(Xsq$expected >= 5) >= 0.80
 ```
-Oletukset ovat tältä osin kunnossa. Edellä funktio `all` ottaa syötteenään loogisen vektorin ja palauttaa `TRUE` jos syötteen kaikki alkiot ovat `TRUE`. Muutoin funktio palauttaa `FALSE`.
+Oletukset ovat tältä osin kunnossa. Edellä funktio `all` ottaa syötteenään loogisen vektorin ja palauttaa `TRUE` jos syötteen kaikki alkiot ovat `TRUE`. Muutoin funktio palauttaa `FALSE`. Voisimme myös laskea odotetut frekvenssit seuraavalla tavalla suoraan taulukosta ennen testin tekemistä:
+```{r}
+rowSums(M) %*% t(colSums(M)) / sum(M)
+```
+Toisin sanoen, kerromme jokaisen rivisumman vastaavalla sarakesummalla ja jaamme lopputuloksen havaintojen määrällä.
 
-Edellisessä esimerkissä ristiintaulukko oli valmiiksi rakennettu annetuista frekvensseistä. Ristiintaulukko voitaisiin myös rakentaa yksilötason aineistosta, esimerkiksi datakehikosta, joka sisältää rivin jokaista kyselyyn vastannutta henkilöä kohden ja tiedon vastaajan ilmoittamasta puolueesta ja sukupuolesta. Seuraavassa esimerkissä kyselytutkimusaineisto on muuttujassa `poll_data`, joka voidaan muuntaa ristiintauloksi funktiolla `table`. Huomataan, että tällä tavalla muodostettu ristiintaulukko on sama kuin suoraan frekvensseistä koottu taulukko.
+Edellisessä esimerkissä ristitaulukko oli valmiiksi rakennettu annetuista frekvensseistä. Ristitaulukko voitaisiin myös rakentaa yksilötason aineistosta, esimerkiksi datakehikosta, joka sisältää rivin jokaista kyselyyn vastannutta henkilöä kohden ja tiedon vastaajan ilmoittamasta puolueesta ja sukupuolesta. Seuraavassa esimerkissä kyselytutkimusaineisto on muuttujassa `poll_data`, joka voidaan muuntaa ristitauloksi funktiolla `table`. Huomataan, että tällä tavalla muodostettu ristitaulukko on sama kuin suoraan frekvensseistä koottu taulukko.
 ```{r, echo=FALSE, eval=TRUE}
 poll_data <- as.data.frame.table(M)
 poll_data <- poll_data[rep(seq_len(nrow(poll_data)), poll_data$Freq), -3L]

@@ -14,12 +14,13 @@ Tämän materiaalin ohessa kannattaa käyttää apuna nk. Cheat Sheetiä eli "lu
 Tämä materiaali on tarkoitettu riittäväksi materiaaliksi kurssille. Tässä kuitenkin joitakin verkosta löytyviä lähteitä, joista voi olla apua.
 
  - [Tutorialspoint](https://www.tutorialspoint.com/r/index.htm) Soveltuu R:n opiskeluun englannin kielellä, jos osaa entuudestaan jo vähän ohjelmoida.
+ - [R for Data Science](https://r4ds.had.co.nz/) Laaja verkkokirja R-ohjelmointiin datatieteen näkökulmasta. 
 
 ## Alkuvalmistelut {-}
 
 ### RStudio {-}
 
-RStudio on ohjelmointiympäristö eli IDE (Integrated Development Environment), joka tekee koodaamisesta huomattavasti mukavampaa. RStudio on saatavilla useille käyttöjärjestelmille ja se on ilmainen ohjelma. Tässä kirjassa oletetaan, että käytössä on RStudio, mutta muutkin ympäristöt ovat sopivia.
+RStudio on ohjelmointiympäristö eli IDE (Integrated Development Environment), joka tekee ohjelmoinnista huomattavasti mukavampaa. RStudio on saatavilla useille käyttöjärjestelmille ja se on ilmainen ohjelma. Tässä kirjassa oletetaan, että käytössä on RStudio, mutta muutkin ympäristöt ovat sopivia.
 
 ## R:n ja RStudion asentaminen omalle tietokoneelle {-}
 
@@ -29,11 +30,11 @@ https://www.rstudio.com/products/rstudio/download/#download (avautuu uuteen ikku
 
 ### RStudion asennus yliopiston koneelle {-}
 
-Mikäli et halua käyttää omaa tietokonettasi kurssin suoritamiseen, niin RStudion saa asennettua UEF:in koneilla Sofware Centerin kautta. Software Center löytyy Windowsin omalla haulla.
+Mikäli et halua käyttää omaa tietokonettasi kurssin suoritamiseen, niin RStudion saa asennettua yliopiston koneille Sofware Centerin kautta. Software Center löytyy Windowsin omalla haulla.
 
 ![](files/software_center.jpg)
 
-RStudio:n voi asentaa Software Centeristä, ja RStudion pitäisi sen jälkeen olla käytettävissä. Tyypillisesti R ja RStudio ovat valmiiksi asennettuna
+RStudio:n voi asentaa Software Centeristä, ja RStudion pitäisi sen jälkeen olla käytettävissä. Tyypillisesti R ja RStudio ovat kuitenkin jo valmiiksi asennettuna
 
 ![](files/RStudio_sc.jpg)
 
@@ -120,6 +121,7 @@ Lisäksi tenttiminen onnistuu vastaavasti funktiolla `loppukoe(x)`, mutta täll�
 ```{r, eval=FALSE}
 loppukoe("01/01/1990")
 ```
+Huomaa, että loppukokeen kysymykset vaihtuvat joka suorituskerralla. Lisää tietoa loppukokeesta löydät kurssin verkkosivulta.
 
 ### Tehtävien tallentaminen skripteihin RStudiolla {-}
 

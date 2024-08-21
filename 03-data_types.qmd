@@ -1,17 +1,18 @@
-# Tietotyypit {#data_types}
+# Tietotyypit {#sec-data_types}
 
 Tässä osassa tutustutaan neljään uuteen tietorakenteeseen:
 
 - [Datakehikko (data.frame)](#sec-data-frame)
 - [Matriisi (matrix)](#sec-matrix)
+- [Ristitaulukko (table)](#sec-table)
 - [Taulukko (array)](#sec-array)
 - [Lista (list)](#sec-list)
 
-Datakehikko on R:n objekti, jossa voidaan säilyttää aineistoa. Muuttujat ovat kehikon sarakkeita ja havaintoyksiköt rivejä. Datakehikossa jokaisella muuttujilla tulee aina olla nimi. Datakehikko on tyypillin tietotyyppi erilaisten aineistojen käsittelyyn, jotka sisältävät useamman kuin yhden muuttujan.
+Datakehikko on R:n objekti, jossa voidaan säilyttää aineistoa. Aineiston muuttujat ovat datakehikon sarakkeita ja havaintoyksiköt rivejä. Datakehikossa jokaisella muuttujilla tulee aina olla nimi. Datakehikko on tyypillisin tietotyyppi erilaisten aineistojen käsittelyyn, jotka sisältävät useamman kuin yhden muuttujan.
 
 Matriisi voi olla entuudestaan tuttu käsite myös tilastotieteen tai matematiikan kursseilta, ja R:n matriisi vastaakin matemaattista matriisia. Tästä syystä matriisi on hyvin yleinen tietorakenne, johon ei voi olla törmäämättä jos käyttää R:ää tutkimuksessa. Matriisilla tehdään yleensä kuitenkin matemaattisia operaatioita, eikä se ensisijaisesti ole aineiston säilytyspaikka.
 
-Taulukko on juuri sitä miltä se kuulostaa: vektorintapainen tietorakenne, johon tallennetaan alkioita (elements), joilla on kaikilla sama luokka (class), eli esimerkiksi lukuja. Ero vektoriin on se, että taulukolla on useampi ulottuvuus. Matriisi on erikoistapaus taulukosta, sillä matriisi on kaksiulotteinen taulukko. Matriisi vastaa siis oikeastaan paremmin sitä mielikuvaa, joka monelle tulee mieleen suomen kielen sanasta taulukko, ja matriisit ovatkin paljon yleisempiä kuin moniulotteiset taulukot.
+Taulukko on juuri sitä miltä se kuulostaa: vektorintapainen tietorakenne, johon tallennetaan alkioita (elements), joilla on kaikilla sama luokka (class), eli esimerkiksi lukuja. Ero vektoriin on se, että taulukolla on useampi ulottuvuus. Matriisi on erikoistapaus taulukosta, sillä matriisi on kaksiulotteinen taulukko. Matriisi vastaa siis oikeastaan paremmin sitä mielikuvaa, joka monelle tulee mieleen suomen kielen sanasta taulukko, ja matriisit ovatkin paljon yleisempiä kuin moniulotteiset taulukot. Taulukoita käytetään yleensä frekvenssijakaumien tai suhteellisten osuuksien tarkasteluun ja testaamiseen.
 
 Lista on järjestetty kokoelma alkioita, jotka voivat olla eri tyyppisiä objekteja.
 
@@ -19,7 +20,7 @@ Koska datakehikko on kaikista tärkein ja eniten käytetty tietotyyppi, niin alo
 
 ## Datakehikko (data.frame) {#sec-data-frame}
 
-Datakehikko on erittäin yleinen tietorakenne tiedon tallentamiseen R:ssä. Datakehikko on kaksiulotteinen tietorakenne, eli sillä on rivejä ja sarakkeita. Datakehikon sarakkeet muodostuvat vektoreista. Sarakevektorit voivat olla eri luokan vektoreita, mutta datakehikko asettaa lisärajoitteen: vektoreiden on oltava yhtä pitkiä. Yhden rivin sarakkeilla olevien arvojen ajatellaan koskevan yhtä havaintoa. Sarakkeet voivat sisältää myös puuttuvaa tietoa (eli `NA` arvoja).
+Datakehikko (*data frame*) on erittäin yleinen tietorakenne tiedon tallentamiseen R:ssä. Datakehikko on kaksiulotteinen tietorakenne, eli sillä on rivejä ja sarakkeita. Datakehikon sarakkeet muodostuvat vektoreista. Sarakevektorit voivat olla eri luokan vektoreita, mutta datakehikko asettaa lisärajoitteen: vektoreiden on oltava yhtä pitkiä. Yhden rivin sarakkeilla olevien arvojen ajatellaan koskevan yhtä havaintoa. Sarakkeet voivat sisältää myös puuttuvaa tietoa (eli `NA` arvoja).
 
 Luodaan datakehikko, jossa on kaksi muuttujaa, `height` ja `weight`, ja sijoitetaan niihin kahdeksan mittauksen tiedot. Huomionarvoista on se, että komennon `data.frame` sulkujen sisällä on käytettävä yhtäsuuruusmerkkiä (=) eikä sijoitusoperaattoria (<-). Tämä johtuu siitä, että teknisesti ottaen `data.frame` on funktio (funktioista lisää myöhemmin).
 
@@ -80,10 +81,11 @@ ncol(X)
 # Dimensions
 dim(X)
 ```
+Nämä funktiot toimivat myös datakehikoille.
 
 ### Matriisin indeksointi
 
-Matriisin indeksointi on hyvin samantapainen operaatio kuin vektorin indeksointi, eli matriisin perään laitetaan hakasulkeet ja niihin määritellään halutut indeksit. Matriisin indeksoinnissa pitää kuitenkin antaa erikseen indeksit riveille ja sarakkeille, pilkulla erotettuna. Jos hakasulkeisiin antaa vain yhden luvun ilman pilkkua, niin R käsittelee matriisia vektorina, jolloin indeksointi tapahtuu kuten vektoreiden tapauksessa.
+Matriisin indeksointi on hyvin samantapainen operaatio kuin vektorin indeksointi, eli matriisin perään laitetaan hakasulkeet ja niihin määritellään halutut indeksit. Matriisin indeksoinnissa pitää kuitenkin antaa erikseen indeksit riveille ja sarakkeille, pilkulla erotettuna. Jos hakasulkeisiin antaa vain yhden luvun ilman pilkkua, niin R käsittelee matriisia vektorina, jolloin indeksointi tapahtuu kuten vektoreiden tapauksessa. Datakehikoita voidaan indeksoida useimmissa tapauksissa kuten matriiseja.
 
 ```{r}
 # Only nrow is enough, since the number of columns must be 3
@@ -140,7 +142,7 @@ Huomaa kuitenkin, että positiivisia ja negatiivisia indeksejä ei voi käyttä�
 X[c(-1, 1), ]
 ```
 
-#### Indeksimatriisi (index matrix)
+### Indeksimatriisi (index matrix)
 
 Jos halutaan poimia useampi yksittäinen arvo matriisista, tulee käyttää indeksimatriisia (index matrix).
 
@@ -216,6 +218,36 @@ X + Y
 
 Matriiseille on lisäksi määritelty paljon matriisien omia laskutoimituksia, joita ei käsitellä tarkemmin tässä materiaalissa. Matriisilaskentaa opiskelleille huomio: R:ssä oletuksena kertolasku tehdään alkioittain, matriisitulo tapahtuu operaattorilla `%*%` ja matriisin transpoosin voi määrittää funktiolla `t`.
 
+## Ristitaulukko
+
+Ristitaulukko (kontingenssitaulukko, *contingency table*) on matriisia muistuttava kaksi- tai useampiulotteinen tietorakenne frekvenssiaineistojen käsittelyyn. Tässä materiaalissa käsittelemme vain kaksiulotteisia ristitaulukoita yksinkertaisuuden vuoksi. Ristitaulukko kuvaa kahden luokittelu- tai järjestysasteikollisen muuttujan havaintojakaumaa: jokaisessa taulukon solussa on tietyn muuttujien tasojen yhdistelmän havaintojen lukumäärä aineistossa. Huomaa, että ristitaulukko ei ole taulukko (*array*)!
+
+Tarkastellaan esimerkkinä lämpötilan ja kuukauden ristitaulokkoa R:n sisäisessä ilmanlaatuaineistossa `airquality`. Taulukko luodaan funktiolla `table`, joka ottaa argumentteinaan kaksi muuttujaa, joista ristitaulukko muodostetaan. Tässä esimerkissä lisäksi funktio `cut` muodostaa lämpötilamuuttujasta `Temp` luokitteluasteikollisen muuttujan sen kvartiilien perusteella.
+```{r}
+crosstab <- table(
+  cut(airquality$Temp, quantile(airquality$Temp)), 
+  airquality$Month
+)
+crosstab
+```
+
+Tässä tapauksessa ristitaulukon rivimuuttuja on lämpötila ja sarakemuuttuja on kuukausi. Frekvenssien sijaan voimme myös tarkastella suhteellisia osuuksia `prop.table` funktiolla.
+
+```{r}
+prop.table(crosstab)
+```
+
+Usein kiinnostavampaa on kuitenkin tarkastella ehdollisia suhteellisia osuuksia, eli osuuksia joko rivi- tai sarakemuuttujan eri tasojen sisällä. Tämän mahdollistaa `prop.table`-funktion argumentti `margin`, joka määrittää, tehdäänkö tarkastelu rivimuuttujan (`margin = 1`) vai sarakemuuttujan (`margin = 2`) suhteen.
+
+```{r}
+prop.table(crosstab, margin = 1)
+prop.table(crosstab, margin = 2)
+```
+
+Ristitaulukkoa voidaan myös käyttää rivi- ja sarakemuuttujan riippuvuuden testaamiseen Khiin neliö -testillä, johon palataan myöhemmin luvussa [-@sec-chi].
+
+
+
 ## Tietotyyppien tarkastelu
 
 Kaikkia objekteja voi tulostaa Console-ikkunassa kutsumalla objektin nimen. Joskus tarvitaan kuitenkin apufunktioita.
@@ -261,9 +293,9 @@ head(iris, 2)
 
 ## Extra: Taulukko ja lista
 
-Taulukoita ja listoja ei perus data-analyysiä toteutettaessa yleensä tarvita. Lue kuitenkin seuraava, jotta saat yleiskäsityksen mihin niitä tarvitaan. Voit myös palata perehtymään taulukoihin ja listoihin myöhemmin koska tahansa.
+Taulukoita (*array*) ja listoja (*list*) ei tavallista data-analyysiä toteutettaessa yleensä tarvita. Lue kuitenkin seuraava, jotta saat yleiskäsityksen mihin niitä tarvitaan. Voit myös palata perehtymään taulukoihin ja listoihin myöhemmin koska tahansa.
 
-### Taulukko {#sec-array}
+### Taulukko {#array}
 
 Kuten alussa todettiin, taulukot (array) ovat hyvin harvinaisia, joten niihin ei kannata tällä kurssilla keskittyä. Niitä kuitenkin tarvitaan joidenkin tehtävien tekemiseen, joten tässä on hyvin lyhyt oppimäärä taulukoista.
 

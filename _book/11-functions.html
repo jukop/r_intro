@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./12-control_flow.html" rel="next">
-<link href="./10-modelling.html" rel="prev">
+<link href="./10-distributions.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -169,44 +169,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-reading_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datan lukeminen</span></span></a>
+  <a href="./04-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tunnusluvut</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-data_wrangling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datan muokkaaminen</span></span></a>
+  <a href="./05-reading_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datan lukeminen</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tunnusluvut</span></span></a>
+  <a href="./06-data_wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datan muokkaaminen</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Todennäköisyysjakaumat</span></span></a>
+  <a href="./07-plots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Kuvaajien piirtäminen</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-plots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Kuvaajien piirtäminen</span></span></a>
+  <a href="./08-statistical_tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Tilastollinen testaaminen</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-statistical_tests.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Tilastollinen testaaminen</span></span></a>
+  <a href="./09-modelling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lineaariset mallit</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-modelling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lineaariset mallit</span></span></a>
+  <a href="./10-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Todennäköisyysjakaumat</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -249,12 +249,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#funktioiden-määrittely" id="toc-funktioiden-määrittely" class="nav-link" data-scroll-target="#funktioiden-määrittely"><span class="header-section-number">11.2.1</span> Funktioiden määrittely</a></li>
   <li><a href="#argumentit-ja-funktion-kutsuminen" id="toc-argumentit-ja-funktion-kutsuminen" class="nav-link" data-scroll-target="#argumentit-ja-funktion-kutsuminen"><span class="header-section-number">11.2.2</span> Argumentit ja funktion kutsuminen</a></li>
   <li><a href="#funktio-ilman-argumentteja" id="toc-funktio-ilman-argumentteja" class="nav-link" data-scroll-target="#funktio-ilman-argumentteja"><span class="header-section-number">11.2.3</span> Funktio ilman argumentteja</a></li>
-  <li><a href="#palautus-return" id="toc-palautus-return" class="nav-link" data-scroll-target="#palautus-return"><span class="header-section-number">11.2.4</span> Palautus (return)</a></li>
-  <li><a href="#usean-arvon-palautus" id="toc-usean-arvon-palautus" class="nav-link" data-scroll-target="#usean-arvon-palautus"><span class="header-section-number">11.2.5</span> Usean arvon palautus</a></li>
-  <li><a href="#palautus-ilman-return-käskyä" id="toc-palautus-ilman-return-käskyä" class="nav-link" data-scroll-target="#palautus-ilman-return-käskyä"><span class="header-section-number">11.2.6</span> Palautus ilman return-käskyä</a></li>
-  <li><a href="#funktio-ilman-tulosta" id="toc-funktio-ilman-tulosta" class="nav-link" data-scroll-target="#funktio-ilman-tulosta"><span class="header-section-number">11.2.7</span> Funktio ilman tulosta</a></li>
-  <li><a href="#funktion-lyhytmuoto" id="toc-funktion-lyhytmuoto" class="nav-link" data-scroll-target="#funktion-lyhytmuoto"><span class="header-section-number">11.2.8</span> Funktion lyhytmuoto</a></li>
-  <li><a href="#anonyymi-funktio" id="toc-anonyymi-funktio" class="nav-link" data-scroll-target="#anonyymi-funktio"><span class="header-section-number">11.2.9</span> Anonyymi funktio</a></li>
+  <li><a href="#usean-arvon-palautus" id="toc-usean-arvon-palautus" class="nav-link" data-scroll-target="#usean-arvon-palautus"><span class="header-section-number">11.2.4</span> Usean arvon palautus</a></li>
+  <li><a href="#palautus-ilman-return-käskyä" id="toc-palautus-ilman-return-käskyä" class="nav-link" data-scroll-target="#palautus-ilman-return-käskyä"><span class="header-section-number">11.2.5</span> Palautus ilman return-käskyä</a></li>
+  <li><a href="#funktio-ilman-tulosta" id="toc-funktio-ilman-tulosta" class="nav-link" data-scroll-target="#funktio-ilman-tulosta"><span class="header-section-number">11.2.6</span> Funktio ilman tulosta</a></li>
+  <li><a href="#funktion-lyhytmuoto" id="toc-funktion-lyhytmuoto" class="nav-link" data-scroll-target="#funktion-lyhytmuoto"><span class="header-section-number">11.2.7</span> Funktion lyhytmuoto</a></li>
+  <li><a href="#anonyymi-funktio" id="toc-anonyymi-funktio" class="nav-link" data-scroll-target="#anonyymi-funktio"><span class="header-section-number">11.2.8</span> Anonyymi funktio</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -281,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Tässä kappaleessa tutustutaan omien funktioiden kirjoittamiseen ja pureudutaan sitä kautta syvemmälle R-funktioiden toimintaan.</p>
+<p>Tässä luvussa tutustutaan omien funktioiden kirjoittamiseen ja pureudutaan sitä kautta syvemmälle R-funktioiden toimintaan.</p>
 <section id="funktion-käsite" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="funktion-käsite"><span class="header-section-number">11.1</span> Funktion käsite</h2>
 <p>Funktio on nimetty kokonaisuus järjesteltyä ja uudelleenkäytettävää koodia, jonka tarkoitus on suorittaa yksi tarkkaan määrätty tehtävä. Funktioilla on syöte (input) ja tulos (output). Funktion tehtävä on palauttaa (return) syötteen perusteella laskettu tulos. Alla olevassa kuvassa näkyvät funktion neljä osaa: nimi, syöte, toiminnallisuus ja tulos.</p>
@@ -421,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.time</span>()</span></code><button title="Kopioi leikepöydälle" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2024-06-18 16:13:39 EEST"</code></pre>
+<pre><code>[1] "2024-08-21 16:35:51 EEST"</code></pre>
 </div>
 </div>
 <p>Itse tehdyt funktiot voivat myös toimia ilman argumentteja. Niitä käytetään usein R-istunnon tilan, koodia ajavan tietokoneen ominaisuuksien tai ajan selvittämiseen. Tämä melko hyödytön esimerkkifunktio palauttaa tämän dokumentin kirjoittajan nimen:</p>
@@ -435,14 +434,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="palautus-return" class="level3" data-number="11.2.4">
-<h3 data-number="11.2.4" class="anchored" data-anchor-id="palautus-return"><span class="header-section-number">11.2.4</span> Palautus (return)</h3>
-<p>Tutkitaan <code>return</code>-käskyä, eli palautusta R-funktiosta hieman tarkemmin.</p>
-</section>
-<section id="usean-arvon-palautus" class="level3" data-number="11.2.5">
-<h3 data-number="11.2.5" class="anchored" data-anchor-id="usean-arvon-palautus"><span class="header-section-number">11.2.5</span> Usean arvon palautus</h3>
-<!-- Santtu: mielestäni sana arvo on tässä harhaanjohtava, ikäänkuin funktio voisi palauttaa vain yhden luvun tms. puhutaan mieluummin objekteista. Kappale on muutenkin ristiriitainen, ensin sanotaan, että funktiot palauttavat yhden arvon, mutta sitten ne voivatkin palauttaa useamman arvon. Kirjoitit suoraviivaisemmin. -->
-<!-- Santtu: missä ohjelmointikielessä voidaan palauttaa useampi objekti? "toisin kuin joissain muissa ohjelmointikielissä." -->
+<section id="usean-arvon-palautus" class="level3" data-number="11.2.4">
+<h3 data-number="11.2.4" class="anchored" data-anchor-id="usean-arvon-palautus"><span class="header-section-number">11.2.4</span> Usean arvon palautus</h3>
 <p>R-funktiot palauttavat aina yhden objektin. Palautukseen käytetään funktiota <code>return</code>, kuten aiemmin on nähty. Jos funktiosta halutaan ulos useampi objekti, on muodostettava esimerkiksi lista, joka sisältää halutut objektit. Jos siis <code>bmi</code>-funktiosta haluttaisiin palauttaa sekä pyöristetty, että alkuperäinen BMI:n arvo, voidaan ne palauttaa listassa:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>bmi_list <span class="ot">&lt;-</span> <span class="cf">function</span>(height, mass, <span class="at">height_multiplier =</span> <span class="dv">1</span>) {</span>
@@ -450,12 +443,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  value <span class="ot">&lt;-</span> mass <span class="sc">/</span> (height <span class="sc">*</span> height_multiplier)<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  rounded <span class="ot">&lt;-</span> <span class="fu">round</span>(value, <span class="at">digits =</span> <span class="dv">1</span>)</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Return computed value</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  values <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">original =</span> value,</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">rounded =</span> rounded)</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(values)</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">bmi_list</span>(<span class="fl">1.65</span>, <span class="dv">62</span>)</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Kopioi leikepöydälle" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  values <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">original =</span> value,</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">rounded =</span> rounded</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(values)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">bmi_list</span>(<span class="fl">1.65</span>, <span class="dv">62</span>)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Kopioi leikepöydälle" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$original
 [1] 22.77319
@@ -469,8 +464,8 @@ $rounded
 </div>
 </div>
 </section>
-<section id="palautus-ilman-return-käskyä" class="level3" data-number="11.2.6">
-<h3 data-number="11.2.6" class="anchored" data-anchor-id="palautus-ilman-return-käskyä"><span class="header-section-number">11.2.6</span> Palautus ilman return-käskyä</h3>
+<section id="palautus-ilman-return-käskyä" class="level3" data-number="11.2.5">
+<h3 data-number="11.2.5" class="anchored" data-anchor-id="palautus-ilman-return-käskyä"><span class="header-section-number">11.2.5</span> Palautus ilman return-käskyä</h3>
 <p>R on siitä erikoinen ohjelmointikieli, että R-funktiot voivat palauttaa arvoja myös ilman eksplisiittistä <code>return</code>-käskyä. Jos R-funktiossa ei ole <code>return</code>-käskyä, ja viimeinen rivi on vain muuttuja, tai sijoitus muuttujaan, tämän muuttujan arvo palautetaan automaattisesti. <code>bmi</code>-funktion voisi siis kirjoittaa myös näin:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>bmi <span class="ot">&lt;-</span> <span class="cf">function</span>(height, mass, <span class="at">height_multiplier =</span> <span class="dv">1</span>) {</span>
@@ -485,10 +480,10 @@ $rounded
 <pre><code>[1] 22.8</code></pre>
 </div>
 </div>
-<p>Alussa on kuitenkin hyvä käyttää <code>return</code>-käskyä, niin pysyy paremmin perässä siitä, mitä koodi tekee, eikä sen kirjoittaminen ole kokeneellekaan ohjelmoijalle huono tapa.</p>
+<p>Yleensä on kuitenkin hyvä käyttää <code>return</code>-käskyä, niin pysyy paremmin perässä siitä, mitä koodi tekee, eikä sen kirjoittaminen ole kokeneellekaan ohjelmoijalle huono tapa.</p>
 </section>
-<section id="funktio-ilman-tulosta" class="level3" data-number="11.2.7">
-<h3 data-number="11.2.7" class="anchored" data-anchor-id="funktio-ilman-tulosta"><span class="header-section-number">11.2.7</span> Funktio ilman tulosta</h3>
+<section id="funktio-ilman-tulosta" class="level3" data-number="11.2.6">
+<h3 data-number="11.2.6" class="anchored" data-anchor-id="funktio-ilman-tulosta"><span class="header-section-number">11.2.6</span> Funktio ilman tulosta</h3>
 <p>Funktion tarkoitus ei ole aina palauttaa jotain. Yleisiä esimerkkejä ovat <code>cat</code> ja <code>plot</code>, jotka tulostavat ja piirtävät asioita. Jos näiden funktion paluuarvon yrittää sijoittaa muuttujaan, on tuloksena <code>NULL</code>, eli tyhjä arvo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>cat_return <span class="ot">&lt;-</span> <span class="fu">cat</span>(<span class="st">"What does cat return?</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Kopioi leikepöydälle" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -520,8 +515,8 @@ $rounded
 </div>
 </div>
 </section>
-<section id="funktion-lyhytmuoto" class="level3" data-number="11.2.8">
-<h3 data-number="11.2.8" class="anchored" data-anchor-id="funktion-lyhytmuoto"><span class="header-section-number">11.2.8</span> Funktion lyhytmuoto</h3>
+<section id="funktion-lyhytmuoto" class="level3" data-number="11.2.7">
+<h3 data-number="11.2.7" class="anchored" data-anchor-id="funktion-lyhytmuoto"><span class="header-section-number">11.2.7</span> Funktion lyhytmuoto</h3>
 <p>Yksinkertaisten (tyypillisesti yhden rivin) funktioiden tapauksessa aaltosulkuja ei ole pakollista käyttää funktion koodin rajaamiseen. Tarkastellaan esimerkkifunktiota, joka laskee puuttuvien havaintojen <code>NA</code> määrän vektorista <code>x</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>count_missing <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
@@ -535,8 +530,8 @@ $rounded
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>count_missing <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">is.na</span>(x))</span></code><button title="Kopioi leikepöydälle" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="anonyymi-funktio" class="level3" data-number="11.2.9">
-<h3 data-number="11.2.9" class="anchored" data-anchor-id="anonyymi-funktio"><span class="header-section-number">11.2.9</span> Anonyymi funktio</h3>
+<section id="anonyymi-funktio" class="level3" data-number="11.2.8">
+<h3 data-number="11.2.8" class="anchored" data-anchor-id="anonyymi-funktio"><span class="header-section-number">11.2.8</span> Anonyymi funktio</h3>
 <p>Jos funktiota tarvitaan vain yksittäiseen laskutoimitukseen, voidaan se määritellä myös ilman muuttujaa, johon funktio tallennettaisiin. Tällöin kyse on ns. anonyymistä funktiosta (inline function, anonymous function, lambda function). Anonyymi funktio määritellään kirjoittamalla <code>\(x)</code> jonka perään kirjoitetaan funktion lauseke, esim. funktio joka laskee vektorin <code>x</code> neliöt voitaisiin kirjoittaa muodossa</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>\(x) x<span class="sc">^</span><span class="dv">2</span></span></code><button title="Kopioi leikepöydälle" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -563,7 +558,7 @@ $rounded
 <pre><code>[1] 7</code></pre>
 </div>
 </div>
-<p>Huom! Anonyymit funktiot vaativat R-version 4.1 tai sitä uudemman.</p>
+<p><strong>Huom!</strong> Anonyymit funktiot vaativat R-version 4.1 tai sitä uudemman.</p>
 
 
 </section>
@@ -981,8 +976,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./10-modelling.html" class="pagination-link" aria-label="Lineaariset mallit">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lineaariset mallit</span></span>
+      <a href="./10-distributions.html" class="pagination-link" aria-label="Todennäköisyysjakaumat">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Todennäköisyysjakaumat</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

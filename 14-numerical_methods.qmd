@@ -85,7 +85,7 @@ integrate(f, lower, upper, ..., subdivisions = 100L,
           rel.tol = .Machine$double.eps^0.25, abs.tol = rel.tol,
           stop.on.error = TRUE, keep.xy = FALSE, aux = NULL)
 ```
-Ensimmäinen argumentti `f` on funktio, jota halutaan integroida. Argumentit `lower` ja `upper` määräävät integrointivälin, jonka päätepisteet voivat olla myös äärettömiä. Tällöin voidaan asettaa `lower = -Inf` tai vastaavasti `upper = Inf`.. 
+Ensimmäinen argumentti `f` on funktio, jota halutaan integroida. Argumentit `lower` ja `upper` määräävät integrointivälin, jonka päätepisteet voivat olla myös äärettömiä. Tällöin voidaan asettaa `lower = -Inf` tai vastaavasti `upper = Inf`.
 
 Integroidaan funktiota $f(x) = x^2+3x-2$ välin $[-2,3]$ yli.
 ```{r}

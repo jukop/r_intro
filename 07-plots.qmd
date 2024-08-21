@@ -1,6 +1,6 @@
 # Kuvaajien piirtäminen {#sec-plotting}
 
-Tässä kappaleessa tutustutaan kuvaajien piirtämiseen. R:n piirtokomennot voidaan jakaa kolmeen ryhmään:
+Tässä luvussa tutustutaan kuvaajien piirtämiseen. R:n piirtokomennot voidaan jakaa kolmeen ryhmään:
 
 - Korkean tason grafiikkatoiminnot piirtävät aina uuden kuvan.
 - Alemman tason grafiikkatoiminnot lisäävät olemassa olevaan kuvaan uusia osia.
@@ -35,9 +35,7 @@ plot(
 
 `plot`-funktiolle voi antaa muitakin argumentteja, jotka säätävät mm. pisteiden väriä, kokoa ja muotoa, akselien rajoja jne. Yleisiä kuvaajien parametreja voi säätää funktiolla `par` (graphical parameters).
 
-### Muut korkean tason funktiot
-
-Tässä on esimerkkejä muutamista muista yleisistä korkean tason funktioista:
+### hist
 
 `hist` piirtää histogrammeja. Histogrammit kuvaavat jatkuvan muuttujan jakaumaa.
 
@@ -53,6 +51,8 @@ hist(
 )
 ```
 
+### boxplot
+
 Toinen tapa kuvata jatkuvan muuttujan jakaumaa on viiksilaatikko (joskus myös laatikko-viikset -kuvaaja), joita piirretään `boxplot`-funktiolla:
 
 ```{r}
@@ -63,6 +63,22 @@ boxplot(
   ylab = "Pituus (cm)"
 )
 ```
+
+Usein on hyödyllistä piirtää viiksilaatikko usealle ryhmälle samaan kuvaan. Tämä voidaan myös tehdä suoraan `boxplot`-funktiolla. Alla esimerkki R:n sisäisestä aineistosta `InsectSprays`, joka sisältää hyönteisten lukumääriä eri hyönteismyrkkykäsittelyjen jälkeen. Piirretään lukumäärien viiksilaatikot joka käsittelylle:
+
+```{r}
+boxplot(
+  count ~ spray, 
+  data = InsectSprays,
+  xlab = "Type of spray", 
+  ylab = "Insect count",
+  main = "InsectSprays data"
+)
+```
+Tällaisessa tilanteessa voimme siis käyttää samaa kaavasyntaksia (`formula`) kuin lineaarisen mallin tapauksessa. Kaavan vasen puoli kertoo vastemuuttujan (`count`) ja kaavan oikea puoli kertoo muuttujan, joka määrittää tarkasteltavat ryhmät (`spray`)
+
+
+### barplot
 
 Vastaavasti diskreetin muuttujan jakaumaa voi kuvata pylväsdiagrammilla käyttäen `barplot`-funktiota. Alla on esimerkki opiskelijoiden kotipaikkakuntien jakaumasta. Tässä tulee myös tutuksi tärkeä vektorien ominaisuus: nimeäminen. Nimettyjen vektorien (named vectors) alkioilla on järjestyslukujen lisäksi nimet. Nimet annetaan olla olevaan tyyliin `nimi = alkio`. Nimetyt vektori käyttäytyvät aivan kuin tavalliset vektorit, mutta niitä voi indeksoida myös nimien avulla, ja jotkut funktiot, kuten `barplot`, käyttävät hyödyksi alkioiden nimiä. Nimettyjen vektorien käyttö ei ole kurssin ydinasioita, mutta tämä on hyödyllistä osata.
 
@@ -81,6 +97,15 @@ barplot(
   ylab = "Opiskelijoiden lukumäärä"
 )
 ```
+
+### curve
+
+Funktio `curve` on hyödyllinen matemaattisten funktioiden graafien piirtämiseen. Funktio ottaa syötteenään piirrettävän funktion, sekä tarkasteluvälin, jolla graafi piirretään. Piirretään esimerkiksi standardinormaalijakauman tiheysfunktio välillä (-2, 2):
+
+```{r}
+curve(expr = dnorm(x), from = -2, to = 2)
+```
+Funktio `curve` olettaa, että tarkasteltavan funktion tai lausekkeen argumentti on nimeltään `x`, mutta tätä voi vaihtaa tarvittaessa argumentilla `xname`.
 
 ## Alemman tason grafiikkatoiminnot
 
@@ -266,4 +291,4 @@ Kuvaajamme on nyt valmis!
 
 Jos äskeisen esimerkin aikana tuntui siltä, että näimme paljon vaivaa ja saimme lopputulokseksi kuvaajan, joka ei oikeastaan edes näytä kovin hyvältä, olet aivan oikeassa. Kuvaajien rakentaminen itse R:n peruskomennoilla on raskasta, ja usein perusgrafiikkatoimintoja käytetään lähinnä omaan käyttöön tulevien kuvaajien piirtämiseen nopeasti. Peruskomennot on kuitenkin hyvä hallita, sillä niitä saattaa tarvita valmiilla työkaluilla tehtyjen kuvaajien muokkaamiseen. Varsinkin tekstin lisääminen, sekä akselien nimeäminen ja otsikon muuttaminen ovat hyviä taitoja osata.
 
-R tarjoaa paljon valmiita työkaluja erilaisten kuvaajien piirtämiseen. Valitettavasti tällä kurssilla ei ole aikaa sukeltaa näiden työkalujen käyttöön, sillä ennen niiden käyttöä pitää ymmärtää enemmän R:n monimutkaisemmista tietorakenteista, joita käsitellään seuraavilla viikoilla. Inspiraatiota ja motivaatiota voi kuitenkin hakea esimerkiksi [R Graph Gallery](https://www.r-graph-gallery.com/index.html)-sivulta tai [ggpubr-paketin ohjeista](https://rpkgs.datanovia.com/ggpubr/index.html). R:n ehdottomasti monipuolisin ja kehitetyin työkalu kuvien piirtämiseen on [`ggplot2`](https://ggplot2.tidyverse.org/) paketti.
+R tarjoaa paljon valmiita työkaluja erilaisten kuvaajien piirtämiseen. Valitettavasti tällä kurssilla ei ole aikaa sukeltaa näiden työkalujen käyttöön, sillä ennen niiden käyttöä pitää ymmärtää enemmän R:n monimutkaisemmista tietorakenteista. Inspiraatiota ja motivaatiota voi kuitenkin hakea esimerkiksi [R Graph Gallery](https://www.r-graph-gallery.com/index.html)-sivulta tai [ggpubr-paketin ohjeista](https://rpkgs.datanovia.com/ggpubr/index.html). R:n ehdottomasti monipuolisin ja kehitetyin työkalu kuvien piirtämiseen on [`ggplot2`](https://ggplot2.tidyverse.org/) paketti.

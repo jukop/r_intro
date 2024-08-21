@@ -1,6 +1,5 @@
 # R
 
-Ohjelmoinnin tavoitteena on kirjoittaa eli koodata ohjelma, joka suorittaa jonkun halutun tehtävän. Ohjelma koostuu useista komennoista, joista jokainen tekee jotain hyvin yksinkertaista.
 
 ## Mikä R on ja mitä sillä tehdään?
 

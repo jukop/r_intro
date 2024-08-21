@@ -1,6 +1,6 @@
 # Funktiot {#sec-functions}
 
-Tässä kappaleessa tutustutaan omien funktioiden kirjoittamiseen ja pureudutaan sitä kautta syvemmälle R-funktioiden toimintaan. 
+Tässä luvussa tutustutaan omien funktioiden kirjoittamiseen ja pureudutaan sitä kautta syvemmälle R-funktioiden toimintaan. 
 
 ## Funktion käsite
 
@@ -149,14 +149,7 @@ author <- function() {
 author()
 ```
 
-### Palautus (return)
-
-Tutkitaan `return`-käskyä, eli palautusta R-funktiosta hieman tarkemmin.
-
 ### Usean arvon palautus
-
-<!-- Santtu: mielestäni sana arvo on tässä harhaanjohtava, ikäänkuin funktio voisi palauttaa vain yhden luvun tms. puhutaan mieluummin objekteista. Kappale on muutenkin ristiriitainen, ensin sanotaan, että funktiot palauttavat yhden arvon, mutta sitten ne voivatkin palauttaa useamman arvon. Kirjoitit suoraviivaisemmin. -->
-<!-- Santtu: missä ohjelmointikielessä voidaan palauttaa useampi objekti? "toisin kuin joissain muissa ohjelmointikielissä." -->
 
 R-funktiot palauttavat aina yhden objektin. Palautukseen käytetään funktiota `return`, kuten aiemmin on nähty. Jos funktiosta halutaan ulos useampi objekti, on muodostettava esimerkiksi lista, joka sisältää halutut objektit. Jos siis `bmi`-funktiosta haluttaisiin palauttaa sekä pyöristetty, että alkuperäinen BMI:n arvo, voidaan ne palauttaa listassa:
 
@@ -166,8 +159,10 @@ bmi_list <- function(height, mass, height_multiplier = 1) {
   value <- mass / (height * height_multiplier)^2
   rounded <- round(value, digits = 1)
   # Return computed value
-  values <- list(original = value,
-                 rounded = rounded)
+  values <- list(
+    original = value,
+    rounded = rounded
+  )
   return(values)
 }
 result <- bmi_list(1.65, 62)
@@ -190,7 +185,7 @@ bmi <- function(height, mass, height_multiplier = 1) {
 bmi(1.65, 62)
 ```
 
-Alussa on kuitenkin hyvä käyttää `return`-käskyä, niin pysyy paremmin perässä siitä, mitä koodi tekee, eikä sen kirjoittaminen ole kokeneellekaan ohjelmoijalle huono tapa.
+Yleensä on kuitenkin hyvä käyttää `return`-käskyä, niin pysyy paremmin perässä siitä, mitä koodi tekee, eikä sen kirjoittaminen ole kokeneellekaan ohjelmoijalle huono tapa.
 
 ### Funktio ilman tulosta
 
@@ -246,4 +241,4 @@ Anonyymeillä funktioilla voi myös olla useampi argumentti
 (\(x, y) x + y)(3, 4)
 ```
 
-Huom! Anonyymit funktiot vaativat R-version 4.1 tai sitä uudemman.
+**Huom!** Anonyymit funktiot vaativat R-version 4.1 tai sitä uudemman.

@@ -2,7 +2,7 @@
 
 Tässä luvussa tutustutaan datan sisään lukemiseen ja sisäänluetun datan tarkistamiseen. Tähän mennessä kaikki kurssilla käsitelty data on luotu R:ssä. Useimmiten R:llä käsiteltävä data on kuitenkin tallennettu tiedostoon, joka on luotu jollain ohjelmalla tai kirjattu esim. Excelissä.
 
-Tässä luvussa esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttavat datakehikon. Datakehikko sopii aineiston käsittelyyn hyvin, sillä siihen voi tallentaa niin numeerisia kuin tekstimuotoisia muuttujia. Voit tarvittessa kerrata datakehikon toimintaa [datakehikko](#data-frame)-kappaleesta.
+Tässä luvussa esitellyt funktiot lukevat erilaisia tiedostoja, mutta kaikki palauttavat datakehikon. Datakehikko sopii aineiston käsittelyyn hyvin, sillä siihen voi tallentaa niin numeerisia kuin tekstimuotoisia muuttujia. Voit tarvittessa kerrata datakehikon toimintaa [datakehikko](#sec-data-frame)-kappaleesta.
 
 Lopussa käydään myös läpi tapoja lukea Excel-, SPSS- ja SAS-tiedostoja. Näitä tiedostoja ei käsitellä kurssin tehtävissä, mutta on hyvä tietää, että niitä voi lukea R:ään suoraan muuttamatta niitä ensin johonkin toiseen muotoon.
 
@@ -51,8 +51,8 @@ BRWA	8294	13060
 
 Tämä data löytyy myös oheisesta tiedostosta `gene_data.txt`. Tekstitiedostot voi lukea sisään funktiolla `read.table`, jolla on tiedoston polun (file path) lisäksi monta muutakin argumenttia, joista tärkeimmät ovat:
 
-- `header`: looginen arvo (TRUE/FALSE), jolla kerrotaan funktiolle, onko ensimmäisellä rivillä sarakkeiden nimet vai ei
-- `sep`: erotinmerkki, jolla muuttujien arvot on eroteltu
+- `header`: looginen arvo (`TRUE`/`FALSE`), jolla kerrotaan funktiolle, onko ensimmäisellä rivillä sarakkeiden nimet vai ei.
+- `sep`: erotinmerkki, jolla muuttujien arvot on eroteltu.
 - `dec`: desimaalierotin eli desimaalilukujen merkki, jolla desimaalit on eroteltu. Tämä on tärkeä lähinnä suomalaisille, koska Suomessa desimaalierotin on jostain syystä pilkku, eikä piste kuten useimmissa muissa maissa.
 
 Luetaan edellisen esimerkin data R:ään datakehikoksi hakemistosta `data`:
@@ -71,9 +71,9 @@ gene_data
 
 Kuten yllä huomattiin, sarkain erotinmerkkinä merkataan `"\t"`, eikä lainausmerkeillä, joiden sisään laitettaisiin tyhjää tilaa sarkainnäppäimellä. Tämä on yksi esimerkki koodinvaihtomerkin (escape character) `\` käytöstä. R:ssä ja ohjelmointikielissä ylipäätään kenoviiva toimii koodinvaihtomerkkinä, eli sitä ei käsitellä kuin muita merkkejä, vaan se muuttaa seuraavan merkin toimintaa. Usein tämä tarkoittaa sitä, että kenoviivan avulla merkataan sarkainta, rivinvaihtoa (newline, `\n`) ja muita erikoismerkkejä. Koodinvaihtomerkin käyttöä ei tarvitse osata tämän enempää, mutta se esitellään tässä, koska se aiheuttaa ongelmia Windowsin käyttäjille.
 
-Windowsin tiedostopoluissa kansioiden välissä on kenoviiva, kun taas Mac- ja Linux-järjestelmissä käytetään kauttaviivaa `/`. Koska R:ssä kenoviiva on koodinvaihtomerkki, niin helpoin tapa on käyttää tiedostopoluissa Macin ja Linuxien tyyliä. Jos taas halutaan lukea tiedosto R:ään käyttäen Windowsin tapaisia tiedostopolkuja, kenoviivat `\` pitää kirjoittaa kahteen kertaan eli `\\`, jotta R tulkitsee polun oikein. Tällöin ensimmäinen kenoviiva kertoo, että toinen kenoviiva on aito kenoviiva, eikä koodinvaihtomerkki.
+Windowsin tiedostopoluissa kansioiden välissä on kenoviiva, kun taas Mac- ja Linux-käyttöjärjestelmissä käytetään kauttaviivaa `/`. Koska R:ssä kenoviiva on koodinvaihtomerkki, niin helpoin tapa on käyttää tiedostopoluissa Macin ja Linuxien tyyliä. Jos taas halutaan lukea tiedosto R:ään käyttäen Windowsin tapaisia tiedostopolkuja, kenoviivat `\` pitää kirjoittaa kahteen kertaan eli `\\`, jotta R tulkitsee polun oikein. Tällöin ensimmäinen kenoviiva kertoo, että toinen kenoviiva on aito kenoviiva, eikä koodinvaihtomerkki.
 
-Luetaan seuraavaksi sisään data-hakemistossa oleva tiedosto tooth_growth.csv, joka sisältää dataa tutkimuksesta c-vitamiinin vaikutuksesta hampaiden kasvuun marsuilla. .csv-tiedostopääte tulee sanoista comma separated value, eli tiedostossa arvot ovat eroteltu pilkulla. Asetetaan siis `sep`-argumentiksi `","`. Tämä tiedosto sisältää myös rivien nimet ensimmäisessä sarakkeessa. Tämä voidaan kertoa `read.table`-funktiolle argumentilla row.names, jonka arvoksi voi asettaa sarakkeen numeron, josta rivien nimet napataan.
+Luetaan seuraavaksi sisään data-hakemistossa oleva tiedosto `tooth_growth.csv`, joka sisältää dataa tutkimuksesta C-vitamiinin vaikutuksesta hampaiden kasvuun marsuilla. .csv-tiedostopääte tulee sanoista comma separated value, eli tiedostossa arvot ovat eroteltu pilkulla. Asetetaan siis `sep`-argumentiksi `","`. Tämä tiedosto sisältää myös rivien nimet ensimmäisessä sarakkeessa. Tämä voidaan kertoa `read.table`-funktiolle argumentilla `row.names`, jonka arvoksi voi asettaa sarakkeen numeron, josta rivien nimet napataan.
 
 ```{r}
 tooth <- read.table("data/tooth_growth.csv", header = TRUE, sep = ",", row.names = 1)
@@ -93,11 +93,11 @@ tooth
 
 #### read.csv2
 
-HUOM: Koska Suomessa pilkkua käytetään desimaalierottimena, kenttien rajaaminen pilkulla ei toimi. Käytännössä tämä näkyy siten, että suomenkielinen Excel tallentaa .csv-tiedosto oletuksena muodossa, jossa desimaalierottimena on pilkku ja kenttien välissä puolipilkku `;`. Jos siis olet tallentanut Excelistä taulukon .csv-muotoon ja sen lukeminen R:ään aiheuttaa hankaluuksia, kyse on todennäköisesti erotinmerkistä. Onneksi R:ssä on valmiina funktio `read.csv2`, joka osaa lukea puolipilkulliset .csv-tiedostot oikein.
+HUOM: Koska Suomessa pilkkua käytetään desimaalierottimena, kenttien rajaaminen pilkulla ei toimi. Käytännössä tämä näkyy siten, että suomenkielinen Excel tallentaa .csv-tiedosto oletuksena muodossa, jossa desimaalierottimena on pilkku ja kenttien välissä puolipiste `;`. Jos siis olet tallentanut Excelistä taulukon .csv-muotoon ja sen lukeminen R:ään aiheuttaa hankaluuksia, kyse on todennäköisesti erotinmerkistä. Onneksi R:ssä on valmiina funktio `read.csv2`, joka osaa lukea puolipisteelliset .csv-tiedostot oikein.
 
 ## Datakehikon tarkastelu
 
-Kun data on luettu sisään R:ään, kannattaa aina tarkistaa, että kaikki data on luettu oikein. Tässä muutama vinkki datakehikon tutkimiseen, joista osaa käsiteltiin jo [datakehikko](#data-frame)-kappaleessa:
+Kun data on luettu sisään R:ään, kannattaa aina tarkistaa, että kaikki data on luettu oikein. Tässä muutama vinkki datakehikon tutkimiseen, joista osaa käsiteltiin jo [datakehikko](#sec-data-frame)-kappaleessa:
 
 `dim` antaa datakehikon dimensiot, eli rivien ja sarakkeiden määrän.  
 `View` avaa datakehikon erilliseen ikkunaan, jossa sitä voi tarkastella. Suositellaan vain pienemmille datakehikoille
@@ -110,7 +110,7 @@ Katsotaan, mitä `str` kertoo juuri lukemastamme tooth-datasta.
 str(tooth)
 ```
 
-Kuten näimme aiemmin, mukana on 10 havaintoa ja 3 muuttujaa. len ja dose ovat luokkaa numeric eli desimaalilukuja, ja supp on luokkaa factor. Factor-tietotyyppiä käsitellään enemmän lineaaristen mallien yhteydessä, mutta sillä merkitään usein kategorisia muuttujia. 
+Kuten näimme aiemmin, mukana on 10 havaintoa ja 3 muuttujaa. `len` ja `dose` ovat luokkaa `numeric` eli desimaalilukuja, ja `supp` on luokkaa `factor`, eli faktori. Faktoritietotyyppiä käsitellään enemmän lineaaristen mallien yhteydessä, mutta sillä merkitään usein kategorisia muuttujia. 
 
 Lasketaan seuraavaksi, kuinka monelle marsulle annettiin appelsiinimehua ja kuinka monelle askorbiinihappoa. 
 
@@ -128,7 +128,7 @@ Appelsiinimehuna annettiin siis 0.5 mg ja 1 mg annoksia kumpaakin 1 kappale, ja 
 
 ### R:n sisäänrakennetut aineistot
 
-R:ssä on monta sisäänrakennettua aineistoa. Näitä on kätevää käyttää nopeaan testaamiseen, ja ne vilahtelevatkin usein R-oppaissa. Esimerkiksi aikaisempi odontoblastien pituuksia sisältävä aineistomme on oikeastaan pieni otos R:n sisäisestä aineistotsa `ToothGrowth`.
+R:ssä on monta sisäänrakennettua aineistoa. Näitä on kätevää käyttää nopeaan testaamiseen ja ne vilahtelevatkin usein R-oppaissa. Esimerkiksi aikaisempi odontoblastien pituuksia sisältävä aineistomme on oikeastaan pieni otos R:n sisäisestä aineistotsa `ToothGrowth`.
 
 R:n sisäiset aineistot ovat koko ajan käytettävissä, vaikka ne eivät näy RStudion ympäristössä (Environment). Voimme esimerkiksi katsoa, millainen rakenne kokonaisella `ToothGroth`-datalla on:
 
@@ -142,7 +142,7 @@ R:n aineistoja voi käyttää moneen eri tarkoitukseen, kuten datan visualisoinn
 
 ### Excel
 
-Excelin käyttämiä .xlsx-tiedostoja voi lukea suoraan R:ään, vaikka jossain netissä olevissa ohjeissa suositellaan niiden muuntamista ensin .csv-muotoon. Tätä varten pitää asentaa **readxl**-paketti, minkä voi tehdä RStudion Packages-valikoksta tai suoraan komennolla `install.packages("readxl")`. Paketin funktiolla `read_xlsx()` voi lukea sisään .xlsx-tiedostoja, tai yksikkäitisä taulukon sivuja. Excel-tiedostojen kirjoittamiseen löytyy myös vastaava paketti **writexl**.
+Excelin käyttämiä .xlsx-tiedostoja voi lukea suoraan R:ään, vaikka yleensä ne suositellaan muuntamaan ensin .csv-muotoon. Suoraa lukemista varten pitää asentaa **readxl**-paketti, minkä voi tehdä RStudion Packages-valikoksta tai suoraan komennolla `install.packages("readxl")`. Paketin funktiolla `read_xlsx()` voi lukea sisään .xlsx-tiedostoja, tai yksikkäitisä taulukon sivuja. Excel-tiedostojen kirjoittamiseen löytyy myös vastaava paketti **writexl**.
 
 Vaihtoehtoinen paketti Excel-tiedostojen lukemiseen on **openxlsx**, jolla voi sekä lukea että kirjoittaa .xlsx-tiedostoja, mutta se on tyypillisesti hitaampi *readxl* ja *writexl* paketteihin verattuna.
 

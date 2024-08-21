@@ -198,44 +198,44 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-reading_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datan lukeminen</span></span></a>
+  <a href="./04-statistics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tunnusluvut</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./05-data_wrangling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datan muokkaaminen</span></span></a>
+  <a href="./05-reading_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datan lukeminen</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tunnusluvut</span></span></a>
+  <a href="./06-data_wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Datan muokkaaminen</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./07-distributions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Todennäköisyysjakaumat</span></span></a>
+  <a href="./07-plots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Kuvaajien piirtäminen</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-plots.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Kuvaajien piirtäminen</span></span></a>
+  <a href="./08-statistical_tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Tilastollinen testaaminen</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-statistical_tests.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Tilastollinen testaaminen</span></span></a>
+  <a href="./09-modelling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Lineaariset mallit</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10-modelling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Lineaariset mallit</span></span></a>
+  <a href="./10-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Todennäköisyysjakaumat</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -367,7 +367,7 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<p>Kaikki loogiset operaattorit palauttavat joko arvon (tai vektorin arvoja) <code>TRUE</code>, <code>FALSE</code> tai <code>NA</code>. Vertailuoperaattorien käyttö on jo tullut tutuksi aikaisemmissa kappaleissa, mutta tutustutaan vielä tarkemmin viimeisten rivien operaattoreihin.</p>
+<p>Kaikki loogiset operaattorit palauttavat joko arvon (tai vektorin arvoja) <code>TRUE</code>, <code>FALSE</code> tai <code>NA</code>. Vertailuoperaattorien käyttö on jo tullut tutuksi aikaisemmissa luvuissa, mutta tutustutaan vielä tarkemmin viimeisten rivien operaattoreihin.</p>
 <section id="negaatio" class="level4" data-number="12.1.0.1">
 <h4 data-number="12.1.0.1" class="anchored" data-anchor-id="negaatio"><span class="header-section-number">12.1.0.1</span> Negaatio</h4>
 <p>Looginen negaatio palauttaa loogisen lauseen vastakohdan, eli muuttaa arvon <code>TRUE</code> arvoksi <code>FALSE</code> ja arvon <code>FALSE</code> arvoksi <code>TRUE</code>.</p>
@@ -511,7 +511,7 @@ window.Quarto = {
 <pre><code>[1] "Hemoglobin is low!"</code></pre>
 </div>
 </div>
-<p>Funktio siis toimii oletetusti, eli se hälyttää vain, jos hemoglobiinitaso on alle 117. Käyttäjän kannalta olisi kuitenkin kätevää saada jonkinlainen palaute myös silloin, kun hemoglobiinitaso on tarpeeksi korkea. Tätä varten voidaan käyttää else-komentoa:</p>
+<p>Funktio siis toimii oletetusti, eli se hälyttää vain, jos hemoglobiinitaso on alle 117. Käyttäjän kannalta olisi kuitenkin kätevää saada jonkinlainen palaute myös silloin, kun hemoglobiinitaso on tarpeeksi korkea. Tätä varten voidaan käyttää <code>else</code>-komentoa:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>hb_alert <span class="ot">&lt;-</span> <span class="cf">function</span>(hb) {</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (hb <span class="sc">&lt;</span> <span class="dv">117</span>) {</span>

@@ -1,6 +1,6 @@
 # Tunnusluvut {#sec-statistics}
 
-Tunnusluvut (engl. statistics) ovat keskeinen osa tilastotiedettä. Tunnuslukujen avulla voidaan tiivistää ja tarkastella aineistoa. Tässä luvussa käsitellään tyypillisimpien tunnuslukujen laskemista aineistosta. Näitä tunnuslukuja voi sanoa myös empiirisiksi, koska ne on laskettu aineistosta.
+Tunnusluvut (statistics) ovat keskeinen osa tilastotiedettä. Tunnuslukujen avulla voidaan tiivistää ja tarkastella aineistoa. Tässä luvussa käsitellään tyypillisimpien tunnuslukujen laskemista aineistosta. Näitä tunnuslukuja voi sanoa myös empiirisiksi, koska ne on laskettu aineistosta.
 
 ## Sijaintia kuvaavat tunnusluvut
 
@@ -34,7 +34,7 @@ Keskiarvo saadaan laskemalla muuttujan kaikki havainnot yhteen ja jakamalla summ
 $$
   \overline{x} = \frac1n \sum_{i=1}^n x_i = \frac{x_1+x_2+\dots+x_n}{n},
 $$
-missä merkintä $\overline{x}$ tarkoittaa keskiarvoa, $x_1,\ldots,x_n$ ovat havaintoja ja $n$ on havaintojen määrä.
+missä merkintä $\overline{x}$ tarkoittaa keskiarvoa, $x_1,\ldots,x_n$ ovat havaintoja ja $n$ on havaintojen lukumäärä.
 
 Keskiarvo voidaan laskea helposti funktiolla `mean`.
 ```{r}
@@ -78,7 +78,7 @@ Mediaani siis kertoi kohdan, jossa 50 % aineistosta on pienenmpiä kuin kyseinen
  - desiilit (10% välein)
     * 10 %:n desiili, 20 %:n desiili jne.
 
-Haluamansa kvantiilin voi laskea funktiolla `quantile`. Jos haluat laskea 30 %:n kvantiilin, niin arnna argumentille `probs` tätä vastaava suhteellinen osuus eli 0.30.
+Haluamansa kvantiilin voi laskea funktiolla `quantile`. Jos haluat laskea 30 %:n kvantiilin, niin anna argumentille `probs` tätä vastaava suhteellinen osuus eli 0.30.
 
 ```{r}
 quantile(dat_for_median, probs = 0.30)
@@ -130,7 +130,7 @@ names(tab)[which.max(tab)]
 as.numeric(names(tab)[which.max(tab)])
 ```
 
-Ylläoleva on hyvä esimerkki tilanteesta, jossa moodin laskemiseen käytetty koodi on kätevä kirjoittaa funktioksi, jolloin moodi on helppo laskea jatkossa toisilla aineistoilla. Funktiohin palataan osiossa [Funktiot](#sec-functions). Alla on joka tapauksessa esimerkki moodi-funktiosta ilman suurempia selityksiä. **Huom!** tämä moodi-funktio toimii vain numeerisille vektoreille.
+Ylläoleva on hyvä esimerkki tilanteesta, jossa moodin laskemiseen käytetty koodi on kätevä kirjoittaa funktioksi, jolloin moodi on helppo laskea jatkossa toisilla aineistoilla. Funktiohin palataan osiossa [Funktiot](#sec-functions). Alla on joka tapauksessa esimerkki moodi-funktiosta ilman suurempia selityksiä. **Huom!** tämä moodi-funktio toimii vain numeerisille vektoreille!
 
 ```{r}
 # Write a function for mode
@@ -145,6 +145,59 @@ dat_for_mode_character <- c("a", "a", "a", "b", "c", "c")
 # This gives NA as output and a warning!
 moodi(dat_for_mode_character)
 ```
+
+
+## Vaihtelua kuvaavat tunnusluvut
+
+### Varianssi ja keskihajonta
+
+Yksittäiselle numeeriselle muuttujalle voidaan laskea varianssi (*variance*) funktiolla `var`. Varianssia tulkittaessa kannattaa muistaa, että varianssin mittayksikkö ei ole sama kuin alkuperäisen muuttujan, vaan mittayksikkö tulee korottaa toiseen potenssiin. Esim. jos pituuden yksikkö on cm, niin pituuden varianssin yksikkö on $\text{cm}^2$. Käytännössä tulkintaa kannattaa yrittää keskihajonnan avulla.
+```{r}
+# pull the variable from data frame and use it directly in function var
+var(ToothGrowth$len)
+
+# calculate the variance-covariance matrix for entire data frame 
+# (gives NA to any pairs with categorical variables)
+# variances are obtained from the diagonal (58.51, NA, 0.3954)
+var(ToothGrowth)
+```
+
+Keskihajonta (*standard deviation*) saadaan vastaavasti funktiolla `sd`. Keskihajonta on varianssin neliöjuuri.
+```{r}
+# standard deviation
+sd(ToothGrowth$len)
+```
+
+### Korrelaatio
+
+Korrelaatio (*correlation*) on suure jolla voidaan mitata kahden muuttujan välistä riippuvuutta. Korrelaatiolle on monia erilaisia mittareita, joista yleisimmät ovat Pearsonin korrelaatiokerroin, joka mittaa kahden muuttujan välistä lineaarista riippuvuutta, ja Spearmanin järjestyskorrelaatiokerroin, joka mittaa kahden muuttujan välistä riippuvuutta ilman lineaarisuusoletusta, mutta olettaa kuitenkin monotonisen riippuvuuden. HUOM: korrelaatio ei ota kantaa siihen, kuinka vahva riippuvuus on (käyrän jyrkkyys), vaan pelkästään siihen, kuinka systemaattinen riippuvuus on. Kummatkin korrelaatiokertoimet saavat arvoja väliltä [-1, 1], jossa -1 on täydellinen negatiivinen korrelaatio (toisen muuttujan kasvaessa toinen aina pienenee) ja 1 on täydellinen positiivinen korrelaatio.
+
+Korrelaation kahden vektorin välillä voi R:ssä laskea funktiolla `cor`. Otetaan esimerkiksi R:n sisäinen aineisto `Indometh`, jossa on mitattu indometasiinin farmakokinetiikkaa, ja selvitetään ajan ja indometasiinin konsentraation väliselle riippuvuudelle Pearsonin ja Spearmanin korrelaatiokertoimet. Piirretään sen jälkeen hajontakuvio mittaustuloksista ja lisätään kuvaajaan alaotsikoksi korrelaatiokertoimet. Tutustumme samalla funktioon `round`, jolla voi pyöristää lukuja halutulle desimaalitarkkuudelle. Huomaa, että `round`-funktio pyöristää aina lähimpään parilliseen lukuun, esim. luku 0.5 pyöristyy lukuun 0, mutta 1.5 pyöristyy lukuun 2. Funktio `mtext` lisää tekstin kuvaajan marginaaliin.
+
+```{r}
+# Pearson correlation
+pearson <- cor(Indometh$time, Indometh$conc, method = "pearson")
+# Spearman correlation
+spearman <- cor(Indometh$time, Indometh$conc, method = "spearman")
+# Scatter plot
+plot(
+  Indometh$time, 
+  Indometh$conc,
+  xlab = "Time", 
+  ylab = "Concetration",
+  main = "Pharmacokinetics of indometacin"
+)
+
+# Paste concatenates strings
+subtitle <- paste(
+  "Pearson correlation:", round(pearson, digits = 2),
+  "Spearman correlation:", round(spearman, digits = 2)
+)
+# Add subtitle to plot
+mtext(subtitle)
+```
+
+Tässä esimerkissä nähdään hyvin Pearsonin ja Spearmanin korrelaatiokertoimien ero. Koska Indometasiinin konsentraatio laskee eksponentiaalisesti, ei lineaarisesti, Pearsonin korrelaatiokerroin on "vain" -0.7, kun taas Spearmanin korrelaatiokerroin -0.97 vastaa lähes täydellistä negatiivista korrelaatiota.
 
 ## Yhteenveto aineistosta (summary)
 
@@ -162,21 +215,28 @@ tooth_length <- ToothGrowth$len
 summary(tooth_length)
 ```
 
-## Varianssi ja keskihajonta
 
-Yksittäiselle numeeriselle muuttujalle voidaan laskea varianssi funktiolla `var`. Varianssia tulkittaessa kannattaa muistaa, että varianssin mittayksikkö ei ole sama kuin alkuperäisen muuttujan, vaan mittayksikkö tulee korottaa toiseen potenssiin. Esim. jos pituuden yksikkö on cm, niin pituuden varianssin yksikkö on $\text{cm}^2$. Käytännössä tulkintaa kannattaa yrittää keskihajonnan avulla.
+## Uniikit arvot
+
+Usein on tarpeen tietää jonkin tarkasteltavan muuttujan saamat uniikit arvot aineistossa, esimerkiksi kun halutaan määrittää faktorin tasot. Tätä varten R:ssä on funktio `unique`, joka kertoo vektorin uniikit arvot.
+
 ```{r}
-# pull the variable from data frame and use it directly in function var
-var(ToothGrowth$len)
-
-# calculate the variance-covariance matrix for entire data frame 
-# (gives NA to any pairs with categorical variables)
-# variances are obtained from the diagonal (58.51, NA, 0.3954)
-var(ToothGrowth)
+x <- c(1, 1, 1, 2, 3, 3, 4, 5, 5)
+unique(x)
 ```
 
-Keskihajonta (engl. standard deviation) saadaan vastaavasti funktiolla `sd`. Keskihajonta on varianssin neliöjuuri.
+Uniikkien arvojen lukumäärän saa helposti käyttämällä lisäksi `length` funktiota
+
 ```{r}
-# standard deviation
-sd(ToothGrowth$len)
+length(unique(x))
 ```
+Vektorissamme `x` oli siis 5 uniikkia arvoa.
+
+## Tunnuslukujen laskeminen ryhmittäin
+
+Jos kiinnostuksen kohteena on vertailla ryhmiä toisiinsa esimerkiksi keskiarvon suhteen, on keskiarvot laskettava joka ryhmälle. Tämä voidaan tehdä esimerkiksi `tapply` funktiolla:
+
+```{r}
+tapply(ToothGrowth$len, ToothGrowth$dose, mean)
+```
+Funktion ensimmäinen argumentti vektori vastemuuttujan arvoista, joista olemme kiinnostuneita (tässä tapauksessa R:n sisäisen aineiston `ToothGrow` hampaiden pituuskasvumittaukset `len`). Toinen argumentti on vektori, joka kertoo mihin ryhmään kukin ensimmäisen argumentin arvoista kuuluu (tässä tapauksessa C-vitamiiniannos `dose`, annoskoot: 0.5, 1, ja 2 mg/vuorokausi). Kolmas argumentti määrittää funktion, jota sovelletaan joka ryhmässä erikseen (tässä tapauksessa keskiarvofunktio `mean`, mutta tämä voi olla mikä tahansa tunnusluku). Lasketut tunnusluvut palautetaan vektorina ryhmiä vastaavassa järjestyksessä.
