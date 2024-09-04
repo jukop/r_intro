@@ -46,12 +46,17 @@ Tarkkasilmäinen lukija saattoi kuitenkin huomata, että tämä testi ei aivan v
 
 ### Riippuvien (parittaisten) otosten $t$-testi
 
-Jotta mittausparit tulevat otettua huomioon testissä, on `t.test`-funktiolle annettava argumentti `paired = TRUE`. Tässä testissä nollahypoteesi on, että lääkkeiden vaikutuksen erotuksen odotusarvo on 0 ($H_0 : \mu_d = 0$).
+Jotta mittausparit tulevat otettua huomioon testissä, on `t.test`-funktiolle annettava argumentti `paired = TRUE`. Tässä testissä nollahypoteesi on, että lääkkeiden vaikutuksen erotuksen odotusarvo on 0 ($H_0 : \mu_d = 0$). Uudemmilla R-versioilla `formula`-syntaksia ei voi enää käyttää kun kyseessä on parittainen testi, joten mittauspareja vastaavat arvot on poimittava käsin.
 ```{r}
-tt3 <- t.test(extra ~ group, data = sleep, paired = TRUE)
+tt3 <- t.test(
+  sleep$extra[sleep$group == 1],
+  sleep$extra[sleep$group == 2],
+  data = sleep, 
+  paired = TRUE
+)
 tt3
 ```
-Tällä kertaa tulos on taas tilastollisesti merkitsevä, eli lääkkeiden vaikutuksessa unen määrään on tilastollisesti merkitsevä ero, jolloin nollahypoteesi hylätään.
+Tällä kertaa tulos on taas tilastollisesti merkitsevä (p-arvo on noin `r round(tt3$p.value, 3)`), eli lääkkeiden vaikutuksessa unen määrään on tilastollisesti merkitsevä ero, jolloin nollahypoteesi hylätään.
 
 
 ## Khiin neliö -testi {#sec-chi}
@@ -124,8 +129,11 @@ Hypoteesit ovat:
 # we test if averages of height differ between age groups
 summary(aov(height ~ fage_group, data = study_data))
 ```
+```{r, include=FALSE}
+aov_pvalue <- summary(aov(height ~ fage_group, data = study_data))[[1]]$Pr[1]
+```
 
-Varianssianalyysin `summary` sisältää seuraavat sarakkeet: `Df` kertoo testiin liittyvän $F$-jakauman vapausasteet, `Sum Sq` kertoo ryhmiin liittyvän neliösumman ja jäännösneliösumman, `Mean Sq` kertoo vastaavan keskineliösumman, `F value` kertoo testisuureen arvon ja `Pr(>F)` kertoo testin P-arvon. Tässä tapauksessa testin p-arvo on $0.417$, joten nollahypoteesia ei hylätä.
+Varianssianalyysin `summary` sisältää seuraavat sarakkeet: `Df` kertoo testiin liittyvän $F$-jakauman vapausasteet, `Sum Sq` kertoo ryhmiin liittyvän neliösumman ja jäännösneliösumman, `Mean Sq` kertoo vastaavan keskineliösumman, `F value` kertoo testisuureen arvon ja `Pr(>F)` kertoo testin P-arvon. Tässä tapauksessa testin p-arvo on noin `r round(aov_pvalue, 3)`, joten nollahypoteesia ei hylätä.
 
 ## Levenen testi
 
@@ -138,7 +146,10 @@ library("Rcourse")
 ```{r}
 leveneTest(height ~ fage_group, data = study_data)
 ```
-Testin p-arvo löytyy sarakkeesta `Pr(>F)`, ja se on $0.6105$. Testin mukaan muuttujan varianssit ovat siis samat joka ryhmässä, ja nollahypoteesi jää voimaan. 
+```{r, include=FALSE}
+levene_pvalue <- leveneTest(height ~ fage_group, data = study_data)$Pr[1]
+```
+Testin p-arvo löytyy sarakkeesta `Pr(>F)`, ja se on noin `r round(levene_pvalue, 3)`. Testin mukaan muuttujan varianssit eivät eroa ryhmien välillä, ja nollahypoteesi jää voimaan. 
 
 ## Shapiro-Wilk -testi
 
@@ -148,4 +159,4 @@ Tarkastellaan jälleen harjoitusaineistoa `study_data` ja testataan muuttujan `h
 ```{r}
 shapiro.test(study_data$height)
 ```
-Testin p-arvon voi lukea kohdasta `p-value` ja se on aineistolle $0.8973$, eli `height`-muuttuja on testin mukaan normaalijakautunut, ja nollahypoteesi jää voimaan.
+Testin p-arvon voi lukea kohdasta `p-value` ja se on tällä aineistolla hyvin lähellä nollaa, eli `height`-muuttuja ei testin mukaan ole normaalijakautunut ja nollahypoteesi hylätään.
