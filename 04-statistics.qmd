@@ -14,13 +14,13 @@ min(dat_for_loc)
 max(dat_for_loc)
 ```
 
-<!-- Santtu: pmin ja pmax on selitetty tässä oudosti, niiden pääasiallinen tarkoitus on laskea alkiokohtaisia minimejä ja maksimeja (tästähän nniiden nimetkin tulevat, pointwise-minimum) eikä vain verrata vektoria lukuun -->
-Joskus minimiä ja maksimia tarvitaan tilanteessa, jossa halutaan vaikkapa muuttaa kaikki negatiiviset arvot nolliksi (tai positiiviset, jos maksimi). Tämä onnistuu helpoiten funktioiden `pmin` ja `pmax` avulla. Samalla tapaa, jos halutaan kaikki lukua 1 pienemmät luvut muutettua luvuksi 1, niin tämä onnistuu vaihtamalla toinen argumentti luvuksi 1.
+<!-- Santtu: pmin ja pmax on selitetty tässä oudosti, niiden pääasiallinen tarkoitus on laskea alkiokohtaisia minimejä ja maksimeja (tästähän niiden nimetkin tulevat, pointwise-minimum) eikä vain verrata vektoria lukuun -->
+Joskus minimiä ja maksimia tarvitaan tilanteessa, jossa halutaan vaikkapa muuttaa kaikki negatiiviset arvot nolliksi (tai positiiviset). Tämä onnistuu helpoiten funktioiden `pmin` ja `pmax` avulla. Samalla tapaa, jos halutaan esimerkiksi muuttaa kaikki lukua 1 pienemmät luvut luvuksi 1, niin tämä onnistuu vaihtamalla toinen argumentti luvuksi 1.
 ```{r}
 # We want to get rid of all values below 0 and make them 0
-pmin(dat_for_loc, 0)
-# Similar, but get rid of all values over 0
 pmax(dat_for_loc, 0)
+# Similar, but get rid of all values over 0
+pmin(dat_for_loc, 0)
 # We can do similar things to any limit, e.g. 1
 pmin(dat_for_loc, 1)
 ```
