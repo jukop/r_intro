@@ -28,6 +28,9 @@ book:
 
 format:
   html:
-    theme: cosmo
+    html-math-method: katex
+    theme:
+      light: [cosmo]
+      dark: [darkly]
   pdf:
     documentclass: scrreprt
