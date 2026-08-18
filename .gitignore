@@ -45,3 +45,5 @@ vignettes/*.pdf
 # Rendered files
 _book/
 /.quarto/
+
+**/*.quarto_ipynb
